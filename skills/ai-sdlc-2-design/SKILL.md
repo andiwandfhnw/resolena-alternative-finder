@@ -9,7 +9,8 @@ description: Determine minimal architecture components for the current use case.
 
 - Significant choices → `docs/adr/ADR-NNN-short-title.md` (unused number).
 - Record status, context, alternatives, decision and consequences.
-- Human acceptance → update `PROJECT.md` and propose durable rules in `AGENTS.md`.
+- Human acceptance → update `docs/ARCHITECTURE.md`, reconcile the baseline summary
+  in `docs/PROJECT.md` if needed, and propose durable rules in `AGENTS.md`.
 - Preserve superseded ADRs; review related changes together.
 - Fast Track → confirm existing architecture in the task entry; skip full DESIGN.
 
@@ -28,6 +29,10 @@ Current use case
 docs/specs/UC-[NNN]-[NAME].md
 
 Architecture reference
+
+docs/ARCHITECTURE.md
+
+Project baseline summary and commands
 
 docs/PROJECT.md
 
@@ -54,7 +59,7 @@ Examples:
 - persistence adapter
 - API endpoint
 
-3. Ensure the architecture in `docs/PROJECT.md` is sufficient.
+3. Ensure the architecture in `docs/ARCHITECTURE.md` is sufficient.
 
 Update it **only if necessary**.
 
@@ -72,6 +77,6 @@ Prefer **extending existing artifacts** instead of creating new ones.
 
 ## Output
 
-Architecture verified or minimally updated.
+Architecture in `docs/ARCHITECTURE.md` verified or minimally updated.
 
 Record phase 2 and status in `docs/TASKS.md` per `AGENTS.md`.

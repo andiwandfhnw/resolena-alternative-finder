@@ -1,7 +1,9 @@
 # PROJECT.md
 
-Complete this document during **BOOTSTRAP**. Keep it concise and specific to
-the project created from this template.
+Project baseline, structure, commands and historical setup evidence.
+Accepted scope/architecture/privacy: [ARCHITECTURE.md](ARCHITECTURE.md).
+Development and review procedures: [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md).
+Product context for requirements, UX and comparisons: [PRODUCT_CONTEXT.md](PRODUCT_CONTEXT.md).
 
 ## Purpose
 
@@ -21,43 +23,14 @@ The module helps them explore better choices while building a reusable
 Resolena knowledge base. Guidance should be practical, transparent and
 non-judgmental.
 
-### Mandatory scope: UC-001
+### Scope summary
 
-- Accept a natural-language text request.
-- Normalize and categorize the request.
-- Retrieve existing Resolena knowledge before initiating new research.
-- Assess whether stored knowledge is relevant, sufficiently supported
-  and fresh enough to reuse.
-- Obtain and persist new structured results when knowledge is
-  insufficient, through a research adapter reviewed during SPECIFY/DESIGN.
-- Present a small set of alternatives with financial and environmental
-  or resource information, evidence references and confidence/validation
-  labels.
-- Allow the user to select a preferred alternative.
-- Persist the request, shown alternatives, evidence and selection.
-- Provide basic loading, input-validation and error states.
-
-User selections may influence relevance, but must never automatically
-increase factual confidence or change validation status.
-
-Collected application data must not be sent to external LLM providers.
-Development agents use synthetic or deliberately non-sensitive examples.
-
-### Optional scope: UC-002
-
-Image-assisted request creation may be considered only after UC-001
-is validated. Extracted information requires user confirmation.
-Raw images are not retained by default.
-
-### Out of scope
-
-- User accounts, login and personalized account history.
-- Banking, payments, savings transfers and investment integration.
-- The complete Saver and dual piggy-bank ecosystem.
-- Community features, rewards and Resolena Coin.
-- Automatic model training or reinforcement learning from selections.
-- Autonomous rewriting or deployment of prompts, ranking rules or code.
-- Complex analytics dashboards and production-scale web crawling.
+UC-001 supports text requests, knowledge reuse before research, evidence-backed
+comparison, explicit selection and persistence. Image-assisted input (UC-002)
+may be considered only after UC-001 is validated. The canonical
+[accepted scope](ARCHITECTURE.md#accepted-scope) defines the included capabilities,
+optional-input constraints and exclusions; its
+[privacy boundary](ARCHITECTURE.md#strict-runtime-privacy) remains binding.
 
 ### Specification boundary
 
@@ -67,82 +40,20 @@ This section records scope; it does not claim these features exist.
 
 ## Architecture
 
-### Architecture style
+Use Clean Architecture with ports and adapters and inward dependencies.
+React/TypeScript accesses the FastAPI API; infrastructure implements database,
+research and optional AI ports without coupling domain rules to providers.
 
-Use Clean Architecture with ports and adapters.
-Source-code dependencies point inward toward the application and domain.
+UC-001 retrieves and assesses existing knowledge before research. Persist
+requests, shown alternatives and evidence before presentation and selection;
+selection affects relevance, never factual validation. Keep collected data in
+Resolena-controlled persistence and out of external LLM providers. Development
+and review use synthetic/non-sensitive examples only.
 
-- Domain: business concepts and rules, independent of FastAPI,
-  SQLAlchemy, external services and AI frameworks.
-- Application: coordinates UC-001 and defines interfaces (ports) for
-  persistence, retrieval, interpretation, research and explanations.
-- Interfaces: FastAPI routes and request/response handling translate
-  web requests into application calls.
-- Infrastructure: implements database, research and optional AI adapters.
-- Frontend: React/TypeScript communicates with the backend through
-  an API; it does not access the database directly.
-
-Concrete adapters are connected to the application at startup.
-Business logic must not depend on a particular database or AI provider.
-
-### UC-001 workflow
-
-Interpret -> retrieve -> assess sufficiency -> research only if needed
--> compare and explain -> persist results -> record user selection.
-
-Future requests reuse stored knowledge where appropriate.
-The application controls this sequence and permission to research.
-Optional AI components assist bounded tasks; they do not control
-the workflow autonomously.
-
-### Data and evidence
-
-Separate these concepts:
-
-- SearchRequest: original and normalized request and its context.
-- Alternative: reusable alternative information.
-- RequestAlternative: which alternatives were shown for a request.
-- Evidence: sources and metadata supporting factual claims.
-- Selection: the user's explicitly selected alternative.
-
-These are conceptual entities; detailed schemas are defined in DESIGN.
-
-Material factual claims must be traceable to supporting evidence.
-Preserve source/reference, relevant dates and confidence/validation
-metadata. Selection frequency measures relevance, not factual validity.
-
-### Privacy boundary
-
-- Keep collected application data in Resolena-controlled persistence.
-- Do not send original or normalized requests, stored alternatives,
-  evidence records, selections, identifiers or images to external
-  LLM providers, including for embeddings, classification or ranking.
-- Development and review agents use synthetic or deliberately
-  non-sensitive examples; never production/user data.
-- External search/research requires minimized, non-identifying queries
-  and explicit review during SPECIFY/DESIGN before implementation.
-- Use anonymous request identifiers; no user account is required.
-- Free-text input may still contain personal information. Anonymous
-  identifiers alone do not make its contents anonymous.
-- Any relaxation of the privacy boundary requires explicit owner
-  approval and an updated specification before implementation.
-
-### Controlled improvement
-
-Maintain a synthetic UC-001 evaluation set as behaviour is specified.
-Evaluate meaningful changes to interpretation, retrieval, ranking,
-research decisions and optional AI against it.
-
-Record material experiments and their results.
-Promote significant behaviour changes only after testing and human
-approval, with the previous validated version recoverable through Git.
-
-### Remaining design decisions
-
-Retrieval thresholds, ranking formula, semantic retrieval, research
-provider, local AI model and detailed evidence schema remain open.
-The current architecture describes intended boundaries, not
-implemented functionality.
+The full boundaries, conceptual entities, strict privacy rules, controlled
+improvement practices and pending decisions are maintained in
+[ARCHITECTURE.md](ARCHITECTURE.md). These describe intended behaviour;
+UC-001 is not implemented.
 
 ## Structure
 
@@ -165,14 +76,17 @@ The backend and test directories were created during BOOTSTRAP and
 are initially empty. Git does not track empty directories; they will
 be included as implementation and test files are added.
 
-The frontend starter application builds, passes ESLint and loads in
-the browser. UC-001 functionality and automated application tests
-have not yet been implemented.
+The recorded bootstrap checks cover the frontend starter build, ESLint and
+browser startup. UC-001 functionality and automated application tests
+have not yet been implemented; these checks were not rerun during migration.
 
 ### Project guidance and setup
 
 - `AGENTS.md`: shared agent instructions and lifecycle routing.
-- `docs/PROJECT.md`: project scope, architecture and development setup.
+- `docs/PROJECT.md`: concise project baseline, commands and setup evidence.
+- `docs/ARCHITECTURE.md`: canonical scope, architecture and privacy boundaries.
+- `docs/DEVELOPMENT_WORKFLOW.md`: canonical development/review workflow.
+- `docs/adr/`: approved decisions and preserved decision history.
 - `docs/TASKS.md`: current phase, status and work queue.
 - `docs/specs/`: use-case specifications and the specification template.
 - `skills/`: canonical AI-SDLC phase instructions.
@@ -206,22 +120,15 @@ The frontend build creates `frontend/dist`; deployment is not yet configured.
 
 ## Dependencies and technology baseline
 
-Accepted by the project owner on 2026-10-04 during BOOTSTRAP:
+Owner accepted React/TypeScript, Python 3.12/FastAPI, SQLite/SQLAlchemy,
+pytest/httpx and Codespaces on 2026-10-04. The canonical baseline and rationale
+are in [ARCHITECTURE.md](ARCHITECTURE.md#accepted-technology-baseline).
 
-| Component | Selected technology |
-|---|---|
-| Frontend | React + TypeScript |
-| Backend | Python 3.12 + FastAPI |
-| Initial database | SQLite |
-| Database access / ORM | SQLAlchemy |
-| Backend testing | pytest + httpx |
-| Development environment | GitHub Codespaces with a devcontainer |
+### Historical setup evidence
 
-Rationale: reuse the course template's Python foundation, support a
-full-stack web application, and keep business logic independent of
-frameworks and database implementations.
-
-### Current setup evidence
+Recorded during BOOTSTRAP, accepted complete on 2026-10-05. This preserves
+prior evidence; no setup/application/CI/deployment checks were rerun in the
+2026-10-09 documentation migration. Integration into main remains unverified.
 
 - Python 3.12.11 verified in the Codespace.
 - Backend dependencies installed in the project's `.venv` environment:
@@ -256,6 +163,26 @@ frameworks and database implementations.
 - Local AI model, semantic retrieval implementation, external research
   provider and deployment target remain undecided.
 - Frontend and end-to-end test tooling remain undecided.
+
+### Development tooling
+
+As approved by the owner on 2026-10-09, Codex in VS Code against this Codespaces
+repository is primary for reasoning, planning, implementation and review, using
+the owner's choice of direct ChatGPT subscription authentication. Do not inspect
+credentials to verify it. ChatGPT Work is optional consultation; OpenCode/FHNW
+LiteLLM is an optional comparison route and historical setup evidence.
+
+Historical record: the pre-migration planning draft assigned planning/review to
+ChatGPT Work, execution to OpenCode/FHNW LiteLLM and left the coding model
+provisional. Those mandatory roles are superseded by
+[ADR-001](adr/ADR-001-codex-repository-workflow.md). The owner-reported observed
+UI setting on 2026-10-09 was GPT-6.1 Sol with Medium reasoning; it is not a
+permanent model requirement or independently verified subscription entitlement.
+
+Repository Markdown owns decisions, architecture, workflow, specifications and
+evidence. See [DEVELOPMENT_WORKFLOW.md](DEVELOPMENT_WORKFLOW.md) for lifecycle,
+review and proposed course follow-ups. Development tools are separate from
+runtime AI; the runtime privacy boundary remains unchanged.
 
 ### Secrets
 
