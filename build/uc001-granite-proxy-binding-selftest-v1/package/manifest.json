@@ -1,0 +1,20 @@
+{
+  "version": "uc001-granite-proxy-binding-selftest-v1",
+  "scope": "network-free-proxy-native-binding-selftest",
+  "execution_authorized": false,
+  "files": {
+    "README.md": "7addc67623127dc8c824e61c7f98e29a833cbd106482aaa7a29e01b96e1d1e6a",
+    "Run-ProxyBindingCheck.ps1": "3c8b1fd08372cfd1ec7b063c79f74742bebb002853fb4af0b6f62653015308dc",
+    "controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "owner-statement.txt": "3fd9e56c68a9dba8fefc198eec6d5599af05c24fed7ddacf376dcc9db152b38c",
+    "prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+    "prior-budget.json.sha256": "3b50e3270d482faf0e1833c67292855311c4a3e3837d7c66ab35e799b76e3c97",
+    "proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "proxy_binding_selftest.py": "743dde228d5f0f205bc4debea041a3d46fddc33bd4280f4dc5f90da38dd3e35d",
+    "proxy_no_network.py": "6a9911c3daa901955c6837991c7b63e9e15e5268599ff6545ad06ca74eae618b",
+    "selftest-config.json": "0bfbcda1255808b1fc46a25006962b4d19a795d4744355bd1ca3ba97f2f47825",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "worker.py": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028"
+  }
+}

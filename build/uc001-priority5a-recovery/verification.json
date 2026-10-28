@@ -1,0 +1,238 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, bounded Priority 5A committed atomic save / lost HTTP response / explicit recovery",
+  "phase": 3,
+  "status": "in-progress",
+  "priority_3": "partial",
+  "priority_4": "partial",
+  "priority_5": "partial",
+  "prerequisites": {
+    "result": "confirmed; no material accepted-contract conflict",
+    "references": [
+      "UC-001 O-2 / AC-10/11/14/17 / T-09/12/13",
+      "ADR-003",
+      "ARCHITECTURE.md atomic-persistence/API recovery sections"
+    ],
+    "existing_guarantees": [
+      "atomic request/options/evidence-association transaction and committed readback",
+      "saved projections/options independent of current catalogue, immutable evidence versions",
+      "submission-key digest; originating-proof binding checked before payload binding",
+      "acknowledgement-only committed lookup before interpretation/retrieval/clock/rendering"
+    ],
+    "reused_evidence": "build/uc001-priority4-rendering/verification.json (150 backend / 13 browser / lint/build); not rerun",
+    "composition": "existing tests.support.demo, synthetic React/FastAPI/SQLite; normal app.main unchanged"
+  },
+  "changed_files": [
+    "frontend/src/App.tsx",
+    "tests/integration/test_saved_comparison.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "docs/ARCHITECTURE.md"
+  ],
+  "implementation": {
+    "frontend": "Capture serialized body with key/proof in page memory; explicit recovery sends it verbatim. Transport loss is explicitly unknown; loading ends. Labelled acknowledgement shows original outcome/time without comparison claims.",
+    "backend": "unchanged; new integration regression verifies existing post-commit recovery and denial behavior",
+    "test_fault": "Browser route.fetch(maxRetries=0) receives real 201; independent SQLite read verifies commit before route.abort(failed) hides delivery. Integration ASGI send fault likewise occurs before response start and after commit.",
+    "refactor": "Reuse captured serialized body on recovery; extend existing tests/composition, no new dependency or fault hook in runtime."
+  },
+  "red": [
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'lost HTTP response after atomic commit' --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/red/browser --reporter=list",
+      "exit_code": 1,
+      "result": "1 failed: delivery alert did not explicitly name unknown status",
+      "log": "build/uc001-priority5a-recovery/browser-red.log"
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'lost HTTP response after atomic commit' --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/red-ack/browser --reporter=list",
+      "exit_code": 1,
+      "result": "1 failed after message fix: acknowledgement region/original metadata absent; prior assertions verified real 200 recovery with identical body/proof",
+      "log": "build/uc001-priority5a-recovery/browser-red-ack.log"
+    }
+  ],
+  "existing_backend_reuse": {
+    "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py -q -k committed_save_with_lost_response",
+    "exit_code": 0,
+    "result": "1 passed, 17 deselected before implementation changes; existing backend satisfies this contract",
+    "log": "build/uc001-priority5a-recovery/backend-new.log"
+  },
+  "green": [
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py -q -k 'committed_save_with_lost_response or same_submission_is_acknowledged or returns_only_the_committed_projection or evidence_versions_are_immutable' tests/integration/test_language_contract_api.py -k 'committed_save_with_lost_response or same_submission_is_acknowledged or returns_only_the_committed_projection or evidence_versions_are_immutable or language_correction_cannot_reuse_a_committed_identity'",
+      "exit_code": 0,
+      "passed": 5,
+      "deselected": 25,
+      "log": "build/uc001-priority5a-recovery/backend-green.log"
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'lost HTTP response after atomic commit|real SQLite write failure|language correction is a new explicit submission|browser displays exactly' --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/green/browser --reporter=list",
+      "exit_code": 0,
+      "passed": 4,
+      "scope": "1 new recovery scenario plus 3 directly affected regressions",
+      "log": "build/uc001-priority5a-recovery/browser-green.log"
+    },
+    {
+      "command": "npm --prefix frontend run lint",
+      "exit_code": 0,
+      "log": "build/uc001-priority5a-recovery/frontend-lint.log"
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0,
+      "log": "build/uc001-priority5a-recovery/frontend-build.log"
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'lost HTTP response after atomic commit' --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/green-evidence/browser --reporter=list",
+      "exit_code": 0,
+      "passed": 1,
+      "reason": "Only this journey rerun after changing its evidence output to persist exact saved identities/snapshots as a standalone file. No production changes.",
+      "log": "build/uc001-priority5a-recovery/browser-evidence.log"
+    }
+  ],
+  "command_recording": "Test commands above executed with set -o pipefail and piped through tee to listed logs. Browser list reporter avoids overwriting historical default JSON reports.",
+  "browser_evidence": "build/uc001-priority5a-recovery/green-evidence/browser/saved-comparison-lost-HTTP-de517-it-same-submission-recovery/committed-recovery-evidence.json",
+  "persisted": {
+    "before_submission_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "after_commit_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_recovery_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "request_id": "4ba792cd-29bf-425e-a63b-a7ebda65f4be",
+    "option_ids": [
+      "c82f5c58-c65c-48eb-a546-216c7ebedae2",
+      "b7669010-a9eb-4df0-8b5d-a83bdc066632"
+    ],
+    "alternative_ids": [
+      "00000000-0000-4000-8000-000000000001",
+      "00000000-0000-4000-8000-000000000002"
+    ],
+    "evidence_associations": [
+      [
+        "b7669010-a9eb-4df0-8b5d-a83bdc066632",
+        "30000000-0000-4000-8000-000000000002"
+      ],
+      [
+        "c82f5c58-c65c-48eb-a546-216c7ebedae2",
+        "30000000-0000-4000-8000-000000000001"
+      ]
+    ],
+    "acknowledgement_http_status": 200,
+    "acknowledgement": {
+      "outcome": "submission_recovered",
+      "persistence": {
+        "state": "saved",
+        "request_id": "4ba792cd-29bf-425e-a63b-a7ebda65f4be"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_outcome": "comparison"
+    },
+    "saved_projections_options_and_evidence_unchanged": true
+  },
+  "observed_protections": {
+    "requests": 2,
+    "requests_identified_as": [
+      "initial submission (201 committed response lost)",
+      "explicit recovery (200 acknowledgement)"
+    ],
+    "identical_captured_body_key_and_proof": true,
+    "no_automatic_retry_observed_ms": 300,
+    "no_automatic_retry_limits": "300 ms idle checks before explicit recovery and after fresh-action reset; event-driven submit path reviewed. Not the full retry/fault matrix.",
+    "fresh_action": "Existing separate reset action sends no request; full new-search/reassessment journey not implemented or claimed.",
+    "no_duplicate_save_or_stale_claim_replay": true,
+    "unauthorized_disclosure": "Focused backend known/unknown identifier without proof and known identifier with wrong proof all return identical 403 body, no ID/status/result. Authorized changed text yields 409. All saved rows unchanged. Complete security matrix pending."
+  },
+  "remaining_priority_5": [
+    "same-key concurrency races",
+    "ambiguous commits and complete write/read/commit/transport fault matrices",
+    "full unauthorized-disclosure/ownership matrix",
+    "real locality/reference integration and remaining error/field/loading paths",
+    "complete fresh-search identity/current-field reassessment journeys and remaining recovery/browser cases"
+  ],
+  "preservation": {
+    "checked_files": 82,
+    "all_hashes_match": true,
+    "manifest": "build/uc001-priority5a-recovery/preservation-before.json",
+    "real_drafts_runtime_use": false,
+    "interpreter_experiments": "closed; no execution or allowance reset",
+    "normal_app_main": "unchanged/unconfigured",
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "warnings": [
+    "Existing Starlette/httpx TestClient deprecation; no dependency changes.",
+    "Existing Node NO_COLOR/FORCE_COLOR browser-tooling warning."
+  ],
+  "git": {
+    "status_command": "git status --short",
+    "status_log": "build/uc001-priority5a-recovery/git-status.txt",
+    "status": "Existing modified/untracked work preserved; no staging/commit/push/merge or branch change.",
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1406: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "historical_whitespace": "TASKS.md backlog trailing space existed in before snapshot and prior Priority 4 evidence; retained.",
+    "scoped_delta_check_command": "git diff --no-index --check -- <before-snapshot> <current-file> (each changed file)",
+    "scoped_delta_note": "Exit 1 denotes differing files with --no-index; empty output verifies no added whitespace error.",
+    "scoped_delta_checks": [
+      {
+        "path": "frontend/src/App.tsx",
+        "exit_code": 1,
+        "whitespace_issues": false
+      },
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "whitespace_issues": false
+      },
+      {
+        "path": "tests/e2e/saved-comparison.spec.ts",
+        "exit_code": 1,
+        "whitespace_issues": false
+      },
+      {
+        "path": "docs/TASKS.md",
+        "exit_code": 1,
+        "whitespace_issues": false
+      },
+      {
+        "path": "docs/PROJECT.md",
+        "exit_code": 1,
+        "whitespace_issues": false
+      },
+      {
+        "path": "docs/ARCHITECTURE.md",
+        "exit_code": 1,
+        "whitespace_issues": false
+      }
+    ]
+  },
+  "documentation_checks": {
+    "phase_status_preserved": true,
+    "new_links": [
+      {
+        "source": "docs/TASKS.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/verification.json"
+      },
+      {
+        "source": "docs/PROJECT.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/verification.json"
+      },
+      {
+        "source": "docs/ARCHITECTURE.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/verification.json"
+      }
+    ],
+    "links_exist": true
+  },
+  "human_review": "Stop after this slice; Priority 5, increment 1 and DEVELOP remain incomplete.",
+  "excluded_work_performed": false
+}

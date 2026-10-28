@@ -1,0 +1,33 @@
+[
+  {
+    "reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "resolved_reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "HTTP_status": 200,
+    "retrieval_started_at": "2026-10-23T08:36:05.451367+00:00",
+    "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+    "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 31690,
+    "sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "file": "countryInfo.txt"
+  },
+  {
+    "reference": "https://download.geonames.org/export/dump/readme.txt",
+    "resolved_reference": "https://download.geonames.org/export/dump/readme.txt",
+    "HTTP_status": 200,
+    "retrieval_started_at": "2026-10-23T08:36:05.629264+00:00",
+    "retrieved_at": "2026-10-23T08:36:05.700666+00:00",
+    "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 01:46:11 GMT",
+    "content_type": "text/plain; charset=utf-8",
+    "bytes": 8843,
+    "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+    "file": "readme.txt"
+  },
+  {
+    "reference": "https://creativecommons.org/licenses/by/4.0/",
+    "retrieval_started_at": "2026-10-23T08:36:05.700828+00:00",
+    "retrieved_at": "2026-10-23T08:36:05.744124+00:00",
+    "error": "HTTP Error 403: Forbidden",
+    "file": "cc-by-4.0.html"
+  }
+]

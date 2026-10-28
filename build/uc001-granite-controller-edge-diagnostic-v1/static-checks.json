@@ -1,0 +1,14 @@
+{
+  "archive_entries": 8,
+  "archive_hashes_match": true,
+  "packaged_helpers_match_current": true,
+  "inactive_manifest": true,
+  "python_ast_paths": [
+    "scripts/uc001_granite_controller/standins.py",
+    "tests/unit/test_granite_controller_standins.py",
+    "tests/unit/test_granite_controller_edge_package.py",
+    "build/uc001-granite-controller-edge-diagnostic-v1/build_package.py"
+  ],
+  "future_command_powershell_parse_exit": 0,
+  "future_command_executed": false
+}

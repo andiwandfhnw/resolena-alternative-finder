@@ -1,0 +1,17 @@
+{
+    "status":  "verified_reuse",
+    "no_copy_or_download":  true,
+    "executable_sha256":  "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+    "artifacts":  {
+                      "llama-b11429-bin-win-vulkan-x64.zip":  {
+                                                                  "path":  "C:\\ResolenaExperiments\\qwen3-8b-v1\\llama-b11429-bin-win-vulkan-x64.zip",
+                                                                  "sha256":  "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+                                                                  "bytes":  33337769
+                                                              },
+                      "Qwen3-8B-Q8_0.gguf":  {
+                                                 "path":  "C:\\ResolenaExperiments\\qwen3-8b-v1\\Qwen3-8B-Q8_0.gguf",
+                                                 "sha256":  "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+                                                 "bytes":  8709518112
+                                             }
+                  }
+}

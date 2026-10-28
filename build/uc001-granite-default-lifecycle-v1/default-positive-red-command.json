@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py",
+    "-k",
+    "default_session_reconciles_durable_close_after_read_before_observed_proxy_exit or default_session_waits_only_for_already_verified_helper_before_build"
+  ],
+  "exit_code": 1
+}

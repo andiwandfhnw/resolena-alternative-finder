@@ -1,0 +1,72 @@
+{
+  "preparation_id": "uc001-granite-prior-accounting-final-v1",
+  "recorded_on": "2026-10-27",
+  "phase": 3,
+  "status": "in-progress",
+  "receipt_file": "prior-budget.json",
+  "receipt_bytes": 2793,
+  "receipt_schema": "uc001-granite-prior-accounting",
+  "receipt_schema_version": 1,
+  "receipt_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+  "accounting_basis": "Explicit complete project-owner statement; not independently measured by Codex",
+  "command": ".venv/bin/python -I -B build/uc001-granite-prior-accounting-final-v1/verify.py",
+  "exit_code": 0,
+  "executions": 1,
+  "result": {
+    "offline_receipt_verification_passed": true,
+    "checks": [
+      "versioned_metadata_evidence_and_preparation_hashes",
+      "actual_proxy_accepts_owner_attested_integer_zero",
+      "actual_controller_preflight_accepts_same_receipt",
+      "both_validators_reject_wrong_external_hash",
+      "both_validators_reject_changed_receipt_bytes",
+      "both_validators_reject_incomplete_accounting_with_matching_hash",
+      "separate_controller_execution_gate_remains_closed",
+      "no_process_network_or_native_symbol_attempts"
+    ],
+    "prior_bytes": 0,
+    "receipt_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+    "native_api_invoked": false,
+    "native_binding_verified": false,
+    "resource_fit_established": false,
+    "execution_config_written": false,
+    "acquisition_or_build": false,
+    "forbidden_attempts": []
+  },
+  "independent_read_only_review": "passed; no concrete issue found",
+  "documentation_checks": {
+    "local_links_checked": 6,
+    "new_json_parsed": true,
+    "verifier_syntax_checked": true,
+    "new_source_artifact_whitespace_clean": true
+  },
+  "preparation_incidents": [
+    "Initial documentation link check ran before its verification.json target was written; ordering corrected, with no existing-file or receipt changes."
+  ],
+  "preservation": {
+    "protected_existing_files": 1559,
+    "changed_existing_files": [
+      "docs/TASKS.md"
+    ],
+    "unchanged_existing_files": 1558,
+    "missing_existing_files": [],
+    "historical_tasks_restored_exactly": true,
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "git_status_unchanged": true,
+    "index_unchanged": true,
+    "cached_diff_empty": true,
+    "git_diff_check_exit_code": 2,
+    "git_diff_check_output": "docs/TASKS.md:3049: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "readiness": "Receipt prepared/offline-compatible for owner review only; no acquisition/build readiness or execution authorization established",
+  "artifact_sha256": {
+    "README.md": "1256ce5b9ebe51b0ae40ff20d75d27f58f71078bb4e6fde888b06924a72ae113",
+    "git-diff-check.txt": "5a0ee47a3d711e7a2dd3b8265c6b678b561fe3430452b369ffe6cf4fc26dc3a6",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "owner-statement.txt": "3fd9e56c68a9dba8fefc198eec6d5599af05c24fed7ddacf376dcc9db152b38c",
+    "prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+    "prior-budget.json.sha256": "3b50e3270d482faf0e1833c67292855311c4a3e3837d7c66ab35e799b76e3c97",
+    "verify.py": "b8bbaa1b82df4c585403ac785532f485ffb343bbb21928fa0e906427825b13bb"
+  }
+}

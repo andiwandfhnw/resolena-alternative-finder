@@ -1,0 +1,16 @@
+{
+  "provenance": "Owner-reported facts in chat, not reconstructed raw Windows receipts",
+  "reported_date": "2026-10-18",
+  "timezone": "Europe/Berlin",
+  "failed_version": "uc001-contract-local-1.3.0",
+  "reported_failure": "ownership/console_helper_ambiguous",
+  "additional_model_startup_occurred": true,
+  "additional_startup_allowance": "consumed",
+  "original_startup_allowance": "consumed",
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "additional_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+  "generation_count": "not supplied; no ledger inferred or reconstructed",
+  "failed_run_helper_identities_and_ancestry": "not supplied; legitimacy not established",
+  "new_model_startup_or_inference_authorized": false,
+  "scope": "Combined model-free process setup and safe observation/cleanup retention only; no allowance reset or later-priority work."
+}

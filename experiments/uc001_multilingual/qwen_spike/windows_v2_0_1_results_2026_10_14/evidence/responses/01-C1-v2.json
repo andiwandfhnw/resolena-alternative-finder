@@ -1,0 +1,12 @@
+{
+    "http_status":  200,
+    "raw_body":  "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"en\\\",\\n  \\\"subject\\\": {\\n    \\\"value\\\": \\\"kettle\\\",\\n    \\\"quote\\\": \\\"kettle\\\"\\n  },\\n  \\\"action\\\": {\\n    \\\"value\\\": \\\"repair\\\",\\n    \\\"quote\\\": \\\"Repair\\\"\\n  },\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1792008400,\"model\":\"C:\\\\ResolenaExperiments\\\\qwen3-8b-v1\\\\Qwen3-8B-Q8_0.gguf\",\"system_fingerprint\":\"b11429-d81235049\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":78,\"prompt_tokens\":659,\"total_tokens\":737,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-t9kNbquPAdE9EuFtzSlMOpkh8vpIyWhW\",\"timings\":{\"cache_n\":0,\"prompt_n\":659,\"prompt_ms\":1284.701,\"prompt_per_token_ms\":1.9494704097116844,\"prompt_per_second\":512.9598248931075,\"predicted_n\":78,\"predicted_ms\":1441.715,\"predicted_per_token_ms\":18.72357142857143,\"predicted_per_second\":53.408614046465495}}",
+    "wall_seconds":  2.7355514999999997,
+    "run_id":  "b8591094-a685-48f4-88ef-3420d8b68d90",
+    "bundle_freeze_sha256":  "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+    "request_id":  "01-C1-v2",
+    "arm":  "v2",
+    "case":  "01-C1-known",
+    "request_sha256":  "3c58b63c198055e443a0ef4c6836b32f9813fedc0d9eb0e16a0899a7fef507d2",
+    "utc":  "2026-10-14T20:06:40.0898916Z"
+}

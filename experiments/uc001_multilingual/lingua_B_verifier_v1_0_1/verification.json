@@ -1,0 +1,48 @@
+{
+  "repair_version": "1.0.1",
+  "verified_utc": "2026-10-15T17:31:05.419309+00:00",
+  "verified_owner_timezone": "2026-10-15T19:31:05.419309+02:00",
+  "scope": "Offline acquisition-verifier repair only, no new timed attempt",
+  "tests": {
+    "passed": 4,
+    "failed": 0,
+    "synthetic_negative_fixtures": "in-memory ZIPs; original wheel unchanged",
+    "initial_test_before_implementation": "ModuleNotFoundError: verify_retained; expected red",
+    "green_result": "regressions.json"
+  },
+  "preservation": {
+    "original_attempt_and_retained_artifact_files_unchanged": 56,
+    "earlier_experiment_and_application_metadata_files_unchanged": 576,
+    "original_frozen_payloads_unchanged": 15,
+    "original_freeze_sha256": "20c23e875547f114d57298c60b6c1e6fa8ee304bfd3347298228e9e815661194",
+    "controls_expectations_order_scoring_resource_limits": "unchanged original frozen references",
+    "no_held_out_access": true
+  },
+  "runtime_actions": {
+    "new_download_bytes": 0,
+    "installation": false,
+    "lingua_import": false,
+    "detector_calls": 0,
+    "LLM_calls": 0,
+    "new_timed_attempt": false,
+    "original_markers_deleted_or_reset": false
+  },
+  "remaining_setup": {
+    "known_blocker": "Original supervisor/worker bind closed run storage, expired deadline and old acquisition script. A future separately authorized versioned runner must use the new offline verifier and retained-wheel install path with new run storage/deadline/freeze.",
+    "old_deadline_utc": "2026-10-15T17:26:34.341681+00:00",
+    "old_deadline_elapsed": true,
+    "old_execution_marker_preserved": true,
+    "unverified": "Fresh headroom, isolated installation and native loading; no additional artifact/license blocker found offline."
+  },
+  "repair_payload_hashes": {
+    "README.md": "e79ff8677d04482daf6b05f20db837c30d7237e76ea9d50f9b19f21bb5b167cd",
+    "regressions.json": "31acf6e89fae7b0c281389f46d460d532969579498c2dd7fb1d3f155b54569ae",
+    "test_verifier.py": "40ac3adada11d1c24ef347c47f35450f1b4bec573988c0546de8b59ba722b4da",
+    "verify_retained.py": "c235143be586b78b902c84b8f4215ea52d3c1f3309b7a74e977445b37fc40748"
+  },
+  "local_links_checked": 5,
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "index_empty": true,
+  "design": "Phase 2 / in-progress; final acceptance and qualified linguistic validation pending"
+}

@@ -1,0 +1,9 @@
+{
+  "scope": "Linux PowerShell ParseFile only; archive/outer future commands and preflight body not executed",
+  "powershell_sources_parsed": 7,
+  "exit_code": 0,
+  "activation_command_identical_to_accepted": true,
+  "windows_execution": false,
+  "native_api_invoked": false,
+  "acquisition_or_build": false
+}

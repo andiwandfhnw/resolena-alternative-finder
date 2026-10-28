@@ -1,0 +1,336 @@
+{
+  "final_browser_journeys": [
+    {
+      "journey": "single_match",
+      "evidence": "build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-2fb64-onest-insufficient-coverage/association-single_match-evidence.json",
+      "before_ids": [
+        "70a419a1-cb5a-4a8b-94da-ef33ec3f9657"
+      ],
+      "before_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_clarification_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "saved_request_id": "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9",
+      "saved_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9"
+          },
+          "search_scope": {
+            "country_code": "CH",
+            "town": "  jouxtens-mézery  ",
+            "postcode": " 1008 ",
+            "locality": {
+              "verification": "matched_in_reference",
+              "selection": "single_match",
+              "normalized": {
+                "town": "jouxtens-mézery",
+                "postcode": "1008"
+              },
+              "association": {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 10
+                },
+                "country_code": "CH",
+                "locality_name": "Jouxtens-Mézery",
+                "postcode": "1008",
+                "source_postcode_id": "5852",
+                "additional_number": "02",
+                "administrative": {
+                  "municipality_name": "Jouxtens-Mézery",
+                  "municipality_id": "5585",
+                  "canton": "VD"
+                }
+              }
+            }
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "geographic_applicability_unverified"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Existing evidence does not establish applicability in the requested location."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "clarification_response": null,
+      "association": {
+        "reference": {
+          "source": "swisstopo",
+          "release": "swisstopo-chli-associations-2026-10-01-v1",
+          "source_record": 10
+        },
+        "country_code": "CH",
+        "locality_name": "Jouxtens-Mézery",
+        "postcode": "1008",
+        "source_postcode_id": "5852",
+        "additional_number": "02",
+        "administrative": {
+          "municipality_name": "Jouxtens-Mézery",
+          "municipality_id": "5585",
+          "canton": "VD"
+        }
+      },
+      "release_reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+        "snapshot_at": "2026-10-01T00:00:00Z"
+      },
+      "POSTs": 1,
+      "observations": {
+        "exact_raw_values_language_and_independent_requirement_span_preserved": true,
+        "saved_scope_and_display_come_from_committed_projection": true,
+        "final_edit_sends_no_request_and_clears_selection_presentation": true,
+        "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+        "raw_keys_proofs_digests_headers_bindings_or_complete_captured_requests_recorded": false
+      }
+    },
+    {
+      "journey": "explicit",
+      "evidence": "build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-33493-onest-insufficient-coverage/association-explicit-evidence.json",
+      "before_ids": [
+        "70a419a1-cb5a-4a8b-94da-ef33ec3f9657",
+        "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9"
+      ],
+      "before_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_clarification_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 3,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "saved_request_id": "7b744a25-e224-4101-aba5-e61197b87fbf",
+      "saved_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "7b744a25-e224-4101-aba5-e61197b87fbf"
+          },
+          "search_scope": {
+            "country_code": "CH",
+            "town": "Lausanne",
+            "postcode": "1015",
+            "locality": {
+              "verification": "matched_in_reference",
+              "selection": "explicit",
+              "normalized": {
+                "town": "lausanne",
+                "postcode": "1015"
+              },
+              "association": {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 16
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Saint-Sulpice (VD)",
+                  "municipality_id": "5648",
+                  "canton": "VD"
+                }
+              }
+            }
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "geographic_applicability_unverified"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Existing evidence does not establish applicability in the requested location."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "clarification_response": {
+        "status": 200,
+        "body": {
+          "outcome": "clarification_required",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "locality_reference_ambiguous"
+            }
+          ],
+          "clarification": {
+            "message": "Multiple reference associations match the entered fields. These are postal/municipal associations, not a count of distinct physical localities. Select a supported association and continue explicitly, correct the fields or continue country-only.",
+            "choices": [],
+            "associations": [
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 15
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Ecublens (VD)",
+                  "municipality_id": "5635",
+                  "canton": "VD"
+                }
+              },
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 16
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Saint-Sulpice (VD)",
+                  "municipality_id": "5648",
+                  "canton": "VD"
+                }
+              },
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 17
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Chavannes-près-Renens",
+                  "municipality_id": "5627",
+                  "canton": "VD"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "association": {
+        "reference": {
+          "source": "swisstopo",
+          "release": "swisstopo-chli-associations-2026-10-01-v1",
+          "source_record": 16
+        },
+        "country_code": "CH",
+        "locality_name": "Lausanne",
+        "postcode": "1015",
+        "source_postcode_id": "163",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Saint-Sulpice (VD)",
+          "municipality_id": "5648",
+          "canton": "VD"
+        }
+      },
+      "release_reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+        "snapshot_at": "2026-10-01T00:00:00Z"
+      },
+      "POSTs": 2,
+      "observations": {
+        "exact_raw_values_language_and_independent_requirement_span_preserved": true,
+        "no_save_during_unresolved_clarification_or_selection": true,
+        "explicit_choice_uses_new_key_and_proof": true,
+        "saved_scope_and_display_come_from_committed_projection": true,
+        "final_edit_sends_no_request_and_clears_selection_presentation": true,
+        "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+        "raw_keys_proofs_digests_headers_bindings_or_complete_captured_requests_recorded": false
+      }
+    }
+  ],
+  "API_evidence": "api-final.txt:29passed; per-test assertions verify positive/negative outcomes, counts, checked acknowledgement and bindings. Earlier pytest basetemp directories are no longer available; no private test credentials or IDs are reconstructed.",
+  "collection_note": "Initial optional API-record collector encountered missing /tmp basetemp; public browser evidence was collected without rerunning completed API tests.",
+  "scope": "Public saved projections/reference identities/counts only; no captured keys/proofs/digests/headers or complete captured requests."
+}

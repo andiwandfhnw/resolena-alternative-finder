@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-14T19:27:24.840261+00:00",
+  "checks": [
+    {
+      "script": "test_execution.py",
+      "sha256": "2d65cdd8e29c50bd59e1f55cff5840b797cb6d6ef490f808ddeeed454c1b1aff",
+      "count": 14,
+      "scope": "Synthetic orchestration",
+      "exit_code": 0,
+      "stdout": "{\n  \"checkpoint\": \"cp06\",\n  \"allowed\": true,\n  \"v2_strict_passes\": 6,\n  \"v1_request_count\": 0,\n  \"receipt_sha256\": \"4ce5def1c4ac2ca593860f6191d8a518dd31aeeac455ea628288714cb76a67cf\",\n  \"reason\": \"continue exact frozen order\"\n}\nConfirmed recorded exits/cleanup; live Windows state remains unverified.\n",
+      "stderr": "..............\n----------------------------------------------------------------------\nRan 14 tests in 0.266s\n\nOK\n"
+    },
+    {
+      "script": "test_harness_patch.py",
+      "sha256": "ec2b279ddcbe87a6f377309181ef182d2cddbdc3b24da4a914d197477765f851",
+      "count": 5,
+      "scope": "Evidence/source checks, not PowerShell runtime validation",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.052s\n\nOK\n"
+    }
+  ],
+  "available_checks_passed": 19,
+  "PowerShell_available_in_Codespace": false,
+  "Windows_5_1_regressions_executed": false,
+  "Windows_5_1_compatibility_established": false,
+  "Windows_regression_entry_point": "Test-Harness.ps1",
+  "red_checks_before_patch": "Two source checks failed on the unpatched copy; original Groups reproduction remains a Windows check",
+  "inference_requests": 0,
+  "downloads_installs": 0,
+  "heldout_contents_read": false,
+  "DESIGN": "pending",
+  "linguistic_validation": "pending"
+}

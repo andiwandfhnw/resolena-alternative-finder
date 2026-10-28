@@ -1,0 +1,924 @@
+{
+  "captured_utc": "2026-10-11T14:14:19.954861+00:00",
+  "purpose": "Pre-change proposal inventory only; no change/restart/inference authorized by this record",
+  "codespace_name": "special-disco-vprpp7qrv9xrcwq6p",
+  "branch": "specify/phase-1-uc-001",
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "staged_paths": [],
+  "modified_count": 6,
+  "existing_untracked_count": 110,
+  "uncommitted_files": [
+    {
+      "git_status": " M",
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 63475,
+      "sha256": "d231fc41289bbd1d8332950adc4cf08b5537f1569939d673f6b9786b0ccc684f"
+    },
+    {
+      "git_status": " M",
+      "path": "docs/DEVELOPMENT_WORKFLOW.md",
+      "bytes": 7800,
+      "sha256": "ccea68fe2f9a78ccd3a626abc077ed8c26fd15bca0bb30ff8ab3155941928839"
+    },
+    {
+      "git_status": " M",
+      "path": "docs/PRODUCT_CONTEXT.md",
+      "bytes": 4825,
+      "sha256": "846f9135beb346112edb2f7fb7e193aa2f5c03247cba17471557215b93af4587"
+    },
+    {
+      "git_status": " M",
+      "path": "docs/PROJECT.md",
+      "bytes": 9209,
+      "sha256": "1b664bc2f12c343d81d85f5daee9dffd0997cf456ace1a0f317bf968f0762d96"
+    },
+    {
+      "git_status": " M",
+      "path": "docs/TASKS.md",
+      "bytes": 22828,
+      "sha256": "661e6e7218ecbcd0651a1984c66a5eac3bc314ddb8b0576e00aeff31ac976f08"
+    },
+    {
+      "git_status": " M",
+      "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md",
+      "bytes": 64120,
+      "sha256": "37235ade5dcb1f695802afbeccb0a76db401ac94b3ac05bbbe313e90cb99b951"
+    },
+    {
+      "git_status": "??",
+      "path": "docs/adr/ADR-002-use-case-decomposition.md",
+      "bytes": 3163,
+      "sha256": "f0dee5414e074920e45d0e9425459f51d598ded97d3188fc838273875e0c2f46"
+    },
+    {
+      "git_status": "??",
+      "path": "docs/adr/ADR-003-persisted-comparison-boundary.md",
+      "bytes": 7488,
+      "sha256": "b564e5aa58693831f418cf09bca7a7c5ac204b1c64bbae0d79c487f8aad8dc7a"
+    },
+    {
+      "git_status": "??",
+      "path": "docs/specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md",
+      "bytes": 4401,
+      "sha256": "523be663cde2c811dcf5e86bea8694b33fd3f339765b62780e48187edce2dfb1"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/evaluate.py",
+      "bytes": 4400,
+      "sha256": "55d4921afb55f39b437b537faf38c5609d285e7a6613916e4601cac719c8cecc"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/heldout.json",
+      "bytes": 10268,
+      "sha256": "8227c98eb96ed4fdd0c15eef9c21fec977251e4e865463c8c2b1c1547cceb827"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/prototype.py",
+      "bytes": 5945,
+      "sha256": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/REPRODUCE.md",
+      "bytes": 4538,
+      "sha256": "e79ff670b890bced0c5b813a2fbd8c88b2969b24b2327d2f6dfdd719faa4a386"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/build_log_tail.txt",
+      "bytes": 5839,
+      "sha256": "bfe5f770169913855103e16555c9bee7973bce1749bccdd937c5509ce72d03e5"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration.json",
+      "bytes": 545,
+      "sha256": "55f2427cde70a557667c0c01e50950d739176816ff96f3d5512120cf9512a3d4"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/REPRODUCE.md",
+      "bytes": 12760,
+      "sha256": "43b031034de692ade16549f47767638bc67b932bce3343f642212bc7836ff6a0"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/calibrate.py",
+      "bytes": 18354,
+      "sha256": "bb576167181137f679251be1877bc2a571c0c228cb1075c62d8000dc1bf50f33"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/calibrate_with_recorded_preflight.py",
+      "bytes": 1322,
+      "sha256": "c3285c7eb8fd59cad869c65b418c80103ef589853d20559493cb4f36050481c7"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/cases.json",
+      "bytes": 2269,
+      "sha256": "41ef10d1603d5412568ea5860dc01fa17405513c9f206a77488768e037fdccfe"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/closeout.json",
+      "bytes": 975,
+      "sha256": "dc2190b8329dd68e2fd08522fab768d0ca9db64c974f6d1ab2c783262766619c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/config.json",
+      "bytes": 2375,
+      "sha256": "d03ce8128e97a989dd37cd4c6fd853855edba1498a586456c2fa2ca48e28d394"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/execution.json",
+      "bytes": 790,
+      "sha256": "d8fcc1c2c5e52474d6778ce8d2ca6e85674dcf6a52698e299f9a66b23cac46a0"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/freeze.json",
+      "bytes": 1337,
+      "sha256": "e5060e13e03ecc3db278111b39b29db8d97e78b586e5495ebd402d1636abe655"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/harness_checks.json",
+      "bytes": 441,
+      "sha256": "93bc78005c46fd05754bafea24738bf9bbb73cae040c280bcd557a05f36ed0f2"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/memory_diagnosis.json",
+      "bytes": 6741,
+      "sha256": "ba5c8a6d15f6b5ff608e570de237acb8e7ee8f2baa4836136441fadd1d1c02ee"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/memory_preflight.py",
+      "bytes": 1911,
+      "sha256": "78e7081c3fcbee8f69be0455d58c5f338b1592ae7a5da7271b8476b5e8264aee"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/results.json",
+      "bytes": 9537,
+      "sha256": "3be980adbdeac086d74d2c72dbdcb4a702a340e4e15c46795e11a1d8090c017a"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/test_checks.py",
+      "bytes": 2571,
+      "sha256": "ebf7896dfd99c72fe7ffe345b862caae2ab17f39a7c6128fc3f5577cf646ab6a"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/test_preflight_logging.py",
+      "bytes": 2056,
+      "sha256": "492272fea5dec52273c3182401c7e9e62631229142e643dad5538d18c058c01e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/change_history.json",
+      "bytes": 1336,
+      "sha256": "5dbb27200ff99765e93fef56a894745f1aa105daef5ac4083f446d7e4bc3ba4c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/closeout.json",
+      "bytes": 38551,
+      "sha256": "65ead32dfaf67f49478c1b1c3daa699d2c3abda4a7e0f707f5e9edd73346f814"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/cmake_version_log_tail.txt",
+      "bytes": 91,
+      "sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/config.json",
+      "bytes": 1847,
+      "sha256": "e82f18a3f4d160f839f3f92e3970faa6dc0d6b42c319271173fb41c5c9837207"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/configure_log_tail.txt",
+      "bytes": 1944,
+      "sha256": "1045f8dd32f705892fb52e4a03543d712d7d362223b08680740f17750c94545b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/evaluate_model.py",
+      "bytes": 19129,
+      "sha256": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/execution_preflight.json",
+      "bytes": 154,
+      "sha256": "ebfe9990bcc34c700542aecefba066377c0f3ccb83064b45947a7cd1b7665670"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/freeze.json",
+      "bytes": 659,
+      "sha256": "a2c59c9506bc6257911a286ac031e5323f67ae9be0e5bbd1ecc1316109bb7290"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/freeze_before_readiness_fix.json",
+      "bytes": 713,
+      "sha256": "47707c58ca825bb6911dc3f87886d6a15050697205461bc2c9acc89414a21486"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/freeze_pre_correction.json",
+      "bytes": 724,
+      "sha256": "0565dbc181fb01837a20ddfb66955388a855372af9a8526a003c775e5f6f6295"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/heldout_v2.json",
+      "bytes": 23736,
+      "sha256": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/inference_budget.json",
+      "bytes": 172,
+      "sha256": "2ce071f4a3b239ced4785cc642619ef05f98104d07c9327d610ae94b9799997b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/inference_log_tail.txt",
+      "bytes": 946,
+      "sha256": "f1438e0269f2ae4eed3c1a0080c3ad61cdf14da7fc902a6e3f5ab13d6eafc914"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/network_observed.txt",
+      "bytes": 764,
+      "sha256": "0b245f2f6c2fa1dfcc8c50cdd432ef5d1015e633f02d880bf0cb27ec27e6e8ce"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/operational_socket_fix.patch",
+      "bytes": 916,
+      "sha256": "3fcb8f62c15c1263993b3aeb6960d88e3a2854b2dc90dbc61058af773258fce9"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/preparation.json",
+      "bytes": 3269,
+      "sha256": "e46d5d8870f7de1042f6b47ca3b250832ccef02f18e9c787d7d3e465c31362bc"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/prepare.py",
+      "bytes": 6592,
+      "sha256": "bbdacea61bd4995368348fc2a06e5850d88effeacc40d08fea3e1561b348eacc"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/REPRODUCE.md",
+      "bytes": 2040,
+      "sha256": "dabbefa4396322b1cb9aae8924deefc62a8d0730681a54a5e8c5607dcc85c558"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/cmake_version_log_tail.txt",
+      "bytes": 91,
+      "sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/config.json",
+      "bytes": 1847,
+      "sha256": "3b06305f882936dea9d97105fbc9172d1470071e49639ec965f6980e9b1617af"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/configure_log_tail.txt",
+      "bytes": 1944,
+      "sha256": "9a419fde49271f6642193d81474723f065383197e37ba7e89003144870ec1c2e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/events.jsonl",
+      "bytes": 2216,
+      "sha256": "8edd0e4da8b3fec0c607dba0049dd1e895a9a9f7c9ded20ca70af1db14a1f147"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/freeze.json",
+      "bytes": 1438,
+      "sha256": "96f3dd440419bcb5dcaf416cf316abbbf180d16c63acbb6614a08240a4d34b8e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/harness_checks.json",
+      "bytes": 2415,
+      "sha256": "0429ea7955f8f113601b6b9d9c8e573ddd9da36f417c421f73194b177effac0c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/interruption_1/cmake_version_log_tail.txt",
+      "bytes": 91,
+      "sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/interruption_1/configure_log_tail.txt",
+      "bytes": 1944,
+      "sha256": "9a419fde49271f6642193d81474723f065383197e37ba7e89003144870ec1c2e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/interruption_1/freeze.json",
+      "bytes": 1181,
+      "sha256": "d4f502775cbbffb6c5ba309b05839af94633d283ce5795cd8d9234d09ca56133"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/interruption_1/preparation.json",
+      "bytes": 2030,
+      "sha256": "fd130c1a976a2adec0b9c4b0b429da551e0c8e54d227b75d66fe9958a1614bf3"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/interruption_1/progress.json",
+      "bytes": 192,
+      "sha256": "1e2cb9481070d4b936ef492c55947b4f5d10ce127a26e8747e878a44dc05ce19"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/operations.py",
+      "bytes": 2619,
+      "sha256": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/preflight.json",
+      "bytes": 8726,
+      "sha256": "80bb667495a8017fef95cf28ce5835a599d7c01b0438d3b562f2ccc641fee2ec"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/preparation.json",
+      "bytes": 3856,
+      "sha256": "b8accd38743b3d94f3c55c78891d2c2195c08aa4ca3a6140b9a56da5ced0a77c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/progress.json",
+      "bytes": 294,
+      "sha256": "5dc5496fde3286766f5d8eeb61737cac427bb3273997c44d96d00de4cd39668d"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/resource_samples.jsonl",
+      "bytes": 11088,
+      "sha256": "32bc1d2ec026c2360e03e22fb2d95fed6b641ca5ff8b8d4edded6bda513bd376"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/resume_gate1.py",
+      "bytes": 2692,
+      "sha256": "821070becd3ba71859e18f2f08625039c08f135417d339ae4400a311e1316094"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/resumption.json",
+      "bytes": 634,
+      "sha256": "0f3c2f4ce515a915fedfd29666eda528fbce6c52f51ec0a885d946a1b93d51d5"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/run.py",
+      "bytes": 13648,
+      "sha256": "495d4fa464fee9c3bbabf82c61bf5ebbca51fb6002bfd24c6494f5cd90269658"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/snapshot.py",
+      "bytes": 1474,
+      "sha256": "4c2066084aac10b02c93c25d926fb76bc0fd9a9daa77441b91d5c56c340c71f1"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/test_operations.py",
+      "bytes": 4728,
+      "sha256": "e71f7fd19df7220482ac95f83e7e4e667018e7aa2b10196800977bed4b10ced9"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/REPRODUCE.md",
+      "bytes": 9712,
+      "sha256": "6e407c7b6b750ed97beb81ff73190ad8fae2ba3fec1eb4e2fc57a0f93426b01a"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/REPRODUCE.md",
+      "bytes": 2117,
+      "sha256": "4ab874bf61770e40b4bad6db847dc8aa3a65f538f0753a66608be3aac94abdcd"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/closeout.json",
+      "bytes": 687,
+      "sha256": "c529937660c8ab3b05af163b99a12fc85a6b654dce6201e2e8d84e19d7295f18"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/config.json",
+      "bytes": 1847,
+      "sha256": "15a4374e71f4d9967ec6fd7b3870bf9bf40228ed4e855f700c0468e3abf1bf66"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/continue_after_bookkeeping.py",
+      "bytes": 16615,
+      "sha256": "4bea32c4e1f3c09ae429596c6a58217f5299aa3ea5435a4f5b31b81ea8a2c7e2"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/events.jsonl",
+      "bytes": 1008,
+      "sha256": "7b03f0cd4292af31e3a75ed196a59c06e4216a651eac4c245420e3965c5878fc"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/execution.json",
+      "bytes": 2941,
+      "sha256": "6eb2fb14db4eac9b0b8baf64329f7939d84acb301bbcfaae87dac0d8f046208c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/freeze.json",
+      "bytes": 1077,
+      "sha256": "bdc415d0b67123e46a674c022c3805de400d28ea563609ffc074b9a1db2b21fd"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/harness_checks.json",
+      "bytes": 521,
+      "sha256": "49894da2f00f2e94b0b9e822f502741ccc37459873295408bc7f493a0b7e5da2"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/operational_changes.json",
+      "bytes": 519,
+      "sha256": "33c5b6fb12ae5e99b1b118e331ed24de052be319f8db117889371d8abc40ade8"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/operations.py",
+      "bytes": 2619,
+      "sha256": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/preparation.json",
+      "bytes": 2222,
+      "sha256": "567912ac69e4487a7f97c67d641100407c6542f40a04896da8ffe3a01509874c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/progress.json",
+      "bytes": 171,
+      "sha256": "c1e000d7fc167b24714c1864aeb28d94cb2616c40f7b2a41119188af34d9266c"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/resource_samples.jsonl",
+      "bytes": 27656,
+      "sha256": "1bafd16ee2f7de4002441f4d1ef55d21e203ebaebeb6e76f2e16eacc98d3d2e4"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/resources.json",
+      "bytes": 318,
+      "sha256": "ec84b8b16520deef42d2a9053bf06b8667df8cb1daa1cf7fdaa501a17a1caeb0"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/restart.py",
+      "bytes": 15441,
+      "sha256": "d193d4218eecafbb87dd3ed64f67d3d2d2b593a10af17c6105b901dd392a2657"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/run.py",
+      "bytes": 13648,
+      "sha256": "495d4fa464fee9c3bbabf82c61bf5ebbca51fb6002bfd24c6494f5cd90269658"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/closeout.json",
+      "bytes": 695,
+      "sha256": "2174a619d2ef3cadd610e9d4e55d0ee6b21172c4652e432c7ea3d0d9f2cac0e5"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/config.json",
+      "bytes": 1847,
+      "sha256": "15a4374e71f4d9967ec6fd7b3870bf9bf40228ed4e855f700c0468e3abf1bf66"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/continue_after_bookkeeping.py",
+      "bytes": 16615,
+      "sha256": "4bea32c4e1f3c09ae429596c6a58217f5299aa3ea5435a4f5b31b81ea8a2c7e2"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/download.json",
+      "bytes": 388,
+      "sha256": "f94b1bba5b84f4345ee1c8855a6d8047fdc4a895b621ae7050b8fa571ce03659"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/events.jsonl",
+      "bytes": 3767,
+      "sha256": "660c51634e592bc7409a574cdf4b10d8447420bbd35a21304ccbecf8ad16aa95"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/execution.json",
+      "bytes": 2941,
+      "sha256": "30de221ae62123603a4c2b87706d08266694233c3d66f0441e82bde016f04624"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/freeze.json",
+      "bytes": 1182,
+      "sha256": "4f78f59890784343a6286eb4db40752d5091d9a368a23e2f22a045cab4900079"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/harness_checks.json",
+      "bytes": 521,
+      "sha256": "49894da2f00f2e94b0b9e822f502741ccc37459873295408bc7f493a0b7e5da2"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/inference_budget.json",
+      "bytes": 208,
+      "sha256": "9c9c7772463b721f37d35246234f0a61c6151218b1367edd58f36986c36e8079"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/inference_log_tail.txt",
+      "bytes": 2920,
+      "sha256": "7756034b5a5562315c257f1699e5eecf7a15c4f6e61f2cbbb4f9539aa00b130e"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/network_observed.txt",
+      "bytes": 73262,
+      "sha256": "4d0535b1a5b8ff216b8e9525719c6dc6521026741ea5df9bc92ed10ab058487a"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/operational_changes.json",
+      "bytes": 722,
+      "sha256": "4ddad88659a9e729147de6985d61eebe7058fbf52c21f9c5f47902f79a98e871"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/operations.py",
+      "bytes": 2619,
+      "sha256": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/preparation.json",
+      "bytes": 3174,
+      "sha256": "e9ed3c7c9187ba15fe4ff75b41d800fed6799ee0606adff1bfd865bd25eab5d6"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/progress.json",
+      "bytes": 298,
+      "sha256": "d7e843e77df507e61b4c2c4df7519aeafcece853fc8cd45a618638da9c25d50a"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/resource_samples.jsonl",
+      "bytes": 30049,
+      "sha256": "511b4cc469d3d7ea1f6eafdcf5aa91e0bdbb0f72c25f6741baa204c34e508186"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/resources.json",
+      "bytes": 321,
+      "sha256": "84d43eff5b58c77f8644f6f2665af73be01ea176b180519b48c07bdbc3abe889"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/restart.py",
+      "bytes": 15441,
+      "sha256": "d193d4218eecafbb87dd3ed64f67d3d2d2b593a10af17c6105b901dd392a2657"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/results.json",
+      "bytes": 15085,
+      "sha256": "a2daea6083e7eafec5bff6aa68224f578f8ed113e75cd3ae77a176d1508a7a18"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/run.py",
+      "bytes": 13648,
+      "sha256": "495d4fa464fee9c3bbabf82c61bf5ebbca51fb6002bfd24c6494f5cd90269658"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/verification.json",
+      "bytes": 2701,
+      "sha256": "807a2fc71436af3f9ae60fed5645b0eb7d1e97202c5a6090a55af3a993a008f9"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/results.json",
+      "bytes": 3533,
+      "sha256": "721b7308a3db7e6f3d8fb7ed7a27ddb312b13f47685b924072645f9cf9f75fb8"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/runtime_version_log_tail.txt",
+      "bytes": 84,
+      "sha256": "9a8d5d10efb2882df861e98a0c208f3e57be054eb66c5ee5757c145d5f05ced1"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/startup_attempt_1.json",
+      "bytes": 3707,
+      "sha256": "aef45c057f1874be84c02fec3bf943f2f21b75d7447310517ad9415efe339a48"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/startup_attempt_1_log_tail.txt",
+      "bytes": 772,
+      "sha256": "43ffd92037816ad1a7a37076f6b9886430324f7e4e6ff4d3b34e192cf6185add"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/startup_attempt_1_network.txt",
+      "bytes": 2029,
+      "sha256": "cb93e1a01a959e50603a6ed2e4e3298682cf3f3338fc1b7209446b4ebc902832"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/test_spike.py",
+      "bytes": 2215,
+      "sha256": "2dbd5b0b92c0cb98aebe27c67da7af651787e9d9e5a041e902b8be99003cf5e4"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/upstream_verification.json",
+      "bytes": 1481,
+      "sha256": "1abbcf831dd26045450b4ea838e1eea33dcb9e643e70a2991ba8b90fcd73636b"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/qwen_spike/verification.json",
+      "bytes": 1330,
+      "sha256": "158e7ca70df78a57eeb0aabc6d62f009abc57c1047ea42f6ffd102b147ed9d64"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/results.json",
+      "bytes": 31183,
+      "sha256": "9e0d598f3c91c3e9f76c6e69727d9a2afc46d5554290e7b093d7da4fd97f5165"
+    },
+    {
+      "git_status": "??",
+      "path": "experiments/uc001_multilingual/test_calibration.py",
+      "bytes": 3454,
+      "sha256": "4e6170224688d975b3324f5f416515f3de7676cfc9929c4702118c8a577763c0"
+    }
+  ],
+  "inventory_self_note": "This inventory adds one untracked file; it is excluded from its own hashes",
+  "shared_artifact_tree": {
+    "path": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx",
+    "files": 12665,
+    "logical_bytes": 2261720406,
+    "persistent_workspace": true,
+    "git_ignored": true
+  },
+  "experiment_records": {
+    "path": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike",
+    "files_excluding_build": 105,
+    "bytes_excluding_build": 3533004
+  },
+  "critical_files": [
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf",
+      "bytes": 1834426016,
+      "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/bin/llama-server",
+      "bytes": 15386896,
+      "sha256": "67419b0d537e76a9ea7c5c13c7212b3f441d51e4c17a890c90ec09a9c3bf0fe2"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/CMakeCache.txt",
+      "bytes": 33632,
+      "sha256": "693dda8a857accad9696b3162d8d23b2e91d0b12fe5eff183bd4581541d3a6ff"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/configure.log",
+      "bytes": 1768,
+      "sha256": "2f05c7f2325d06b039b45132bcdbb447bfc0291099a888a89e19e7c25c31b176"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/inference.log",
+      "bytes": 2920,
+      "sha256": "7756034b5a5562315c257f1699e5eecf7a15c4f6e61f2cbbb4f9539aa00b130e"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/build.log",
+      "bytes": 1493577,
+      "sha256": "41583115367ffec98a70f0a71ae11fef881871ad7670d91d34161557fb7448d9"
+    },
+    {
+      "path": "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/bookkeeping_failure_1/build.log",
+      "bytes": 1493577,
+      "sha256": "41583115367ffec98a70f0a71ae11fef881871ad7670d91d34161557fb7448d9"
+    }
+  ],
+  "persistent_alias": {
+    "path": "build/qwen-restart-20261011",
+    "target": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx",
+    "duplicate_storage": false
+  },
+  "workspace_mount": [
+    "769 758 7:4 /codespacemount/workspace /workspaces rw,nodev,relatime master:296 - ext4 /dev/loop4 rw"
+  ],
+  "workspace_disk": {
+    "total": 33636024320,
+    "used": 7748239360,
+    "free": 24153030656
+  },
+  "hardware_before": {
+    "cpu_affinity": [
+      0,
+      1
+    ],
+    "cpu_model": "Intel(R) Xeon(R) Platinum 8370C CPU @ 2.80GHz",
+    "cpu_flags": [
+      "fpu",
+      "vme",
+      "de",
+      "pse",
+      "tsc",
+      "msr",
+      "pae",
+      "mce",
+      "cx8",
+      "apic",
+      "sep",
+      "mtrr",
+      "pge",
+      "mca",
+      "cmov",
+      "pat",
+      "pse36",
+      "clflush",
+      "mmx",
+      "fxsr",
+      "sse",
+      "sse2",
+      "ss",
+      "ht",
+      "syscall",
+      "nx",
+      "pdpe1gb",
+      "rdtscp",
+      "lm",
+      "constant_tsc",
+      "rep_good",
+      "nopl",
+      "xtopology",
+      "tsc_reliable",
+      "nonstop_tsc",
+      "cpuid",
+      "aperfmperf",
+      "tsc_known_freq",
+      "pni",
+      "pclmulqdq",
+      "vmx",
+      "ssse3",
+      "fma",
+      "cx16",
+      "pcid",
+      "sse4_1",
+      "sse4_2",
+      "movbe",
+      "popcnt",
+      "tsc_deadline_timer",
+      "aes",
+      "xsave",
+      "avx",
+      "f16c",
+      "rdrand",
+      "hypervisor",
+      "lahf_lm",
+      "abm",
+      "3dnowprefetch",
+      "tpr_shadow",
+      "ept",
+      "vpid",
+      "ept_ad",
+      "fsgsbase",
+      "tsc_adjust",
+      "bmi1",
+      "hle",
+      "avx2",
+      "smep",
+      "bmi2",
+      "erms",
+      "invpcid",
+      "rtm",
+      "avx512f",
+      "avx512dq",
+      "rdseed",
+      "adx",
+      "smap",
+      "avx512ifma",
+      "clflushopt",
+      "clwb",
+      "avx512cd",
+      "sha_ni",
+      "avx512bw",
+      "avx512vl",
+      "xsaveopt",
+      "xsavec",
+      "xgetbv1",
+      "xsaves",
+      "vnmi",
+      "avx512vbmi",
+      "umip",
+      "avx512_vbmi2",
+      "gfni",
+      "vaes",
+      "vpclmulqdq",
+      "avx512_vnni",
+      "avx512_bitalg",
+      "avx512_vpopcntdq",
+      "la57",
+      "rdpid",
+      "fsrm",
+      "arch_capabilities"
+    ],
+    "mem_total_bytes": 8327041024,
+    "cgroup_memory_max": "max",
+    "api_machine_name": null,
+    "observations_are_not_control_plane_confirmation": true
+  },
+  "target": {
+    "cpus": 4,
+    "memory_minimum_bytes": 17179869184,
+    "storage_bytes": null,
+    "api_machine_name": null,
+    "availability": "Unverified in account; gh absent, no Codespaces metadata connector, no credentials inspected"
+  },
+  "container_dependencies": {
+    "workspace_venv": "/workspaces/resolena-alternative-finder/.venv",
+    "python_symlink_target": "/usr/local/bin/python3.12",
+    "node_modules_in_workspace": true,
+    "native_build": true
+  },
+  "temporary_artifacts": {
+    "prior_paths": [
+      "/tmp/resolena-qwen-spike-9pmwxv4k",
+      "/tmp/resolena-qwen-spike-o8cs2zg9"
+    ],
+    "prior_paths_exist": [
+      false,
+      false
+    ],
+    "current_owned_entries": []
+  },
+  "scope_exclusions": [
+    "No credentials, .aws/.codex or .env contents read or copied",
+    "Unsaved IDE buffers are outside disk inventory; save before changing",
+    "No machine selection/update/restart, processes stopped, calibration, stage/commit/push"
+  ],
+  "sources": [
+    "https://docs.github.com/en/rest/codespaces/machines",
+    "https://github.com/pricing/calculator",
+    "https://docs.github.com/en/billing/concepts/product-billing/github-codespaces",
+    "https://docs.github.com/en/codespaces/customizing-your-codespace/changing-the-machine-type-for-your-codespace",
+    "https://docs.github.com/en/codespaces/about-codespaces/deep-dive",
+    "https://docs.github.com/en/codespaces/developing-in-a-codespace/persisting-environment-variables-and-temporary-files"
+  ]
+}

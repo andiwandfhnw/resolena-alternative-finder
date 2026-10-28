@@ -1,0 +1,27 @@
+{
+  "version": "uc001-contract-local-1.2.2",
+  "parent_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "files": {
+    "Check-Windows.ps1": "aacc8338a97f27b52e79d053bdcb00ed5d83b1edab780039e0404db5eaa4af55",
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "PINNED-SOURCE.md": "be4129062c4edbd0783934b80d9e2dd172e025b22ac9163d32c15222149c4c46",
+    "Python-Ownership.ps1": "fe8b07f57123fca8291ec8aa5b6eb3a7d7da54253f4bde26fc42f4e5df4bc085",
+    "PythonOwnership.cs": "2873e36e221b549a8d1390191db827c547b1524d83f6fb50652bc39f457e636b",
+    "README.md": "eb86348205aa763b433d1fc3658d41c3d502d30af561cb56b36eca45c9c5cbee",
+    "Run-Windows.ps1": "98f4d90a0676783ef7a9dc979c8c3360640ee20b0b912fcd0d37e1cbf2d404be",
+    "Test-Offline.ps1": "afd16ec0be13a6c005dcc6c4d497905cb86e6e41a2c7a10523c3e2a12b6f740b",
+    "capture.py": "b7d94ca51aa303f7691cb164addcad7d9931e58f07131304b7e877b8e84f6736",
+    "config.json": "cad5f420871f3b85750eebb6edefdbd16a80ee696d0e1cbf4a85be0a28e24d13",
+    "harness_checks.py": "e4078c8dda253bedcc4d2d88f398a62370d4ec419bbdbb066e5ff08f18ddab2c",
+    "partial-expectations-review.json": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+    "previous-freeze.json": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+    "replay.py": "670f5e9c33e4513a27fdd8234402e9367911334b6df5c5ca3d93414f87fc166e",
+    "review_gate.py": "907f35039abe0640c005c29c15dbb0ee76583a8ad6cc6d01a8652cb4161d088c",
+    "technical-decision.json": "cd94e136adc1f6a61fbb555df6dba1d36e3b4096024a4ea3081ee2844af5e040",
+    "verify.py": "82233d68b7809cb0793cd78fd53ec7299bf75d1504a7dd865dbc2d531edb63cb"
+  },
+  "purpose": "technical_feasibility_only",
+  "previous_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+  "startup_allowance_consumed": true
+}

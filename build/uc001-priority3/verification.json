@@ -1,0 +1,82 @@
+{
+  "date": "2026-10-16",
+  "use_case": "UC-001 increment 1",
+  "phase": 3,
+  "phase_status": "in-progress",
+  "priority_3_status": "partial; bounded contracts/policy step implemented and verified; stopped",
+  "scope": "Application language policy and interpreter/optional recognizer contracts using explicit test substitutes",
+  "execution": "existing Codespace",
+  "real_semantic_capability_verified": false,
+  "scope_mapping": {
+    "document": "docs/TASKS.md#localitypersistence-scope-clarification--2026-10-16",
+    "based_on_existing_evidence_only": true,
+    "unrelated_checks_rerun_solely_for_mapping": false,
+    "geographic_qualification": "AC-03/04/12/16, T-03/07/13: implemented scoped synthetic checks",
+    "input_and_reference": "AC-01/02/13/16, T-01/02/10/11/13: meaning/contracts in priority 3; local-reference integration and location API/browser handling remain mapped to priority 5, real journeys priority 6",
+    "persistence": "AC-07/08/10/11, T-08/09/11: existing atomic save/rollback, coverage, immutable evidence, retry and basic recovery guards",
+    "remaining_recovery": "AC-10/11/14/17, T-09/12/13: full fault, concurrency, ownership, transport and delayed-loading matrices remain priority 5/6",
+    "material_requirement_conflict_found": false
+  },
+  "checks": {
+    "backend": {"command": ".venv/bin/python -m pytest -q", "passed": 113, "exit_code": 0, "prior_backend_tests_retained": 57},
+    "browser": {"command": "npm --prefix frontend run test:e2e", "passed": 8, "exit_code": 0, "real_api_and_sqlite": true, "prior_journeys_retained": 4},
+    "lint": {"command": "npm --prefix frontend run lint", "exit_code": 0},
+    "build": {"command": "npm --prefix frontend run build", "exit_code": 0},
+    "code_whitespace": "passed",
+    "git_diff_check": {"exit_code": 2, "warning": "Pre-existing historical TASKS.md backlog trailing space preserved"},
+    "existing_warning": "Starlette/httpx TestClient deprecation; no dependency changes"
+  },
+  "tdd_red_observed": [
+    "Missing interpretation contract module",
+    "Seven initial API failures before application routing was implemented",
+    "Three browser failures before choice/correction/targeted messages",
+    "New represented action ignored by qualification",
+    "Uncertain cost basis incorrectly deferred behind explanation-language choice",
+    "Unavailable browser-preferred rendering offered no correction control",
+    "Previous correction incorrectly overrode a newly edited clear request"
+  ],
+  "preservation": {
+    "baseline": "build/uc001-priority3/baseline/manifest.json",
+    "unchanged_files_checked": [
+      "AGENTS.md",
+      "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md",
+      "src/app/infrastructure/sqlite_comparisons.py",
+      "tests/unit/test_comparison.py",
+      "tests/unit/test_qualification.py",
+      "tests/integration/test_saved_comparison.py"
+    ],
+    "earlier_verification_records_retained": true,
+    "synthetic_evidence": "New v3 versions add explicit action support; earlier versions/saved content are not overwritten"
+  },
+  "changed_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/PROJECT.md",
+    "docs/TASKS.md",
+    "frontend/src/App.tsx",
+    "src/app/application/comparisons.py",
+    "src/app/domain/comparison.py",
+    "src/app/domain/interpretation.py",
+    "src/app/domain/qualification.py",
+    "src/app/interfaces/api.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_language_contract_api.py",
+    "tests/support/synthetic.py",
+    "tests/unit/test_language_policy.py"
+  ],
+  "remaining_dependencies": [
+    "Suitable real local interpreter selection and adapter implementation",
+    "Optional recognizer suitability; labels remain advisory",
+    "Qualified DE/FR/IT/EN meaning and source/target review, including unreported omissions, polarity and numeric ambiguity",
+    "Real reviewed knowledge/reference releases and faithful source-bound target renderings",
+    "Mapped complete input/reference, recovery/security, fault/loading and real journey matrices"
+  ],
+  "boundaries": {
+    "normal_runtime_unconfigured_and_test_import_free": true,
+    "synthetic_rendering_language": "en only; unavailable targets return a limitation",
+    "no_real_adapter_selection_download_or_execution": true,
+    "no_experiments_or_held_out_access": true,
+    "no_priority_4_knowledge_or_rendering_preparation": true,
+    "no_requirement_amendment_phase_transition_or_increment_completion": true,
+    "no_staging_commit_push_branch_switch_or_deployment": true
+  }
+}

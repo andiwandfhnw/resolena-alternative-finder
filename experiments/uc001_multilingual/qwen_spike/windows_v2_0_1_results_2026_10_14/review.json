@@ -1,0 +1,827 @@
+{
+  "reviewed_utc": "2026-10-14T20:34:46.669263+00:00",
+  "run_id": "b8591094-a685-48f4-88ef-3420d8b68d90",
+  "original_archive_sha256": "189b7b7cb38a52f7ae8bddb6f1ec58b98887644303e79e5a67e08ef8c53f4a5f",
+  "supplemented_archive_sha256": "2fd071288861838d2e5962720a74ebd792f31b459db426073647414cf0685ce4",
+  "freeze_sha256": "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+  "scorer_hashes": {
+    "assess.py": "3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3",
+    "contract.py": "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec",
+    "dispatch.py": "0b7afb8db12d850bdfdd779e315baacd7c3dcaca975da21192160150d93d073f"
+  },
+  "receipt_bindings_verified": true,
+  "denied_receipt_sha256": "b5930e42400ec4170cd872f38cc5271ac3bc0dd0846ea0a40c7752ac6acff4d4",
+  "recorded_assessment_sha256": "53b3c4ab2761074ca3ce3bfeb3efaaa18aae901d224cfa95acd886e39b798eb0",
+  "requests_completed": 6,
+  "requests_unrun": 12,
+  "strict_passes": 5,
+  "gate_allowed": false,
+  "evaluations": [
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle",
+          "resolved_span": {
+            "start": 10,
+            "end": 16
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repair",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 659,
+        "total_tokens": 737,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 659,
+        "prompt_ms": 1284.701,
+        "prompt_per_token_ms": 1.9494704097116844,
+        "prompt_per_second": 512.9598248931075,
+        "predicted_n": 78,
+        "predicted_ms": 1441.715,
+        "predicted_per_token_ms": 18.72357142857143,
+        "predicted_per_second": 53.408614046465495
+      },
+      "id": "01-C1-v2",
+      "arm": "v2",
+      "case": "01-C1-known",
+      "stage": "known",
+      "wall_seconds": 2.7355514999999997,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle",
+          "resolved_span": {
+            "start": 10,
+            "end": 16
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 659,
+        "total_tokens": 737,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 659,
+        "prompt_ms": 939.61,
+        "prompt_per_token_ms": 1.4258118361153262,
+        "prompt_per_second": 701.3548174242504,
+        "predicted_n": 78,
+        "predicted_ms": 1441.202,
+        "predicted_per_token_ms": 18.71690909090909,
+        "predicted_per_second": 53.42762499635721
+      },
+      "id": "02-C2-v2",
+      "arm": "v2",
+      "case": "02-C2-known",
+      "stage": "known",
+      "wall_seconds": 2.3903851,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_replacement": "true"
+          }
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "de",
+        "subject": {
+          "value": "kettle",
+          "quote": "Wasserkocher",
+          "resolved_span": {
+            "start": 17,
+            "end": 29
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repariere",
+          "resolved_span": {
+            "start": 0,
+            "end": 9
+          }
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_replacement",
+            "value": "true",
+            "quote": "ohne ihn zu ersetzen",
+            "resolved_span": {
+              "start": 31,
+              "end": 51
+            }
+          }
+        ],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 671,
+        "total_tokens": 789,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 671,
+        "prompt_ms": 943.574,
+        "prompt_per_token_ms": 1.406220566318927,
+        "prompt_per_second": 711.1259954174236,
+        "predicted_n": 118,
+        "predicted_ms": 2246.96,
+        "predicted_per_token_ms": 19.204786324786326,
+        "predicted_per_second": 52.070352832271155
+      },
+      "id": "03-C3-v2",
+      "arm": "v2",
+      "case": "03-C3-known",
+      "stage": "known",
+      "wall_seconds": 3.1997595999999997,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "kettle",
+          "quote": "bouilloire",
+          "resolved_span": {
+            "start": 10,
+            "end": 20
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Répare",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 662,
+        "total_tokens": 743,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 662,
+        "prompt_ms": 941.335,
+        "prompt_per_token_ms": 1.4219561933534743,
+        "prompt_per_second": 703.2565452256634,
+        "predicted_n": 81,
+        "predicted_ms": 1497.97,
+        "predicted_per_token_ms": 18.724625,
+        "predicted_per_second": 53.40560892407724
+      },
+      "id": "04-C4-v2",
+      "arm": "v2",
+      "case": "04-C4-known",
+      "stage": "known",
+      "wall_seconds": 2.4486111,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "it",
+        "subject": {
+          "value": "kettle",
+          "quote": "bollitore",
+          "resolved_span": {
+            "start": 14,
+            "end": 23
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Ripara",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 664,
+        "total_tokens": 745,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 664,
+        "prompt_ms": 942.28,
+        "prompt_per_token_ms": 1.4190963855421685,
+        "prompt_per_second": 704.6737700046696,
+        "predicted_n": 81,
+        "predicted_ms": 1497.359,
+        "predicted_per_token_ms": 18.7169875,
+        "predicted_per_second": 53.427401177673495
+      },
+      "id": "05-C5-v2",
+      "arm": "v2",
+      "case": "05-C5-known",
+      "stage": "known",
+      "wall_seconds": 2.4486957,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": false,
+      "semantic_errors": [
+        "status",
+        "language",
+        "missing_uncertainty"
+      ],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "incorrect",
+        "differences": {
+          "expected_status": "unsupported",
+          "actual_status": "understood"
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "hervidor",
+          "resolved_span": {
+            "start": 10,
+            "end": 18
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repara",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 662,
+        "total_tokens": 742,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 662,
+        "prompt_ms": 942.405,
+        "prompt_per_token_ms": 1.42357250755287,
+        "prompt_per_second": 702.4580726969828,
+        "predicted_n": 80,
+        "predicted_ms": 1497.893,
+        "predicted_per_token_ms": 18.96067088607595,
+        "predicted_per_second": 52.74074983994184
+      },
+      "id": "06-C6-v2",
+      "arm": "v2",
+      "case": "06-C6-known",
+      "stage": "known",
+      "wall_seconds": 2.449186,
+      "operational_errors": []
+    }
+  ],
+  "grounding": {
+    "requests_passed": 6,
+    "populated_quotes": 13
+  },
+  "semantic_failures": {
+    "06-C6-v2": [
+      "status",
+      "language",
+      "missing_uncertainty"
+    ]
+  },
+  "canonical_label_mismatches": {},
+  "quote_grounding_failures": {},
+  "runtime": {
+    "operational_errors": [],
+    "readiness": {
+      "seconds": 5.1178238,
+      "ready": true,
+      "utc": "2026-10-14T20:06:35.8450336Z"
+    },
+    "resource_samples": 357,
+    "recorded_ranges": {
+      "available_ram_bytes": {
+        "min": 34989658112,
+        "max": 43767963648
+      },
+      "adapter_free_bytes": {
+        "min": 6718918656,
+        "max": 9255641088
+      },
+      "owned_gpu_bytes": {
+        "min": 6267559936,
+        "max": 8421654528
+      },
+      "owned_rss_bytes": {
+        "min": 109223936,
+        "max": 8191111168
+      },
+      "owned_private_bytes": {
+        "min": 7386370048,
+        "max": 8602959872
+      },
+      "disk_free_bytes": {
+        "min": 570205749248,
+        "max": 570215059456
+      },
+      "scratch_bytes": {
+        "min": 8839950595,
+        "max": 8841275804
+      }
+    },
+    "preflight": {
+      "utc": "2026-10-14T20:06:20.4470483Z",
+      "measured": {
+        "utc": "2026-10-14T20:06:20.4238608Z",
+        "available_ram_bytes": 43686473728,
+        "total_ram_bytes": 68640653312,
+        "disk_free_bytes": 570215182336,
+        "scratch_bytes": 8839933863,
+        "gpu_name": "AMD Radeon RX 6800 XT",
+        "dedicated_total_bytes": 17130819584,
+        "adapter_dedicated_used_bytes": 1604194304,
+        "adapter_free_bytes": 15526625280,
+        "owned_gpu_bytes": 0,
+        "owned_rss_bytes": 0,
+        "owned_private_bytes": 0,
+        "gpu_measurement": "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+      },
+      "thresholds": {
+        "total_seconds": 1800,
+        "setup_seconds": 1800,
+        "evaluation_seconds": 1800,
+        "readiness_seconds": 90,
+        "request_seconds": 45,
+        "rss_bytes": 17179869184,
+        "ram_preflight_bytes": 21474836480,
+        "ram_floor_bytes": 4294967296,
+        "gpu_preflight_free_bytes": 15032385536,
+        "gpu_owned_bytes": 12884901888,
+        "gpu_floor_bytes": 2147483648,
+        "scratch_bytes": 26843545600,
+        "disk_preflight_free_bytes": 32212254720,
+        "disk_floor_bytes": 5368709120
+      }
+    },
+    "preload": {
+      "utc": "2026-10-14T20:06:29.6506342Z",
+      "available_ram_bytes": 44077305856,
+      "total_ram_bytes": 68640653312,
+      "disk_free_bytes": 570215141376,
+      "scratch_bytes": 8839937005,
+      "gpu_name": "AMD Radeon RX 6800 XT",
+      "dedicated_total_bytes": 17130819584,
+      "adapter_dedicated_used_bytes": 1602359296,
+      "adapter_free_bytes": 15528460288,
+      "owned_gpu_bytes": 0,
+      "owned_rss_bytes": 0,
+      "owned_private_bytes": 0,
+      "gpu_measurement": "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+    },
+    "capacity": {
+      "context": 2048,
+      "output_tokens": 384,
+      "requests": {
+        "06-C6-v2": {
+          "tokens": 662,
+          "nonthinking": true,
+          "request_sha256": "ec337b4a9b4476acce68deb1334c9e3f3ea061235c186903371fab4f29197299"
+        },
+        "07-F1-DE-v1": {
+          "tokens": 339,
+          "nonthinking": true,
+          "request_sha256": "de361db7407ac5ed0edae6109ba44c8d8ead61a3b8f02f4908477a25572bed2c"
+        },
+        "17-F6-AMB-v2": {
+          "tokens": 657,
+          "nonthinking": true,
+          "request_sha256": "94bcf1d486d5a188ce02b18bfa0afe1620d2112693a4b9e96d9ab2ab83102851"
+        },
+        "14-F4-EN-v1": {
+          "tokens": 340,
+          "nonthinking": true,
+          "request_sha256": "538760be281f34a84634a898d83f67cf46c77390ed7eca21d7a2a82803d3489b"
+        },
+        "18-F6-AMB-v1": {
+          "tokens": 327,
+          "nonthinking": true,
+          "request_sha256": "541ae0b0780486bf4f19fc40e563fffbb878bf38d33a03a6bcaaa2457e9a8c6c"
+        },
+        "09-F2-FR-v2": {
+          "tokens": 675,
+          "nonthinking": true,
+          "request_sha256": "8e12e74a1e29c3699400c65b7458c51a8a8e7b10bcb949ab86531f67c3386396"
+        },
+        "08-F1-DE-v2": {
+          "tokens": 669,
+          "nonthinking": true,
+          "request_sha256": "f1af02fde9689874777ffdcdea467d1c124591647d67df50786442c6dec92837"
+        },
+        "10-F2-FR-v1": {
+          "tokens": 345,
+          "nonthinking": true,
+          "request_sha256": "8bbcc8c97034396788d326aa22dea981fd4a00d7358cc3e155257282c90fc0ac"
+        },
+        "02-C2-v2": {
+          "tokens": 659,
+          "nonthinking": true,
+          "request_sha256": "8b8b623ea84c38970750236ab30bcbe4bbdcedbf3f6d80dd03ff94cd537f3299"
+        },
+        "03-C3-v2": {
+          "tokens": 671,
+          "nonthinking": true,
+          "request_sha256": "d617c454dce6aa8828438edfa9147a58eff6eaac8bba53da4413c205e05c4f0d"
+        },
+        "11-F3-IT-v1": {
+          "tokens": 340,
+          "nonthinking": true,
+          "request_sha256": "7e8f941923dd22c4b3aed8f6eb3dd9b0f9765c7ed194bfb668eae589b8e24de7"
+        },
+        "16-F5-ES-v2": {
+          "tokens": 661,
+          "nonthinking": true,
+          "request_sha256": "21f5297e9d009439c474574ad6294d976a1af35abc80736d424b90e4b5d8796d"
+        },
+        "12-F3-IT-v2": {
+          "tokens": 670,
+          "nonthinking": true,
+          "request_sha256": "ed9707545b315261ff8403254e13c76f63c8b89dd5eed57781856e834e1a126f"
+        },
+        "04-C4-v2": {
+          "tokens": 662,
+          "nonthinking": true,
+          "request_sha256": "8d646cc3db877b2c81bc54d8483db89008667470f12efee93ba26ff3e64fb553"
+        },
+        "13-F4-EN-v2": {
+          "tokens": 670,
+          "nonthinking": true,
+          "request_sha256": "c258c0bc02ef9f6aaca92a015723c1d236f99524b8de0253059e612041faaba3"
+        },
+        "01-C1-v2": {
+          "tokens": 659,
+          "nonthinking": true,
+          "request_sha256": "3c58b63c198055e443a0ef4c6836b32f9813fedc0d9eb0e16a0899a7fef507d2"
+        },
+        "15-F5-ES-v1": {
+          "tokens": 331,
+          "nonthinking": true,
+          "request_sha256": "cd07487dd10b24590f4cea4bad9441132efa36214bf709a079cf7f2933e39884"
+        },
+        "05-C5-v2": {
+          "tokens": 664,
+          "nonthinking": true,
+          "request_sha256": "1ce4924b5e88311fdcd23cd4ed230cda46b8b804bc4110c4885a21db694258b5"
+        }
+      }
+    },
+    "template_tokenizer_probes_verified": 18,
+    "largest_prompt": 675,
+    "offload_evidence": {
+      "raw_lines": [
+        "0.01.631.565 I load_tensors: offloaded 37/37 layers to GPU",
+        "0.01.631.568 I load_tensors:   CPU_Mapped model buffer size =   630.59 MiB",
+        "0.01.631.569 I load_tensors:      Vulkan0 model buffer size =  7669.77 MiB",
+        "0.04.507.690 I llama_kv_cache:    Vulkan0 KV buffer size =   288.00 MiB",
+        "0.04.551.223 I sched_reserve:    Vulkan0 compute buffer size =    13.25 MiB",
+        "0.04.551.227 I sched_reserve: Vulkan_Host compute buffer size =     4.25 MiB"
+      ],
+      "speedup_established": false,
+      "full_reported_layers": true,
+      "owned_allocation_sample": {
+        "utc": "2026-10-14T20:06:35.6214146Z",
+        "available_ram_bytes": 35716190208,
+        "total_ram_bytes": 68640653312,
+        "disk_free_bytes": 570215055360,
+        "scratch_bytes": 8839956312,
+        "gpu_name": "AMD Radeon RX 6800 XT",
+        "dedicated_total_bytes": 17130819584,
+        "adapter_dedicated_used_bytes": 10006937600,
+        "adapter_free_bytes": 7123881984,
+        "owned_gpu_bytes": 8399319040,
+        "owned_rss_bytes": 8157802496,
+        "owned_private_bytes": 8555290624,
+        "gpu_measurement": "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+      },
+      "selected_device": "Vulkan0"
+    },
+    "reported_offloaded_layers": "37/37",
+    "acceleration_measured": false,
+    "latency_seconds": {
+      "n": 6,
+      "median": 2.44894085,
+      "p95_nearest_rank": 3.1997595999999997,
+      "max": 3.1997595999999997,
+      "sum": 15.672189
+    },
+    "cache_n": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "finish_reasons": [
+      "stop",
+      "stop",
+      "stop",
+      "stop",
+      "stop",
+      "stop"
+    ],
+    "artifact_verification_record": {
+      "status": "verified_reuse",
+      "no_copy_or_download": true,
+      "executable_sha256": "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+      "artifacts": {
+        "llama-b11429-bin-win-vulkan-x64.zip": {
+          "path": "C:\\ResolenaExperiments\\qwen3-8b-v1\\llama-b11429-bin-win-vulkan-x64.zip",
+          "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+          "bytes": 33337769
+        },
+        "Qwen3-8B-Q8_0.gguf": {
+          "path": "C:\\ResolenaExperiments\\qwen3-8b-v1\\Qwen3-8B-Q8_0.gguf",
+          "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+          "bytes": 8709518112
+        }
+      }
+    },
+    "live_Windows_state_verified": false
+  },
+  "closeout": {
+    "start_utc": "2026-10-14T20:06:19.1580353Z",
+    "original_deadline_utc": "2026-10-14T20:36:19.1580353Z",
+    "exits": {
+      "server_exit.json": {
+        "confirmed_exited": true,
+        "utc": "2026-10-14T20:14:47.1770260Z",
+        "planned_owned_shutdown": true,
+        "exit_code": -1
+      },
+      "watchdog_exit.json": {
+        "status": "server_ended",
+        "utc": "2026-10-14T20:14:46.6921781Z",
+        "original_deadline_utc": "2026-10-14T20:36:19.1580353Z",
+        "ownership_observation": {
+          "observed_start_ticks": null,
+          "expected_executable": "C:\\ResolenaExperiments\\qwen3-8b-v1\\runtime\\llama-server.exe",
+          "state": "ended",
+          "observed_pid": 22120,
+          "observed_executable": null,
+          "utc": "2026-10-14T20:14:46.6830701Z",
+          "error": null,
+          "expected_pid": 22120,
+          "expected_start_ticks": 639276051907339038
+        },
+        "exit_code": 0
+      },
+      "watchdog_process_exit.json": {
+        "confirmed_exited": true,
+        "utc": "2026-10-14T20:14:47.1810634Z",
+        "exit_code": 0
+      },
+      "driver_exit.json": {
+        "elapsed_seconds": 508.02296309999997,
+        "exit_code": 1,
+        "DESIGN": "pending",
+        "completed_requests": 6,
+        "original_deadline_utc": "2026-10-14T20:36:19.1580353Z",
+        "linguistic_validation": "pending"
+      }
+    },
+    "run_failure": {
+      "no_retry": true,
+      "error": "STOP: v2 strict or either-arm operational gate failed.",
+      "measured_elapsed_seconds": 507.2075895,
+      "thresholds": {
+        "total_seconds": 1800,
+        "setup_seconds": 1800,
+        "evaluation_seconds": 1800,
+        "readiness_seconds": 90,
+        "request_seconds": 45,
+        "rss_bytes": 17179869184,
+        "ram_preflight_bytes": 21474836480,
+        "ram_floor_bytes": 4294967296,
+        "gpu_preflight_free_bytes": 15032385536,
+        "gpu_owned_bytes": 12884901888,
+        "gpu_floor_bytes": 2147483648,
+        "scratch_bytes": 26843545600,
+        "disk_preflight_free_bytes": 32212254720,
+        "disk_floor_bytes": 5368709120
+      },
+      "completed": [
+        "01-C1-v2",
+        "02-C2-v2",
+        "03-C3-v2",
+        "04-C4-v2",
+        "05-C5-v2",
+        "06-C6-v2"
+      ],
+      "utc": "2026-10-14T20:14:46.3660206Z"
+    },
+    "cleanup": {
+      "artifact_verification": {
+        "status": "verified_reuse",
+        "no_copy_or_download": true,
+        "executable_sha256": "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+        "artifacts": {
+          "llama-b11429-bin-win-vulkan-x64.zip": {
+            "path": "C:\\ResolenaExperiments\\qwen3-8b-v1\\llama-b11429-bin-win-vulkan-x64.zip",
+            "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+            "bytes": 33337769
+          },
+          "Qwen3-8B-Q8_0.gguf": {
+            "path": "C:\\ResolenaExperiments\\qwen3-8b-v1\\Qwen3-8B-Q8_0.gguf",
+            "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+            "bytes": 8709518112
+          }
+        }
+      },
+      "effect": "Only matching owned server stopped. No artifacts, logs, markers or receipts deleted.",
+      "artifacts_preserved": true,
+      "utc": "2026-10-14T20:14:47.3688797Z",
+      "run_id": "b8591094-a685-48f4-88ef-3420d8b68d90"
+    }
+  },
+  "archive_status": {
+    "original": "CRC and present hashes pass; incomplete export; unchanged closeout verifier fails",
+    "supplemented": "Original bytes plus frozen historical fixture; unchanged closeout verifier passes; semantic gate still failed"
+  },
+  "production_accepted": false,
+  "general_multilingual_capability_verified": false,
+  "qualified_linguistic_validation": "pending",
+  "classification": "AI-assisted exploratory; six exposed calibration cases, no independent linguistic review",
+  "direction": "A unchanged",
+  "supported_languages": [
+    "de",
+    "fr",
+    "it",
+    "en"
+  ],
+  "Spanish_role": "Unsupported-language negative control only",
+  "heldout_contents_read": false,
+  "faithful_source_evidence_rendering_tested": false,
+  "new_continuation_receipts_created": false,
+  "DESIGN": "pending"
+}

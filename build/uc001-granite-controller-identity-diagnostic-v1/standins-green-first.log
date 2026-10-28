@@ -1,0 +1,22 @@
+......F.......                                                           [100%]
+=================================== FAILURES ===================================
+_ test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_pid] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-9/test_identity_diagnostic_chang0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c7004461940>
+option = 'changed_unknown_pid'
+
+    @pytest.mark.parametrize('option',['changed_unknown_pid','changed_unknown_birth'])
+    def test_identity_diagnostic_changed_identity_is_never_bound(tmp_path,monkeypatch,option):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**{option:True})
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']=='identity_changed'
+E       AssertionError: assert 'identity_query_failed' == 'identity_changed'
+E         
+E         - identity_changed
+E         + identity_query_failed
+
+tests/unit/test_granite_controller_standins.py:775: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_pid]
+1 failed, 13 passed, 43 deselected in 0.29s

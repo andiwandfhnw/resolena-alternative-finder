@@ -1,0 +1,27 @@
+warning: no usable GPU found, --gpu-layers option will be ignored
+warning: one possible reason is that llama.cpp was compiled without GPU support
+warning: consult docs/build.md for compilation instructions
+0.00.016.675 I srv  llama_server: initializing ...
+0.00.016.693 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.017.365 I srv  init_listene: The UI is disabled
+0.00.017.482 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.017.732 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.020.727 I srv    load_model: loading model '/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf'
+0.00.904.289 W load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+0.13.717.030 I cmn          init: llama threadpool init, n_threads = 2
+0.14.554.178 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 2048, kv_unified = 'false'
+0.14.592.044 I srv  llama_server: model loaded
+0.14.592.196 I srv  llama_server: listening on unix:///workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock
+0.14.814.911 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.14.816.821 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.18.987.119 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =     64, progress = 0.19, t =   4.17 s / 15.35 tokens per second
+0.22.941.825 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    128, progress = 0.39, t =   8.12 s / 15.76 tokens per second
+0.26.674.170 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    192, progress = 0.58, t =  11.86 s / 16.19 tokens per second
+0.30.721.632 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    256, progress = 0.78, t =  15.90 s / 16.10 tokens per second
+0.34.974.576 I slot print_timing: id  0 | task 0 | prompt processing, n_tokens =    320, progress = 0.97, t =  20.16 s / 15.88 tokens per second
+0.59.486.886 I slot print_timing: id  0 | task 0 | prompt eval time =   21156.80 ms /   329 tokens (   64.31 ms per token,    15.55 tokens per second)
+0.59.487.449 I slot print_timing: id  0 | task 0 |        eval time =   23511.87 ms /    63 tokens (  379.22 ms per token,     2.64 tokens per second)
+0.59.487.659 I slot print_timing: id  0 | task 0 |       total time =   44668.66 ms /   392 tokens
+0.59.487.869 I slot print_timing: id  0 | task 0 |    graphs reused =         65
+0.59.490.942 I slot      release: id  0 | task 0 | stop processing: n_tokens = 391, truncated = 0
+0.59.503.580 I srv    operator(): operator(): cleaning up before exit...

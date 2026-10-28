@@ -1,0 +1,25 @@
+{
+  "harness_version": "2.0.1",
+  "evaluation_and_receipt_protocol_version": "2.0.0",
+  "zip": "build/checkpoints/windows-qwen3-8b-v2-0-1.zip",
+  "bytes": 154798,
+  "sha256": "2fb5b5ad7dbc060b9caafc5f4b8fd5461f86e9a97c03db33352a6cae6aa167ff",
+  "freeze_sha256": "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+  "payload_files": 45,
+  "generation_authorized": false,
+  "evaluation_payloads_and_limits_unchanged": true,
+  "changed_parent_payloads": [
+    "Common.ps1",
+    "README.md",
+    "Watchdog.ps1",
+    "provenance.json"
+  ],
+  "new_payloads": [
+    "Test-Harness.ps1",
+    "fixtures/Offload-original.ps1",
+    "fixtures/startup-v2-20261014.log"
+  ],
+  "Linux_available_checks_passed": 19,
+  "Windows_5_1_checks_pending": true,
+  "model_runtime_artifacts_included": false
+}

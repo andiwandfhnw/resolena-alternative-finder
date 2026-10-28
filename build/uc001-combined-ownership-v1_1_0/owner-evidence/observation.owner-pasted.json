@@ -1,0 +1,73 @@
+{
+  "server": {
+    "pid": 13888,
+    "created": 134368194866877729,
+    "parent_pid": 49800,
+    "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  },
+  "redirector": {
+    "pid": 8896,
+    "created": 134368194867296906,
+    "parent_pid": 49800,
+    "image": "C:\\ResolenaExperiments\\uc001-validator-env\\Scripts\\python.exe"
+  },
+  "supervisor": {
+    "pid": 49800,
+    "created": 134368194858733001,
+    "parent_pid": 38280,
+    "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+  },
+  "job_member_pids": [
+    13888,
+    50508,
+    8896,
+    45732,
+    12204
+  ],
+  "observed_members": [
+    {
+      "requested_pid": 50508,
+      "parent_observation": "server_standin",
+      "role_approved": false,
+      "identity_verified": true,
+      "identity": {
+        "created": 134368194866973533,
+        "pid": 50508,
+        "parent_pid": 13888,
+        "image": "C:\\WINDOWS\\system32\\conhost.exe"
+      },
+      "job_verified": true
+    },
+    {
+      "requested_pid": 45732,
+      "parent_observation": "python_redirector",
+      "role_approved": false,
+      "identity_verified": true,
+      "identity": {
+        "created": 134368194867382491,
+        "pid": 45732,
+        "parent_pid": 8896,
+        "image": "C:\\WINDOWS\\system32\\conhost.exe"
+      },
+      "job_verified": true
+    },
+    {
+      "requested_pid": 12204,
+      "parent_observation": "python_redirector",
+      "role_approved": false,
+      "identity_verified": true,
+      "identity": {
+        "created": 134368194867506922,
+        "pid": 12204,
+        "parent_pid": 8896,
+        "image": "C:\\ResolenaExperiments\\tools\\python-3.12.10\\python.exe"
+      },
+      "job_verified": true
+    }
+  ],
+  "python_readiness_hint": {
+    "pid": 12204,
+    "parent_pid": 8896
+  },
+  "role_acceptance": "unchanged strict policy; observations are not approval"
+}

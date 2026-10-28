@@ -1,0 +1,332 @@
+--- tests/unit/test_granite_controller_worker.py (before)
++++ tests/unit/test_granite_controller_worker.py
+@@ -6,7 +6,7 @@
+ import pytest
+ 
+ from scripts.uc001_granite_controller.worker import (
+-    COMMIT, GIT, CMAKE, NINJA, CL, SDK, WorkerFailure,
++    COMMIT, GIT, CMAKE, NINJA, CL, SDK, CEILING, WorkerFailure,
+     Journal, build_flags, extract_source, run_acquisition, run_build,
+     validate_environment, validate_proxy_terminal,
+ )
+@@ -193,8 +193,9 @@
+ 
+ 
+ class AcquisitionRunner:
+-    def __init__(self, root, revision=COMMIT, failed=None):
++    def __init__(self, root, revision=COMMIT, failed=None, journal=None):
+         self.root, self.revision, self.failed = root, revision, failed
++        self.journal=journal or Events()
+         self.commands = []
+         self.ready_value = None
+     def run(self, argv, label, env=None, proxy=None):
+@@ -218,6 +219,7 @@
+         return ''
+     def start(self, argv, label, env=None, stdin=False):
+         from types import SimpleNamespace
++        from scripts.uc001_granite_controller.worker import Child
+         assert label == 'proxy' and stdin
+         self.commands.append((argv, label, env))
+         assert argv[argv.index('--acquisition-started-utc')+1] == '2026-10-25T12:00:00+00:00'
+@@ -225,23 +227,42 @@
+         self.ready_value = dict(pid=700, proxy_url='http://127.0.0.1:12345', ledger=str(ledger),
+                                 prior_bytes=7, remaining_bytes=10737418240-7)
+         records = [dict(event='start', cumulative_bytes=7, prior_bytes=7),
++                   dict(event='listening',pid=700,cumulative_bytes=7),
+                    dict(event='debit', cumulative_bytes=12, bytes_read=5,
+                         tunnel_id='1', destination='github.com:443', tunnel_bytes=5),
+                    dict(event='end', cumulative_bytes=12, status='closed_unqualified', sockets_closed=True)]
+         ledger.write_text(''.join(json.dumps(x)+'\n' for x in records))
+-        self.proxy = SimpleNamespace(identity=dict(pid=700, creation_time_100ns=900, in_any_job=True),
+-                                     process=SimpleNamespace(stdin=ProxyInput()))
++        self.api=ProxyApi(split=False)
++        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
++        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
++            poll=lambda:self.api.rows['launcher']['exit'],wait=lambda:self.api.rows['launcher']['exit'])
++        out_path=self.root/'evidence/proxy.stdout.log';out=out_path.open('xb')
++        err_path=self.root/'evidence/proxy.stderr.log';err=err_path.open('xb')
++        self.proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
++        self.journal.emit('proxy_launcher_started',schema=1,launcher=identity)
+         return self.proxy
+     def ready(self, proxy):
+         assert proxy is self.proxy
+         return self.ready_value
++    def bind_proxy(self,proxy,ready):
++        from io import BytesIO
++        from scripts.uc001_granite_controller.worker import NativeRunner
++        self.native=NativeRunner(self.root,self.journal,{},api=self.api,control=BytesIO(b'PROXY_BOUND\n'))
++        return self.native.bind_proxy(proxy,ready)
++    def mark_proxy_closing(self,proxy):self.native.mark_proxy_closing(proxy)
++    def close_proxy_handles(self,proxy):
++        if hasattr(self,'native'):self.native.close_proxy_handles(proxy)
++        else:close_fixture(proxy)
+     def wait(self, proxy):
+         assert proxy is self.proxy
+         assert proxy.process.stdin.value == b'CLOSE\n'
+         ledger = self.root / 'evidence/acquisition-proxy.jsonl'
+         closed = dict(status='meter_closed_unqualified', cleanup_verified=True,
+                       cumulative_bytes=12, ledger_sha256=hashlib.sha256(ledger.read_bytes()).hexdigest())
+-        return json.dumps(self.ready_value)+'\n'+json.dumps(closed)+'\n'
++        proxy.stdout_file.write((json.dumps(self.ready_value)+'\n'+json.dumps(closed)+'\n').encode())
++        proxy.stdout_file.flush()
++        for row in self.api.rows.values():row['exit']=0
++        return self.native.wait(proxy)
+ 
+ 
+ def acquisition_config(tmp_path, monkeypatch):
+@@ -263,7 +284,7 @@
+ 
+ def test_acquisition_preserves_proxy_pin_integrity_archive_and_shared_clock(tmp_path, monkeypatch):
+     value = acquisition_config(tmp_path, monkeypatch); root = Path(value['root'])
+-    runner = AcquisitionRunner(root); events = Events()
++    events = Events();runner = AcquisitionRunner(root,journal=events)
+     run_acquisition(value, events, runner=runner)
+     labels = [label for _,label,_ in runner.commands]
+     assert labels == ['git-version', 'cmake-version', 'ninja-version', 'source-init', 'source-origin',
+@@ -277,6 +298,10 @@
+     assert [row['event'] for row in events.events].index('proxy_closing') < [row['event'] for row in events.events].index('acquisition_terminal')
+     terminal = next(row for row in events.events if row['event'] == 'acquisition_terminal')
+     assert terminal['cumulative_bytes'] == 12 and terminal['prior_bytes'] == 7
++    assert terminal['proxy_identity_schema']==1
++    assert terminal['proxy_launcher_pid']==700 and terminal['proxy_interpreter_pid']==700
++    assert 'proxy_pid' not in terminal
++    assert any(row['event']=='proxy_binding_requested' for row in events.events)
+     source = json.loads((root/'evidence/source-identity.json').read_text())
+     assert source['commit'] == COMMIT and source['tree'] == 'a'*40
+     assert (root/'src/CMakeLists.txt').is_file()
+@@ -335,3 +360,235 @@
+     assert terminal['artifact_manifest_sha256'] == digest(manifest)
+     assert terminal['artifact_count'] == len(json.loads(manifest.read_text())) == 101
+     assert manifest.stat().st_size > 8192
++
++
++class ProxyApi:
++    def __init__(self,split=True):
++        from types import SimpleNamespace
++        self.rows={'launcher':dict(pid=700,birth=900,parent=42,member=True,exit=None)}
++        if split:self.rows['interpreter']=dict(pid=701,birth=901,parent=700,member=True,exit=None)
++        self.opened=[];self.closed=[]
++        self.k=SimpleNamespace(IsProcessInJob=self.any_job)
++    def checked(self,value,operation):
++        if not value:raise WorkerFailure(operation)
++        return value
++    def any_job(self,handle,job,pointer):
++        assert job is None
++        pointer._obj.value=int(self.rows[handle]['member'])
++        return 1
++    def process_id(self,handle):return self.rows[handle]['pid']
++    def creation_time(self,handle):return self.rows[handle]['birth']
++    def parent_pid(self,handle):return self.rows[handle]['parent']
++    def exit_code(self,handle):return self.rows[handle]['exit']
++    def open_process(self,pid,can_terminate=False):
++        assert can_terminate is False
++        self.opened.append(pid)
++        for name,row in self.rows.items():
++            if row['pid']==pid:return name
++        raise WorkerFailure('unknown readiness pid')
++    def close_handle(self,handle):self.closed.append(handle)
++
++
++def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
++    from io import BytesIO
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller.worker import NativeRunner,Child
++    root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
++    api=ProxyApi(split);events=Events()
++    process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
++        poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
++    out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
++    err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
++    identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
++    proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
++    runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
++    ready=dict(pid=701 if split else 700,proxy_url='http://127.0.0.1:12345',
++               ledger=str(root/'evidence/ledger.jsonl'),prior_bytes=7,remaining_bytes=CEILING-7)
++    return runner,proxy,api,events,ready
++
++
++def close_fixture(proxy):
++    for stream in (proxy.stdout_file,proxy.stderr_file):
++        if not stream.closed:stream.close()
++
++
++@pytest.mark.parametrize('split',[True,False])
++def test_proxy_identity_binding_split_and_native_same_handle_proof(tmp_path,split):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
++    try:
++        binding=runner.bind_proxy(proxy,ready)
++        assert binding['schema']==1
++        assert binding['launcher']['pid']==700
++        assert binding['interpreter']['pid']==(701 if split else 700)
++        assert binding['same_process'] is (not split)
++        assert api.opened==([701] if split else [])
++        assert [row['event'] for row in events.events]==['proxy_binding_requested']
++        assert events.events[0]['ready_pid']==ready['pid']
++        runner.check_proxy(proxy)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++    assert api.closed==(['interpreter'] if split else [])
++
++
++@pytest.mark.parametrize('damage',['wrong_pid','wrong_parent','wrong_member','forged_same_birth'])
++def test_proxy_identity_readiness_cannot_bind_unverified_process(tmp_path,damage):
++    split=damage!='forged_same_birth'
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
++    if damage=='wrong_pid':ready['pid']=999
++    elif damage=='wrong_parent':api.rows['interpreter']['parent']=123
++    elif damage=='wrong_member':api.rows['interpreter']['member']=False
++    else:api.rows['launcher']['birth']=999
++    try:
++        with pytest.raises(WorkerFailure):runner.bind_proxy(proxy,ready)
++        assert not any(row['event']=='proxy_listening' for row in events.events)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++def test_proxy_identity_controller_ack_is_mandatory_before_fetch_use(tmp_path):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,ack=b'WRONG\n')
++    try:
++        with pytest.raises(WorkerFailure):runner.bind_proxy(proxy,ready)
++        with pytest.raises(WorkerFailure):runner.check_proxy(proxy)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++@pytest.mark.parametrize('role,field,value',[
++    ('interpreter','pid',702),('interpreter','birth',999),
++    ('interpreter','parent',123),('interpreter','member',False),
++    ('launcher','birth',999),
++])
++def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
++    try:
++        runner.bind_proxy(proxy,ready)
++        api.rows[role][field]=value
++        with pytest.raises(WorkerFailure):runner.check_proxy(proxy)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++@pytest.mark.parametrize('role',['launcher','interpreter'])
++def test_proxy_identity_both_roles_are_checked_for_premature_exit(tmp_path,role):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
++    try:
++        runner.bind_proxy(proxy,ready)
++        api.rows[role]['exit']=0
++        with pytest.raises(WorkerFailure):runner.check_proxy(proxy)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++@pytest.mark.parametrize('split',[True,False])
++def test_proxy_identity_cleanup_emits_two_retained_role_exits(tmp_path,split):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
++    try:
++        runner.bind_proxy(proxy,ready)
++        proxy.stdout_file.write((json.dumps(ready)+'\n{}\n').encode());proxy.stdout_file.flush()
++        runner.mark_proxy_closing(proxy)
++        for row in api.rows.values():row['exit']=0
++        runner.wait(proxy)
++        exits=[row for row in events.events if row['event'].endswith('_exit')]
++        assert [row['event'] for row in exits]==['proxy_interpreter_exit','proxy_launcher_exit']
++        assert all(row['identity_verified'] and row['exit_code']==0 for row in exits)
++        assert exits[0]['identity']['pid']==(701 if split else 700)
++        assert exits[1]['identity']['pid']==700
++        assert not any(row['event']=='child_exit' for row in events.events)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++def test_proxy_identity_launcher_exit_without_interpreter_exit_fails_cleanup(tmp_path):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
++    try:
++        runner.bind_proxy(proxy,ready);runner.mark_proxy_closing(proxy)
++        api.rows['launcher']['exit']=0
++        with pytest.raises(WorkerFailure):runner.wait(proxy)
++        assert not any(row['event']=='proxy_interpreter_exit' for row in events.events)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++@pytest.mark.parametrize('pid',[700,999])
++def test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid(tmp_path,pid):
++    path=ledger_fixture(tmp_path)
++    rows=path.read_text().splitlines()
++    rows.insert(1,json.dumps(dict(event='listening',pid=pid,cumulative_bytes=7)))
++    path.write_text('\n'.join(rows)+'\n')
++    closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
++                ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
++    with pytest.raises(WorkerFailure):validate_proxy_terminal(path,closed,7,expected_pid=701)
++
++
++def test_proxy_identity_terminal_ledger_matches_executing_interpreter_pid(tmp_path):
++    path=ledger_fixture(tmp_path)
++    rows=path.read_text().splitlines()
++    rows.insert(1,json.dumps(dict(event='listening',pid=701,cumulative_bytes=7)))
++    path.write_text('\n'.join(rows)+'\n')
++    closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
++                ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
++    assert validate_proxy_terminal(path,closed,7,expected_pid=701)==12
++
++
++def test_proxy_identity_start_records_launcher_role_without_generic_child_event(tmp_path,monkeypatch):
++    from io import BytesIO
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import worker
++    root=tmp_path/'start';(root/'evidence').mkdir(parents=True)
++    api=ProxyApi();events=Events()
++    process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput())
++    monkeypatch.setattr(worker.os,'getpid',lambda:42)
++    monkeypatch.setattr(worker.subprocess,'Popen',lambda *args,**kwargs:process)
++    runner=worker.NativeRunner(root,events,{},api=api,control=BytesIO(b'PROXY_BOUND\n'))
++    proxy=runner.start(['synthetic-python','accepted-proxy.py'],'proxy',stdin=True)
++    try:
++        assert [row['event'] for row in events.events]==['proxy_launcher_started']
++        assert events.events[0]['launcher']==proxy.identity
++    finally:runner.close_proxy_handles(proxy)
++
++
++def test_proxy_identity_interpreter_exit_without_launcher_exit_cannot_finish(tmp_path):
++    runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
++    def deadline(_):raise WorkerFailure('synthetic controller deadline')
++    runner.sleep=deadline
++    try:
++        runner.bind_proxy(proxy,ready);runner.mark_proxy_closing(proxy)
++        api.rows['interpreter']['exit']=0
++        with pytest.raises(WorkerFailure):runner.wait(proxy)
++        assert not any(row['event']=='proxy_launcher_exit' for row in events.events)
++    finally:
++        runner.close_proxy_handles(proxy);close_fixture(proxy)
++
++
++@pytest.mark.parametrize('role',['launcher','interpreter'])
++def test_proxy_identity_premature_exit_cannot_be_published_as_planned_close(tmp_path,monkeypatch,role):
++    value=acquisition_config(tmp_path,monkeypatch);events=Events()
++    class Premature(AcquisitionRunner):
++        def start(self,*args,**kwargs):
++            child=super().start(*args,**kwargs)
++            self.api=ProxyApi(split=True)
++            self.ready_value['pid']=701
++            ledger=self.root/'evidence/acquisition-proxy.jsonl'
++            rows=[json.loads(line) for line in ledger.read_text().splitlines()]
++            for row in rows:
++                if row['event']=='listening':row['pid']=701
++            ledger.write_text(''.join(json.dumps(row)+'\n' for row in rows))
++            return child
++        def run(self,argv,label,env=None,proxy=None):
++            result=super().run(argv,label,env,proxy)
++            if label=='source-fetch':self.api.rows[role]['exit']=0
++            return result
++    runner=Premature(Path(value['root']),journal=events)
++    with pytest.raises(WorkerFailure):run_acquisition(value,events,runner=runner)
++    assert not any(row['event']=='proxy_closing' for row in events.events)
++
++
++def test_proxy_identity_ledger_boolean_pid_cannot_equal_integer_identity(tmp_path):
++    path=ledger_fixture(tmp_path)
++    rows=path.read_text().splitlines()
++    rows.insert(1,json.dumps(dict(event='listening',pid=True,cumulative_bytes=7)))
++    path.write_text('\n'.join(rows)+'\n')
++    closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
++                ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
++    with pytest.raises(WorkerFailure):validate_proxy_terminal(path,closed,7,expected_pid=1)

@@ -1,0 +1,22 @@
+.........................F                                               [100%]
+=================================== FAILURES ===================================
+_____ test_unknown_created_identity_cannot_be_reported_as_verified_cleanup _____
+
+api = <test_granite_windows_job.FakeApi object at 0x7c4621959e80>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-27/test_unknown_created_identity_0')
+
+    def test_unknown_created_identity_cannot_be_reported_as_verified_cleanup(api,tmp_path):
+        job = WindowsJob(api=api)
+        api.creation_time = lambda _: (_ for _ in ()).throw(OSError('creation time unavailable'))
+        with pytest.raises(JobError):
+            launch(job,tmp_path)
+        assert not any(call[0]=='resume' for call in api.calls)
+        assert not api.processes['p-101']['alive']
+        result = job.cleanup()
+>       assert result['verified'] is False
+E       assert True is False
+
+tests/unit/test_granite_windows_job.py:425: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_created_identity_cannot_be_reported_as_verified_cleanup
+1 failed, 25 passed in 0.24s

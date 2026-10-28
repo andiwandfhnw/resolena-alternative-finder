@@ -1,0 +1,33 @@
+{
+  "version": "uc001-contract-local-1.4.0-proposed",
+  "parent_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+  "attempt_identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+  "files": {
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "PINNED-SOURCE.md": "be4129062c4edbd0783934b80d9e2dd172e025b22ac9163d32c15222149c4c46",
+    "Python-Ownership.ps1": "2afb47117254ed46b3d6a5d09f177e3e011d50003aa7a1ac08c39350628514f1",
+    "PythonOwnership.cs": "eff0da55fb93cf2cc5d06a843029b736496cf2f1fe80dcce8d3330fcd109fc8e",
+    "README.md": "0f7609c0d500c2d2d9bf9743c12fe0ec0732595e4fe3bae8f245a3389ab062c9",
+    "Run-Windows.ps1": "c623c8f77faf9f6373b45d6acdfa0d78c669e3847534980d9142796af8d329d4",
+    "approval.pending.json": "2dd70c6adf96479a901c83d49af5c5fad6f4c92cab47d3115a4845be9ac2f6b9",
+    "capture.py": "046dde2e6362965c95083d1ec33fe8e6ad1af006a3b1851cb326c7f81fac6bbe",
+    "config.json": "0dc67d554026368b110ec68f450eb1401c42ada78962ac59f52ce0bcc4186685",
+    "execution-proposal.json": "ae4f28af48da5b93392152ed0d8e9c81e2d58054c1eb71d643f61e20beac641b",
+    "execution_gate.py": "62e0989931adf887b82038da9d6a7b8d1e0fe4d3cae87e7e446605838152c78c",
+    "harness_checks.py": "1a20604e3451c6f8e8ab8edd4929b6cd5c5d744f8a35eebf342a778981c13ee2",
+    "ownership-verification.json": "066255e2f3bccb5367b6598d3f76b3f17b5977ea36ecf1f2910b1fafdd524b19",
+    "ownership_receipts.py": "640f56422ce1da166fedb3bc9c6250fa8151c19371fee39cffdfce81cefc32a6",
+    "partial-expectations-review.json": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+    "previous-execution-freeze.json": "36040de4ede59d3699cf847332dfd324b38e610eef967df2f5a20b7b0690331b",
+    "previous-freeze.json": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+    "replay.py": "fa20ce124ed9158628e3fef68941ed29243ccfb0eac54864ba37ba56a3cad97b",
+    "review_gate.py": "99b134af06238062866a5caf708087f646c7a225123d92ca5b11c9644855e7b1",
+    "technical-decision.json": "cd94e136adc1f6a61fbb555df6dba1d36e3b4096024a4ea3081ee2844af5e040"
+  },
+  "purpose": "technical_feasibility_only",
+  "previous_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "original_startup_allowance_consumed": true,
+  "previous_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+  "previous_startup_allowance_consumed": true
+}

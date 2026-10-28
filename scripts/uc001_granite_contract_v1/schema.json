@@ -1,0 +1,454 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "recognition": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "supported",
+            "unsupported",
+            "mixed",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "enum": [
+                "de",
+                "fr",
+                "it",
+                "en"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "language"
+      ],
+      "type": "object"
+    },
+    "meaning_status": {
+      "enum": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ],
+      "type": "string"
+    },
+    "clauses": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "span": {
+            "additionalProperties": false,
+            "properties": {
+              "quote": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "occurrence": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "quote",
+              "occurrence"
+            ],
+            "type": "object"
+          },
+          "meaning_status": {
+            "enum": [
+              "understood",
+              "needs_clarification",
+              "unsupported"
+            ],
+            "type": "string"
+          },
+          "normalized": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "item_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "span",
+          "meaning_status",
+          "normalized",
+          "item_ids"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "items": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "subject",
+              "action",
+              "goal",
+              "constraint",
+              "name",
+              "place",
+              "budget",
+              "baseline",
+              "quantity",
+              "context"
+            ],
+            "type": "string"
+          },
+          "normalized": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "span": {
+            "additionalProperties": false,
+            "properties": {
+              "quote": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "occurrence": {
+                "minimum": 1,
+                "type": "integer"
+              }
+            },
+            "required": [
+              "quote",
+              "occurrence"
+            ],
+            "type": "object"
+          },
+          "negation": {
+            "anyOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "quote": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "occurrence": {
+                    "minimum": 1,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "quote",
+                  "occurrence"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "amount": {
+                    "anyOf": [
+                      {
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "number": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "quote": {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      "occurrence": {
+                        "minimum": 1,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "quote",
+                      "occurrence"
+                    ],
+                    "type": "object"
+                  },
+                  "decimal_separator": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          ".",
+                          ","
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "grouping_separator": {
+                    "anyOf": [
+                      {
+                        "enum": [
+                          ".",
+                          ",",
+                          "'",
+                          " ",
+                          " "
+                        ],
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "currency": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "span": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "quote": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "occurrence": {
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "quote",
+                              "occurrence"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "span"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "unit": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "span": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "quote": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "occurrence": {
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "quote",
+                              "occurrence"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "span"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "period": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "span": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "quote": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "occurrence": {
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "quote",
+                              "occurrence"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "span"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "basis": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "value": {
+                            "minLength": 1,
+                            "type": "string"
+                          },
+                          "span": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "quote": {
+                                "minLength": 1,
+                                "type": "string"
+                              },
+                              "occurrence": {
+                                "minimum": 1,
+                                "type": "integer"
+                              }
+                            },
+                            "required": [
+                              "quote",
+                              "occurrence"
+                            ],
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "value",
+                          "span"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "charges_known": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "amount",
+                  "number",
+                  "decimal_separator",
+                  "grouping_separator",
+                  "currency",
+                  "unit",
+                  "period",
+                  "basis",
+                  "charges_known"
+                ],
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "normalized",
+          "span",
+          "negation",
+          "quantity"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "recognition",
+    "meaning_status",
+    "clauses",
+    "items",
+    "message"
+  ],
+  "type": "object"
+}

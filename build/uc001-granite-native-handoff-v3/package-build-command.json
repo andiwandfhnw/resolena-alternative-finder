@@ -1,0 +1,13 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-I",
+    "-B",
+    "build/uc001-granite-native-handoff-v3/build_package.py"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 0.06151248500100337,
+  "scope": "Offline deterministic package assembly only; no runtime phase",
+  "windows_execution": false,
+  "acquisition_or_native_build": false
+}

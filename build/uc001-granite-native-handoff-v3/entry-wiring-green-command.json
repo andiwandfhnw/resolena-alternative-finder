@@ -1,0 +1,18 @@
+{
+  "stage": "GREEN: focused package/entry wiring only",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_handoff_v3_entry.py",
+    "--tb=short"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 2.219252586364746,
+  "verifier_sha256": "109de9b1f0ab80118263166b4c5e4b2af58106817c7337ca85f283a63c23d5bd",
+  "test_sha256": "faf69efafafa9792dbdb5233813b8c246b934f5a45bee2cd9cd898b72794c9bf",
+  "windows_execution": false,
+  "native_tools_network_or_phase_execution": false,
+  "injection_scope": "Approved Windows runtime metadata and filesystem/tool lookup around the actual copied packaged worker validator; no native backend"
+}

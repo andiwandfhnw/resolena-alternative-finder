@@ -1,0 +1,5 @@
+{
+  "allowed": false,
+  "approved_freeze_sha256": "OWNER_TO_SET_AFTER_SEPARATE_EXECUTION_APPROVAL",
+  "scope": "One Windows run; at most 18 generation requests, total 1800 seconds, no retries/downloads/fallback"
+}

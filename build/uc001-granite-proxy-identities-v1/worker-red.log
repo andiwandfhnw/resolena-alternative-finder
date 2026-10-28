@@ -1,0 +1,657 @@
+FFFFFFFFFFFFFFFFFFFF                                                     [100%]
+=================================== FAILURES ===================================
+_____ test_proxy_identity_binding_split_and_native_same_handle_proof[True] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_binding_sp0')
+split = True
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_identity_binding_split_and_native_same_handle_proof(tmp_path,split):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:392: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_binding_sp0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+____ test_proxy_identity_binding_split_and_native_same_handle_proof[False] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_binding_sp1')
+split = False
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_identity_binding_split_and_native_same_handle_proof(tmp_path,split):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:392: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_binding_sp1')
+split = False, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+___ test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_pid] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_0')
+damage = 'wrong_pid'
+
+    @pytest.mark.parametrize('damage',['wrong_pid','wrong_parent','wrong_member','forged_same_birth'])
+    def test_proxy_identity_readiness_cannot_bind_unverified_process(tmp_path,damage):
+        split=damage!='forged_same_birth'
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+__ test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_parent] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_1')
+damage = 'wrong_parent'
+
+    @pytest.mark.parametrize('damage',['wrong_pid','wrong_parent','wrong_member','forged_same_birth'])
+    def test_proxy_identity_readiness_cannot_bind_unverified_process(tmp_path,damage):
+        split=damage!='forged_same_birth'
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_1')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+__ test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_member] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_2')
+damage = 'wrong_member'
+
+    @pytest.mark.parametrize('damage',['wrong_pid','wrong_parent','wrong_member','forged_same_birth'])
+    def test_proxy_identity_readiness_cannot_bind_unverified_process(tmp_path,damage):
+        split=damage!='forged_same_birth'
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_2')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_readiness_cannot_bind_unverified_process[forged_same_birth] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_3')
+damage = 'forged_same_birth'
+
+    @pytest.mark.parametrize('damage',['wrong_pid','wrong_parent','wrong_member','forged_same_birth'])
+    def test_proxy_identity_readiness_cannot_bind_unverified_process(tmp_path,damage):
+        split=damage!='forged_same_birth'
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:411: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_readiness_3')
+split = False, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_______ test_proxy_identity_controller_ack_is_mandatory_before_fetch_use _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_controller0')
+
+    def test_proxy_identity_controller_ack_is_mandatory_before_fetch_use(tmp_path):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,ack=b'WRONG\n')
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:424: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_controller0')
+split = True, ack = b'WRONG\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-pid-702] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati0')
+role = 'interpreter', field = 'pid', value = 702
+
+    @pytest.mark.parametrize('role,field,value',[
+        ('interpreter','pid',702),('interpreter','birth',999),
+        ('interpreter','parent',123),('interpreter','member',False),
+        ('launcher','birth',999),
+    ])
+    def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:438: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-birth-999] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati1')
+role = 'interpreter', field = 'birth', value = 999
+
+    @pytest.mark.parametrize('role,field,value',[
+        ('interpreter','pid',702),('interpreter','birth',999),
+        ('interpreter','parent',123),('interpreter','member',False),
+        ('launcher','birth',999),
+    ])
+    def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:438: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati1')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-parent-123] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati2')
+role = 'interpreter', field = 'parent', value = 123
+
+    @pytest.mark.parametrize('role,field,value',[
+        ('interpreter','pid',702),('interpreter','birth',999),
+        ('interpreter','parent',123),('interpreter','member',False),
+        ('launcher','birth',999),
+    ])
+    def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:438: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati2')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-member-False] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati3')
+role = 'interpreter', field = 'member', value = False
+
+    @pytest.mark.parametrize('role,field,value',[
+        ('interpreter','pid',702),('interpreter','birth',999),
+        ('interpreter','parent',123),('interpreter','member',False),
+        ('launcher','birth',999),
+    ])
+    def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:438: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati3')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[launcher-birth-999] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati4')
+role = 'launcher', field = 'birth', value = 999
+
+    @pytest.mark.parametrize('role,field,value',[
+        ('interpreter','pid',702),('interpreter','birth',999),
+        ('interpreter','parent',123),('interpreter','member',False),
+        ('launcher','birth',999),
+    ])
+    def test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change(tmp_path,role,field,value):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:438: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_revalidati4')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+___ test_proxy_identity_both_roles_are_checked_for_premature_exit[launcher] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_both_roles0')
+role = 'launcher'
+
+    @pytest.mark.parametrize('role',['launcher','interpreter'])
+    def test_proxy_identity_both_roles_are_checked_for_premature_exit(tmp_path,role):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:449: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_both_roles0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+__ test_proxy_identity_both_roles_are_checked_for_premature_exit[interpreter] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_both_roles1')
+role = 'interpreter'
+
+    @pytest.mark.parametrize('role',['launcher','interpreter'])
+    def test_proxy_identity_both_roles_are_checked_for_premature_exit(tmp_path,role):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:449: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_both_roles1')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_______ test_proxy_identity_cleanup_emits_two_retained_role_exits[True] ________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_cleanup_em0')
+split = True
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_identity_cleanup_emits_two_retained_role_exits(tmp_path,split):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:460: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_cleanup_em0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_______ test_proxy_identity_cleanup_emits_two_retained_role_exits[False] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_cleanup_em1')
+split = False
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_identity_cleanup_emits_two_retained_role_exits(tmp_path,split):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path,split=split)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:460: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_cleanup_em1')
+split = False, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+___ test_proxy_identity_launcher_exit_without_interpreter_exit_fails_cleanup ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_launcher_e0')
+
+    def test_proxy_identity_launcher_exit_without_interpreter_exit_fails_cleanup(tmp_path):
+>       runner,proxy,api,events,ready=proxy_binding_fixture(tmp_path)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_worker.py:478: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_launcher_e0')
+split = True, ack = b'PROXY_BOUND\n'
+
+    def proxy_binding_fixture(tmp_path,*,split=True,ack=b'PROXY_BOUND\n'):
+        from io import BytesIO
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller.worker import NativeRunner,Child
+        root=tmp_path/'binding';(root/'evidence').mkdir(parents=True)
+        api=ProxyApi(split);events=Events()
+        process=SimpleNamespace(pid=700,_handle='launcher',stdin=ProxyInput(),
+            poll=lambda:api.rows['launcher']['exit'],wait=lambda:api.rows['launcher']['exit'])
+        out_path=root/'evidence/proxy.stdout.log';out=out_path.open('wb')
+        err_path=root/'evidence/proxy.stderr.log';err=err_path.open('wb')
+        identity=dict(pid=700,creation_time_100ns=900,parent_pid=42,in_any_job=True)
+        proxy=Child(process,'proxy',out_path,err_path,out,err,identity)
+>       runner=NativeRunner(root,events,{},api=api,control=BytesIO(ack),sleep=lambda _:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeRunner.__init__() got an unexpected keyword argument 'api'
+
+tests/unit/test_granite_controller_worker.py:379: TypeError
+_ test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid[700] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_terminal_l0')
+pid = 700
+
+    @pytest.mark.parametrize('pid',[700,999])
+    def test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid(tmp_path,pid):
+        path=ledger_fixture(tmp_path)
+        rows=path.read_text().splitlines()
+        rows.insert(1,json.dumps(dict(event='listening',pid=pid,cumulative_bytes=7)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
+                    ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       with pytest.raises(WorkerFailure):validate_proxy_terminal(path,closed,7,expected_pid=701)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: validate_proxy_terminal() got an unexpected keyword argument 'expected_pid'
+
+tests/unit/test_granite_controller_worker.py:496: TypeError
+_ test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid[999] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_terminal_l1')
+pid = 999
+
+    @pytest.mark.parametrize('pid',[700,999])
+    def test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid(tmp_path,pid):
+        path=ledger_fixture(tmp_path)
+        rows=path.read_text().splitlines()
+        rows.insert(1,json.dumps(dict(event='listening',pid=pid,cumulative_bytes=7)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
+                    ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       with pytest.raises(WorkerFailure):validate_proxy_terminal(path,closed,7,expected_pid=701)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: validate_proxy_terminal() got an unexpected keyword argument 'expected_pid'
+
+tests/unit/test_granite_controller_worker.py:496: TypeError
+____ test_proxy_identity_terminal_ledger_matches_executing_interpreter_pid _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-26/test_proxy_identity_terminal_l2')
+
+    def test_proxy_identity_terminal_ledger_matches_executing_interpreter_pid(tmp_path):
+        path=ledger_fixture(tmp_path)
+        rows=path.read_text().splitlines()
+        rows.insert(1,json.dumps(dict(event='listening',pid=701,cumulative_bytes=7)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
+                    ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       assert validate_proxy_terminal(path,closed,7,expected_pid=701)==12
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: validate_proxy_terminal() got an unexpected keyword argument 'expected_pid'
+
+tests/unit/test_granite_controller_worker.py:506: TypeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_binding_split_and_native_same_handle_proof[True]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_binding_split_and_native_same_handle_proof[False]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_pid]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_parent]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_readiness_cannot_bind_unverified_process[wrong_member]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_readiness_cannot_bind_unverified_process[forged_same_birth]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_controller_ack_is_mandatory_before_fetch_use
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-pid-702]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-birth-999]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-parent-123]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[interpreter-member-False]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_revalidation_rejects_pid_birth_parent_membership_change[launcher-birth-999]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_both_roles_are_checked_for_premature_exit[launcher]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_both_roles_are_checked_for_premature_exit[interpreter]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_cleanup_emits_two_retained_role_exits[True]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_cleanup_emits_two_retained_role_exits[False]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_launcher_exit_without_interpreter_exit_fails_cleanup
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid[700]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_terminal_ledger_rejects_launcher_or_unbound_listening_pid[999]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_terminal_ledger_matches_executing_interpreter_pid
+20 failed, 22 deselected in 0.95s

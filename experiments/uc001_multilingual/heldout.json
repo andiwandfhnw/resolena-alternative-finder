@@ -1,0 +1,428 @@
+{
+  "provenance": "AI-authored synthetic development hold-out; same agent wrote parser/oracles. Not blind or independently linguistically validated. Parser frozen before fixture file creation; no post-run tuning.",
+  "frozen_parser_sha256": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e",
+  "requests": [
+    {
+      "id": "DE-1",
+      "language": "de",
+      "text": "Bitte repariere mein Fahrrad ohne Ersatz; Budget 35 CHF.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "35",
+          "currency": "CHF"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "DE-2",
+      "language": "de",
+      "text": "Mein Velo braucht eine Reparatur; bitte nichts Neues kaufen.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "DE-3",
+      "language": "de",
+      "text": "Kann mein Fahrrad für höchstens 40 CHF instand gesetzt werden?",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": false,
+        "budget": {
+          "amount": "40",
+          "currency": "CHF"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "DE-4",
+      "language": "de",
+      "text": "Ich möchte mein Fahrrad reparieren, aber nicht ohne es zu ersetzen.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": false,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "FR-1",
+      "language": "fr",
+      "text": "Réparer mon vélo sans remplacement; budget 35,50 CHF.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "35.50",
+          "currency": "CHF"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "FR-2",
+      "language": "fr",
+      "text": "Mon vélo a besoin d'être remis en état, pas d'un nouveau.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "FR-3",
+      "language": "fr",
+      "text": "Je ne veux pas réparer mon vélo; je veux le remplacer.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "replace",
+        "goal": null,
+        "no_replacement": false,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "FR-4",
+      "language": "fr",
+      "text": "Réparer le vélo, budget 1,200 CHF.",
+      "expected": {
+        "must_clarify": true
+      },
+      "context": {}
+    },
+    {
+      "id": "IT-1",
+      "language": "it",
+      "text": "Riparare la mia bicicletta senza sostituzione; budget 35 EUR.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "35",
+          "currency": "EUR"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "IT-2",
+      "language": "it",
+      "text": "Mi serve una bici rimessa a nuovo, non una sostituzione.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "IT-3",
+      "language": "it",
+      "text": "Non riparare la bicicletta; sostituirla.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "replace",
+        "goal": null,
+        "no_replacement": false,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "IT-4",
+      "language": "it",
+      "text": "Riparare la bicicletta senza sostituirla; massimo 40 CHF.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "40",
+          "currency": "CHF"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "EN-1",
+      "language": "en",
+      "text": "Please repair my bike without replacement; budget 35 CHF.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "35",
+          "currency": "CHF"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "EN-2",
+      "language": "en",
+      "text": "I'd rather have the cycle fixed than buy another one.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "EN-3",
+      "language": "en",
+      "text": "I do not want repair; replace my bicycle.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "replace",
+        "goal": null,
+        "no_replacement": false,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "EN-4",
+      "language": "en",
+      "text": "Repair my bicycle without replacing it. Make it cheaper, budget 35 EUR.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": "cheaper",
+        "no_replacement": true,
+        "budget": {
+          "amount": "35",
+          "currency": "EUR"
+        }
+      },
+      "context": {}
+    },
+    {
+      "id": "MIX-1",
+      "language": "mixed",
+      "text": "Please repair mon vélo sans le remplacer; budget 35 CHF.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": {
+          "amount": "35",
+          "currency": "CHF"
+        },
+        "language": "en"
+      },
+      "context": {
+        "browser": "en"
+      }
+    },
+    {
+      "id": "MIX-2",
+      "language": "mixed",
+      "text": "Repair bicicletta, ma pas de remplacement.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null,
+        "language": "fr"
+      },
+      "context": {
+        "preferred": "fr"
+      }
+    },
+    {
+      "id": "SHORT",
+      "language": "ambiguous",
+      "text": "Velo",
+      "expected": {
+        "subject": "bicycle",
+        "action": null,
+        "goal": null,
+        "no_replacement": false,
+        "budget": null,
+        "language": "fr"
+      },
+      "context": {
+        "preferred": "fr",
+        "browser": "de"
+      }
+    },
+    {
+      "id": "ES",
+      "language": "es",
+      "text": "Quiero reparar mi bicicleta sin reemplazarla.",
+      "expected": {
+        "unsupported": true
+      },
+      "context": {}
+    },
+    {
+      "id": "DIALECT",
+      "language": "gsw",
+      "text": "Mis Velo sött repariert werde, nöd neu.",
+      "expected": {
+        "unsupported": true
+      },
+      "context": {}
+    },
+    {
+      "id": "NOVEL",
+      "language": "en",
+      "text": "Please repair my kettle.",
+      "expected": {
+        "subject": "kettle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": false,
+        "budget": null
+      },
+      "context": {}
+    },
+    {
+      "id": "NAME",
+      "language": "en",
+      "text": "Please repair my bicycle Acme X-2 in Genève without replacing it.",
+      "expected": {
+        "subject": "bicycle",
+        "action": "repair",
+        "goal": null,
+        "no_replacement": true,
+        "budget": null
+      },
+      "context": {}
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E-DE-1",
+      "language": "de",
+      "text": "Arbeit 62,50 CHF pro Reparatur; Teile ausgeschlossen.",
+      "expected": {
+        "amount": "62.50",
+        "currency": "CHF",
+        "basis": "per_repair_labour",
+        "exclusions": [
+          "parts"
+        ]
+      }
+    },
+    {
+      "id": "E-FR-1",
+      "language": "fr",
+      "text": "Main-d’œuvre 62,50 EUR par réparation; pièces exclues.",
+      "expected": {
+        "amount": "62.50",
+        "currency": "EUR",
+        "basis": "per_repair_labour",
+        "exclusions": [
+          "parts"
+        ]
+      }
+    },
+    {
+      "id": "E-IT-1",
+      "language": "it",
+      "text": "Manodopera 62.50 CHF per riparazione; ricambi esclusi.",
+      "expected": {
+        "amount": "62.50",
+        "currency": "CHF",
+        "basis": "per_repair_labour",
+        "exclusions": [
+          "parts"
+        ]
+      }
+    },
+    {
+      "id": "E-EN-1",
+      "language": "en",
+      "text": "Labour 62.50 CHF per repair; parts excluded.",
+      "expected": {
+        "amount": "62.50",
+        "currency": "CHF",
+        "basis": "per_repair_labour",
+        "exclusions": [
+          "parts"
+        ]
+      }
+    },
+    {
+      "id": "E-DE-2",
+      "language": "de",
+      "text": "Nur nicht elektrische Fahrräder; Abholung ausgeschlossen.",
+      "expected": {
+        "scope": "non_electric_bicycles",
+        "exclusions": [
+          "collection"
+        ]
+      }
+    },
+    {
+      "id": "E-FR-2",
+      "language": "fr",
+      "text": "Le prix exclut les pièces et le déplacement; valable uniquement pour les vélos non électriques.",
+      "expected": {
+        "scope": "non_electric_bicycles",
+        "exclusions": [
+          "parts",
+          "travel"
+        ]
+      }
+    },
+    {
+      "id": "E-IT-2",
+      "language": "it",
+      "text": "Non si riparano biciclette elettriche; trasporto e ricambi restano a carico del cliente.",
+      "expected": {
+        "scope": "non_electric_bicycles",
+        "exclusions": [
+          "transport",
+          "parts"
+        ]
+      }
+    },
+    {
+      "id": "E-EN-2",
+      "language": "en",
+      "text": "The labour fee excludes parts and travel; electric bicycles are not covered.",
+      "expected": {
+        "scope": "non_electric_bicycles",
+        "exclusions": [
+          "parts",
+          "travel"
+        ]
+      }
+    }
+  ]
+}

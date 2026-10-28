@@ -1,0 +1,2 @@
+f6a8f233f3263bf0e8f6fb2d79bc7dc12d0a04448b0a5276f28b35f40f03f1ab  remaining-desktop-result.raw.json
+5f49e715281e97023a5544727ab4c7f174c055900cb81bb9a88033081c1f191e  verification.json

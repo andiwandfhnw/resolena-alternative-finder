@@ -1,0 +1,31 @@
+{
+  "recorded_at": "2026-10-23T08:38:48.305906+00:00",
+  "scope": "5Q only; pinned inactive countrycode/name reference draft, no application integration.",
+  "source": "https://download.geonames.org/export/dump/countryInfo.txt",
+  "source_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+  "output_fields": [
+    "code",
+    "name"
+  ],
+  "mapping": {
+    "code": "ISO source column verbatim",
+    "name": "Country source column verbatim; retain edge whitespace and Unicode"
+  },
+  "rules": [
+    "StrictUTF8, exactly one known19column header and19columns per data row; nonempty input/data.",
+    "Validate two uppercaseASCII codeletters and nonblank source names; reject duplicates across all dispositions; never create aliases/translations/replacementcodes.",
+    "Provisional draft inclusion for source-listed current countries/territories without coverage, language, population or sovereignty filters.",
+    "Exclude only AN/CS under the existing obsolete-entry policy, with matching publisher obsolescence notes and source row locators.",
+    "Hold XK outside included output as unresolved membership because publisher explicitly labels its code temporary; human decides under the existing current-country/territory policy.",
+    "Sort included rows by source code; JSONUTF8 indent2 and trailing newline; import no other source columns."
+  ],
+  "review": "All included candidates, obsolete exclusions and unresolved XK pending human factual/release review; runtime_use:false.",
+  "outputs": {
+    "draft": "docs/reference/COUNTRIES-GEONAMES-DRAFT.json",
+    "manifest": "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json",
+    "preparation_script": "scripts/uc001_country_catalogue/prepare.py",
+    "parser_tests": "tests/unit/test_country_catalogue_preparation.py"
+  },
+  "acquisition": "Exact source/readme bytes HTTP200 retained. Direct CC license raw acquisition returned403 and is recorded; the linked deed was readable through the web tool. No substituted source.",
+  "source_update_metadata": "HTTP Last-Modified retained separately; no named release or per-entry validity/publication date is inferred."
+}

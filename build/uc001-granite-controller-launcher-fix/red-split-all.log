@@ -1,0 +1,84 @@
+FF...FF.....F..........F..                                               [100%]
+=================================== FAILURES ===================================
+_ test_synthetic_selftest_verifies_three_nested_identities_and_unrelated_survival _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_synthetic_selftest_verifi0')
+
+    def test_synthetic_selftest_verifies_three_nested_identities_and_unrelated_survival(tmp_path):
+        result, calls = run_fake(tmp_path)
+>       assert result["ownership_self_test_passed"] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:164: AssertionError
+_____________ test_wrong_assignment_order_never_credits_ownership ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_wrong_assignment_order_ne0')
+
+    def test_wrong_assignment_order_never_credits_ownership(tmp_path):
+        result, calls = run_fake(tmp_path, bad_order=True)
+        assert result["ownership_self_test_passed"] is False
+>       assert calls.count("owned_root_launched_once") == 1
+E       AssertionError: assert 0 == 1
+E        +  where 0 = <built-in method count of list object at 0x711e825d49c0>('owned_root_launched_once')
+E        +    where <built-in method count of list object at 0x711e825d49c0> = ['private_job_created', 'unrelated_started', ('open_process', 61196, {}), 'terminate_private_job_only', 'job_cleanup', 'terminate_unrelated_retained_process', ...].count
+
+tests/unit/test_granite_controller_standins.py:178: AssertionError
+__ test_missing_descendant_times_out_without_retry_and_kills_only_private_job __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_missing_descendant_times_0')
+
+    def test_missing_descendant_times_out_without_retry_and_kills_only_private_job(tmp_path):
+        result, calls = run_fake(tmp_path, missing_grandchild=True)
+        assert result["ownership_self_test_passed"] is False
+>       assert "deadline" in result["failure_reason"].lower()
+E       AssertionError: assert 'deadline' in 'standinfailure: unrelated creation identity mismatch'
+E        +  where 'standinfailure: unrelated creation identity mismatch' = <built-in method lower of str object at 0x711e827cbdb0>()
+E        +    where <built-in method lower of str object at 0x711e827cbdb0> = 'StandinFailure: unrelated creation identity mismatch'.lower
+
+tests/unit/test_granite_controller_standins.py:204: AssertionError
+_ test_controller_interruption_still_cleans_owned_job_and_owned_unrelated_standin _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_controller_interruption_s0')
+
+    def test_controller_interruption_still_cleans_owned_job_and_owned_unrelated_standin(tmp_path):
+        result, calls = run_fake(tmp_path, interrupt=True)
+        assert result["ownership_self_test_passed"] is False
+>       assert "interrupt" in result["failure_reason"].lower()
+E       AssertionError: assert 'interrupt' in 'standinfailure: unrelated creation identity mismatch'
+E        +  where 'standinfailure: unrelated creation identity mismatch' = <built-in method lower of str object at 0x711e827c9b30>()
+E        +    where <built-in method lower of str object at 0x711e827c9b30> = 'StandinFailure: unrelated creation identity mismatch'.lower
+
+tests/unit/test_granite_controller_standins.py:212: AssertionError
+__ test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_exact_owner_launcher_spli0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x711e823d7440>
+
+    def test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities(tmp_path,monkeypatch):
+        result,calls=run_split(tmp_path,monkeypatch)
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:438: AssertionError
+_____ test_split_unrelated_cleanup_requires_both_exits[interpreter_stuck] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-47/test_split_unrelated_cleanup_r1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x711e82368ef0>
+stuck = 'interpreter_stuck'
+
+    @pytest.mark.parametrize('stuck',['launcher_stuck','interpreter_stuck'])
+    def test_split_unrelated_cleanup_requires_both_exits(tmp_path,monkeypatch,stuck):
+        result,calls=run_split(tmp_path,monkeypatch,**{stuck:True})
+        assert result['ownership_self_test_passed'] is False
+>       assert result['unrelated_cleanup_verified'] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:468: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_synthetic_selftest_verifies_three_nested_identities_and_unrelated_survival
+FAILED tests/unit/test_granite_controller_standins.py::test_wrong_assignment_order_never_credits_ownership
+FAILED tests/unit/test_granite_controller_standins.py::test_missing_descendant_times_out_without_retry_and_kills_only_private_job
+FAILED tests/unit/test_granite_controller_standins.py::test_controller_interruption_still_cleans_owned_job_and_owned_unrelated_standin
+FAILED tests/unit/test_granite_controller_standins.py::test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities
+FAILED tests/unit/test_granite_controller_standins.py::test_split_unrelated_cleanup_requires_both_exits[interpreter_stuck]
+6 failed, 20 passed in 0.34s

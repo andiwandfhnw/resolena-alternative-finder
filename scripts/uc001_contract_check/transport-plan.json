@@ -1,0 +1,74 @@
+{
+  "status": "preparation only; no downloads/install/connect authorized",
+  "checked_date": "2026-10-16",
+  "source": "Existing Debian 12 amd64 signed-index cache; availability must be revalidated without substituting versions",
+  "codespace_packages": [
+    {
+      "Package": "libssl-dev",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/libssl-dev_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 2449908,
+      "SHA256": "67033caa8a90696856c2967fbdae51e62b85878f055e01f03b0c732158c1682e"
+    },
+    {
+      "Package": "libssl3",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/libssl3_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 2039240,
+      "SHA256": "f0a8aa8429209e556c278a9936bbd5f7d2cdb9f7e4e23b1e43ed399217ba80c1"
+    },
+    {
+      "Package": "openssh-client",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-client_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 993532,
+      "SHA256": "42c250b8b9110382488c53c066a960bc564ddac2cb9e449f47b6cdbb5fc1cb60"
+    },
+    {
+      "Package": "openssh-sftp-server",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-sftp-server_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 65928,
+      "SHA256": "18d7ef7873861272b43b764295cbd8c04f439108fc3a4cecb3fe6e095f8ee2a8"
+    },
+    {
+      "Package": "runit-helper",
+      "Version": "2.15.2",
+      "Filename": "pool/main/d/dh-runit/runit-helper_2.15.2_all.deb",
+      "Size": 6520,
+      "SHA256": "fd08121947a1ea340d07e1b523591035419552ac151dfe6e241e8a748e15c36b"
+    },
+    {
+      "Package": "libwrap0",
+      "Version": "7.6.q-32",
+      "Filename": "pool/main/t/tcp-wrappers/libwrap0_7.6.q-32_amd64.deb",
+      "Size": 54936,
+      "SHA256": "cbce2669a3ba4d74cfdc52b14f38014893e23d85a33d109a3422c342eefc55f8"
+    },
+    {
+      "Package": "openssh-server",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-server_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 456584,
+      "SHA256": "933cd92a2329f9bf26d22660a834ae18ebdbe8df9c6127e4d9fcb098dac9cf72"
+    },
+    {
+      "Package": "openssl",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/openssl_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 1442052,
+      "SHA256": "6f43fb5e9f3ceb0e36c91d0a148282a8eaf174b441c17d3665b6ba049b33d2c2"
+    }
+  ],
+  "codespace_download_bytes": 7508700,
+  "windows_gh": {
+    "version": "2.81.0",
+    "file": "gh_2.81.0_windows_amd64.zip",
+    "bytes": 18317085,
+    "sha256": "8f5a19ee2271d20477c5c8d8204b65cd0ff6d73279417f5cdab49135516ca1b5",
+    "url": "https://github.com/cli/cli/releases/download/v2.81.0/gh_2.81.0_windows_amd64.zip",
+    "source": "https://api.github.com/repos/cli/cli/releases/tags/v2.81.0"
+  },
+  "windows_ssh": "Reuse existing native OpenSSH.Client only; exact OS-shipped version is a preflight dependency. If absent, stop: no native capability install or guessed OS-dependent download size is planned.",
+  "restarts": "No desktop restart or Codespace rebuild planned. Package updates may require restarting processes using old OpenSSL; do not restart existing work automatically. Block default ssh service autostart; inspect actual gh-managed loopback binding before any generation."
+}

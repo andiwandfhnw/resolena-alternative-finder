@@ -1,0 +1,7 @@
+[WebServer] usage: demo.py [-h] [--db DB] [--port PORT] [--clock-file CLOCK_FILE]
+[WebServer]                [--uncertain-save-file UNCERTAIN_SAVE_FILE]
+[WebServer]                [--delayed-save-file DELAYED_SAVE_FILE]
+[WebServer]                [--processing-error-file PROCESSING_ERROR_FILE]
+[WebServer] demo.py: error: Use a separate .sqlite3 database beneath build/test-only/
+Error: Process from config.webServer was not able to start. Exit code: 2
+

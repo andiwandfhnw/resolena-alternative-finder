@@ -1,0 +1,8 @@
+{
+    "status":  "exact_frozen_metadata_matched",
+    "cap_bytes":  10000000000,
+    "artifact_bytes":  8742855881,
+    "reserved_bundle_metadata_bytes":  1048576,
+    "utc":  "2026-10-13T19:08:08.4231346Z",
+    "measured_metadata_body_bytes":  76328
+}

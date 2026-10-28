@@ -1,0 +1,317 @@
+--- tests/unit/test_granite_controller_run.py (before)
++++ tests/unit/test_granite_controller_run.py
+@@ -6,6 +6,212 @@
+ 
+ from scripts.uc001_granite_acquisition_proxy.proxy import BudgetLedger, CEILING
+ from scripts.uc001_granite_controller.controller import ControllerFailure, run_session
++
++
++class BindingApi:
++    def __init__(self, backend):
++        self.backend = backend
++        self.reads = {}
++        self.closed = []
++    def process_id(self, handle):
++        pid = int(handle.split(':')[1])
++        return pid + 10 if self.backend.damage == 'handle_pid' and pid == 201 else pid
++    def creation_time(self, handle):
++        pid = int(handle.split(':')[1])
++        self.reads[pid] = self.reads.get(pid, 0) + 1
++        value = self.backend.facts[pid]['birth']
++        return value + 1 if self.backend.damage == 'birth_change' and pid == 201 and self.reads[pid] > 1 else value
++    def parent_pid(self, handle):
++        return self.backend.facts[int(handle.split(':')[1])]['parent']
++    def in_job(self, handle, job):
++        assert job == 'private-job'
++        return self.backend.facts[int(handle.split(':')[1])]['member']
++    def children_of(self, parents, timeout_seconds=1):
++        return {(pid, fact['parent']) for pid,fact in self.backend.facts.items()
++                if fact['parent'] in parents and fact['exit'] is None}
++    def open_query_process(self, pid):
++        assert pid in self.backend.facts
++        return 'query:' + str(pid)
++    def image_path(self, handle):
++        return self.backend.facts[int(handle.split(':')[1])].get('image', r'D:\Unknown\extra.exe')
++    def query_exit_code(self, handle):
++        code = self.backend.facts[int(handle.split(':')[1])]['exit']
++        return 259 if code is None else code
++    def system_console_path(self):
++        return r'R:\Windows\System32\conhost.exe'
++    def close_handle(self, handle):
++        self.closed.append(handle)
++
++
++class BindingBackend:
++    def __init__(self, split=True, damage=None, extra=False, helper=False):
++        from types import SimpleNamespace
++        self.handle, self.damage = 'private-job', damage
++        self.facts = {200:dict(birth=20000,parent=100,member=True,exit=None)}
++        if split:
++            self.facts[201] = dict(birth=20001,parent=200,member=True,exit=None)
++        if extra or helper:
++            self.facts[202] = dict(birth=20002,parent=200,member=True,exit=None,
++                                  image=r'R:\Windows\System32\conhost.exe' if helper else r'D:\Unknown\extra.exe')
++        if damage == 'parent':self.facts[201]['parent'] = 999
++        if damage == 'membership':self.facts[201]['member'] = False
++        self.api = BindingApi(self)
++        self.retained = {pid:SimpleNamespace(pid=pid,creation_time_100ns=fact['birth'],handle='process:'+str(pid))
++                         for pid,fact in self.facts.items()}
++    def validate_pid(self, pid, creation_time_100ns=None):
++        value = self.retained[pid]
++        if (creation_time_100ns is not None and value.creation_time_100ns != creation_time_100ns
++                or self.facts[pid]['member'] is not True):
++            raise ControllerFailure('synthetic exact Job identity mismatch')
++        return value
++    def process_exit(self, process):
++        return self.facts[process.pid]['exit']
++
++
++def proxy_identity(pid, birth, parent):
++    return dict(pid=pid,creation_time_100ns=birth,parent_pid=parent,in_any_job=True)
++
++
++def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
++    import hashlib
++    from scripts.uc001_granite_controller.controller import PhaseMonitor
++    backend = BindingBackend(split, damage, extra, helper)
++    launcher = proxy_identity(200,20000,100)
++    interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
++    ledger = tmp_path/'binding-ledger.jsonl'
++    writer = BudgetLedger(ledger, CEILING, 7)
++    writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
++    writer.record('end', status='closed_unqualified', sockets_closed=True)
++    writer.close()
++    plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
++    ack, journal = [], []
++    monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
++                           acknowledge=ack.append)
++    request = dict(event='proxy_binding_requested',schema=1,launcher=launcher,interpreter=interpreter,
++                   same_process=not split,ready_pid=interpreter['pid'])
++    start = [dict(event='phase_start',phase='acquisition'),
++             dict(event='proxy_launcher_started',schema=1,launcher=launcher)]
++    terminal = dict(event='acquisition_terminal',ledger_path=str(ledger),ledger_sha256=hashlib.sha256(ledger.read_bytes()).hexdigest(),
++                    cumulative_bytes=7,prior_bytes=7,proxy_launcher_pid=launcher['pid'],
++                    proxy_interpreter_pid=interpreter['pid'],proxy_identity_schema=1)
++    return monitor,backend,ack,journal,start,request,terminal
++
++
++def complete_proxy_binding(monitor,backend,request,terminal,omit=None):
++    pair = dict(schema=1,launcher=request['launcher'],interpreter=request['interpreter'],
++                listening_pid=request['interpreter']['pid'])
++    monitor.accept([dict(event='proxy_listening',**pair),dict(event='proxy_closing',**pair)])
++    for fact in backend.facts.values():fact['exit'] = 0
++    exits = [dict(event='proxy_interpreter_exit',schema=1,identity=request['interpreter'],exit_code=0,identity_verified=True),
++             dict(event='proxy_launcher_exit',schema=1,identity=request['launcher'],exit_code=0,identity_verified=True)]
++    monitor.accept([row for row in exits if row['event'] != omit]+[terminal,dict(event='phase_complete',phase='acquisition')])
++
++
++@pytest.mark.parametrize('split',[True,False])
++def test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits(tmp_path,split):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=split)
++    monitor.accept(start+[request])
++    assert ack==[b'PROXY_BOUND\n']
++    assert monitor.proxy.pid==request['interpreter']['pid']
++    complete_proxy_binding(monitor,backend,request,terminal)
++    assert monitor.finish()==7
++    cleanup=dict(verified=True,active_processes=0,owned_exits=[dict(pid=pid,creation_time_100ns=fact['birth'],exit_code=0)
++        for pid,fact in backend.facts.items()])
++    receipt=monitor.cleanup(cleanup)
++    assert receipt['verified'] is True
++    assert {row['role'] for row in receipt['identities']}=={'launcher','interpreter'}
++
++
++@pytest.mark.parametrize('damage',['parent','membership','birth_change','handle_pid'])
++def test_proxy_binding_native_identity_gaps_fail_before_private_ack(tmp_path,damage):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,damage=damage)
++    with pytest.raises((ControllerFailure,RuntimeError)):
++        monitor.accept(start+[request])
++    assert ack==[]
++
++
++def test_proxy_binding_wrong_readiness_pid_is_not_any_owned_pid(tmp_path):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
++    request['ready_pid']=200
++    with pytest.raises(ControllerFailure):monitor.accept(start+[request])
++    assert ack==[]
++
++
++@pytest.mark.parametrize('same_process',[True,False])
++def test_proxy_binding_same_process_flag_requires_actual_retained_identity(tmp_path,same_process):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=same_process)
++    request['same_process']=same_process
++    with pytest.raises(ControllerFailure):monitor.accept(start+[request])
++    assert ack==[]
++
++
++def test_proxy_binding_ledger_launcher_pid_is_rejected(tmp_path):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,ledger_pid=200)
++    monitor.accept(start+[request]);complete_proxy_binding(monitor,backend,request,terminal)
++    with pytest.raises(ControllerFailure):monitor.finish()
++
++
++@pytest.mark.parametrize('pid',[200,201])
++def test_proxy_binding_premature_launcher_or_interpreter_exit_fails(tmp_path,pid):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
++    monitor.accept(start+[request]);backend.facts[pid]['exit']=0
++    with pytest.raises(ControllerFailure):monitor.poll_proxy()
++
++
++@pytest.mark.parametrize('missing',['proxy_launcher_exit','proxy_interpreter_exit'])
++def test_proxy_binding_terminal_requires_both_role_exit_records(tmp_path,missing):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
++    monitor.accept(start+[request]);complete_proxy_binding(monitor,backend,request,terminal,omit=missing)
++    with pytest.raises(ControllerFailure):monitor.finish()
++
++
++def test_proxy_binding_unclassified_third_process_prevents_ack(tmp_path):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,extra=True)
++    with pytest.raises(ControllerFailure):monitor.accept(start+[request])
++    assert ack==[]
++
++
++def test_proxy_binding_reuses_closed_console_policy_and_verifies_helper_cleanup(tmp_path):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,helper=True)
++    monitor.accept(start+[request]);assert ack==[b'PROXY_BOUND\n']
++    complete_proxy_binding(monitor,backend,request,terminal);assert monitor.finish()==7
++    cleanup=dict(verified=True,active_processes=0,owned_exits=[dict(pid=pid,creation_time_100ns=fact['birth'],exit_code=0)
++        for pid,fact in backend.facts.items()])
++    receipt=monitor.cleanup(cleanup)
++    assert receipt['verified'] is True
++    assert 'query:202' in backend.api.closed
++
++
++@pytest.mark.parametrize('schema',[True,1.0])
++@pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
++def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
++    if stage=='launcher':
++        start[-1]['schema']=schema
++        with pytest.raises(ControllerFailure):monitor.accept(start)
++        return
++    if stage=='request':
++        request['schema']=schema
++        with pytest.raises(ControllerFailure):monitor.accept(start+[request])
++        return
++    monitor.accept(start+[request])
++    if stage=='listening':
++        row=dict(event='proxy_listening',schema=schema,launcher=request['launcher'],
++                 interpreter=request['interpreter'],listening_pid=201)
++        with pytest.raises(ControllerFailure):monitor.accept([row])
++        return
++    terminal['proxy_identity_schema']=schema
++    complete_proxy_binding(monitor,backend,request,terminal)
++    with pytest.raises(ControllerFailure):monitor.finish()
++
++
++def test_proxy_binding_missing_accepted_helper_handle_cannot_verify_cleanup(tmp_path):
++    monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,helper=True)
++    monitor.accept(start+[request]);complete_proxy_binding(monitor,backend,request,terminal)
++    monitor.proxy_queries[202]['handle']=None
++    cleanup=dict(verified=True,active_processes=0,owned_exits=[dict(pid=pid,creation_time_100ns=fact['birth'],exit_code=0)
++        for pid,fact in backend.facts.items()])
++    assert monitor.cleanup(cleanup)['verified'] is False
+ 
+ 
+ @dataclass
+@@ -32,6 +238,10 @@
+         self.closed = False
+         self.polls = 0
+         self.current = None
++        self.handle, self.damage = 'private-job', None
++        self.facts = {200:dict(birth=20000,parent=100,member=True,exit=None)}
++        self.api = BindingApi(self)
++        self.acks = []
+     def launch(self, *args, **kwargs):
+         if self.failure == 'interrupt':
+             raise KeyboardInterrupt()
+@@ -40,10 +250,17 @@
+         self.polls = 0
+         return self.current
+     def validate_pid(self, pid, creation_time_100ns=None):
++        if pid == 200:
++            from types import SimpleNamespace
++            if creation_time_100ns != 20000:
++                raise ControllerFailure('synthetic proxy birth differs')
++            if not hasattr(self,'proxy_process'):
++                self.proxy_process=SimpleNamespace(pid=200,creation_time_100ns=20000,handle='process:200')
++            return self.proxy_process
+         return Process(pid, creation_time_100ns or 10000)
+     def process_exit(self, proc):
+         if proc.pid == 200:
+-            return 0 if self.failure == 'proxy_exit' else None
++            return 0 if self.failure == 'proxy_exit' else self.facts[200]['exit']
+         self.polls += 1
+         return (1 if self.failure == 'worker' else 0) if self.polls >= 2 else None
+     def snapshot(self):
+@@ -54,7 +271,11 @@
+         self.polls = 2
+     def cleanup(self, **kwargs):
+         return dict(verified=self.clean, active_processes=0 if self.clean else 1,
+-                    owned_exits=[], errors=[] if self.clean else ['synthetic descendants remain'])
++                    owned_exits=[dict(pid=200,creation_time_100ns=20000,exit_code=0)],
++                    errors=[] if self.clean else ['synthetic descendants remain'])
++    def write_stdin(self, worker, data):
++        assert data == b'PROXY_BOUND\n'
++        self.acks.append(data)
+     def close(self):
+         self.closed = True
+ 
+@@ -84,8 +305,20 @@
+         return rows
+ 
+ 
+-def plans(tmp_path, proxy_exit=False, ledger_bad=False, manifest_bad=False):
++class BindingEvents:
++    def __init__(self,batches,backend):
++        self.batches,self.backend,self.reads=batches,backend,0
++    def read(self,terminal=False):
++        if self.reads==1:
++            assert self.backend.acks==[b'PROXY_BOUND\n']
++            self.backend.facts[200]['exit']=0
++        self.reads+=1
++        return self.batches.pop(0) if self.batches else []
++
++
++def plans(tmp_path, proxy_exit=False, ledger_bad=False, manifest_bad=False, backend=None):
+     import hashlib
++    backend=backend or Backend()
+     manifest=tmp_path/"built-artifacts.json"
+     manifest.write_text(json.dumps([dict(path=str(tmp_path/"bin/llama-server.exe"),bytes=1,sha256="0"*64)]))
+     ledger = tmp_path/'proxy.jsonl'
+@@ -95,16 +328,21 @@
+     writer.close()
+     if ledger_bad:
+         ledger.write_text('{"event":')
++    identity=proxy_identity(200,20000,100)
++    pair=dict(schema=1,launcher=identity,interpreter=identity,listening_pid=200)
+     rows = [dict(event='phase_start', phase='acquisition'),
+-            dict(event='child_started', label='proxy', pid=200, creation_time_100ns=20000, in_any_job=True),
+-            dict(event='proxy_started', pid=200, creation_time_100ns=20000, ledger=str(ledger))]
++            dict(event='proxy_launcher_started',schema=1,launcher=identity),
++            dict(event='proxy_binding_requested',schema=1,launcher=identity,interpreter=identity,
++                 same_process=True,ready_pid=200)]
++    terminal_rows=[]
+     if not proxy_exit:
+-        rows += [dict(event='proxy_closing',pid=200,creation_time_100ns=20000),
+-                 dict(event='child_exit',label='proxy',pid=200,creation_time_100ns=20000,in_any_job=True,exit_code=0),
+-                 dict(event='acquisition_terminal',ledger_path=str(ledger),ledger_sha256=__import__('hashlib').sha256(ledger.read_bytes()).hexdigest(),cumulative_bytes=7,prior_bytes=7,proxy_pid=200),
++        terminal_rows = [dict(event='proxy_listening',**pair),dict(event='proxy_closing',**pair),
++                 dict(event='proxy_interpreter_exit',schema=1,identity=identity,exit_code=0,identity_verified=True),
++                 dict(event='proxy_launcher_exit',schema=1,identity=identity,exit_code=0,identity_verified=True),
++                 dict(event='acquisition_terminal',ledger_path=str(ledger),ledger_sha256=__import__('hashlib').sha256(ledger.read_bytes()).hexdigest(),cumulative_bytes=7,prior_bytes=7,proxy_launcher_pid=200,proxy_interpreter_pid=200,proxy_identity_schema=1),
+                  dict(event='phase_complete',phase='acquisition')]
+     return [dict(name='acquisition',argv=['synthetic-acquisition'],cwd=str(tmp_path),env={},
+-                 stdoutfile=tmp_path/'acq.out',stderrfile=tmp_path/'acq.err',events_reader=Events(rows),
++                 stdoutfile=tmp_path/'acq.out',stderrfile=tmp_path/'acq.err',events_reader=BindingEvents([rows,terminal_rows],backend),stdin_pipe=True,
+                  expected_prior_bytes=7,ledgerpath=ledger),
+             dict(name='build',argv=['synthetic-build'],cwd=str(tmp_path),env={},
+                  stdoutfile=tmp_path/'build.out',stderrfile=tmp_path/'build.err',artifact_manifest=manifest,events_reader=Events([
+@@ -125,7 +363,7 @@
+ 
+ def execute(tmp_path, backend, sampler_change=None, **changes):
+     clock=Clock(); sampler=Sampler(clock,sampler_change)
+-    return run_session(backend,sampler,plans(tmp_path, **changes),clock=clock,
++    return run_session(backend,sampler,plans(tmp_path, backend=backend, **changes),clock=clock,
+                        sleep=clock.sleep,watchdog_factory=Watchdog)
+ 
+ 

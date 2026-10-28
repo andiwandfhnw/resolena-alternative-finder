@@ -1,0 +1,59 @@
+{
+  "recorded_on": "2026-10-27",
+  "scope": "Supplied-console JSON/content/link/hash consistency and read-only Git preservation checks only; no behavioral tests or Windows commands",
+  "consistent_with_existing_attempt": 2,
+  "new_attempt": false,
+  "actual_owner_attempts": 2,
+  "raw_console_preserved_exactly": true,
+  "raw_sha256": "f7ed9dc4dc7547f97a02672a2efa71779b8d72e5b52db7ab926b8dad38542456",
+  "extracted_json_matches_console": true,
+  "preflight_and_prospective_native_paths_match_existing_second_attempt": true,
+  "reported_manifest_controller_prior_hashes_match_local_preparation": true,
+  "reported_tool_versions": [
+    "git version 2.53.0.windows.2",
+    "cmake version 3.30.5-msvc23",
+    "1.12.1"
+  ],
+  "reported_tool_sdk_hashes": "Well-formed supplied console values only; desktop executable/component bytes not directly inspected",
+  "reported_resource_readings_meet_point_in_time_thresholds": true,
+  "workload_resource_fit_established": false,
+  "nested_structural_windows_entry_conditions_flag": "Remains false; separate from outer PowerShell tool/environment observations",
+  "all_earlier_verification_fields_and_both_attempts_unchanged": true,
+  "protected_existing_files": 213,
+  "changed_existing_files": [
+    "build/uc001-granite-native-handoff-v2/README.md",
+    "build/uc001-granite-native-handoff-v2/verification.json",
+    "docs/TASKS.md"
+  ],
+  "unchanged_existing_files": 210,
+  "missing_existing_files": [],
+  "markdown_changes_append_only": true,
+  "owner_command_blocks_unchanged": true,
+  "local_links_checked": 4,
+  "json_parsed": true,
+  "new_documentation_whitespace_clean": true,
+  "package_runtime_proxy_prior_previous_reports_and_receipts_unchanged": true,
+  "configuration_remains_inactive": true,
+  "desktop_files_inspected": false,
+  "windows_tests_preflight_closed_diagnostics_or_network_executed": false,
+  "source_build_execution_authorized": false,
+  "git_preservation": {
+    "branch --show-current": "unchanged",
+    "rev-parse HEAD": "unchanged",
+    "status --short": "unchanged",
+    "diff --cached --raw": "unchanged",
+    "ls-files --stage": "unchanged"
+  },
+  "git_diff_check": {
+    "exit_code": 2,
+    "output": "docs/TASKS.md:3399: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "historical_warning_preserved": true
+  },
+  "artifact_sha256": {
+    "README.md": "8db819b0e15528658f90a3abad83c72a0226e13410868c1c10bedf83219ace64",
+    "verification.json": "1d58ea0eb2d2f16423a31dc832c9c11415188967ef995c52dfdad949a7db4894",
+    "docs/TASKS.md": "90185e02260f3b5581f21a6ca60f6ada8a3c9b42ebdcb6f80a6111fe29049743",
+    "owner-preflight-results-2026-10-27/owner-success-console.txt": "f7ed9dc4dc7547f97a02672a2efa71779b8d72e5b52db7ab926b8dad38542456",
+    "owner-preflight-results-2026-10-27/owner-success-result.json": "29a2311ef99a230d433f215f11ffe2103985c71eb5a1c210560968d51ad404c0"
+  }
+}

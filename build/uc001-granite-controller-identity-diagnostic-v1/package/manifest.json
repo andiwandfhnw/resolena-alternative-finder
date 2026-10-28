@@ -1,0 +1,14 @@
+{
+  "version": "uc001-granite-controller-identity-diagnostic-v1",
+  "execution_authorized": false,
+  "purpose": "offline-prepared-scoped-unknown-identity-diagnostic",
+  "files": {
+    "README.md": "d5137b1af8409245ce8a4d85240f051c1c5f0b5b869dfb0a83c83623692a01c1",
+    "Run-IdentityDiagnostic.ps1": "63691878d45d1783772c72566331e5eaa28a635d5764b1a98026e923ee94ca91",
+    "controller-config.template.json": "cd952dd74eeb65dcb534a9ac08500fbe4aa689b2d54fbbe6bde3c6f37b4f7115",
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "standins.py": "ba9fc0933d55a1cc63cd66fd8cfd465c2bcabc86df03b354f9c7764449438fa2",
+    "windows_job.py": "ed3a7f03b033679716f04e213e9aac53f8c4c143abe0904886650ac82cfbacf3",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891"
+  }
+}

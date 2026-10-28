@@ -1,0 +1,20 @@
+[WebServer] INFO:     Started server process [18534]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:18560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:18583) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (858ms)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:101:7 › prepared synthetic product comparison retains its specific meaning and evidence (677ms)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:101:7 › prepared synthetic habit comparison retains its specific meaning and evidence (733ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [18534]
+
+  3 passed (5.3s)

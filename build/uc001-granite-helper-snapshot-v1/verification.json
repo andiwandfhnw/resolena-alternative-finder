@@ -1,0 +1,125 @@
+{
+  "version": "uc001-granite-helper-snapshot-v1",
+  "recorded_on": "2026-10-27",
+  "phase": 3,
+  "status": "in-progress",
+  "authorization": "One bounded offline follow-up to admitted-helper count/owned-row observation ordering",
+  "execution_authorized": false,
+  "windows_execution": false,
+  "native_windows_verification_of_changed_source": false,
+  "resource_fit_established": false,
+  "advisor_review_basis": "Advisor checked previous controller/diff/definitions; no independent rerun of the entire 79-test suite is claimed.",
+  "pre_fix_controller_sha256": "790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179",
+  "direct_red": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_run.py::test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows"
+    ],
+    "exit_code": 1,
+    "result": "1 failed in0.25s",
+    "log": "snapshot-order-red.log",
+    "schedule": "snapshot-order-red-schedule.json",
+    "actual_function": "controller.run_session",
+    "evidence_class": "Native-source-consistent injected observation ordering, not Windows execution"
+  },
+  "final_green": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_run.py",
+      "tests/unit/test_granite_controller_cli.py"
+    ],
+    "exit_code": 0,
+    "result": "92 passed in2.07s",
+    "actual_default_file_cases": 87,
+    "new_snapshot_followup_cases": 13,
+    "existing_config_cases": 5,
+    "log": "green-final-focused.log"
+  },
+  "changed_existing_files": [
+    "docs/TASKS.md",
+    "scripts/uc001_granite_controller/controller.py",
+    "tests/unit/test_granite_controller_run.py"
+  ],
+  "minimal_source_diff": "controller.py.diff",
+  "focused_test_diff": "test_granite_controller_run.py.diff",
+  "current_helper_input_sha256": {
+    "scripts/uc001_granite_controller/controller.py": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+    "scripts/uc001_granite_controller/worker.py": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+    "scripts/uc001_granite_controller/standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "scripts/uc001_granite_controller/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "scripts/uc001_granite_contract_v1/config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+    "build/uc001-granite-prior-accounting-final-v1/prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a"
+  },
+  "reconciliation": {
+    "prior_evidence": "Already admitted helper with a retained native observation that it was active.",
+    "exit_proof": "Stable PID/birth and matching owned-handle, query-handle and owned-row exit evidence.",
+    "allowed_discrepancy": "Earlier native count minus later active rows exactly equals newly confirmed eligible helper exits; each transition is usable once.",
+    "contradictory_observation": "Always pending; never build permission or replacement of the native count.",
+    "advance_requirement": "A fresh consistent zero-active observation with the required retained exit proof.",
+    "failure_preserved": "Unknown or replaced active identities, unexplained or repeated counts, missing evidence and reversed exit observations remain fatal.",
+    "supervision": "Existing watchdog, resource checks and phase deadline remain active; no new grace period, reset, direct termination or Job teardown."
+  },
+  "backend_contract_changed": false,
+  "helper_admission_policy_changed": false,
+  "independent_read_only_safety_review": "Passed; no blocking issue found; no tests or native/network actions by reviewer",
+  "historical_79_pass_receipt": "Preserved unchanged as historical evidence; not overwritten or reclassified.",
+  "closed_windows_diagnostics": "Both remain CLOSED; packages/results unchanged, no reruns or credit to this changed loop.",
+  "limits": [
+    "Backend snapshot remains non-atomic; reconciliation does not assert that the contradictory observation was consistent.",
+    "All process/native/resource/clock boundaries are injected; Windows behavior and resource fit are not established.",
+    "No live proxy, network, acquisition, build, compiler/glslc, GPU/server/inference, installation or Git delivery.",
+    "Execution drafts remain inactive; no new package or desktop execution instruction.",
+    "Final handoff-readiness acceptance remains pending owner review."
+  ],
+  "preservation": {
+    "protected_existing_files": 1671,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/controller.py",
+      "tests/unit/test_granite_controller_run.py"
+    ],
+    "unchanged_existing_files": 1668,
+    "missing_existing_files": [],
+    "historical_tasks_text_preserved": true,
+    "original_test_bodies_preserved": true,
+    "source_change_limited_to_PhaseMonitor": true,
+    "backend_worker_helper_admission_proxy_prior_frozen_and_all_old_receipts_unchanged": true,
+    "previous_79_pass_receipt_unchanged": true,
+    "drafts_remain_inactive": true,
+    "local_links_checked": 12,
+    "new_json_parsed": true,
+    "new_documentation_whitespace_clean": true,
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "git_status_branch_head_index_unchanged": true,
+    "cached_diff_empty": true,
+    "git_diff_check_exit_code": 2,
+    "git_diff_check_output": "docs/TASKS.md:3255: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "artifact_sha256": {
+    "README.md": "29fb4c51ee83858eef3b6c094888b9cefee1bd749d440467a7c4d7cb75a13e4f",
+    "TASKS.md.diff": "965703a9af49ad49edb00c6aea0f2f9a84aa0449daaf49cc0f44cc4b2311d5a2",
+    "before-controller.py": "790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179",
+    "before-test_granite_controller_run.py": "e4154beb13bfba102745d375d1af1dd4cdb7e5e882de56db2c2410e9180ce7cc",
+    "controller.py.diff": "5eddb1abbe47bcee0c74bdf3879728577affaf9716f0eec8f36a5242361a73a8",
+    "git-diff-check.txt": "d9e77a6bb42ae88b99117ba74e82520affdd10b0acb8716ae97b3b72f8c3b4d6",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "green-final-command.json": "7abe1989ebba20821a0a4f117edaefe88661593cf35fabacd21ee752e995b7fb",
+    "green-final-focused.log": "a6a54a3d22ad68ad87b9711edc4c47ade12cf2346dea46a39b14b29ea79bc892",
+    "helper-hashes.json": "9e615579269dc37f13891c1581cf92b19a30a307ced08f1ee798221bb0236348",
+    "preservation-checks.json": "2bacaa1b78d9a5009f18ff9f40021c357acdc0e36443959701e489e15cbf1dc1",
+    "snapshot-green-first-command.json": "9a783b663599852e8bc24b3b4dcfd1a7a5880aa5ce5bc64702277dba4332e664",
+    "snapshot-green-first.log": "42f39810f1d1996c569e81c93979cd39c940b542c87a156f05b60ed79af005d8",
+    "snapshot-order-red-command.json": "edd3f3ba22239a6ae82014d85a77e4b69e7ebdb726433cece4cae3af55becc6a",
+    "snapshot-order-red-schedule.json": "caf03ab7e36ae58c487df06b0b2433e461a243a1d7f0d5189c864c8d58462593",
+    "snapshot-order-red.log": "54955f059eb3a0709c8f5950d296e1c6f644976ef8d92390756fc1d86204d48d",
+    "test_granite_controller_run.py.diff": "9e0e62653fe350341728d0fed957be52496f6f13a8fa7acd6b30ca7f4b7afadf"
+  }
+}

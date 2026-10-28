@@ -1,0 +1,161 @@
+--- before/test_granite_controller_run.py
++++ test_granite_controller_run.py
+@@ -541,11 +541,15 @@
+         self.direct_terminations = []
+         self.api.terminate_process = self.direct_terminations.append
+         self.post_ack_launcher_polls = 0
++        self.phase_snapshot_calls = 0
++        self.snapshot_exit_observed = False
+     def launch(self, *args, **kwargs):
+         assert self.closed is False, 'private Job closed between phases'
+         if self.launched:
+             assert self.reader.terminal_delivered, 'build before acquisition terminal'
+             assert all(fact['exit'] == 0 for fact in self.facts.values()), 'build before zero active'
++            if self.snapshot_exit_observed:
++                assert 'fresh_consistent_zero_snapshot' in self.timeline, 'build on contradictory snapshot'
+         result = super().launch(*args, **kwargs)
+         self.timeline.append('launch:'+str(result.pid))
+         return result
+@@ -580,6 +584,29 @@
+             return 0 if self.worker_exited else None
+         return super().process_exit(process)
+     def snapshot(self):
++        if self.worker_exited:
++            self.phase_snapshot_calls += 1
++        snapshot_race = self.damage is not None and self.damage.startswith('snapshot_')
++        early_count = None
++        if snapshot_race and self.worker_exited:
++            if self.phase_snapshot_calls == 1:
++                early_count = sum(fact['exit'] is None for fact in self.facts.values())
++                self.waiting = self.snapshot_exit_observed = True
++                self.timeline.append('snapshot_count_observed:'+str(early_count))
++                self.facts[202]['exit'] = 0
++                self.timeline.append('helper_exited_before_owned_rows')
++                if self.damage == 'snapshot_deadline': self.clock.now += 1801
++                if self.damage == 'snapshot_unexplained_count': early_count += 1
++                if self.damage == 'snapshot_unknown':
++                    self.facts[203] = dict(birth=30000,parent=999,member=True,exit=None)
++                if self.damage == 'snapshot_changed_birth': self.facts[202]['birth'] = 90000
++            elif self.damage == 'snapshot_unavailable':
++                raise ControllerFailure('injected fresh snapshot unavailable')
++            elif self.damage == 'snapshot_never_zero':
++                early_count = 1
++            elif self.damage == 'snapshot_resurrected' and self.phase_snapshot_calls == 2:
++                self.facts[202]['exit'] = None
++                self.timeline.append('owned_row_resurrected_after_confirmed_exit')
+         if self.worker_exited and 202 in self.facts and self.facts[202]['exit'] is None:
+             self.waiting = True
+             self.helper_snapshots += 1
+@@ -591,9 +618,15 @@
+                 self.facts[202]['exit'] = 0
+                 self.timeline.append('verified_helper_exited')
+         active = [pid for pid, fact in self.facts.items() if fact['exit'] is None]
+-        return dict(active_processes=len(active), job_committed_bytes=1024,
+-                    owned=[dict(pid=pid,creation_time_100ns=fact['birth'],in_job=fact['member'],
+-                                exit_code=fact['exit']) for pid,fact in self.facts.items()])
++        count = len(active) if early_count is None else early_count
++        if snapshot_race and self.phase_snapshot_calls > 1 and count == 0 and not active:
++            self.timeline.append('fresh_consistent_zero_snapshot')
++        owned = [dict(pid=pid,creation_time_100ns=fact['birth'],in_job=fact['member'],
++                      exit_code=fact['exit']) for pid,fact in self.facts.items()]
++        if self.snapshot_exit_observed and self.damage == 'snapshot_missing_owned_row':
++            owned = [row for row in owned if row['pid'] != 202]
++        return dict(active_processes=count, job_committed_bytes=1024,
++                    owned=owned)
+     def cleanup(self, **kwargs):
+         self.timeline.append('final_job_cleanup')
+         rows = [dict(pid=pid,creation_time_100ns=fact['birth'],exit_code=0)
+@@ -690,7 +723,8 @@
+         def latest(self):
+             value = super().latest()
+             if (damage == 'reconcile_resource' and backend.proxy_exit_observed
+-                    or damage == 'helper_resource' and backend.waiting):
++                    or damage == 'helper_resource' and backend.waiting
++                    or damage == 'snapshot_resource' and backend.snapshot_exit_observed):
+                 value['disk_free_bytes'] = 8589934591
+             return value
+     sampler = LifecycleSampler(clock)
+@@ -701,6 +735,19 @@
+         backend.api.close_handle = failed_close
+     if damage == 'helper_query_exit':
+         backend.api.query_exit_code = lambda handle: 259
++    if damage == 'snapshot_exit_unavailable':
++        original_exit = backend.process_exit
++        backend.process_exit = lambda process: None if process.pid==202 and backend.snapshot_exit_observed else original_exit(process)
++    if damage == 'snapshot_no_admission_active':
++        original_exit = backend.process_exit
++        backend.process_exit = lambda process: 0 if process.pid==202 and not backend.worker_exited else original_exit(process)
++    if damage == 'snapshot_query_unavailable':
++        original_query = backend.api.query_exit_code
++        def unavailable_query(handle):
++            if handle == 'query:202' and backend.snapshot_exit_observed:
++                raise OSError('injected snapshot helper query unavailable')
++            return original_query(handle)
++        backend.api.query_exit_code = unavailable_query
+     if damage == 'helper_query_race':
+         def query_after_native_exit(handle):
+             pid = int(handle.split(':')[1])
+@@ -721,7 +768,8 @@
+             return original_image(handle)
+         backend.api.image_path = unavailable_image
+     def sleep(amount):
+-        if backend.waiting and damage in ('helper_timeout','helper_deadline'):
++        if (backend.waiting and damage in ('helper_timeout','helper_deadline')
++                or backend.snapshot_exit_observed and damage == 'snapshot_deadline'):
+             clock.now += 1801
+         else:
+             clock.sleep(amount)
+@@ -818,3 +866,53 @@
+     assert backend.terminated==0 and backend.direct_terminations==[]
+     assert backend.api.closed==['query:202']
+     assert result['proxy_identity_cleanup'][0]['verified'] is True
++
++
++def test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows(tmp_path):
++    result, backend = lifecycle_session(tmp_path,'helper_lag','snapshot_helper_exit')
++    assert result['status']=='controlled_phases_passed', result
++    assert backend.timeline.index('snapshot_count_observed:1') < backend.timeline.index('helper_exited_before_owned_rows')
++    assert backend.timeline.index('helper_exited_before_owned_rows') < backend.timeline.index('fresh_consistent_zero_snapshot')
++    assert backend.timeline.index('fresh_consistent_zero_snapshot') < backend.timeline.index('launch:101')
++    assert backend.phase_snapshot_calls>=2
++    assert backend.terminated==0 and backend.direct_terminations==[]
++    assert backend.watchdog.helper_wait_beats>=1
++    assert result['proxy_identity_cleanup'][0]['verified'] is True
++
++
++@pytest.mark.parametrize('damage', ['snapshot_unexplained_count','snapshot_unknown',
++                                  'snapshot_changed_birth','snapshot_missing_owned_row',
++                                  'snapshot_exit_unavailable','snapshot_query_unavailable'])
++def test_default_session_snapshot_reconciliation_rejects_unexplained_or_unverified_state(tmp_path, damage):
++    result, backend = lifecycle_session(tmp_path,'helper_lag',damage)
++    assert result['status']=='failure', result
++    assert backend.snapshot_exit_observed is True
++    assert len(backend.launched)==1 and backend.terminated>=1
++    assert backend.direct_terminations==[]
++
++
++@pytest.mark.parametrize('damage', ['snapshot_never_zero','snapshot_unavailable','snapshot_resurrected'])
++def test_default_session_snapshot_reconciliation_requires_fresh_consistent_zero(tmp_path, damage):
++    result, backend = lifecycle_session(tmp_path,'helper_lag',damage)
++    assert result['status']=='failure', result
++    assert backend.phase_snapshot_calls==2
++    assert 'fresh_consistent_zero_snapshot' not in backend.timeline
++    assert len(backend.launched)==1 and backend.terminated>=1
++    assert backend.direct_terminations==[]
++
++
++def test_default_session_snapshot_exit_credit_requires_prior_retained_active_evidence(tmp_path):
++    result, backend = lifecycle_session(tmp_path,'helper_lag','snapshot_no_admission_active')
++    assert result['status']=='failure', result
++    assert len(backend.launched)==1 and backend.terminated>=1
++    assert backend.direct_terminations==[]
++
++
++@pytest.mark.parametrize('damage', ['snapshot_deadline','snapshot_resource'])
++def test_default_session_snapshot_reconciliation_preserves_deadline_and_resource_checks(tmp_path, damage):
++    result, backend = lifecycle_session(tmp_path,'helper_lag',damage)
++    assert result['status']=='failure', result
++    assert backend.snapshot_exit_observed is True
++    assert 'deadline' in result['reason'] if damage=='snapshot_deadline' else 'disk_floor' in result['reason']
++    assert len(backend.launched)==1 and backend.terminated>=1
++    assert backend.direct_terminations==[]

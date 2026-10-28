@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-14T18:16:48.883976+00:00",
+  "classification": "Offline synthetic harness checks only",
+  "exit_code": 0,
+  "elapsed_seconds": 0.5095872399999735,
+  "test_names": [
+    "test_known_gate_assesses_all_six",
+    "test_failing_known_v2_blocks_fresh",
+    "test_v1_content_failure_permitted_v2_failure_stops",
+    "test_either_arm_operational_failure_stops",
+    "test_wrong_arm_and_wrong_request_are_rejected",
+    "test_stale_receipt_rejected",
+    "test_deadline_expiry_refuses_continuation",
+    "test_capacity_boundary_and_missing_offload",
+    "test_exact_quote_grounding_not_repaired",
+    "test_required_device_and_kv_records_before_generation",
+    "test_all_eight_checkpoints_and_final_v1",
+    "test_final_export_requires_confirmed_exits_and_cleanup",
+    "test_archive_safety_and_windows_member_names",
+    "test_cli_transfer_and_closeout_on_separate_synthetic_copy"
+  ],
+  "stdout": "{\n  \"checkpoint\": \"cp06\",\n  \"allowed\": true,\n  \"v2_strict_passes\": 6,\n  \"v1_request_count\": 0,\n  \"receipt_sha256\": \"39ee30503f79559eb590197f08171fde94efc86f4490647cb19ee934369138da\",\n  \"reason\": \"continue exact frozen order\"\n}\nConfirmed recorded exits/cleanup; live Windows state remains unverified.\n",
+  "stderr": "..............\n----------------------------------------------------------------------\nRan 14 tests in 0.260s\n\nOK\n",
+  "Windows_PowerShell_executed": false,
+  "actual_token_capacity_measured": false,
+  "inference_requests": 0,
+  "heldout_contents_read": false,
+  "test_source_sha256": "2d65cdd8e29c50bd59e1f55cff5840b797cb6d6ef490f808ddeeed454c1b1aff"
+}

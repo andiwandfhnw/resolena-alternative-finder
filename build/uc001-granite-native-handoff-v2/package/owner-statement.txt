@@ -1,0 +1,54 @@
+Owner accounting statement — Granite acquisition allowance
+
+I confirm as project owner that, before the currently prepared metered
+Granite acquisition path, there were no completed, partial, interrupted or
+failed downloads of Granite model weights or llama.cpp/runtime source that
+must be charged against this Granite model/source acquisition allowance.
+
+Specifically, for this allowance I confirm:
+
+- Granite model/source prior acquisition charge: 0 bytes.
+- No Granite model-weight download occurred.
+- No partial or failed Granite model-weight transfer occurred.
+- No llama.cpp/runtime-source acquisition for this Granite preparation
+  occurred.
+- No partial or failed llama.cpp/runtime-source transfer occurred.
+- Existing Python, Python-wheel, Vulkan SDK, controller/package/handoff and
+  other prerequisite downloads are outside this defined model/source
+  acquisition allowance.
+- Historical Qwen downloads belong to separate closed experiments and are
+  not Granite prior charges.
+
+This is an explicit complete owner accounting statement, not an inference
+from isolated preparation runs.
+
+Use this owner statement only to prepare the final SHA-bound Granite
+prior-accounting receipt.
+
+Authorize OFFLINE receipt preparation only.
+
+Requirements:
+- previously_charged_bytes = 0 only on the basis of this explicit owner
+  statement;
+- accounting_complete = true;
+- preserve cumulative ceiling = 10737418240 bytes;
+- no allowance reset or renewal;
+- bind the receipt to the accepted proxy SHA-256:
+  a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d
+- bind the applicable frozen/native preparation identities;
+- include exact schema/version and evidence provenance;
+- compute and return the final receipt SHA-256;
+- verify against the actual proxy load_prior contract and controller
+  preflight offline.
+
+Do NOT authorize or execute:
+- Windows native work;
+- live proxy/network;
+- source acquisition;
+- configure/build/compiler/glslc;
+- GPU/model/inference.
+
+No stage/commit/push/branch switch/reset.
+
+PHASE: 3 / STATUS: in-progress.
+Stop after final prior-accounting receipt preparation for owner review.

@@ -1,0 +1,9 @@
+{
+  "installed_site_entries": [
+    "lingua_language_detector-2.2.0.dist-info",
+    "lingua"
+  ],
+  "metadata_matches_publisher": true,
+  "license_matches_publisher": true,
+  "inspection": "Read-only; no package import or detector call"
+}

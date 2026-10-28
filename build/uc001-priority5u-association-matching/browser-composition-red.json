@@ -1,0 +1,273 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v24.21.0/bin/node",
+      "/workspaces/resolena-alternative-finder/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "browser displays exactly|explicit locality confirmation saves|unavailable locality requires explicit country-only",
+      "--trace=off",
+      "--output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspaces/resolena-alternative-finder/frontend/playwright.config.ts",
+    "rootDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "snapshotDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "trace": "off"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "saved-comparison.spec.ts",
+      "file": "saved-comparison.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "browser displays exactly the committed API comparison and stable database identities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2831,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:13:59.875Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-691418fd2f1c4708ef96",
+          "file": "saved-comparison.spec.ts",
+          "line": 39,
+          "column": 5
+        },
+        {
+          "title": "explicit locality confirmation saves reference-unverified intent without unsupported coverage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 726,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:271:36",
+                    "location": {
+                      "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                      "column": 36,
+                      "line": 271
+                    },
+                    "snippet": "  269 |   expect(clarificationBody.outcome).toBe('clarification_required')\n  270 |   expect(clarificationBody.persistence).toEqual({ state: 'not_attempted' })\n> 271 |   expect(clarificationBody.issues).toEqual([{ code: 'locality_reference_unavailable' }])\n      |                                    ^\n  272 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('cannot currently be verified')\n  273 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('Confirmation establishes intended scope only.')\n  274 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('does not verify existence, town/postcode identity, delivery, service coverage or nearby applicability')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 36,
+                        "line": 271
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  269 |   expect(clarificationBody.outcome).toBe('clarification_required')\n  270 |   expect(clarificationBody.persistence).toEqual({ state: 'not_attempted' })\n> 271 |   expect(clarificationBody.issues).toEqual([{ code: 'locality_reference_unavailable' }])\n      |                                    ^\n  272 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('cannot currently be verified')\n  273 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('Confirmation establishes intended scope only.')\n  274 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('does not verify existence, town/postcode identity, delivery, service coverage or nearby applicability')\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:271:36"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:14:14.188Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red/saved-comparison-explicit--2ad39-ithout-unsupported-coverage/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                    "column": 36,
+                    "line": 271
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-d015cb72cb9a4ec71074",
+          "file": "saved-comparison.spec.ts",
+          "line": 248,
+          "column": 5
+        },
+        {
+          "title": "unavailable locality requires explicit country-only continuation before saving",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 751,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:1753:38",
+                    "location": {
+                      "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                      "column": 38,
+                      "line": 1753
+                    },
+                    "snippet": "  1751 |     expect(clarificationBody.outcome).toBe('clarification_required')\n  1752 |     expect(clarificationBody.persistence).toEqual({ state: 'not_attempted' })\n> 1753 |     expect(clarificationBody.issues).toEqual([{ code: 'locality_reference_unavailable' }])\n       |                                      ^\n  1754 |     await expect(page.getByRole('region', { name: 'Clarification' })).toContainText('cannot currently be verified')\n  1755 |     await expect(page.getByLabel('Describe your request')).toHaveValue(example)\n  1756 |     await expect(page.getByLabel('Search country')).toHaveValue('CH')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 38,
+                        "line": 1753
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[32m-     \"code\": \"locality_reference_unavailable\",\u001b[39m\n\u001b[31m+     \"code\": \"locality_reference_unknown\",\u001b[39m\n\u001b[2m    },\u001b[22m\n\u001b[2m  ]\u001b[22m\n\n  1751 |     expect(clarificationBody.outcome).toBe('clarification_required')\n  1752 |     expect(clarificationBody.persistence).toEqual({ state: 'not_attempted' })\n> 1753 |     expect(clarificationBody.issues).toEqual([{ code: 'locality_reference_unavailable' }])\n       |                                      ^\n  1754 |     await expect(page.getByRole('region', { name: 'Clarification' })).toContainText('cannot currently be verified')\n  1755 |     await expect(page.getByLabel('Describe your request')).toHaveValue(example)\n  1756 |     await expect(page.getByLabel('Search country')).toHaveValue('CH')\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:1753:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:14:15.618Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red/saved-comparison-unavailab-ff596--continuation-before-saving/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                    "column": 38,
+                    "line": 1753
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-c65502fcdb09c7ab3e96",
+          "file": "saved-comparison.spec.ts",
+          "line": 1721,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T18:13:52.820Z",
+    "duration": 23941.527000000002,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

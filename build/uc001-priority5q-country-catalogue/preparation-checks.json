@@ -1,0 +1,30 @@
+{
+  "counts": {
+    "source_rows": 252,
+    "included": 249,
+    "excluded": 2,
+    "unresolved": 1
+  },
+  "all_source_rows_accounted_once": true,
+  "all_source_names_verbatim": true,
+  "all_source_listed_territories_retained_except_explicit_disposition_ledger": true,
+  "no_global_country_count_assumed": true,
+  "normalized_fields_only": [
+    "code",
+    "name"
+  ],
+  "BQ_edge_whitespace_preserved": true,
+  "successful_document_hashes_and_local_links_match": true,
+  "failed_license_download_has_no_claimed_local_path": true,
+  "attribution_license_links_match_retained_publisher_readme": true,
+  "web_link_verification": "GeoNames source/readme and linked CC BY4.0 deed read via web tool; direct source/readme200 and deed403 outcomes retained.",
+  "pending_human_review_and_runtime_disabled": true,
+  "pinned_reproduction_command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output docs/reference/COUNTRIES-GEONAMES-DRAFT.json --manifest docs/reference/COUNTRIES-GEONAMES-MANIFEST.json --prepared-at 2026-10-23T08:43:02+00:00",
+  "reproduction_exit_code": 0,
+  "output_manifest_and_raw_source_byte_identical_after_reproduction": true,
+  "wrong_pin_command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 0000000000000000000000000000000000000000000000000000000000000000 --output /tmp/resolena-priority5q-bounded-idozrisy/rejected-draft.json --manifest /tmp/resolena-priority5q-bounded-idozrisy/rejected-manifest.json --prepared-at 2026-10-23T08:43:02+00:00",
+  "wrong_pin_exit_code": 1,
+  "wrong_pin_rejected_before_any_output": true,
+  "raw_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+  "normalized_sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343"
+}

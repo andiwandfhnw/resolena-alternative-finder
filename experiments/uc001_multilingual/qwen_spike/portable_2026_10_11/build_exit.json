@@ -1,0 +1,13 @@
+{
+  "name": "build",
+  "command": [
+    "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/cmake-3.31.6-linux-x86_64/bin/cmake",
+    "--build",
+    "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/compiled",
+    "--target",
+    "llama-server",
+    "-j1"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 785.2876769049999
+}

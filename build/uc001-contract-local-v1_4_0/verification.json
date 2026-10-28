@@ -1,0 +1,167 @@
+{
+  "version": "uc001-contract-local-1.4.0-proposed",
+  "recorded_utc": "2026-10-18T19:07:02.023629+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Record supplied combined Windows pass; prepare corrected execution proposal only. No model/transport execution or further diagnosis.",
+  "owner_windows_verification": {
+    "record": "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/verification.json",
+    "transcript": "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/windows-transcript.owner-provided.txt",
+    "provenance": "Attached owner-provided transcript preserved byte-for-byte; separate JSON text slices retain supplied values. Not independently collected Windows originals.",
+    "bytes": 36732,
+    "sha256": "42c8fb079bf2b952b54ef117990ff665ca824e0efda7e72e8d5e93cd34936aaf",
+    "outcome": "combined_native_python_and_cleanup_passed",
+    "elapsed_ms": 1180,
+    "exit_code_owner_reported": 0,
+    "established": "Native binding, actual Python ownership validator, fresh native revalidation, owned job closure and all five creation-bound exits.",
+    "issue_status": "closed for tested combined stand-in setup",
+    "not_established": "Model/GPU readiness, historical model-run helper legitimacy, semantic correctness.",
+    "historical_failure_preserved": "Earlier failed result still has cleanup_confirmed:false; no previous receipts/packages rewritten."
+  },
+  "proposal": {
+    "attempt_identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "previous_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+    "prior_allowances": "Both consumed; unchanged. Historical generation counts not inferred.",
+    "additional_startups": 1,
+    "maximum_generations": 14,
+    "order": "unchanged exposed cases 1 through 14",
+    "execution_approved": false,
+    "approval_gate": "Separate exact owner record bound to proposal hash, freeze hash and all linked identities. Pending template stays false. No auto-approval or ledger reset.",
+    "retry": false,
+    "downloads": false,
+    "tuning": false,
+    "purpose": "technical_feasibility_only"
+  },
+  "changes": {
+    "helpers": "PythonOwnership.cs, Python-Ownership.ps1, harness_checks.py and DeadlineGuard.cs copied byte-for-byte from the owner-verified combined check; frozen helper hashes enforced by load_preparation.",
+    "launcher": "Native full server identity read from held process/job; original PID/creation monitor retained. Initial and ongoing binding pass held server, complete launch identity and trusted pinned runtime executable. Full identity retained for cleanup. Prior-attempt links recorded in prospective reservation/startup/result metadata.",
+    "capture": "Full server receipt PID/creation/path and recorded proof consistency checked, then unchanged live Python validator called with trusted runtime executable before settings/ledger/generation. Same shared adapter/domain/check_case_state and RunBudget; next generation still requires validation and supervisor acknowledgment.",
+    "replay": "Same verified policy with explicitly recorded identity readers; no fresh native query claim. Server/redirector/interpreter and both helper exits must match role, PID, creation time and exact native membership proof. No network fallback or live API credit.",
+    "handoff": "Complete future Windows sequence reuses only a source extraction matching every archive file with no extra files. Existing approval bytes preserved; shared Python gate decides validity before asset checks/startup. New approval creation requires actual owner reference and CreateNew. Already reserved attempt still rejected."
+  },
+  "unchanged": {
+    "runtime_executable": "C:\\ResolenaExperiments\\qwen3-8b-v1\\runtime\\llama-server.exe",
+    "runtime_commit": "d81235049384534c167caea52b85a694f6103d14",
+    "model": "retained Qwen3-8B Q8_0; candidate only",
+    "pins_prompt_schema_cases": "Parent frozen bundle unchanged; same generated-schema equality rule; 14 ordered exposed inputs unchanged.",
+    "resources_and_deadlines": "All parent resource thresholds, caps, sampling and 2400/1500/90-second limits unchanged; same independent 90000ms request guard including prompt-fit/shared validation/case checks. Output CLI/request cap 3072; reported task default -1 remains separate.",
+    "privacy_and_ownership": "Authenticated loopback, proxy bypass, bounded exact request/response capture, private incomplete/secret-bearing bodies, owned job/held-handle cleanup, independent failure channels preserved.",
+    "review": "Original partial DE/EN/dialect and unapproved-case records/hash bindings unchanged; expected_meanings_approved:false; qualified semantic review pending."
+  },
+  "tdd": {
+    "red": [
+      {
+        "test": "test_corrected_capture_imports_windows_verified_policy_in_its_own_package",
+        "result": "Failed against copied v1.3.0 wiring: capture still imported the old package validator. 1 failed in 0.38s."
+      },
+      {
+        "test": "test_corrected_actual_windows_handoff_reuse_controls_offline[matching]",
+        "result": "Failed against copied handoff: missing matching-extraction function; previous handoff rejected an existing extraction. 1 failed in 0.58s."
+      }
+    ],
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_additional_attempt.py tests/unit/test_contract_local.py::test_capture_and_replay_use_unchanged_shared_validation_and_exact_bytes tests/unit/test_contract_local.py::test_bad_response_saved_before_shared_failure_and_no_next_generation tests/unit/test_contract_local.py::test_actual_prompt_fit_overflow_does_not_spend_generation tests/unit/test_contract_local.py::test_incomplete_or_secret_capture_is_preserved_privately_and_not_exported tests/unit/test_contract_local.py::test_native_deadline_guard_is_independent_of_blocked_powershell tests/unit/test_contract_run_controls.py::test_budget_is_fixed_order_count_deadline_and_consumes_before_attempt --tb=short",
+      "passed": 82,
+      "seconds": 25.3,
+      "exit_code": 0,
+      "warnings": 1,
+      "warning": "Existing Starlette httpx TestClient deprecation; no dependency changes."
+    },
+    "coverage": [
+      "Actual corrected launcher and real PS bridge with explicit process/native substitutes: trusted full server arguments, both helper branches, timer-before-generation, validation-before-advance, exact 14 acknowledgments and all five cleanup exits.",
+      "Pending/reserved startup, runtime resource stop, worker validation stop, late validation, helper cleanup failure, partial binding/unapproved retained members and independent primary/cleanup behavior; both historical attempts preserved without invented ledgers.",
+      "Actual capture orchestration with the actual Python ownership validator and explicit native identity readers: server path/PID/creation failures before any generation, successful exact order, first-case failure prevents the next case, pending approval blocks before ledger.",
+      "Actual replay of 14 explicit synthetic responses through shared adapter/domain/policy/API substitutes: full server and both helper lifetimes, invalid path/parent, missing server, unknown cleanup member and unconfirmed exit rejection. No network fallback or live cases 1/5/10 credit.",
+      "Actual complete-handoff functions: matching extraction reuse, changed/extra source rejection, existing approval preservation and blank-reference stop. Approval identity/proposal/freeze/allowance guards; unchanged helpers/review/model args/pins/limits.",
+      "Existing exact-body capture, incomplete/secret retention, malformed/case failure, prompt-fit, generation-order/deadline and independent timer regressions."
+    ],
+    "limits": "Offline Codespace tests use explicit synthetic native/process/response substitutions. No standalone Windows diagnostic repeat and no real model/native execution by Codex."
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_4_0/proposed-execution.zip",
+    "files": 50,
+    "bytes": 106538,
+    "sha256": "fca83c65d39dc22a503e0782edf597dcc8d48d5d109de63b2149911e3e124814",
+    "freeze_sha256": "42f6ba2c37273660cfc288bcb4fede1d29a691b30fac67dd43c517c6250f1d5b",
+    "checks": [
+      "ZIP CRC/paths and complete extraction verified.",
+      "Extracted capture/replay load unchanged parent/source/schema/dependency/review/helper hashes using isolated existing Codespace venv.",
+      "Actual extracted capture preflight CLI rejects the pending approval before Windows/native/asset checks.",
+      "All packaged PowerShell sources and complete Windows sequence parse with the Core parser; not Windows 5.1 execution.",
+      "Actual README matching-extraction function accepts all 50 extracted package files."
+    ]
+  },
+  "windows_handoff": {
+    "readme": "scripts/uc001_contract_local_v1_4_0/README.md",
+    "script": "scripts/uc001_contract_local_v1_4_0/Run-Windows.ps1",
+    "execution_status": "Blocked pending explicit approval of the proposed allowance.",
+    "reuse": "Matching extraction and valid existing approval may be reused; invalid/mismatched records preserved and rejected; reserved attempt cannot be reused.",
+    "fresh_checks": "Approved future launcher performs retained asset integrity, exact adapter/DXGI/WDDM identity/measurement/resource headroom, loopback port, protected authentication, real owned GPU allocation, monitoring and effective-settings checks. Prior stand-in success replaces none.",
+    "remaining": "Approval and fresh live readiness/integration. Qualified semantics remain required for interpreter suitability/multilingual acceptance; they are separate from this provisional technical run. Live API/real-adapter cases 1/5/10 remain deferred.",
+    "native_effects": "Unchanged Add-Type compilation may create temporary compiler files; existing Win32/Nt process/job and DXGI/resource calls execute only during a future authorized Windows run; cleanup affects owned handles/job only."
+  },
+  "preservation": {
+    "protected_prior_source_package_evidence_files_checked": 363,
+    "changed": [],
+    "model_attempt_ledgers_touched": false,
+    "historical_generation_counts": "not reconstructed",
+    "application_code": "Unchanged; frozen parent application-file hashes verified.",
+    "ssh_support": "paused",
+    "held_out": "unopened",
+    "semantic_acceptance": "not claimed"
+  },
+  "download_accounting": {
+    "external_assets_acquired_bytes": 0,
+    "new_handoff_zip_bytes": 106538,
+    "last_owner_setup_remaining_bytes": 46845816,
+    "current_balance": "Not reset or inferred; subsequent actual source handoff transfers must be accounted for. Reuse verified cached artifacts; no additional dependencies acquired."
+  },
+  "changed_files": [
+    "scripts/uc001_contract_local_v1_4_0/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_4_0/PINNED-SOURCE.md",
+    "scripts/uc001_contract_local_v1_4_0/Python-Ownership.ps1",
+    "scripts/uc001_contract_local_v1_4_0/PythonOwnership.cs",
+    "scripts/uc001_contract_local_v1_4_0/README.md",
+    "scripts/uc001_contract_local_v1_4_0/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_4_0/approval.pending.json",
+    "scripts/uc001_contract_local_v1_4_0/capture.py",
+    "scripts/uc001_contract_local_v1_4_0/config.json",
+    "scripts/uc001_contract_local_v1_4_0/execution-proposal.json",
+    "scripts/uc001_contract_local_v1_4_0/execution_gate.py",
+    "scripts/uc001_contract_local_v1_4_0/freeze.json",
+    "scripts/uc001_contract_local_v1_4_0/harness_checks.py",
+    "scripts/uc001_contract_local_v1_4_0/ownership-verification.json",
+    "scripts/uc001_contract_local_v1_4_0/ownership_receipts.py",
+    "scripts/uc001_contract_local_v1_4_0/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_4_0/previous-execution-freeze.json",
+    "scripts/uc001_contract_local_v1_4_0/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_4_0/replay.py",
+    "scripts/uc001_contract_local_v1_4_0/review_gate.py",
+    "scripts/uc001_contract_local_v1_4_0/technical-decision.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/cleanup.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/console-result.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/observation.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/ownership.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/python-result.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/result.owner-provided.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/verification.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-results/results_2026_10_18/windows-transcript.owner-provided.txt",
+    "tests/unit/test_contract_local_additional_attempt.py",
+    "tests/support/uc001_additional_launcher.ps1",
+    "tests/support/uc001_execution_handoff.ps1",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-contract-local-v1_4_0/proposed-execution.zip",
+    "build/uc001-contract-local-v1_4_0/verification.json",
+    "build/uc001-contract-local-v1_4_0/SHA256SUMS.txt"
+  ],
+  "not_performed": [
+    "Model startup/inference or new reservation/ledger",
+    "Successful standalone Windows diagnostic rerun",
+    "Transport/SSH/Support work",
+    "Downloads/installations/held-out/language tuning/later priorities",
+    "Git delivery or phase advancement"
+  ]
+}

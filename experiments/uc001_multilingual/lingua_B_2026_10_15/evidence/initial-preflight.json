@@ -1,0 +1,43 @@
+{
+  "utc": "2026-10-15T16:56:34.341681+00:00",
+  "python": {
+    "executable": "/usr/local/bin/python3",
+    "version": "3.12.11 (main, Jul  1 2025, 05:29:09) [GCC 12.2.0]",
+    "machine": "x86_64",
+    "platform": "Linux-6.8.0-1064-azure-x86_64-with-glibc2.36",
+    "libc": [
+      "glibc",
+      "2.36"
+    ]
+  },
+  "python_commands": {
+    "python3.12": "/usr/local/bin/python3.12",
+    "python3": "/usr/local/bin/python3",
+    "python": "/usr/local/bin/python",
+    "pip": "/usr/local/bin/pip"
+  },
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "memory": {
+    "MemTotal": 8327036928,
+    "MemAvailable": 4980621312,
+    "SwapTotal": 0,
+    "SwapFree": 0
+  },
+  "cgroup": {
+    "memory.max": "max",
+    "memory.current": "2487685120",
+    "memory.high": "max",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+    "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=479465\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=289803",
+    "cpu.max": "max 100000",
+    "cpuset.cpus.effective": "0-1"
+  },
+  "disk": {
+    "total": 33636024320,
+    "used": 8252149760,
+    "free": 23649120256
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_proxy_no_network.py",
+    "tests/unit/test_granite_proxy_binding_worker.py",
+    "tests/unit/test_granite_proxy_binding_selftest.py",
+    "tests/unit/test_granite_proxy_binding_flow.py",
+    "tests/unit/test_granite_proxy_binding_package.py",
+    "tests/unit/test_granite_controller_worker.py"
+  ],
+  "exit_code": 0,
+  "scope": "Injected new self-test/guard/flow/package plus directly affected existing worker regressions; closed ownership/backend and application/model suites excluded"
+}

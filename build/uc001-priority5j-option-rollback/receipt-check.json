@@ -1,0 +1,10 @@
+{
+  "receipt_and_referenced_artifacts_valid": true,
+  "two_task_file_hashes_match_receipt": true,
+  "original_5I_receipt_hash_unchanged": true,
+  "TASKS_receipt_link_valid": true,
+  "response_identities_operation_counts_and_cleanup_consistent": true,
+  "sidecar_excludes_protected_binding_parameter_and_exception_keys": true,
+  "phase": 3,
+  "status": "in-progress"
+}

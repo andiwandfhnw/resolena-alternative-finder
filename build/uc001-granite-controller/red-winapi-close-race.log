@@ -1,0 +1,50 @@
+...................FF                                                    [100%]
+=================================== FAILURES ===================================
+_______ test_snapshot_aborts_if_cleanup_begins_during_native_observation _______
+
+api = <test_granite_windows_job.FakeApi object at 0x74f708b238f0>
+
+    def test_snapshot_aborts_if_cleanup_begins_during_native_observation(api):
+        job = WindowsJob(api=api)
+        original = api.job_state
+        def cleaning_during_query(handle):
+            result = original(handle)
+            job.cleaning = True
+            return result
+        api.job_state = cleaning_during_query
+>       with pytest.raises(JobError):
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE JobError
+
+tests/unit/test_granite_windows_job.py:352: Failed
+____ test_closed_job_never_queries_membership_against_implicit_current_job _____
+
+api = <test_granite_windows_job.FakeApi object at 0x74f708b15dc0>
+
+    def test_closed_job_never_queries_membership_against_implicit_current_job(api):
+        job = WindowsJob(api=api)
+        job.close()
+        api.open_process = lambda _: (_ for _ in ()).throw(AssertionError('must not open process after close'))
+        with pytest.raises(JobError):
+>           job.validate_pid(900)
+
+tests/unit/test_granite_windows_job.py:362: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/uc001_granite_controller/windows_job.py:432: in validate_pid
+    handle = self.api.open_process(pid)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/test_granite_windows_job.py:360: in <lambda>
+    api.open_process = lambda _: (_ for _ in ()).throw(AssertionError('must not open process after close'))
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x74f708b16dd0>
+
+>   api.open_process = lambda _: (_ for _ in ()).throw(AssertionError('must not open process after close'))
+E   AssertionError: must not open process after close
+
+tests/unit/test_granite_windows_job.py:360: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_snapshot_aborts_if_cleanup_begins_during_native_observation
+FAILED tests/unit/test_granite_windows_job.py::test_closed_job_never_queries_membership_against_implicit_current_job
+2 failed, 19 passed in 0.31s

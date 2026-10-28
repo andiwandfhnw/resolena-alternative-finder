@@ -1,0 +1,22 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep unavailable locality requires explicit country-only continuation before saving --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-green --reporter=list,json
+
+[WebServer] INFO:     Started server process [45678]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:45705) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:45728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:290:5 › unavailable locality requires explicit country-only continuation before saving (1.6s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [45678]
+
+  1 passed (5.6s)

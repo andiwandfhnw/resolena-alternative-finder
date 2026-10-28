@@ -1,0 +1,90 @@
+F..F                                                                     [100%]
+=================================== FAILURES ===================================
+_ test_granite_source_justified_duplicate_none_specification_is_not_a_draft_model _
+
+    def test_granite_source_justified_duplicate_none_specification_is_not_a_draft_model():
+        response = completion()
+        response["generation_settings"]["speculative.types"] = "none,none"
+        with mocked_adapter([], response=response) as adapter:
+>           assert adapter.interpret(EXAMPLE).original_text == EXAMPLE
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_granite_contract_adapter.py:155: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <app.infrastructure.granite_interpreter.GraniteInterpreter object at 0x7351ceadc560>
+original_text = 'Repair my bicycle without replacing it'
+
+    def interpret(self, original_text: str) -> InterpretationResult:
+        if not isinstance(original_text, str) or not original_text.strip():
+            raise ValueError("Original text must be an explicit nonblank string")
+        deadline = time.monotonic() + self.TIMEOUT
+        messages = [{"role": "system", "content": self.prompt}, {"role": "user", "content": original_text}]
+        formatted = self._request("/apply-template", {"messages": messages,
+            "chat_template_kwargs": {"thinking": False, "enable_thinking": False}, "add_generation_prompt": True}, deadline)
+        rendered = expected_prompt(self.prompt, original_text)
+        if not isinstance(formatted, dict) or formatted.get("prompt") != rendered:
+            raise ContractViolation("Actual Granite rendering differs from the selected template expectation")
+        tokenized = self._request("/tokenize", {"content": rendered, "add_special": False,
+            "parse_special": True, "with_pieces": False}, deadline)
+        tokens = tokenized.get("tokens") if isinstance(tokenized, dict) else None
+        if (not isinstance(tokens, list) or not tokens or any(type(value) is not int or value < 0 for value in tokens)
+                or len(tokens) + self.OUTPUT > self.CONTEXT):
+            raise ContractViolation("Invalid tokenization or insufficient full Granite output reserve")
+        body = {**deepcopy(self.REQUEST_SETTINGS), "prompt": tokens, "json_schema": self.schema,
+            "cache_prompt": False, "return_tokens": True, "id_slot": 0, "n_cmpl": 1}
+        if self.record:
+            self.record("prompt_fit", {"prompt": rendered, "prompt_tokens": len(tokens), "output_allowance": self.OUTPUT})
+        if self.before_generation:
+            self.before_generation(original_text)
+        if self.record:
+            self.record("request", body)
+        result = self._request("/completion", body, deadline)
+        if self.record:
+            self.record("response", result)
+        try:
+            settings, generated = result["generation_settings"], result["tokens"]
+            actual, predicted = result["tokens_evaluated"], result["tokens_predicted"]
+            if (type(result["index"]) is not int or result["index"] != 0 or type(result["id_slot"]) is not int
+                    or result["id_slot"] != 0 or result["model"] != self.MODEL or result["stop"] is not True
+                    or result["stop_type"] != "eos" or result["truncated"] is not False
+                    or result["stopping_word"] != "" or result["prompt"] != rendered):
+                raise ContractViolation("Granite native completion identity or termination differs")
+            if (type(actual) is not int or actual != len(tokens) or type(predicted) is not int
+                    or not 0 < predicted <= self.OUTPUT or actual + predicted > self.CONTEXT
+                    or not isinstance(generated, list) or len(generated) != predicted
+                    or any(type(value) is not int or value < 0 for value in generated)):
+                raise ContractViolation("Granite native completion token accounting differs")
+            if (not isinstance(settings, dict) or any(not self._setting_matches(settings.get(key), value)
+                    for key, value in self.REQUEST_SETTINGS.items()) or settings.get("max_tokens") != self.OUTPUT
+                    or settings.get("speculative.types") != "none" or not isinstance(settings.get("grammar"), str)
+                    or not settings["grammar"].strip()):
+>               raise ContractViolation("Granite effective settings or grammar differ")
+E               app.domain.interpretation.ContractViolation: Granite effective settings or grammar differ
+
+src/app/infrastructure/granite_interpreter.py:187: ContractViolation
+_ test_granite_schema_rejects_unaccounted_validation_or_recursive_references[unrestricted] _
+
+mode = 'unrestricted'
+
+    @pytest.mark.parametrize("mode", ["unsupported", "recursive", "unrestricted"])
+    def test_granite_schema_rejects_unaccounted_validation_or_recursive_references(mode):
+        schema = WireResult.model_json_schema()
+        if mode == "unsupported": schema["$defs"]["Quote"]["properties"]["quote"]["pattern"] = "^x$"
+        elif mode == "recursive": schema["$defs"]["Quote"]["properties"]["loop"] = {"$ref": "#/$defs/Quote"}
+        else: schema = {}
+>       with pytest.raises(ContractViolation): transport_schema(schema)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ContractViolation
+
+tests/integration/test_granite_contract_adapter.py:209: Failed
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_granite_contract_adapter.py::test_granite_source_justified_duplicate_none_specification_is_not_a_draft_model
+FAILED tests/integration/test_granite_contract_adapter.py::test_granite_schema_rejects_unaccounted_validation_or_recursive_references[unrestricted]
+2 failed, 2 passed, 24 deselected, 1 warning in 1.40s

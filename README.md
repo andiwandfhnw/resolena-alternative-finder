@@ -8,9 +8,15 @@ Standalone FHNW AI-assisted Software Development Capstone module for exploring
 practical alternatives to purchases and habits. This repository was initialized
 from the AI-SDLC project template; BOOTSTRAP was accepted on 2026-10-05.
 
-The method is documented canonically in [AISL Docs](https://docs.aisl.science/learning-and-resources/ai-sdlc). This repository contains only the executable, repository-local
-workflow artifacts and the frontend starter. UC-001 remains in SPECIFY;
-application functionality and automated application tests are pending.
+The current source snapshot implements a bounded UC-001 comparison flow with a
+React frontend, FastAPI backend and atomic SQLite persistence. The synthetic
+full-stack demo uses prepared test substitutes; real model integration and the
+complete application remain unfinished. **PHASE: 3 / STATUS: in-progress.**
+
+For the FHNW submission, start with [SUBMISSION_STATUS.md](docs/SUBMISSION_STATUS.md):
+setup, synthetic-demo commands, source map, evidence provenance and limitations.
+No Windows acquisition/build harness is needed to inspect or demonstrate it.
+The method is documented in [AISL Docs](https://docs.aisl.science/learning-and-resources/ai-sdlc).
 
 For Resolena's users, product principles and comparison guidance, see
 [PRODUCT_CONTEXT.md](docs/PRODUCT_CONTEXT.md); approved specifications govern behaviour.

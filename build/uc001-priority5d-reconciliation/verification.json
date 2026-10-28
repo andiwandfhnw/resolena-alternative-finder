@@ -1,0 +1,358 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, bounded Priority 5D follow-up: FOUND and ABSENT commit-error reconciliation only",
+  "phase": 3,
+  "status": "in-progress",
+  "priorities_3_4_5": "partial",
+  "increment_1_and_develop_complete": false,
+  "owner_acceptance": "Original5D accepted only for real commit/lost confirmation, failed immediate reconciliation,503unknown and later explicit checked acknowledgement without another save/reassessment. Original unknown response was already correct; prior production fix added missing reconciliation. Original receipt/logs and limits remain unchanged.",
+  "prerequisites": {
+    "result": "No material conflict; accepted branches already implemented, no production edit required.",
+    "references": [
+      "UC-001 O-2 and AC-17",
+      "ADR-003 accepted decision: unknown commit state and checked acknowledgement",
+      "ARCHITECTURE.md atomic boundary and API/recovery response table",
+      "SQLiteComparisonStore.save/find and CompareRequest DuplicateSubmission/_acknowledge",
+      "Original5D integration seam and verification.json"
+    ],
+    "found_contract": "Unconfirmed commit, real found submission, originating ownership then payload checked:200submission_recovered; original saved identity/outcome/assessment only.",
+    "absent_contract": "Generic commit error plus successful reconciliation returning no record:503persistence_error/unknown. Absence alone does not establish rollback to production.",
+    "reused_evidence": "build/uc001-priority5d-uncertain-persistence/verification.json"
+  },
+  "changed_files": [
+    "tests/integration/test_saved_comparison.py",
+    "docs/TASKS.md"
+  ],
+  "test_changes": "Exactly two parameterized integration scenarios added to the existing file, adapting the original5D engine-local DBAPI seam, raw SQLite observer and delegating counters. All preexisting test bytes unchanged. No shared test-support, production, frontend, dependency/schema or normal configuration change.",
+  "test_first_result": "Both new scenarios passed on their first execution against existing production code. Verification of existing behavior; no manufactured RED or production fix/refactor.",
+  "executed_tests": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_unconfirmed_commit_reconciliation_found_or_absent -q --basetemp=build/uc001-priority5d-reconciliation/first-check 2>&1 | tee build/uc001-priority5d-reconciliation/scenarios-first.log",
+      "exit_code": 0,
+      "result": "2 passed,1 existing warning in0.90s",
+      "log": "build/uc001-priority5d-reconciliation/scenarios-first.log"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery -q --basetemp=build/uc001-priority5d-reconciliation/unavailable-regression 2>&1 | tee build/uc001-priority5d-reconciliation/unavailable-regression.log",
+      "exit_code": 0,
+      "result": "1 passed,1 existing warning in0.80s",
+      "log": "build/uc001-priority5d-reconciliation/unavailable-regression.log"
+    }
+  ],
+  "regression_evidence": "build/uc001-priority5d-reconciliation/unavailable-regression/test_unconfirmed_commit_and_un0/uncertain-recovery-evidence.json",
+  "other_checks_not_run": "No concrete need for additional regressions: production/shared support unchanged. No browser, frontend lint/build, wider matrices or interpreter/model checks.",
+  "fault_seams": {
+    "found": "Call actual dialect.do_commit, independent observer reads committed rows, then raise sqlite3.OperationalError before confirmation returns to SQLAlchemy/production. Real cleanup and real reconciliation SELECT succeed. Actual DuplicateSubmission rethrown to application; subsequent actual find and original compare_digest checks execute.",
+    "absent": "At same dialect.do_commit seam, raise identical generic sqlite3.OperationalError before calling underlying commit. Production receives no injection-timing knowledge. Normal transaction/connection cleanup runs, real reconciliation SELECT finds no record, independent observer confirms zero rows. Stop at unknown response.",
+    "selects": "do_execute wrapper only counts/delegates real SQL; find wrapper only counts/delegates actual find. No canned persistence, lookup results, acknowledgement or final outcome.",
+    "observer": "Separate sqlite3 connections are assertions/artifacts only; no observer result is returned to application logic.",
+    "cleanup_limit": "Successful normal cleanup only. Inactive RootTransaction cleanup and driver transaction booleans are test observations, not production confirmation of saved/unsaved. No cleanup-failure handling claim."
+  },
+  "scenarios": {
+    "absent": {
+      "evidence": "build/uc001-priority5d-reconciliation/first-check/test_unconfirmed_commit_reconc1/reconciliation-absent-evidence.json",
+      "response": {
+        "status": 503,
+        "body": {
+          "outcome": "persistence_error",
+          "persistence": {
+            "state": "unknown"
+          },
+          "issues": [
+            {
+              "code": "comparison_save_failed"
+            }
+          ],
+          "assessed_outcome": "comparison"
+        }
+      },
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "saved_request_id": null,
+      "saved_assessed_at": null,
+      "saved_option_ids": [],
+      "saved_evidence_associations": [],
+      "prepared_identity_count": 1,
+      "prepared_request_id": "7b95085c-a0b3-4c7d-81c9-9a43237eaca5",
+      "prepared_assessed_at": "2026-10-15T10:00:00+00:00",
+      "processing_save_api_calls": {
+        "interpret": 1,
+        "retrieve": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1,
+        "clock": 1,
+        "api": 1
+      },
+      "logical_lookup_calls": {
+        "application_initial": 1,
+        "adapter_reconciliation": 1,
+        "application_duplicate_lookup": 0
+      },
+      "real_lookup_selects": {
+        "application_initial": 1,
+        "adapter_reconciliation": 1,
+        "application_duplicate_lookup": 0
+      },
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false
+        },
+        {
+          "scope": "adapter_reconciliation",
+          "found": false
+        }
+      ],
+      "fault_counts": {
+        "real_commits": 0,
+        "confirmation_errors": 1,
+        "duplicate_submissions": 0
+      },
+      "ownership_then_payload_checks": [],
+      "initial_request_insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "timeline": [
+        "application_initial:absent",
+        "dbapi_commit_entered",
+        "test_fault_before_underlying_dbapi_commit",
+        "generic_commit_error_before_return_to_production",
+        "commit_error_transaction_cleanup_returned",
+        "adapter_reconciliation:absent",
+        "original_api_response"
+      ],
+      "transaction_cleanup": [
+        {
+          "active_before": false
+        }
+      ],
+      "driver_rollback_observations": [
+        {
+          "after_commit_error": false,
+          "sqlite_in_transaction_before": false
+        },
+        {
+          "after_commit_error": true,
+          "sqlite_in_transaction_before": true
+        },
+        {
+          "after_commit_error": true,
+          "sqlite_in_transaction_before": false
+        }
+      ],
+      "observer_rows_supplied_to_application": false,
+      "projection_options_links_and_evidence_unchanged": true
+    },
+    "found": {
+      "evidence": "build/uc001-priority5d-reconciliation/first-check/test_unconfirmed_commit_reconc0/reconciliation-found-evidence.json",
+      "response": {
+        "status": 200,
+        "body": {
+          "outcome": "submission_recovered",
+          "persistence": {
+            "state": "saved",
+            "request_id": "10bb6dcf-45c1-44b6-8788-9f3d4299922e"
+          },
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "saved_outcome": "comparison"
+        }
+      },
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "saved_request_id": "10bb6dcf-45c1-44b6-8788-9f3d4299922e",
+      "saved_assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_option_ids": [
+        "d1aeeb8c-f7c4-4f9b-8dc7-8257a1989f1a",
+        "330922a9-4d20-4499-a8f2-926d2bdc4ebb"
+      ],
+      "saved_evidence_associations": [
+        [
+          "330922a9-4d20-4499-a8f2-926d2bdc4ebb",
+          "30000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "d1aeeb8c-f7c4-4f9b-8dc7-8257a1989f1a",
+          "30000000-0000-4000-8000-000000000001"
+        ]
+      ],
+      "prepared_identity_count": 1,
+      "prepared_request_id": "10bb6dcf-45c1-44b6-8788-9f3d4299922e",
+      "prepared_assessed_at": "2026-10-15T10:00:00+00:00",
+      "processing_save_api_calls": {
+        "interpret": 1,
+        "retrieve": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1,
+        "clock": 1,
+        "api": 1
+      },
+      "logical_lookup_calls": {
+        "application_initial": 1,
+        "adapter_reconciliation": 1,
+        "application_duplicate_lookup": 1
+      },
+      "real_lookup_selects": {
+        "application_initial": 1,
+        "adapter_reconciliation": 1,
+        "application_duplicate_lookup": 1
+      },
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false
+        },
+        {
+          "scope": "adapter_reconciliation",
+          "found": true
+        },
+        {
+          "scope": "application_duplicate_lookup",
+          "found": true
+        }
+      ],
+      "fault_counts": {
+        "real_commits": 1,
+        "confirmation_errors": 1,
+        "duplicate_submissions": 1
+      },
+      "ownership_then_payload_checks": [
+        {
+          "check": "ownership",
+          "matched": true
+        },
+        {
+          "check": "payload",
+          "matched": true
+        }
+      ],
+      "initial_request_insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "timeline": [
+        "application_initial:absent",
+        "dbapi_commit_entered",
+        "real_sqlite_commit_returned_to_test_shim",
+        "independent_observer_sees_committed_rows_test_only",
+        "generic_commit_error_before_return_to_production",
+        "commit_error_transaction_cleanup_returned",
+        "adapter_reconciliation:found",
+        "actual_duplicate_submission",
+        "application_duplicate_lookup:found",
+        "ownership_check",
+        "payload_check",
+        "original_api_response"
+      ],
+      "transaction_cleanup": [
+        {
+          "active_before": false
+        }
+      ],
+      "driver_rollback_observations": [
+        {
+          "after_commit_error": false,
+          "sqlite_in_transaction_before": false
+        },
+        {
+          "after_commit_error": true,
+          "sqlite_in_transaction_before": false
+        },
+        {
+          "after_commit_error": true,
+          "sqlite_in_transaction_before": false
+        },
+        {
+          "after_commit_error": true,
+          "sqlite_in_transaction_before": false
+        }
+      ],
+      "observer_rows_supplied_to_application": false,
+      "projection_options_links_and_evidence_unchanged": true
+    }
+  },
+  "counter_scope": "For the one original API request per scenario: processing/save/API, initial application lookup, adapter reconciliation, subsequent application DuplicateSubmission lookup and actual SELECT counts are distinct. FOUND three reads are not a write retry. INSERT hook covers each original request only. No subsequent recovery/browser journey in these two cases.",
+  "tested_assertions": {
+    "one_save_and_one_prepared_identity_per_case": true,
+    "no_reassessment_or_automatic_second_write_in_these_requests": true,
+    "found_ack_has_no_comparison_payload_or_freshness_claim": true,
+    "found_original_projection_options_links_evidence_unchanged": true,
+    "absent_unknown_response_has_no_saved_id_or_comparison": true
+  },
+  "protected_data": {
+    "raw_proofs_headers_sql_parameters_exception_contexts_or_complete_request_objects_recorded": false,
+    "note": "Only synthetic projections/snapshots, saved/prepared IDs, timestamp, API response bodies, counters and booleans are recorded. Raw proof/binding values are not exported.",
+    "supplementary_receipt_and_scenario_json_key_audit": "passed: no raw proof/header/SQL-parameter/protected-context/binding or complete-request keys"
+  },
+  "preservation": {
+    "protected_files": 120,
+    "mismatches": [],
+    "all_preexisting_test_bytes_preserved": true,
+    "original_5d_tasks_note_preserved": true,
+    "identity": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "same_git_identity": true,
+    "scoped_delta_checks": [
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "command": "git diff --no-index --check -- build/uc001-priority5d-reconciliation/before/tests/integration/test_saved_comparison.py tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "docs/TASKS.md",
+        "command": "git diff --no-index --check -- build/uc001-priority5d-reconciliation/before/docs/TASKS.md docs/TASKS.md",
+        "exit_code": 1,
+        "output": ""
+      }
+    ]
+  },
+  "preservation_manifest": "build/uc001-priority5d-reconciliation/preservation-before.json",
+  "git": {
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1507: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "status_command": "git status --short",
+    "same_status_entries_as_before": true
+  },
+  "whitespace": "Global diff-check reports only the preexisting TASKS backlog trailing space, now line1507. Both task-local deltas have empty no-index --check output; exit1 means differences exist, with no new whitespace errors.",
+  "remaining_unverified": [
+    "Browser presentation of commit-error branches and remaining loading/error/fresh-search journeys",
+    "Cleanup failures and other commit/read/write fault combinations",
+    "Further concurrency/lock/process/disclosure matrices",
+    "Physical-crash durability and full persistence reliability",
+    "Real locality/reference integration and other Priority5 obligations"
+  ],
+  "boundaries": "DE/FR/IT/EN and Resolena-controlled processing preserved. Real knowledge/rendering drafts inactive, experiments closed, normal app.main unconfigured. No startup, held-out access, linguistic/TL-03 approval, Priority6, research,UC-003, dependency changes or Git delivery/branch changes.",
+  "review": "Independent read-only review found no material issue in prerequisite contract or both test branches; no extra tests or edits by reviewer.",
+  "warning": "Existing Starlette/httpx TestClient deprecation; no dependency change.",
+  "stop": "Await human review; no further implementation authorized.",
+  "documentation_checks": {
+    "phase_3_in_progress": true,
+    "one_concise_supplementary_tasks_note": true,
+    "single_supplementary_evidence_link_valid": true,
+    "original_5d_note_unchanged": true
+  }
+}

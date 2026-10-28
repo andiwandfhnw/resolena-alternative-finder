@@ -1,0 +1,6 @@
+{
+  "status": "completed",
+  "completed_records": 50,
+  "attempted_classification_calls": 100,
+  "worker_exit_code": 0
+}

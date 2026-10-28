@@ -1,0 +1,25 @@
+{
+  "provenance": "Owner-reported facts in chat; not reconstructed raw Windows files.",
+  "failed_package": "uc001-contract-local-1.2.0",
+  "reported_result": {
+    "ownership": null,
+    "worker": null,
+    "elapsed_ms": 680
+  },
+  "reported_cleanup": {
+    "owned_job_closed": true,
+    "redirector": {
+      "pid": 48020,
+      "exit_confirmed": true
+    },
+    "interpreter": {
+      "pid": null,
+      "created": null,
+      "exit_confirmed": false
+    }
+  },
+  "evidence_limits": "Interpreter was not identified in the reported record. This does not establish that it survived or that it never started. Initiating failure was overwritten by the v1.2.0 cleanup catch and is unavailable from the supplied summary.",
+  "original_model_startup_allowance": "consumed; unchanged",
+  "original_model_attempt_modified": false,
+  "generation_ledger": "No reconstructed count or zero-valued ledger."
+}

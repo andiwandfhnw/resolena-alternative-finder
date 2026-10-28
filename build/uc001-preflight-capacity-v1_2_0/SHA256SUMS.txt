@@ -1,0 +1,2 @@
+f60b3a00c687a469ca969ead966611219dab484fd03c25853e8ccf44034937d8  windows-preflight-capacity-v1_2_0.zip
+b083c3821590e85c56729d8238e18f0ed500dfcce36fcf175054c3367601217e  freeze.json (inside ZIP)

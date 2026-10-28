@@ -1,0 +1,62 @@
+{
+  "protected_files_checked": 471,
+  "unchanged_protected_files": 469,
+  "changed_existing_files": [
+    "docs/TASKS.md",
+    "tests/e2e/saved-comparison.spec.ts"
+  ],
+  "source_file_sha256": {
+    "docs/TASKS.md": "307a15bab86bfcc6aa84cc51b30547a650f5aaf72cf78bdba2e7ac22d43b2346",
+    "tests/e2e/saved-comparison.spec.ts": "5bdf8a17d5ce5344b39bb7b892b066a89431a5f29b3d08e05d798f22845da5b4"
+  },
+  "all_prior_receipts_and_5_series_artifacts_unchanged": true,
+  "historical_tasks_except_current_authorization_and_new_5O_result_unchanged": true,
+  "eight_row_checkpoint_unchanged": true,
+  "other_browser_scenarios_helpers_imports_unchanged": true,
+  "old_failure_assertion_lines_preserved_verbatim": 9,
+  "browser_test_definition_count_unchanged": true,
+  "production_support_frontend_runner_dependencies_and_laptop_context_unchanged": true,
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "git_status_entries_unchanged": true,
+  "scoped_diff_checks": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--no-index",
+        "--check",
+        "--",
+        "/tmp/resolena-priority5o-8gyvkao1/docs/TASKS.md",
+        "/workspaces/resolena-alternative-finder/docs/TASKS.md"
+      ],
+      "exit_code": 1,
+      "output": "",
+      "added_whitespace_errors": false
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--no-index",
+        "--check",
+        "--",
+        "/tmp/resolena-priority5o-8gyvkao1/tests/e2e/saved-comparison.spec.ts",
+        "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts"
+      ],
+      "exit_code": 1,
+      "output": "",
+      "added_whitespace_errors": false
+    }
+  ],
+  "test_ports": [
+    {
+      "port": 8011,
+      "closed": true
+    },
+    {
+      "port": 5175,
+      "closed": true
+    }
+  ]
+}

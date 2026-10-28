@@ -1,0 +1,143 @@
+{
+  "version": "uc001-transport-logging-v2-preparation",
+  "date": "2026-10-17",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Minimal separate logging-wrapper parser correction only; no connection or native Windows execution",
+  "prior_defect": {
+    "preserved_variant": "scripts/uc001_transport_preparation/Test-TransportLogging.ps1",
+    "cause": "Pinned ParseSSHArgs value-taking list bcDeFIiLlmOopRSWw omits E: -E is retained as a standalone flag; path and subsequent controls become remote-command tokens",
+    "previous_erroneous_claim": "Original source-review.json said the parser accepts -E argument; it is preserved historically and explicitly corrected in the new README",
+    "original_refusal_boundary": "This defect affects attempt2 wrapper only; it does not explain attempt1 without -E"
+  },
+  "change": {
+    "path": "scripts/uc001_transport_preparation/Test-TransportLoggingV2.ps1",
+    "bytes": 6535,
+    "sha256": "5d9364b9b5adde13d75cd7cd90a744e3327c96fd2594266fada5082a8d70e354",
+    "argument_delta": "Remove -E and path; retain -vvv and GH_DEBUG=1",
+    "summary_delta": "Read existing transport.stderr.log once; report combined stream source and possible gh/OpenSSH producers; keep fixed sanitized fields",
+    "retained": "Same original source pins/composition, owner-only DACL before child/log creation, native job/PID/creation-time checks, loopback and auth proof, existing ports, stdin-only ephemeral secret, environment restoration,45s work/two5s waits/60s overall guard, separate Codespace cleanup, one gh invocation/no extra probe/retry/fallback; all model pins/attempt budgets unchanged"
+  },
+  "attempt1": {
+    "evidence": "build/uc001-transport-diagnosis/failed_attempt_2026_10_17/owner-supplied-report.json",
+    "outcome": "Preserved prior failed connection; original refusal unresolved",
+    "windows_cleanup_receipt": "Previously requested original receipt remains unsupplied; second-attempt confirmation is not assigned to first"
+  },
+  "attempt2": {
+    "owner_report": "attempt_2_2026_10_17/owner-report.json",
+    "windows_cleanup": "confirmed in supplied sanitized summary",
+    "complete_sanitized_windows_result": "supplied; original JSON text preserved without editing pending cleanup field",
+    "raw_windows_cleanup_receipt": "not supplied",
+    "codespace_cleanup_receipt": "attempt_2_2026_10_17/codespace-cleanup.raw.json",
+    "original_codespace_receipt": "build/uc001-transport-logging/forward-cleanup-e56da6c06fc84301801daccb9c9d951a.json",
+    "raw_cleanup_sha256": "66dbd472228327553fc08764af69ac34e047e9edda77cb8ad7beb1dc6ceb4239",
+    "codespace_cleanup_utc": "2026-10-17T16:52:10.674073+00:00",
+    "codespace_cleanup_outcome": "codespace_forward_cleanup_passed",
+    "connection_success_verified": false,
+    "sanitized_windows_result": "attempt_2_2026_10_17/windows-sanitized-summary.raw.json",
+    "sanitized_windows_result_sha256": "02a4cf4405121750ab45475af9aade8d911306afb893586a3d52360af4bd1988",
+    "outcome": "failed",
+    "elapsed_ms": 4062,
+    "overall_limit_exceeded": false,
+    "log_states": {
+      "gh": {
+        "state": "present"
+      },
+      "ssh": {
+        "state": "missing"
+      }
+    },
+    "marker_interpretation": "All supplied stage/error markers false; do not infer absent stages or a resolved root cause",
+    "cleanup_reconciliation": "Raw summary remains pending separate read-only receipt; existing later Codespace receipt independently records cleanup passed. No raw field rewritten."
+  },
+  "parser_evidence": {
+    "record": "parser-reproduction.json",
+    "pinned_source": "reference/gh-v2.81.0-ssh.go.txt",
+    "source_sha256": "eeb8cfee913b497a7e37aa186657eb837f27a08c44c74fe7ccaf632d081ec8a8",
+    "license": "reference/gh-LICENSE.txt",
+    "execution_boundary": "No Go compiler available in PATH/inspected standard locations. Tests use explicit Python source-derived transcription of pinned ParseSSHArgs/parseArgs and newSSHCommand argument construction, with option list taken from hashed source. Not actual gh/Go binary execution. Real PowerShell composition/control/cleanup dispatch uses isolated native/privacy/HTTP substitutes.",
+    "covered": "Old flag/command split reproduced; full corrected original control list, complete remote command, intended destination and injected connection args retained, including synthetic auto -i prefix. Not an argument-string-only proof."
+  },
+  "stray_file": {
+    "possible_name": "-p",
+    "expected_directory": "C:\\ResolenaExperiments\\tools\\gh-2.81.0\\bin",
+    "basis": "gh inserts -p after misparsed -E; OpenSSH can take it as logfile operand; source logger creates/appends when reached. Native helper sets gh cwd to executable directory; gh child leaves Dir unset.",
+    "windows_status": "unverified; targeted metadata-only command prepared in README, not executed",
+    "caveats": "Existing file alone does not prove provenance; absence now does not prove never created; Windows-specific directory/log initialization behavior not tested; original private-directory claim cannot cover a stray external log",
+    "not_performed": "No contents, hashes, credentials, deletion, move or ACL change on candidate file"
+  },
+  "tdd": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging_v2.py",
+      "result": "9 failed,2 passed in5.97s before correction; successful reproduction test and failing flags [-vvv,-E] comparison demonstrate real pinned-logic boundary"
+    },
+    "intermediate_test_correction": "6 failures/5 passes after implementation exposed a test-only relative slice error; assertion corrected to verify the entire auth/compression/destination tail. No product changes made to satisfy that fixture defect.",
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging_v2.py",
+      "result": "11 passed in6.30s"
+    },
+    "focused_regression": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging_v2.py tests/unit/test_transport_logging.py tests/unit/test_transport_preparation.py",
+      "result": "37 passed in17.54s",
+      "new": 11,
+      "retained": 26
+    },
+    "retained_test_boundary": "Historical argument-only tests remain preserved/passing; they do not validate the now-known-broken v1 parser behavior."
+  },
+  "checks": [
+    {
+      "check": "Historical preservation",
+      "result": "214 hashes match including failed variants, both existing attempt receipts, old tests/source findings and frozen bundles",
+      "baseline": "preservation-baseline.json"
+    },
+    {
+      "check": "Second Codespace receipt preservation",
+      "result": "Byte-identical copy of existing receipt; no check rerun"
+    },
+    {
+      "check": "New documentation links/whitespace/JSON, both proposed PowerShell command parses and phase",
+      "result": "Passed; neither command executed"
+    }
+  ],
+  "remaining": [
+    "Actual Windows metadata for possible stray -p file",
+    "Original raw Windows cleanup receipts not supplied; second owned cleanup confirmed by supplied sanitized summary",
+    "Actual corrected Windows/gh parsing/logging/transport remains unverified; no run authorized in this step",
+    "Broker target/internal forwarding errors may still not be logged by pinned gh; original attempt1 banner-path refusal remains unresolved",
+    "GPU/model readiness, semantic review and interpreter suitability unchanged/pending"
+  ],
+  "not_performed": [
+    "Connection, endpoint/gh/SSH/native job startup or additional attempt",
+    "Service/SSH configuration changes or restarts",
+    "Tool acquisition/installation, model/runtime execution or held-out access",
+    "Credential/key or raw Windows log inspection",
+    "Git stage/commit/push/branch switch/deploy"
+  ],
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_transport_preparation/Test-TransportLoggingV2.ps1",
+    "tests/unit/test_transport_logging_v2.py",
+    "build/uc001-transport-logging-v2/README.md",
+    "build/uc001-transport-logging-v2/attempt_2_2026_10_17/codespace-cleanup.raw.json",
+    "build/uc001-transport-logging-v2/attempt_2_2026_10_17/owner-report.json",
+    "build/uc001-transport-logging-v2/parser-reproduction.json",
+    "build/uc001-transport-logging-v2/preservation-baseline.json",
+    "build/uc001-transport-logging-v2/reference/gh-LICENSE.txt",
+    "build/uc001-transport-logging-v2/reference/gh-v2.81.0-ssh.go.txt",
+    "build/uc001-transport-logging-v2/reference/source-record.json",
+    "build/uc001-transport-logging-v2/verification.json",
+    "build/uc001-transport-logging-v2/SHA256SUMS.txt",
+    "build/uc001-transport-logging-v2/attempt_2_2026_10_17/windows-sanitized-summary.raw.json"
+  ],
+  "completed_offline_utc": "2026-10-17T17:48:33.911850+00:00",
+  "evidence_updates": [
+    {
+      "received_utc": "2026-10-17T17:51:02.601836+00:00",
+      "scope": "Supplied second Windows sanitized JSON only; reconciled with existing Codespace cleanup receipt",
+      "previous_status": "Requested/pending at offline preparation completion",
+      "checks": "New JSON parsed and hash recorded; existing 214 preservation hashes and byte-identical Codespace copy checked; content links checked; no tests/native/transport/model checks rerun"
+    }
+  ]
+}

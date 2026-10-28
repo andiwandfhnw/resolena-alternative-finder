@@ -1,0 +1,33 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_independent_deadline_stays_active_through_native_cleanup_and_handle_close _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-12/test_independent_deadline_stay0')
+
+    def test_independent_deadline_stays_active_through_native_cleanup_and_handle_close(tmp_path):
+        backend,plan,clock=fixture(tmp_path)
+        result=selftest.run_binding_session(backend,plan,clock=clock,sleep=clock.sleep,
+            watchdog_factory=Guard,guard_validator=lambda path,pid:dict(verified=True))
+        assert result['proxy_binding_selftest_passed'] is True,result
+>       assert backend.guard_active_during_cleanup is True
+E       assert False is True
+E        +  where False = <test_granite_proxy_binding_selftest.Backend object at 0x7ef4727d12b0>.guard_active_during_cleanup
+
+tests/unit/test_granite_proxy_binding_selftest.py:252: AssertionError
+_________ test_worker_launcher_parent_must_be_the_expected_controller __________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-12/test_worker_launcher_parent_mu0')
+
+    def test_worker_launcher_parent_must_be_the_expected_controller(tmp_path):
+        backend,plan,clock=fixture(tmp_path)
+        plan['expected_controller_pid']=999
+        result=selftest.run_binding_session(backend,plan,clock=clock,sleep=clock.sleep,
+            watchdog_factory=Guard,guard_validator=lambda path,pid:dict(verified=True))
+>       assert result['proxy_binding_selftest_passed'] is False
+E       assert True is False
+
+tests/unit/test_granite_proxy_binding_selftest.py:261: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_independent_deadline_stays_active_through_native_cleanup_and_handle_close
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_worker_launcher_parent_must_be_the_expected_controller
+2 failed, 40 deselected in 0.23s

@@ -1,0 +1,28 @@
+{"utc": "2026-10-11T15:42:48.967197+00:00", "event": "calibration_started", "deadline_epoch": 1791734268.9600067}
+{"utc": "2026-10-11T15:42:48.976103+00:00", "event": "model_loading", "owned_process_group": 20388}
+{"utc": "2026-10-11T15:42:50.441955+00:00", "event": "model_ready", "seconds": 1.4590775659999053, "health_attempts": 7, "health_status": 200, "body": "{\"status\":\"ok\"}"}
+{"utc": "2026-10-11T15:42:50.462256+00:00", "event": "case_started", "index": 1, "case": "C1", "temperature": 0.7}
+{"utc": "2026-10-11T15:43:05.996586+00:00", "event": "case_completed", "index": 1, "id": "C1", "temperature": 0.7, "passed": false, "status_correct": true, "seconds": 15.524, "cache": 0}
+{"utc": "2026-10-11T15:43:06.018822+00:00", "event": "case_started", "index": 2, "case": "C1", "temperature": 0}
+{"utc": "2026-10-11T15:43:28.164139+00:00", "event": "case_completed", "index": 2, "id": "C1", "temperature": 0, "passed": false, "status_correct": false, "seconds": 22.135, "cache": 0}
+{"utc": "2026-10-11T15:43:28.186517+00:00", "event": "case_started", "index": 3, "case": "C2", "temperature": 0}
+{"utc": "2026-10-11T15:43:50.584878+00:00", "event": "case_completed", "index": 3, "id": "C2", "temperature": 0, "passed": false, "status_correct": false, "seconds": 22.386, "cache": 0}
+{"utc": "2026-10-11T15:43:50.606877+00:00", "event": "case_started", "index": 4, "case": "C2", "temperature": 0.7}
+{"utc": "2026-10-11T15:44:05.865398+00:00", "event": "case_completed", "index": 4, "id": "C2", "temperature": 0.7, "passed": false, "status_correct": false, "seconds": 15.248, "cache": 0}
+{"utc": "2026-10-11T15:44:05.885659+00:00", "event": "case_started", "index": 5, "case": "C3", "temperature": 0.7}
+{"utc": "2026-10-11T15:44:44.042344+00:00", "event": "case_completed", "index": 5, "id": "C3", "temperature": 0.7, "passed": false, "status_correct": true, "seconds": 38.146, "cache": 0}
+{"utc": "2026-10-11T15:44:44.062420+00:00", "event": "case_started", "index": 6, "case": "C3", "temperature": 0}
+{"utc": "2026-10-11T15:45:23.151969+00:00", "event": "case_completed", "index": 6, "id": "C3", "temperature": 0, "passed": false, "status_correct": true, "seconds": 39.074, "cache": 0}
+{"utc": "2026-10-11T15:45:23.182435+00:00", "event": "case_started", "index": 7, "case": "C4", "temperature": 0}
+{"utc": "2026-10-11T15:45:39.963376+00:00", "event": "case_completed", "index": 7, "id": "C4", "temperature": 0, "passed": false, "status_correct": true, "seconds": 16.768, "cache": 0}
+{"utc": "2026-10-11T15:45:39.984636+00:00", "event": "case_started", "index": 8, "case": "C4", "temperature": 0.7}
+{"utc": "2026-10-11T15:46:03.757574+00:00", "event": "case_completed", "index": 8, "id": "C4", "temperature": 0.7, "passed": false, "status_correct": true, "seconds": 23.761, "cache": 0}
+{"utc": "2026-10-11T15:46:03.778325+00:00", "event": "case_started", "index": 9, "case": "C5", "temperature": 0.7}
+{"utc": "2026-10-11T15:46:19.598167+00:00", "event": "case_completed", "index": 9, "id": "C5", "temperature": 0.7, "passed": false, "status_correct": false, "seconds": 15.807, "cache": 0}
+{"utc": "2026-10-11T15:46:19.621294+00:00", "event": "case_started", "index": 10, "case": "C5", "temperature": 0}
+{"utc": "2026-10-11T15:46:35.636203+00:00", "event": "case_completed", "index": 10, "id": "C5", "temperature": 0, "passed": false, "status_correct": false, "seconds": 15.999, "cache": 0}
+{"utc": "2026-10-11T15:46:35.662554+00:00", "event": "case_started", "index": 11, "case": "C6", "temperature": 0}
+{"utc": "2026-10-11T15:46:51.378907+00:00", "event": "case_completed", "index": 11, "id": "C6", "temperature": 0, "passed": false, "status_correct": true, "seconds": 15.702, "cache": 0}
+{"utc": "2026-10-11T15:46:51.401281+00:00", "event": "case_started", "index": 12, "case": "C6", "temperature": 0.7}
+{"utc": "2026-10-11T15:47:17.388322+00:00", "event": "case_completed", "index": 12, "id": "C6", "temperature": 0.7, "passed": false, "status_correct": true, "seconds": 25.972, "cache": 0}
+{"utc": "2026-10-11T15:47:17.875687+00:00", "event": "calibration_finished", "status": "completed_fail", "completed": 12, "success": false}

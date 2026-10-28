@@ -1,0 +1,20 @@
+{
+  "JSON_files_parsed": 11,
+  "pretest_contract_recorded_before_execution": true,
+  "exact_mock_and_expected_LI_association_match": true,
+  "first_run_two_passes_no_retries": true,
+  "target_POSTs": {
+    "mocked": 1,
+    "actual": 1,
+    "total": 2
+  },
+  "actual_database_counts": {
+    "search_request": 2,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "final_source_hashes_and_receipt_links_valid": true,
+  "actual_persisted_submission_digests_or_bindings_in_text_artifacts": 0,
+  "trace_HAR_exports": 0,
+  "phase_3_in_progress": true
+}

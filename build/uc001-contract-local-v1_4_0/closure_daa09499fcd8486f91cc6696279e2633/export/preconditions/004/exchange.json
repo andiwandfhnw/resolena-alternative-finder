@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "path": "/props",
+  "status": 200,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "complete": true,
+  "exported": true,
+  "failure": null,
+  "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "response_sha256": "b24b33dd977031de2819ac0ba248d96d730cb0dd3d594784657db2e6a5fd3fb7"
+}

@@ -1,0 +1,24 @@
+......................................................F                  [100%]
+=================================== FAILURES ===================================
+____ test_cleanup_preserves_total_processes_after_all_owned_processes_exit _____
+
+api = <test_granite_windows_job.FakeApi object at 0x7fb0608e9ac0>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-55/test_cleanup_preserves_total_p0')
+
+    def test_cleanup_preserves_total_processes_after_all_owned_processes_exit(api,tmp_path):
+        job=WindowsJob(api=api)
+        launch(job,tmp_path)
+        api.processes['unobserved-short-lived'] = dict(pid=707,created=707000,alive=False,
+                                                      job=True,suspended=False,exit_code=0)
+        job.terminate()
+        result=job.cleanup()
+        assert result['verified'] is True
+        assert result['active_processes']==0
+>       assert result['total_processes']==2
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'total_processes'
+
+tests/unit/test_granite_windows_job.py:647: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_cleanup_preserves_total_processes_after_all_owned_processes_exit
+1 failed, 54 passed in 0.57s

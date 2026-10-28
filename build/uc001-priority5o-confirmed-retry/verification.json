@@ -1,0 +1,288 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5O only: extend the existing confirmed-write-failure browser scenario with clicked unchanged-submission retry",
+  "recorded_date": "2026-10-23",
+  "result": "Existing success baseline and extended write-failure scenario passed first run against unchanged production; stop for human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priorities_3_4_5": "partial",
+    "increment_1_complete": false,
+    "DEVELOP_complete": false,
+    "whole_retry_row_complete": false
+  },
+  "prior_5N_acceptance": {
+    "scope": "Only reported direct-new-intent paths after uncertainty: explicit fresh reset with unchanged values and country edit without reset/recovery. Neither action sent a request; later explicit submission used new key/proof/current values and retained the original saved comparison.",
+    "test_kind": "Two new cases plus success baseline passed first run against unchanged production.",
+    "original_receipt": "build/uc001-priority5n-direct-new-intent/verification.json",
+    "original_sha256": "c440d2ed7b852ebaa059a8a024fc3904999e0ede4f54e3ab1156c889d4601800",
+    "original_receipt_and_300ms_observation_limit_preserved": true,
+    "advisor_review_limit": "The advisor report-level review is not an independent source audit or test execution; no such activity is inferred from that review."
+  },
+  "prerequisites": {
+    "result": "Confirmed; no material accepted-contract/architecture/schema/dependency conflict.",
+    "checked": [
+      "Current accepted failed-save/retry and field/loading contract",
+      "Existing browser required-write-rejection test and inspectDatabase helper",
+      "React captured-attempt fingerprint/body/key/proof retention on confirmed failed save"
+    ],
+    "equivalent_clicked_confirmed_failure_browser_retry_existed": false,
+    "gap": "Existing test stopped at enabled Try again and unchanged counts; other clicked retries concern processing/language or uncertain recovery.",
+    "accepted_failed_response": {
+      "status": 503,
+      "body": {
+        "outcome": "persistence_error",
+        "persistence": {
+          "state": "failed"
+        },
+        "issues": [
+          {
+            "code": "comparison_save_failed"
+          }
+        ],
+        "assessed_outcome": "comparison"
+      }
+    },
+    "same_submission_rule": "Unchanged explicit retry retains captured body/key/proof; absent completed record follows normal processing and returns201 for a new commit.",
+    "checkpoint": "Accepted eight-row map reused unchanged; no repeated checkpoint/fault investigations.",
+    "reused_backend_evidence": "Existing atomicity and retry/reassessment evidence from priority1/2 and later scoped receipts; no backend tests, SQL-stage observations or processing counters repeated."
+  },
+  "extension": {
+    "existing_test_title": "real SQLite write failure preserves fields and never presents a completed comparison",
+    "scenario_kind": "Extension of one existing scenario; no parallel/repeated-failure scenario added.",
+    "new_scenarios": 0,
+    "all_original_failure_assertions_retained_verbatim": 9,
+    "other_tests_helpers_imports_unchanged": true,
+    "test_first": "Extended regression before deciding whether production changes were needed. First run passed; no genuine RED or production fix, and no artificial RED introduced.",
+    "input": "Existing understood bicycle request / CH / no optional locality; fresh page without earlier uncertainty.",
+    "fixture_time": "2026-10-15T10:00:00+00:00",
+    "clock": "Read and checked byte-for-byte unchanged; never modified.",
+    "fault": "Existing real SQLite browser_save_failure trigger rejects the required evidence-association INSERT. No response fabrication, delivery abort, new origin/controller or SQL-stage instrumentation."
+  },
+  "observations": {
+    "actual_failed_response": {
+      "status": 503,
+      "body": {
+        "outcome": "persistence_error",
+        "persistence": {
+          "state": "failed"
+        },
+        "issues": [
+          {
+            "code": "comparison_save_failed"
+          }
+        ],
+        "assessed_outcome": "comparison"
+      }
+    },
+    "failure_UI": {
+      "accepted_message": "The comparison could not be saved in this attempt. Your fields are preserved; try again explicitly.",
+      "fields_and_captured_language_context_retained": true,
+      "loading_ended_and_controls_enabled": true,
+      "Try_again_enabled": true,
+      "no_saved_comparison_coverage_acknowledgement_or_unknown_warning": true
+    },
+    "bounded_no_automatic_retry_ms": 300,
+    "trigger_removed_before_retry": true,
+    "explicit_action": "Try again actually clicked without form,clock,evidence or review-date edits.",
+    "same_submission": {
+      "same_serialized_body": true,
+      "same_submission_key": true,
+      "same_originating_proof": true,
+      "same_captured_language_context": true,
+      "checks_export_equality_booleans_only": true
+    },
+    "target_browser_POSTs": 2,
+    "actual_successful_retry_summary": {
+      "status": 201,
+      "outcome": "comparison",
+      "persistence": {
+        "state": "saved",
+        "request_id": "96efe217-c91e-4be0-b521-80e5f4efd57b"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "option_ids": [
+        "16dbe7f5-c1b4-4a15-9a5b-fbff8311e39c",
+        "0892934d-b1ae-44d5-ad2b-d06d7f0b0bc4"
+      ]
+    },
+    "full_actual_responses_and_saved_projections": "build/uc001-priority5o-confirmed-retry/browser/saved-comparison-real-SQLi-e9738-ents-a-completed-comparison/confirmed-write-failure-retry-evidence.json",
+    "success_UI": {
+      "authoritative_saved_request_and_option_ids_and_names_match_actual_response": true,
+      "loading_ended_error_cleared_and_fields_controls_usable": true,
+      "not_submission_recovered_coverage_or_unsaved_comparison": true
+    }
+  },
+  "persistence": {
+    "counts": {
+      "before": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_failure": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_trigger_removal": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_retry": {
+        "search_request": 2,
+        "request_alternative": 4,
+        "request_alternative_evidence": 4
+      }
+    },
+    "observed_committed_state_after_failure_and_trigger_removal_equals_nonempty_baseline": true,
+    "retry_delta": {
+      "requests": 1,
+      "options": 2,
+      "evidence_links": 2
+    },
+    "new_record_selected_by_baseline_ID_difference": true,
+    "saved_request_id": "96efe217-c91e-4be0-b521-80e5f4efd57b",
+    "stored_projection_matches_actual_response": true,
+    "prior_request_rows_projections_options_associations_and_source_evidence_review_dates_preserved": true,
+    "no_processing_or_SQL_stage_counters_added": true
+  },
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5o-confirmed-retry/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|real SQLite write failure preserves fields' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5o-confirmed-retry/browser --reporter=list,json 2>&1 | tee build/uc001-priority5o-confirmed-retry/browser.txt",
+      "exit_code": 0,
+      "result": "2 passed (15.6s), first and only browser invocation: existing success baseline plus extended existing write-failure/clicked-retry scenario.",
+      "stats": {
+        "startTime": "2026-10-23T07:30:18.896Z",
+        "duration": 15577.103000000001,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "log": "build/uc001-priority5o-confirmed-retry/browser.txt",
+      "report": "build/uc001-priority5o-confirmed-retry/browser-report.json"
+    },
+    {
+      "command": "set -o pipefail\ngit diff --check 2>&1 | tee build/uc001-priority5o-confirmed-retry/git-diff-check.txt",
+      "exit_code": 2,
+      "result": "Only preserved historical trailing whitespace at docs/TASKS.md:1933; both task-local deltas clean.",
+      "log": "build/uc001-priority5o-confirmed-retry/git-diff-check.txt"
+    },
+    {
+      "command": "set -o pipefail\ngit status --short | tee build/uc001-priority5o-confirmed-retry/git-status.txt",
+      "exit_code": 0,
+      "result": "Dirty worktree preserved; Git status entries identical to entry.",
+      "log": "build/uc001-priority5o-confirmed-retry/git-status.txt"
+    },
+    {
+      "command": ".venv/bin/python /tmp/resolena-priority5o-8gyvkao1/check-evidence.py",
+      "exit_code": 0,
+      "result": "Actual response/identity/counts, all471 protected hashes, all9 original failure assertions, unchanged other test content and test-definition count, historical TASKS/checkpoint, safe exports, scoped whitespace and stopped servers verified.",
+      "artifacts": [
+        "build/uc001-priority5o-confirmed-retry/preservation.json",
+        "build/uc001-priority5o-confirmed-retry/receipt-check.json"
+      ]
+    }
+  ],
+  "conditional_checks_not_run": {
+    "extra_regressions": "Not required: no production,helper,controller,runner or other shared behavior changed; no concrete changed-path risk identified.",
+    "frontend_lint_build": "Not required: frontend source and runner configuration unchanged.",
+    "backend_and_full_browser_matrices": "Not run; existing backend atomicity/reassessment evidence reused."
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "307a15bab86bfcc6aa84cc51b30547a650f5aaf72cf78bdba2e7ac22d43b2346",
+      "summary": "Current5O authorization, scoped5N acceptance/review limit and one concise5O result; all historical text/checkpoint retained."
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "5bdf8a17d5ce5344b39bb7b892b066a89431a5f29b3d08e05d798f22845da5b4",
+      "summary": "Extend only existing write-failure test, preserving its9 original assertion lines and adding clicked unchanged retry/safe evidence/guarded trigger cleanup."
+    }
+  ],
+  "cleanup_and_privacy": {
+    "owned_trigger_removed_before_successful_retry": true,
+    "assertion_failure_cleanup": "Existing finally retained with ownership flag so failures before removal drop the owned trigger and success does not double-drop; no forced assertion-failure run added.",
+    "clock_bytes_unchanged": true,
+    "owned_test_servers_stopped": true,
+    "ports": [
+      {
+        "port": 8011,
+        "closed": true
+      },
+      {
+        "port": 5175,
+        "closed": true
+      }
+    ],
+    "traces": "off",
+    "HAR_or_trace_files_present": false,
+    "raw_keys_proofs_headers_bindings_complete_captured_requests_or_exception_contexts_exported": false,
+    "credential_comparison": "Captured only in test memory; equality booleans exported."
+  },
+  "preservation": {
+    "protected_files_checked": 471,
+    "unchanged_protected_files": 469,
+    "only_two_authorized_existing_files_changed": true,
+    "all_prior_receipts_and_5_series_artifacts_unchanged": true,
+    "historical_TASKS_checkpoint_and_other_tests_helpers_imports_preserved": true,
+    "production_support_frontend_runner_dependencies_and_laptop_context_unchanged": true,
+    "DE_FR_IT_EN_Resolena_controlled_processing_atomic_save_and_immutable_evidence_unchanged": true,
+    "real_knowledge_rendering_drafts_inactive_and_experiments_closed": true,
+    "normal_app_main": "Unchanged/unconfigured.",
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_HEAD_and_git_status_entries_unchanged": true,
+    "scoped_diff_checks": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5o-8gyvkao1/docs/TASKS.md",
+          "/workspaces/resolena-alternative-finder/docs/TASKS.md"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5o-8gyvkao1/tests/e2e/saved-comparison.spec.ts",
+          "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      }
+    ],
+    "detailed_checks": "build/uc001-priority5o-confirmed-retry/preservation.json"
+  },
+  "artifact": {
+    "path": "build/uc001-priority5o-confirmed-retry/browser/saved-comparison-real-SQLi-e9738-ents-a-completed-comparison/confirmed-write-failure-retry-evidence.json",
+    "sha256": "da069df205922ae9b5d04848390b6428bbe5f64daa044fea56da7296754aba08"
+  },
+  "checkpoint_credit": "Only the confirmed-failure clicked-retry observable, as extension of one existing scenario. No whole-row/Priority5/DEVELOP completion or next-task authorization.",
+  "remaining_and_limits": [
+    "300ms is a bounded absence-of-automatic-retry observation, not an unlimited timing guarantee.",
+    "Product/habit examples and country/locality obligations remain pending.",
+    "No additional recovery/fault variants or backend security/atomicity coverage inferred from receipt limitations.",
+    "Priorities3/4/5,increment1 and DEVELOP remain incomplete."
+  ],
+  "excluded_work_not_performed": [
+    "No expiry,coverage-save-failure,prior-uncertainty,edited-input or fresh-search variant; no new backend controller/support framework.",
+    "No reference acquisition/activation,model/detector startup,held-out access,linguistic approval,TL-03,research,UC-003 or Priority6.",
+    "No dependency changes,staging,commits,push,merge,branch switch/reset,unrelated cleanup,CI/CD or deployment."
+  ],
+  "review": "A collaborating agent reviewed the task-local extension read-only and ran no tests. This does not establish independent human validation. Primary-agent ordinary-runner execution is recorded above.",
+  "stop": "Stop after this extended scenario for human review; no further implementation authorized."
+}

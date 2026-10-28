@@ -1,0 +1,307 @@
+FFFFFFFFFFFFF                                                            [100%]
+=================================== FAILURES ===================================
+___ test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_expected_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b89e840>
+
+    def test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence(tmp_path,monkeypatch):
+        original=SplitApi.children_of
+        queries=[]
+        def scoped(self,parents,timeout_seconds=None):
+            queries.append(set(parents))
+            self.add(77777,999,88888,False,'unrelated-system-name','unrelated-system-role')
+            return original(self,parents,timeout_seconds)
+        monkeypatch.setattr(SplitApi,'children_of',scoped)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['ownership_self_test_passed'] is True
+        rows,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations
+E       assert []
+
+tests/unit/test_granite_controller_standins.py:567: AssertionError
+__ test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras0] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_extras_ar0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b89deb0>
+extras = {(99001, 61020)}
+
+    @pytest.mark.parametrize('extras',[
+        {(99001,INTERPRETER)},
+        {(99002,LAUNCHER)},
+        {(99001,INTERPRETER),(99002,LAUNCHER),(99003,INTERPRETER)},
+    ])
+    def test_edge_diagnostic_extras_are_recorded_before_unchanged_failure(tmp_path,monkeypatch,extras):
+        original=SplitApi.children_of
+        monkeypatch.setattr(SplitApi,'children_of',lambda self,parents,timeout_seconds=None:
+            original(self,parents,timeout_seconds)|extras)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert result['suspended_assignment_order_verified'] is False
+        assert result['owned_identities']==[]
+        assert 'owned_root_launched_once' not in calls
+        assert result['unrelated_survived'] is False
+        assert result['unrelated_cleanup_verified'] is False
+        rows,observations=edge_diagnostic_rows(tmp_path)
+>       assert {(r['child_pid'],r['parent_pid']) for r in observations[0]['observed_edges']}==extras|{(INTERPRETER,LAUNCHER)}
+                                                          ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:603: IndexError
+__ test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras1] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_extras_ar1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b480770>
+extras = {(99002, 61196)}
+
+    @pytest.mark.parametrize('extras',[
+        {(99001,INTERPRETER)},
+        {(99002,LAUNCHER)},
+        {(99001,INTERPRETER),(99002,LAUNCHER),(99003,INTERPRETER)},
+    ])
+    def test_edge_diagnostic_extras_are_recorded_before_unchanged_failure(tmp_path,monkeypatch,extras):
+        original=SplitApi.children_of
+        monkeypatch.setattr(SplitApi,'children_of',lambda self,parents,timeout_seconds=None:
+            original(self,parents,timeout_seconds)|extras)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert result['suspended_assignment_order_verified'] is False
+        assert result['owned_identities']==[]
+        assert 'owned_root_launched_once' not in calls
+        assert result['unrelated_survived'] is False
+        assert result['unrelated_cleanup_verified'] is False
+        rows,observations=edge_diagnostic_rows(tmp_path)
+>       assert {(r['child_pid'],r['parent_pid']) for r in observations[0]['observed_edges']}==extras|{(INTERPRETER,LAUNCHER)}
+                                                          ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:603: IndexError
+__ test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras2] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_extras_ar2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b481700>
+extras = {(99001, 61020), (99002, 61196), (99003, 61020)}
+
+    @pytest.mark.parametrize('extras',[
+        {(99001,INTERPRETER)},
+        {(99002,LAUNCHER)},
+        {(99001,INTERPRETER),(99002,LAUNCHER),(99003,INTERPRETER)},
+    ])
+    def test_edge_diagnostic_extras_are_recorded_before_unchanged_failure(tmp_path,monkeypatch,extras):
+        original=SplitApi.children_of
+        monkeypatch.setattr(SplitApi,'children_of',lambda self,parents,timeout_seconds=None:
+            original(self,parents,timeout_seconds)|extras)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert result['suspended_assignment_order_verified'] is False
+        assert result['owned_identities']==[]
+        assert 'owned_root_launched_once' not in calls
+        assert result['unrelated_survived'] is False
+        assert result['unrelated_cleanup_verified'] is False
+        rows,observations=edge_diagnostic_rows(tmp_path)
+>       assert {(r['child_pid'],r['parent_pid']) for r in observations[0]['observed_edges']}==extras|{(INTERPRETER,LAUNCHER)}
+                                                          ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:603: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[None] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b482630>
+malformed = None
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b483ce0>
+malformed = []
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed2] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b4231d0>
+malformed = {(0, 61196)}
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed3] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b423a10>
+malformed = {(True, 61196)}
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed4] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b482f00>
+malformed = {(99001, 88888)}
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed5] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b481dc0>
+malformed = {(99001, 61196, 123)}
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed6] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_malformed6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b480b30>
+malformed = {('unrelated-process-name', 61196)}
+
+    @pytest.mark.parametrize('malformed',[
+        None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+        {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+    ])
+    def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+        monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='malformed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:623: IndexError
+_ test_edge_diagnostic_failed_toolhelp_observation_is_unknown_never_empty_success _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_failed_to0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b89e180>
+
+    def test_edge_diagnostic_failed_toolhelp_observation_is_unknown_never_empty_success(tmp_path,monkeypatch):
+        def failed(*args,**kwargs):
+            raise RuntimeError('scoped Toolhelp failure')
+        monkeypatch.setattr(SplitApi,'children_of',failed)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['failure_reason']=='RuntimeError: scoped Toolhelp failure'
+        assert 'owned_root_launched_once' not in calls
+        _,observations=edge_diagnostic_rows(tmp_path)
+>       assert observations[0]['status']=='failed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:637: IndexError
+_____ test_edge_diagnostic_journal_write_failure_cannot_reach_owned_launch _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_edge_diagnostic_journal_w0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7de11b48d940>
+
+    def test_edge_diagnostic_journal_write_failure_cannot_reach_owned_launch(tmp_path,monkeypatch):
+        from scripts.uc001_granite_controller import standins as module
+        original=module.Journal.record
+        def record(self,event,**values):
+            if event=='scoped_child_edges':
+                raise OSError('diagnostic journal unavailable')
+            return original(self,event,**values)
+        monkeypatch.setattr(module.Journal,'record',record)
+        result,calls=run_split(tmp_path,monkeypatch)
+>       assert result['ownership_self_test_passed'] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:651: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras0]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras1]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_extras_are_recorded_before_unchanged_failure[extras2]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[None]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed1]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed2]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed3]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed4]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed5]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed[malformed6]
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_failed_toolhelp_observation_is_unknown_never_empty_success
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_journal_write_failure_cannot_reach_owned_launch
+13 failed, 30 deselected in 0.43s

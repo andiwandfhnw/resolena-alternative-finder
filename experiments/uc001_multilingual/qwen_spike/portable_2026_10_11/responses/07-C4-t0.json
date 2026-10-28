@@ -1,0 +1,27 @@
+{
+  "http_status": 200,
+  "http_headers": [
+    [
+      "Server",
+      "llama.cpp"
+    ],
+    [
+      "Access-Control-Allow-Origin",
+      ""
+    ],
+    [
+      "Content-Type",
+      "application/json; charset=utf-8"
+    ],
+    [
+      "Content-Length",
+      "1031"
+    ],
+    [
+      "Keep-Alive",
+      "timeout=5, max=100"
+    ]
+  ],
+  "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"understood\\\", \\\"language\\\": \\\"fr\\\", \\\"subject\\\": {\\\"value\\\": \\\"bouilloire\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733539,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":72,\"prompt_tokens\":332,\"total_tokens\":404,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-5PUftuto1R2JYTrAcpvo4vVptq60wBos\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":8056.531,\"prompt_per_token_ms\":24.266659638554216,\"prompt_per_second\":41.20880314368554,\"predicted_n\":72,\"predicted_ms\":8698.915,\"predicted_per_token_ms\":122.51992957746481,\"predicted_per_second\":8.161937437025191}}",
+  "wall_seconds": 16.767527726000026
+}

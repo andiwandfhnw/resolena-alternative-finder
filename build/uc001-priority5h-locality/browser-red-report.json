@@ -1,0 +1,176 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v24.21.0/bin/node",
+      "/workspaces/resolena-alternative-finder/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "unavailable locality requires explicit country-only continuation before saving",
+      "--trace=off",
+      "--output",
+      "/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspaces/resolena-alternative-finder/frontend/playwright.config.ts",
+    "rootDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "snapshotDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "trace": "off"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "saved-comparison.spec.ts",
+      "file": "saved-comparison.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "unavailable locality requires explicit country-only continuation before saving",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 4522,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Town (optional)', { exact: true })\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('Town (optional)', { exact: true }) with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Town (optional)', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Town (optional)', { exact: true })\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('Town (optional)', { exact: true }) with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Town (optional)', { exact: true })\u001b[22m\n\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:312:71",
+                    "location": {
+                      "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                      "column": 71,
+                      "line": 312
+                    },
+                    "snippet": "  310 |     await page.goto('/')\n  311 |     await page.getByLabel('Describe your request').fill(example)\n> 312 |     await expect(page.getByLabel('Town (optional)', { exact: true })).toBeVisible({ timeout: 3000 })\n      |                                                                       ^\n  313 |     await page.getByLabel('Town (optional)', { exact: true }).fill('Synthetic optional town')\n  314 |     await page.getByLabel('Postcode (optional)', { exact: true }).fill('0123')\n  315 |     const clarificationResponse = page.waitForResponse(response => response.url().endsWith('/api/comparisons'))"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 71,
+                        "line": 312
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByLabel('Town (optional)', { exact: true })\nExpected: visible\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByLabel('Town (optional)', { exact: true }) with timeout 3000ms\u001b[22m\n\u001b[2m  - waiting for getByLabel('Town (optional)', { exact: true })\u001b[22m\n\n\n  310 |     await page.goto('/')\n  311 |     await page.getByLabel('Describe your request').fill(example)\n> 312 |     await expect(page.getByLabel('Town (optional)', { exact: true })).toBeVisible({ timeout: 3000 })\n      |                                                                       ^\n  313 |     await page.getByLabel('Town (optional)', { exact: true }).fill('Synthetic optional town')\n  314 |     await page.getByLabel('Postcode (optional)', { exact: true }).fill('0123')\n  315 |     const clarificationResponse = page.waitForResponse(response => response.url().endsWith('/api/comparisons'))\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:312:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-20T20:58:06.748Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red/saved-comparison-unavailab-ff596--continuation-before-saving/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                    "column": 71,
+                    "line": 312
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-c65502fcdb09c7ab3e96",
+          "file": "saved-comparison.spec.ts",
+          "line": 290,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-20T20:58:02.507Z",
+    "duration": 10498.999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

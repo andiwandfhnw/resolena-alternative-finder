@@ -1,0 +1,326 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5I only",
+  "recorded_date": "2026-10-21",
+  "result": "One genuine delayed required-save browser observable verified against existing production behavior; awaiting human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priority_3": "partial",
+    "priority_4": "partial",
+    "priority_5": "partial",
+    "increment_1": "incomplete",
+    "DEVELOP": "in-progress"
+  },
+  "prior_5H_acceptance": {
+    "scope": "Unavailable-reference clarification -> explicit country-only continuation only.",
+    "accepted": [
+      "Actual locality policy prevents assessment/save before explicit choice.",
+      "Explicit continuation creates new key/proof and normalizes effective structured location on the server.",
+      "Original text, independent textual constraints/provenance and captured-payload binding remain intact.",
+      "The represented Genève requirement cannot qualify through country support alone.",
+      "Standalone/nonempty-baseline browser results retain their original limits."
+    ],
+    "original_receipt": "build/uc001-priority5h-locality/verification.json",
+    "original_receipt_sha256": "1de97b9ddc1c7d3f105a22a36c0e9b0e226d9e043eeba44f7442779c57591d55",
+    "original_receipt_and_artifacts_unchanged": true,
+    "not_claimed": [
+      "Factual country/locality validation",
+      "Confirmed-unverified O-1 success",
+      "Complete locality acceptance",
+      "Separately verified explicit selected explanation-language retention during locality clarification"
+    ]
+  },
+  "prerequisites": {
+    "material_contract_conflict_or_unapproved_architecture_schema_dependency_requirement": false,
+    "checked_sources": [
+      "UC-001 AC-14 / E-LD-01 / T-12 and accepted loading/save-before-presentation contracts",
+      "Current frontend/src/App.tsx busy/inFlight/fetch/finally and disabled controls",
+      "SQLiteComparisonStore.save required inserts followed by transaction.commit",
+      "Existing isolated demo, ordinary Playwright runner and test-only uncertain-save support conventions"
+    ],
+    "confirmed": "An engine-local dialect.do_commit test hook can pause immediately before underlying SQLite commit, after actual required inserts. No production/schema/dependency change is needed.",
+    "checkpoint_reinvestigated": false
+  },
+  "test_first": {
+    "tests_authored_before_gate_implementation": true,
+    "support_contract": "Missing-helper RED -> 1 GREEN after adding test-only support.",
+    "production_behavior": "New browser journey passed first run against unchanged React/application/SQLite adapter. No production RED was manufactured and no production correction was needed."
+  },
+  "gate": {
+    "source": "tests/support/delayed_save.py:49",
+    "precise_location": "Inside the designated real store.save execution, engine.dialect.do_commit receives the active DBAPI connection after SQLiteComparisonStore.save inserts the request, both options and both evidence links, before calling the captured original do_commit.",
+    "targeting": "One consumed control file matches submission-key digest; owner-thread and target request-row guards delegate unrelated commits unchanged. Installed only in isolated test demo after seeding.",
+    "synchronization": "Atomic .reached.json / matching explicit .release.json signals. Bounded condition polling; no fixed sleep is used to infer that persistence is paused.",
+    "timeout_seconds": 20,
+    "timeout_scope": "Cleanup backstop only, not a tested timeout variant.",
+    "stage": "after_required_inserts_before_underlying_commit",
+    "request_id": "3952601d-ff5c-4ae3-9a93-aadd24e945c1",
+    "writer_transaction_active": true,
+    "writer_target_rows_after_actual_inserts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "underlying_commit_calls_before_release": 0,
+    "explicit_release_received": true,
+    "underlying_commit_calls_after_release": 1,
+    "timeline": [
+      "matching_control_consumed",
+      "required_inserts_visible_in_active_writer_transaction",
+      "pre_commit_reached_signal_published",
+      "explicit_release_received",
+      "underlying_commit_returned",
+      "dialect_method_restored",
+      "store_save_hook_restored"
+    ],
+    "observer_rows_supplied_to_application": false,
+    "placeholder_or_pending_record_committed": false,
+    "HTTP_delivery_gate_or_fabricated_response": false
+  },
+  "while_uncommitted": {
+    "loading_visible": true,
+    "form_busy": true,
+    "submission_text_country_optional_locality_controls_disabled": true,
+    "saved_comparison_coverage_acknowledgement_or_options_presented": false,
+    "successful_API_responses": 0,
+    "browser_submissions": 1,
+    "independent_before_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "independent_during_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "independent_before_and_during_states_identical": true,
+    "independent_during_sees_target_request": false
+  },
+  "after_release": {
+    "actual_status": 201,
+    "actual_outcome": "comparison",
+    "persistence": {
+      "state": "saved",
+      "request_id": "3952601d-ff5c-4ae3-9a93-aadd24e945c1"
+    },
+    "assessed_at": "2026-10-15T10:00:00+00:00",
+    "time_note": "Fixed synthetic fixture instant; not a current factual assessment.",
+    "structured_input": {
+      "country_code": "CH"
+    },
+    "input_note": "Existing ordinary form submission with no optional locality; no locality fallback variant.",
+    "option_ids": [
+      "d5e4b605-c927-40c2-a488-22b98bd40310",
+      "e5e26a7e-c8a3-4acd-8576-a1519e5dd79a"
+    ],
+    "evidence_associations_added": [
+      [
+        "d5e4b605-c927-40c2-a488-22b98bd40310",
+        "30000000-0000-4000-8000-000000000001"
+      ],
+      [
+        "e5e26a7e-c8a3-4acd-8576-a1519e5dd79a",
+        "30000000-0000-4000-8000-000000000002"
+      ]
+    ],
+    "independent_after_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "delta_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "new_identity_selected_by_baseline_ID_difference": true,
+    "displayed_saved_request_and_option_IDs_match_committed_projection": true,
+    "loading_ended_and_controls_enabled": true,
+    "prior_records_options_links_and_source_evidence_unchanged": true,
+    "browser_submissions": 1,
+    "successful_API_responses": 1,
+    "designated_store_save_calls": 1,
+    "designated_underlying_commit_calls": 1,
+    "replacement_identity_or_automatic_write_retry_observed": false,
+    "counter_scope": "Designated save/commit invocation only, alongside one browser submission and independent committed ID/row differences; not a general concurrency metric."
+  },
+  "support_isolation": {
+    "artifact": "support-evidence.json",
+    "missing_or_unmatched_control_leaves_seeding_and_other_saves_ungated": true,
+    "before_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "during_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "after_target_counts": {
+      "search_request": 3,
+      "request_alternative": 6,
+      "request_alternative_evidence": 6
+    },
+    "subsequent_normal_save_counts_asserted_by_test": {
+      "search_request": 4,
+      "request_alternative": 8,
+      "request_alternative_evidence": 8
+    },
+    "subsequent_save_does_not_change_gate_evidence": true
+  },
+  "cleanup": {
+    "dialect_method_restored": true,
+    "store_save_hook_restored": true,
+    "browser_finally_releases_once_and_waits_for_final_evidence": true,
+    "helper_finally_restores_hooks_and_demo_finally_calls_cleanup": true,
+    "assertion_failure_timeout_cancellation_variants_executed": false,
+    "owned_test_ports_closed": {
+      "8011": true,
+      "5175": true
+    },
+    "blocked_transaction_or_owned_server_left": false
+  },
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_uncertain_save_support.py::test_delayed_save_gate_targets_one_submission_and_restores_normal_saves | tee build/uc001-priority5i-delayed-save/support-red.txt",
+      "exit_code": 1,
+      "result": "1 failed: missing tests.support.delayed_save helper. Test-support contract RED only; no production loading defect.",
+      "artifact": "support-red.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_uncertain_save_support.py::test_delayed_save_gate_targets_one_submission_and_restores_normal_saves | tee build/uc001-priority5i-delayed-save/support-green.txt",
+      "exit_code": 0,
+      "result": "1 passed after implementing the new gate; targeting and restoration only.",
+      "artifact": "support-green.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5i-delayed-save/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|loading remains active while the required save is uncommitted|delivered unknown persistence error' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5i-delayed-save/browser --reporter=list,json 2>&1 | tee build/uc001-priority5i-delayed-save/browser.txt",
+      "exit_code": 0,
+      "result": "3 passed on the first invocation (22.1s): existing success baseline, new delayed-save journey, existing delivered-unknown regression. New journey 748ms.",
+      "artifact": "browser-report.json"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5i-delayed-save/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "Passed; required because runner configuration changed.",
+      "artifact": "frontend-lint.txt"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5i-delayed-save/frontend-build.txt",
+      "exit_code": 0,
+      "result": "Passed (TypeScript and Vite); production App unchanged.",
+      "artifact": "frontend-build.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "docs/TASKS.md:1713: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+      "artifact": "git-diff-check.txt"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "Same preexisting modified/untracked entries as at task entry; preserved without staging.",
+      "artifact": "git-status.txt"
+    }
+  ],
+  "direct_regression_reason": "Demo/runner share save-wrapping support; existing delivered-unknown journey verifies that its original behavior still works after the new gate restores the prior wrapper. No unrelated fault matrix rerun.",
+  "warnings": "Existing Starlette/httpx deprecation and NO_COLOR/FORCE_COLOR warning; no dependency changes.",
+  "artifacts": {
+    "browser_journey": "build/uc001-priority5i-delayed-save/browser/saved-comparison-loading-r-3654e-equired-save-is-uncommitted/delayed-required-save-evidence.json",
+    "support": "support-evidence.json",
+    "preservation": "preservation.json",
+    "browser_report": "browser-report.json",
+    "trace": "off",
+    "HAR": "not enabled"
+  },
+  "recorded_sensitive_material": {
+    "raw_proofs": false,
+    "captured_headers": false,
+    "complete_captured_request_objects": false,
+    "SQL_parameters": false,
+    "protected_exception_contexts": false,
+    "production_data": false
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "e511d801bf9cf9c56324bfa236d35272c681f9e6de6ada80d251316261fc1eec"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "sha256": "818bdd2176272d36157e63e5d4d168573904795ec242be6bfc663f7ad6b745cd"
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "919f3acd83e7cc989f947f30a325ade4adb9825d1320b47b9e5c35871f1b8a9c"
+    },
+    {
+      "path": "tests/integration/test_uncertain_save_support.py",
+      "sha256": "bb33e1c5a64b832faefb75b43809e5d8760af01646ce2a9568d5a9aecc51c6ab"
+    },
+    {
+      "path": "tests/support/demo.py",
+      "sha256": "e84c8ab64046a752ce2237259934d977e5f6693c668ab32a8a065fe7c0423cd3"
+    },
+    {
+      "path": "tests/support/delayed_save.py",
+      "sha256": "fedecf28690c6890b2c9dc3a4c202a190a029d2fab8fb7c0c2c9c3c6d8f4179f"
+    }
+  ],
+  "production_source_and_App_changed": false,
+  "normal_app_main_changed": false,
+  "preservation": {
+    "phase": 3,
+    "status": "in-progress",
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "frontend/playwright.config.ts",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_uncertain_save_support.py",
+      "tests/support/demo.py"
+    ],
+    "new_source_file": [
+      "tests/support/delayed_save.py"
+    ],
+    "baseline_protected_files": 149,
+    "unchanged_baseline_files": 144,
+    "original_5H_artifacts_unchanged": true,
+    "historical_TASKS_and_eight_row_checkpoint_unchanged": true,
+    "all_production_source_files_and_App_unchanged": true,
+    "normal_app_main_unchanged": true,
+    "branch_and_HEAD": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "git_status_entries_unchanged": true,
+    "task_local_whitespace_clean": [
+      "docs/TASKS.md",
+      "frontend/playwright.config.ts",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_uncertain_save_support.py",
+      "tests/support/delayed_save.py",
+      "tests/support/demo.py"
+    ],
+    "repository_diff_check_exit": 2,
+    "repository_diff_check_output": "docs/TASKS.md:1713: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "owned_test_ports_closed": {
+      "8011": true,
+      "5175": true
+    },
+    "optional_reused_checkpoint_hashes_verified": 0
+  },
+  "checkpoint_credit": "Only the loading row deliberately delayed required-save success observable of AC-14/E-LD-01/T-12. Complete loading criterion/Priority 5 acceptance is not claimed.",
+  "remaining_scope": "All other checkpoint obligations/limits remain; no loading failure, timeout, cancellation, crash, concurrency or locality variant added.",
+  "excluded_work_not_performed": [
+    "Real reference acquisition/activation or knowledge/rendering activation",
+    "Interpreter/model/detector experiments or startup",
+    "Held-out access, linguistic approval or TL-03",
+    "Research, UC-003 or Priority 6",
+    "Dependency changes, production delay/control endpoint or normal runtime configuration",
+    "Staging, commit, push, merge, branch switch/reset, unrelated cleanup, CI/CD or deployment"
+  ],
+  "stop": "Stop after this bounded slice for human review."
+}

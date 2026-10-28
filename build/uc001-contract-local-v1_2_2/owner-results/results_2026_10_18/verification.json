@@ -1,0 +1,26 @@
+{
+  "provenance": "Owner-pasted JSON from chat; original Windows files not accessed or byte-authenticated",
+  "reported_date": "2026-10-18",
+  "timezone": "Europe/Berlin",
+  "windows_result_directory": "C:\\ResolenaExperiments\\uc001-contract-local-v1_2_2\\scripts\\uc001_contract_local_v1_2_2\\results\\b79f87c7-ecc9-4d09-8515-3919434ceeb0",
+  "task": "v1.2.2 model-free harness debugging",
+  "status": "closed",
+  "tested_native_ownership_binding_cleanup": "verified_owner_reported",
+  "elapsed_ms": 1667,
+  "verified_scope": "Supervisor/venv redirector/base interpreter chain and creation identities, system console-helper binding, exact reported job membership, Python worker validation, job closure and confirmed exits for all three owned processes. No failure/deadline/observation errors.",
+  "identities": {
+    "supervisor": 26472,
+    "redirector": 46024,
+    "interpreter": 53216,
+    "console_helper": 50576
+  },
+  "limits": "Saved report compatibility only; missing historical CLI evidence remains unavailable and is not reinvestigated. No model/GPU readiness or semantics inferred.",
+  "startup_authorized": false,
+  "additional_allowance_approved": false,
+  "model_attempt_ledger_touched": false,
+  "expected_meanings_approved": false,
+  "semantic_review": "pending",
+  "priority3": "partial",
+  "phase": 3,
+  "phase_status": "in-progress"
+}

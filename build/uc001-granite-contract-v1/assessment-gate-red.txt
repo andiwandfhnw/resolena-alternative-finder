@@ -1,0 +1,25 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_assessment_without_separate_approval_cannot_create_output_or_interpreter _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-3/test_assessment_without_separa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7362aed0bc20>
+
+    def test_assessment_without_separate_approval_cannot_create_output_or_interpreter(tmp_path, monkeypatch):
+>       from scripts.uc001_granite_contract_v1 import assess
+E       ImportError: cannot import name 'assess' from 'scripts.uc001_granite_contract_v1' (unknown location)
+
+tests/unit/test_granite_package.py:94: ImportError
+____________ test_unavailable_or_unqualified_review_cannot_continue ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-3/test_unavailable_or_unqualifie0')
+
+    def test_unavailable_or_unqualified_review_cannot_continue(tmp_path):
+>       from scripts.uc001_granite_contract_v1.assess import wait_review
+E       ModuleNotFoundError: No module named 'scripts.uc001_granite_contract_v1.assess'
+
+tests/unit/test_granite_package.py:104: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_package.py::test_assessment_without_separate_approval_cannot_create_output_or_interpreter
+FAILED tests/unit/test_granite_package.py::test_unavailable_or_unqualified_review_cannot_continue
+2 failed, 8 deselected in 0.04s

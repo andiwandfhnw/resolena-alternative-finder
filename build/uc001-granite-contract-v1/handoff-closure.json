@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspaces/resolena-alternative-finder/.venv/bin/python",
+    "-B",
+    "-c",
+    "from pathlib import Path; import scripts.uc001_granite_contract_v1.assess as a; import scripts.uc001_contract_check.development as d; import app.infrastructure.granite_interpreter as g; root=Path.cwd().resolve(); assert all(Path(m.__file__).resolve().is_relative_to(root) for m in (a,d,g)); print('Transferred assessment, composition and adapter imports resolve from copied current-worktree bytes; no instances or inference.')"
+  ],
+  "exit_code": 0,
+  "stdout": "Transferred assessment, composition and adapter imports resolve from copied current-worktree bytes; no instances or inference.\n",
+  "stderr": "",
+  "isolated_current_worktree_import_closure": true,
+  "copied_files": 39,
+  "model_calls": 0,
+  "app_instances": 0,
+  "windows_compatibility_verified": false,
+  "zip_sha256": "10df90cc82de5ba92891993f3bd372978561c19c9e4f36e8277a635c5df91abd",
+  "zip_bytes": 229509
+}

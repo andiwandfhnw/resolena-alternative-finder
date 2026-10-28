@@ -1,0 +1,37 @@
+{
+  "verified_utc": "2026-10-14T20:40:04.399137+00:00",
+  "baseline_files_preserved": 325,
+  "authorized_updated_documents": [
+    "docs/TASKS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/adr/ADR-004-multilingual-interpretation-scope.md"
+  ],
+  "original_uploads_frozen_bundles_prior_results": "unchanged",
+  "original_archive_sha256": "189b7b7cb38a52f7ae8bddb6f1ec58b98887644303e79e5a67e08ef8c53f4a5f",
+  "supplemented_archive_sha256": "2fd071288861838d2e5962720a74ebd792f31b459db426073647414cf0685ce4",
+  "original_members_bytes_unchanged": 107,
+  "added_members": 1,
+  "manifest_bytes_unchanged": true,
+  "fixture_matches_freeze_and_manifest": true,
+  "unchanged_closeout_verifier": {
+    "original_exit": 1,
+    "supplemented_exit": 0
+  },
+  "unchanged_scorer_reassessment_matches_record": true,
+  "strict_gate": "failed, five of six",
+  "new_continuation_receipts": 0,
+  "heldout_contents_read": false,
+  "live_Windows_process_inspection": false,
+  "new_relative_links_checked": 93,
+  "review_whitespace": "passed",
+  "Git": {
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "index": "empty"
+  },
+  "UC": "UC-001 increment 1",
+  "PHASE": 2,
+  "STATUS": "in-progress",
+  "DESIGN": "pending",
+  "linguistic_validation": "pending"
+}

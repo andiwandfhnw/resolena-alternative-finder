@@ -1,0 +1,80 @@
+{
+  "utc": "2026-10-11T12:37:55.040957+00:00",
+  "freeze_matches": {
+    "config.json": true,
+    "run.py": true,
+    "operations.py": true,
+    "restart.py": true,
+    "continue_after_bookkeeping.py": true,
+    "../evaluate_model.py": true,
+    "../prepare.py": true,
+    "../heldout_v2.json": true,
+    "../calibration.json": true,
+    "../../heldout.json": true,
+    "../../prototype.py": true
+  },
+  "interrupted_records_preserved": {
+    "REPRODUCE.md": true,
+    "resume_gate1.py": true,
+    "events.jsonl": true,
+    "test_operations.py": true,
+    "cmake_version_log_tail.txt": true,
+    "snapshot.py": true,
+    "progress.json": true,
+    "preparation.json": true,
+    "resumption.json": true,
+    "harness_checks.json": true,
+    "operations.py": true,
+    "preflight.json": true,
+    "config.json": true,
+    "resource_samples.jsonl": true,
+    "run.py": true,
+    "configure_log_tail.txt": true,
+    "freeze.json": true,
+    "interruption_1/cmake_version_log_tail.txt": true,
+    "interruption_1/progress.json": true,
+    "interruption_1/preparation.json": true,
+    "interruption_1/configure_log_tail.txt": true,
+    "interruption_1/freeze.json": true
+  },
+  "config_changes": [
+    "start_utc"
+  ],
+  "active_experiment_processes": [],
+  "model_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+  "model_matches_pin": true,
+  "server_sha256": "67419b0d537e76a9ea7c5c13c7212b3f441d51e4c17a890c90ec09a9c3bf0fe2",
+  "runtime_reported_version": "version: 0.6.0-dev (build 4, commit a6b2479)\nbuilt with GNU 12.2.0 for Linux x86_64",
+  "runtime_metadata_note": "Generated version commit comes from enclosing application HEAD; recorded source archive pin remains authoritative.",
+  "runner_copied_unchanged": true,
+  "operational_checks": {
+    "existing_checks_passed": 7,
+    "bookkeeping_regression_check": "passed; event command_finished accepts name=build and exit_code=0; no execution of main"
+  },
+  "model_result": {
+    "smoke_category": "invalid_output",
+    "smoke_structural_errors": [
+      "ungrounded_quote",
+      "ungrounded_quote"
+    ],
+    "evaluated_cases": 0,
+    "planned_cases": 55,
+    "repeats_run": 0,
+    "calibration_cases_run": 0,
+    "owned_model_exit_code": 0,
+    "run_exit_code": 1
+  },
+  "full_run_resources": {
+    "peak_owned_rss_bytes": 2230099968,
+    "minimum_available_bytes": 4390957056,
+    "peak_temporary_bytes": 2261720406
+  },
+  "missing_local_link_targets": [],
+  "new_artifact_whitespace_errors": [],
+  "staged_paths": [],
+  "branch": "specify/phase-1-uc-001",
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "prior_deadline_unchanged": true,
+  "scratch_git_ignored": true,
+  "design_acceptance": "pending"
+}

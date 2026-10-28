@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-27",
+  "scope": "Documentation/JSON/link/syntax/read-only Git preservation checks only; no behavioral tests or package scripts executed",
+  "passed": true,
+  "protected_existing_files": 1722,
+  "changed_existing_files": [
+    "build/uc001-granite-native-handoff-v2/README.md",
+    "build/uc001-granite-native-handoff-v2/verification.json",
+    "docs/TASKS.md"
+  ],
+  "unchanged_existing_files": 1719,
+  "missing_existing_files": [],
+  "all_original_verification_fields_preserved": true,
+  "original_document_copies_match_pre_erratum_hashes": true,
+  "tasks_changes_only_current_summary_and_dated_appended_entry": true,
+  "local_links_checked": 11,
+  "json_parsed": true,
+  "new_documentation_whitespace_clean": true,
+  "linux_parser_only": {
+    "powershell_blocks": 2,
+    "exit_code": 0,
+    "output": "Two edited preflight command blocks parsed; no command body executed.",
+    "windows_execution": false,
+    "command_bodies_executed": false
+  },
+  "issued_zip_package_runtime_proxy_prior_and_receipts_unchanged": true,
+  "execution_configuration_inactive": true,
+  "git_preservation": {
+    "branch --show-current": {
+      "unchanged": true
+    },
+    "rev-parse HEAD": {
+      "unchanged": true
+    },
+    "status --short": {
+      "unchanged": true
+    },
+    "diff --cached --raw": {
+      "unchanged": true
+    },
+    "ls-files --stage": {
+      "unchanged": true
+    }
+  },
+  "git_diff_check": {
+    "exit_code": 2,
+    "output": "docs/TASKS.md:3345: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "only_preserved_historical_warning": true
+  },
+  "tests_rerun": false,
+  "windows_execution": false,
+  "windows_preflight_status": "Exactly one owner execution authorized; pending owner output",
+  "source_build_execution_authorized": false,
+  "artifact_sha256": {
+    "README.md": "bd0a01a5ec5148924a52b3c48663759915728a76d380b74485773387bbd7cd38",
+    "verification.json": "d8c85ed64e0812831fd5f91a711470f07e929d88d025eb16a68bced915d8e83c",
+    "docs/TASKS.md": "253d05f1d5c6339a29cd87cbc0c197aab57332a5c388b448857e9d08cdd81e11",
+    "errata/2026-10-27-advisor-attribution/README.before.md": "b9a036244c3ccaf817c37a2e2168ed46617d8856949021a0f8a8530e0c2c387b",
+    "errata/2026-10-27-advisor-attribution/verification.before.json": "23eb7b18d3d27cba0e7ea20b3cef4be1884dabdc7ebd2ea77c415680f6b39d83",
+    "errata/2026-10-27-advisor-attribution/TASKS.before.md": "3ef3fa43654a0b2813978cb53055b869f81a31a2fc68eb7a142e7d8951e8bb67"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "classification": "AI-assisted synthetic exploratory calibration; not independently linguistically validated",
+  "direction": "A; no production interpreter/host/DESIGN acceptance",
+  "platform": "Owner Windows 11 Pro desktop; no direct Codespace access",
+  "backend": "Vulkan only; no fallback",
+  "inference_threads": 2,
+  "prompt_threads": 2,
+  "context": 2048,
+  "output_tokens": 384,
+  "batch": 64,
+  "ubatch": 64,
+  "kv_type": "f16",
+  "slots": 1,
+  "sampling": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "seed": 42
+  },
+  "limits": {
+    "total_seconds": 7200,
+    "setup_seconds": 3600,
+    "evaluation_seconds": 1800,
+    "readiness_seconds": 90,
+    "request_seconds": 45,
+    "rss_bytes": 17179869184,
+    "ram_preflight_bytes": 21474836480,
+    "ram_floor_bytes": 4294967296,
+    "gpu_preflight_free_bytes": 15032385536,
+    "gpu_owned_bytes": 12884901888,
+    "gpu_floor_bytes": 2147483648,
+    "scratch_bytes": 26843545600,
+    "disk_preflight_free_bytes": 32212254720,
+    "disk_floor_bytes": 5368709120
+  },
+  "latency_targets": {
+    "warm_median_seconds": 10,
+    "warm_p95_seconds": 20,
+    "maximum_seconds": 45,
+    "status": "candidate evaluation targets, not product requirement amendments"
+  },
+  "known_gate": "All six must pass unchanged strict checks and explicit semantic/status checks; any failure blocks new cases. Label-only mismatch remains a strict failure.",
+  "heldout": "55 original held-out cases excluded; no fixture reads/transfers/model exposure",
+  "transport_change": "Windows loopback HTTP instead of Linux AF_UNIX; payload/contract unchanged",
+  "server_port": 49187,
+  "host": "127.0.0.1",
+  "resource_sample_seconds": 1,
+  "owner_hardware": {
+    "cpu": "Ryzen 9 5950X",
+    "ram_gb": 64,
+    "gpu": "Radeon RX 6800 XT",
+    "dxdiag_vram_mb": 16337,
+    "driver": "32.0.21045.5002",
+    "driver_date": "2026-08-17",
+    "wddm": "3.2"
+  }
+}

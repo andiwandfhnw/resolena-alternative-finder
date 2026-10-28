@@ -1,0 +1,20 @@
+{
+  "run": "lingua-b-20261015",
+  "status": "preparing",
+  "started_utc": "2026-10-15T16:56:34.341681+00:00",
+  "deadline_utc": "2026-10-15T17:26:34.341681+00:00",
+  "started_wall_unix": 1792083394.3417103,
+  "deadline_wall_unix": 1792085194.341711,
+  "started_monotonic": 3860.573418477,
+  "deadline_monotonic": 5660.573418798,
+  "limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "authorization": "Owner approved one bounded B investigation using Lingua 2.2.0; no retries, builds, upgrades, fallback, LLM/GPU or production integration."
+}

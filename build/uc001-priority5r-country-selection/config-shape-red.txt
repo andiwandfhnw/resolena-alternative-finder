@@ -1,0 +1,151 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[bad_attribution] _
+
+system = (<starlette.testclient.TestClient object at 0x700c87ba0bc0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/config-shape...20>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x700c87b6fcb0>))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/config-shape-red/test_bad_country_reference_is_0')
+change = 'bad_attribution'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes", "bad_attribution"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+        from app.infrastructure.country_reference import LocalCountryCatalogue
+    
+        _, path, service = system
+        manifest_path, catalogue_path = tmp_path / "countries-manifest.json", tmp_path / "countries.json"
+        manifest = json.loads(Path("docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json").read_text())
+        catalogue = Path("docs/reference/COUNTRIES-GEONAMES-2026-10-23.json").read_bytes()
+        if change == "draft":
+            manifest = json.loads(Path("docs/reference/COUNTRIES-GEONAMES-MANIFEST.json").read_text())
+            catalogue = Path("docs/reference/COUNTRIES-GEONAMES-DRAFT.json").read_bytes()
+        elif change == "unapproved":
+            manifest["approval"]["owner_approved"] = False
+        elif change == "wrong_release":
+            manifest["release_id"] = "arbitrary-reference"
+        elif change == "bad_attribution":
+            manifest["attribution"]["credit"] = None
+        elif change == "changed_bytes":
+            countries = json.loads(catalogue)
+            countries[0]["name"] += " changed"
+            catalogue = json.dumps(countries).encode()
+            manifest["normalized_output"]["sha256"] = sha256(catalogue).hexdigest()
+        catalogue_path.write_bytes(catalogue)
+        if change != "missing":
+            manifest_path.write_text("invalid JSON" if change == "corrupt" else json.dumps(manifest))
+        altered = replace(service, countries=LocalCountryCatalogue(manifest_path, catalogue_path))
+        with TestClient(create_app(altered)) as client:
+>           reference = client.get("/api/countries")
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:1791: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+.venv/lib/python3.12/site-packages/httpx/_client.py:1053: in get
+    return self.request(
+.venv/lib/python3.12/site-packages/starlette/testclient.py:463: in request
+    return super().request(
+.venv/lib/python3.12/site-packages/httpx/_client.py:825: in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/httpx/_client.py:914: in send
+    response = self._send_handling_auth(
+.venv/lib/python3.12/site-packages/httpx/_client.py:942: in _send_handling_auth
+    response = self._send_handling_redirects(
+.venv/lib/python3.12/site-packages/httpx/_client.py:979: in _send_handling_redirects
+    response = self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/httpx/_client.py:1014: in _send_single_request
+    response = transport.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/starlette/testclient.py:360: in handle_request
+    raise exc
+.venv/lib/python3.12/site-packages/starlette/testclient.py:357: in handle_request
+    portal.call(self.app, scope, receive, send)
+.venv/lib/python3.12/site-packages/anyio/from_thread.py:340: in call
+    return cast(T_Retval, self.start_task_soon(func, *args).result())
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/concurrent/futures/_base.py:456: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/concurrent/futures/_base.py:401: in __get_result
+    raise self._exception
+.venv/lib/python3.12/site-packages/anyio/from_thread.py:265: in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/applications.py:1215: in __call__
+    await super().__call__(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/applications.py:96: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/middleware/errors.py:186: in __call__
+    raise exc
+.venv/lib/python3.12/site-packages/starlette/middleware/errors.py:164: in __call__
+    await self.app(scope, receive, _send)
+.venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py:151: in __call__
+    await self.app(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py:63: in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py:18: in __call__
+    await self.app(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/routing.py:676: in __call__
+    await self.middleware_stack(scope, receive, send)
+.venv/lib/python3.12/site-packages/fastapi/routing.py:2786: in app
+    await route.handle(scope, receive, send)
+.venv/lib/python3.12/site-packages/fastapi/routing.py:1310: in handle
+    await super().handle(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/routing.py:282: in handle
+    await self.app(scope, receive, send)
+.venv/lib/python3.12/site-packages/fastapi/routing.py:165: in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+.venv/lib/python3.12/site-packages/starlette/_exception_handler.py:53: in wrapped_app
+    raise exc
+.venv/lib/python3.12/site-packages/starlette/_exception_handler.py:42: in wrapped_app
+    await app(scope, receive, sender)
+.venv/lib/python3.12/site-packages/fastapi/routing.py:151: in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/routing.py:727: in app
+    raw_response = await run_endpoint_function(
+.venv/lib/python3.12/site-packages/fastapi/routing.py:362: in run_endpoint_function
+    return await run_in_threadpool(
+.venv/lib/python3.12/site-packages/starlette/concurrency.py:34: in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/anyio/to_thread.py:65: in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:2706: in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py:1100: in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/fastapi/telemetry/_api.py:240: in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+src/app/interfaces/api.py:70: in countries
+    return reference.load().public()
+           ^^^^^^^^^^^^^^^^
+src/app/infrastructure/country_reference.py:44: in load
+    or not all(attribution[key].strip() for key in ("credit", "license", "changes", "disclaimer"))):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <tuple_iterator object at 0x700c87af35b0>
+
+>   or not all(attribution[key].strip() for key in ("credit", "license", "changes", "disclaimer"))):
+               ^^^^^^^^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'strip'
+
+src/app/infrastructure/country_reference.py:44: AttributeError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[bad_attribution]
+1 failed, 1 warning in 1.74s

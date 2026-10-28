@@ -1,0 +1,79 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____ test_pinned_preparation_is_inactive_traceable_and_reproduces_exactly _____
+
+tmp_path = PosixPath('/tmp/resolena-priority5t-dvl7bu2t/preparation-red/test_pinned_preparation_is_ina0')
+
+    def test_pinned_preparation_is_inactive_traceable_and_reproduces_exactly(tmp_path):
+        command = preparation_command(tmp_path)
+        first = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+>       assert first.returncode == 0, first.stderr
+E       AssertionError: /workspaces/resolena-alternative-finder/.venv/bin/python: can't open file '/workspaces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspaces/resolena-alternative-finder/.venv/bin/python', 'scripts/uc001_locality_reference/p...paces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n").returncode
+
+tests/integration/test_locality_reference_preparation.py:30: AssertionError
+____ test_preparation_rejects_unverified_input_pins_before_writing[source] _____
+
+tmp_path = PosixPath('/tmp/resolena-priority5t-dvl7bu2t/preparation-red/test_preparation_rejects_unver0')
+changed_pin = 'source'
+
+    @pytest.mark.parametrize("changed_pin", ["source", "documentation"])
+    def test_preparation_rejects_unverified_input_pins_before_writing(tmp_path, changed_pin):
+        acquisition = EVIDENCE / "acquisition.json"
+        source_hash = SOURCE_HASH
+        if changed_pin == "source":
+            source_hash = "0" * 64
+        else:
+            records = json.loads(acquisition.read_text())
+            document = next(item for item in records if item.get("HTTP_status") == 200
+                and item["reference"].endswith("free-geodata-and-geoservices"))
+            document["sha256"] = "0" * 64
+            for item in records:
+                if item.get("file"):
+                    item["file"] = str((EVIDENCE / item["file"]).resolve())
+            acquisition = tmp_path / "altered-acquisition.json"
+            acquisition.write_text(json.dumps(records))
+        completed = subprocess.run(preparation_command(tmp_path, source_hash=source_hash,
+            acquisition=acquisition), cwd=ROOT, capture_output=True, text=True)
+        assert completed.returncode != 0
+>       assert "hash mismatch" in completed.stderr
+E       assert 'hash mismatch' in "/workspaces/resolena-alternative-finder/.venv/bin/python: can't open file '/workspaces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n"
+E        +  where "/workspaces/resolena-alternative-finder/.venv/bin/python: can't open file '/workspaces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/workspaces/resolena-alternative-finder/.venv/bin/python', 'scripts/uc001_locality_reference/p...paces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n").stderr
+
+tests/integration/test_locality_reference_preparation.py:91: AssertionError
+_ test_preparation_rejects_unverified_input_pins_before_writing[documentation] _
+
+tmp_path = PosixPath('/tmp/resolena-priority5t-dvl7bu2t/preparation-red/test_preparation_rejects_unver1')
+changed_pin = 'documentation'
+
+    @pytest.mark.parametrize("changed_pin", ["source", "documentation"])
+    def test_preparation_rejects_unverified_input_pins_before_writing(tmp_path, changed_pin):
+        acquisition = EVIDENCE / "acquisition.json"
+        source_hash = SOURCE_HASH
+        if changed_pin == "source":
+            source_hash = "0" * 64
+        else:
+            records = json.loads(acquisition.read_text())
+            document = next(item for item in records if item.get("HTTP_status") == 200
+                and item["reference"].endswith("free-geodata-and-geoservices"))
+            document["sha256"] = "0" * 64
+            for item in records:
+                if item.get("file"):
+                    item["file"] = str((EVIDENCE / item["file"]).resolve())
+            acquisition = tmp_path / "altered-acquisition.json"
+            acquisition.write_text(json.dumps(records))
+        completed = subprocess.run(preparation_command(tmp_path, source_hash=source_hash,
+            acquisition=acquisition), cwd=ROOT, capture_output=True, text=True)
+        assert completed.returncode != 0
+>       assert "hash mismatch" in completed.stderr
+E       assert 'hash mismatch' in "/workspaces/resolena-alternative-finder/.venv/bin/python: can't open file '/workspaces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n"
+E        +  where "/workspaces/resolena-alternative-finder/.venv/bin/python: can't open file '/workspaces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n" = CompletedProcess(args=['/workspaces/resolena-alternative-finder/.venv/bin/python', 'scripts/uc001_locality_reference/p...paces/resolena-alternative-finder/scripts/uc001_locality_reference/prepare.py': [Errno 2] No such file or directory\n").stderr
+
+tests/integration/test_locality_reference_preparation.py:91: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_locality_reference_preparation.py::test_pinned_preparation_is_inactive_traceable_and_reproduces_exactly
+FAILED tests/integration/test_locality_reference_preparation.py::test_preparation_rejects_unverified_input_pins_before_writing[source]
+FAILED tests/integration/test_locality_reference_preparation.py::test_preparation_rejects_unverified_input_pins_before_writing[documentation]
+3 failed in 0.15s

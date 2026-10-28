@@ -1,0 +1,12 @@
+{
+  "receipt_and_referenced_artifacts_valid": true,
+  "seven_task_file_hashes_match_receipt": true,
+  "original_5J_receipt_hash_unchanged": true,
+  "TASKS_receipt_link_valid": true,
+  "actual_responses_identity_counts_and_same_submission_assertions_consistent": true,
+  "artifacts_exclude_proof_header_binding_request_and_exception_keys": true,
+  "no_trace_or_HAR_artifacts": true,
+  "owned_test_ports_closed": true,
+  "phase": 3,
+  "status": "in-progress"
+}

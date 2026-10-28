@@ -1,0 +1,19 @@
+{
+  "provenance": "Owner-supplied sanitized JSON received after the initial pending record; original local Windows file bytes were not accessed. Supplied text preserved in windows-sanitized-summary.raw.json.",
+  "attempt": 2,
+  "logging_variant": "uc001-transport-logging-1",
+  "windows_cleanup": "confirmed in owner-supplied sanitized summary",
+  "windows_cleanup_raw_receipt_supplied": false,
+  "codespace_cleanup": "codespace_forward_cleanup_passed",
+  "codespace_cleanup_utc": "2026-10-17T16:52:10.674073+00:00",
+  "existing_codespace_receipt": "build/uc001-transport-logging/forward-cleanup-e56da6c06fc84301801daccb9c9d951a.json",
+  "sanitized_result_status": "supplied and preserved verbatim from chat, with final newline",
+  "transport_success": "not established",
+  "model_readiness_verified": false,
+  "previous_sanitized_result_status": "requested; not yet supplied",
+  "sanitized_result": "windows-sanitized-summary.raw.json",
+  "sanitized_result_sha256": "02a4cf4405121750ab45475af9aade8d911306afb893586a3d52360af4bd1988",
+  "outcome": "failed",
+  "elapsed_ms": 4062,
+  "interpretation": "Failed transport attempt; all reported markers false, no specific stage/cause inferred; separate Codespace receipt reconciles pending cleanup field without editing raw summary"
+}

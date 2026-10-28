@@ -1,0 +1,240 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v24.21.0/bin/node",
+      "/workspaces/resolena-alternative-finder/frontend/node_modules/.bin/playwright",
+      "test"
+    ],
+    "configFile": "/workspaces/resolena-alternative-finder/frontend/playwright.config.ts",
+    "rootDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "snapshotDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "trace": "retain-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../build/uc001-slice1/playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "saved-comparison.spec.ts",
+      "file": "saved-comparison.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "browser displays exactly the committed API comparison and stable database identities",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6335,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Synthetic demonstration', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Synthetic demonstration', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Synthetic demonstration', { exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Synthetic demonstration', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Synthetic demonstration', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Synthetic demonstration', { exact: true })\u001b[22m\n\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:27:76",
+                    "location": {
+                      "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                      "column": 76,
+                      "line": 27
+                    },
+                    "snippet": "  25 | test('browser displays exactly the committed API comparison and stable database identities', async ({ page }) => {\n  26 |   await page.goto('/')\n> 27 |   await expect(page.getByText('Synthetic demonstration', { exact: true })).toBeVisible()\n     |                                                                            ^\n  28 |   await page.getByLabel('Describe your request').fill(example)\n  29 |   await expect(page.getByLabel('Search country')).toHaveValue('CH')\n  30 |   const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/comparisons') && response.request().method() === 'POST')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 76,
+                        "line": 27
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText('Synthetic demonstration', { exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByText('Synthetic demonstration', { exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByText('Synthetic demonstration', { exact: true })\u001b[22m\n\n\n  25 | test('browser displays exactly the committed API comparison and stable database identities', async ({ page }) => {\n  26 |   await page.goto('/')\n> 27 |   await expect(page.getByText('Synthetic demonstration', { exact: true })).toBeVisible()\n     |                                                                            ^\n  28 |   await page.getByLabel('Describe your request').fill(example)\n  29 |   await expect(page.getByLabel('Search country')).toHaveValue('CH')\n  30 |   const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/comparisons') && response.request().method() === 'POST')\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:27:76"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:35:47.233Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser/saved-comparison-browser-d-2bb93--stable-database-identities/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser/saved-comparison-browser-d-2bb93--stable-database-identities/trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                    "column": 76,
+                    "line": 27
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-691418fd2f1c4708ef96",
+          "file": "saved-comparison.spec.ts",
+          "line": 25,
+          "column": 5
+        },
+        {
+          "title": "real SQLite write failure preserves fields and never presents a completed comparison",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 30119,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 52,
+                        "line": 56
+                      },
+                      "message": "Error: locator.fill: Test timeout of 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Describe your request')\u001b[22m\n\n\n  54 |   try {\n  55 |     await page.goto('/')\n> 56 |     await page.getByLabel('Describe your request').fill(example)\n     |                                                    ^\n  57 |     const responsePromise = page.waitForResponse(response => response.url().endsWith('/api/comparisons'))\n  58 |     await page.getByRole('button', { name: 'Find alternatives' }).click()\n  59 |     const response = await responsePromise\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:56:52"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-15T21:35:56.084Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser/saved-comparison-real-SQLi-e9738-ents-a-completed-comparison/error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-slice1/browser/saved-comparison-real-SQLi-e9738-ents-a-completed-comparison/trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-039ecb81f3372debef78",
+          "file": "saved-comparison.spec.ts",
+          "line": 52,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-15T21:35:45.222Z",
+    "duration": 41435.545000000006,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

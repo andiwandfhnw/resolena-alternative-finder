@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py",
+    "tests/unit/test_granite_controller_cli.py"
+  ],
+  "exit_code": 0,
+  "scope": "Actual default lifecycle and canonical four-helper config/preflight regressions only; no closed diagnostic/backend/application/model suites"
+}

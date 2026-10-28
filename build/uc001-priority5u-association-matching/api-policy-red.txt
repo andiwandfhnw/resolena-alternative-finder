@@ -1,0 +1,433 @@
+FFFFFFFFFFFFFFFF                                                         [100%]
+=================================== FAILURES ===================================
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa06c9340>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa16a4800>, localities=None))
+country = 'CH', town = '  jouxtens-mézery  ', postcode = ' 1008 ', record = 10
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 201
+E       assert 200 == 201
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:1998: AssertionError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa08e1f70>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0856060>, localities=None))
+country = 'LI', town = 'Vaduz', postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 201
+E       assert 200 == 201
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:1998: AssertionError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa09aa0f0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa08e3230>, localities=None))
+country = 'LI', town = None, postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 201
+E       assert 200 == 201
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:1998: AssertionError
+__ test_multiple_reference_associations_stay_unsaved_until_checked_selection ___
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0970ec0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0970c50>, localities=None))
+
+    def test_multiple_reference_associations_stay_unsaved_until_checked_selection(system):
+        path, service = locality_matching_service(system)
+        with TestClient(create_app(service)) as client:
+            baseline = client.post("/api/comparisons", json=submission(), headers={"X-Submission-Proof": "a" * 64}).json()
+            with sqlite3.connect(path) as connection:
+                prior = {table: connection.execute(f"SELECT * FROM {table} ORDER BY 1,2").fetchall()
+                    for table in ("request_alternative", "request_alternative_evidence", "evidence")}
+            payload = submission()
+            payload["search_location"].update(town="Lausanne", postcode="1015")
+            unresolved = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "b" * 64})
+            assert unresolved.status_code == 200
+            assert unresolved.json()["outcome"] == "clarification_required"
+>           assert unresolved.json()["issues"] == [{"code": "locality_reference_ambiguous"}]
+E           AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...e_ambiguous'}]
+E             
+E             At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_reference_ambiguous'}
+E             Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2036: AssertionError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[stale] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0a0daf0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa096f770>, localities=None))
+case = 'stale'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        pointer = association_pointer(10)
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008", reference=pointer)
+        if case == "stale": pointer["release"] = "older-unapproved-release"
+        if case == "fabricated": pointer["source_record"] = 999999
+        if case == "wrong_fields": payload["search_location"]["postcode"] = "1015"
+        if case == "foreign_country": payload["search_location"]["country_code"] = "LI"
+        if case == "edited_label": pointer["locality_name"] = "Client-edited label"
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == (422 if case == "foreign_country" else 200)
+        assert response.json()["outcome"] == ("invalid_input" if case == "foreign_country" else "clarification_required")
+>       assert response.json()["issues"] == [{"code": "locality_country_mismatch" if case == "foreign_country" else "locality_selection_inconsistent"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nconsistent'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_selection_inconsistent'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2071: AssertionError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[fabricated] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0970a40>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a1f2c0>, localities=None))
+case = 'fabricated'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        pointer = association_pointer(10)
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008", reference=pointer)
+        if case == "stale": pointer["release"] = "older-unapproved-release"
+        if case == "fabricated": pointer["source_record"] = 999999
+        if case == "wrong_fields": payload["search_location"]["postcode"] = "1015"
+        if case == "foreign_country": payload["search_location"]["country_code"] = "LI"
+        if case == "edited_label": pointer["locality_name"] = "Client-edited label"
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == (422 if case == "foreign_country" else 200)
+        assert response.json()["outcome"] == ("invalid_input" if case == "foreign_country" else "clarification_required")
+>       assert response.json()["issues"] == [{"code": "locality_country_mismatch" if case == "foreign_country" else "locality_selection_inconsistent"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nconsistent'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_selection_inconsistent'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2071: AssertionError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[wrong_fields] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0a0f4a0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa08562d0>, localities=None))
+case = 'wrong_fields'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        pointer = association_pointer(10)
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008", reference=pointer)
+        if case == "stale": pointer["release"] = "older-unapproved-release"
+        if case == "fabricated": pointer["source_record"] = 999999
+        if case == "wrong_fields": payload["search_location"]["postcode"] = "1015"
+        if case == "foreign_country": payload["search_location"]["country_code"] = "LI"
+        if case == "edited_label": pointer["locality_name"] = "Client-edited label"
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == (422 if case == "foreign_country" else 200)
+        assert response.json()["outcome"] == ("invalid_input" if case == "foreign_country" else "clarification_required")
+>       assert response.json()["issues"] == [{"code": "locality_country_mismatch" if case == "foreign_country" else "locality_selection_inconsistent"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nconsistent'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_selection_inconsistent'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2071: AssertionError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[foreign_country] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa16a75f0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a02ae0>, localities=None))
+case = 'foreign_country'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        pointer = association_pointer(10)
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008", reference=pointer)
+        if case == "stale": pointer["release"] = "older-unapproved-release"
+        if case == "fabricated": pointer["source_record"] = 999999
+        if case == "wrong_fields": payload["search_location"]["postcode"] = "1015"
+        if case == "foreign_country": payload["search_location"]["country_code"] = "LI"
+        if case == "edited_label": pointer["locality_name"] = "Client-edited label"
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == (422 if case == "foreign_country" else 200)
+E       assert 200 == 422
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:2069: AssertionError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[edited_label] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa08c0f20>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a23a10>, localities=None))
+case = 'edited_label'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        pointer = association_pointer(10)
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008", reference=pointer)
+        if case == "stale": pointer["release"] = "older-unapproved-release"
+        if case == "fabricated": pointer["source_record"] = 999999
+        if case == "wrong_fields": payload["search_location"]["postcode"] = "1015"
+        if case == "foreign_country": payload["search_location"]["country_code"] = "LI"
+        if case == "edited_label": pointer["locality_name"] = "Client-edited label"
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == (422 if case == "foreign_country" else 200)
+        assert response.json()["outcome"] == ("invalid_input" if case == "foreign_country" else "clarification_required")
+>       assert response.json()["issues"] == [{"code": "locality_country_mismatch" if case == "foreign_country" else "locality_selection_inconsistent"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nconsistent'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_selection_inconsistent'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2071: AssertionError
+_ test_missing_or_out_of_scope_associations_are_unknown_not_invalid[CH-Lausanne-9490] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa08e1e80>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa096c860>, localities=None))
+country = 'CH', town = 'Lausanne', postcode = '9490'
+
+    @pytest.mark.parametrize("country,town,postcode", [("CH", "Lausanne", "9490"), ("DE", "Vaduz", "9490")])
+    def test_missing_or_out_of_scope_associations_are_unknown_not_invalid(system, country, town, postcode):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "town": town, "postcode": postcode}
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        body = response.json()
+        assert response.status_code == 200 and body["outcome"] == "clarification_required"
+>       assert body["issues"] == [{"code": "locality_reference_unknown"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nce_unknown'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_reference_unknown'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2085: AssertionError
+_ test_missing_or_out_of_scope_associations_are_unknown_not_invalid[DE-Vaduz-9490] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0a0e9c0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a1d490>, localities=None))
+country = 'DE', town = 'Vaduz', postcode = '9490'
+
+    @pytest.mark.parametrize("country,town,postcode", [("CH", "Lausanne", "9490"), ("DE", "Vaduz", "9490")])
+    def test_missing_or_out_of_scope_associations_are_unknown_not_invalid(system, country, town, postcode):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "town": town, "postcode": postcode}
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        body = response.json()
+        assert response.status_code == 200 and body["outcome"] == "clarification_required"
+>       assert body["issues"] == [{"code": "locality_reference_unknown"}]
+E       AssertionError: assert [{'code': 'lo...unavailable'}] == [{'code': 'lo...nce_unknown'}]
+E         
+E         At index 0 diff: {'code': 'locality_reference_unavailable'} != {'code': 'locality_reference_unknown'}
+E         Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:2085: AssertionError
+_ test_broken_locality_loading_cannot_masquerade_as_missing_match[unusable-503-configuration_unavailable] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa08c1880>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0971970>, localities=None))
+mode = 'unusable', status = 503, outcome = 'configuration_unavailable'
+
+    @pytest.mark.parametrize("mode,status,outcome", [("unusable", 503, "configuration_unavailable"), ("processing", 500, "processing_error")])
+    def test_broken_locality_loading_cannot_masquerade_as_missing_match(system, mode, status, outcome):
+        from app.application.localities import LocalityReferenceUnavailable
+        path, service = locality_matching_service(system)
+    
+        class BrokenReference:
+            def load(self):
+                raise LocalityReferenceUnavailable if mode == "unusable" else RuntimeError("test-only lookup failure")
+    
+        payload = submission()
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008")
+        with TestClient(create_app(replace(service, localities=BrokenReference()))) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == status and response.json()["outcome"] == outcome
+E       assert (200 == 503)
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:2104: AssertionError
+_ test_broken_locality_loading_cannot_masquerade_as_missing_match[processing-500-processing_error] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa09fa4e0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a224b0>, localities=None))
+mode = 'processing', status = 500, outcome = 'processing_error'
+
+    @pytest.mark.parametrize("mode,status,outcome", [("unusable", 503, "configuration_unavailable"), ("processing", 500, "processing_error")])
+    def test_broken_locality_loading_cannot_masquerade_as_missing_match(system, mode, status, outcome):
+        from app.application.localities import LocalityReferenceUnavailable
+        path, service = locality_matching_service(system)
+    
+        class BrokenReference:
+            def load(self):
+                raise LocalityReferenceUnavailable if mode == "unusable" else RuntimeError("test-only lookup failure")
+    
+        payload = submission()
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008")
+        with TestClient(create_app(replace(service, localities=BrokenReference()))) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == status and response.json()["outcome"] == outcome
+E       assert (200 == 500)
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:2104: AssertionError
+_ test_matched_association_recovery_precedes_references_and_keeps_payload_binding _
+
+system = (<starlette.testclient.TestClient object at 0x7f8f9ff56ba0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0a4fa10>, localities=None))
+
+    def test_matched_association_recovery_precedes_references_and_keeps_payload_binding(system):
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"].update(town="Lausanne", postcode="1015", reference=association_pointer(16))
+        headers = {"X-Submission-Proof": "a" * 64}
+        with TestClient(create_app(service)) as client:
+            saved = client.post("/api/comparisons", json=payload, headers=headers).json()
+        before = counts(path)
+    
+        class NeverProcess:
+            def load(self): raise AssertionError("Committed acknowledgement precedes current reference")
+            def interpret(self, text): raise AssertionError("Committed acknowledgement precedes reinterpretation")
+    
+        with TestClient(create_app(replace(service, countries=NeverProcess(), localities=NeverProcess(), interpreter=NeverProcess()))) as client:
+            recovered = client.post("/api/comparisons", json=payload, headers=headers)
+            changed = {**payload, "search_location": {**payload["search_location"], "reference": association_pointer(15)}}
+            conflict = client.post("/api/comparisons", json=changed, headers=headers)
+>       assert recovered.status_code == 200 and recovered.json() == {"outcome": "submission_recovered",
+            "persistence": saved["persistence"], "saved_outcome": saved["outcome"], "assessed_at": saved["assessed_at"]}
+E       assert (500 == 200)
+E        +  where 500 = <Response [500 Internal Server Error]>.status_code
+
+tests/integration/test_saved_comparison.py:2126: AssertionError
+_ test_matched_reference_does_not_replace_independent_applicability_evidence[False] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8fa0a4cbf0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8fa0857ec0>, localities=None))
+independent_constraint = False
+
+    @pytest.mark.parametrize("independent_constraint", [False, True])
+    def test_matched_reference_does_not_replace_independent_applicability_evidence(system, independent_constraint):
+        from tests.support.locality_confirmation import candidate
+        from tests.support.synthetic import represented_locality
+        path, service = locality_matching_service(system)
+        prepared = candidate()
+        service.store.seed_test_knowledge((prepared,))
+    
+        class Knowledge:
+            def retrieve(self, interpretation, command): return (prepared,)
+    
+        class Interpreter:
+            def interpret(self, text): return represented_locality()
+    
+        payload = submission()
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008")
+        service = replace(service, knowledge=Knowledge())
+        if independent_constraint:
+            payload["text"] = represented_locality().original_text
+            service = replace(service, interpreter=Interpreter())
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        body = response.json()
+>       assert response.status_code == 201 and body["outcome"] == ("insufficient_coverage" if independent_constraint else "comparison")
+E       assert (200 == 201)
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:2155: AssertionError
+_ test_matched_reference_does_not_replace_independent_applicability_evidence[True] _
+
+system = (<starlette.testclient.TestClient object at 0x7f8f9d894980>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-policy-r...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7f8f9d8a6060>, localities=None))
+independent_constraint = True
+
+    @pytest.mark.parametrize("independent_constraint", [False, True])
+    def test_matched_reference_does_not_replace_independent_applicability_evidence(system, independent_constraint):
+        from tests.support.locality_confirmation import candidate
+        from tests.support.synthetic import represented_locality
+        path, service = locality_matching_service(system)
+        prepared = candidate()
+        service.store.seed_test_knowledge((prepared,))
+    
+        class Knowledge:
+            def retrieve(self, interpretation, command): return (prepared,)
+    
+        class Interpreter:
+            def interpret(self, text): return represented_locality()
+    
+        payload = submission()
+        payload["search_location"].update(town="Jouxtens-Mézery", postcode="1008")
+        service = replace(service, knowledge=Knowledge())
+        if independent_constraint:
+            payload["text"] = represented_locality().original_text
+            service = replace(service, interpreter=Interpreter())
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        body = response.json()
+>       assert response.status_code == 201 and body["outcome"] == ("insufficient_coverage" if independent_constraint else "comparison")
+E       assert (200 == 201)
+E        +  where 200 = <Response [200 OK]>.status_code
+
+tests/integration/test_saved_comparison.py:2155: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590]
+FAILED tests/integration/test_saved_comparison.py::test_multiple_reference_associations_stay_unsaved_until_checked_selection
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[stale]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[fabricated]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[wrong_fields]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[foreign_country]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[edited_label]
+FAILED tests/integration/test_saved_comparison.py::test_missing_or_out_of_scope_associations_are_unknown_not_invalid[CH-Lausanne-9490]
+FAILED tests/integration/test_saved_comparison.py::test_missing_or_out_of_scope_associations_are_unknown_not_invalid[DE-Vaduz-9490]
+FAILED tests/integration/test_saved_comparison.py::test_broken_locality_loading_cannot_masquerade_as_missing_match[unusable-503-configuration_unavailable]
+FAILED tests/integration/test_saved_comparison.py::test_broken_locality_loading_cannot_masquerade_as_missing_match[processing-500-processing_error]
+FAILED tests/integration/test_saved_comparison.py::test_matched_association_recovery_precedes_references_and_keeps_payload_binding
+FAILED tests/integration/test_saved_comparison.py::test_matched_reference_does_not_replace_independent_applicability_evidence[False]
+FAILED tests/integration/test_saved_comparison.py::test_matched_reference_does_not_replace_independent_applicability_evidence[True]
+16 failed, 55 deselected, 1 warning in 2.88s

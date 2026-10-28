@@ -1,0 +1,108 @@
+.......................FF                                                [100%]
+=================================== FAILURES ===================================
+_______ test_atomic_assignment_is_verified_without_duplicate_assignment ________
+
+private_job = None
+args = (['C:\\Python\\python.exe', '-I', 'worker.py'], '/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0', {},...c_assignment_is_veri0/stdout.log', '/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0/stderr.log', False)
+kwargs = {}
+
+    def atomic_create(*args,private_job=None,**kwargs):
+>       assert private_job == 'private-job'
+E       AssertionError: assert None == 'private-job'
+
+tests/unit/test_granite_windows_job.py:395: AssertionError
+
+The above exception was the direct cause of the following exception:
+
+api = <test_granite_windows_job.FakeApi object at 0x7e0ed9985790>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0')
+
+    def test_atomic_assignment_is_verified_without_duplicate_assignment(api,tmp_path):
+        job = WindowsJob(api=api)
+        original = api.create_suspended
+        def atomic_create(*args,private_job=None,**kwargs):
+            assert private_job == 'private-job'
+            raw = original(*args,private_job=private_job,**kwargs)
+            api.assign(private_job,raw['process'])
+            raw['assigned_at_creation'] = True
+            return raw
+        api.create_suspended = atomic_create
+>       child = launch(job,tmp_path)
+                ^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_windows_job.py:401: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_windows_job.py:122: in launch
+    return job.launch(['C:\\Python\\python.exe', '-I', 'worker.py'], str(tmp_path), {},
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.WindowsJob object at 0x7e0ed9986030>
+argv = ['C:\\Python\\python.exe', '-I', 'worker.py']
+cwd = '/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0'
+env = {}
+stdoutfile = '/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0/stdout.log'
+stderrfile = '/tmp/pytest-of-vscode/pytest-25/test_atomic_assignment_is_veri0/stderr.log'
+stdin_pipe = False
+
+    def launch(self, argv, cwd, env, stdoutfile, stderrfile, stdin_pipe=False):
+        with self.lock:
+            if self.handle is None or self.cleaning or self.aborted:
+                raise JobError('job closed, cleaning or permanently aborted')
+            job = self.handle
+            raw = None
+            child = None
+            try:
+                raw = self.api.create_suspended(argv,cwd,env,stdoutfile,stderrfile,stdin_pipe)
+                child = OwnedProcess(raw['pid'],self.api.creation_time(raw['process']),raw['process'],raw['thread'],raw['stdin'])
+                self.owned[(child.pid,child.creation_time_100ns)] = child
+                self._event('worker_created_suspended',pid=child.pid,creation_time_100ns=child.creation_time_100ns)
+                if self.aborted or self.cleaning or self.handle != job:
+                    raise JobError('launch aborted before assignment')
+                self.api.assign(job,child.handle)
+                if not self.api.in_job(child.handle,job):
+                    raise JobError('suspended worker private membership not verified')
+                child.assigned = True
+                self._event('worker_assigned',pid=child.pid,creation_time_100ns=child.creation_time_100ns)
+                with self.resume_terminate_lock:
+                    if self.aborted or self.cleaning or self.handle != job:
+                        raise JobError('launch aborted before resume')
+                    if self.api.resume(child.thread) != 1:
+                        raise JobError('unexpected initial suspend count')
+                    child.resumed = True
+                    self._event('worker_resumed',pid=child.pid,creation_time_100ns=child.creation_time_100ns)
+                self.api.close_handle(child.thread); child.thread = None
+                return child
+            except BaseException as error:
+                if raw is not None:
+                    self.api.terminate_process(raw['process'])
+                    if child is None:
+                        self.api.close_handle(raw['process'])
+                    if raw['thread'] is not None:
+                        self.api.close_handle(raw['thread'])
+                        if child:
+                            child.thread = None
+                    if raw['stdin'] is not None:
+                        self.api.close_handle(raw['stdin'])
+                        if child:
+                            child.stdin = None
+>               raise JobError(f'worker launch failed without retry: {error}') from error
+E               scripts.uc001_granite_controller.windows_job.JobError: worker launch failed without retry: assert None == 'private-job'
+
+scripts/uc001_granite_controller/windows_job.py:435: JobError
+_______ test_production_backend_never_falls_back_to_nonatomic_assignment _______
+
+api = <test_granite_windows_job.FakeApi object at 0x7e0ed999eae0>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_production_backend_never_0')
+
+    def test_production_backend_never_falls_back_to_nonatomic_assignment(api,tmp_path):
+        api.requires_atomic_assignment = True
+        job = WindowsJob(api=api)
+>       with pytest.raises(JobError):
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE JobError
+
+tests/unit/test_granite_windows_job.py:410: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_atomic_assignment_is_verified_without_duplicate_assignment
+FAILED tests/unit/test_granite_windows_job.py::test_production_backend_never_falls_back_to_nonatomic_assignment
+2 failed, 23 passed in 0.17s

@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_selftest_never_retries_an_unknown_query_handle_close ___________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_selftest_never_retries_an0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7571246c0200>
+
+    def test_selftest_never_retries_an_unknown_query_handle_close(tmp_path, monkeypatch):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        original_start = runner.start
+    
+        def start(*args, **kwargs):
+            proxy = original_start(*args, **kwargs)
+            def close_failed(handle):
+                runner.api.closed.append(handle)
+                raise RuntimeError('synthetic query close failed')
+            runner.api.close_handle = close_failed
+            return proxy
+    
+        runner.start = start
+        runner.finish_proxy_selftest_handles = lambda proxy: runner.native.finish_proxy_selftest_handles(proxy)
+        with pytest.raises(RuntimeError, match='query close failed'):
+            worker.run_proxy_binding_selftest(config, journal, runner=runner)
+>       assert runner.api.closed == ['interpreter']
+E       AssertionError: assert ['interpreter', 'interpreter'] == ['interpreter']
+E         
+E         Left contains one more item: 'interpreter'
+E         Use -v to get more diff
+
+tests/unit/test_granite_proxy_binding_worker.py:254: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_never_retries_an_unknown_query_handle_close
+1 failed in 0.19s

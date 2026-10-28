@@ -1,0 +1,97 @@
+{
+  "started": "2026-10-10T21:54:40.248439+00:00",
+  "downloads": [
+    {
+      "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz",
+      "file": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "bytes": 55010959,
+      "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf",
+      "elapsed_seconds": 0.8439773680001963
+    },
+    {
+      "url": "https://codeload.github.com/ggml-org/llama.cpp/tar.gz/d81235049384534c167caea52b85a694f6103d14",
+      "file": "source.tar.gz",
+      "bytes": 37887730,
+      "sha256": "6b58785f0a82898f4c3442417ff962e2d4b231b1bee5d033902ad90b27901e14",
+      "elapsed_seconds": 5.103938112000833
+    },
+    {
+      "url": "https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/resolve/90862c4b9d2787eaed51d12237eafdfe7c5f6077/Qwen3-1.7B-Q8_0.gguf",
+      "file": "Qwen3-1.7B-Q8_0.gguf",
+      "bytes": 1834426016,
+      "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+      "elapsed_seconds": 83.84802829799992
+    }
+  ],
+  "steps": [
+    {
+      "name": "cmake_version",
+      "args": [
+        "/tmp/resolena-qwen-spike-9pmwxv4k/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.30276164499991864,
+      "peak_owned_rss_bytes": 0,
+      "minimum_available_bytes": 4060991488
+    },
+    {
+      "name": "configure",
+      "args": [
+        "/tmp/resolena-qwen-spike-9pmwxv4k/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "-S",
+        "/tmp/resolena-qwen-spike-9pmwxv4k/llama.cpp-d81235049384534c167caea52b85a694f6103d14",
+        "-B",
+        "/tmp/resolena-qwen-spike-9pmwxv4k/build",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DGGML_CUDA=OFF",
+        "-DGGML_BLAS=OFF",
+        "-DGGML_NATIVE=ON",
+        "-DLLAMA_OPENSSL=OFF",
+        "-DLLAMA_SUBPROCESS=OFF",
+        "-DLLAMA_LLGUIDANCE=OFF",
+        "-DLLAMA_BUILD_APP=OFF",
+        "-DLLAMA_BUILD_EXAMPLES=OFF",
+        "-DLLAMA_BUILD_TESTS=OFF",
+        "-DLLAMA_BUILD_UI=OFF",
+        "-DLLAMA_USE_PREBUILT_UI=OFF"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.093944443999135,
+      "peak_owned_rss_bytes": 45821952,
+      "minimum_available_bytes": 4074303488
+    },
+    {
+      "name": "build",
+      "args": [
+        "/tmp/resolena-qwen-spike-9pmwxv4k/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "--build",
+        "/tmp/resolena-qwen-spike-9pmwxv4k/build",
+        "--target",
+        "llama-server",
+        "-j1"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 850.2471409629998,
+      "peak_owned_rss_bytes": 677007360,
+      "minimum_available_bytes": 3472248832
+    },
+    {
+      "name": "runtime_version",
+      "args": [
+        "/tmp/resolena-qwen-spike-9pmwxv4k/build/bin/llama-server",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.37384012599977723,
+      "peak_owned_rss_bytes": 0,
+      "minimum_available_bytes": 3973337088
+    }
+  ],
+  "temporary_root": "/tmp/resolena-qwen-spike-9pmwxv4k",
+  "status": "prepared",
+  "server": "/tmp/resolena-qwen-spike-9pmwxv4k/build/bin/llama-server",
+  "model": "/tmp/resolena-qwen-spike-9pmwxv4k/Qwen3-1.7B-Q8_0.gguf",
+  "finished": "2026-10-10T22:10:30.163129+00:00"
+}

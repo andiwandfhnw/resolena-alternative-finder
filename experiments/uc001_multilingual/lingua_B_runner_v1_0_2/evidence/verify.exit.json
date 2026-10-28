@@ -1,0 +1,18 @@
+{
+  "phase": "verify",
+  "identity": {
+    "pid": 13252,
+    "pgrp": 13252,
+    "start_ticks": 223050,
+    "rss": 3117056,
+    "hwm": 3117056,
+    "threads": 1
+  },
+  "exit_code": 0,
+  "failure": null,
+  "process_absent": true,
+  "peak_owned_rss_bytes": 41676800,
+  "peak_hwm_sum_bytes": 41676800,
+  "peak_scratch_bytes": 171102208,
+  "end_monotonic": 2232.226642931
+}

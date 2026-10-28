@@ -1,0 +1,28 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_______ test_unknown_process_in_final_job_total_prevents_cleanup_success _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-57/test_unknown_process_in_final_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe876369dc0>
+
+    def test_unknown_process_in_final_job_total_prevents_cleanup_success(tmp_path,monkeypatch):
+        result,calls=run_split(tmp_path,monkeypatch,late_unknown_cleanup=True)
+>       assert result['ownership_self_test_passed'] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:539: AssertionError
+_______ test_membership_is_refreshed_after_all_six_handles_are_verified ________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-57/test_membership_is_refreshed_a0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe8763514c0>
+
+    def test_membership_is_refreshed_after_all_six_handles_are_verified(tmp_path,monkeypatch):
+        result,calls=run_split(tmp_path,monkeypatch,first_snapshot_five=True)
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:546: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_unknown_process_in_final_job_total_prevents_cleanup_success
+FAILED tests/unit/test_granite_controller_standins.py::test_membership_is_refreshed_after_all_six_handles_are_verified
+2 failed, 28 deselected in 0.23s

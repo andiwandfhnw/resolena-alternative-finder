@@ -1,0 +1,26 @@
+{
+  "version": "uc001-execution-v1.3.0",
+  "date": "2026-10-17",
+  "scope": "Bounded launcher/monitor policy correction; offline preparation only",
+  "parent_execution_freeze_sha256": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "parent_policy_freeze_sha256": "b083c3821590e85c56729d8238e18f0ed500dfcce36fcf175054c3367601217e",
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "changes": [
+    "Reuse v1.2.0 complete hardware/CIM/PCI/LUID identity, DXGI capacity and exact WDDM measurement policy at startup and every sample",
+    "Require exact owned PID/selected-LUID/phys_0 counter and stable alive process identity around measurement; missing never becomes zero",
+    "Validate RSS, memory/disk capacities and artifact arithmetic without type coercion or overflow",
+    "Wire actual launcher and runtime monitor to corrected policy; preserve owned cleanup even after another cleanup operation fails",
+    "Bind copied runner/receipt/review to new freeze while retaining original cross-version attempt-directory identity"
+  ],
+  "unchanged": [
+    "Original and all prior frozen bundles, raw snapshots, failures and historical evidence",
+    "Model/runtime pins, config, prompt, schema, exposed cases, application behavior and semantic-review requirements",
+    "Native enumeration reader from v1.2.0 and original kill-on-close process/job helper",
+    "One-startup/14-generation limits, deadlines, sampling intervals, thresholds, authentication/loopback/proxy controls and attempt records"
+  ],
+  "windows_runtime_verification": "pending; synthetic tests do not establish native counter availability, process attribution or cleanup",
+  "execution_authorized": false,
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial"
+}

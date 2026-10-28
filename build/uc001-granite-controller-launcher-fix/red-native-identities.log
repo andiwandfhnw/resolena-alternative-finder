@@ -1,0 +1,303 @@
+..................................FFFFFFFFFFFFFFFFFF                     [100%]
+=================================== FAILURES ===================================
+___ test_retained_interpreter_parent_is_read_without_filetime_precision_loss ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7d400>
+
+    def test_retained_interpreter_parent_is_read_without_filetime_precision_loss(monkeypatch):
+        api=parent_query_api(monkeypatch)
+>       assert api.process_id('retained-interpreter') == 61020
+               ^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'process_id'
+
+tests/unit/test_granite_windows_job.py:504: AttributeError
+_____ test_unknown_or_changed_native_parent_identity_is_rejected[changes0] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7d3d0>
+changes = {'status': -1073741822}
+
+    @pytest.mark.parametrize('changes',[
+        {'status':-1073741822},{'returned_size':47},{'returned_pid':61196},{'parent':0},
+        {'times':(134374354509736275,134374354509736276)},
+    ])
+    def test_unknown_or_changed_native_parent_identity_is_rejected(monkeypatch,changes):
+        api=parent_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.parent_pid('retained-interpreter')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'parent_pid'
+
+tests/unit/test_granite_windows_job.py:515: AttributeError
+_____ test_unknown_or_changed_native_parent_identity_is_rejected[changes1] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7fcb0>
+changes = {'returned_size': 47}
+
+    @pytest.mark.parametrize('changes',[
+        {'status':-1073741822},{'returned_size':47},{'returned_pid':61196},{'parent':0},
+        {'times':(134374354509736275,134374354509736276)},
+    ])
+    def test_unknown_or_changed_native_parent_identity_is_rejected(monkeypatch,changes):
+        api=parent_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.parent_pid('retained-interpreter')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'parent_pid'
+
+tests/unit/test_granite_windows_job.py:515: AttributeError
+_____ test_unknown_or_changed_native_parent_identity_is_rejected[changes2] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7e480>
+changes = {'returned_pid': 61196}
+
+    @pytest.mark.parametrize('changes',[
+        {'status':-1073741822},{'returned_size':47},{'returned_pid':61196},{'parent':0},
+        {'times':(134374354509736275,134374354509736276)},
+    ])
+    def test_unknown_or_changed_native_parent_identity_is_rejected(monkeypatch,changes):
+        api=parent_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.parent_pid('retained-interpreter')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'parent_pid'
+
+tests/unit/test_granite_windows_job.py:515: AttributeError
+_____ test_unknown_or_changed_native_parent_identity_is_rejected[changes3] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7f350>
+changes = {'parent': 0}
+
+    @pytest.mark.parametrize('changes',[
+        {'status':-1073741822},{'returned_size':47},{'returned_pid':61196},{'parent':0},
+        {'times':(134374354509736275,134374354509736276)},
+    ])
+    def test_unknown_or_changed_native_parent_identity_is_rejected(monkeypatch,changes):
+        api=parent_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.parent_pid('retained-interpreter')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'parent_pid'
+
+tests/unit/test_granite_windows_job.py:515: AttributeError
+_____ test_unknown_or_changed_native_parent_identity_is_rejected[changes4] _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fba8fb0>
+changes = {'times': (134374354509736275, 134374354509736276)}
+
+    @pytest.mark.parametrize('changes',[
+        {'status':-1073741822},{'returned_size':47},{'returned_pid':61196},{'parent':0},
+        {'times':(134374354509736275,134374354509736276)},
+    ])
+    def test_unknown_or_changed_native_parent_identity_is_rejected(monkeypatch,changes):
+        api=parent_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.parent_pid('retained-interpreter')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'parent_pid'
+
+tests/unit/test_granite_windows_job.py:515: AttributeError
+_________ test_native_process_basic_information_x64_offsets_are_exact __________
+
+    def test_native_process_basic_information_x64_offsets_are_exact():
+        from scripts.uc001_granite_controller import windows_job as module
+>       assert ctypes.sizeof(module.ProcessBasicInformation)==48
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.uc001_granite_controller.windows_job' has no attribute 'ProcessBasicInformation'. Did you mean: 'ProcessInformation'?
+
+tests/unit/test_granite_windows_job.py:520: AttributeError
+_______________ test_process_id_requires_nonzero_native_identity _______________
+
+    def test_process_id_requires_nonzero_native_identity():
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi);api.k=SimpleNamespace(GetProcessId=lambda _:0)
+        with pytest.raises(JobError):
+>           api.process_id('retained')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'process_id'
+
+tests/unit/test_granite_windows_job.py:530: AttributeError
+______ test_interpreter_termination_access_is_explicit_and_not_a_default _______
+
+    def test_interpreter_termination_access_is_explicit_and_not_a_default():
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        calls=[]
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(OpenProcess=lambda access,inherit,pid:calls.append((access,inherit,pid)) or 77)
+        assert api.open_process(61020)==77
+>       assert api.open_process(61020,can_terminate=True)==77
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: NativeApi.open_process() got an unexpected keyword argument 'can_terminate'
+
+tests/unit/test_granite_windows_job.py:540: TypeError
+______________ test_native_process_open_rejects_ambiguous_pid[0] _______________
+
+pid = 0
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_native_process_open_rejects_ambiguous_pid(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_process(pid)
+
+tests/unit/test_granite_windows_job.py:549: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x78755fbaadb0>
+pid = 0
+
+    def open_process(self, pid):
+>       return self.checked(self.k.OpenProcess(0x1000|0x100000,False,pid),'OpenProcess for identity/membership')
+                            ^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'k'
+
+scripts/uc001_granite_controller/windows_job.py:293: AttributeError
+______________ test_native_process_open_rejects_ambiguous_pid[-1] ______________
+
+pid = -1
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_native_process_open_rejects_ambiguous_pid(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_process(pid)
+
+tests/unit/test_granite_windows_job.py:549: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x78755fb7f290>
+pid = -1
+
+    def open_process(self, pid):
+>       return self.checked(self.k.OpenProcess(0x1000|0x100000,False,pid),'OpenProcess for identity/membership')
+                            ^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'k'
+
+scripts/uc001_granite_controller/windows_job.py:293: AttributeError
+_____________ test_native_process_open_rejects_ambiguous_pid[True] _____________
+
+pid = True
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_native_process_open_rejects_ambiguous_pid(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_process(pid)
+
+tests/unit/test_granite_windows_job.py:549: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x78755fb7e6f0>
+pid = True
+
+    def open_process(self, pid):
+>       return self.checked(self.k.OpenProcess(0x1000|0x100000,False,pid),'OpenProcess for identity/membership')
+                            ^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'k'
+
+scripts/uc001_granite_controller/windows_job.py:293: AttributeError
+__________ test_native_process_open_rejects_ambiguous_pid[4294967296] __________
+
+pid = 4294967296
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_native_process_open_rejects_ambiguous_pid(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_process(pid)
+
+tests/unit/test_granite_windows_job.py:549: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x78755fb7ed80>
+pid = 4294967296
+
+    def open_process(self, pid):
+>       return self.checked(self.k.OpenProcess(0x1000|0x100000,False,pid),'OpenProcess for identity/membership')
+                            ^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'k'
+
+scripts/uc001_granite_controller/windows_job.py:293: AttributeError
+___ test_child_snapshot_returns_only_explicit_parent_edges_and_closes_handle ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fb7ccb0>
+
+    def test_child_snapshot_returns_only_explicit_parent_edges_and_closes_handle(monkeypatch):
+        api,closed=child_snapshot_api(monkeypatch,[(1,0),(61196,60320),(61020,61196),(17,8),(61021,61020)])
+>       assert api.children_of({61196,61020})=={(61020,61196),(61021,61020)}
+               ^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'children_of'
+
+tests/unit/test_granite_windows_job.py:575: AttributeError
+_____ test_child_snapshot_unknown_extra_is_returned_for_fail_closed_caller _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755ffc63c0>
+
+    def test_child_snapshot_unknown_extra_is_returned_for_fail_closed_caller(monkeypatch):
+        api,closed=child_snapshot_api(monkeypatch,[(61020,61196),(70000,61196)])
+>       assert api.children_of({61196,61020})=={(61020,61196),(70000,61196)}
+               ^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'children_of'
+
+tests/unit/test_granite_windows_job.py:581: AttributeError
+___________ test_child_snapshot_failure_cannot_be_an_empty_safe_tree ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fba9d60>
+
+    def test_child_snapshot_failure_cannot_be_an_empty_safe_tree(monkeypatch):
+        api,closed=child_snapshot_api(monkeypatch,[],next_error=5)
+        with pytest.raises(JobError):
+>           api.children_of({61196})
+            ^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'children_of'
+
+tests/unit/test_granite_windows_job.py:588: AttributeError
+_____________ test_child_snapshot_timeout_closes_handle_and_fails ______________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78755fbab590>
+
+    def test_child_snapshot_timeout_closes_handle_and_fails(monkeypatch):
+        from scripts.uc001_granite_controller import windows_job as module
+        api,closed=child_snapshot_api(monkeypatch,[(61020,61196)])
+        moments=iter([0.0,2.0])
+        monkeypatch.setattr(module.time,'monotonic',lambda:next(moments))
+        with pytest.raises(JobError):
+>           api.children_of({61196},timeout_seconds=1)
+            ^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'children_of'
+
+tests/unit/test_granite_windows_job.py:598: AttributeError
+________ test_process_entry_layout_does_not_depend_on_linux_wchar_width ________
+
+    def test_process_entry_layout_does_not_depend_on_linux_wchar_width():
+        from scripts.uc001_granite_controller import windows_job as module
+>       assert ctypes.sizeof(module.ProcessEntry)==568
+                             ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.uc001_granite_controller.windows_job' has no attribute 'ProcessEntry'
+
+tests/unit/test_granite_windows_job.py:604: AttributeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_retained_interpreter_parent_is_read_without_filetime_precision_loss
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_or_changed_native_parent_identity_is_rejected[changes0]
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_or_changed_native_parent_identity_is_rejected[changes1]
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_or_changed_native_parent_identity_is_rejected[changes2]
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_or_changed_native_parent_identity_is_rejected[changes3]
+FAILED tests/unit/test_granite_windows_job.py::test_unknown_or_changed_native_parent_identity_is_rejected[changes4]
+FAILED tests/unit/test_granite_windows_job.py::test_native_process_basic_information_x64_offsets_are_exact
+FAILED tests/unit/test_granite_windows_job.py::test_process_id_requires_nonzero_native_identity
+FAILED tests/unit/test_granite_windows_job.py::test_interpreter_termination_access_is_explicit_and_not_a_default
+FAILED tests/unit/test_granite_windows_job.py::test_native_process_open_rejects_ambiguous_pid[0]
+FAILED tests/unit/test_granite_windows_job.py::test_native_process_open_rejects_ambiguous_pid[-1]
+FAILED tests/unit/test_granite_windows_job.py::test_native_process_open_rejects_ambiguous_pid[True]
+FAILED tests/unit/test_granite_windows_job.py::test_native_process_open_rejects_ambiguous_pid[4294967296]
+FAILED tests/unit/test_granite_windows_job.py::test_child_snapshot_returns_only_explicit_parent_edges_and_closes_handle
+FAILED tests/unit/test_granite_windows_job.py::test_child_snapshot_unknown_extra_is_returned_for_fail_closed_caller
+FAILED tests/unit/test_granite_windows_job.py::test_child_snapshot_failure_cannot_be_an_empty_safe_tree
+FAILED tests/unit/test_granite_windows_job.py::test_child_snapshot_timeout_closes_handle_and_fails
+FAILED tests/unit/test_granite_windows_job.py::test_process_entry_layout_does_not_depend_on_linux_wchar_width
+18 failed, 34 passed in 1.61s

@@ -1,0 +1,372 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5L only: exactly two denial UI-contract cases and explicit fresh-start interactions",
+  "recorded_date": "2026-10-21",
+  "result": "Both parameterized cases and existing default success baseline passed on first run against unchanged production; stop for human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priorities_3_4_5": "partial",
+    "increment_1_complete": false,
+    "DEVELOP_complete": false
+  },
+  "prior_5K_acceptance": {
+    "accepted_scope": "Fresh-page actual processing error -> explicitly clicked unchanged-submission retry -> normal reprocessing and atomic saving only.",
+    "verification_kind": "Browser passed first run against existing production; RED concerned only missing test-only factory wiring.",
+    "limits_retained": [
+      "300 ms bounded no-automatic-retry observation",
+      "No prior-uncertainty transitions or other retry variants credited."
+    ],
+    "original_receipt": "build/uc001-priority5k-processing-retry/verification.json",
+    "original_sha256": "c35ecfd6cfae871f1e6caf27cfa5405ef671f595390ef4b9dd5da3e369c851ff",
+    "original_receipt_and_artifacts_unchanged": true
+  },
+  "targeted_prerequisites": {
+    "result": "Confirmed; no material accepted-contract/architecture/schema conflict.",
+    "checked": [
+      "Current UC O-2 / AC-13/17 / T-13 and error field-preservation / AC-14 loading rules",
+      "Accepted API response table / ADR-003 atomic persistence and deliberate fresh identity",
+      "Current React denial branch, captured attempt, loading-finally and explicit freshSearch handling",
+      "Existing browser interaction inventory and ordinary runner"
+    ],
+    "equivalent_UI_interaction_coverage_existed": false,
+    "API_body_confirmation": "api.py failure() and OwnershipDenied/PayloadConflict handlers produce the exact mocked bodies below.",
+    "reused_backend_evidence": [
+      {
+        "path": "build/uc001-priority5a-recovery/verification.json",
+        "sha256": "81b8715f6cb76b47f5d352b40ce3b1f5db5325a0a58cfb5a9a51d2b36f764d3a"
+      },
+      {
+        "path": "build/uc001-priority5g-collision-guards/verification.json",
+        "sha256": "425ef97e12264540741cdda7da47f560ad08ef31d0f8660bcca3178bfc7ef8a1"
+      }
+    ],
+    "reused_evidence_limit": "Backend denial, ownership, collision and disclosure behavior is reused with original limits, not reverified or expanded by these mocked inputs."
+  },
+  "test_first": {
+    "new_interactions_authored_before_first_execution_and_any_production_change": true,
+    "browser_first_run": "3 passed, 0 failed, 0 flaky, 0 retries; no RED or production correction needed.",
+    "artificial_RED_introduced": false,
+    "production_changes": false,
+    "refactor": "No additional refactor was needed; existing capture/database helpers and runner reused."
+  },
+  "composition": {
+    "fixture": "Existing synthetic Repair my bicycle without replacing it / CH / no optional town or postcode; fresh page for each case.",
+    "previous_uncertain_attempt": false,
+    "clock": "Existing fixed synthetic 2026-10-15T10:00:00+00:00; no factual/linguistic/current-validity acceptance.",
+    "mocked_denials": 2,
+    "actual_new_fresh_saves": 2,
+    "backend_fault_controller_added": false,
+    "runner_support_frontend_source_and_dependencies_changed": false,
+    "normal_app_main": "unchanged and unconfigured"
+  },
+  "cases": [
+    {
+      "denial_status": 403,
+      "denial_response": {
+        "mocked": true,
+        "status": 403,
+        "body": {
+          "outcome": "recovery_not_authorized",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "originating_proof_required"
+            }
+          ]
+        }
+      },
+      "denial_source": "Exact accepted API body supplied by test-only browser interception; not sent to the backend.",
+      "ui_after_denial": {
+        "loading_ended": true,
+        "form_aria_busy": "false",
+        "text_and_CH_and_empty_optional_fields_preserved_and_enabled": true,
+        "captured_location_and_language_context_retained": true,
+        "message": "This submission cannot be recovered with the current page context. Start an explicit fresh search.",
+        "comparison_coverage_acknowledgement_identity_original_time_and_internal_detail_absent": true,
+        "saving_or_rollback_certainty_not_inferred": true
+      },
+      "bounded_no_automatic_request_observation_ms": 300,
+      "reset": "Start a fresh search clicked; alert clears, fields remain, no request; request count read after React assertions and one animation frame.",
+      "request_counts": {
+        "before_reset": 1,
+        "after_reset": 1,
+        "after_explicit_submission": 2,
+        "mocked_denial_responses": 1,
+        "actual_backend_requests_forwarded": 1
+      },
+      "explicit_fresh_submission": {
+        "action": "Find alternatives clicked without field edits",
+        "new_key": true,
+        "new_originating_proof": true,
+        "unchanged_payload_except_key": true,
+        "payload_matches_current_text_CH_location_choice_and_supported_browser_language_context": true,
+        "credential_comparison": "Keys, complete captured requests and proof digests held and compared only in test memory; only booleans exported.",
+        "response_source": "Actual React -> Vite proxy -> FastAPI -> application -> SQLite; route.continue(), no successful-response stub.",
+        "status": 201,
+        "outcome": "comparison",
+        "persistence_state": "saved",
+        "request_id": "5a76aa44-610c-4e44-ac9c-79fd8c269bdb",
+        "option_ids": [
+          "8b5bdd98-9ec9-455a-bb31-dcfb5e22e90f",
+          "4ad19a9e-a745-44cb-bb01-1a0710ca94af"
+        ],
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "stored_projection_equals_actual_response_and_displayed_identities_match": true,
+        "loading_ended_and_error_cleared": true
+      },
+      "database_counts": {
+        "before": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_denial": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_reset": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        }
+      },
+      "added_rows": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "database_preservation": "Baseline nonempty; new request selected by prior-ID difference; prior request projections/options/links and complete evidence rows/review dates unchanged.",
+      "artifact": "build/uc001-priority5l-denial-ui/browser/saved-comparison-mocked-de-baad8--unchanged-value-submission/mocked-403-fresh-action-evidence.json",
+      "artifact_sha256": "aff8b6a1127a800aa8e4f5b8d24ca23b35c0c806b2e4c4cfdac01c5d0d7d5c5a"
+    },
+    {
+      "denial_status": 409,
+      "denial_response": {
+        "mocked": true,
+        "status": 409,
+        "body": {
+          "outcome": "submission_key_conflict",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "payload_changed"
+            }
+          ]
+        }
+      },
+      "denial_source": "Exact accepted API body supplied by test-only browser interception; not sent to the backend.",
+      "ui_after_denial": {
+        "loading_ended": true,
+        "form_aria_busy": "false",
+        "text_and_CH_and_empty_optional_fields_preserved_and_enabled": true,
+        "captured_location_and_language_context_retained": true,
+        "message": "This submission cannot be recovered with the current page context. Start an explicit fresh search.",
+        "comparison_coverage_acknowledgement_identity_original_time_and_internal_detail_absent": true,
+        "saving_or_rollback_certainty_not_inferred": true
+      },
+      "bounded_no_automatic_request_observation_ms": 300,
+      "reset": "Start a fresh search clicked; alert clears, fields remain, no request; request count read after React assertions and one animation frame.",
+      "request_counts": {
+        "before_reset": 1,
+        "after_reset": 1,
+        "after_explicit_submission": 2,
+        "mocked_denial_responses": 1,
+        "actual_backend_requests_forwarded": 1
+      },
+      "explicit_fresh_submission": {
+        "action": "Find alternatives clicked without field edits",
+        "new_key": true,
+        "new_originating_proof": true,
+        "unchanged_payload_except_key": true,
+        "payload_matches_current_text_CH_location_choice_and_supported_browser_language_context": true,
+        "credential_comparison": "Keys, complete captured requests and proof digests held and compared only in test memory; only booleans exported.",
+        "response_source": "Actual React -> Vite proxy -> FastAPI -> application -> SQLite; route.continue(), no successful-response stub.",
+        "status": 201,
+        "outcome": "comparison",
+        "persistence_state": "saved",
+        "request_id": "9eb52d81-65d9-4bd6-b8e4-68f5f8cd97fc",
+        "option_ids": [
+          "2cb00d7c-e31f-4cec-98e2-b05b39f8e567",
+          "102b36e3-d8b3-445a-8100-6ef0f110653b"
+        ],
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "stored_projection_equals_actual_response_and_displayed_identities_match": true,
+        "loading_ended_and_error_cleared": true
+      },
+      "database_counts": {
+        "before": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_denial": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_reset": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after": {
+          "search_request": 3,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        }
+      },
+      "added_rows": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "database_preservation": "Baseline nonempty; new request selected by prior-ID difference; prior request projections/options/links and complete evidence rows/review dates unchanged.",
+      "artifact": "build/uc001-priority5l-denial-ui/browser/saved-comparison-mocked-de-d7148--unchanged-value-submission/mocked-409-fresh-action-evidence.json",
+      "artifact_sha256": "aaed55285cdf6059d2c8201261595e2c35814d4e504212da9514ea299f19b42f"
+    }
+  ],
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5l-denial-ui/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|mocked denial UI contract' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5l-denial-ui/browser --reporter=list,json 2>&1 | tee build/uc001-priority5l-denial-ui/browser.txt",
+      "exit_code": 0,
+      "result": "3 passed (8.5s), first invocation; existing successful comparison and exactly two new UI-contract cases.",
+      "stats": {
+        "startTime": "2026-10-21T21:52:08.000Z",
+        "duration": 8495.287,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "log": "build/uc001-priority5l-denial-ui/browser.txt",
+      "report": "build/uc001-priority5l-denial-ui/browser-report.json"
+    },
+    {
+      "command": "set -o pipefail\ngit diff --check 2>&1 | tee build/uc001-priority5l-denial-ui/git-diff-check.txt",
+      "exit_code": 2,
+      "result": "Only preserved historical docs/TASKS.md:1814 trailing whitespace; no slice-specific whitespace error.",
+      "log": "build/uc001-priority5l-denial-ui/git-diff-check.txt"
+    },
+    {
+      "command": "set -o pipefail\ngit status --short | tee build/uc001-priority5l-denial-ui/git-status.txt",
+      "exit_code": 0,
+      "result": "Dirty worktree preserved; status entries identical to slice entry.",
+      "log": "build/uc001-priority5l-denial-ui/git-status.txt"
+    },
+    {
+      "command": ".venv/bin/python /tmp/resolena-priority5l-j2pnv7a6/check-evidence.py",
+      "exit_code": 0,
+      "result": "Two case artifacts, response boundaries/counts/IDs, all 430 protected file hashes, preserved historical tests/TASKS/checkpoint, scoped whitespace, safe exports and closed test ports verified.",
+      "artifacts": [
+        "build/uc001-priority5l-denial-ui/preservation.json",
+        "build/uc001-priority5l-denial-ui/receipt-check.json"
+      ]
+    }
+  ],
+  "conditional_checks_not_run": {
+    "frontend_lint_build": "Not required: frontend source, frontend/runner configuration and dependencies unchanged; only tests/e2e and TASKS changed.",
+    "additional_recovery_fresh_search_regression": "Not required: shared production handling unchanged.",
+    "backend_and_broader_matrices": "Not run; existing 5A/5G evidence reused, no collision/persistence/language/full-browser rerun."
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "d048d322459d394dd1253c5f7a9282dde521ef49a4d7233470023c2564b99264",
+      "summary": "Current bounded authorization, scoped 5K acceptance and one concise 5L result; eight-row checkpoint and all prior history preserved."
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "a659d48e1e99634b4e518c681e6704ab13af238d71a6d81a94e5af1612ea41b6",
+      "summary": "Exactly two parameterized test-first UI-contract cases; all previous tests unchanged."
+    }
+  ],
+  "preservation": {
+    "manifest_result": "build/uc001-priority5l-denial-ui/preservation.json",
+    "protected_files_checked": 430,
+    "unchanged_protected_files": 428,
+    "only_two_authorized_existing_files_changed": true,
+    "prior_receipts_and_5_series_artifacts_unchanged": true,
+    "historical_tasks_and_browser_scenarios_preserved": true,
+    "dated_eight_row_checkpoint_unchanged": true,
+    "production_DE_FR_IT_EN_privacy_atomic_persistence_and_immutable_evidence_unchanged": true,
+    "real_drafts_inactive_and_experiments_closed": true,
+    "git_status_entries_unchanged": true,
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_HEAD_unchanged": true,
+    "global_diff_check": "Historical trailing-whitespace line preserved; line number shifted with result insertion.",
+    "task_local_diff_checks": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5l-j2pnv7a6/docs/TASKS.md",
+          "/workspaces/resolena-alternative-finder/docs/TASKS.md"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5l-j2pnv7a6/tests/e2e/saved-comparison.spec.ts",
+          "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      }
+    ]
+  },
+  "cleanup_and_artifact_privacy": {
+    "owned_test_ports": [
+      {
+        "port": 8011,
+        "closed": true
+      },
+      {
+        "port": 5175,
+        "closed": true
+      }
+    ],
+    "ordinary_runner_shutdown_confirmed": true,
+    "traces": "off",
+    "HAR_or_trace_files_present": false,
+    "proofs_keys_digests_headers_bindings_or_complete_captured_requests_exported": false,
+    "exported_credential_checks": "equality/difference booleans only",
+    "test_only_API_interception": "Page-scoped; mock only first denial, continue actual fresh request. No production proof handling tampered with."
+  },
+  "checkpoint_credit": "Only the ownership/payload row 403/409 UI field/loading/message outcomes and explicit fresh-action observables with new key/proof. No new backend authorization, collision or disclosure coverage.",
+  "remaining_and_limits": [
+    "Bounded 300 ms idle observation is not an unlimited absence-of-retry proof.",
+    "No prior-uncertainty/error, unknown/absent recovery or fresh/edited-after-uncertainty transitions.",
+    "Product/habit fixtures, other retry transitions, reference preparation/activation, real knowledge/rendering/interpreter and qualified linguistic acceptance remain pending.",
+    "No new backend security/collision/disclosure claims; original 5A/5G limits preserved.",
+    "Priorities 3/4/5, increment 1 and DEVELOP remain incomplete."
+  ],
+  "excluded_work_not_performed": [
+    "No product/habit, locality or collision variants; no new fault controller or backend matrix.",
+    "No model/detector startup, interpreter experiments, held-out access, linguistic approval, TL-03, research, UC-003 or Priority 6.",
+    "No dependencies, normal app.main configuration, staging, commits, push, merge, branch switch/reset, unrelated cleanup, CI/CD or deployment."
+  ],
+  "review": "A separate agent reviewed targeted contracts and the task-local test delta without editing or running tests; no material issue found. Human review remains required.",
+  "stop": "Stop after these two cases; await human review before any further implementation."
+}

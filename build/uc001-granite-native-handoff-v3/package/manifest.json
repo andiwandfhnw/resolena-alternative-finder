@@ -1,0 +1,22 @@
+{
+  "version": "uc001-granite-native-handoff-v3",
+  "scope": "pinned_runtime_source_and_model_free_build_only",
+  "execution_authorized": false,
+  "destination": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3",
+  "files": {
+    "Preflight-GraniteNative.ps1": "6518ced1666eea9ccdc972f2c80bdccc247fd47f98543d03babca4024de7ed04",
+    "README.md": "6262f703290237f6c7e7b8529302624fbcebaca8febb4dd3e8e878123272478f",
+    "controller.py": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+    "frozen-config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+    "native-build-procedure.md": "f3a0968ab48314573ca9be0c416e4733db1276e56f965d7d1429790e73f1af65",
+    "native-config.inactive.json": "b9e1a4e78a03488d8b332308f818c43e9d882d75c10591f65bc5bbcf16564793",
+    "owner-statement.txt": "3fd9e56c68a9dba8fefc198eec6d5599af05c24fed7ddacf376dcc9db152b38c",
+    "prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+    "prior-budget.json.sha256": "3b50e3270d482faf0e1833c67292855311c4a3e3837d7c66ab35e799b76e3c97",
+    "proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "verify_config.py": "109de9b1f0ab80118263166b4c5e4b2af58106817c7337ca85f283a63c23d5bd",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "worker.py": "7e2660e10139862c7d5542e40c5e4ad0739eea917ee97de59be3671327b8daf5"
+  }
+}

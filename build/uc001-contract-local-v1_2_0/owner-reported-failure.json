@@ -1,0 +1,63 @@
+{
+  "provenance": "Owner-reported facts pasted in chat; not reconstructed raw Windows files. Original attempt artifacts remain on Windows and were not modified.",
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "startup": {
+    "occurred": true,
+    "original_single_startup_allowance_consumed": true,
+    "another_startup_authorized": false
+  },
+  "cleanup": {
+    "owned_process_pids": [
+      30488,
+      56840
+    ],
+    "both_exits_confirmed": true,
+    "errors_reported": []
+  },
+  "capture": {
+    "cases_accepted": [],
+    "case_bodies_listed": [],
+    "capture_stopped_type": "ValueError",
+    "progress_json": "absent",
+    "attempts_jsonl": "absent",
+    "generation_ledger_receipt": "unavailable; no zero-valued ledger reconstructed"
+  },
+  "inference": "Under the unchanged collector control flow, these observations place failure before the first frozen test generation. The exact original failing check and original process ancestry were not captured.",
+  "separate_model_free_probe": {
+    "powershell_pid": 41988,
+    "python_pid": 44384,
+    "python_parent_pid": 20912,
+    "parent_matches_powershell": false,
+    "scope": "Reproduces the direct-parent assumption problem in this separate probe only"
+  },
+  "saved_receipt_parameter_checks": {
+    "n_predict": {
+      "expected": 3072,
+      "recorded": -1,
+      "original_verifier": "mismatch"
+    },
+    "temperature": {
+      "recorded": 0.699999988079071,
+      "original_verifier": "passes"
+    },
+    "top_p": {
+      "recorded": 0.800000011920929,
+      "original_verifier": "passes"
+    },
+    "top_k": {
+      "recorded": 20,
+      "original_verifier": "passes"
+    },
+    "min_p": {
+      "recorded": 0.0,
+      "original_verifier": "passes"
+    },
+    "seed": {
+      "recorded": 42,
+      "original_verifier": "passes"
+    }
+  },
+  "semantic_review": "pending",
+  "expected_meanings_approved": false,
+  "interpreter_suitability_verified": false
+}

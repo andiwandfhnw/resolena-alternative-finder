@@ -1,0 +1,1 @@
+{"phase": "acquire", "command": ["/usr/local/bin/python3", "-B", "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/lingua_B_2026_10_15/acquire.py"], "identity": {"pid": 33630, "ppid": 33629, "pgrp": 33630, "os_threads": 1, "start_ticks": 438275, "rss": 249856, "hwm": 249856}, "start_monotonic": 4382.756652063}

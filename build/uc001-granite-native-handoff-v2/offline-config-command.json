@@ -1,0 +1,14 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-I",
+    "-B",
+    "build/uc001-granite-native-handoff-v2/package/verify_config.py",
+    "--package-root",
+    "build/uc001-granite-native-handoff-v2/package",
+    "--expected-manifest-sha256",
+    "a63238267cc8e881d0609c3cffcdcac303d399454cef64ca0874fcbafd577556"
+  ],
+  "exit_code": 0,
+  "scope": "Codespace package/configuration/hash/schema validation only; no native phase"
+}

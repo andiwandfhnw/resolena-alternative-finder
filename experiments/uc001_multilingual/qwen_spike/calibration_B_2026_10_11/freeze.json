@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-11T13:27:00.426240+00:00",
+  "files": {
+    "cases.json": "41ef10d1603d5412568ea5860dc01fa17405513c9f206a77488768e037fdccfe",
+    "calibrate.py": "bb576167181137f679251be1877bc2a571c0c228cb1075c62d8000dc1bf50f33",
+    "test_checks.py": "ebf7896dfd99c72fe7ffe345b862caae2ab17f39a7c6128fc3f5577cf646ab6a",
+    "../evaluate_model.py": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+    "../prepare.py": "bbdacea61bd4995368348fc2a06e5850d88effeacc40d08fea3e1561b348eacc",
+    "../restart_2026_10_11/operations.py": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52",
+    "../restart_2026_10_11/config.json": "15a4374e71f4d9967ec6fd7b3870bf9bf40228ed4e855f700c0468e3abf1bf66",
+    "../restart_2026_10_11/results.json": "a2daea6083e7eafec5bff6aa68224f578f8ed113e75cd3ae77a176d1508a7a18",
+    "../heldout_v2.json": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08",
+    "../../heldout.json": "8227c98eb96ed4fdd0c15eef9c21fec977251e4e865463c8c2b1c1547cceb827"
+  },
+  "order": "Exactly cases.json execution_order; fixed before loading",
+  "temperature_change_only": [
+    0.7,
+    0
+  ],
+  "validation": "Unchanged frozen validate/semantic_score; explicit expected classification reporting supplements existing unsupported category",
+  "no_heldout_model_exposure": true
+}

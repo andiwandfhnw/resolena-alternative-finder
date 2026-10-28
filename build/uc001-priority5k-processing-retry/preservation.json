@@ -1,0 +1,42 @@
+{
+  "phase": 3,
+  "status": "in-progress",
+  "changed_existing_files": [
+    "docs/TASKS.md",
+    "frontend/playwright.config.ts",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_uncertain_save_support.py",
+    "tests/support/demo.py",
+    "tests/support/source_bound_rendering.py"
+  ],
+  "new_source_file": [
+    "tests/support/processing_error.py"
+  ],
+  "protected_baseline_files": 174,
+  "unchanged_baseline_files": 168,
+  "all_H_I_J_artifacts_and_prior_receipts_unchanged": true,
+  "dated_checkpoint_and_all_historical_TASKS_text_unchanged": true,
+  "old_browser_scenarios_and_existing_support_tests_unchanged": true,
+  "production_source_App_and_normal_main_unchanged": true,
+  "dependencies_and_real_drafts_unchanged": true,
+  "branch_and_HEAD": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "git_status_entries_unchanged": true,
+  "task_local_whitespace_clean": [
+    "docs/TASKS.md",
+    "frontend/playwright.config.ts",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_uncertain_save_support.py",
+    "tests/support/demo.py",
+    "tests/support/processing_error.py",
+    "tests/support/source_bound_rendering.py"
+  ],
+  "repository_diff_check_exit": 2,
+  "repository_diff_check_output": "docs/TASKS.md:1777: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+  "owned_test_ports_closed": {
+    "8011": true,
+    "5175": true
+  }
+}

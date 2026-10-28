@@ -1,0 +1,248 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5J only",
+  "recorded_date": "2026-10-21",
+  "result": "One real second-option INSERT rejection verifies whole-result rollback against existing production behavior; awaiting human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priority_3": "partial",
+    "priority_4": "partial",
+    "priority_5": "partial",
+    "increment_1": "incomplete",
+    "DEVELOP": "in-progress"
+  },
+  "prior_5I_acceptance": {
+    "scope": "Only the demonstrated delayed required-save success observable under AC-14/E-LD-01/T-12.",
+    "behavior": "Existing production; new browser journey passed first run. Missing-helper RED concerned test support, not a loading defect.",
+    "credited": [
+      "Actual required inserts inside an active uncommitted transaction",
+      "Independent readers see the prior committed baseline only",
+      "Browser remains busy with controls disabled and no saved presentation",
+      "Explicit release permits the real commit and authoritative saved response",
+      "One designated submission/save/commit with prior records/evidence preserved"
+    ],
+    "receipt": "build/uc001-priority5i-delayed-save/verification.json",
+    "original_receipt_sha256": "02c539e21b6123208e98634498f9b200310ddaa6916ee5fb5dd4f2767be5b7a2",
+    "original_receipt_and_all_artifacts_unchanged": true,
+    "cleanup_timeout_cancellation_limits_preserved": true,
+    "entire_loading_criterion_priority_5_or_DEVELOP_completion_claimed": false
+  },
+  "targeted_prerequisites": {
+    "material_contract_conflict_or_unapproved_architecture_schema_dependency_requirement": false,
+    "atomic_contract": "Accepted AC-10/11, Flow 7/Errors, architecture atomic boundary and ADR-003 require request/options/associations to commit together; confirmed rollback returns failed-save and no successful result.",
+    "actual_write_sequence": "src/app/infrastructure/sqlite_comparisons.py: request INSERT -> first option INSERT -> first evidence-link INSERT -> second option INSERT -> second evidence-link INSERT -> commit.",
+    "error_boundary": "SQLiteComparisonStore.save catches SQLAlchemyError at required writes, rolls back and raises PersistenceFailure(failed); CompareRequest retains assessed_outcome and API emits 503 / persistence_error / failed.",
+    "equivalent_evidence_found": false,
+    "equivalence_check_scope": "Focused search of current tests for option-insert triggers/rejections and required-write hooks. Existing test_saved_comparison.py request-insert and second-evidence-link faults, source-bound rendering evidence-link fault and browser link/request triggers are different stages. No duplicate option-stage scenario added.",
+    "existing_fixture": "Exact understood synthetic repair request, CH, two prepared options/two evidence links and fixed synthetic 2026-10-15T10:00:00+00:00 assessment time.",
+    "eight_row_checkpoint_reinvestigated": false
+  },
+  "test_first": {
+    "new_regression_added_before_deciding_production_changes": true,
+    "new_scenario_and_two_authorized_regressions_first_run": "3 passed, 1 existing Starlette/httpx deprecation warning; 1.17s.",
+    "production_defect_exposed": false,
+    "production_fix_or_artificial_RED": false,
+    "additional_production_refactor_needed": false
+  },
+  "scenario": {
+    "source": "tests/integration/test_saved_comparison.py:369",
+    "baseline": "One actual API/application/SQLite saved comparison before installing trigger/listeners/counter wrapper.",
+    "fault": "Test-only SQLite BEFORE INSERT ON request_alternative trigger rejects NEW.position=2 only when its request matches the designated submission-key digest. No save replacement or after-commit exception.",
+    "observation": "Forwarding-only store.save counter, metadata-classified SQLAlchemy INSERT before/after events, SQLite trigger-error booleans and target Connection commit/rollback events; no SQL parameters, binding values or protected exception contexts retained.",
+    "precise_failed_stage": "second_request_alternative_insert",
+    "timeline": [
+      "target_http_post",
+      "real_save_entered",
+      "search_request:insert_attempted",
+      "search_request:insert_succeeded",
+      "request_alternative:insert_attempted",
+      "request_alternative:insert_succeeded",
+      "request_alternative_evidence:insert_attempted",
+      "request_alternative_evidence:insert_succeeded",
+      "request_alternative:insert_attempted",
+      "preceding_writes_observed_in_active_transaction",
+      "sqlite_rejected_second_option_insert",
+      "production_writer_rollback",
+      "actual_api_response"
+    ],
+    "attempted_inserts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 1
+    },
+    "successful_preceding_inserts": {
+      "search_request": 1,
+      "request_alternative": 1,
+      "request_alternative_evidence": 1
+    },
+    "writer_before_rejected_insert": {
+      "transaction_active": true,
+      "target_rows": {
+        "search_request": 1,
+        "request_alternative": 1,
+        "request_alternative_evidence": 1
+      }
+    },
+    "actual_SQLite_rejection": [
+      {
+        "sqlite_integrity_error": true,
+        "sqlite_trigger_rejection": true,
+        "second_option_attempt": true
+      }
+    ],
+    "observer_rows_supplied_to_application": false,
+    "additional_retry_or_fault_variant": false
+  },
+  "actual_API_response": {
+    "status": 503,
+    "body": {
+      "outcome": "persistence_error",
+      "persistence": {
+        "state": "failed"
+      },
+      "issues": [
+        {
+          "code": "comparison_save_failed"
+        }
+      ],
+      "assessed_outcome": "comparison"
+    }
+  },
+  "response_boundary": {
+    "exact_accepted_body_asserted_before_recording": true,
+    "successful_comparison_saved_acknowledgement_or_coverage_returned": false,
+    "internal_exception_details_disclosed": false
+  },
+  "rollback_and_preservation": {
+    "counts_before": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "independent_counts_during_partial_transaction": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "counts_after_rollback": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "counts_delta": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "baseline_saved_request_id": "4b068c19-7449-4597-8bed-a150101e2076",
+    "planned_failed_request_id": "86b401d0-8572-42cb-8e8e-d0a81a9adcbc",
+    "planned_failed_option_ids": [
+      "ee35d2ce-1752-4f28-82c2-5642dc920558",
+      "1df18832-a462-45bf-a933-57b8cda60a14"
+    ],
+    "failed_identities_absent": {
+      "request_id": true,
+      "submission_key": true,
+      "options": true,
+      "evidence_links": true
+    },
+    "complete_safe_prior_request_projection_options_links_source_evidence_equal": true,
+    "complete_prior_request_rows_including_protected_columns_equal_in_memory": true,
+    "protected_request_rows_or_bindings_recorded": false,
+    "partial_or_pending_search_request_committed": false
+  },
+  "counts": {
+    "target_http_posts": 1,
+    "save": 1,
+    "writer_commits": 0,
+    "writer_rollbacks": 1
+  },
+  "count_scope": "Target request after the separate successful preservation baseline.",
+  "automatic_retry_or_replacement_identity_observed": false,
+  "cleanup": {
+    "trigger_removed": true,
+    "observers_removed": true,
+    "save_wrapper_restored": true
+  },
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5j-jnrftven/pytest-first-run tests/integration/test_saved_comparison.py::test_required_second_option_write_failure_rolls_back_new_submission_and_preserves_baseline tests/integration/test_saved_comparison.py::test_required_evidence_write_failure_rolls_back_the_entire_comparison tests/integration/test_saved_comparison.py::test_returns_only_the_committed_projection_with_saved_ids_and_evidence | tee build/uc001-priority5j-option-rollback/pytest-first-run.txt",
+      "exit_code": 0,
+      "result": "3 passed, 1 warning in 1.17s. New option failure plus exactly the required evidence-link rollback and committed-projection regressions.",
+      "artifact": "pytest-first-run.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "docs/TASKS.md:1743: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+      "artifact": "git-diff-check.txt"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "Same modified/untracked entries as at task entry; no staging or branch change.",
+      "artifact": "git-status.txt"
+    }
+  ],
+  "other_checks": "Task-local two-file whitespace checks against captured baselines; protected-file/history/branch/status preservation checks and receipt/link validation. No additional application tests.",
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "25a14524c207135128775ef0363d639c66aafbb30171ad3e78169df6d5454735"
+    },
+    {
+      "path": "tests/integration/test_saved_comparison.py",
+      "sha256": "adeb6f2f0ab3ddb69e61e22d55ee2fc96fe08a91c8e1c4b557199247e5ed6537"
+    }
+  ],
+  "artifacts": {
+    "safe_scenario_evidence": "option-write-failure-evidence.json",
+    "preservation": "preservation.json",
+    "test_output": "pytest-first-run.txt"
+  },
+  "preservation": {
+    "phase": 3,
+    "status": "in-progress",
+    "changed_files": [
+      "docs/TASKS.md",
+      "tests/integration/test_saved_comparison.py"
+    ],
+    "protected_baseline_files": 167,
+    "unchanged_baseline_files": 165,
+    "all_prior_5H_and_5I_artifacts_unchanged": true,
+    "dated_checkpoint_and_historical_TASKS_unchanged": true,
+    "existing_tests_unchanged_except_one_inserted_scenario": true,
+    "production_frontend_runner_support_dependencies_normal_main_unchanged": true,
+    "branch_and_HEAD": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "git_status_entries_unchanged": true,
+    "task_local_whitespace_clean": [
+      "docs/TASKS.md",
+      "tests/integration/test_saved_comparison.py"
+    ],
+    "repository_diff_check_exit": 2,
+    "repository_diff_check_output": "docs/TASKS.md:1743: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "sensitive_artifact_limits": {
+    "raw_proofs": false,
+    "captured_headers": false,
+    "complete_captured_requests": false,
+    "SQL_parameters": false,
+    "binding_values": false,
+    "protected_exception_contexts": false,
+    "production_data": false
+  },
+  "checkpoint_credit": "Only the named required-option-write rollback observable. Dated eight-row checkpoint and historical receipts remain unchanged; no complete criterion or Priority 5 acceptance follows.",
+  "work_not_performed": [
+    "Browser journey, frontend changes, lint/build or full fault-suite rerun",
+    "Subsequent retry or another write/cleanup/commit/concurrency/disclosure/crash variant",
+    "Production code/schema, dependencies or normal app.main configuration changes",
+    "Reference preparation/activation or real knowledge/rendering activation",
+    "Interpreter/model/detector startup, held-out access, linguistic approval or TL-03",
+    "Research, UC-003 or Priority 6",
+    "Staging, commits, push, merge, branch switch/reset, unrelated cleanup, CI/CD or deployment"
+  ],
+  "stop": "Stop after this scenario for human review."
+}

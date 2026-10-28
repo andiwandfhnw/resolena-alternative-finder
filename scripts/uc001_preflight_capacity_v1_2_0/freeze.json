@@ -1,0 +1,15 @@
+{
+  "version": "uc001-preflight-capacity-v1.2.0",
+  "execution_authorized": false,
+  "scope": "adapter/resource preflight only; no model/runtime/transport execution",
+  "files": {
+    "AdapterIdentity.cs": "42b1e44c505d46fe7ce0b15624cb4a48827804cebd379cd8fd271ec14e541936",
+    "Common.ps1": "b3d04942ff141023c4122fd1fd79eb24fc550396c670b06d641040ed7481ba30",
+    "Preflight-Adapter.ps1": "450cc91eeef8d12f7389a8b6010da4bd9b21bff18c11b12c76807805c28ac80a",
+    "README.md": "f77cfa5bd4f74eb43781a8781e32b294f9bf94658ca92be4ec2d1d1c96cd26a8",
+    "Test-Offline.ps1": "4abd7dffea06683735cca595b665a6421d48d88eb94a1c4d12a0f0f237f869da",
+    "VERSION.json": "9a014242ac630b6ce2776de8f6e07bc85998d10c488c66360fee06deb1231559",
+    "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7",
+    "runtime-files.json": "1f116d833c0b7557f9e63b0ff0d4c95b8b330a0e6f4e7a9b93427f298be313bb"
+  }
+}

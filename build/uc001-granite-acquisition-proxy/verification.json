@@ -1,0 +1,96 @@
+{
+  "recorded_on": "2026-10-25",
+  "outcome": "A: offline-verified conservative acquisition meter preparation",
+  "windows_execution": false,
+  "real_acquisition": false,
+  "model_or_build_execution": false,
+  "full_job_resource_supervisor_supplied": false,
+  "native_build_procedure_amended": false,
+  "phase": 3,
+  "status": "in-progress",
+  "source_url": "https://github.com/ggml-org/llama.cpp.git",
+  "runtime_commit": "620d2225cc436ab0b001e3200e590e3b286ef9ab",
+  "dependencies_added": [],
+  "artifacts": {
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": {
+      "sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+      "bytes": 22310
+    },
+    "tests/unit/test_granite_acquisition_proxy.py": {
+      "sha256": "19469d406902ef4e7d79ec98960f4823831174b718d81fcda7c937d41dbd71ab",
+      "bytes": 24030
+    },
+    "build/uc001-granite-acquisition-proxy/prior-budget.template.json": {
+      "sha256": "444b260756d907a4cc04cb9655feabb0feab8f2a1a9245e34638fa8125bc6a92",
+      "bytes": 190
+    }
+  },
+  "focused_verification": {
+    "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_acquisition_proxy.py",
+    "final_result": "36 passed in 1.65s",
+    "final_log": "green-final-hardened.log",
+    "python": "3.12.11",
+    "git": "2.50.1 Linux",
+    "traffic": "synthetic loopback/socketpair only; actual Git probes against loopback fixture only",
+    "red_logs": [
+      "red-tests.log",
+      "red-additional.log",
+      "red-control.log",
+      "red-config-redirect.log"
+    ],
+    "intermediate_green_logs": [
+      "green-first.log",
+      "green-accounting.log",
+      "green-control.log",
+      "green-final.log",
+      "green-final-route.log"
+    ],
+    "shell_exit_capture_limit": "RED pytest exit codes were not separately captured; log contents record failures. Shell cells ended with successful cat commands."
+  },
+  "evidence_limits": [
+    "No Windows execution, full Job Object/resource control, native build or interpreter suitability established.",
+    "Synchronous DNS/fsync require an independent approved Job Object deadline/resource controller.",
+    "Proxy binding assumes reviewed Git/helper and stable private config; not an OS egress sandbox.",
+    "Prior byte credit is mandatory hash-bound owner-attested accounting, not independently inferred zero.",
+    "Exact budget exhaustion is failure; charged but undelivered bytes are never refunded."
+  ],
+  "preservation": {
+    "old_protected_files_unchanged": 832,
+    "prior_granite_files_unchanged": 80,
+    "counts_overlap": true,
+    "prior_task_history_and_priority5_suffix": "unchanged",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index": "unchanged",
+    "existing_git_status_entries": "unchanged",
+    "new_git_status_entries": [
+      "?? scripts/uc001_granite_acquisition_proxy/"
+    ],
+    "diff_check_exit": 2,
+    "diff_check_output": "docs/TASKS.md:2598: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "frozen_limits_unchanged": {
+    "acquisition_seconds": 1800,
+    "acquisition_total_bytes": 10737418240,
+    "build_seconds": 2700,
+    "build_output_bytes": 12884901888,
+    "build_parallelism": 2,
+    "initial_disk_free_bytes": 51539607552,
+    "stop_disk_free_below_bytes": 8589934592,
+    "maximum_build_process_memory_bytes": 25769803776,
+    "stop_host_free_below_bytes": 4294967296
+  },
+  "static_verification": {
+    "python_ast": "passed",
+    "documentation_links_anchors_fences_new_whitespace": "passed",
+    "powershell_blocks": "3 passed, syntax-only; no block executed",
+    "preservation": "passed",
+    "commands": [
+      "python standard-library ast/hash/link/preservation checks (no application imports)",
+      "pwsh -NoLogo -NoProfile -NonInteractive -File /tmp/granite-proxy-parse.ps1",
+      "git status --short --branch",
+      "git rev-parse HEAD",
+      "git diff --check"
+    ]
+  }
+}

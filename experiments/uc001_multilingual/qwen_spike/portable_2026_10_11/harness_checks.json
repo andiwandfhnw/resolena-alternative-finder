@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-11T15:27:56.176628+00:00",
+  "checks": [
+    {
+      "file": "test_portable_checks.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n",
+      "kind": "Synthetic operational/reporting checks; no actual model"
+    },
+    {
+      "file": "test_checks.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nOK\n",
+      "kind": "Synthetic operational/reporting checks; no actual model"
+    },
+    {
+      "file": "test_preflight_logging.py",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n",
+      "kind": "Synthetic operational/reporting checks; no actual model"
+    }
+  ],
+  "new_flag_guard_red": "ModuleNotFoundError before helper implementation",
+  "model_results": false
+}

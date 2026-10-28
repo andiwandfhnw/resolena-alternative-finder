@@ -1,0 +1,125 @@
+{
+  "version": "uc001-contract-local-1.2.0",
+  "recorded_utc": "2026-10-18T15:22:33.022189+00:00",
+  "scope": "Offline harness correction and model-free Windows handoff only",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local_v1_2_0/Check-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_0/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_2_0/PINNED-SOURCE.md",
+    "scripts/uc001_contract_local_v1_2_0/Python-Ownership.ps1",
+    "scripts/uc001_contract_local_v1_2_0/PythonOwnership.cs",
+    "scripts/uc001_contract_local_v1_2_0/README.md",
+    "scripts/uc001_contract_local_v1_2_0/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_0/Test-Offline.ps1",
+    "scripts/uc001_contract_local_v1_2_0/capture.py",
+    "scripts/uc001_contract_local_v1_2_0/config.json",
+    "scripts/uc001_contract_local_v1_2_0/freeze.json",
+    "scripts/uc001_contract_local_v1_2_0/harness_checks.py",
+    "scripts/uc001_contract_local_v1_2_0/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_2_0/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_2_0/replay.py",
+    "scripts/uc001_contract_local_v1_2_0/review_gate.py",
+    "scripts/uc001_contract_local_v1_2_0/technical-decision.json",
+    "scripts/uc001_contract_local_v1_2_0/verify.py",
+    "tests/unit/test_contract_local_harness_correction.py",
+    "build/uc001-contract-local-v1_2_0/owner-reported-failure.json",
+    "build/uc001-contract-local-v1_2_0/model-free-harness-correction.zip",
+    "build/uc001-contract-local-v1_2_0/verification.json",
+    "build/uc001-contract-local-v1_2_0/SHA256SUMS.txt"
+  ],
+  "owner_evidence": {
+    "file": "build/uc001-contract-local-v1_2_0/owner-reported-failure.json",
+    "provenance": "Owner-reported facts in chat, not reconstructed raw files",
+    "startup_allowance": "Original single startup consumed; no additional startup or replacement attempt authorized",
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "original_attempt_directory_modified": false,
+    "generation_ledger": "Reported absent; no zero-valued receipt created and no actual generation count reconstructed",
+    "causal_limit": "Original failed-process ancestry and exact failing check were not captured. The separate probe reproduces the direct-parent assumption, and saved n_predict exposes a separate verifier mismatch."
+  },
+  "corrections": {
+    "ownership": "Create the installed venv redirector suspended with only explicit stdio handle inheritance; assign the existing kill-on-close job before ResumeThread. Bind exactly one intended direct-child interpreter using executable paths, live PID/file-time identity, exact native job membership and held handles. Python rechecks the live two-link chain against supervisor proof from owned stdin.",
+    "cleanup": "Retained job-close/confirmed-exit path plus explicit actual-interpreter wait and creation-time receipts for both Python processes; unconfirmed identities/exits fail. No job handle is inherited/duplicated into children.",
+    "output_limit": "Pinned reported task default -1 is distinct from CLI fallback and request override. Full verifier requires pinned report/sampling/context/offload plus --predict 3072 argv and strict request max_tokens:3072 with no competing aliases. Capture checks the actual bounded body before send; shared adapter unchanged.",
+    "saved_receipt_limit": "Checks saved settings and existing adapter request construction only. Historical CLI execution is unverified if argv was not recorded; no substitution into saved props and no readiness/generation claim.",
+    "stage_reason_codes": "Fixed ownership/settings/output_limit/worker/deadline/cleanup or current check-stage codes; no raw exception messages, prompts, credentials or environment contents.",
+    "consumed_guard": "Both launcher execution entry points and capture entry/run_capture hard-stop startup/allowance_consumed before model/ledger action. Windows command runs only the harmless waiting Python worker."
+  },
+  "pinned_evidence": {
+    "commit": "d81235049384534c167caea52b85a694f6103d14",
+    "summary": "scripts/uc001_contract_local_v1_2_0/PINNED-SOURCE.md",
+    "retained_source": "build/qwen-restart-20261011/llama.cpp-d81235049384534c167caea52b85a694f6103d14/tools/server",
+    "publisher_sources": [
+      "https://github.com/ggml-org/llama.cpp/blob/d81235049384534c167caea52b85a694f6103d14/tools/server/server-context.cpp",
+      "https://github.com/ggml-org/llama.cpp/blob/d81235049384534c167caea52b85a694f6103d14/tools/server/server-task.h",
+      "https://github.com/ggml-org/llama.cpp/blob/d81235049384534c167caea52b85a694f6103d14/tools/server/server-schema.cpp"
+    ],
+    "findings": "get_res_props copies sampling into a fresh task_params, leaving n_predict=-1. Request schema loads server defaults and output-count aliases. Explicit request count wins over CLI fallback; CLI is not a ceiling on a higher overriding request."
+  },
+  "tdd": {
+    "red": "32 new tests failed before the correction existed. Explicit synthetic negative controls also reproduce the original direct-parent and n_predict verifier assumptions without modifying frozen source.",
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_harness_correction.py tests/unit/test_contract_run_controls.py tests/unit/test_llama_decoding.py tests/unit/test_contract_local_review_gate.py tests/integration/test_contract_local_technical_replay.py --tb=short",
+      "passed": 118,
+      "exit_code": 0,
+      "seconds": 15.72,
+      "warnings": "One existing Starlette/httpx deprecation warning"
+    },
+    "coverage": "Redirector chain accepted; arbitrary/reused/wrong-image/missing identities and false/missing/extra job members rejected; pinned -1 requires separate limits; CLI/request aliases/overflow/unlimited values and settings drift rejected; saved evidence stays partial; model entry/ledger blocked; actual request bytes guarded; synthetic deadline/job-close/interpreter-exit failures; v1.2 three-process cleanup replay without live credit.",
+    "native_offline_limit": "C# compilation and x64 structure sizes plus PowerShell synthetic path checks only. No Win32/Nt process/job calls executed in Codespace; Windows runtime verification remains pending."
+  },
+  "preservation": {
+    "historical_files_checked": 51,
+    "changed": [],
+    "unchanged": "Original local/v1.1.0/v1.3.0 sources, ZIPs, hashes, owner receipts and partial review; application/shared validator; model/runtime pins, prompt/schema/14 exposed cases; RunBudget ordering and all model resources/time/output/cleanup limits",
+    "semantic_review": "pending",
+    "expected_meanings_approved": false,
+    "live_api_cases_still_deferred": [
+      1,
+      5,
+      10
+    ]
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_2_0/model-free-harness-correction.zip",
+    "bytes": 99141,
+    "sha256": "ddaa1794271611310f08d019dad10aee1047dbc7788785d1741a5523d8da5e4a",
+    "files": 47,
+    "freeze_sha256": "4eb2462af2d93fe0722877f4ce0a55d47d0a83184a871354e545db4d9822e547",
+    "extracted_imports_and_consumed_allowance_check": "passed",
+    "powershell_handoff_syntax": "parsed offline; no Windows/native calls"
+  },
+  "download_accounting": {
+    "model_runtime_dependency_bytes_acquired": 0,
+    "prepared_zip_plus_checksum_bytes": 99635,
+    "rule": "Charge actual source transfers under the existing cumulative allowance including prior downloads; no reset, assumed current balance or new dependency acquisition."
+  },
+  "windows_handoff": {
+    "instructions": "scripts/uc001_contract_local_v1_2_0/README.md",
+    "entry": "scripts/uc001_contract_local_v1_2_0/Check-Windows.ps1",
+    "python": "C:\\ResolenaExperiments\\uc001-validator-env\\Scripts\\python.exe",
+    "overall_deadline_ms": 60000,
+    "owned_job_deadline_ms": 45000,
+    "effects": "Add-Type C# compilation may create temporary compiler files; Win32/Nt process identity/job/pipe/handle calls, private result directory ACL, one harmless owned redirector and actual Python. Only owned processes are terminated. Saved receipt is read only.",
+    "expected": "model_free_harness_checks_passed with both Python identities/exits confirmed; missing historical launch argv remains cli_execution_verified:false; no model readiness or semantic credit.",
+    "model_attempt_ledger_touched": false,
+    "startup_authorized": false
+  },
+  "remaining_limitations": [
+    "Actual Windows native creation, inherited job membership, stdin forwarding, deadline/job-close and both exit confirmations must be checked by the owner.",
+    "Original exact failure/ancestry was not captured. No additional model startup is authorized; original attempt remains consumed with ledger reported absent.",
+    "Historical CLI argv/generation evidence unavailable from the original receipt format; source/request compatibility does not establish model allocation or readiness.",
+    "Qualified semantic review and interpreter suitability remain pending. Replay cannot satisfy live API/real-adapter cases 1/5/10."
+  ],
+  "not_performed": [
+    "Model/runtime startup, inference or allocation",
+    "Downloads/installations or transport/SSH/Support activity",
+    "Original attempt mutation or allowance reset",
+    "Held-out access/language tuning",
+    "Later priorities, phase advance or Git delivery"
+  ]
+}

@@ -1,0 +1,1362 @@
+{
+  "reviewed_at_utc": "2026-10-11T10:43:03Z",
+  "status": "interrupted_inconclusive",
+  "original_recorded_deadlines_expired": true,
+  "model_cases_executed": 0,
+  "per_language_model": [
+    {
+      "language": "ambiguous",
+      "new_cases_planned": 2,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "de",
+      "new_cases_planned": 6,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "en",
+      "new_cases_planned": 7,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "es",
+      "new_cases_planned": 1,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "fr",
+      "new_cases_planned": 7,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "gsw",
+      "new_cases_planned": 1,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "it",
+      "new_cases_planned": 6,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    },
+    {
+      "language": "mixed",
+      "new_cases_planned": 2,
+      "executed": 0,
+      "semantic_correct": null,
+      "incorrect": null,
+      "abstentions": null,
+      "unsupported": null,
+      "timeouts": null,
+      "latency_seconds": null,
+      "peak_loaded_model_rss_bytes": null,
+      "status": "not_run"
+    }
+  ],
+  "downloads_bytes": 1927324705,
+  "build": {
+    "name": "build",
+    "args": [
+      "/tmp/resolena-qwen-spike-9pmwxv4k/cmake-3.31.6-linux-x86_64/bin/cmake",
+      "--build",
+      "/tmp/resolena-qwen-spike-9pmwxv4k/build",
+      "--target",
+      "llama-server",
+      "-j1"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 850.2471409629998,
+    "peak_owned_rss_bytes": 677007360,
+    "minimum_available_bytes": 3472248832
+  },
+  "harness_tests": {
+    "passed": 6,
+    "meaning": "Harness self-checks only; not model outputs or production tests."
+  },
+  "scratch": {
+    "path": "/tmp/resolena-qwen-spike-9pmwxv4k",
+    "exists_at_review": false,
+    "owned_model_processes": [],
+    "peak_disk_bytes": null,
+    "removal_provenance": "Absent on resumption; removal time/cause unknown. No deletion or other-process termination performed in closeout."
+  },
+  "artifact_verification": {
+    "current_sha256": {
+      "heldout_v2.json": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08",
+      "calibration.json": "55f2427cde70a557667c0c01e50950d739176816ff96f3d5512120cf9512a3d4",
+      "config.json": "e82f18a3f4d160f839f3f92e3970faa6dc0d6b42c319271173fb41c5c9837207",
+      "evaluate_model.py": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+      "test_spike.py": "2dbd5b0b92c0cb98aebe27c67da7af651787e9d9e5a041e902b8be99003cf5e4"
+    },
+    "matches_executed_freeze": {
+      "heldout_v2.json": true,
+      "calibration.json": true,
+      "config.json": true,
+      "evaluate_model.py": false,
+      "test_spike.py": true
+    },
+    "frozen_parser_sha256": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e"
+  },
+  "preserved_files_at_closeout_sha256": {
+    "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md": "37235ade5dcb1f695802afbeccb0a76db401ac94b3ac05bbbe313e90cb99b951",
+    "docs/specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md": "523be663cde2c811dcf5e86bea8694b33fd3f339765b62780e48187edce2dfb1",
+    "docs/adr/ADR-001-codex-repository-workflow.md": "6ee510b3d37d1c1fa8b6d8299d06a3fa53e2db8b5af870a99ad1014c3f021ec3",
+    "docs/adr/ADR-002-use-case-decomposition.md": "f0dee5414e074920e45d0e9425459f51d598ded97d3188fc838273875e0c2f46",
+    "docs/adr/ADR-003-persisted-comparison-boundary.md": "b564e5aa58693831f418cf09bca7a7c5ac204b1c64bbae0d79c487f8aad8dc7a",
+    "docs/PROJECT.md": "1b664bc2f12c343d81d85f5daee9dffd0997cf456ace1a0f317bf968f0762d96",
+    "docs/PRODUCT_CONTEXT.md": "846f9135beb346112edb2f7fb7e193aa2f5c03247cba17471557215b93af4587",
+    "docs/DEVELOPMENT_WORKFLOW.md": "ccea68fe2f9a78ccd3a626abc077ed8c26fd15bca0bb30ff8ab3155941928839",
+    "AGENTS.md": "eea25ffd5a1595625f4d4ac6acf788243d1e061f8b46ffe7ea215f2a40a967aa",
+    "skills/ai-sdlc-2-design/SKILL.md": "ac327a0371a5b3edab0baeeb1df99eeeac1729788cc38fe43aba581c50eeb52a",
+    "requirements.txt": "fe769af42de149ee4263ddbe26787903c2150c5680dcdb764cd1653ab6c57418",
+    "frontend/package.json": "6adcd17dedaa4858e2f10ff7f6dc726b7de3e899212b91b54e059a3cc39baf07",
+    "frontend/package-lock.json": "2928f1962fe7185497b5f051067a49ca6bd21a3a6be9105a96f7069dfb1c18c6",
+    "experiments/uc001_multilingual/prototype.py": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e",
+    "experiments/uc001_multilingual/heldout.json": "8227c98eb96ed4fdd0c15eef9c21fec977251e4e865463c8c2b1c1547cceb827",
+    "experiments/uc001_multilingual/results.json": "9e0d598f3c91c3e9f76c6e69727d9a2afc46d5554290e7b093d7da4fd97f5165"
+  },
+  "parser_on_additional_cases": {
+    "executed_at_review": true,
+    "inputs_model_unseen": true,
+    "summary": {
+      "counts": {
+        "abstention": 29,
+        "correct": 1,
+        "unsupported": 2
+      },
+      "per_language": {
+        "ambiguous": {
+          "counts": {
+            "correct": 1,
+            "abstention": 1
+          },
+          "latency_seconds": {
+            "median": 0.00001744099995448778,
+            "p95": 0.00001744099995448778,
+            "max": 0.00001744099995448778
+          }
+        },
+        "de": {
+          "counts": {
+            "abstention": 6
+          },
+          "latency_seconds": {
+            "median": 0.0001862610001808207,
+            "p95": 0.001428438999937498,
+            "max": 0.001428438999937498
+          }
+        },
+        "en": {
+          "counts": {
+            "abstention": 7
+          },
+          "latency_seconds": {
+            "median": 0.000033661000088613946,
+            "p95": 0.000037128000030861585,
+            "max": 0.000037128000030861585
+          }
+        },
+        "es": {
+          "counts": {
+            "unsupported": 1
+          },
+          "latency_seconds": {
+            "median": 0.000004971000180375995,
+            "p95": 0.000004971000180375995,
+            "max": 0.000004971000180375995
+          }
+        },
+        "fr": {
+          "counts": {
+            "abstention": 7
+          },
+          "latency_seconds": {
+            "median": 0.000039453999988836586,
+            "p95": 0.00006503100007648754,
+            "max": 0.00006503100007648754
+          }
+        },
+        "gsw": {
+          "counts": {
+            "unsupported": 1
+          },
+          "latency_seconds": {
+            "median": 0.000006440000106522348,
+            "p95": 0.000006440000106522348,
+            "max": 0.000006440000106522348
+          }
+        },
+        "it": {
+          "counts": {
+            "abstention": 6
+          },
+          "latency_seconds": {
+            "median": 0.000036997999814047944,
+            "p95": 0.0000453669999842532,
+            "max": 0.0000453669999842532
+          }
+        },
+        "mixed": {
+          "counts": {
+            "abstention": 2
+          },
+          "latency_seconds": {
+            "median": 0.00003543499997249455,
+            "p95": 0.00003543499997249455,
+            "max": 0.00003543499997249455
+          }
+        }
+      }
+    },
+    "rows": [
+      {
+        "id": "DE-N1",
+        "language": "de",
+        "raw": {
+          "original": "Bitte setze meine Kaffeemaschine wieder instand, statt sie zu ersetzen.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "ersetzen",
+            "instand",
+            "kaffeemaschine",
+            "meine",
+            "setze",
+            "sie",
+            "statt",
+            "wieder"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00023382300014418433,
+        "category": "abstention"
+      },
+      {
+        "id": "DE-N2",
+        "language": "de",
+        "raw": {
+          "original": "Das Fahrrad soll ersetzt und ausdrücklich nicht repariert werden.",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "de",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "ausdrücklich",
+            "das",
+            "ersetzt",
+            "nicht",
+            "repariert",
+            "soll",
+            "und",
+            "werden"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.001428438999937498,
+        "category": "abstention"
+      },
+      {
+        "id": "DE-N3",
+        "language": "de",
+        "raw": {
+          "original": "Ich will günstiger streamen, ohne die Bildqualität zu senken; maximal 12 EUR pro Monat.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": "cheaper",
+          "no_replacement": false,
+          "budget": {
+            "amount": "12",
+            "currency": "EUR"
+          },
+          "language": "de",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "bildqualität",
+            "die",
+            "monat",
+            "ohne",
+            "pro",
+            "senken",
+            "streamen",
+            "will"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.0001862610001808207,
+        "category": "abstention"
+      },
+      {
+        "id": "DE-N4",
+        "language": "de",
+        "raw": {
+          "original": "Vergleiche günstigere Smartphones mit mindestens 128 GB Speicher; Budget 200 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "200",
+            "currency": "CHF"
+          },
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "128",
+            "gb",
+            "günstigere",
+            "mindestens",
+            "mit",
+            "smartphones",
+            "speicher",
+            "vergleiche"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00005053299992141547,
+        "category": "abstention"
+      },
+      {
+        "id": "DE-N5",
+        "language": "de",
+        "raw": {
+          "original": "Repariere den Staubsauger für höchstens 49,90 CHF; Lieferkosten sind davon ausgeschlossen.",
+          "country": "CH",
+          "subject": null,
+          "action": "repair",
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "de",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "49",
+            "90",
+            "ausgeschlossen",
+            "chf",
+            "davon",
+            "den",
+            "für",
+            "höchstens",
+            "lieferkosten",
+            "sind",
+            "staubsauger"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003890799985128979,
+        "category": "abstention"
+      },
+      {
+        "id": "DE-N6",
+        "language": "de",
+        "raw": {
+          "original": "Ich möchte mit einem wiederverwendbaren Becher Müll reduzieren, ohne neue Geräte zu kaufen.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "de",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "becher",
+            "einem",
+            "geräte",
+            "kaufen",
+            "mit",
+            "müll",
+            "neue",
+            "ohne",
+            "reduzieren",
+            "wiederverwendbaren"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003808099995694647,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N1",
+        "language": "fr",
+        "raw": {
+          "original": "Pourriez-vous remettre ma cafetière en état plutôt que la remplacer ?",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "cafetière",
+            "en",
+            "ma",
+            "plutôt",
+            "pourriez",
+            "que",
+            "remettre",
+            "remplacer",
+            "vous",
+            "état"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000034335999998802436,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N2",
+        "language": "fr",
+        "raw": {
+          "original": "Il faut remplacer le vélo et surtout ne pas le réparer.",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": "repair",
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "et",
+            "faut",
+            "il",
+            "ne",
+            "pas",
+            "remplacer",
+            "surtout"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003208299995094421,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N3",
+        "language": "fr",
+        "raw": {
+          "original": "Je veux dépenser moins pour le streaming sans dégrader la qualité d'image, avec au maximum 12 EUR par mois.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "12",
+            "currency": "EUR"
+          },
+          "language": "fr",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "au",
+            "avec",
+            "d'image",
+            "dégrader",
+            "dépenser",
+            "moins",
+            "mois",
+            "par",
+            "pour",
+            "qualité",
+            "sans",
+            "streaming"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00004673999978876964,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N4",
+        "language": "fr",
+        "raw": {
+          "original": "Compare des smartphones moins chers avec au moins 128 Go de stockage; budget 200 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "200",
+            "currency": "CHF"
+          },
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "128",
+            "au",
+            "avec",
+            "chers",
+            "compare",
+            "de",
+            "des",
+            "go",
+            "moins",
+            "smartphones",
+            "stockage"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000039453999988836586,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N5",
+        "language": "fr",
+        "raw": {
+          "original": "Répare l'aspirateur pour 49,90 CHF maximum; les frais de livraison sont exclus de ce montant.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "49",
+            "90",
+            "ce",
+            "chf",
+            "de",
+            "exclus",
+            "frais",
+            "l'aspirateur",
+            "les",
+            "livraison",
+            "maximum",
+            "montant",
+            "pour",
+            "répare",
+            "sont"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003984700015280396,
+        "category": "abstention"
+      },
+      {
+        "id": "FR-N6",
+        "language": "fr",
+        "raw": {
+          "original": "Je souhaite réduire les déchets avec une tasse réutilisable, sans acheter de nouveaux appareils.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "acheter",
+            "appareils",
+            "avec",
+            "de",
+            "déchets",
+            "les",
+            "nouveaux",
+            "réduire",
+            "réutilisable",
+            "sans",
+            "souhaite",
+            "tasse",
+            "une"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00006503100007648754,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N1",
+        "language": "it",
+        "raw": {
+          "original": "Potresti rimettere in funzione la mia macchina del caffè anziché sostituirla?",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "it",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "anziché",
+            "caffè",
+            "del",
+            "funzione",
+            "in",
+            "macchina",
+            "potresti",
+            "rimettere",
+            "sostituirla"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003531599986672518,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N2",
+        "language": "it",
+        "raw": {
+          "original": "La bicicletta va sostituita, non riparata.",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "it",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "non",
+            "riparata",
+            "sostituita",
+            "va"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.0000255119998655573,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N3",
+        "language": "it",
+        "raw": {
+          "original": "Vorrei spendere meno per lo streaming senza peggiorare la qualità dell'immagine, al massimo 12 EUR al mese.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "12",
+            "currency": "EUR"
+          },
+          "language": "it",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "al",
+            "dell'immagine",
+            "lo",
+            "meno",
+            "mese",
+            "peggiorare",
+            "per",
+            "qualità",
+            "senza",
+            "spendere",
+            "streaming"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.0000453669999842532,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N4",
+        "language": "it",
+        "raw": {
+          "original": "Confronta smartphone più economici con almeno 128 GB di memoria; budget 200 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "200",
+            "currency": "CHF"
+          },
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "128",
+            "almeno",
+            "con",
+            "confronta",
+            "di",
+            "economici",
+            "gb",
+            "memoria",
+            "più",
+            "smartphone"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003807799998867267,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N5",
+        "language": "it",
+        "raw": {
+          "original": "Ripara l'aspirapolvere entro 49,90 CHF; le spese di consegna sono escluse da tale importo.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "49",
+            "90",
+            "chf",
+            "consegna",
+            "da",
+            "di",
+            "entro",
+            "escluse",
+            "importo",
+            "l'aspirapolvere",
+            "ripara",
+            "sono",
+            "spese",
+            "tale"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000036997999814047944,
+        "category": "abstention"
+      },
+      {
+        "id": "IT-N6",
+        "language": "it",
+        "raw": {
+          "original": "Voglio ridurre i rifiuti con una tazza riutilizzabile, senza acquistare nuovi apparecchi.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "acquistare",
+            "apparecchi",
+            "con",
+            "nuovi",
+            "ridurre",
+            "rifiuti",
+            "riutilizzabile",
+            "senza",
+            "tazza",
+            "una",
+            "voglio"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003376600011506525,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N1",
+        "language": "en",
+        "raw": {
+          "original": "Could you get my coffee maker working again rather than replace it?",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "again",
+            "coffee",
+            "could",
+            "get",
+            "maker",
+            "rather",
+            "replace",
+            "than",
+            "working",
+            "you"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003141299998787872,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N2",
+        "language": "en",
+        "raw": {
+          "original": "Replace the bicycle; I explicitly do not want it repaired.",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "do",
+            "explicitly",
+            "not",
+            "repaired",
+            "replace",
+            "the"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000028988999929424608,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N3",
+        "language": "en",
+        "raw": {
+          "original": "I want to spend less on streaming without lowering picture quality, at most 12 EUR per month.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "12",
+            "at",
+            "eur",
+            "less",
+            "lowering",
+            "month",
+            "most",
+            "on",
+            "per",
+            "picture",
+            "quality",
+            "spend",
+            "streaming",
+            "without"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000037128000030861585,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N4",
+        "language": "en",
+        "raw": {
+          "original": "Compare cheaper smartphones with at least 128 GB storage; budget 200 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": "cheaper",
+          "no_replacement": false,
+          "budget": {
+            "amount": "200",
+            "currency": "CHF"
+          },
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "128",
+            "at",
+            "compare",
+            "gb",
+            "least",
+            "smartphones",
+            "storage",
+            "with"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003681799989863066,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N5",
+        "language": "en",
+        "raw": {
+          "original": "Repair the vacuum for at most 49.90 CHF; delivery charges are excluded from that amount.",
+          "country": "CH",
+          "subject": null,
+          "action": "repair",
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "49",
+            "90",
+            "amount",
+            "are",
+            "at",
+            "charges",
+            "chf",
+            "delivery",
+            "excluded",
+            "for",
+            "from",
+            "most",
+            "that",
+            "the",
+            "vacuum"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003651600013654388,
+        "category": "abstention"
+      },
+      {
+        "id": "EN-N6",
+        "language": "en",
+        "raw": {
+          "original": "I'd like to reduce waste using a reusable cup, without purchasing new appliances.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "a",
+            "appliances",
+            "cup",
+            "i'd",
+            "like",
+            "new",
+            "purchasing",
+            "reduce",
+            "reusable",
+            "using",
+            "waste",
+            "without"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000033661000088613946,
+        "category": "abstention"
+      },
+      {
+        "id": "CONTROL-MIX-1",
+        "language": "mixed",
+        "raw": {
+          "original": "Please repair ma cafetière, sans la remplacer; budget 40 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": "repair",
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "40",
+            "currency": "CHF"
+          },
+          "language": "en",
+          "language_origin": "browser_preference",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "cafetière",
+            "ma",
+            "remplacer",
+            "sans"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003543499997249455,
+        "category": "abstention"
+      },
+      {
+        "id": "CONTROL-MIX-2",
+        "language": "mixed",
+        "raw": {
+          "original": "Riparare la bicicletta, ohne sie zu ersetzen, budget 60 EUR.",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": "repair",
+          "goal": null,
+          "no_replacement": false,
+          "budget": {
+            "amount": "60",
+            "currency": "EUR"
+          },
+          "language": "it",
+          "language_origin": "user_choice",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "ersetzen",
+            "ohne",
+            "sie"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003223799990337284,
+        "category": "abstention"
+      },
+      {
+        "id": "CONTROL-SHORT-1",
+        "language": "ambiguous",
+        "raw": {
+          "original": "Velo",
+          "country": "CH",
+          "subject": "bicycle",
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "user_choice",
+          "status": "handled"
+        },
+        "score": {
+          "category": "correct",
+          "differences": {},
+          "projected": {
+            "subject": "bicycle",
+            "action": null,
+            "goals": [],
+            "constraints": {}
+          }
+        },
+        "wall_seconds": 0.000017077999928005738,
+        "category": "correct"
+      },
+      {
+        "id": "CONTROL-SHORT-2",
+        "language": "ambiguous",
+        "raw": {
+          "original": "Apple",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "browser_preference",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "apple"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00001744099995448778,
+        "category": "abstention"
+      },
+      {
+        "id": "CONTROL-AMOUNT",
+        "language": "en",
+        "raw": {
+          "original": "Repair my coffee maker; budget 1,200 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": "en",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "ambiguous_amount"
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.000012112999911551015,
+        "category": "abstention"
+      },
+      {
+        "id": "CONTROL-ES",
+        "language": "es",
+        "raw": {
+          "original": "Quiero reparar mi cafetera sin sustituirla.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "unsupported",
+          "reason": "language_capability"
+        },
+        "score": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "wall_seconds": 0.000004971000180375995,
+        "category": "unsupported"
+      },
+      {
+        "id": "CONTROL-DIALECT",
+        "language": "gsw",
+        "raw": {
+          "original": "Mis Velo sött mer flickä, nöd es neus chaufe.",
+          "country": "CH",
+          "subject": null,
+          "action": null,
+          "goal": null,
+          "no_replacement": false,
+          "budget": null,
+          "language": null,
+          "language_origin": null,
+          "status": "unsupported",
+          "reason": "language_capability"
+        },
+        "score": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "wall_seconds": 0.000006440000106522348,
+        "category": "unsupported"
+      },
+      {
+        "id": "CONTROL-NAME",
+        "language": "fr",
+        "raw": {
+          "original": "Réparer mon téléphone Acme X-2 à Genève, sans le remplacer, pour au plus 120 CHF.",
+          "country": "CH",
+          "subject": null,
+          "action": "repair",
+          "goal": null,
+          "no_replacement": true,
+          "budget": null,
+          "language": "fr",
+          "language_origin": "detected",
+          "status": "clarification",
+          "reason": "unmapped_meaning",
+          "unresolved": [
+            "120",
+            "2",
+            "acme",
+            "au",
+            "chf",
+            "genève",
+            "plus",
+            "pour",
+            "téléphone",
+            "x",
+            "à"
+          ]
+        },
+        "score": {
+          "category": "abstention",
+          "differences": {}
+        },
+        "wall_seconds": 0.00003696300018418697,
+        "category": "abstention"
+      }
+    ],
+    "limitations": "AI-authored synthetic oracles and fixed canonical scoring, not independent linguistic review. Existing parser is unchanged; extended scoring does not replace its original frozen evaluation."
+  },
+  "tuning": [],
+  "network_limit": "Only failed owned startup traces exist; no AF_INET observed there. No inference network observation or general telemetry absence established.",
+  "recommendation": "Further separately bounded evaluation of the same pinned runtime/model; no semantic design choice, scope reduction, production readiness or narrative-translation claim."
+}

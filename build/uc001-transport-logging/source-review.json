@@ -1,0 +1,65 @@
+{
+  "scope": "Public pinned source/documents read only; no binary/package acquisition or execution; no raw logs/credentials accessed",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/pkg/cmd/codespace/ssh.go",
+      "bytes": 24964,
+      "sha256": "53087a2844f41ce3aae3eebcc5575670ac000e0450366a3e66024f49ec0be21e",
+      "finding": "Debug fields registered but unused; RPC port returned to local forwarder; final error selects shell or tunnel completion"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/pkg/cmd/codespace/common.go",
+      "bytes": 8579,
+      "sha256": "e8e58a81c81a094bd0db405962bce32f4a55c8a821e88251f657db904ffd4911",
+      "finding": "App logger writes stderr, no debug-file configuration"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/pkg/cmd/codespace/root.go",
+      "bytes": 954,
+      "sha256": "550f3aded6ab03e42cf07e95df76cc7bc9d12020558a83104a55230a0e0f92c4",
+      "finding": "No debug flag hook that configures an SSH debug file"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/utils/utils.go",
+      "bytes": 668,
+      "sha256": "796c2cd0f6713e7660972a3f996c94547fa33005a15b99a2a2629e4cb478059f",
+      "finding": "GH_DEBUG explicit value takes precedence over DEBUG; 1 enables debug"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/api/http_client.go",
+      "bytes": 4035,
+      "sha256": "c0ba136f3e6983320396f271fa105dc3ec1958433c169cf3d7da7066e3c42e09",
+      "finding": "GH_DEBUG containing api selects verbose HTTP; 1 enables nonverbose logging"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/internal/codespaces/connection/connection.go",
+      "bytes": 5658,
+      "sha256": "de123334496402f26eff67d220b76f46eb4affc0be0b464c4e07dbd888d5af2d",
+      "finding": "Dev-tunnels client is constructed with a discard logger"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/internal/codespaces/portforwarder/port_forwarder.go",
+      "bytes": 14012,
+      "sha256": "9bde37f507a4a5fde968d972b3cca2d8d91b541e181df5b8da31fcfbe61c69cc",
+      "finding": "Forward-port errors propagate through returns; target logging not added"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/internal/codespaces/rpc/invoker.go",
+      "bytes": 9805,
+      "sha256": "15218830fca80afc617620bfdd9ea98a11730defc2bbc635bbd5a1e197bc1170",
+      "finding": "StartSSHServerWithOptions returns response port and user without a debug target print"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/internal/codespaces/ssh.go",
+      "bytes": 5392,
+      "sha256": "eeb8cfee913b497a7e37aa186657eb837f27a08c44c74fe7ccaf632d081ec8a8",
+      "finding": "SSH stderr inherited; parser accepts -E argument; local connection details omit broker target"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openssh/openssh-portable/V_9_5_P1/ssh.1",
+      "bytes": 47441,
+      "sha256": "32586a4f4e562be5da8814792df85d8cbbddc9336b8b1db35d59c2d86ca23577",
+      "finding": "OpenSSH 9.5 -vvv maximum verbosity and -E append debug logs to file"
+    }
+  ]
+}

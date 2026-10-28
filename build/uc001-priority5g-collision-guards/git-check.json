@@ -1,0 +1,7 @@
+{
+  "diff_check_command": "git diff --check",
+  "diff_check_exit_code": 2,
+  "diff_check_output": "docs/TASKS.md:1564: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+  "status_command": "git status --short",
+  "same_status_entries_as_before": true
+}

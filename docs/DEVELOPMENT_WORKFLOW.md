@@ -27,6 +27,40 @@ comparison route and historical setup evidence. Authentication and the observed
 session model are recorded in ADR-001; do not inspect credentials or assume
 that an observed setting is mandatory or establishes entitlement.
 
+### Workstation context
+
+Owner-authorized shortcuts and profiles, 2026-10-15:
+
+| Client | Owner-reported hardware |
+|---|---|
+| `laptop` | ASUS ProArt P16 H7606WX; Windows; NVIDIA RTX 5090 Laptop GPU |
+| `desktop` | Windows desktop; AMD Ryzen 9 5950X; Sapphire Nitro+ RX 6800 XT 16 GB |
+
+**Current client: desktop.** Owner reports switching on 2026-10-25.
+**Execution environment:** GitHub Codespace `special-disco-vprpp7qrv9xrcwq6p`,
+Linux, workspace `/workspaces/resolena-alternative-finder` (observed 2026-10-15).
+Profiles do not verify current availability, drivers, RAM/VRAM/disk headroom or
+installed tools/model artifacts.
+
+On `switch laptop` or `switch desktop`:
+
+1. Update only the current-client entry/date to the corresponding profile and
+   briefly acknowledge; retain the current project task/progress in [TASKS.md](TASKS.md),
+   approvals and phase status.
+2. Tailor subsequent user-side instructions to that client. Label command locations
+   explicitly: **Windows PowerShell — laptop/desktop** versus **Codespaces Bash —
+   remote Linux**. The access device does not determine where a command executes.
+3. If remote identity is uncertain, check it read-only and refresh the observed
+   environment entry. Do not infer a different Codespace from a client switch.
+
+Local GPUs, model files and Windows processes stay on their respective machines;
+switching clients neither transfers them nor makes them available to Codespaces.
+Verified desktop behaviour does not establish laptop compatibility. Switching is
+a context update only: preserve work, approvals and experiment history; do not
+reinstall tools, repeat completed tests, move artifacts, restart experiments or
+initiate local/GPU execution. Check local prerequisites only when an authorized
+task actually needs that machine.
+
 ## Execute the selected phase
 
 1. Read [AGENTS.md](../AGENTS.md), then TASKS.md, PROJECT.md and the active UC
@@ -69,10 +103,26 @@ and decisions; DEVELOP implements using TDD; VALIDATE assesses readiness using
 actual evidence; DEPLOY defines/verifies authorized delivery. Phase procedures
 remain in the skills rather than being duplicated here.
 
-UC-001 remains PHASE: 1 / STATUS: in-progress. October 7 approvals cover Intent,
-Actors, Preconditions and Flow. Errors, Acceptance and Tests remain pending.
+UC-001 is the sole active UC; selected phase/increment/status live in
+[TASKS.md](TASKS.md). October 7
+approvals cover the original Intent, Actors, Preconditions and Flow; October 9
+approvals cover the location amendment and [decomposition](adr/ADR-002-use-case-decomposition.md).
+Original steps 1–7 belong to [UC-001](specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md),
+8–9 to [UC-003](specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md).
+The owner accepted UC-001 increment-1 SPECIFY on 2026-10-10 and selected DESIGN
+for that scope. Mandatory research and UC-003 specification remain pending.
+On 2026-10-15 the owner accepted the integration DESIGN/ADR-003 baseline and
+authorized DEVELOP priority 1; later tasks and full increment acceptance remain pending.
 The October 9 documentation migration is separate maintenance, not completion
 of SPECIFY or permission to implement UC-001.
+
+Track journey increment independently of the active UC's lifecycle phase in
+TASKS.md. Increment 1 spans comparison/selection with sufficient knowledge;
+increment 2 adds the approved insufficient/empty-knowledge research route.
+Each affected UC follows the phases/skills and human gates above; later changes
+repeat necessary phases and DEVELOP uses TDD. One UC's phase output or increment
+1 acceptance does not complete full mandatory scope. Full-journey evidence must
+cover both increments and both UCs before UC-002 optional image input is considered.
 
 ## Review, evidence and privacy
 

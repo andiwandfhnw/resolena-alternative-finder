@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "first_run_browser_passes": 2,
+  "existing_scenario_extended": true,
+  "new_scenarios": 0,
+  "old_failure_assertions_retained": 9,
+  "saved_request_id": "96efe217-c91e-4be0-b521-80e5f4efd57b",
+  "counts": {
+    "before": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_failure": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_trigger_removal": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_retry": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    }
+  },
+  "same_submission_and_two_POSTs": true,
+  "protected_files_checked": 471,
+  "unchanged_protected_files": 469,
+  "task_local_whitespace_clean": true,
+  "safe_case_json_verified": true,
+  "owned_servers_stopped": true,
+  "traces_and_HAR_absent": true
+}

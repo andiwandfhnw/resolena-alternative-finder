@@ -1,0 +1,7 @@
+The supplied diagnostic establishes matching CIM/PCI/DXGI identity for the RX 6800 XT, with:
+
+- DXGI DedicatedVideoMemory: 17130819584 bytes.
+- Registry qwMemorySize: 17163091968 bytes.
+- Difference: -32272384 bytes.
+
+Preserve this raw diagnostic as evidence. The cause of the difference remains unknown; do not invent a reserved-memory explanation.

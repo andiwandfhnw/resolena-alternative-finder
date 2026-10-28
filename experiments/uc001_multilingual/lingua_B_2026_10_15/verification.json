@@ -1,0 +1,41 @@
+{
+  "verified_utc": "2026-10-15T17:09:17.377263+00:00",
+  "status": "verified stopped attempt; no detector result",
+  "freeze_sha256": "20c23e875547f114d57298c60b6c1e6fa8ee304bfd3347298228e9e815661194",
+  "frozen_files_unchanged": 15,
+  "prior_evidence_and_application_metadata_files_unchanged": 576,
+  "no_held_out_access": true,
+  "no_isolated_environment_created": true,
+  "no_detector_import_or_classification": true,
+  "no_retry_or_frozen_harness_repair": true,
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "empty_index_preserved": true,
+  "local_closeout_links_checked": 10,
+  "copied_evidence_hashes": {
+    "evidence/acquire.stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/failures.jsonl": "a77da7e6ab6bc8e9580183b5f8e78a2e5eacbe912ef40a66dddcdeab69c9d2d9",
+    "evidence/closeout.json": "c88de48e9846611e3ee0f37abc05f74d38919e5629c18f7db7ee903598324265",
+    "evidence/acquisition-preflight.json": "2ea045a2b6310c3dad9606f548ccebb82d34bfb9f23c4a96e7e023e95cd7a8ac",
+    "evidence/resources.jsonl": "3d036119a26b51843b9c68f5937f356bac0cc330c7008154a5ac63fb40f25537",
+    "evidence/attempt.json": "8eb86c706a81843550ae9c71a733cf250d70070a7e7d60eae3475238969e4729",
+    "evidence/phase-exits.json": "03090fbc2b431fb52daf8b90e94713e626e12ce5403b4ad9e0869c41b0e53d31",
+    "evidence/pypi-2.2.0.json": "844273425a542be0f1a29c1ee44dbfedd674ed7a89372a7e1743634696173d40",
+    "evidence/publisher-wheel.METADATA": "4b8a2befef725edc840643676d65925a4c8fdbba1624485f968255fc07b03d6b",
+    "evidence/initial-preflight.json": "0a2a7c707a28b23a3ad9572290e9d5d808ac2d7097b2fba0e42198275d8ecc81",
+    "evidence/acquisition.json": "a7a3506807b0acbebc3ece7613af395603841fc9f254b4cbc7ea49e41faaa296",
+    "evidence/acquire.stderr.log": "8abf3709005a0027fbbc1d4d645aa20b351174738f4bc9d85239080e816a1283",
+    "evidence/artifact-pin.json": "8c38022e870d122c0dda49f7955f114394b7b1e1a8b2b15608e545665cad3510",
+    "evidence/publisher-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "evidence/processes.jsonl": "ff01907a6293d1060709e2439530a47612d99c23584a1c0c1ab95b3512f12e86",
+    "evidence/download-progress.json": "c8f16fb62901696d13077bfcfcf6025d8bea06e10a460247e88569234d828a4a",
+    "evidence/bundled-dependency-provenance.json": "4761793c1479b0cf435761fd4e3f458c35153682d72d544be0596672bd4e43f6",
+    "evidence/execution-started.json": "47ba8e62810f64c22bfa1b64b2b931453c1a4d952f70790b86b27382667596ae"
+  },
+  "additional_scratch_scope": "build/lingua-b-20261015 and this experiment directory; retained wheel, metadata and closeout copies included",
+  "resource_note": "Supervised acquisition RSS peak is measured; earlier preparation high-water and detector performance are not measured. Read-only post-stop wheel inspection peak was 19,398,656 bytes.",
+  "final_additional_scratch": {
+    "logical_bytes": 170805864,
+    "allocated_bytes": 170967040
+  }
+}

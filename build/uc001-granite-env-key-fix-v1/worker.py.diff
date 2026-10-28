@@ -1,0 +1,28 @@
+--- a/scripts/uc001_granite_controller/worker.py
++++ b/scripts/uc001_granite_controller/worker.py
+@@ -80,13 +80,13 @@
+ 
+ 
+ def validate_environment(environ, exists=os.path.isfile, which=shutil.which):
+-    env = dict(environ)
++    env = {key.upper(): value for key, value in environ.items()}
+     required = [GIT, CMAKE, NINJA, CL, SDK + r'\Bin\glslc.exe',
+                 SDK + r'\Lib\cmake\SPIRV-Headers\SPIRV-HeadersConfig.cmake']
+     if not all(exists(path) for path in required):
+         raise WorkerFailure('required_existing_tool_missing')
+-    if (env.get('VCToolsVersion', '').rstrip('\\') != '14.43.34808'
+-            or env.get('WindowsSDKVersion', '').rstrip('\\') != '10.0.22621.0'
++    if (env.get('VCTOOLSVERSION', '').rstrip('\\') != '14.43.34808'
++            or env.get('WINDOWSSDKVERSION', '').rstrip('\\') != '10.0.22621.0'
+             or env.get('VSCMD_ARG_HOST_ARCH') not in ('x64', 'amd64')
+             or env.get('VSCMD_ARG_TGT_ARCH') not in ('x64', 'amd64')):
+         raise WorkerFailure('frozen_x64_environment_not_active')
+@@ -436,7 +436,7 @@
+     tool_paths = [GIT, CMAKE, NINJA, CL, SDK + r'\Bin\glslc.exe',
+                   SDK + r'\Lib\cmake\SPIRV-Headers\SPIRV-HeadersConfig.cmake']
+     write_json(evidence / 'tool-hashes.json', [{'path': p, 'sha256': digest(p)} for p in tool_paths])
+-    write_json(evidence / 'build-environment.json', {key: config.get('environment', os.environ).get(key)
++    write_json(evidence / 'build-environment.json', {key: env.get(key.upper())
+               for key in ('VCToolsVersion', 'WindowsSDKVersion', 'VULKAN_SDK')})
+     repo = root / 'source-repository'
+     runner.run([GIT, 'init', str(repo)], 'source-init', env)

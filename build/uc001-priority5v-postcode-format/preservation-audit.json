@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-23T19:33:45.873239+00:00",
+  "baseline_files": 968,
+  "unchanged_files": 962,
+  "changed_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "src/app/application/comparisons.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/unit/test_locality_reference.py"
+  ],
+  "missing_files": [],
+  "existing_test_functions_classes": {
+    "tests/unit/test_locality_reference.py": {
+      "existing_top_level_functions_classes_preserved": 7,
+      "new_top_level_functions_classes": 6
+    },
+    "tests/integration/test_saved_comparison.py": {
+      "existing_top_level_functions_classes_preserved": 47,
+      "new_top_level_functions_classes": 4
+    }
+  },
+  "existing_browser_file_byte_preserved_after_removing_one_new_test": true,
+  "dated_TASKS_history_and_original_whitespace_preserved": true,
+  "no_new_whitespace_errors_in_six_file_delta": true,
+  "branch_HEAD_and_git_status_match_entry": true,
+  "owned_test_ports_closed": {
+    "8011": true,
+    "5175": true
+  },
+  "changes_sha256": {
+    "docs/ARCHITECTURE.md": "2e6bd97f9e7f9fa62abf9cffbcc8d131239e4796a0eca3598fe7681c2e9f19a1",
+    "docs/TASKS.md": "62812ebb0a207cf84f4ef32f9caf1ac91fde06b070fd43ff4dbe9a76ff598e39",
+    "src/app/application/comparisons.py": "681555881c3c895d622cf4a2e22f2fb364b74e7f4543d85ba3e0a60100b94a16",
+    "tests/e2e/saved-comparison.spec.ts": "54f8026684996cfefca5300c7b0a2f2a257dc5521c48fe789288933013c3ac14",
+    "tests/integration/test_saved_comparison.py": "e0e6d37efd66cf979a37eaab7b3167f23fbb0cc8c253dbd795d482053af2a714",
+    "tests/unit/test_locality_reference.py": "5f4d53af94210378b84d6d49872f82c26bd190050eb269b321ecbd5afd7e8a52"
+  }
+}

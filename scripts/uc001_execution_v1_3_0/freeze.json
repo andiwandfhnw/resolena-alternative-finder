@@ -1,0 +1,37 @@
+{
+  "version": "uc001-execution-v1.3.0",
+  "execution_authorized": false,
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "files": {
+    "AdapterIdentity.cs": "42b1e44c505d46fe7ce0b15624cb4a48827804cebd379cd8fd271ec14e541936",
+    "Common.ps1": "dacf4d2767851554d0ea5db9ba1938583357970da285f67fd94fd328cae30cac",
+    "Preflight-Codespace.sh": "6e95dc8118fcf381881c9fd4e6d12b8b9bcd021a93f296c4caa8f2231dfdacd2",
+    "Preflight-Windows.ps1": "1a5bf6387cd22ef217d8ebb05136462de91ee41d9747d3bfe58183b33b3480ce",
+    "ProcessTools.cs": "8f017969cc24d29228bdebdbd3cac7931b748ad99483bc95177371f86dd49829",
+    "README.md": "92051c9235f93d57499cf45e56c70ea3c654befe39f63d3b13686ee40e4310ae",
+    "Run-Windows.ps1": "c9aad4c46abba6f7476665938a946a4e91479a5ea31d944e240114a61ffc79d7",
+    "Test-Monitor.ps1": "5b3c0d53f5ae006d5a0116582f8de5c9880d29409d62bcd4107afd36b8839aae",
+    "VERSION.json": "9a0faab4b1c79aaede7601c06576c29b18106b051639f9b954e48a34dcf48177",
+    "cases.json": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+    "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7",
+    "controls.py": "90ad40b6e37d911aaaa023a61134b04630903eaa73a6d773b4618d35bc68fe72",
+    "development.py": "ff4111a012797605791e6a153b10b826bf83c9d48dd2dafcc7f0767e11c5440c",
+    "prompt.txt": "2679c83d54ba0412cbebceb77459b89a6e9b08584780008a3d4b133fdeaa0247",
+    "review-template.json": "c7087e28068aefe7f030f3f4c7753e461ff42abad878a75f988967e66866a712",
+    "run.py": "8ca84258fea1813a6391b6ada7a474e0d6e435d61735d2171302af00f7f0f58f",
+    "runtime-files.json": "1f116d833c0b7557f9e63b0ff0d4c95b8b330a0e6f4e7a9b93427f298be313bb",
+    "schema.json": "7db406ea3af7521344f536f4ca2d476b1fa5c0008e2426e28f154ce99217117d",
+    "transport-plan.json": "233cf19346b50f8deba7eea9650a77d29db7e2e5b8867e350e8abca196b86be8"
+  },
+  "application_files": {
+    "src/app/main.py": "ac2be9757842f547bb4302fa915b041222ecd21d4211159d0d4f116bc90ec266",
+    "src/app/application/comparisons.py": "f8edeabd6e7cb675185f3e338d284f3cec33277695ffe541f20daed2d7d66605",
+    "src/app/infrastructure/llama_cpp_interpreter.py": "52f1818afe5888b9282738ee624be24e29fc0dd7b05feecf7c13711302ac9daa",
+    "src/app/infrastructure/sqlite_comparisons.py": "ed64402bbd1cdb0689cd79942e59c6e2ad77c0e322c0d963eb18a2585edcb13a",
+    "src/app/domain/interpretation.py": "81a0dba15ee8825ab8621fd672306eadf1726b6349d9aeb7035025c28e405d25",
+    "src/app/domain/qualification.py": "867c3d0cceada3d5ce9f64203abd6f2f50524ebfa195f28b492ef0239d408301",
+    "src/app/domain/comparison.py": "b16294df4938b67f6417e6c19c37d9970cd20b229d2cc6739355dd0b4739a2fc",
+    "src/app/interfaces/api.py": "ff8a911f077c375e8c578d371aa94c76682a4012d3136f02e8102ef5ca79e9a9",
+    "tests/support/synthetic.py": "53b9bfbbb5920a21d3a1f5c379c4fe80d44cc9ea167195189bca58fdfcce4e51"
+  }
+}

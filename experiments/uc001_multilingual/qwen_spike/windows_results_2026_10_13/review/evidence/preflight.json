@@ -1,0 +1,15 @@
+{
+    "utc":  "2026-10-13T19:08:06.9077935Z",
+    "available_ram_bytes":  43939479552,
+    "total_ram_bytes":  68640653312,
+    "disk_free_bytes":  581292466176,
+    "scratch_bytes":  0,
+    "gpu_name":  "AMD Radeon RX 6800 XT",
+    "dedicated_total_bytes":  17130819584,
+    "adapter_dedicated_used_bytes":  1515642880,
+    "adapter_free_bytes":  15615176704,
+    "owned_gpu_bytes":  0,
+    "owned_rss_bytes":  0,
+    "owned_private_bytes":  0,
+    "gpu_measurement":  "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+}

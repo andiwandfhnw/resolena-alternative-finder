@@ -1,0 +1,15 @@
+{
+  "version": "uc001-contract-local-1",
+  "execution_authorized": false,
+  "parent_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "files": {
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "README.md": "52e1169439942c6ca03c09c695d5b3699eca6aaf06e93c2ebd1e55a3b9920697",
+    "Run-Windows.ps1": "e5e8f0a38d2d2e1da876c4607df07ba70fb1496a8fe36a54c07d85348524f038",
+    "Test-Offline.ps1": "86611fc11c975fb16bfd31af6b97cd832c6468efdaba1f0ec1184b69b556af10",
+    "capture.py": "b79f2720ffa9612761218a20dd02f2f5abd5d301663c477e2d6aec8945f1626c",
+    "config.json": "8e989eea11432d1dd13908d4a534d10118095f7d2ccde253ef1ca4d59a7fe48e",
+    "replay.py": "78a59fa5d1d312065a39c841a8397e1f182fdd7e5f6499439be3bd292c598a09"
+  }
+}

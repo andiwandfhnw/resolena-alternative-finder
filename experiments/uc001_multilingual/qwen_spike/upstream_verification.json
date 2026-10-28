@@ -1,0 +1,49 @@
+{
+  "timestamp_utc": "2026-10-10 21:49:16 UTC",
+  "model": {
+    "sha": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+    "gated": false,
+    "files": [
+      {
+        "rfilename": "Qwen3-1.7B-Q8_0.gguf",
+        "blobId": "53cddf830ca488f735739d5e0b43591544e9ad82",
+        "size": 1834426016,
+        "lfs": {
+          "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+          "size": 1834426016,
+          "pointerSize": 135
+        }
+      }
+    ]
+  },
+  "llama_tag": {
+    "tag": "v0.6.0",
+    "commit": {
+      "sha": "d81235049384534c167caea52b85a694f6103d14",
+      "type": "commit",
+      "url": "https://api.github.com/repos/ggml-org/llama.cpp/git/commits/d81235049384534c167caea52b85a694f6103d14"
+    }
+  },
+  "cmake": {
+    "tag": "v3.31.6",
+    "file": {
+      "name": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "size": 55010959,
+      "digest": null,
+      "browser_download_url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz"
+    },
+    "checksum": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf  cmake-3.31.6-linux-x86_64.tar.gz"
+  },
+  "ram": {
+    "MemTotal": 8327036928,
+    "MemAvailable": 4086755328,
+    "SwapTotal": 0
+  },
+  "disk": {
+    "total": 47235026944,
+    "used": 1803776000,
+    "free": 42998661120
+  },
+  "checksums_verified_before_artifact_download": true,
+  "provenance": "Publisher metadata/checksum manifest only; no account secrets inspected."
+}

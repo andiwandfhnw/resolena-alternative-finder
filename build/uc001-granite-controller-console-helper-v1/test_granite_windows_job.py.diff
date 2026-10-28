@@ -1,0 +1,61 @@
+--- tests/unit/test_granite_windows_job.py (before)
++++ tests/unit/test_granite_windows_job.py
+@@ -764,3 +764,58 @@
+     api,calls=image_query_api(monkeypatch,path=path,length=units)
+     assert api.image_path('query-only')==path
+     assert len(calls)==1
++
++
++def console_system_api(monkeypatch,*,directory=r'C:\Windows\System32',length=None):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    calls=[]
++    api=object.__new__(module.NativeApi)
++    def get_directory(buffer,capacity):
++        calls.append((len(buffer),capacity))
++        buffer.value=directory
++        return len(directory.encode('utf-16-le','surrogatepass'))//2 if length is None else length
++    api.k=SimpleNamespace(GetSystemDirectoryW=get_directory)
++    monkeypatch.setattr(module.c,'get_last_error',lambda:5,raising=False)
++    monkeypatch.setattr(module.c,'WinError',lambda code:OSError(code,'synthetic system-directory failure'),raising=False)
++    return api,calls
++
++
++@pytest.mark.parametrize('directory',[r'C:\Windows\System32',r'D:\CurrentWindows\System32','D:\\Windows\\\U0001f6b2'])
++def test_console_system_path_comes_only_from_bounded_native_system_directory(monkeypatch,directory):
++    import ntpath
++    monkeypatch.setenv('SystemRoot',r'Z:\FakeWindows')
++    monkeypatch.setenv('windir',r'Z:\FakeWindows')
++    api,calls=console_system_api(monkeypatch,directory=directory)
++    assert api.system_console_path()==ntpath.join(directory,'conhost.exe')
++    assert calls==[(32768,32768)]
++
++
++@pytest.mark.parametrize('changes',[
++    {'length':0},{'length':32768},{'length':32769},{'length':2},
++    {'directory':'System32'},{'directory':r'\Windows\System32'},
++    {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
++])
++def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
++    api,calls=console_system_api(monkeypatch,**changes)
++    with pytest.raises(JobError):
++        api.system_console_path()
++    assert len(calls)==1
++
++
++def test_console_system_directory_binding_has_pointer_safe_unicode_signature(monkeypatch):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    class Function:
++        argtypes=None
++        restype=None
++    class Library:
++        def __init__(self):self.functions={}
++        def __getattr__(self,name):return self.functions.setdefault(name,Function())
++    kernel,ntdll=Library(),Library()
++    monkeypatch.setattr(module,'os',SimpleNamespace(name='nt'))
++    monkeypatch.setattr(module.c,'WinDLL',lambda name,**kwargs:ntdll if name=='ntdll' else kernel,raising=False)
++    module.NativeApi()
++    function=kernel.functions['GetSystemDirectoryW']
++    assert function.restype is module.DWORD
++    assert function.argtypes==[ctypes.POINTER(ctypes.c_wchar),module.DWORD]

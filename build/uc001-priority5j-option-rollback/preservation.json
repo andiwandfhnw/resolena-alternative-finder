@@ -1,0 +1,25 @@
+{
+  "phase": 3,
+  "status": "in-progress",
+  "changed_files": [
+    "docs/TASKS.md",
+    "tests/integration/test_saved_comparison.py"
+  ],
+  "protected_baseline_files": 167,
+  "unchanged_baseline_files": 165,
+  "all_prior_5H_and_5I_artifacts_unchanged": true,
+  "dated_checkpoint_and_historical_TASKS_unchanged": true,
+  "existing_tests_unchanged_except_one_inserted_scenario": true,
+  "production_frontend_runner_support_dependencies_normal_main_unchanged": true,
+  "branch_and_HEAD": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "git_status_entries_unchanged": true,
+  "task_local_whitespace_clean": [
+    "docs/TASKS.md",
+    "tests/integration/test_saved_comparison.py"
+  ],
+  "repository_diff_check_exit": 2,
+  "repository_diff_check_output": "docs/TASKS.md:1743: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+}

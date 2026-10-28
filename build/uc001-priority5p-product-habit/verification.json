@@ -1,0 +1,484 @@
+{
+  "recorded_at_UTC": "2026-10-23T08:17:53.450542+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "UC-001 Increment1 Phase3 DEVELOP Priority5P only: two thin prepared synthetic product/habit comparisons; awaiting human review.",
+  "prior_5O_acceptance": {
+    "scope": "Existing confirmed-write-failure browser scenario extended through explicit unchanged Try again: actual503/persistence_error/failed then actual201/comparison/saved.",
+    "two_first_run_passes_reported_and_prior_receipt_preserved": true,
+    "nine_retained_failure_assertions_and_300ms_limit_preserved": true,
+    "no_new_scenario_production_fix_or_artificial_RED_claimed": true
+  },
+  "targeted_prerequisites": {
+    "inspected": [
+      "Current UC product/habit intent, Flow1–4, accepted E-EV01 laptop relevance/delivery illustration, T-11 and relevant comparison requirements.",
+      "Existing eight-row checkpoint reused without edits or repeated reliability investigation.",
+      "Existing provenance/claim/freshness/rendering contracts and synthetic/demo/React composition."
+    ],
+    "equivalent_E2E_evidence": "Neither product nor habit had equivalent E2E evidence. Existing service journeys and domain claim-kind variations do not establish these examples.",
+    "material_contract_architecture_schema_dependency_conflict": false,
+    "fixture_plan_recorded_before_implementation": "build/uc001-priority5p-product-habit/fixture-plan.json",
+    "reuse": "Existing atomic save-before-presentation, qualification, immutable snapshots and recovery/fault evidence reused; not rerun."
+  },
+  "development": {
+    "tests_before_fixture_code": true,
+    "RED": "Two focused API cases failed actual503/configuration_unavailable for missing exact synthetic support.",
+    "GREEN": "Same focused API cases pass after prepared support/demo wiring; both browser cases and shared-service regression pass against unchanged production.",
+    "REFACTOR": "Shared span/source metadata construction keeps the two fixtures small. Read-only support/browser reviews found no further change or concrete additional-test risk.",
+    "production_defect_exposed": false,
+    "production_files_changed": [],
+    "new_examples": "Exactly two English exact-input illustrations, one qualifying alternative each. No general interpretation, factual applicability, linguistic approval, or complete T-11 acceptance."
+  },
+  "implementation_boundary": "New test-only exact interpreter/knowledge/renderer and minimal demo dispatch/shared seeding. Actual CompareRequest performs language policy, qualification/freshness, rendering validation, ordering, persistence and response construction; normal app.main/real drafts unchanged.",
+  "examples": [
+    {
+      "kind": "product",
+      "text": "Find a secondhand laptop",
+      "prepared_meaning": {
+        "subject": "laptop",
+        "actions": [],
+        "constraints": [
+          {
+            "value": "secondhand",
+            "quote": "secondhand",
+            "start": 7,
+            "end": 17
+          }
+        ],
+        "subject_span": {
+          "quote": "laptop",
+          "start": 18,
+          "end": 24
+        },
+        "goals": [],
+        "budget": null,
+        "baseline": null
+      },
+      "supporting_claims": {
+        "relevance": "laptop",
+        "applicability": true,
+        "secondhand": true,
+        "financial": {
+          "amount": "240.00",
+          "currency": "CHF",
+          "unit": "secondhand laptop",
+          "period": "once",
+          "basis": "fictional item price",
+          "exclusions": [
+            "delivery",
+            "accessories"
+          ],
+          "charges_known": false
+        }
+      },
+      "claim_kinds": {
+        "relevance": "specification",
+        "applicability": "availability",
+        "secondhand": "specification",
+        "financial": "price"
+      },
+      "source": {
+        "publisher": "Fictional laptop retailer",
+        "reference": "synthetic:secondhand-laptop-v1",
+        "language": "en",
+        "attribution": "retailer-stated",
+        "quote": "Fictional test listing: a secondhand laptop for delivery to CH, CHF 240.00 per secondhand laptop. Delivery and accessories excluded; no real offer or stock claim."
+      },
+      "scope": {
+        "country_code": "CH"
+      },
+      "actual_HTTP_status": 201,
+      "outcome": "comparison",
+      "persistence_state": "saved",
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "request_id": "9883f29f-354e-4c1b-96b8-31f12445dc4e",
+      "option_id": "ef8ff958-9270-400e-87d5-820ad5fe7ddb",
+      "alternative_id": "00000000-0000-4000-8000-000000000510",
+      "evidence_version_id": "30000000-0000-4000-8000-000000000510",
+      "evidence_associations": [
+        [
+          "ef8ff958-9270-400e-87d5-820ad5fe7ddb",
+          "30000000-0000-4000-8000-000000000510"
+        ]
+      ],
+      "before_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 2,
+        "request_alternative": 3,
+        "request_alternative_evidence": 3
+      },
+      "delta": {
+        "search_request": 1,
+        "request_alternative": 1,
+        "request_alternative_evidence": 1
+      },
+      "displayed_identities_match_committed_API_and_SQLite": true,
+      "assertions": [
+        "Exact React form input; CH and empty optional town/postcode.",
+        "Actual201/comparison/saved; fixed synthetic assessment; one option, one evidence association.",
+        "Product/habit descriptions, units, conditions, exclusions and supporting source quote checked against predefined expectations.",
+        "Meaning, actions, constraints, original spans and habit negation retained; no inferred budget, goal or baseline.",
+        "Existing application performs qualification and fresh supported requirement checks; option position1.",
+        "Unknown total cost, difference, baseline, environmental benefit and availability preserved.",
+        "Actual saved projection and option snapshot equal API result; displayed request/option IDs match.",
+        "Loading ends; form is not busy; no alert or unrelated bicycle/repair/service text in result.",
+        "Prior request projections, option snapshots, associations and all five source versions/review dates remain unchanged."
+      ],
+      "actual_financial": {
+        "amount": "240.00",
+        "currency": "CHF",
+        "unit": "secondhand laptop",
+        "period": "once",
+        "basis": "fictional item price",
+        "charges_known": false,
+        "exclusions": [
+          "delivery",
+          "accessories"
+        ],
+        "assumptions": [],
+        "price_basis": "quoted",
+        "status": "supported",
+        "total_cost": null,
+        "difference": null,
+        "baseline": null,
+        "baseline_provenance": null
+      },
+      "actual_availability": {
+        "status": "unknown",
+        "value": null
+      },
+      "environmental_status": "unknown",
+      "artifact": "build/uc001-priority5p-product-habit/browser/saved-comparison-prepared--e7881-ecific-meaning-and-evidence/product-comparison-evidence.json"
+    },
+    {
+      "kind": "habit",
+      "text": "Refill my existing bottle with potable tap water instead of buying bottled water",
+      "prepared_meaning": {
+        "subject": "drinking_water",
+        "actions": [
+          "refill"
+        ],
+        "constraints": [
+          {
+            "value": "existing_bottle",
+            "quote": "my existing bottle",
+            "start": 7,
+            "end": 25
+          },
+          {
+            "value": "potable_tap_water",
+            "quote": "potable tap water",
+            "start": 31,
+            "end": 48
+          },
+          {
+            "value": "avoid_bottled_water",
+            "quote": "instead of buying bottled water",
+            "start": 49,
+            "end": 80,
+            "negation": {
+              "quote": "instead of",
+              "start": 49,
+              "end": 59
+            }
+          }
+        ],
+        "subject_span": {
+          "quote": "potable tap water",
+          "start": 31,
+          "end": 48
+        },
+        "goals": [],
+        "budget": null,
+        "baseline": null
+      },
+      "supporting_claims": {
+        "relevance": "drinking_water",
+        "applicability": true,
+        "action:refill": true,
+        "existing_bottle": true,
+        "potable_tap_water": true,
+        "avoid_bottled_water": true,
+        "financial": {
+          "amount": "0.10",
+          "currency": "CHF",
+          "unit": "refill",
+          "period": "once",
+          "basis": "hypothetical flat charge per refill",
+          "exclusions": [
+            "bottle purchase",
+            "cleaning"
+          ],
+          "charges_known": false
+        }
+      },
+      "claim_kinds": {
+        "relevance": "specification",
+        "applicability": "specification",
+        "action:refill": "specification",
+        "existing_bottle": "specification",
+        "potable_tap_water": "specification",
+        "avoid_bottled_water": "specification",
+        "financial": "price"
+      },
+      "source": {
+        "publisher": "Fictional refill guide",
+        "reference": "synthetic:bottle-refill-habit-v1",
+        "language": "en",
+        "attribution": "provider-stated",
+        "quote": "Fictional habit example in CH: refill an existing bottle with potable tap water instead of buying bottled water, conditional on an existing bottle and potable tap water. Hypothetical flat charge CHF 0.10 per refill; bottle purchase and cleaning excluded. No bottle capacity, local water quality, real tariff or environmental advantage is established."
+      },
+      "scope": {
+        "country_code": "CH",
+        "conditions": [
+          "existing_bottle",
+          "potable_tap_water"
+        ]
+      },
+      "actual_HTTP_status": 201,
+      "outcome": "comparison",
+      "persistence_state": "saved",
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "request_id": "df910d12-bd9a-41af-a93b-547e2290c95e",
+      "option_id": "7ea88acc-ece6-44e5-b9f6-a0c66397b38d",
+      "alternative_id": "00000000-0000-4000-8000-000000000520",
+      "evidence_version_id": "30000000-0000-4000-8000-000000000520",
+      "evidence_associations": [
+        [
+          "7ea88acc-ece6-44e5-b9f6-a0c66397b38d",
+          "30000000-0000-4000-8000-000000000520"
+        ]
+      ],
+      "before_counts": {
+        "search_request": 2,
+        "request_alternative": 3,
+        "request_alternative_evidence": 3
+      },
+      "after_counts": {
+        "search_request": 3,
+        "request_alternative": 4,
+        "request_alternative_evidence": 4
+      },
+      "delta": {
+        "search_request": 1,
+        "request_alternative": 1,
+        "request_alternative_evidence": 1
+      },
+      "displayed_identities_match_committed_API_and_SQLite": true,
+      "assertions": [
+        "Exact React form input; CH and empty optional town/postcode.",
+        "Actual201/comparison/saved; fixed synthetic assessment; one option, one evidence association.",
+        "Product/habit descriptions, units, conditions, exclusions and supporting source quote checked against predefined expectations.",
+        "Meaning, actions, constraints, original spans and habit negation retained; no inferred budget, goal or baseline.",
+        "Existing application performs qualification and fresh supported requirement checks; option position1.",
+        "Unknown total cost, difference, baseline, environmental benefit and availability preserved.",
+        "Actual saved projection and option snapshot equal API result; displayed request/option IDs match.",
+        "Loading ends; form is not busy; no alert or unrelated bicycle/repair/service text in result.",
+        "Prior request projections, option snapshots, associations and all five source versions/review dates remain unchanged."
+      ],
+      "actual_financial": {
+        "amount": "0.10",
+        "currency": "CHF",
+        "unit": "refill",
+        "period": "once",
+        "basis": "hypothetical flat charge per refill",
+        "charges_known": false,
+        "exclusions": [
+          "bottle purchase",
+          "cleaning"
+        ],
+        "assumptions": [],
+        "price_basis": "quoted",
+        "status": "supported",
+        "total_cost": null,
+        "difference": null,
+        "baseline": null,
+        "baseline_provenance": null
+      },
+      "actual_availability": {
+        "status": "unknown",
+        "value": null
+      },
+      "environmental_status": "unknown",
+      "artifact": "build/uc001-priority5p-product-habit/browser/saved-comparison-prepared--57229-ecific-meaning-and-evidence/habit-comparison-evidence.json"
+    }
+  ],
+  "browser_results": {
+    "stats": {
+      "startTime": "2026-10-23T08:12:02.687Z",
+      "duration": 5283.7429999999995,
+      "expected": 3,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "successful_service_baseline_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "final_counts": {
+      "search_request": 3,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "source_versions_before_and_after_each_example": 5,
+    "no_fault_delay_interception_or_final_result_stub": true,
+    "startup_guard_error_preserved_separately": true,
+    "first_execution_of_all_three_selected_scenarios_passed": true
+  },
+  "changed_files": [
+    {
+      "path": "tests/support/product_habit.py",
+      "change": "New exact-input interpreter, typed evidence/candidates and example-specific prepared renderer; fixed fictional provenance."
+    },
+    {
+      "path": "tests/support/source_bound_rendering.py",
+      "change": "Additive shared-store seeding and exact-text dispatch for the two prepared examples."
+    },
+    {
+      "path": "tests/integration/test_saved_comparison.py",
+      "change": "Append two parameterized API/application/SQLite fixture checks."
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "change": "Add two parameterized real browser journeys after unchanged service baseline."
+    },
+    {
+      "path": "docs/TASKS.md",
+      "change": "Record bounded authorization, preimplementation plan and bounded result; history/checkpoint preserved."
+    }
+  ],
+  "executed_verification_commands": [
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5p-oolz94zm/pytest-red tests/integration/test_saved_comparison.py::test_exact_product_and_habit_examples_qualify_and_persist_with_original_provenance 2>&1 | tee build/uc001-priority5p-product-habit/support-red.txt",
+      "exit_code": 1,
+      "result": "2 failed,1 existing warning in1.14s; actual503/configuration_unavailable versus expected201 because exact synthetic fixtures were absent. Support-only RED."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5p-oolz94zm/pytest-green tests/integration/test_saved_comparison.py::test_exact_product_and_habit_examples_qualify_and_persist_with_original_provenance 2>&1 | tee build/uc001-priority5p-product-habit/support-green.txt",
+      "exit_code": 0,
+      "result": "2 passed,1 existing warning in0.98s."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "RESOLENA_E2E_DATABASE=/tmp/resolena-priority5p-oolz94zm/browser.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/playwright.json npx playwright test --grep 'browser displays exactly|prepared synthetic (product|habit) comparison' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/browser --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/browser-run.txt",
+      "pipeline_exit_code": 0,
+      "webserver_exit_code": 2,
+      "result": "Runner refused /tmp database; no tests started. Initial output renamed startup-error-browser-run.txt/startup-error-playwright.json before corrected invocation. Not a product RED or failed browser scenario."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5p-product-habit.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/playwright.json npx playwright test --grep 'browser displays exactly|prepared synthetic (product|habit) comparison' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/browser --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5p-product-habit/browser-run.txt",
+      "exit_code": 0,
+      "result": "3 passed5.3s: unchanged service baseline plus two new exact examples; retries0,skips0,failures0."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "Preexisting TASKS trailing whitespace only; initial line1933, first check line1937 after authorization/plan recording. Preserved. Final result adds no trailing whitespace."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check > build/uc001-priority5p-product-habit/git-diff-check.txt 2>&1",
+      "exit_code": 2,
+      "result": "Same preserved TASKS trailing whitespace, now line1969; recorded in git-diff-check.txt. No new or changed line has trailing whitespace."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --no-index --check /tmp/resolena-priority5p-oolz94zm/docs/TASKS.md docs/TASKS.md",
+      "exit_code": 1,
+      "result": "Files differ; no whitespace diagnostics for this slice relative to its starting snapshot."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git status --short --branch > build/uc001-priority5p-product-habit/git-status.txt",
+      "exit_code": 0,
+      "result": "Existing dirty worktree preserved; branch unchanged. Full status in artifact."
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git branch --show-current",
+      "exit_code": 0,
+      "result": "specify/phase-1-uc-001"
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "result": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    {
+      "working_directory": "/workspaces/resolena-alternative-finder",
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "Byte-identical to starting short status (new implementation paths are beneath previously untracked tests/)."
+    }
+  ],
+  "additional_checks": {
+    "preservation": "Inline Python SHA256, prior-test-body/history comparison, new-line whitespace and safe-JSON/port checks; exit0. Results in preservation.json; baseline in preservation-baseline.json.",
+    "additional_tests": "None; no concrete changed-path risk beyond the authorized baseline/two API/two browser examples.",
+    "frontend_lint_build": "Not run; no frontend or runner configuration changed.",
+    "warnings": "Existing Starlette/httpx deprecation and NO_COLOR/FORCE_COLOR runner warnings; no dependency change."
+  },
+  "preservation_and_cleanup": {
+    "protected_file_count": 481,
+    "protected_files_unchanged": 477,
+    "expected_existing_files_changed": [
+      "docs/TASKS.md",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/support/source_bound_rendering.py"
+    ],
+    "new_source_file": "tests/support/product_habit.py",
+    "all_other_protected_hashes_unchanged": true,
+    "prior_priority5_artifact_count_unchanged": 373,
+    "all_prior_browser_tests_byte_preserved": true,
+    "all_prior_integration_tests_byte_preserved": true,
+    "all_historical_TASKS_content_after_prior_authorization_preserved": true,
+    "eight_row_checkpoint_unchanged": true,
+    "preexisting_TASKS_trailing_whitespace_preserved": true,
+    "new_or_changed_lines_with_trailing_whitespace": [],
+    "production_frontend_runner_dependencies_real_drafts_architecture_ADRs_and_experiments_unchanged": true,
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_head_and_short_status_unchanged": true,
+    "owned_server_ports_closed": {
+      "8011": true,
+      "5175": true
+    },
+    "trace_or_HAR_files": [],
+    "protected_request_fields_in_new_json_artifacts": [],
+    "status": "bounded preservation checks passed; repository diff-check still reports the preexisting TASKS whitespace"
+  },
+  "limitations_and_remaining_scope": [
+    "Credit only the two demonstrated prepared product/habit T-11 examples; no entire criterion, Priority5, increment1 or DEVELOP completion.",
+    "Country catalogue/membership/reference-backed validation and cleared-country handling, plus factual locality matching/choice/retention dependencies remain outside this slice; preserve prior bounded unavailable-reference evidence.",
+    "Real interpretation, reviewed knowledge releases and qualified DE/FR/IT/EN source/target review remain delivery dependencies; TL-03 not accepted.",
+    "Synthetic prices are fictional; habit applicability is conditional on an existing bottle and potable tap water. No real tariff, CH water quality/availability, bottle capacity, saving or environmental advantage is established.",
+    "Historical reliability results are reused; no recovery/fault/concurrency/locality/multilingual matrix, real activation, experiment/model/detector or held-out execution.",
+    "Real drafts inactive; interpreter experiments closed; normal app.main unconfigured. Priorities3/4/5 partial, PHASE3 STATUSin-progress.",
+    "No dependencies, Git delivery, CI/CD, deployment or further implementation. Stop for human review."
+  ],
+  "review": "AI read-only peer checks only; no independent human source, linguistic or acceptance approval is claimed.",
+  "artifacts": {
+    "fixture_plan": "fixture-plan.json",
+    "API_RED": "support-red.txt",
+    "API_GREEN": "support-green.txt",
+    "browser_report": "playwright.json",
+    "browser_log": "browser-run.txt",
+    "startup_error_report": "startup-error-playwright.json",
+    "startup_error_log": "startup-error-browser-run.txt",
+    "preservation": "preservation.json",
+    "protected_starting_hashes": "preservation-baseline.json",
+    "git_status": "git-status.txt",
+    "git_diff_check": "git-diff-check.txt"
+  }
+}

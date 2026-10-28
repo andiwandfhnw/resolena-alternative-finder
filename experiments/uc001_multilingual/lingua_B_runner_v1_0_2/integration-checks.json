@@ -1,0 +1,17 @@
+{
+  "passed": 7,
+  "tests": "test_integration.py",
+  "synthetic_child_checks": [
+    "exact deadline/limits/output propagation",
+    "exit 7 persisted as operational failure",
+    "deadline expiry terminated and reaped owned child"
+  ],
+  "mocked": "Live PID start-time mismatch sends no signal",
+  "before_implementation": "ModuleNotFoundError common; expected red",
+  "after_implementation": "7 tests passed in 0.349s",
+  "scoring_AST_identical_to_original": true,
+  "accuracy_and_inventory_unchanged": true,
+  "base_python": "3.12.11 (main, Jul  1 2025, 05:29:09) [GCC 12.2.0]",
+  "base_pip_version": "25.0.1",
+  "no_Lingua_install_import_or_calls_during_checks": true
+}

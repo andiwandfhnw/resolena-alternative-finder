@@ -1,0 +1,68 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_granite_native_request_keeps_raw_contract_and_explicit_version_through_api _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-2/test_granite_native_request_ke0')
+
+    def test_granite_native_request_keeps_raw_contract_and_explicit_version_through_api(tmp_path):
+        path = tmp_path / "granite.sqlite3"
+        service = create_service(path)
+        seen, generations = [], []
+        try:
+            with mocked_adapter(seen, before_generation=generations.append) as adapter:
+                response = post(replace(service, interpreter=adapter), payload(context={"browser_language": "it"}))
+                version = adapter.version
+            assert response.status_code == 201 and response.json()["outcome"] == "comparison"
+            assert version.startswith("granite-3.3-8b-contract-v1-")
+            assert generations == [EXAMPLE]
+            assert [request.url.path for request in seen] == ["/apply-template", "/tokenize", "/completion"]
+            assert all(request.headers["Authorization"] == "Bearer offline-test-secret" for request in seen)
+            formatting = json.loads(seen[0].content)
+            assert formatting["messages"] == [{"role": "system", "content": PROMPT}, {"role": "user", "content": EXAMPLE}]
+            assert formatting["chat_template_kwargs"] == {"thinking": False, "enable_thinking": False}
+            assert json.loads(seen[1].content) == {"content": expected_prompt(PROMPT, EXAMPLE),
+                "add_special": False, "parse_special": True, "with_pieces": False}
+            native = json.loads(seen[2].content)
+            assert native["prompt"] == MOCK_TOKENS
+            assert native["json_schema"] == transport_schema()
+            assert native["n_predict"] == 4096 and native["temperature"] == 0 and native["seed"] == 42
+            assert native["samplers"] == ["temperature"]
+>           assert native["dynatemp_range"] == 0.0
+                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'dynatemp_range'
+
+tests/integration/test_granite_contract_adapter.py:75: KeyError
+_ test_granite_rejects_native_termination_settings_and_accounting_violations[dynamic_temperature] _
+
+mode = 'dynamic_temperature'
+
+    @pytest.mark.parametrize("mode", ["incomplete", "word_stop", "truncated", "wrong_settings", "wrong_prompt",
+        "wrong_accounting", "wrong_model", "missing_grammar", "dynamic_temperature"])
+    def test_granite_rejects_native_termination_settings_and_accounting_violations(mode):
+        response = completion()
+        if mode == "incomplete": response["stop"] = False
+        if mode == "word_stop": response["stop_type"] = "word"
+        if mode == "truncated": response["truncated"] = True
+        if mode == "wrong_settings": response["generation_settings"]["samplers"] = ["top_p", "temperature"]
+        if mode == "wrong_prompt": response["prompt"] += "changed"
+        if mode == "wrong_accounting": response["tokens_predicted"] = 4097
+        if mode == "wrong_model": response["model"] = "another-model"
+        if mode == "missing_grammar": response["generation_settings"]["grammar"] = ""
+        if mode == "dynamic_temperature": response["generation_settings"]["dynatemp_range"] = 0.5
+        seen = []
+        with mocked_adapter(seen, response=response) as adapter:
+>           with pytest.raises(ContractViolation): adapter.interpret(EXAMPLE)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ContractViolation
+
+tests/integration/test_granite_contract_adapter.py:119: Failed
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_granite_contract_adapter.py::test_granite_native_request_keeps_raw_contract_and_explicit_version_through_api
+FAILED tests/integration/test_granite_contract_adapter.py::test_granite_rejects_native_termination_settings_and_accounting_violations[dynamic_temperature]
+2 failed, 27 deselected, 1 warning in 0.71s

@@ -1,0 +1,4 @@
+8d549dc294b596a06895bf9f181af0675805a4752ea9a1fb23011c7a1c93bb0e  build/uc001-contract-local-v1_2_2/model-free-console-helper-correction.zip
+af1dec39b87a4ee0c604ff71a1f970156e4174a974bcebbbaa14dc213bf1b064  scripts/uc001_contract_local_v1_2_2/freeze.json
+b930a35dcbebc8c1bd00699de6a56650d6d477869007225764c08ccdec5ec745  build/uc001-contract-local-v1_2_2/owner-reported-v1_2_1-failure.json
+10ef9b11014d6577a0ce1f9a550830f7a7a5319c755b3558c819605d6a6944df  build/uc001-contract-local-v1_2_2/verification.json

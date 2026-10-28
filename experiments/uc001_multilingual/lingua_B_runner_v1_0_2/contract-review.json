@@ -1,0 +1,578 @@
+{
+  "classification": "AI-assisted offline review, not qualified linguistic validation",
+  "application_router_executed": false,
+  "cases": [
+    {
+      "case": "S-DE1",
+      "category": "supported_clear",
+      "original_text": "Ich möchte meine Waschmaschine reparieren lassen, ohne sie zu ersetzen.",
+      "raw_top": "de",
+      "raw_top_score": 0.9974698454691335,
+      "raw_span_languages": [
+        "de"
+      ],
+      "frozen_expected_language_candidates": [
+        "de"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "de"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-DE2",
+      "category": "supported_clear",
+      "original_text": "Für meine Winterjacke suche ich eine Reparatur, die höchstens 60 CHF kostet.",
+      "raw_top": "de",
+      "raw_top_score": 0.9360276159336847,
+      "raw_span_languages": [
+        "de"
+      ],
+      "frozen_expected_language_candidates": [
+        "de"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "de"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-FR1",
+      "category": "supported_clear",
+      "original_text": "Je cherche un abonnement internet moins cher sans réduire le débit.",
+      "raw_top": "fr",
+      "raw_top_score": 0.9919513314618087,
+      "raw_span_languages": [
+        "fr"
+      ],
+      "frozen_expected_language_candidates": [
+        "fr"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "fr"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-FR2",
+      "category": "supported_clear",
+      "original_text": "Je voudrais faire réparer mes chaussures plutôt que les remplacer.",
+      "raw_top": "fr",
+      "raw_top_score": 0.9962047053759415,
+      "raw_span_languages": [
+        "fr"
+      ],
+      "frozen_expected_language_candidates": [
+        "fr"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "fr"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-IT1",
+      "category": "supported_clear",
+      "original_text": "Vorrei riparare il mio aspirapolvere senza comprarne uno nuovo.",
+      "raw_top": "it",
+      "raw_top_score": 0.9735245471645724,
+      "raw_span_languages": [
+        "it"
+      ],
+      "frozen_expected_language_candidates": [
+        "it"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "it"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-IT2",
+      "category": "supported_clear",
+      "original_text": "Cerco un servizio di lavanderia che costi meno di 40 CHF al mese.",
+      "raw_top": "it",
+      "raw_top_score": 0.5811837713521243,
+      "raw_span_languages": [
+        "it"
+      ],
+      "frozen_expected_language_candidates": [
+        "it"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "it"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-EN1",
+      "category": "supported_clear",
+      "original_text": "I want to mend my raincoat without reducing its waterproofing.",
+      "raw_top": "en",
+      "raw_top_score": 0.8281101031615876,
+      "raw_span_languages": [
+        "en"
+      ],
+      "frozen_expected_language_candidates": [
+        "en"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "en"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "S-EN2",
+      "category": "supported_clear",
+      "original_text": "Compare reusable lunch containers that cost no more than 35 CHF.",
+      "raw_top": "en",
+      "raw_top_score": 0.7511010452021564,
+      "raw_span_languages": [
+        "en"
+      ],
+      "frozen_expected_language_candidates": [
+        "en"
+      ],
+      "frozen_contract_route": "understood_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "en"
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "U-ES",
+      "category": "unsupported_clear",
+      "original_text": "Quiero reparar mi lavadora sin comprar una nueva.",
+      "raw_top": "es",
+      "raw_top_score": 0.794858666773537,
+      "raw_span_languages": [
+        "es"
+      ],
+      "frozen_expected_language_candidates": [
+        "es"
+      ],
+      "frozen_contract_route": "unsupported_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "U-PT",
+      "category": "unsupported_clear",
+      "original_text": "Quero reduzir os gastos com aquecimento sem perder conforto.",
+      "raw_top": "pt",
+      "raw_top_score": 0.9430669125565051,
+      "raw_span_languages": [
+        "pt"
+      ],
+      "frozen_expected_language_candidates": [
+        "pt"
+      ],
+      "frozen_contract_route": "unsupported_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "U-NL",
+      "category": "unsupported_clear",
+      "original_text": "Ik wil mijn schoenen laten repareren in plaats van nieuwe te kopen.",
+      "raw_top": "nl",
+      "raw_top_score": 0.9824976015413385,
+      "raw_span_languages": [
+        "nl"
+      ],
+      "frozen_expected_language_candidates": [
+        "nl"
+      ],
+      "frozen_contract_route": "unsupported_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "U-PL",
+      "category": "unsupported_clear",
+      "original_text": "Chcę naprawić mój telefon bez wymiany urządzenia.",
+      "raw_top": "pl",
+      "raw_top_score": 1.0,
+      "raw_span_languages": [
+        "pl"
+      ],
+      "frozen_expected_language_candidates": [
+        "pl"
+      ],
+      "frozen_contract_route": "unsupported_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Expected clear language matches both passes. Supported-scope or limitation policy is still separate from establishing request meaning and actual application routing.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "A-PORT",
+      "category": "short_shared",
+      "original_text": "Port",
+      "raw_top": "it",
+      "raw_top_score": 0.04766986036422495,
+      "raw_span_languages": [
+        "it"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "clarify_meaning",
+      "frozen_allowed_external_pairs": [
+        [
+          "clarification",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Italian top rank does not resolve the shared word or its subject sense; retain meaning clarification.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "A-TAXI",
+      "category": "short_shared",
+      "original_text": "Taxi",
+      "raw_top": "ts",
+      "raw_top_score": 0.1192893206371924,
+      "raw_span_languages": [
+        "ts"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "understood_preference_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Tsonga top rank must not turn a recognisable shared transport subject into unsupported input; supported browser-language path remains required if meaning is established.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "A-NAME",
+      "category": "short_shared",
+      "original_text": "Acme X-2",
+      "raw_top": "so",
+      "raw_top_score": 0.21663483547689044,
+      "raw_span_languages": [
+        "so"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "clarify_subject",
+      "frozen_allowed_external_pairs": [
+        [
+          "clarification",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Somali top rank on an identifier is not reliable request-language evidence; subject still needs clarification.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "A-PLACE",
+      "category": "short_shared",
+      "original_text": "Genève",
+      "raw_top": "fr",
+      "raw_top_score": 0.9572754982539836,
+      "raw_span_languages": [
+        "fr"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "clarify_subject",
+      "frozen_allowed_external_pairs": [
+        [
+          "clarification",
+          null
+        ]
+      ],
+      "AI_assisted_review": "French score about 0.957 on a place name does not establish the language of a request or a requested subject.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "M-PRIMARY",
+      "category": "mixed_dialect",
+      "original_text": "Please repair my washing machine, sans remplacement.",
+      "raw_top": "en",
+      "raw_top_score": 0.6391581542664279,
+      "raw_span_languages": [
+        "en",
+        "fr"
+      ],
+      "frozen_expected_language_candidates": [
+        "en",
+        "fr"
+      ],
+      "frozen_contract_route": "understood_mixed_if_every_clause_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "mixed"
+        ]
+      ],
+      "AI_assisted_review": "Raw spans identify EN/FR components; no meaning/no-replacement verification or application route was executed.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "M-BALANCED",
+      "category": "mixed_dialect",
+      "original_text": "Schuhe repair, sans remplacement.",
+      "raw_top": "fr",
+      "raw_top_score": 0.5534252921107279,
+      "raw_span_languages": [
+        "fr"
+      ],
+      "frozen_expected_language_candidates": [
+        "de",
+        "en",
+        "fr"
+      ],
+      "frozen_contract_route": "understood_mixed_preference_if_every_clause_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          "mixed"
+        ]
+      ],
+      "AI_assisted_review": "Entire string labelled FR; expected German and English components are absent from segmentation.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "M-UNRESOLVED",
+      "category": "mixed_dialect",
+      "original_text": "Please mend my raincoat, sin perder la impermeabilidad.",
+      "raw_top": "pt",
+      "raw_top_score": 0.27042164215199616,
+      "raw_span_languages": [
+        "pt"
+      ],
+      "frozen_expected_language_candidates": [
+        "en",
+        "es"
+      ],
+      "frozen_contract_route": "clarify_or_capability_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "clarification",
+          "en"
+        ],
+        [
+          "clarification",
+          null
+        ],
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Entire string labelled PT; expected EN/ES components are absent. A material foreign clause must remain unresolved, not be silently dropped.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "M-DIALECT",
+      "category": "mixed_dialect",
+      "original_text": "Ich wett mini Schueh flicke, aber nöd neu chaufe.",
+      "raw_top": "de",
+      "raw_top_score": 0.46266709357163177,
+      "raw_span_languages": [
+        "de"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "unsupported_dialect_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "German top rank cannot certify standard-German interpretation of unvalidated Swiss-German negation.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "P-COUNTRY-CH",
+      "category": "preference_country_uncertainty",
+      "original_text": "Velo",
+      "raw_top": "ts",
+      "raw_top_score": 0.06846813197946057,
+      "raw_span_languages": [
+        "ts"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "understood_existing_preference_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Velo ranks Tsonga. Expected French explanation comes from existing preference, not this rank; country was not given to detector.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "P-COUNTRY-DE",
+      "category": "preference_country_uncertainty",
+      "original_text": "Velo",
+      "raw_top": "ts",
+      "raw_top_score": 0.06846813197946058,
+      "raw_span_languages": [
+        "ts"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "understood_existing_preference_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Same text as CH case, same top/ranked order/spans. No application country or preference handling was executed.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "P-NO-PREF",
+      "category": "preference_country_uncertainty",
+      "original_text": "Radio",
+      "raw_top": "pl",
+      "raw_top_score": 0.06210532529745988,
+      "raw_span_languages": [
+        "pl"
+      ],
+      "frozen_expected_language_candidates": null,
+      "frozen_contract_route": "one_time_supported_explanation_choice_if_meaning_established",
+      "frozen_allowed_external_pairs": [
+        [
+          "understood",
+          null
+        ]
+      ],
+      "AI_assisted_review": "Radio ranks Polish. Unsupported browser preference must not force English or imply unsupported shared subject; approved one-time explanation-language choice remains a contract requirement.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "P-AMOUNT",
+      "category": "preference_country_uncertainty",
+      "original_text": "Please repair my amplifier; my budget is 1,200 CHF.",
+      "raw_top": "en",
+      "raw_top_score": 0.46313141658608115,
+      "raw_span_languages": [
+        "en"
+      ],
+      "frozen_expected_language_candidates": [
+        "en"
+      ],
+      "frozen_contract_route": "clarify_amount",
+      "frozen_allowed_external_pairs": [
+        [
+          "clarification",
+          "en"
+        ]
+      ],
+      "AI_assisted_review": "English raw rank is correct as an auxiliary check; amount 1,200 CHF remains meaning-ambiguous. No amount parsing/clarification was executed.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    },
+    {
+      "case": "C6-EXPOSED",
+      "category": "exposed_anchor",
+      "original_text": "Repara mi hervidor.",
+      "raw_top": "pt",
+      "raw_top_score": 0.32080662270162746,
+      "raw_span_languages": [
+        "pt"
+      ],
+      "frozen_expected_language_candidates": [
+        "es"
+      ],
+      "frozen_contract_route": "unsupported_limitation_rephrase",
+      "frozen_allowed_external_pairs": [
+        [
+          "unsupported",
+          null
+        ]
+      ],
+      "AI_assisted_review": "PT top rank is incorrect against frozen ES expectation, so the predeclared raw-language screen fails. PT and ES are both outside supported DE/FR/IT/EN; an unsupported/null/limitation mapping is only a policy consequence, not an observed application response or Spanish interpretation support.",
+      "application_response_observed": null,
+      "meaning_constraints_quotes_translation_verified": false
+    }
+  ]
+}

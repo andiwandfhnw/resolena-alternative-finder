@@ -1,0 +1,6 @@
+{
+  "source": "../evaluate_model.py",
+  "source_sha256": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+  "extraction": "Byte-identical SUPPORTED/ALIASES/canonical/validate/semantic_score/ITEM/CONSTRAINT/SCHEMA/PROMPT block; no original module import",
+  "contract_sha256": "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec"
+}

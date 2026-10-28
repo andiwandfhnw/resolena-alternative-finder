@@ -1,0 +1,452 @@
+[
+  {
+    "record": 1,
+    "pass": 1,
+    "case": "S-DE1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 2,
+    "pass": 1,
+    "case": "S-DE2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 3,
+    "pass": 1,
+    "case": "S-FR1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 4,
+    "pass": 1,
+    "case": "S-FR2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 5,
+    "pass": 1,
+    "case": "S-IT1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 6,
+    "pass": 1,
+    "case": "S-IT2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 7,
+    "pass": 1,
+    "case": "S-EN1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 8,
+    "pass": 1,
+    "case": "S-EN2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 9,
+    "pass": 1,
+    "case": "U-ES",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 10,
+    "pass": 1,
+    "case": "U-PT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 11,
+    "pass": 1,
+    "case": "U-NL",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 12,
+    "pass": 1,
+    "case": "U-PL",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 13,
+    "pass": 1,
+    "case": "A-PORT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 14,
+    "pass": 1,
+    "case": "A-TAXI",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 15,
+    "pass": 1,
+    "case": "A-NAME",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 16,
+    "pass": 1,
+    "case": "A-PLACE",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 17,
+    "pass": 1,
+    "case": "M-PRIMARY",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 18,
+    "pass": 1,
+    "case": "M-BALANCED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 19,
+    "pass": 1,
+    "case": "M-UNRESOLVED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 20,
+    "pass": 1,
+    "case": "M-DIALECT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 21,
+    "pass": 1,
+    "case": "P-COUNTRY-CH",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 22,
+    "pass": 1,
+    "case": "P-COUNTRY-DE",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 23,
+    "pass": 1,
+    "case": "P-NO-PREF",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 24,
+    "pass": 1,
+    "case": "P-AMOUNT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 25,
+    "pass": 1,
+    "case": "C6-EXPOSED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 26,
+    "pass": 2,
+    "case": "S-DE1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 27,
+    "pass": 2,
+    "case": "S-DE2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 28,
+    "pass": 2,
+    "case": "S-FR1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 29,
+    "pass": 2,
+    "case": "S-FR2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 30,
+    "pass": 2,
+    "case": "S-IT1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 31,
+    "pass": 2,
+    "case": "S-IT2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 32,
+    "pass": 2,
+    "case": "S-EN1",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 33,
+    "pass": 2,
+    "case": "S-EN2",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 34,
+    "pass": 2,
+    "case": "U-ES",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 35,
+    "pass": 2,
+    "case": "U-PT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 36,
+    "pass": 2,
+    "case": "U-NL",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 37,
+    "pass": 2,
+    "case": "U-PL",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 38,
+    "pass": 2,
+    "case": "A-PORT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 39,
+    "pass": 2,
+    "case": "A-TAXI",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 40,
+    "pass": 2,
+    "case": "A-NAME",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 41,
+    "pass": 2,
+    "case": "A-PLACE",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 42,
+    "pass": 2,
+    "case": "M-PRIMARY",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 43,
+    "pass": 2,
+    "case": "M-BALANCED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 44,
+    "pass": 2,
+    "case": "M-UNRESOLVED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 45,
+    "pass": 2,
+    "case": "M-DIALECT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 46,
+    "pass": 2,
+    "case": "P-COUNTRY-CH",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 47,
+    "pass": 2,
+    "case": "P-COUNTRY-DE",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 48,
+    "pass": 2,
+    "case": "P-NO-PREF",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 49,
+    "pass": 2,
+    "case": "P-AMOUNT",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  },
+  {
+    "record": 50,
+    "pass": 2,
+    "case": "C6-EXPOSED",
+    "operations": [
+      "compute_language_confidence_values",
+      "detect_multiple_languages_of"
+    ]
+  }
+]

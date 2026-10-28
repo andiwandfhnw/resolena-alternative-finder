@@ -1,0 +1,9 @@
+{
+  "name": "binary_version",
+  "command": [
+    "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/compiled/bin/llama-server",
+    "--version"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 1.3218993949999458
+}

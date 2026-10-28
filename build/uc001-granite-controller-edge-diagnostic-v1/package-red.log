@@ -1,0 +1,125 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_diagnostic_archive_is_complete_hash_bound_and_native_execution_disabled _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-0/test_diagnostic_archive_is_com0')
+
+    def test_diagnostic_archive_is_complete_hash_bound_and_native_execution_disabled(tmp_path):
+>       result = builder().build_package(Path.cwd(), tmp_path/'package',
+                 ^^^^^^^^^
+            ARTIFACT/'Run-OwnershipDiagnostic.ps1', ARTIFACT/'package-readme.md')
+
+tests/unit/test_granite_controller_edge_package.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_controller_edge_package.py:19: in builder
+    spec.loader.exec_module(module)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x79f57bf95b50>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+___________ test_diagnostic_packager_preserves_existing_destination ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-0/test_diagnostic_packager_prese0')
+
+    def test_diagnostic_packager_preserves_existing_destination(tmp_path):
+        destination = tmp_path/'package'
+        destination.mkdir()
+        (destination/'keep').write_text('preserve')
+        with pytest.raises(FileExistsError):
+>           builder().build_package(Path.cwd(), destination, ARTIFACT/'Run-OwnershipDiagnostic.ps1',
+            ^^^^^^^^^
+                ARTIFACT/'package-readme.md')
+
+tests/unit/test_granite_controller_edge_package.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_controller_edge_package.py:19: in builder
+    spec.loader.exec_module(module)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x79f57bf8a0c0>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+_ test_diagnostic_runner_requires_future_authorization_before_any_integrity_or_native_action _
+
+    def test_diagnostic_runner_requires_future_authorization_before_any_integrity_or_native_action():
+        pwsh = shutil.which('pwsh')
+        assert pwsh
+        result = subprocess.run([pwsh, '-NoLogo', '-NoProfile', '-NonInteractive', '-File',
+            str(ARTIFACT/'Run-OwnershipDiagnostic.ps1'), '-ExpectedManifestSha256', '0'*64],
+            capture_output=True, text=True, timeout=10)
+>       assert result.returncode == 1
+E       assert 64 == 1
+E        +  where 64 = CompletedProcess(args=['/usr/bin/pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-File', '/workspaces/resolena-alt...ipt file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\n").returncode
+
+tests/unit/test_granite_controller_edge_package.py:61: AssertionError
+________________ test_diagnostic_runner_powershell_syntax_only _________________
+
+    def test_diagnostic_runner_powershell_syntax_only():
+        pwsh = shutil.which('pwsh')
+        assert pwsh
+        script = "$errors = $null; $tokens = $null; [void][System.Management.Automation.Language.Parser]::ParseFile($args[0], [ref]$tokens, [ref]$errors); if ($errors.Count) { $errors | Out-String | Write-Error; exit 1 }"
+        result = subprocess.run([pwsh, '-NoLogo', '-NoProfile', '-NonInteractive', '-Command',
+            script, str(ARTIFACT/'Run-OwnershipDiagnostic.ps1')], capture_output=True, text=True, timeout=10)
+>       assert result.returncode == 0, result.stderr
+E       AssertionError: Write-Error: 
+E         Extent                                                  ErrorId       Message
+E         ------                                                  -------       -------   
+E         System.Management.Automation.Language.EmptyScriptExtent FileReadError The file …
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/usr/bin/pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-Command', '$errors = $null; $tok...         -------       -------   \nSystem.Management.Automation.Language.EmptyScriptExtent FileReadError The file …\n').returncode
+
+tests/unit/test_granite_controller_edge_package.py:72: AssertionError
+________ test_diagnostic_runner_scope_remains_single_harmless_selftest _________
+
+    def test_diagnostic_runner_scope_remains_single_harmless_selftest():
+>       script = (ARTIFACT/'Run-OwnershipDiagnostic.ps1').read_text()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_edge_package.py:76: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/Run-OwnershipDiagnostic.ps1')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/Run-OwnershipDiagnostic.ps1'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_edge_package.py::test_diagnostic_archive_is_complete_hash_bound_and_native_execution_disabled
+FAILED tests/unit/test_granite_controller_edge_package.py::test_diagnostic_packager_preserves_existing_destination
+FAILED tests/unit/test_granite_controller_edge_package.py::test_diagnostic_runner_requires_future_authorization_before_any_integrity_or_native_action
+FAILED tests/unit/test_granite_controller_edge_package.py::test_diagnostic_runner_powershell_syntax_only
+FAILED tests/unit/test_granite_controller_edge_package.py::test_diagnostic_runner_scope_remains_single_harmless_selftest
+5 failed in 1.39s

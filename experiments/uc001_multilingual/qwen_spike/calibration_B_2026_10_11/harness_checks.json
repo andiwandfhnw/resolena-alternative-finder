@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-11T13:27:00.425561+00:00",
+  "red": "Reporting module absent before implementation; discovery failed as expected",
+  "green": {
+    "tests_passed": 5,
+    "exit_code": 0
+  },
+  "classification": "Synthetic reporting checks only; no model results",
+  "case_count": 6,
+  "request_count": 12,
+  "exact_holdout_overlap_ids": [],
+  "holdout_check": "Local hash comparison only; no holdout text displayed or sent to a model"
+}

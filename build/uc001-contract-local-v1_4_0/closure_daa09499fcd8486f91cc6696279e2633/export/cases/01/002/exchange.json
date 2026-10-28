@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/tokenize",
+  "status": 200,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "complete": true,
+  "exported": true,
+  "failure": null,
+  "request_sha256": "726c1e87775a0893c69fbfb98b340c886add803843ec51faa5e1f3250caf7eb7",
+  "response_sha256": "fd6149e5c3212f5746e538a822fd75bd8c8e14c6703fc11808ae080e19f3effd"
+}

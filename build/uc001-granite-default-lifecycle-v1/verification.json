@@ -1,0 +1,178 @@
+{
+  "version": "uc001-granite-default-lifecycle-v1",
+  "recorded_on": "2026-10-27",
+  "phase": 3,
+  "status": "in-progress",
+  "authorization": "owner-authorization.txt; one bounded offline implementation/TDD correction only",
+  "execution_authorized": false,
+  "windows_execution": false,
+  "native_windows_verification_of_changed_loop": false,
+  "resource_fit_established": false,
+  "closed_windows_diagnostics_rerun": false,
+  "closed_diagnostic_suites_run": false,
+  "desktop_execution_instruction_issued": false,
+  "live_proxy_network_acquisition_build_compiler_glslc_gpu_server_inference": false,
+  "changed_existing_files": [
+    "docs/TASKS.md",
+    "scripts/uc001_granite_controller/controller.py",
+    "tests/unit/test_granite_controller_cli.py",
+    "tests/unit/test_granite_controller_run.py"
+  ],
+  "source_diff": "controller.py.diff",
+  "test_diffs": [
+    "test_granite_controller_run.py.diff",
+    "test_granite_controller_cli.py.diff"
+  ],
+  "pre_fix_controller_sha256": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+  "current_helper_input_sha256": {
+    "scripts/uc001_granite_controller/controller.py": "790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179",
+    "scripts/uc001_granite_controller/worker.py": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+    "scripts/uc001_granite_controller/standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "scripts/uc001_granite_controller/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "scripts/uc001_granite_contract_v1/config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+    "build/uc001-granite-prior-accounting-final-v1/prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a"
+  },
+  "genuine_actual_default_red": [
+    {
+      "command": {
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/unit/test_granite_controller_run.py",
+          "-k",
+          "default_session_reconciles_durable_close_after_read_before_observed_proxy_exit or default_session_waits_only_for_already_verified_helper_before_build"
+        ],
+        "exit_code": 1
+      },
+      "result": "3 failed, 46 deselected; exit1",
+      "schedule_evidence": "default-positive-red-schedules.json",
+      "log": "default-positive-red.log",
+      "actual_function": "controller.run_session",
+      "schedules": [
+        "valid close durable after initial event read, worker alive",
+        "valid close durable after initial event read, worker exited",
+        "only already admitted retained proxy helper active after valid terminal and normal exits"
+      ]
+    },
+    {
+      "command": {
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "pytest",
+          "-q",
+          "tests/unit/test_granite_controller_run.py::test_default_session_reconciles_verified_helper_exit_between_native_queries"
+        ],
+        "exit_code": 1
+      },
+      "result": "1 failed; exit1",
+      "log": "default-helper-query-race-red.log",
+      "actual_function": "controller.run_session",
+      "schedule": "helper exits between retained owned-handle query and query-only exit readback"
+    }
+  ],
+  "final_green": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_run.py",
+      "tests/unit/test_granite_controller_cli.py"
+    ],
+    "exit_code": 0,
+    "result": "79 passed in 1.22s",
+    "actual_default_run_file_cases": 74,
+    "new_default_cases": 28,
+    "preserved_existing_default_cases": 46,
+    "configuration_cases": 5,
+    "log": "green-final-focused-corrected.log"
+  },
+  "intermediate_evidence": {
+    "first_default_green": "70 passed in 1.11s; default-green-first.log",
+    "reviewed_default_green": "74 passed in1.23s; default-green-reviewed.log",
+    "first_combined_result": "77 passed,1 failed in1.33s; stale directory-glob test fixture; green-final-focused.log",
+    "negative_filename_provenance": "default-negative-baseline.log is post-correction intermediate GREEN only; its JSON explicitly records this; not pre-fix evidence",
+    "historical_diagnostic_red": "Not credited as default-run_session reproduction; old receipts untouched"
+  },
+  "semantics": {
+    "exit_reconciliation": "One immediate ordered pending-record reread after observed worker/proxy exit per loop iteration; no waiting for missing/invalid close, no unconditional catch/suppression",
+    "worker_alive_proxy_exit": "Reconciles without requiring acquisition terminal early; source checks may continue under same phase budget",
+    "helper_admission": "Only actual default PhaseMonitor proxy_helpers/proxy_queries registry admitted by unchanged helper validator; no new worker-helper role or diagnostic registry",
+    "phase_wait": "Valid terminal/required normal role exits first; exact active PID/birth subset and retained helper proof; watchdog/resource/same-phase deadline live; zero active before build; private Job remains open",
+    "helper_read_transition": "One retained owned-handle recheck when helper exits between native reads; exact native/query code match and stable PID/birth still required",
+    "final_cleanup": "Existing Job cleanup and matching role/helper exits/query closure remain mandatory; no direct helper/unknown-process termination authority",
+    "accounting": "Real BudgetLedger fixture prior7+debit2=9 bound to interpreter201; wrongprior/total/listeningPID fail; acceptedrealprior0 unchanged"
+  },
+  "review": "Independent read-only source/safety review passed after query-transition fix; no further blocking correctness gap found",
+  "limitations": [
+    "All process/native/resource/clock boundaries are injected; this is not changed-loop Windows verification.",
+    "Both historical native diagnostics remain CLOSED at their original scopes; their passes are not credited to this changed controller.",
+    "No helper outside the actual default admitted registry is allowed to wait; unclassified worker-launcher helpers remain fatal.",
+    "No resource-fit, acquisition/build or Granite/model/runtime/semantic suitability established.",
+    "Existing execution drafts retain their inactive state and historical helper hashes; a future reviewed inactive handoff must bind the new current hashes."
+  ],
+  "handoff_readiness": "The two identified default lifecycle cases are corrected offline; source permits completion of previously authorized inactive handoff after owner review. This task does not assemble that handoff or authorize any execution.",
+  "preservation": {
+    "protected_existing_files": 1638,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/controller.py",
+      "tests/unit/test_granite_controller_cli.py",
+      "tests/unit/test_granite_controller_run.py"
+    ],
+    "unchanged_existing_files": 1634,
+    "missing_existing_files": [],
+    "historical_tasks_restored_exactly": true,
+    "all_original_test_function_bodies_preserved": true,
+    "controller_changes_limited_to_PhaseMonitor_and_run_session": true,
+    "unchanged_worker_backend_helper_admission_proxy_prior_frozen_packages": true,
+    "execution_drafts_remain_inactive": true,
+    "local_links_checked": 14,
+    "new_json_parsed": true,
+    "new_documentation_whitespace_clean": true,
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "git_status_branch_head_index_unchanged": true,
+    "cached_diff_empty": true,
+    "git_diff_check_exit_code": 2,
+    "git_diff_check_output": "docs/TASKS.md:3220: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "artifact_sha256": {
+    "README.md": "f141c25c5f9bbc9a09aa811cce1dcaa9ce36aaca164a85544a8981962012db6b",
+    "TASKS.md.diff": "cd651413cebc76d43278311fc2b69405a6a879cfad371b01017bda43a31374b9",
+    "before-controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "before-standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "before-test_granite_controller_cli.py": "20112b3637bc235c9dc71cc1582995c7880f6fea40e7a2b64c2fbfc94020f92a",
+    "before-test_granite_controller_run.py": "90ddad326c0f01b55814aed85bc2be4eaab16a0fca6dae21fe544fe2514f727f",
+    "before-test_granite_controller_worker.py": "938ec3cfd6ef0270eecdf6569f2356929837dbe129b1ee53681f29a30c30962d",
+    "before-windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "before-worker.py": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+    "controller.py.diff": "a8714299a592c6008909f2da8fc575c2319e31509f16d40ff5267d006f22cd7a",
+    "default-green-first-command.json": "9a783b663599852e8bc24b3b4dcfd1a7a5880aa5ce5bc64702277dba4332e664",
+    "default-green-first.log": "39b287cdf75f67bd4f3cabe31e02480a9da70cd562f6d4c60f2867be9c50290e",
+    "default-green-reviewed-command.json": "9a783b663599852e8bc24b3b4dcfd1a7a5880aa5ce5bc64702277dba4332e664",
+    "default-green-reviewed.log": "5f7d719c063616c0b7c19e7292b0f25c1fd29203b459265db4789b46ed725062",
+    "default-helper-query-race-red-command.json": "0009a2138210181d52a3312891a82f7e6e5b46629af5d138ca03cf73695f9073",
+    "default-helper-query-race-red.log": "00b9e4ecbabef73c2a98416367ef6f45dd8a34b10df7420120c98a8ab82ef2a1",
+    "default-negative-baseline-command.json": "5a8e716e54a0c62c034f726b5e9a26e8e8756b177cc92242473b6cb154f52ae8",
+    "default-negative-baseline.log": "205e308c5cc879c7c67b97be6d88ff023e657fbaa1fbcadf36aaf20583aa8ae2",
+    "default-positive-red-command.json": "10c7c61128aaf5998ed3ade49bd38040f550a0cc25ce26af8429fe9672259b73",
+    "default-positive-red-schedules.json": "e2d94df6f885867da633c3c9788f125c736bab512095bb9167b792341a410af4",
+    "default-positive-red.log": "621e9c74f3ab00e344477867d38ec233c805ab8d1ddbe9e0745fe83b704a262d",
+    "git-diff-check.txt": "fd1c5194dd888f4134071f8daa1c6aa0cdc6cf93efa453d8c045c99fb69484da",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "green-final-command-corrected.json": "f47fb5677e45ae138754d9ae69786d7d1e5d37da3a2b376dbf9444a18b2911a9",
+    "green-final-command.json": "31cfcfd067462feda427c8cbe8222e74326324344845cede5d7b2e69eac62eb0",
+    "green-final-focused-corrected.log": "2024055395d1883e7c1f4f1fc1c0092a6457d02251edcda7c34244135bfcc4d9",
+    "green-final-focused.log": "0ea87896bac21fc5d3ec1034ec35380ca9e9b6c9609651b5fd22b8aa239e88e8",
+    "helper-hashes.json": "b09363d22e1effece28b19625f85fea14979f2f4bbf25a8ab99bf23c1217d5d7",
+    "owner-authorization.txt": "63d479d3867939e1d7e4d3cdab18d9a497ad6d76df23e1081878b032cb3d6de4",
+    "preservation-checks.json": "6a56b632b36e10ed986487ff9b79829c2caa9517d5a40453532c7ca238a8910c",
+    "test_granite_controller_cli.py.diff": "2243d1754fbebc1e5803ceb395886eda86d098388c626cfa07a4a05b61cea177",
+    "test_granite_controller_run.py.diff": "8e436a70b27b813041eafc5b8cb92d38fdaf5dbba7c95f9af8864f827ea31b32"
+  }
+}

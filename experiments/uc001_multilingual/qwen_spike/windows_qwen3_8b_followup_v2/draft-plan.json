@@ -1,0 +1,587 @@
+{
+  "proposal_version": "2.0.0-draft",
+  "status": "proposed; not approved, execution-frozen, implemented or run",
+  "date": "2026-10-13",
+  "parent_bundle_version": "1.0.0",
+  "parent_freeze_sha256": "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+  "parent_results_zip_sha256": "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf",
+  "supported_languages": [
+    "de",
+    "fr",
+    "it",
+    "en"
+  ],
+  "unsupported_negative_controls": [
+    "06-C6-known",
+    "F5-ES"
+  ],
+  "classification": "AI-assisted synthetic draft expectations; no independent linguistic validation",
+  "prompt_arms": {
+    "v1": {
+      "source": "../windows_results_2026_10_13/review/evidence/requests/01-C1-known.json:messages[0].content",
+      "sha256_utf8": "ba209d203248d9b325db2471893d366e0ea967721c8b8c53e580f474cf496393"
+    },
+    "v2": {
+      "file": "prompt-v2.txt",
+      "sha256_utf8": "070f4efbd1233f450eb8b1b4f3d1d57a398db0c73b39e90c0aa84640aa6b60da"
+    }
+  },
+  "schema_sha256_canonical_json": "a3d836da2fa28ccb72553a1fb0309f80cd4af8f982f467fb9e950f5906ddd5cd",
+  "unchanged_scoring": {
+    "contract_file": "../windows_qwen3_8b_v1/contract.py",
+    "contract_sha256": "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec",
+    "assessor_file": "../windows_qwen3_8b_v1/assess.py",
+    "assessor_sha256": "3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3",
+    "new_aliases_or_equivalents": false,
+    "gate_relaxed": false,
+    "future_dispatcher_required": "Bind new request hashes to a new freeze; preserve the existing scoring functions and v1 CLI/freeze/results unchanged"
+  },
+  "artifact_pins_reuse_only": {
+    "metadata_checked_utc": "2026-10-13T18:29:39.068781+00:00",
+    "cap_bytes": 10000000000,
+    "reserved_bundle_and_metadata_bytes": 1048576,
+    "artifacts": [
+      {
+        "id": "runtime",
+        "file": "llama-b11429-bin-win-vulkan-x64.zip",
+        "version": "b11429",
+        "source_commit": "d81235049384534c167caea52b85a694f6103d14",
+        "bytes": 33337769,
+        "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11429/llama-b11429-bin-win-vulkan-x64.zip",
+        "metadata_url": "https://api.github.com/repos/ggml-org/llama.cpp/releases/tags/b11429"
+      },
+      {
+        "id": "model",
+        "file": "Qwen3-8B-Q8_0.gguf",
+        "repo": "Qwen/Qwen3-8B-GGUF",
+        "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+        "bytes": 8709518112,
+        "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+        "url": "https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q8_0.gguf",
+        "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF/revision/7c41481f57cb95916b40956ab2f0b139b296d974?blobs=true"
+      }
+    ]
+  },
+  "windows_executable_sha256": "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+  "reuse_root": "C:\\ResolenaExperiments\\qwen3-8b-v1",
+  "new_run_root": "C:\\ResolenaExperiments\\qwen3-8b-followup-v2",
+  "unchanged_request_configuration": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "seed": 42,
+    "max_tokens": 384,
+    "cache_prompt": false,
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "response_format": {
+      "type": "json_object",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "understood",
+              "clarification",
+              "unsupported"
+            ]
+          },
+          "language": {
+            "enum": [
+              "de",
+              "fr",
+              "it",
+              "en",
+              "mixed",
+              null
+            ]
+          },
+          "subject": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "quote": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value",
+              "quote"
+            ],
+            "additionalProperties": false
+          },
+          "action": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "quote": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value",
+              "quote"
+            ],
+            "additionalProperties": false
+          },
+          "goals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "quote": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "value",
+                "quote"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "quote": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "kind",
+                "value",
+                "quote"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "unresolved": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "status",
+          "language",
+          "subject",
+          "action",
+          "goals",
+          "constraints",
+          "unresolved"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "unchanged_runtime_settings": {
+    "backend": "Vulkan only; no fallback",
+    "inference_threads": 2,
+    "prompt_threads": 2,
+    "context": 2048,
+    "output_tokens": 384,
+    "batch": 64,
+    "ubatch": 64,
+    "kv_type": "f16",
+    "slots": 1,
+    "host": "127.0.0.1",
+    "server_port": 49187,
+    "resource_sample_seconds": 1
+  },
+  "unchanged_resource_guards": {
+    "rss_bytes": 17179869184,
+    "ram_preflight_bytes": 21474836480,
+    "ram_floor_bytes": 4294967296,
+    "gpu_preflight_free_bytes": 15032385536,
+    "gpu_owned_bytes": 12884901888,
+    "gpu_floor_bytes": 2147483648,
+    "scratch_bytes": 26843545600,
+    "disk_preflight_free_bytes": 32212254720,
+    "disk_floor_bytes": 5368709120
+  },
+  "latency_targets": {
+    "warm_median_seconds": 10,
+    "warm_p95_seconds": 20,
+    "maximum_seconds": 45,
+    "status": "candidate evaluation targets, not product requirement amendments"
+  },
+  "proposed_time_limits": {
+    "total_seconds": 1800,
+    "readiness_seconds": 90,
+    "request_seconds": 45,
+    "includes": "Preflight/hash checking, loading, generation, transfer/offline assessment and owned shutdown",
+    "deadline_reset_or_retries": false,
+    "original_deadlines_and_markers_preserved": true
+  },
+  "logging_change_applies_to_both_arms": [
+    "--log-verbosity",
+    "4"
+  ],
+  "logging_evidence": {
+    "observed_verbosity": 3,
+    "pinned_library_INFO_callback_verbosity": 4,
+    "actual_full_offload_confirmed": false,
+    "required_before_generation": "Equal positive offloaded N/N layer counts, Vulkan device/buffer identity, owned allocation and complete startup capture; stop if absent within readiness budget",
+    "pinned_source_revision": "d81235049384534c167caea52b85a694f6103d14",
+    "inspected_local_source_hashes": {
+      "common/arg.cpp": "60fe5331fbc60b7dcefcebce8d2097b5b986a1cd3a4dca126c0e6d21060df4d3",
+      "common/log.cpp": "a5c1edc4c446a406233b803a935438f1064201764ec8bb515dc91a16619a3b1b",
+      "common/log.h": "f84dcd0519a8ec2b527d9bd9c39d5f4757d7ff5b2ba8e4d10c7ab8b9154be88b",
+      "common/common.cpp": "0f124bb94a2d82881fffdb745c3524b74fd23f41127b4a720dc9e9934b6eb883",
+      "src/llama-model.cpp": "c29d7f29c3e760f90855755748edc56fcdf62f0628b0c572f06ffb4c377db5f5",
+      "tools/server/server.cpp": "525d74866c4606c0252aa09ec8b8b51ff95d98b861e5ac06f3aa3256c7c2cccc"
+    }
+  },
+  "planned_generation_requests": 18,
+  "known_v2_requests": 6,
+  "fresh_paired_requests": 12,
+  "known_cases": [
+    {
+      "id": "01-C1-known",
+      "text": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "historical_request_sha256": "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd",
+      "historical_response_sha256": "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+    },
+    {
+      "id": "02-C2-known",
+      "text": "repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "historical_request_sha256": "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0",
+      "historical_response_sha256": "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+    },
+    {
+      "id": "03-C3-known",
+      "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "historical_request_sha256": "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c",
+      "historical_response_sha256": "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+    },
+    {
+      "id": "04-C4-known",
+      "text": "Répare ma bouilloire.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "historical_request_sha256": "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea",
+      "historical_response_sha256": "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+    },
+    {
+      "id": "05-C5-known",
+      "text": "Ripara il mio bollitore.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "historical_request_sha256": "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a",
+      "historical_response_sha256": "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+    },
+    {
+      "id": "06-C6-known",
+      "text": "Repara mi hervidor.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true
+      },
+      "historical_request_sha256": "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df",
+      "historical_response_sha256": "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+    }
+  ],
+  "fresh_cases": [
+    {
+      "id": "F1-DE",
+      "text": "Bitte repariere meinen Drucker, ohne ihn zu ersetzen.",
+      "role": "Supported German; normalization beyond kettle and no replacement",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "printer",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "F2-FR",
+      "text": "Répare mon ordinateur ; garde au moins 256 GB de stockage.",
+      "role": "Supported French; new subject and protected numeric/unit constraint",
+      "protected_literals": [
+        "256 GB"
+      ],
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "computer",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "storage_min": "256 GB"
+        }
+      }
+    },
+    {
+      "id": "F3-IT",
+      "text": "Riutilizza il mio contenitore, senza comprarne uno nuovo.",
+      "role": "Supported Italian; new subject/action and no new purchase",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "container",
+        "action": "reuse",
+        "goals": [],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      }
+    },
+    {
+      "id": "F4-EN",
+      "text": "Repair my vacuum cleaner; budget 85 CHF, excluding delivery.",
+      "role": "Supported English control; explicit budget/cost exclusion",
+      "protected_literals": [
+        "85 CHF"
+      ],
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "budget": "85 CHF",
+          "cost_exclusion": "delivery"
+        }
+      }
+    },
+    {
+      "id": "F5-ES",
+      "text": "Repara mi impresora.",
+      "role": "Spanish unsupported-language negative control; no Spanish support claim",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true,
+        "allowed_subjects": [
+          null,
+          "printer"
+        ],
+        "allowed_actions": [
+          null,
+          "repair"
+        ],
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "F6-AMB",
+      "text": "Taxi",
+      "role": "Recognizable shared-language subject; no forced supported-language label",
+      "expected": {
+        "status": "understood",
+        "language": null,
+        "subject": "taxi",
+        "action": null,
+        "goals": [],
+        "constraints": {}
+      }
+    }
+  ],
+  "order": [
+    {
+      "index": 1,
+      "case": "01-C1-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 2,
+      "case": "02-C2-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 3,
+      "case": "03-C3-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 4,
+      "case": "04-C4-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 5,
+      "case": "05-C5-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 6,
+      "case": "06-C6-known",
+      "arm": "v2",
+      "stage": "known"
+    },
+    {
+      "index": 7,
+      "case": "F1-DE",
+      "arm": "v1",
+      "stage": "fresh"
+    },
+    {
+      "index": 8,
+      "case": "F1-DE",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 9,
+      "case": "F2-FR",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 10,
+      "case": "F2-FR",
+      "arm": "v1",
+      "stage": "fresh"
+    },
+    {
+      "index": 11,
+      "case": "F3-IT",
+      "arm": "v1",
+      "stage": "fresh"
+    },
+    {
+      "index": 12,
+      "case": "F3-IT",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 13,
+      "case": "F4-EN",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 14,
+      "case": "F4-EN",
+      "arm": "v1",
+      "stage": "fresh"
+    },
+    {
+      "index": 15,
+      "case": "F5-ES",
+      "arm": "v1",
+      "stage": "fresh"
+    },
+    {
+      "index": 16,
+      "case": "F5-ES",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 17,
+      "case": "F6-AMB",
+      "arm": "v2",
+      "stage": "fresh"
+    },
+    {
+      "index": 18,
+      "case": "F6-AMB",
+      "arm": "v1",
+      "stage": "fresh"
+    }
+  ],
+  "stop_rules": {
+    "operational": "Stop on startup, transport, timeout, resource, ownership, provenance, non-stop finish or missing offload evidence; no retry/fallback/restart",
+    "known_v2": "All six strict passes before fresh requests; any failure stops at gate",
+    "fresh_v1": "Baseline model-content failures recorded without accepting v1; still assess planned v2 counterpart within limits",
+    "fresh_v2": "Any strict failure stops further requests; no tuning"
+  },
+  "success": "6/6 known v2 and 6/6 fresh v2 strict passes with expected meaning and constraints, plus unchanged runtime guards and explicit offload evidence; no production or reliable multilingual-support claim",
+  "heldout": {
+    "original_count": 55,
+    "contents_read": false,
+    "included": false,
+    "future_exposure_authorized": false,
+    "v1_24_unrun_new_fixtures_used": false
+  },
+  "paid_infrastructure_budget": 0,
+  "downloads_installations_rebuilds_allowed": false,
+  "reviewers_assumed_available": false,
+  "approval_needed": [
+    "Exact v2 prompt",
+    "Six fresh draft expectations and balanced order",
+    "One Windows 18-request maximum / 30-minute experiment including operational logging change and unchanged guards",
+    "Separate execution-bundle preparation/freeze before running"
+  ],
+  "DESIGN": "pending; Phase 2/in-progress"
+}

@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-11T11:11:01Z",
+  "files": {
+    "config.json": "3b06305f882936dea9d97105fbc9172d1470071e49639ec965f6980e9b1617af",
+    "operations.py": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52",
+    "run.py": "495d4fa464fee9c3bbabf82c61bf5ebbca51fb6002bfd24c6494f5cd90269658",
+    "test_operations.py": "e71f7fd19df7220482ac95f83e7e4e667018e7aa2b10196800977bed4b10ced9",
+    "../evaluate_model.py": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+    "../prepare.py": "bbdacea61bd4995368348fc2a06e5850d88effeacc40d08fea3e1561b348eacc",
+    "../heldout_v2.json": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08",
+    "../calibration.json": "55f2427cde70a557667c0c01e50950d739176816ff96f3d5512120cf9512a3d4",
+    "../../heldout.json": "8227c98eb96ed4fdd0c15eef9c21fec977251e4e865463c8c2b1c1547cceb827",
+    "../../prototype.py": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e",
+    "resume_gate1.py": "821070becd3ba71859e18f2f08625039c08f135417d339ae4400a311e1316094"
+  },
+  "note": "Operational wrapper only; calibration IDs assigned for durable progress. Original prompt/schema/scorer/cases/inference settings unchanged; authorization renews start time only. No model/prompt tuning.",
+  "resumption_note": "Only scratch-location and cumulative-budget wrapper added before model startup; original prompt/cases/settings/scorer and deadline unchanged."
+}

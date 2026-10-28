@@ -1,0 +1,10 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py"
+  ],
+  "exit_code": 0
+}

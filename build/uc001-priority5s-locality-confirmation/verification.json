@@ -1,0 +1,218 @@
+{
+  "recorded_at": "2026-10-23T17:03:56.539100+00:00",
+  "scope": "UC-001 increment 1, Phase 3 DEVELOP, Priority 5S only: explicit user-confirmed/reference-unverified locality intent, honest qualification and minimal existing JSON persistence.",
+  "phase": 3,
+  "status": "in-progress",
+  "slice_result": "Implemented and focused verification passed; awaiting human review. No completion of all O-1, Priority 5, increment 1 or DEVELOP.",
+  "owner_acceptance_of_5R": {
+    "accepted_only": "Demonstrated approved country release, selector, server membership validation and cleared-country behavior.",
+    "preserved_receipt": "../uc001-priority5r-country-selection/verification.json",
+    "accepted_findings": [
+      "Separate 250-entry release follows owner-approved policy; original 5Q artifacts/source names unchanged.",
+      "Invalid country, unavailable configuration and assessed insufficient coverage are separate outcomes.",
+      "Empty-country browser validation performs no comparison POST; backend missing/blank checks are separately verified.",
+      "Checked committed acknowledgement precedes reference loading; country provenance remains server-derived and captured payload binding unchanged."
+    ],
+    "advisory_review_limit": "Advisor reviewed receipt/ADR/release artifacts and checked uploaded catalogue/manifest hashes, not the changed application/test implementation or live worktree. Earlier counts, RED/setup distinctions and limitations remain in the unchanged 5R receipt."
+  },
+  "prerequisites": {
+    "material_conflict": false,
+    "reused_evidence": [
+      "../uc001-priority5h-locality/verification.json",
+      "../uc001-priority5r-country-selection/verification.json",
+      "../../docs/TASKS.md"
+    ],
+    "current_contracts": [
+      "../../docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md: O-1 and relevant acceptance criteria",
+      "../../docs/ARCHITECTURE.md: locality retention, evidence qualification, captured identity and save-before-presentation",
+      "../../docs/adr/ADR-005-country-reference-development-release.md: approved country reference and owner-authorized bounded 5S continuation"
+    ],
+    "findings": [
+      "Existing API literal location_choice=confirmed_unverified had no equivalent application/UI continuation: all non-country-only locality still produced unsaved clarification.",
+      "Accepted O-1 confirms user intent only; no verified existence, town/postcode identity or provider applicability follows.",
+      "Existing JSON location/interpretation/projection fields suffice; no schema/dependency/token framework change.",
+      "Existing atomic save, immutable projections, originating-client proof and unchanged payload binding are reused. Checked saved recovery still precedes current country/locality processing.",
+      "Existing synthetic React/FastAPI/application/SQLite composition can exercise the branch with the unchanged approved real country reference and prepared synthetic meaning/evidence.",
+      "Prior ordinary-CH locality unit expectation contradicted the accepted O-1 coverage distinction; corrected that one assertion, preserving all other existing rule functions."
+    ]
+  },
+  "representation": {
+    "client_choice": "confirmed_unverified",
+    "persisted_choice": "confirmed_unverified",
+    "persisted_search_location_and_public_saved_search_scope": {
+      "country_code": "CH",
+      "town": "  Synthetic optional town  ",
+      "postcode": " 0123 ",
+      "locality": {
+        "confirmation": "user_confirmed",
+        "verification": "reference_unverified",
+        "normalized": {
+          "town": "synthetic optional town",
+          "postcode": "0123"
+        }
+      }
+    },
+    "normalization": "Raw entered strings retained; town boundary trim + Unicode NFC/casefold; postcode boundary trim only, preserving leading zeros.",
+    "minimization": "Whitelist country/town/postcode and explicit confirmation/unverified/normalized metadata. Drop supplied locality reference IDs; invent no matching result or locality review date.",
+    "country_provenance_location": "interpretation.provenance.reference_versions.country, server-derived and separate from locality.verification",
+    "country_reference": {
+      "source": "GeoNames countryInfo",
+      "release": "geonames-countryInfo-2026-10-23-v1",
+      "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+    },
+    "identity_behavior": "Explicit confirmation captures current text/raw locality/language with new submission key and originating-client proof. Country/town/postcode edits reset choice and presentation without submitting. Existing uncertain/committed capture is not mutated; ordinary Recovery retains its capture.",
+    "recovery_projection": "200/submission_recovered with original saved ID/outcome/assessment time only; no saved search_scope/comparison claims replayed."
+  },
+  "implementation": {
+    "changed_existing_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "docs/adr/ADR-005-country-reference-development-release.md",
+      "frontend/src/App.tsx",
+      "src/app/application/comparisons.py",
+      "src/app/domain/qualification.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/unit/test_qualification.py"
+    ],
+    "new_source_files": [
+      "tests/support/locality_confirmation.py"
+    ],
+    "application": "Allow existing confirmed_unverified choice, construct minimal raw/normalized unverified scope, and add search_scope to the newly saved actual comparison/coverage projection.",
+    "domain": "Required applicability and its evidence-input scopes need independently unambiguous matching named scope or explicit source-backed country_wide=true. Ordinary in-CH does not imply all-locality coverage; narrower scopes and unsatisfied conditions still defeat applicability.",
+    "ui": "Keep existing clarification/country-only action; add explicit intended-locality confirmation with clear intent-only limits. Display status only from actual committed search_scope. Shared country/town/postcode editing resets confirmation without submitting.",
+    "fixture": "One new explicitly fictional provider-stated countrywide repair alternative/evidence version; distinct IDs, explicit source quote and fixed synthetic clock. Old CH fixtures/evidence are unchanged.",
+    "architecture": "Update only current implementation description; append owner-authorized bounded 5S country-reference reuse in ADR-005; record one concise TASKS result."
+  },
+  "red_green_refactor": {
+    "rule_red": "3 failed / 4 already passed / 37 deselected. Failures exposed ordinary-CH coverage inference and missing normalized named-scope comparison. Earlier partial-filter run (1 failed/1 passed) retained separately.",
+    "rule_green": "8 passed / 36 deselected, including existing independently unambiguous named-scope regression.",
+    "api_red": "4 failed / 1 existing unsaved-clarification pass / 50 deselected: confirmed continuation still clarified instead of saving an actual outcome.",
+    "api_green": "5 passed / 50 deselected.",
+    "browser_red": "Existing CH baseline passed; the new actual journey failed at absent intent-only explanation/action after real unsaved clarification. Feature RED, not setup failure.",
+    "browser_green": "5 passed: CH baseline, one new explicit-confirmation journey, existing country-only continuation, uncertain-attempt country edit, committed lost-response recovery.",
+    "refactor": "Reuse existing submission capture/persistence/projection paths and existing scope checks. Isolate the new stronger synthetic evidence in one helper rather than changing old evidence. Final API/browser runs verify the final shared handling.",
+    "exact_executed_verification_commands": "commands.json",
+    "directly_affected_regressions": "13 final API passes (43 deselected) plus one separately executed independent textual-locality constraint regression. The final API -k deselected its explicit unit node; the separate pass is not double counted.",
+    "frontend": "lint and TypeScript/Vite build passed; no dependency changes.",
+    "warnings": "Existing Starlette/httpx deprecation warning in API runs. No broad fault, concurrency or multilingual matrix rerun."
+  },
+  "actual_browser_journey": {
+    "prepared_expected_outcome": "fixture-plan.json, recorded before implementation: ordinary CH evidence must yield insufficient_coverage after explicit confirmation.",
+    "baseline_ids": [
+      "d1d37319-0dde-4c73-b558-526db2693ed1"
+    ],
+    "baseline_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "pre_choice_response": {
+      "status": 200,
+      "outcome": "clarification_required",
+      "persistence": "not_attempted"
+    },
+    "pre_choice_preservation": "Entire existing DB view unchanged, including prior rows/projections/options/associations/source versions/review dates; 1/2/2 remains 1/2/2.",
+    "confirmed_request_id": "a633b133-9864-4fef-913e-a7db1bc45e8c",
+    "confirmed_response": {
+      "status": 201,
+      "outcome": "insufficient_coverage",
+      "persistence": "saved",
+      "assessment_time": "2026-10-15T10:00:00+00:00",
+      "limitation": "geographic_applicability_unverified"
+    },
+    "after_counts": {
+      "search_request": 2,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "deltas": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "comparison_POST_counts_after_clarification_confirmation_edit": [
+      1,
+      2,
+      2
+    ],
+    "observations": {
+      "no_saved_rows_before_explicit_confirmation": true,
+      "confirmation_uses_new_key_and_proof_with_unchanged_text_raw_locality_and_language": true,
+      "original_no_replacement_requirement_and_span_provenance_preserved": true,
+      "raw_locality_and_normalized_leading_zero_postcode_retained_separately": true,
+      "saved_status_comes_from_actual_committed_projection": true,
+      "final_locality_edit_clears_confirmation_presentation_without_submitting": true,
+      "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+      "no_raw_key_proof_digest_header_binding_or_complete_captured_request_recorded": true
+    },
+    "full_safe_evidence": "build/uc001-priority5s-locality-confirmation/browser-green/saved-comparison-explicit--2ad39-ithout-unsupported-coverage/confirmed-locality-evidence.json",
+    "test_composition": "Actual React -> FastAPI -> application/domain -> SQLite with approved real country catalogue and prepared synthetic interpretation/alternative evidence; no final qualification/HTTP/persistence stub or response interception."
+  },
+  "applicability_evidence": {
+    "negative": "Confirmation alone does not make ordinary CH scope or matching ambiguous town text sufficient. Explicit countrywide marker does not defeat a narrower locality scope or unsupported condition.",
+    "positive": "New fictional explicit countrywide repair evidence can qualify through actual rules/API/atomic persistence. One comparison option and evidence association saved.",
+    "positive_request_id": "ddf70dc4-3ab4-448d-9f12-8cde579c6786",
+    "positive_counts": {
+      "search_request": 1,
+      "request_alternative": 1,
+      "request_alternative_evidence": 1
+    },
+    "independent_text_constraint_negative_request_id": "00e4215a-58e3-439e-b249-f9a2728567d8",
+    "independent_text_constraint_negative_counts": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "independent_text_requirement": "The separately expressed locality:Genève requirement remains essential and unsupported by a bare countrywide applicability assertion; actual result is saved insufficient_coverage, not optional unknown.",
+    "provenance": "Original no_replacement text/span 18..38 and language context preserved in new API/browser checks. Separate textual locality constraint/provenance checked by focused fixture and existing constraint regression.",
+    "limitations": "Synthetic applicability flags/scopes and fixed freshness metadata do not verify a real locality, provider, delivery/service availability, price or qualified linguistic approval. Prepared positive fixture is used in focused API/rule checks, not substituted into the browser outcome.",
+    "actual_safe_projections_counts_and_provenance": "scenario-results.json"
+  },
+  "security_and_recovery": {
+    "checked_cases": [
+      "Changed raw locality under same key/proof returns 409, not a different saved request.",
+      "New provided-choice changed locality returns unsaved clarification.",
+      "Confirmed invalid AN country returns 422 without a save.",
+      "Existing correctly owned unchanged committed request recovers with 200 acknowledgement even when current reference/interpreter would raise if called; counts unchanged.",
+      "Existing lost-HTTP browser recovery and country-edit-after-uncertainty regressions pass."
+    ],
+    "limits": "No new fault/race/disclosure matrix; existing ownership/payload checks and saved recovery path are unchanged. Browser observes no automatic continuation or edit-triggered POST; only explicit actions create the tested submissions."
+  },
+  "preservation": {
+    "audit": "preservation-audit.json",
+    "baseline": "preservation-baseline.json",
+    "files_checked": 771,
+    "unchanged": 762,
+    "prior_evidence_files_unchanged": 478,
+    "all_reference_files_unchanged": true,
+    "prior_browser_cases_byte_unchanged": true,
+    "existing_API_file_prefix_unchanged": true,
+    "dated_TASKS_history_preserved": true,
+    "source_dependency_normal_app_configuration": "Normal app.main, API, SQLite store, country loader, package/dependency files and Playwright configuration are unchanged this slice; protected baseline hashes retain previous uncommitted state.",
+    "no_raw_credentials_or_traces": "Final artifacts have no raw captured key/proof/digest/header/binding/full request fields and no trace/HAR. Test credentials and local private test databases are not exported.",
+    "owned_services": "owned-services.json: ports 8011 and 5175 closed after Playwright exit.",
+    "peer_review": "Read-only application/domain/architecture and UI/browser evidence reviews found no material gaps; no additional runs or scope expansion."
+  },
+  "git": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "unchanged": true,
+    "status": "git-status.txt",
+    "status_entry_lines_identical_to_initial_snapshot": true,
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "evidence": "git-diff-check.txt",
+      "only_issue": "Existing docs/TASKS.md trailing whitespace line moved from 2035 to 2076; exact original bytes preserved. No new whitespace issues."
+    },
+    "actions": "No staging, commits, push, merge, reset, branch change, CI/CD or deployment."
+  },
+  "remaining_and_stop": [
+    "Human review of this bounded 5S result is required before further implementation.",
+    "Factual locality matching, reference acquisition and the full O-1 malformed/mismatch/ambiguity matrix remain unimplemented/unaccepted.",
+    "Only the demonstrated explicit-intent branch and safeguards are credited; Priority 5, increment 1 and DEVELOP remain incomplete, as do partial Priorities 3/4.",
+    "No real knowledge/rendering activation, models/detectors/experiments, held-out access, linguistic/TL-03 acceptance, research, UC-003 or Priority 6. DE/FR/IT/EN and Resolena-controlled processing remain preserved.",
+    "Approved country release reuse remains bounded to this isolated development/test continuation; no production approval. Normal app.main stays unconfigured; real drafts remain inactive and all interpreter experiments closed."
+  ]
+}

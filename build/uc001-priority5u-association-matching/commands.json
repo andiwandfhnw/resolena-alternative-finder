@@ -1,0 +1,211 @@
+{
+  "verification_commands": [
+    {
+      "check": "Reference port/loader RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/locality-reference-red tests/unit/test_locality_reference.py 2>&1 | tee build/uc001-priority5u-association-matching/locality-reference-red.txt",
+      "exit_code": 2,
+      "result": "1 collection error: new application port missing; preparation/implementation gap, not production defect.",
+      "evidence": "locality-reference-red.txt"
+    },
+    {
+      "check": "Approved preparation RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/approved-preparation-red tests/integration/test_locality_reference_manifest.py::test_approved_release_retains_original_draft_bytes_and_records_dated_development_approval 2>&1 | tee build/uc001-priority5u-association-matching/approved-preparation-red.txt",
+      "exit_code": 1,
+      "result": "1 failed: --approved-release not yet supported.",
+      "evidence": "approved-preparation-red.txt"
+    },
+    {
+      "check": "Approved preparation GREEN and directly affected draft regression",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/approved-preparation-green tests/integration/test_locality_reference_manifest.py::test_approved_release_retains_original_draft_bytes_and_records_dated_development_approval tests/integration/test_locality_reference_manifest.py::test_pinned_preparation_is_inactive_traceable_and_reproduces_exactly 2>&1 | tee build/uc001-priority5u-association-matching/approved-preparation-green.txt",
+      "exit_code": 0,
+      "result": "2 passed in 1.18s.",
+      "evidence": "approved-preparation-green.txt"
+    },
+    {
+      "check": "Reference/matching/selection GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/locality-reference-green tests/unit/test_locality_reference.py 2>&1 | tee build/uc001-priority5u-association-matching/locality-reference-green.txt",
+      "exit_code": 0,
+      "result": "29 passed in 1.27s.",
+      "evidence": "locality-reference-green.txt"
+    },
+    {
+      "check": "Initial API missing-adapter RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/api-red tests/integration/test_saved_comparison.py -k 'exact_locality_association or multiple_reference_associations or selected_association_is_checked or missing_or_out_of_scope or broken_locality_loading or matched_association_recovery or matched_reference_does_not' 2>&1 | tee build/uc001-priority5u-association-matching/api-red.txt",
+      "exit_code": 1,
+      "result": "16 failed,55deselected: new infrastructure adapter missing.",
+      "evidence": "api-red.txt"
+    },
+    {
+      "check": "API behavior RED after port/loader available",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/api-policy-red tests/integration/test_saved_comparison.py -k 'exact_locality_association or multiple_reference_associations or selected_association_is_checked or missing_or_out_of_scope or broken_locality_loading or matched_association_recovery or matched_reference_does_not' 2>&1 | tee build/uc001-priority5u-association-matching/api-policy-red.txt",
+      "exit_code": 1,
+      "result": "16 failed,55deselected in2.88s: old policy still clarified instead of matching/saving or validating selections.",
+      "evidence": "api-policy-red.txt"
+    },
+    {
+      "check": "First API GREEN attempt",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/api-green tests/integration/test_saved_comparison.py -k 'exact_locality_association or multiple_reference_associations or selected_association_is_checked or missing_or_out_of_scope or broken_locality_loading or matched_association_recovery or matched_reference_does_not' 2>&1 | tee build/uc001-priority5u-association-matching/api-green.txt",
+      "exit_code": 1,
+      "result": "13 passed,3 failed,55deselected in3.03s: test substring assertion incorrectly matched associations inside release ID; not three product defects.",
+      "evidence": "api-green.txt"
+    },
+    {
+      "check": "Final API and directly affected regressions",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/api-final tests/integration/test_saved_comparison.py -k 'exact_locality_association or multiple_reference_associations or selected_association_is_checked or missing_or_out_of_scope or broken_locality_loading or matched_association_recovery or matched_reference_does_not or unavailable_locality_reference_requires or country_only_normalizes or country_only_fallback_preserves or locality_unavailability_does_not_conceal or checked_recovery_precedes_country or approved_country_membership or explicit_locality_confirmation or source_backed_countrywide_fixture or confirmed_locality_edits' 2>&1 | tee build/uc001-priority5u-association-matching/api-final.txt",
+      "exit_code": 0,
+      "result": "29 passed,42deselected in2.92s (16new,13affectedexisting).",
+      "evidence": "api-final.txt"
+    },
+    {
+      "check": "Independent text constraint regression",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5u-nvwrc29y/constraint-regression tests/unit/test_language_policy.py::test_explicit_textual_locality_constraint_remains_essential_independently_of_location_fields 2>&1 | tee build/uc001-priority5u-association-matching/constraint-regression.txt",
+      "exit_code": 0,
+      "result": "1 passed in0.76s.",
+      "evidence": "constraint-regression.txt"
+    },
+    {
+      "check": "Browser feature RED",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5u-matching-red.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-red.json npx playwright test --grep 'browser displays exactly|pinned reference association' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-red --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-red.txt",
+      "exit_code": 1,
+      "result": "1 baseline passed,2 new failed in8.9s; actual old unavailable clarification instead of match/ambiguity.",
+      "evidence": "browser-red.txt"
+    },
+    {
+      "check": "Initial normal-reference browser GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5u-matching-green.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-green.json npx playwright test --grep 'browser displays exactly|pinned reference association|lost HTTP response after atomic commit' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-green --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-green.txt",
+      "exit_code": 0,
+      "result": "4 passed in10.0s.",
+      "evidence": "browser-green.txt"
+    },
+    {
+      "check": "Initial explicit absent-reference regressions",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_TEST_LOCALITY_REFERENCE_UNAVAILABLE=1 RESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5u-unavailable-regressions.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-unavailable-regressions.json npx playwright test --grep 'browser displays exactly|explicit locality confirmation saves|unavailable locality requires explicit country-only|direct new intent after uncertain save: country_edit' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-unavailable-regressions --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-unavailable-regressions.txt",
+      "exit_code": 0,
+      "result": "4 passed in9.8s under genuinely absent port.",
+      "evidence": "browser-unavailable-regressions.txt"
+    },
+    {
+      "check": "Default mixed-run composition RED",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5u-runner-composition-red.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red.json npx playwright test --grep 'browser displays exactly|explicit locality confirmation saves|unavailable locality requires explicit country-only' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-red.txt",
+      "exit_code": 1,
+      "result": "1 baseline passed,2 old unavailable cases failed in23.9s; matching-capable composition returned unknown. Harness mismatch, not weak assertions.",
+      "evidence": "browser-composition-red.txt"
+    },
+    {
+      "check": "Final mixed ordinary-runner GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5u-composition-green.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green.json npx playwright test --grep 'browser displays exactly|pinned reference association|explicit locality confirmation saves|unavailable locality requires explicit country-only|direct new intent after uncertain save: country_edit|lost HTTP response after atomic commit' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green.txt",
+      "exit_code": 0,
+      "result": "7 passed in13.7s:2new+5existing; per-case true absent-port composition for original two cases.",
+      "evidence": "browser-composition-green.txt"
+    },
+    {
+      "check": "Frontend lint: Initial before credit review",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5u-association-matching/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-lint-initial.txt"
+    },
+    {
+      "check": "Frontend build: Initial before credit review",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5u-association-matching/frontend-build.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-build-initial.txt"
+    },
+    {
+      "check": "Frontend lint: After source credit, before per-case composition",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5u-association-matching/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-lint-pre-composition.txt"
+    },
+    {
+      "check": "Frontend build: After source credit, before per-case composition",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5u-association-matching/frontend-build.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-build-pre-composition.txt"
+    },
+    {
+      "check": "Frontend lint: Final after per-case composition",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5u-association-matching/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-lint.txt"
+    },
+    {
+      "check": "Frontend build: Final after per-case composition",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5u-association-matching/frontend-build.txt",
+      "exit_code": 0,
+      "result": "passed; same command repeated only after directly affected frontend/config changes.",
+      "evidence": "frontend-build.txt"
+    },
+    {
+      "check": "Generate separate approved development release",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": ".venv/bin/python scripts/uc001_locality_reference/prepare.py --source build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip --acquisition build/uc001-priority5t-locality-reference/acquisition.json --source-sha256 0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b --output docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01.json --manifest docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-APPROVAL.json --prepared-at 2026-10-23T17:57:36+00:00 --approved-release",
+      "exit_code": 0,
+      "result": "5716included;0excluded/unresolved/duplicates; exact accepted draft hash retained.",
+      "evidence": "../../docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-APPROVAL.json"
+    },
+    {
+      "check": "git diff --check",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "Only pre-existing TASKS trailing whitespace, now line2168.",
+      "evidence": "git-diff-check.txt"
+    },
+    {
+      "check": "git status --short --branch",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git status --short --branch",
+      "exit_code": 0,
+      "result": "Existing entries retained; new ADR006 appears.",
+      "evidence": "git-status.txt"
+    },
+    {
+      "check": "git rev-parse HEAD",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "result": "Unchanged.",
+      "evidence": "git-head.txt"
+    },
+    {
+      "check": "git branch --show-current",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git branch --show-current",
+      "exit_code": 0,
+      "result": "Unchanged.",
+      "evidence": "git-branch.txt"
+    }
+  ],
+  "notes": [
+    "Exact preparation/test/frontend/Git commands. Ordinary read-only file inspection and JSON receipt writers are not enumerated.",
+    "Initial frontend log paths were copied before reruns, so initial/pre-composition evidence names differ from their original tee path.",
+    "Feature RED, missing-support RED, test-assertion correction and runner-composition RED are distinguished; passing runs are not double-counted as separate new coverage.",
+    "An optional public API-record collector could not find earlier /tmp pytest basetemp directories after continuation. Retained API logs/assertions and final durable browser sidecars are used; no private IDs, credentials or historical evidence reconstructed.",
+    "No reacquisition, browser traces/HAR, broad reliability/language matrix, real interpreter/model, or normal app.main startup."
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "provenance": "Owner-reported facts from chat; not a reconstructed raw Windows file",
+  "reported_date": "2026-10-18",
+  "date_timezone": "Europe/Berlin",
+  "source_version": "uc001-contract-local-1.2.1",
+  "primary_failure": {
+    "stage": "ownership",
+    "reason": "unexpected_owned_process"
+  },
+  "binding_step": "candidate_constraints",
+  "redirector": {
+    "pid": 29444,
+    "created": 134368132924858160
+  },
+  "candidate": {
+    "pid": 53380,
+    "parent_pid": 29444,
+    "created": 134368132924947149,
+    "image": "C:\\Windows\\System32\\conhost.exe"
+  },
+  "observed_job_members": [
+    29444,
+    53380
+  ],
+  "completed_ownership_proof": false,
+  "worker_result_available": false,
+  "cleanup": {
+    "job_closure_confirmed": true,
+    "redirector_exit_confirmed": true,
+    "interpreter_identity": "unavailable",
+    "interpreter_exit": "unavailable"
+  },
+  "supported_defect": "Every non-redirector/non-server member was constrained to the interpreter path; the observed console host was rejected before interpreter identification. The fixed total-member requirement also cannot account for a console helper plus interpreter.",
+  "limits": "No surviving/never-started interpreter or generation count is inferred. Original model attempt and consumed startup allowance unchanged."
+}

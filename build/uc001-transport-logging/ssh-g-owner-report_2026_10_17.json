@@ -1,0 +1,12 @@
+{
+  "provenance": "Owner-supplied textual summary; not an original raw ssh -G JSON receipt; command was not rerun",
+  "date": "2026-10-17",
+  "hostname": "localhost",
+  "user": "vscode",
+  "port": 49189,
+  "addressfamily": "any",
+  "proxycommand": "not emitted",
+  "proxyjump": "not emitted",
+  "boundary": "No emitted proxy directive is evidence against the proposed inherited-proxy hypothesis for this invocation; does not locate broker refusal or prove every future invocation",
+  "actions": "No proxy, IPv4 or SSH configuration override applied"
+}

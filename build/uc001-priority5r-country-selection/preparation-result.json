@@ -1,0 +1,15 @@
+{
+  "approved_output_sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885",
+  "approved_manifest_sha256": "87ed5dfd58104dd4822db0abcf10fc498b9c7f0702124d2261276eb17e59f938",
+  "source_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+  "draft_output_sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343",
+  "byte_identical_reproduction": true,
+  "entries": 250,
+  "counts": {
+    "source_rows": 252,
+    "included": 250,
+    "excluded": 2,
+    "unresolved": 0
+  },
+  "BQ_name_boundary_whitespace_preserved": true
+}

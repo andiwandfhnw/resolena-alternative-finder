@@ -1,0 +1,141 @@
+{
+  "status": "draft",
+  "runtime_use": false,
+  "synthetic": false,
+  "review": {
+    "status": "pending",
+    "reviewer": null,
+    "reviewed_at": null,
+    "owner_approved": false,
+    "activation_approved": false,
+    "basis": "AI preparation and automated structural checks only; all inclusion/exclusion, source-name and release decisions await human review."
+  },
+  "publisher": "GeoNames",
+  "source_reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+  "snapshot_id": "geonames-countryInfo-sha256-c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+  "raw_source": {
+    "path": "build/uc001-priority5q-country-catalogue/source/countryInfo.txt",
+    "sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "bytes": 31690
+  },
+  "source_release": null,
+  "source_publication_date": null,
+  "source_update_date": null,
+  "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+  "date_limit": "No named release or entry validity/publication/update dates supplied in the file. HTTP Last-Modified identifies the resource timestamp only; it is not factual review or per-entry currentness.",
+  "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+  "prepared_at": "2026-10-23T08:43:02+00:00",
+  "acquisition_record": "build/uc001-priority5q-country-catalogue/source/acquisition.json",
+  "documentation": [
+    {
+      "reference": "https://download.geonames.org/export/dump/readme.txt",
+      "resolved_reference": "https://download.geonames.org/export/dump/readme.txt",
+      "HTTP_status": 200,
+      "retrieval_started_at": "2026-10-23T08:36:05.629264+00:00",
+      "retrieved_at": "2026-10-23T08:36:05.700666+00:00",
+      "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 01:46:11 GMT",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 8843,
+      "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+      "file": "readme.txt",
+      "path": "build/uc001-priority5q-country-catalogue/source/readme.txt"
+    },
+    {
+      "reference": "https://creativecommons.org/licenses/by/4.0/",
+      "retrieval_started_at": "2026-10-23T08:36:05.700828+00:00",
+      "retrieved_at": "2026-10-23T08:36:05.744124+00:00",
+      "error": "HTTP Error 403: Forbidden",
+      "file": "cc-by-4.0.html",
+      "path": null
+    }
+  ],
+  "normalized_output": {
+    "path": "docs/reference/COUNTRIES-GEONAMES-DRAFT.json",
+    "sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343",
+    "bytes": 12923,
+    "fields": [
+      "code",
+      "name"
+    ],
+    "order": "source code, ascending"
+  },
+  "counts": {
+    "source_rows": 252,
+    "included": 249,
+    "excluded": 2,
+    "unresolved": 1
+  },
+  "extraction_rules": [
+    "Strict UTF-8 and unchanged 19-column header/rows; ISO column becomes code, Country becomes name.",
+    "Codes must have two uppercase ASCII letters and be unique across all dispositions; names must be nonblank.",
+    "Source names and codes are verbatim, including Unicode and edge whitespace. No translations, aliases or replacement codes.",
+    "All other source-listed country/territory entries are provisional inclusion candidates; no language, alternative/research coverage, population or sovereignty filter.",
+    "AN/CS excluded only with the publisher's matching obsolete-entry notes. XK withheld as unresolved under the publisher's temporary-code note; human decision pending.",
+    "Sort included codes and emit deterministic two-field UTF-8 JSON. Import no spatial, address or other source columns."
+  ],
+  "excluded": [
+    {
+      "code": "CS",
+      "name": "Serbia and Montenegro",
+      "source_line": 301,
+      "reason": "Publisher identifies Serbia and Montenegro as no longer existing.",
+      "support": {
+        "line": 17,
+        "text": "# CS (Serbia and Montenegro) with geonameId = 8505033 no longer exists."
+      }
+    },
+    {
+      "code": "AN",
+      "name": "Netherlands Antilles",
+      "source_line": 302,
+      "reason": "Publisher identifies the Netherlands Antilles as dissolved on 10 October 2010.",
+      "support": {
+        "line": 18,
+        "text": "# AN (the Netherlands Antilles) with geonameId = 8505032 was dissolved on 10 October 2010."
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "code": "XK",
+      "name": "Kosovo",
+      "source_line": 173,
+      "reason": "Publisher labels XK temporary. Human review must decide membership under the current-country/territory policy; no replacement or ISO status is inferred.",
+      "support": {
+        "line": 13,
+        "text": "# The countrycode XK temporarily stands for Kosvo:"
+      }
+    }
+  ],
+  "preserved_edge_whitespace": [
+    {
+      "code": "BQ",
+      "source_line": 80
+    }
+  ],
+  "attribution": {
+    "credit": "Country code/name data derived from GeoNames countryInfo.",
+    "source_link": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "license": "CC BY 4.0",
+    "license_link": "https://creativecommons.org/licenses/by/4.0/",
+    "license_basis": {
+      "path": "build/uc001-priority5q-country-catalogue/source/readme.txt",
+      "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+      "reference": "https://download.geonames.org/export/dump/readme.txt"
+    },
+    "requirements": "Retain appropriate credit, source/license links and modification notice; do not imply endorsement or add restrictions. Keep this manifest with the extract.",
+    "changes": "Selected ISO/Country fields, sorted codes and applied the explicit excluded/unresolved ledger. Source names unchanged.",
+    "disclaimer": "GeoNames supplies data as is, without accuracy, timeliness or completeness warranty."
+  },
+  "limitations": [
+    "Reference membership candidates only; no product availability, delivery, service coverage or user-location inference.",
+    "No guarantee of geopolitical status, universal completeness or per-entry currentness. All entries need human factual/release review.",
+    "Publisher-provided names only; no DE/FR/IT/EN localization or qualified linguistic acceptance.",
+    "No app.main, demo, API, frontend or saved-record integration. Future snapshot replacement and activation require explicit authorization."
+  ],
+  "preparation": {
+    "script": "scripts/uc001_country_catalogue/prepare.py",
+    "script_sha256": "045865bd64468bbf0926b22695aed2563a042997457ed1ae5655d3d1d4f1dabb",
+    "command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output docs/reference/COUNTRIES-GEONAMES-DRAFT.json --manifest docs/reference/COUNTRIES-GEONAMES-MANIFEST.json --prepared-at 2026-10-23T08:43:02+00:00"
+  }
+}

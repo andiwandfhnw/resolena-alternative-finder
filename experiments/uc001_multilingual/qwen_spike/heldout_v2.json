@@ -1,0 +1,1043 @@
+{
+  "created_before_model_evaluation": true,
+  "provenance": "AI-authored synthetic cases and semantic expectations; not independently linguistically validated. Separate from old known evaluation/calibration; freeze hash before any tuning. Before any model execution, CONTROL-SHORT-2 was changed from Tasse to Apple: Tasse may be an understandable cup subject, whereas Apple has fruit/company ambiguity. Prior freeze superseded; no output-informed tuning.",
+  "cases": [
+    {
+      "id": "DE-N1",
+      "language": "de",
+      "text": "Bitte setze meine Kaffeemaschine wieder instand, statt sie zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "subject": "coffee_machine",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Kaffeemaschine",
+          "start": 18,
+          "end": 32
+        },
+        {
+          "quote": "wieder instand",
+          "start": 33,
+          "end": 47
+        },
+        {
+          "quote": "statt sie zu ersetzen",
+          "start": 49,
+          "end": 70
+        }
+      ]
+    },
+    {
+      "id": "DE-N2",
+      "language": "de",
+      "text": "Das Fahrrad soll ersetzt und ausdrücklich nicht repariert werden.",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": "replace",
+        "goals": [],
+        "constraints": {
+          "no_repair": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Fahrrad",
+          "start": 4,
+          "end": 11
+        },
+        {
+          "quote": "ersetzt",
+          "start": 17,
+          "end": 24
+        },
+        {
+          "quote": "nicht repariert",
+          "start": 42,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "id": "DE-N3",
+      "language": "de",
+      "text": "Ich will günstiger streamen, ohne die Bildqualität zu senken; maximal 12 EUR pro Monat.",
+      "expected": {
+        "status": "understood",
+        "subject": "streaming",
+        "action": "reduce",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "preserve_quality": "true",
+          "budget": "12 EUR/month"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "günstiger",
+          "start": 9,
+          "end": 18
+        },
+        {
+          "quote": "ohne die Bildqualität zu senken",
+          "start": 29,
+          "end": 60
+        },
+        {
+          "quote": "12 EUR pro Monat",
+          "start": 70,
+          "end": 86
+        }
+      ]
+    },
+    {
+      "id": "DE-N4",
+      "language": "de",
+      "text": "Vergleiche günstigere Smartphones mit mindestens 128 GB Speicher; Budget 200 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "smartphone",
+        "action": "compare",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "storage_min": "128 GB",
+          "budget": "200 CHF"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Smartphones",
+          "start": 22,
+          "end": 33
+        },
+        {
+          "quote": "günstigere",
+          "start": 11,
+          "end": 21
+        },
+        {
+          "quote": "mindestens 128 GB",
+          "start": 38,
+          "end": 55
+        },
+        {
+          "quote": "200 CHF",
+          "start": 73,
+          "end": 80
+        }
+      ]
+    },
+    {
+      "id": "DE-N5",
+      "language": "de",
+      "text": "Repariere den Staubsauger für höchstens 49,90 CHF; Lieferkosten sind davon ausgeschlossen.",
+      "expected": {
+        "status": "understood",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "budget": "49.90 CHF",
+          "cost_exclusion": "delivery"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Staubsauger",
+          "start": 14,
+          "end": 25
+        },
+        {
+          "quote": "höchstens 49,90 CHF",
+          "start": 30,
+          "end": 49
+        },
+        {
+          "quote": "Lieferkosten sind davon ausgeschlossen",
+          "start": 51,
+          "end": 89
+        }
+      ]
+    },
+    {
+      "id": "DE-N6",
+      "language": "de",
+      "text": "Ich möchte mit einem wiederverwendbaren Becher Müll reduzieren, ohne neue Geräte zu kaufen.",
+      "expected": {
+        "status": "understood",
+        "subject": "cup",
+        "action": "reuse",
+        "goals": [
+          "reduce_waste"
+        ],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "wiederverwendbaren Becher",
+          "start": 21,
+          "end": 46
+        },
+        {
+          "quote": "Müll reduzieren",
+          "start": 47,
+          "end": 62
+        },
+        {
+          "quote": "ohne neue Geräte zu kaufen",
+          "start": 64,
+          "end": 90
+        }
+      ]
+    },
+    {
+      "id": "FR-N1",
+      "language": "fr",
+      "text": "Pourriez-vous remettre ma cafetière en état plutôt que la remplacer ?",
+      "expected": {
+        "status": "understood",
+        "subject": "coffee_machine",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "cafetière",
+          "start": 26,
+          "end": 35
+        },
+        {
+          "quote": "remettre",
+          "start": 14,
+          "end": 22
+        },
+        {
+          "quote": "plutôt que la remplacer",
+          "start": 44,
+          "end": 67
+        }
+      ]
+    },
+    {
+      "id": "FR-N2",
+      "language": "fr",
+      "text": "Il faut remplacer le vélo et surtout ne pas le réparer.",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": "replace",
+        "goals": [],
+        "constraints": {
+          "no_repair": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "remplacer le vélo",
+          "start": 8,
+          "end": 25
+        },
+        {
+          "quote": "ne pas le réparer",
+          "start": 37,
+          "end": 54
+        }
+      ]
+    },
+    {
+      "id": "FR-N3",
+      "language": "fr",
+      "text": "Je veux dépenser moins pour le streaming sans dégrader la qualité d'image, avec au maximum 12 EUR par mois.",
+      "expected": {
+        "status": "understood",
+        "subject": "streaming",
+        "action": "reduce",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "preserve_quality": "true",
+          "budget": "12 EUR/month"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "dépenser moins",
+          "start": 8,
+          "end": 22
+        },
+        {
+          "quote": "sans dégrader la qualité d'image",
+          "start": 41,
+          "end": 73
+        },
+        {
+          "quote": "12 EUR par mois",
+          "start": 91,
+          "end": 106
+        }
+      ]
+    },
+    {
+      "id": "FR-N4",
+      "language": "fr",
+      "text": "Compare des smartphones moins chers avec au moins 128 Go de stockage; budget 200 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "smartphone",
+        "action": "compare",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "storage_min": "128 GB",
+          "budget": "200 CHF"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "smartphones",
+          "start": 12,
+          "end": 23
+        },
+        {
+          "quote": "moins chers",
+          "start": 24,
+          "end": 35
+        },
+        {
+          "quote": "au moins 128 Go",
+          "start": 41,
+          "end": 56
+        },
+        {
+          "quote": "200 CHF",
+          "start": 77,
+          "end": 84
+        }
+      ]
+    },
+    {
+      "id": "FR-N5",
+      "language": "fr",
+      "text": "Répare l'aspirateur pour 49,90 CHF maximum; les frais de livraison sont exclus de ce montant.",
+      "expected": {
+        "status": "understood",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "budget": "49.90 CHF",
+          "cost_exclusion": "delivery"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "aspirateur",
+          "start": 9,
+          "end": 19
+        },
+        {
+          "quote": "49,90 CHF",
+          "start": 25,
+          "end": 34
+        },
+        {
+          "quote": "frais de livraison sont exclus",
+          "start": 48,
+          "end": 78
+        }
+      ]
+    },
+    {
+      "id": "FR-N6",
+      "language": "fr",
+      "text": "Je souhaite réduire les déchets avec une tasse réutilisable, sans acheter de nouveaux appareils.",
+      "expected": {
+        "status": "understood",
+        "subject": "cup",
+        "action": "reuse",
+        "goals": [
+          "reduce_waste"
+        ],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "réduire les déchets",
+          "start": 12,
+          "end": 31
+        },
+        {
+          "quote": "tasse réutilisable",
+          "start": 41,
+          "end": 59
+        },
+        {
+          "quote": "sans acheter de nouveaux appareils",
+          "start": 61,
+          "end": 95
+        }
+      ]
+    },
+    {
+      "id": "IT-N1",
+      "language": "it",
+      "text": "Potresti rimettere in funzione la mia macchina del caffè anziché sostituirla?",
+      "expected": {
+        "status": "understood",
+        "subject": "coffee_machine",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "macchina del caffè",
+          "start": 38,
+          "end": 56
+        },
+        {
+          "quote": "rimettere in funzione",
+          "start": 9,
+          "end": 30
+        },
+        {
+          "quote": "anziché sostituirla",
+          "start": 57,
+          "end": 76
+        }
+      ]
+    },
+    {
+      "id": "IT-N2",
+      "language": "it",
+      "text": "La bicicletta va sostituita, non riparata.",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": "replace",
+        "goals": [],
+        "constraints": {
+          "no_repair": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "bicicletta",
+          "start": 3,
+          "end": 13
+        },
+        {
+          "quote": "sostituita",
+          "start": 17,
+          "end": 27
+        },
+        {
+          "quote": "non riparata",
+          "start": 29,
+          "end": 41
+        }
+      ]
+    },
+    {
+      "id": "IT-N3",
+      "language": "it",
+      "text": "Vorrei spendere meno per lo streaming senza peggiorare la qualità dell'immagine, al massimo 12 EUR al mese.",
+      "expected": {
+        "status": "understood",
+        "subject": "streaming",
+        "action": "reduce",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "preserve_quality": "true",
+          "budget": "12 EUR/month"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "spendere meno",
+          "start": 7,
+          "end": 20
+        },
+        {
+          "quote": "senza peggiorare la qualità",
+          "start": 38,
+          "end": 65
+        },
+        {
+          "quote": "12 EUR al mese",
+          "start": 92,
+          "end": 106
+        }
+      ]
+    },
+    {
+      "id": "IT-N4",
+      "language": "it",
+      "text": "Confronta smartphone più economici con almeno 128 GB di memoria; budget 200 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "smartphone",
+        "action": "compare",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "storage_min": "128 GB",
+          "budget": "200 CHF"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Confronta smartphone",
+          "start": 0,
+          "end": 20
+        },
+        {
+          "quote": "più economici",
+          "start": 21,
+          "end": 34
+        },
+        {
+          "quote": "almeno 128 GB",
+          "start": 39,
+          "end": 52
+        },
+        {
+          "quote": "200 CHF",
+          "start": 72,
+          "end": 79
+        }
+      ]
+    },
+    {
+      "id": "IT-N5",
+      "language": "it",
+      "text": "Ripara l'aspirapolvere entro 49,90 CHF; le spese di consegna sono escluse da tale importo.",
+      "expected": {
+        "status": "understood",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "budget": "49.90 CHF",
+          "cost_exclusion": "delivery"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "aspirapolvere",
+          "start": 9,
+          "end": 22
+        },
+        {
+          "quote": "49,90 CHF",
+          "start": 29,
+          "end": 38
+        },
+        {
+          "quote": "spese di consegna sono escluse",
+          "start": 43,
+          "end": 73
+        }
+      ]
+    },
+    {
+      "id": "IT-N6",
+      "language": "it",
+      "text": "Voglio ridurre i rifiuti con una tazza riutilizzabile, senza acquistare nuovi apparecchi.",
+      "expected": {
+        "status": "understood",
+        "subject": "cup",
+        "action": "reuse",
+        "goals": [
+          "reduce_waste"
+        ],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "ridurre i rifiuti",
+          "start": 7,
+          "end": 24
+        },
+        {
+          "quote": "tazza riutilizzabile",
+          "start": 33,
+          "end": 53
+        },
+        {
+          "quote": "senza acquistare nuovi apparecchi",
+          "start": 55,
+          "end": 88
+        }
+      ]
+    },
+    {
+      "id": "EN-N1",
+      "language": "en",
+      "text": "Could you get my coffee maker working again rather than replace it?",
+      "expected": {
+        "status": "understood",
+        "subject": "coffee_machine",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "coffee maker",
+          "start": 17,
+          "end": 29
+        },
+        {
+          "quote": "working again",
+          "start": 30,
+          "end": 43
+        },
+        {
+          "quote": "rather than replace",
+          "start": 44,
+          "end": 63
+        }
+      ]
+    },
+    {
+      "id": "EN-N2",
+      "language": "en",
+      "text": "Replace the bicycle; I explicitly do not want it repaired.",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": "replace",
+        "goals": [],
+        "constraints": {
+          "no_repair": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Replace the bicycle",
+          "start": 0,
+          "end": 19
+        },
+        {
+          "quote": "do not want it repaired",
+          "start": 34,
+          "end": 57
+        }
+      ]
+    },
+    {
+      "id": "EN-N3",
+      "language": "en",
+      "text": "I want to spend less on streaming without lowering picture quality, at most 12 EUR per month.",
+      "expected": {
+        "status": "understood",
+        "subject": "streaming",
+        "action": "reduce",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "preserve_quality": "true",
+          "budget": "12 EUR/month"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "spend less",
+          "start": 10,
+          "end": 20
+        },
+        {
+          "quote": "without lowering picture quality",
+          "start": 34,
+          "end": 66
+        },
+        {
+          "quote": "12 EUR per month",
+          "start": 76,
+          "end": 92
+        }
+      ]
+    },
+    {
+      "id": "EN-N4",
+      "language": "en",
+      "text": "Compare cheaper smartphones with at least 128 GB storage; budget 200 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "smartphone",
+        "action": "compare",
+        "goals": [
+          "cheaper"
+        ],
+        "constraints": {
+          "storage_min": "128 GB",
+          "budget": "200 CHF"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "smartphones",
+          "start": 16,
+          "end": 27
+        },
+        {
+          "quote": "cheaper",
+          "start": 8,
+          "end": 15
+        },
+        {
+          "quote": "at least 128 GB",
+          "start": 33,
+          "end": 48
+        },
+        {
+          "quote": "200 CHF",
+          "start": 65,
+          "end": 72
+        }
+      ]
+    },
+    {
+      "id": "EN-N5",
+      "language": "en",
+      "text": "Repair the vacuum for at most 49.90 CHF; delivery charges are excluded from that amount.",
+      "expected": {
+        "status": "understood",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "budget": "49.90 CHF",
+          "cost_exclusion": "delivery"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "vacuum",
+          "start": 11,
+          "end": 17
+        },
+        {
+          "quote": "49.90 CHF",
+          "start": 30,
+          "end": 39
+        },
+        {
+          "quote": "delivery charges are excluded",
+          "start": 41,
+          "end": 70
+        }
+      ]
+    },
+    {
+      "id": "EN-N6",
+      "language": "en",
+      "text": "I'd like to reduce waste using a reusable cup, without purchasing new appliances.",
+      "expected": {
+        "status": "understood",
+        "subject": "cup",
+        "action": "reuse",
+        "goals": [
+          "reduce_waste"
+        ],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "reduce waste",
+          "start": 12,
+          "end": 24
+        },
+        {
+          "quote": "reusable cup",
+          "start": 33,
+          "end": 45
+        },
+        {
+          "quote": "without purchasing new appliances",
+          "start": 47,
+          "end": 80
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-MIX-1",
+      "language": "mixed",
+      "text": "Please repair ma cafetière, sans la remplacer; budget 40 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "coffee_machine",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true",
+          "budget": "40 CHF"
+        }
+      },
+      "context": {
+        "browser": "en"
+      },
+      "expected_spans": [
+        {
+          "quote": "repair",
+          "start": 7,
+          "end": 13
+        },
+        {
+          "quote": "cafetière",
+          "start": 17,
+          "end": 26
+        },
+        {
+          "quote": "sans la remplacer",
+          "start": 28,
+          "end": 45
+        },
+        {
+          "quote": "40 CHF",
+          "start": 54,
+          "end": 60
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-MIX-2",
+      "language": "mixed",
+      "text": "Riparare la bicicletta, ohne sie zu ersetzen, budget 60 EUR.",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true",
+          "budget": "60 EUR"
+        }
+      },
+      "context": {
+        "preferred": "it"
+      },
+      "expected_spans": [
+        {
+          "quote": "bicicletta",
+          "start": 12,
+          "end": 22
+        },
+        {
+          "quote": "ohne sie zu ersetzen",
+          "start": 24,
+          "end": 44
+        },
+        {
+          "quote": "60 EUR",
+          "start": 53,
+          "end": 59
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-SHORT-1",
+      "language": "ambiguous",
+      "text": "Velo",
+      "expected": {
+        "status": "understood",
+        "subject": "bicycle",
+        "action": null,
+        "goals": [],
+        "constraints": {}
+      },
+      "context": {
+        "preferred": "fr"
+      },
+      "expected_spans": [
+        {
+          "quote": "Velo",
+          "start": 0,
+          "end": 4
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-SHORT-2",
+      "language": "ambiguous",
+      "text": "Apple",
+      "expected": {
+        "status": "clarification"
+      },
+      "context": {
+        "browser": "fr"
+      },
+      "expected_spans": [
+        {
+          "quote": "Apple",
+          "start": 0,
+          "end": 5
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-AMOUNT",
+      "language": "en",
+      "text": "Repair my coffee maker; budget 1,200 CHF.",
+      "expected": {
+        "status": "clarification"
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "coffee maker",
+          "start": 10,
+          "end": 22
+        },
+        {
+          "quote": "1,200 CHF",
+          "start": 31,
+          "end": 40
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-ES",
+      "language": "es",
+      "text": "Quiero reparar mi cafetera sin sustituirla.",
+      "expected": {
+        "status": "unsupported"
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "Quiero",
+          "start": 0,
+          "end": 6
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-DIALECT",
+      "language": "gsw",
+      "text": "Mis Velo sött mer flickä, nöd es neus chaufe.",
+      "expected": {
+        "status": "unsupported"
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "flickä",
+          "start": 18,
+          "end": 24
+        },
+        {
+          "quote": "nöd",
+          "start": 26,
+          "end": 29
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-NAME",
+      "language": "fr",
+      "text": "Réparer mon téléphone Acme X-2 à Genève, sans le remplacer, pour au plus 120 CHF.",
+      "expected": {
+        "status": "understood",
+        "subject": "smartphone",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true",
+          "budget": "120 CHF",
+          "locality": "Genève",
+          "identifier": "Acme X-2"
+        }
+      },
+      "context": {},
+      "expected_spans": [
+        {
+          "quote": "téléphone Acme X-2",
+          "start": 12,
+          "end": 30
+        },
+        {
+          "quote": "Genève",
+          "start": 33,
+          "end": 39
+        },
+        {
+          "quote": "sans le remplacer",
+          "start": 41,
+          "end": 58
+        },
+        {
+          "quote": "120 CHF",
+          "start": 73,
+          "end": 80
+        }
+      ]
+    }
+  ],
+  "repeat_ids": [
+    "DE-N2",
+    "FR-N2",
+    "IT-N2",
+    "EN-N2",
+    "DE-N5",
+    "FR-N5",
+    "IT-N5",
+    "EN-N5"
+  ]
+}

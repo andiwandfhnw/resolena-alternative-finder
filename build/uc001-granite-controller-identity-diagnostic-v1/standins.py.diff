@@ -1,0 +1,152 @@
+--- scripts/uc001_granite_controller/standins.py (before)
++++ scripts/uc001_granite_controller/standins.py
+@@ -130,6 +130,83 @@
+     return edges
+ 
+ 
++def _query_unknown_identity(api, private_job, ref, journal, check_deadline, phase):
++    row = dict(phase=phase, observed_child_pid=ref['pid'],
++               observed_parent_pid=ref['parent']['pid'], parent_kind=ref['parent']['kind'],
++               status='observed_unknown', identity_bound=False, role_accepted=False,
++               snapshot_to_handle_identity='not_established', native_pid=None,
++               creation_time_100ns=None, native_parent_pid=None, in_private_job=None,
++               image_path=None, image_path_status='unavailable', raw_exit_code=None,
++               exit_state='unknown', query_errors=[])
++    check_deadline()
++    try:
++        _stable(api, ref['parent'])
++    except Exception as error:
++        row.update(status='verified_parent_identity_unavailable', error_type=type(error).__name__)
++        journal.record('unknown_child_identity', **row)
++        return
++    if not ref.get('open_attempted'):
++        ref['open_attempted'] = True
++        try:
++            ref['handle'] = api.open_query_process(ref['pid'])
++        except Exception as error:
++            ref['open_failure'] = dict(open_error_winerror=getattr(error, 'winerror', None),
++                                       error_type=type(error).__name__)
++    if ref.get('handle') is None:
++        row.update(ref.get('open_failure', dict(open_error_winerror=None, error_type='NoQueryHandle')))
++        row['status'] = ('not_found_or_invalid_pid_before_binding'
++                         if row['open_error_winerror'] == 87 else 'process_open_failed')
++        journal.record('unknown_child_identity', **row)
++        return
++    handle = ref['handle']
++    try:
++        check_deadline()
++        row['native_pid'] = api.process_id(handle)
++        row['creation_time_100ns'] = api.creation_time(handle)
++        if (row['native_pid'] != ref['pid'] or type(row['creation_time_100ns']) is not int
++                or row['creation_time_100ns'] <= 0):
++            row['status'] = 'identity_changed'
++        elif ref.get('bound_birth', row['creation_time_100ns']) != row['creation_time_100ns']:
++            row['status'] = 'identity_changed'
++        else:
++            ref.setdefault('bound_birth', row['creation_time_100ns'])
++            queries = [('native_parent_pid', api.parent_pid), ('in_private_job', lambda h: api.in_job(h, private_job)),
++                       ('image_path', api.image_path), ('raw_exit_code', api.query_exit_code)]
++            for name, query in queries:
++                check_deadline()
++                try:
++                    row[name] = query(handle)
++                except Exception as error:
++                    row['query_errors'].append(dict(operation=name, error_type=type(error).__name__))
++            row['image_path_status'] = 'observed' if isinstance(row['image_path'], str) and row['image_path'] else 'failed'
++            code = row['raw_exit_code']
++            if type(code) is int and 0 <= code <= 0xFFFFFFFF:
++                row['exit_state'] = 'active_or_exit_code_259' if code == 259 else 'exited'
++            check_deadline()
++            row['revalidated_pid'] = api.process_id(handle)
++            row['revalidated_creation_time_100ns'] = api.creation_time(handle)
++            stable = (row['revalidated_pid'] == ref['pid']
++                      and row['revalidated_creation_time_100ns'] == ref['bound_birth'])
++            row['identity_bound'] = stable and row['native_parent_pid'] == ref['parent']['pid']
++            if not stable:
++                row['status'] = 'identity_changed'
++            elif row['native_parent_pid'] != ref['parent']['pid']:
++                row['status'] = 'parent_mismatch' if row['native_parent_pid'] is not None else 'parent_query_failed'
++            elif type(row['in_private_job']) is not bool:
++                row['status'] = 'job_membership_unknown'
++            elif row['in_private_job']:
++                row['status'] = 'job_membership_mismatch'
++            elif row['image_path_status'] != 'observed':
++                row['status'] = 'path_query_failed'
++            elif row['exit_state'] == 'unknown':
++                row['status'] = 'exit_query_failed'
++            else:
++                row['status'] = 'identity_bound_unknown'
++    except Exception as error:
++        row.update(status='identity_query_failed', error_type=type(error).__name__)
++    journal.record('unknown_child_identity', **row)
++
++
+ def run_ownership_selftest(output, python_exe=sys.executable, *, job_factory=None,
+                            popen_factory=subprocess.Popen, clock=time.monotonic,
+                            sleep=time.sleep, timeout_seconds=20):
+@@ -148,6 +225,7 @@
+     job, unrelated, worker = None, None, None
+     outside = []
+     owned = []
++    unknown = {}
+     outside_shape_verified = False
+     expired, watchdog_stop, terminated = threading.Event(), threading.Event(), threading.Event()
+     terminate_lock = threading.Lock()
+@@ -203,6 +281,12 @@
+         check_deadline()
+         launcher, interpreter = outside
+         edges = _observe_scoped_edges(job.api, outside, min(1.0, deadline-clock()), journal, clock)
++        parents = {ref['pid']: ref for ref in outside if ref.get('verified')}
++        for child, parent in sorted(edges - {(interpreter['pid'], launcher['pid'])}):
++            check_deadline()
++            ref = unknown.setdefault(child, dict(pid=child, parent=parents[parent]))
++            ref['parent'] = parents[parent]
++            _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline, 'scoped_observation')
+         if edges != {(interpreter['pid'], launcher['pid'])}:
+             raise StandinFailure('unknown additional unrelated process')
+         for ref in outside:
+@@ -325,6 +409,14 @@
+         failure('controller_interruption' if isinstance(error, KeyboardInterrupt)
+                 else type(error).__name__ + ': ' + str(error))
+     finally:
++        for ref in unknown.values():
++            if ref.get('handle') is not None:
++                try:
++                    _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline,
++                                            'before_private_job_cleanup')
++                except BaseException as error:
++                    failure('unknown identity diagnostic revalidation failed')
++                    result['cleanup_errors'].append(str(error))
+         try:
+             stop_job()
+             record('private_job_termination_requested')
+@@ -363,6 +455,14 @@
+                     failure('both unrelated identities did not survive private-job termination')
+             except BaseException as error:
+                 failure(str(error))
++            for ref in unknown.values():
++                if ref.get('handle') is not None:
++                    try:
++                        _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline,
++                                                'before_unrelated_cleanup')
++                    except BaseException as error:
++                        failure('unknown identity diagnostic revalidation failed')
++                        result['cleanup_errors'].append(str(error))
+             stop_outside()
+             waiting = True
+             while job is not None and waiting:
+@@ -404,6 +504,14 @@
+                     job.close()
+                 except BaseException as error:
+                     failure('private job handle cleanup failed')
++                    result['cleanup_errors'].append(str(error))
++        for ref in unknown.values():
++            if ref.get('handle') is not None:
++                try:
++                    job.api.close_handle(ref['handle'])
++                    record('unknown_query_handle_closed', pid=ref['pid'], termination_requested=False)
++                except BaseException as error:
++                    failure('unknown query handle close failed')
+                     result['cleanup_errors'].append(str(error))
+         result['deadline_exceeded'] = expired.is_set() or clock() >= deadline
+         result['termination_reason'] = ('ownership self-test deadline' if result['deadline_exceeded']

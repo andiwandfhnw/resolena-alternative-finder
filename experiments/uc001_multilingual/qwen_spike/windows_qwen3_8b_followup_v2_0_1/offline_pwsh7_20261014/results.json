@@ -1,0 +1,53 @@
+{
+  "classification": "Isolated offline PowerShell 7 regressions; no inference; no real process lookup/start/stop",
+  "utc": "2026-10-14T19:46:50.0282457Z",
+  "version": "7.6.7",
+  "edition": "Core",
+  "platform": "Unix",
+  "os": "Debian GNU/Linux 12 (bookworm)",
+  "freeze_sha256": "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+  "functions_loaded_from_frozen_AST": [
+    "Test-OffloadText",
+    "Get-OwnedLiveProcess"
+  ],
+  "frozen_Windows_regression_body_reused": true,
+  "parsed_scripts": [
+    "Base.ps1",
+    "Close.ps1",
+    "Common.ps1",
+    "Preflight.ps1",
+    "Run.ps1",
+    "Test-Harness.ps1",
+    "Test-Protocol.ps1",
+    "Watchdog.ps1",
+    "fixtures/Offload-original.ps1"
+  ],
+  "passed": [
+    "original-Groups-regression",
+    "recorded-37-of-37",
+    "missing-layers",
+    "incomplete-layers",
+    "zero-layers",
+    "missing-device",
+    "missing-model-buffer",
+    "missing-KV-buffer",
+    "zero-KV-buffer",
+    "live-match",
+    "absent",
+    "already-exited",
+    "exit-during-path",
+    "exit-during-starttime",
+    "wrong-PID",
+    "reused-PID",
+    "wrong-executable",
+    "uninspectable-live",
+    "missing-live-path"
+  ],
+  "original_Groups_error_reproduced": true,
+  "Windows_guards_modified_or_called": false,
+  "Windows_5_1_compatibility_verified": false,
+  "Windows_specific_verification": "pending",
+  "inference_requests": 0,
+  "DESIGN": "pending",
+  "linguistic_validation": "pending"
+}

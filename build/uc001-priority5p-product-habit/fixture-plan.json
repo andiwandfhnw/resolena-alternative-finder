@@ -1,0 +1,210 @@
+{
+  "recorded_date": "2026-10-23",
+  "recorded_before_fixture_implementation": true,
+  "scope": "Priority5P only; two exact prepared synthetic examples, no general natural-language/factual acceptance.",
+  "basis": [
+    "UC Intent/Flow1-4 and T11 product/habit examples",
+    "E-EV01 laptop relevance and Swiss delivery; product context secondhand/reuse illustrations",
+    "Existing supported-claim/minimum-content rules; no new ranking/formula/schema"
+  ],
+  "fixed_assessment_and_review_time": "2026-10-15T10:00:00+00:00",
+  "location": {
+    "country_code": "CH"
+  },
+  "examples": [
+    {
+      "kind": "product",
+      "text": "Find a secondhand laptop",
+      "subject": "laptop",
+      "actions": [],
+      "constraints": [
+        {
+          "value": "secondhand",
+          "quote": "secondhand",
+          "start": 7,
+          "end": 17
+        }
+      ],
+      "subject_span": {
+        "quote": "laptop",
+        "start": 18,
+        "end": 24
+      },
+      "goals": [],
+      "budget": null,
+      "baseline": null,
+      "alternative_id": "00000000-0000-4000-8000-000000000510",
+      "evidence_version_id": "30000000-0000-4000-8000-000000000510",
+      "display_name": "Reused laptop (synthetic product)",
+      "scope": {
+        "country_code": "CH"
+      },
+      "claims": {
+        "relevance": "laptop",
+        "applicability": true,
+        "secondhand": true,
+        "financial": {
+          "amount": "240.00",
+          "currency": "CHF",
+          "unit": "secondhand laptop",
+          "period": "once",
+          "basis": "fictional item price",
+          "exclusions": [
+            "delivery",
+            "accessories"
+          ],
+          "charges_known": false
+        }
+      },
+      "claim_kinds": {
+        "relevance": "specification",
+        "applicability": "availability",
+        "secondhand": "specification",
+        "financial": "price"
+      },
+      "source": {
+        "publisher": "Fictional laptop retailer",
+        "reference": "synthetic:secondhand-laptop-v1",
+        "language": "en",
+        "attribution": "retailer-stated",
+        "quote": "Fictional test listing: a secondhand laptop for delivery to CH, CHF 240.00 per secondhand laptop. Delivery and accessories excluded; no real offer or stock claim."
+      },
+      "expected": {
+        "options": 1,
+        "links": 1,
+        "description_contains": [
+          "Fictional",
+          "secondhand laptop",
+          "CH"
+        ],
+        "explanation_contains": [
+          "240.00",
+          "delivery",
+          "accessories",
+          "fictional"
+        ],
+        "financial_amount": "240.00",
+        "unit": "secondhand laptop",
+        "environmental": "unknown",
+        "availability": "unknown",
+        "total_cost": null,
+        "difference": null
+      }
+    },
+    {
+      "kind": "habit",
+      "text": "Refill my existing bottle with potable tap water instead of buying bottled water",
+      "subject": "drinking_water",
+      "actions": [
+        "refill"
+      ],
+      "subject_span": {
+        "quote": "potable tap water",
+        "start": 31,
+        "end": 48
+      },
+      "action_span": {
+        "quote": "Refill",
+        "start": 0,
+        "end": 6
+      },
+      "constraints": [
+        {
+          "value": "existing_bottle",
+          "quote": "my existing bottle",
+          "start": 7,
+          "end": 25
+        },
+        {
+          "value": "potable_tap_water",
+          "quote": "potable tap water",
+          "start": 31,
+          "end": 48
+        },
+        {
+          "value": "avoid_bottled_water",
+          "quote": "instead of buying bottled water",
+          "start": 49,
+          "end": 80,
+          "negation": {
+            "quote": "instead of",
+            "start": 49,
+            "end": 59
+          }
+        }
+      ],
+      "goals": [],
+      "budget": null,
+      "baseline": null,
+      "alternative_id": "00000000-0000-4000-8000-000000000520",
+      "evidence_version_id": "30000000-0000-4000-8000-000000000520",
+      "display_name": "Refill an existing bottle (synthetic habit)",
+      "scope": {
+        "country_code": "CH",
+        "conditions": [
+          "existing_bottle",
+          "potable_tap_water"
+        ]
+      },
+      "claims": {
+        "relevance": "drinking_water",
+        "applicability": true,
+        "action:refill": true,
+        "existing_bottle": true,
+        "potable_tap_water": true,
+        "avoid_bottled_water": true,
+        "financial": {
+          "amount": "0.10",
+          "currency": "CHF",
+          "unit": "refill",
+          "period": "once",
+          "basis": "hypothetical flat charge per refill",
+          "exclusions": [
+            "bottle purchase",
+            "cleaning"
+          ],
+          "charges_known": false
+        }
+      },
+      "claim_kinds": {
+        "relevance": "specification",
+        "applicability": "specification",
+        "action:refill": "specification",
+        "existing_bottle": "specification",
+        "potable_tap_water": "specification",
+        "avoid_bottled_water": "specification",
+        "financial": "price"
+      },
+      "source": {
+        "publisher": "Fictional refill guide",
+        "reference": "synthetic:bottle-refill-habit-v1",
+        "language": "en",
+        "attribution": "provider-stated",
+        "quote": "Fictional habit example in CH: refill an existing bottle with potable tap water instead of buying bottled water, conditional on an existing bottle and potable tap water. Hypothetical flat charge CHF 0.10 per refill; bottle purchase and cleaning excluded. No bottle capacity, local water quality, real tariff or environmental advantage is established."
+      },
+      "expected": {
+        "options": 1,
+        "links": 1,
+        "description_contains": [
+          "Fictional",
+          "existing bottle",
+          "potable tap water"
+        ],
+        "explanation_contains": [
+          "0.10",
+          "flat charge per refill",
+          "bottle purchase",
+          "cleaning",
+          "local tap-water"
+        ],
+        "financial_amount": "0.10",
+        "unit": "refill",
+        "environmental": "unknown",
+        "availability": "unknown",
+        "total_cost": null,
+        "difference": null
+      }
+    }
+  ],
+  "implementation_boundary": "New test-only exact interpreter/knowledge/renderer and minimal demo dispatch/shared seeding. Actual CompareRequest performs language policy, qualification/freshness, rendering validation, ordering, persistence and response construction; normal app.main/real drafts unchanged."
+}

@@ -1,0 +1,145 @@
+{
+  "version": "uc001-contract-local-1",
+  "scope": "Offline implementation and verification only; not live execution",
+  "recorded_utc": "2026-10-17T23:26:32.206585+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local/DeadlineGuard.cs",
+    "scripts/uc001_contract_local/README.md",
+    "scripts/uc001_contract_local/Run-Windows.ps1",
+    "scripts/uc001_contract_local/Test-Offline.ps1",
+    "scripts/uc001_contract_local/capture.py",
+    "scripts/uc001_contract_local/config.json",
+    "scripts/uc001_contract_local/freeze.json",
+    "scripts/uc001_contract_local/replay.py",
+    "tests/unit/test_contract_local.py",
+    "tests/integration/test_contract_local_replay.py",
+    "build/uc001-contract-local/owner-results/windows-setup.owner-pasted.json",
+    "build/uc001-contract-local/owner-results/windows-compatibility.owner-pasted.json",
+    "build/uc001-contract-local/test-results.txt",
+    "build/uc001-contract-local/windows-local-source.zip",
+    "build/uc001-contract-local/verification.json",
+    "build/uc001-contract-local/SHA256SUMS.txt"
+  ],
+  "owner_reported_windows_evidence": {
+    "files": [
+      "build/uc001-contract-local/owner-results/windows-setup.owner-pasted.json",
+      "build/uc001-contract-local/owner-results/windows-compatibility.owner-pasted.json"
+    ],
+    "provenance": "Owner-pasted JSON, preserving supplied fields/escaping; not byte-identical original files. No Windows observation timestamp was supplied.",
+    "reconciliation": "Setup receipt remains compatibility_pending; the separate compatibility receipt establishes the later environment pass only.",
+    "setup_hashes_match_preserved_artifacts": {
+      "manifest_sha256": true,
+      "requirements_sha256": true,
+      "source_zip_sha256": true
+    },
+    "environment": "CPython 3.12.10 x64, pip 25.0.1, 17 pinned dependency versions, frozen schema equal and prior synthetic offline checks passed as reported.",
+    "model_gpu_readiness": false,
+    "semantic_correctness_verified": false
+  },
+  "implementation": [
+    "Unchanged shared adapter/domain/case validation, frozen inputs and v1.3.0 native identity/resource/process/cleanup functions; no second validator or normal app configuration change",
+    "Explicit authenticated logical-port 49188 to Windows localhost:49187 transport injection; proxies/redirects/retries disabled",
+    "Bounded raw request/response bodies before decoding; private incomplete, uninspectable encoded or secret-bearing captures; export scan covers decoded HTTP/JSON-string representations",
+    "One owned Python worker uses the create-once ordered RunBudget; begin/validated/advance handshake prevents another generation before complete shared validation and parent acknowledgment",
+    "Independent managed monotonic timer invokes unchanged native CloseHandle on the same owned kill-on-close job at 90 seconds, even if PowerShell/validation blocks; one close attempt and confirmed owned exits required",
+    "Exact-byte no-network replay, ordered ledger audit, original contract/case checks and explicitly labelled application/policy substitutes; live API/real-adapter cases 1/5/10 deferred",
+    "Windows 512 MiB artifact cap retained; imported captures plus replay output share the existing 512 MiB Codespace cap; no new model/startup/generation allowance"
+  ],
+  "frozen_identity": {
+    "local_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+    "parent_v1_3_0_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "model_runtime_prompt_schema_cases_and_limits": "unchanged; parent source/config/inputs byte-verified"
+  },
+  "tdd": {
+    "red": [
+      {
+        "check": "New focused tests before implementation",
+        "result": "ModuleNotFoundError: scripts.uc001_contract_local"
+      },
+      {
+        "check": "Four independent deadline timer checks before guard implementation",
+        "result": "Failed; required timer behavior absent"
+      },
+      {
+        "check": "Dependency drift",
+        "result": "DID NOT RAISE ValueError before version enforcement"
+      },
+      {
+        "check": "Raw compressed response completeness",
+        "result": "Private/public completeness diverged after later DecodingError"
+      },
+      {
+        "check": "Escaped/compressed/UTF-16 synthetic secret bodies",
+        "result": "DID NOT RAISE before export privacy correction"
+      },
+      {
+        "check": "Combined imported-capture/replay artifact accounting",
+        "result": "Missing shared artifact counter before implementation"
+      },
+      {
+        "check": "Atomic Windows progress and final exit race",
+        "result": "Missing share-delete policy; stale validated state rejected after final worker exit"
+      }
+    ],
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local.py tests/unit/test_llama_decoding.py tests/unit/test_contract_run_controls.py tests/unit/test_execution_monitor.py tests/integration",
+      "passed": 202,
+      "exit_code": 0,
+      "seconds": 59.28,
+      "output": "build/uc001-contract-local/test-results.txt",
+      "warning": "Existing Starlette/httpx deprecation warning; no httpx2 or other dependency acquired"
+    },
+    "actual_launcher_wiring": "Synthetic invocation of actual Invoke-LocalExecution and unchanged v1.3.0 checks/cleanup; fourteen actual guard Arm/Disarm calls asserted, two owned process starts, one job close, failure/cleanup and original-attempt rejection exercised. Not Windows runtime verification."
+  },
+  "codespace_checks": {
+    "python": "3.12.11; owner Windows is separately reported 3.12.10",
+    "powershell": "7.6.7 parsing and synthetic execution, managed timer compilation/callbacks only",
+    "package_extraction_and_shared_only_imports": {
+      "freeze": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+      "cases": 14,
+      "imports": "shared-only"
+    },
+    "protected_pre_existing_files_unchanged": 240,
+    "task_project_preservation": "only scoped insertion; previous bytes retained",
+    "whitespace": "New/changed scope clean; pre-existing TASKS Backlog trailing whitespace retained unchanged"
+  },
+  "package": {
+    "path": "build/uc001-contract-local/windows-local-source.zip",
+    "bytes": 84400,
+    "sha256": "4e3de45cf5dd4f91fa995201782684032b15b0735aa449ecf7df2a8b91ac8916",
+    "files": 37,
+    "contents": "Separate local orchestration and unchanged required v1.3.0/application source only; no model/runtime binaries or dependency wheels"
+  },
+  "download_accounting": {
+    "cap_bytes": 104857600,
+    "owner_reported_existing_cumulative_reserved_bytes": 58011784,
+    "owner_reported_remaining_bytes": 46845816,
+    "new_dependency_or_model_payload_acquired_bytes": 0,
+    "prepared_zip_plus_checksum_transfer_bytes": 86266,
+    "prospective_remaining_after_one_zip_and_checksum_copy_bytes": 46759550,
+    "transfer_status": "Not executed here; owner must charge actual transfers/re-downloads against the existing balance. No reset or credit/refund applied."
+  },
+  "native_effect_disclosure": "Future Windows run compiles retained/new managed C# with Add-Type (possible temporary compiler files), reads DXGI/WDDM/CIM/registry, sets owner/SYSTEM directory ACLs and invokes retained Win32 job/process APIs. Offline tests used synthetic process/measurement objects and managed close callbacks, not native Windows probes.",
+  "remaining_blockers_and_gaps": [
+    "Owner-run model-free verification of the new extracted Windows package remains pending",
+    "Actual qualified DE/FR/IT/EN expectations review bound to this local freeze is required before inference; approval not manufactured",
+    "Separate explicit live-startup/inference authorization remains required; this replaces the original single attempt and cannot restart/reset it",
+    "Fresh retained-asset integrity, adapter/resource headroom, real owned-GPU measurement/allocation, effective context/offload/sampling and native new deadline/cleanup integration remain unverified until authorized Windows execution",
+    "All interpretation suitability/semantic fidelity remains unverified; structural checks cannot detect every omission or prove language understanding",
+    "Replay is a substitute, with no credit for deferred live API/real-adapter cases 1/5/10; English-only rendering remains distinct from input support",
+    "Stopped/incomplete captures remain failure evidence and cannot yield a complete replay pass"
+  ],
+  "handoff": "scripts/uc001_contract_local/README.md: download ZIP/checksums, hash-check, full extraction to a new directory, explicit verified Python --verify-only; stop there",
+  "not_performed": [
+    "Model/runtime execution or inference",
+    "Transport connection or SSH/Support diagnosis",
+    "Dependency installation/acquisition or credential inspection",
+    "Held-out access, language tuning, later priorities, requirements amendments, phase advancement or Git delivery"
+  ]
+}

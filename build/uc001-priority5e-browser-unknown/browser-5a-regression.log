@@ -1,0 +1,22 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep lost HTTP response after atomic commit requires explicit same-submission recovery --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-browser-unknown/browser-5a-regression --reporter=list
+
+[WebServer] INFO:     Started server process [76563]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:76592) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:76618) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:70:5 › lost HTTP response after atomic commit requires explicit same-submission recovery (1.5s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [76563]
+
+  1 passed (5.5s)

@@ -1,0 +1,60 @@
+.....................FF                                                  [100%]
+=================================== FAILURES ===================================
+______ test_watchdog_abort_during_launch_never_resumes_or_retries[create] ______
+
+api = <test_granite_windows_job.FakeApi object at 0x799b67e76960>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_watchdog_abort_during_lau0')
+interruption_point = 'create'
+
+    @pytest.mark.parametrize('interruption_point',['create','assign'])
+    def test_watchdog_abort_during_launch_never_resumes_or_retries(api, tmp_path, interruption_point):
+        job = WindowsJob(api=api)
+        if interruption_point == 'create':
+            original = api.create_suspended
+            def interrupted(*args, **kwargs):
+                job.terminate()
+                return original(*args, **kwargs)
+            api.create_suspended = interrupted
+        else:
+            original = api.assign
+            def interrupted(*args, **kwargs):
+                result = original(*args, **kwargs)
+                job.terminate()
+                return result
+            api.assign = interrupted
+>       with pytest.raises(JobError):
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE JobError
+
+tests/unit/test_granite_windows_job.py:381: Failed
+______ test_watchdog_abort_during_launch_never_resumes_or_retries[assign] ______
+
+api = <test_granite_windows_job.FakeApi object at 0x799b67e7bb30>
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_watchdog_abort_during_lau1')
+interruption_point = 'assign'
+
+    @pytest.mark.parametrize('interruption_point',['create','assign'])
+    def test_watchdog_abort_during_launch_never_resumes_or_retries(api, tmp_path, interruption_point):
+        job = WindowsJob(api=api)
+        if interruption_point == 'create':
+            original = api.create_suspended
+            def interrupted(*args, **kwargs):
+                job.terminate()
+                return original(*args, **kwargs)
+            api.create_suspended = interrupted
+        else:
+            original = api.assign
+            def interrupted(*args, **kwargs):
+                result = original(*args, **kwargs)
+                job.terminate()
+                return result
+            api.assign = interrupted
+>       with pytest.raises(JobError):
+             ^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE JobError
+
+tests/unit/test_granite_windows_job.py:381: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_watchdog_abort_during_launch_never_resumes_or_retries[create]
+FAILED tests/unit/test_granite_windows_job.py::test_watchdog_abort_during_launch_never_resumes_or_retries[assign]
+2 failed, 21 passed in 0.14s

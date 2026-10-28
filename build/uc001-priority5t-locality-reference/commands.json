@@ -1,0 +1,238 @@
+{
+  "verification_commands": [
+    {
+      "check": "Preparation command RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5t-dvl7bu2t/preparation-red tests/integration/test_locality_reference_preparation.py 2>&1 | tee build/uc001-priority5t-locality-reference/preparation-red.txt",
+      "exit_code": 1,
+      "result": "3 failed: standalone preparation command absent; missing new preparation support, not production behavior RED",
+      "evidence": "preparation-red.txt"
+    },
+    {
+      "check": "Parser support RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5t-dvl7bu2t/parser-red tests/unit/test_locality_reference_preparation.py 2>&1 | tee build/uc001-priority5t-locality-reference/parser-red.txt",
+      "exit_code": 2,
+      "result": "1 collection error: scripts.uc001_locality_reference absent; 17 parser cases written but not yet executed",
+      "evidence": "parser-red.txt"
+    },
+    {
+      "check": "First combined collection",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5t-dvl7bu2t/preparation-green tests/integration/test_locality_reference_preparation.py tests/unit/test_locality_reference_preparation.py 2>&1 | tee build/uc001-priority5t-locality-reference/preparation-green.txt",
+      "exit_code": 2,
+      "result": "1 collection error: new test files had the same module basename; setup failure, not parser feature RED",
+      "evidence": "preparation-green.txt"
+    },
+    {
+      "check": "Focused preparation GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5t-dvl7bu2t/preparation-green-final tests/integration/test_locality_reference_manifest.py tests/unit/test_locality_reference_preparation.py 2>&1 | tee build/uc001-priority5t-locality-reference/preparation-green-final.txt",
+      "exit_code": 0,
+      "result": "20 passed in 1.24s (3 command/manifest checks, 17 parser/complete-export checks)",
+      "evidence": "preparation-green-final.txt"
+    },
+    {
+      "check": "Canonical inactive draft preparation",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": ".venv/bin/python scripts/uc001_locality_reference/prepare.py --source build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip --acquisition build/uc001-priority5t-locality-reference/acquisition.json --source-sha256 0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b --output docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json --manifest docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json --prepared-at 2026-10-23T17:24:45.554962+00:00",
+      "exit_code": 0,
+      "result": {
+        "counts": {
+          "duplicate_retained_associations": 0,
+          "duplicate_source_records": 0,
+          "excluded": 0,
+          "included": 5716,
+          "source_records": 5716,
+          "unresolved": 0
+        },
+        "runtime_use": false,
+        "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+        "status": "draft"
+      },
+      "evidence": "preparation-result.txt"
+    },
+    {
+      "check": "git diff --check",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "Only preserved pre-existing TASKS trailing whitespace, now line 2117.",
+      "evidence": "git-diff-check.txt"
+    },
+    {
+      "check": "git status --short --branch",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git status --short --branch",
+      "exit_code": 0,
+      "result": "All prior entries retained; new preparation script directory appears.",
+      "evidence": "git-status.txt"
+    },
+    {
+      "check": "git rev-parse HEAD",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "result": "Unchanged.",
+      "evidence": "git-head.txt"
+    },
+    {
+      "check": "git branch --show-current",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git branch --show-current",
+      "exit_code": 0,
+      "result": "Unchanged.",
+      "evidence": "git-branch.txt"
+    }
+  ],
+  "source_acquisition_calls": [
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:15:51.238717+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/collection.json"
+    },
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz/items', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:15:51.396311+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/items.json"
+    },
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:15:51.499749+00:00",
+      "HTTP_status": null,
+      "result": "Remote end closed connection without response",
+      "evidence": "acquisition.json",
+      "file": "source/product.html"
+    },
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:15:51.624592+00:00",
+      "HTTP_status": null,
+      "result": "Remote end closed connection without response",
+      "evidence": "acquisition.json",
+      "file": "source/product-information-jan2026.pdf"
+    },
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:15:51.820324+00:00",
+      "HTTP_status": null,
+      "result": "Remote end closed connection without response",
+      "evidence": "acquisition.json",
+      "file": "source/terms.html"
+    },
+    {
+      "client": "Python standard-library urllib.request.urlopen",
+      "call": "urllib.request.urlopen('https://data.geo.admin.ch/ch.swisstopo-vd.ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz_2056.csv.zip', timeout=45)",
+      "method": "GET; no request body, credentials or application data",
+      "retrieved_at": "2026-10-23T17:16:08.019270+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/ortschaftenverzeichnis_plz_2056.csv.zip"
+    },
+    {
+      "client": "subprocess.run argv",
+      "argv": [
+        "curl",
+        "--location",
+        "--max-time",
+        "45",
+        "--user-agent",
+        "Mozilla/5.0",
+        "--dump-header",
+        "build/uc001-priority5t-locality-reference/source/product.html.headers",
+        "--output",
+        "build/uc001-priority5t-locality-reference/source/product.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}\n",
+        "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities"
+      ],
+      "shell_equivalent": "curl --location --max-time 45 --user-agent Mozilla/5.0 --dump-header build/uc001-priority5t-locality-reference/source/product.html.headers --output build/uc001-priority5t-locality-reference/source/product.html --write-out '%{http_code}\n%{url_effective}\n' https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+      "retrieved_at": "2026-10-23T17:16:33.550241+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/product.html"
+    },
+    {
+      "client": "subprocess.run argv",
+      "argv": [
+        "curl",
+        "--location",
+        "--max-time",
+        "45",
+        "--user-agent",
+        "Mozilla/5.0",
+        "--dump-header",
+        "build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf.headers",
+        "--output",
+        "build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf",
+        "--write-out",
+        "%{http_code}\n%{url_effective}\n",
+        "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf"
+      ],
+      "shell_equivalent": "curl --location --max-time 45 --user-agent Mozilla/5.0 --dump-header build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf.headers --output build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf --write-out '%{http_code}\n%{url_effective}\n' https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+      "retrieved_at": "2026-10-23T17:16:34.652314+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/product-information-jan2026.pdf"
+    },
+    {
+      "client": "subprocess.run argv",
+      "argv": [
+        "curl",
+        "--location",
+        "--max-time",
+        "45",
+        "--user-agent",
+        "Mozilla/5.0",
+        "--dump-header",
+        "build/uc001-priority5t-locality-reference/source/terms.html.headers",
+        "--output",
+        "build/uc001-priority5t-locality-reference/source/terms.html",
+        "--write-out",
+        "%{http_code}\n%{url_effective}\n",
+        "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices"
+      ],
+      "shell_equivalent": "curl --location --max-time 45 --user-agent Mozilla/5.0 --dump-header build/uc001-priority5t-locality-reference/source/terms.html.headers --output build/uc001-priority5t-locality-reference/source/terms.html --write-out '%{http_code}\n%{url_effective}\n' https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "retrieved_at": "2026-10-23T17:16:35.036663+00:00",
+      "HTTP_status": 200,
+      "result": "acquired exact bytes",
+      "evidence": "acquisition.json",
+      "file": "source/terms.html"
+    }
+  ],
+  "additional_read_only_checks": [
+    {
+      "evidence": "draft-checks.json",
+      "check": "Validate canonical source/member/document/output/script hashes and every source name/postcode association."
+    },
+    {
+      "evidence": "preservation-audit.json",
+      "check": "Compare 845 baseline file hashes, preserved TASKS/ARCH history, source/app/old-reference/evidence bytes and Git state."
+    }
+  ],
+  "notes": [
+    "Historical command paths are exact: the new integration test was renamed from test_locality_reference_preparation.py to test_locality_reference_manifest.py after pytest exposed the duplicate basename. No historical test was renamed.",
+    "Deterministic draft and complete manifest byte reproduction ran twice with identical pinned inputs/parameters in the focused manifest test. No fresh network acquisition is part of preparation.",
+    "Only preparation tests/checks and Git checks ran; no browser, application service, model/detector, matching experiment or broader suite.",
+    "Source-acquisition entries record exact request calls/argv and results; normal read-only inspection commands are not enumerated."
+  ]
+}

@@ -1,0 +1,367 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+_____ test_identity_package_is_complete_hash_bound_and_execution_disabled ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_identity_package_is_compl0')
+
+    def test_identity_package_is_complete_hash_bound_and_execution_disabled(tmp_path):
+>       result=module('build_package').build_package(Path.cwd(),tmp_path/'package',
+               ^^^^^^^^^^^^^^^^^^^^^^^
+            ARTIFACT/'Run-ReadinessCheck.ps1',ARTIFACT/'package-readme.md')
+
+tests/unit/test_granite_proxy_identity_package.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:23: in module
+    spec.loader.exec_module(value)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x79c32bb15e20>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+_________ test_identity_package_does_not_replace_existing_destination __________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_identity_package_does_not0')
+
+    def test_identity_package_does_not_replace_existing_destination(tmp_path):
+        destination=tmp_path/'package';destination.mkdir();(destination/'keep').write_text('retain')
+        with pytest.raises(FileExistsError):
+>           module('build_package').build_package(Path.cwd(),destination,
+            ^^^^^^^^^^^^^^^^^^^^^^^
+                ARTIFACT/'Run-ReadinessCheck.ps1',ARTIFACT/'package-readme.md')
+
+tests/unit/test_granite_proxy_identity_package.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:23: in module
+    spec.loader.exec_module(value)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x79c32bb1d5b0>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+_______ test_readiness_runner_denies_without_future_owner_authorization ________
+
+    def test_readiness_runner_denies_without_future_owner_authorization():
+        pwsh=shutil.which('pwsh');assert pwsh
+        result=subprocess.run([pwsh,'-NoLogo','-NoProfile','-NonInteractive','-File',
+            str(ARTIFACT/'Run-ReadinessCheck.ps1'),'-ExpectedManifestSha256','0'*64],
+            capture_output=True,text=True,timeout=10)
+>       assert result.returncode==1
+E       assert 64 == 1
+E        +  where 64 = CompletedProcess(args=['/usr/bin/pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-File', '/workspaces/resolena-alt...ipt file. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.\n").returncode
+
+tests/unit/test_granite_proxy_identity_package.py:59: AssertionError
+_____ test_readiness_runner_is_syntax_only_and_has_no_native_phase_command _____
+
+    def test_readiness_runner_is_syntax_only_and_has_no_native_phase_command():
+        pwsh=shutil.which('pwsh');assert pwsh
+        path=str(ARTIFACT/'Run-ReadinessCheck.ps1').replace("'","''")
+        script="$errors=$null; $tokens=$null; [void][System.Management.Automation.Language.Parser]::ParseFile('"+path+"',[ref]$tokens,[ref]$errors); if ($errors.Count) { $errors | Out-String | Write-Error; exit 1 }"
+        result=subprocess.run([pwsh,'-NoLogo','-NoProfile','-NonInteractive','-Command',script],capture_output=True,text=True,timeout=10)
+>       assert result.returncode==0,result.stderr
+E       AssertionError: Write-Error: 
+E         Extent                                                  ErrorId       Message
+E         ------                                                  -------       -------   
+E         System.Management.Automation.Language.EmptyScriptExtent FileReadError The file …
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/usr/bin/pwsh', '-NoLogo', '-NoProfile', '-NonInteractive', '-Command', "$errors=$null; $token...         -------       -------   \nSystem.Management.Automation.Language.EmptyScriptExtent FileReadError The file …\n').returncode
+
+tests/unit/test_granite_proxy_identity_package.py:69: AssertionError
+_ test_structural_readiness_imports_only_explicit_worker_controller_and_never_native _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_impo0')
+
+    def test_structural_readiness_imports_only_explicit_worker_controller_and_never_native(tmp_path):
+>       package,manifest_hash=synthetic_package(tmp_path)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:84: in synthetic_package
+    shutil.copyfile(ARTIFACT/'check.py',package/'check.py')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py')
+dst = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_impo0/synthetic-package/check.py')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py'
+
+/usr/local/lib/python3.12/shutil.py:260: FileNotFoundError
+____ test_structural_readiness_rejects_hash_or_schema_gaps[helper_changed] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje0')
+damage = 'helper_changed'
+
+    @pytest.mark.parametrize('damage',['helper_changed','proxy_changed','schema_mismatch'])
+    def test_structural_readiness_rejects_hash_or_schema_gaps(tmp_path,damage):
+>       package,manifest_hash=synthetic_package(tmp_path,controller='PROXY_IDENTITY_SCHEMA = 2\n' if damage=='schema_mismatch' else 'PROXY_IDENTITY_SCHEMA = 1\n')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:84: in synthetic_package
+    shutil.copyfile(ARTIFACT/'check.py',package/'check.py')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py')
+dst = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje0/synthetic-package/check.py')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py'
+
+/usr/local/lib/python3.12/shutil.py:260: FileNotFoundError
+_____ test_structural_readiness_rejects_hash_or_schema_gaps[proxy_changed] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje1')
+damage = 'proxy_changed'
+
+    @pytest.mark.parametrize('damage',['helper_changed','proxy_changed','schema_mismatch'])
+    def test_structural_readiness_rejects_hash_or_schema_gaps(tmp_path,damage):
+>       package,manifest_hash=synthetic_package(tmp_path,controller='PROXY_IDENTITY_SCHEMA = 2\n' if damage=='schema_mismatch' else 'PROXY_IDENTITY_SCHEMA = 1\n')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:84: in synthetic_package
+    shutil.copyfile(ARTIFACT/'check.py',package/'check.py')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py')
+dst = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje1/synthetic-package/check.py')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py'
+
+/usr/local/lib/python3.12/shutil.py:260: FileNotFoundError
+____ test_structural_readiness_rejects_hash_or_schema_gaps[schema_mismatch] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje2')
+damage = 'schema_mismatch'
+
+    @pytest.mark.parametrize('damage',['helper_changed','proxy_changed','schema_mismatch'])
+    def test_structural_readiness_rejects_hash_or_schema_gaps(tmp_path,damage):
+>       package,manifest_hash=synthetic_package(tmp_path,controller='PROXY_IDENTITY_SCHEMA = 2\n' if damage=='schema_mismatch' else 'PROXY_IDENTITY_SCHEMA = 1\n')
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:84: in synthetic_package
+    shutil.copyfile(ARTIFACT/'check.py',package/'check.py')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py')
+dst = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_readiness_reje2/synthetic-package/check.py')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py'
+
+/usr/local/lib/python3.12/shutil.py:260: FileNotFoundError
+______ test_structural_import_process_launch_is_blocked_before_execution _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_import_process0')
+
+    def test_structural_import_process_launch_is_blocked_before_execution(tmp_path):
+>       package,manifest_hash=synthetic_package(tmp_path,worker="import subprocess\nsubprocess.Popen(['never-start-this'])\nPROXY_IDENTITY_SCHEMA = 1\n")
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_proxy_identity_package.py:84: in synthetic_package
+    shutil.copyfile(ARTIFACT/'check.py',package/'check.py')
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+src = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py')
+dst = PosixPath('/tmp/pytest-of-vscode/pytest-22/test_structural_import_process0/synthetic-package/check.py')
+follow_symlinks = True
+
+    def copyfile(src, dst, *, follow_symlinks=True):
+        """Copy data from src to dst in the most efficient way possible.
+    
+        If follow_symlinks is not set and src is a symbolic link, a new
+        symlink will be created instead of copying the file it points to.
+    
+        """
+        sys.audit("shutil.copyfile", src, dst)
+    
+        if _samefile(src, dst):
+            raise SameFileError("{!r} and {!r} are the same file".format(src, dst))
+    
+        file_size = 0
+        for i, fn in enumerate([src, dst]):
+            try:
+                st = _stat(fn)
+            except OSError:
+                # File most likely does not exist
+                pass
+            else:
+                # XXX What about other special files? (sockets, devices...)
+                if stat.S_ISFIFO(st.st_mode):
+                    fn = fn.path if isinstance(fn, os.DirEntry) else fn
+                    raise SpecialFileError("`%s` is a named pipe" % fn)
+                if _WINDOWS and i == 0:
+                    file_size = st.st_size
+    
+        if not follow_symlinks and _islink(src):
+            os.symlink(os.readlink(src), dst)
+        else:
+>           with open(src, 'rb') as fsrc:
+                 ^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/check.py'
+
+/usr/local/lib/python3.12/shutil.py:260: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_identity_package_is_complete_hash_bound_and_execution_disabled
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_identity_package_does_not_replace_existing_destination
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_readiness_runner_denies_without_future_owner_authorization
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_readiness_runner_is_syntax_only_and_has_no_native_phase_command
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_imports_only_explicit_worker_controller_and_never_native
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_rejects_hash_or_schema_gaps[helper_changed]
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_rejects_hash_or_schema_gaps[proxy_changed]
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_rejects_hash_or_schema_gaps[schema_mismatch]
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_import_process_launch_is_blocked_before_execution
+9 failed in 2.21s

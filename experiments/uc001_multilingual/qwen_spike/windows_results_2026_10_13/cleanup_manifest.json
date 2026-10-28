@@ -1,0 +1,1286 @@
+{
+    "effect":  "Only matching owned server stopped. Models/results/markers/logs remain; no deletion.",
+    "utc":  "2026-10-13T19:34:28.8576899Z",
+    "files":  {
+                  "exports\\final-results\\requests\\06-C6-known.json":  {
+                                                                             "bytes":  4565,
+                                                                             "sha256":  "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df"
+                                                                         },
+                  "exports\\final-results\\server.stdout.log":  {
+                                                                    "bytes":  0,
+                                                                    "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                },
+                  "requests\\19-EN01-new.json":  {
+                                                     "bytes":  4569,
+                                                     "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                 },
+                  "exports\\final-results\\responses\\06-C6-known.json":  {
+                                                                              "bytes":  1473,
+                                                                              "sha256":  "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+                                                                          },
+                  "server_command.json":  {
+                                              "bytes":  1906,
+                                              "sha256":  "0f8aee6fbaaff842bc008f209a6e84547ffceedb43417456063324d916609f09"
+                                          },
+                  "runtime\\ggml-cpu-piledriver.dll":  {
+                                                           "bytes":  1307648,
+                                                           "sha256":  "b47a82e5d9087f03a54a840e848e4f2e0b44312309065e60b8d0cd421202233c"
+                                                       },
+                  "runtime_version.stderr.log":  {
+                                                     "bytes":  94,
+                                                     "sha256":  "d6c6a26b5891abada44728a561c3ab59c67d1f59a87e705d1232dd4e3d77fb9c"
+                                                 },
+                  "Common.ps1":  {
+                                     "bytes":  10579,
+                                     "sha256":  "e4115f8427f064e581c222eeffd431e7de1d234a7393068ed23131bae2f39df9"
+                                 },
+                  "exports\\final-results\\requests\\27-AMB01-new.json":  {
+                                                                              "bytes":  4577,
+                                                                              "sha256":  "ccb17388f699210f4465ad9c1c12f2458a1be692857899a6b7d4a9af6070e8be"
+                                                                          },
+                  "server_process.json":  {
+                                              "bytes":  158,
+                                              "sha256":  "32d21ebd3cacfd3b5cf9eac63b7a9f27318ebdf25e0f760c2eeff9f11be18a58"
+                                          },
+                  "exports\\known-results\\server_command.json":  {
+                                                                      "bytes":  1906,
+                                                                      "sha256":  "0f8aee6fbaaff842bc008f209a6e84547ffceedb43417456063324d916609f09"
+                                                                  },
+                  "runtime\\llama-tts.exe":  {
+                                                 "bytes":  41984,
+                                                 "sha256":  "a040c7203eb66dd61591f1c309165117d517e5d6c01ca086de126451b24ff847"
+                                             },
+                  "watchdog_process.json":  {
+                                                "bytes":  71,
+                                                "sha256":  "48f97902f716e411df35ac065a0aac6a56fdf880694f4a60de9cf5e200db6c8c"
+                                            },
+                  "exports\\final-results\\requests\\26-SHORT02-new.json":  {
+                                                                                "bytes":  4567,
+                                                                                "sha256":  "bfcefbff987d6a17162536d6cc3c5044a6ea36237e3d6124719578e066f8dde8"
+                                                                            },
+                  "exports\\final-results\\requests\\13-FR03-new.json":  {
+                                                                             "bytes":  4594,
+                                                                             "sha256":  "2e4da684714f65fca1872354f8e041417d13e31191bbdee8ba75940447964cc1"
+                                                                         },
+                  "runtime_version.exit.json":  {
+                                                    "bytes":  70,
+                                                    "sha256":  "f48110c486c5a42e8e918c8721ddb6baec570140b188a3e27ea256d7bc301f81"
+                                                },
+                  "Setup.ps1":  {
+                                    "bytes":  9149,
+                                    "sha256":  "378c8e2b99584d5a219ef4983f7ad0a4b29726592bb9ad463a24f757c1192518"
+                                },
+                  "exports\\known-results\\templates\\03-C3-known.tokens.json":  {
+                                                                                     "bytes":  1716,
+                                                                                     "sha256":  "9e69b1836a0d25bc4dc9d9a2d49778d8ffffa84c63935c71103c6e644bc17266"
+                                                                                 },
+                  "exports\\final-results\\requests\\23-MIX01-new.json":  {
+                                                                              "bytes":  4586,
+                                                                              "sha256":  "804e691a3546da50b1a9dc951bd923f53a9d5ae2f964ba96b317eebe2212c7c7"
+                                                                          },
+                  "runtime\\llama-tokenize.exe":  {
+                                                      "bytes":  58880,
+                                                      "sha256":  "cdfc60f1714c630c5bc8e4c798e0399370688fb252ee7c6064f522247ae756ad"
+                                                  },
+                  "runtime\\llama-server-impl.dll":  {
+                                                         "bytes":  9170944,
+                                                         "sha256":  "8bdf535224880cf5b919ada99e6cb225338cce4d444b8e5b4acd1e2bb10bc0a0"
+                                                     },
+                  "exports\\known-results\\requests\\06-C6-known.json":  {
+                                                                             "bytes":  4565,
+                                                                             "sha256":  "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df"
+                                                                         },
+                  "exports\\final-results\\setup_attempt.json":  {
+                                                                     "bytes":  151,
+                                                                     "sha256":  "fffa633fee2adc3b24ebb47f048b7aafd493439bdefbd79bcbea928ad0670a0c"
+                                                                 },
+                  "runtime\\llama-server.exe":  {
+                                                    "bytes":  9216,
+                                                    "sha256":  "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6"
+                                                },
+                  "exports\\final-results\\templates\\01-C1-known.tokens.json":  {
+                                                                                     "bytes":  1667,
+                                                                                     "sha256":  "ce86742c2b8c58082ea7b1a0c65e453f52277ce601fe1fe17b496c504da5c75e"
+                                                                                 },
+                  "exports\\known-results\\requests\\27-AMB01-new.json":  {
+                                                                              "bytes":  4577,
+                                                                              "sha256":  "ccb17388f699210f4465ad9c1c12f2458a1be692857899a6b7d4a9af6070e8be"
+                                                                          },
+                  "exports\\final-results\\requests\\30-OUT02-new.json":  {
+                                                                              "bytes":  4575,
+                                                                              "sha256":  "1e97c25ce465164877bd2ccc2964c7acad81ded920f3210cfa43fe92941c0403"
+                                                                          },
+                  "exports\\final-results\\server_exit.json":  {
+                                                                   "bytes":  109,
+                                                                   "sha256":  "445db1624244dcf362f58e9edc5be141ff7c33e7f7b3450a7ee4a8166c072456"
+                                                               },
+                  "exports\\final-results\\driver_exit.json":  {
+                                                                   "bytes":  128,
+                                                                   "sha256":  "f96756f6dd4a656fe24642c50f8982c62ac72486f869a4034d72494b3cfb79e0"
+                                                               },
+                  "exports\\final-results\\requests\\25-SHORT01-new.json":  {
+                                                                                "bytes":  4562,
+                                                                                "sha256":  "6484d327e770a66b1ddd1a319e226a5410f458588894cf6b0307e3549327c020"
+                                                                            },
+                  "requests\\15-IT01-new.json":  {
+                                                     "bytes":  4585,
+                                                     "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                 },
+                  "templates\\06-C6-known.tokens.json":  {
+                                                             "bytes":  1668,
+                                                             "sha256":  "3f18810790d123f475442ff350a3cbdb75a69ce4c3213718623b9fcdc5d69f85"
+                                                         },
+                  "exports\\final-results\\requests\\02-C2-known.json":  {
+                                                                             "bytes":  4563,
+                                                                             "sha256":  "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0"
+                                                                         },
+                  "exports\\known-results\\requests\\17-IT03-new.json":  {
+                                                                             "bytes":  4592,
+                                                                             "sha256":  "fd043228f987c046240d7533753bd2112839daf75ab2062979b2cd5e2e27c650"
+                                                                         },
+                  "exports\\final-results\\responses\\04-C4-known.json":  {
+                                                                              "bytes":  1477,
+                                                                              "sha256":  "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+                                                                          },
+                  "requests\\14-FR04-new.json":  {
+                                                     "bytes":  4597,
+                                                     "sha256":  "72acc39f5966c083f6e34763d78e3d5830b5e0fe1ffd7b750257958ed2531053"
+                                                 },
+                  "exports\\final-results\\requests\\05-C5-known.json":  {
+                                                                             "bytes":  4570,
+                                                                             "sha256":  "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a"
+                                                                         },
+                  "exports\\final-results\\templates\\04-C4-known.json":  {
+                                                                              "bytes":  1896,
+                                                                              "sha256":  "656ea5ae8fcc54fc39d47f629802308bfdce030e07c5e7add06a1a57bcd2c2fe"
+                                                                          },
+                  "exports\\known-results\\runtime_version.stderr.log":  {
+                                                                             "bytes":  94,
+                                                                             "sha256":  "d6c6a26b5891abada44728a561c3ab59c67d1f59a87e705d1232dd4e3d77fb9c"
+                                                                         },
+                  "templates\\03-C3-known.json":  {
+                                                      "bytes":  1926,
+                                                      "sha256":  "d25cfff79619334a0a0384a17f8d83fba92c6e7651df27402316d9ccf5c6ff6f"
+                                                  },
+                  "exports\\final-results\\contract_provenance.json":  {
+                                                                           "bytes":  364,
+                                                                           "sha256":  "a022adb4dab793d133782241f02287b6ba833882cb039f4b1080844fcb78b632"
+                                                                       },
+                  "requests\\25-SHORT01-new.json":  {
+                                                        "bytes":  4562,
+                                                        "sha256":  "6484d327e770a66b1ddd1a319e226a5410f458588894cf6b0307e3549327c020"
+                                                    },
+                  "exports\\known-results\\responses\\05-C5-known.json":  {
+                                                                              "bytes":  1475,
+                                                                              "sha256":  "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+                                                                          },
+                  "templates\\05-C5-known.json":  {
+                                                      "bytes":  1910,
+                                                      "sha256":  "d29f8aa2551522b07d266da8c77c613458e192b4fd4d79f8fb26d85df20e64f3"
+                                                  },
+                  "gate.json":  {
+                                    "bytes":  1597,
+                                    "sha256":  "10cfe1dd03c8cc61d3751018e3c7d3bc9134e9612d298d1112a21b3261ec0d46"
+                                },
+                  "exports\\known-results\\runtime_devices.exit.json":  {
+                                                                            "bytes":  70,
+                                                                            "sha256":  "8187bf09566e66eb17e5befae1f848b25441848927b5e4900da403bdf2b62a3f"
+                                                                        },
+                  "requests\\01-C1-known.json":  {
+                                                     "bytes":  4563,
+                                                     "sha256":  "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd"
+                                                 },
+                  "exports\\known-results\\requests\\09-DE03-new.json":  {
+                                                                             "bytes":  4596,
+                                                                             "sha256":  "1c1609cb9b6d4b6a24f0daf668bbfc88c37c29b01d3c39b170a7c030d1dd33b7"
+                                                                         },
+                  "exports\\final-results\\templates\\02-C2-known.tokens.json":  {
+                                                                                     "bytes":  1667,
+                                                                                     "sha256":  "b6d12fcb31c7c6f867489beaeec46399949d4b4252ed3eb81b82f9d884feedb0"
+                                                                                 },
+                  "exports\\known-results\\templates\\02-C2-known.json":  {
+                                                                              "bytes":  1903,
+                                                                              "sha256":  "6e590fbad3a6feab3cef1121446054e5fc2dc40981c73b6ef7eb6675055ead63"
+                                                                          },
+                  "exports\\known-results\\requests\\03-C3-known.json":  {
+                                                                             "bytes":  4598,
+                                                                             "sha256":  "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c"
+                                                                         },
+                  "exports\\known-results\\requests\\04-C4-known.json":  {
+                                                                             "bytes":  4568,
+                                                                             "sha256":  "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea"
+                                                                         },
+                  "readiness.json":  {
+                                         "bytes":  97,
+                                         "sha256":  "6931a8d71bfcb24643d72fd7e00444eb1ba3e870471fd3e830883a6e9a92cc9c"
+                                     },
+                  "exports\\final-results\\requests\\22-EN04-new.json":  {
+                                                                             "bytes":  4600,
+                                                                             "sha256":  "1e433befbc8b975b8b5a3fe95f8b088245726288bf0468241583eec8d23c039b"
+                                                                         },
+                  "exports\\final-results\\requests\\01-C1-known.json":  {
+                                                                             "bytes":  4563,
+                                                                             "sha256":  "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd"
+                                                                         },
+                  "preflight.json":  {
+                                         "bytes":  581,
+                                         "sha256":  "0180b5d77e992c2e2c0d775994ba5aca3050c2a85cba7683f504b0d8a906c4da"
+                                     },
+                  "requests\\02-C2-known.json":  {
+                                                     "bytes":  4563,
+                                                     "sha256":  "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0"
+                                                 },
+                  "server_exit.json":  {
+                                           "bytes":  109,
+                                           "sha256":  "445db1624244dcf362f58e9edc5be141ff7c33e7f7b3450a7ee4a8166c072456"
+                                       },
+                  "runtime\\llama-common.dll":  {
+                                                    "bytes":  7924224,
+                                                    "sha256":  "cb5011455243a8b6a91fed00fbb33d93fdb53fa7c417fc59f27a004af85d7d9b"
+                                                },
+                  "exports\\known-results\\artifacts.json":  {
+                                                                 "bytes":  1206,
+                                                                 "sha256":  "1fe6f43bc0e30d29efb71e436eb277cc210e6083cf5c38e90c163437a8d12e25"
+                                                             },
+                  "exports\\final-results\\runtime_verification.json":  {
+                                                                            "bytes":  306,
+                                                                            "sha256":  "c33ad3aacb5f500179cfb93dad160b676746fdab1fa4c7ff9306eb4eddaa7687"
+                                                                        },
+                  "runtime\\libomp.dll":  {
+                                              "bytes":  768000,
+                                              "sha256":  "a12116ba72d1d6820407cf30be23da04ce79d6bb8a71a5ee71759c5a1faa6f1c"
+                                          },
+                  "exports\\final-results\\runtime_devices.stderr.log":  {
+                                                                             "bytes":  0,
+                                                                             "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                         },
+                  "responses\\03-C3-known.json":  {
+                                                      "bytes":  1642,
+                                                      "sha256":  "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+                                                  },
+                  "exports\\final-results\\requests\\34-EN01-repeat.json":  {
+                                                                                "bytes":  4569,
+                                                                                "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                                            },
+                  "exports\\final-results\\templates\\01-C1-known.json":  {
+                                                                              "bytes":  1891,
+                                                                              "sha256":  "ca7c7ed28bcc91d3303d9de752d758ea88cc00db37c29cd004282ba0011e852a"
+                                                                          },
+                  "runtime\\llama-fit-params-impl.dll":  {
+                                                             "bytes":  43008,
+                                                             "sha256":  "b92509e2088e1fd2e4b0a3be809dc014019ed6430987ae6d30a2bae14ecf69ca"
+                                                         },
+                  "exports\\known-results\\progress.json":  {
+                                                                "bytes":  446,
+                                                                "sha256":  "d4285a1e4be54ab5b69399ce9d5e771294a126486e4f9f9d147480a762cde976"
+                                                            },
+                  "requests\\13-FR03-new.json":  {
+                                                     "bytes":  4594,
+                                                     "sha256":  "2e4da684714f65fca1872354f8e041417d13e31191bbdee8ba75940447964cc1"
+                                                 },
+                  "requests\\08-DE02-new.json":  {
+                                                     "bytes":  4595,
+                                                     "sha256":  "f173eaefcfc08704fcadd9e85a54d90c5163a3a1cc3179008bfa2264fa0e884d"
+                                                 },
+                  "exports\\final-results\\responses\\02-C2-known.json":  {
+                                                                              "bytes":  1468,
+                                                                              "sha256":  "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+                                                                          },
+                  "runtime\\ggml-base.dll":  {
+                                                 "bytes":  803328,
+                                                 "sha256":  "19b7666b4cd7dc01e219e247783ffd1979694d6f1635bbf3209ae5fa0fc169c0"
+                                             },
+                  "runtime\\llama-mtmd-cli.exe":  {
+                                                      "bytes":  92672,
+                                                      "sha256":  "e0f682258ece3fb940d8f0e6f334208ba3b8a1810739384093cfae63fb671851"
+                                                  },
+                  "exports\\known-results\\requests\\16-IT02-new.json":  {
+                                                                             "bytes":  4599,
+                                                                             "sha256":  "88215c8abda2c050024658adad2aac77390add1ab07b7eb60e0d972823ccface"
+                                                                         },
+                  "exports\\known-results\\requests\\23-MIX01-new.json":  {
+                                                                              "bytes":  4586,
+                                                                              "sha256":  "804e691a3546da50b1a9dc951bd923f53a9d5ae2f964ba96b317eebe2212c7c7"
+                                                                          },
+                  "runtime\\llama-bench-impl.dll":  {
+                                                        "bytes":  403968,
+                                                        "sha256":  "34e052bc21d7e81a174c4cb2f48aa93b26863a2fb6f326d70e17c732179b55ae"
+                                                    },
+                  "runtime\\ggml-cpu-skylakex.dll":  {
+                                                         "bytes":  1608192,
+                                                         "sha256":  "ccf578111e9688c2c51f0279ab4e56351fa084f7d6e43e7c091d961fdbb03081"
+                                                     },
+                  "runtime\\ggml-cpu-haswell.dll":  {
+                                                        "bytes":  1439232,
+                                                        "sha256":  "8022a1d17a56f537b956683a484dc1a0f95ab4b01e95b4c57d53bb1e6c3e529f"
+                                                    },
+                  "exports\\final-results\\requests\\12-FR02-new.json":  {
+                                                                             "bytes":  4589,
+                                                                             "sha256":  "11dc237aaf5004174282c6cc79a6975efd899c97636219d94d6a9302f0c47c3a"
+                                                                         },
+                  "exports\\final-results\\watchdog_process.json":  {
+                                                                        "bytes":  71,
+                                                                        "sha256":  "48f97902f716e411df35ac065a0aac6a56fdf880694f4a60de9cf5e200db6c8c"
+                                                                    },
+                  "exports\\known-results\\download.json":  {
+                                                                "bytes":  207,
+                                                                "sha256":  "f8fe36a90f016a70eaa4c10531fb249c027c56a75e8db17dc344a464a71d8da0"
+                                                            },
+                  "responses\\02-C2-known.json":  {
+                                                      "bytes":  1468,
+                                                      "sha256":  "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+                                                  },
+                  "Watchdog.ps1":  {
+                                       "bytes":  1653,
+                                       "sha256":  "f7d012e3bfa10962502002ffe0d43117833f833158bf823fc53eca3ef2bf23c3"
+                                   },
+                  "exports\\known-results\\requests\\12-FR02-new.json":  {
+                                                                             "bytes":  4589,
+                                                                             "sha256":  "11dc237aaf5004174282c6cc79a6975efd899c97636219d94d6a9302f0c47c3a"
+                                                                         },
+                  "runtime\\mtmd.dll":  {
+                                            "bytes":  1795072,
+                                            "sha256":  "817ba2841e73b9ef1170f2e235d30ef4cca5d4ec520a4817ca60e3737cff79ad"
+                                        },
+                  "exports\\final-results\\requests\\10-DE04-new.json":  {
+                                                                             "bytes":  4599,
+                                                                             "sha256":  "e179bd2bfcd4ca8a5489c45960e81e8e0dd7745da27ccd3e2e02763629d24768"
+                                                                         },
+                  "runtime_devices.exit.json":  {
+                                                    "bytes":  70,
+                                                    "sha256":  "8187bf09566e66eb17e5befae1f848b25441848927b5e4900da403bdf2b62a3f"
+                                                },
+                  "setup_attempt.json":  {
+                                             "bytes":  151,
+                                             "sha256":  "fffa633fee2adc3b24ebb47f048b7aafd493439bdefbd79bcbea928ad0670a0c"
+                                         },
+                  "exports\\known-results\\server_process.json":  {
+                                                                      "bytes":  158,
+                                                                      "sha256":  "32d21ebd3cacfd3b5cf9eac63b7a9f27318ebdf25e0f760c2eeff9f11be18a58"
+                                                                  },
+                  "exports\\final-results\\requests\\03-C3-known.json":  {
+                                                                             "bytes":  4598,
+                                                                             "sha256":  "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c"
+                                                                         },
+                  "exports\\final-results\\runtime_version.stdout.log":  {
+                                                                             "bytes":  0,
+                                                                             "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                         },
+                  "runtime_verification.json":  {
+                                                    "bytes":  306,
+                                                    "sha256":  "c33ad3aacb5f500179cfb93dad160b676746fdab1fa4c7ff9306eb4eddaa7687"
+                                                },
+                  "exports\\final-results\\requests\\15-IT01-new.json":  {
+                                                                             "bytes":  4585,
+                                                                             "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                                         },
+                  "templates\\04-C4-known.tokens.json":  {
+                                                             "bytes":  1671,
+                                                             "sha256":  "fe0d761f402998994c84360e735f82c7f52e8c3cc5333814eec004d97b494bbf"
+                                                         },
+                  "exports\\known-results\\metadata_verification.json":  {
+                                                                             "bytes":  259,
+                                                                             "sha256":  "a4674c1ef0577a5ec909e4e19dcad896493cadc1ef39b814e263a2dc35fd690e"
+                                                                         },
+                  "exports\\final-results\\runtime_devices.stdout.log":  {
+                                                                             "bytes":  80,
+                                                                             "sha256":  "56e5cae8470626e291dfee4ff26c67ddcbbb3c53b5491e86120b0b8026bec1d9"
+                                                                         },
+                  "exports\\final-results\\templates\\03-C3-known.json":  {
+                                                                              "bytes":  1926,
+                                                                              "sha256":  "d25cfff79619334a0a0384a17f8d83fba92c6e7651df27402316d9ccf5c6ff6f"
+                                                                          },
+                  "exports\\known-results\\templates\\05-C5-known.tokens.json":  {
+                                                                                     "bytes":  1676,
+                                                                                     "sha256":  "9e300f9ee0d2c223993d9122f75f92c1802717d01d03d8a61a88053a366eb19c"
+                                                                                 },
+                  "exports\\final-results\\run_failure.json":  {
+                                                                   "bytes":  187,
+                                                                   "sha256":  "f4706dac93dbb29d407c12a97f3317475a0573eb9192f0f283057344dd1e1e3c"
+                                                               },
+                  "exports\\final-results\\requests\\29-OUT01-new.json":  {
+                                                                              "bytes":  4576,
+                                                                              "sha256":  "2a88aefb1b233c684ea14382f52f4de63ae7062090840f3ff3888d737b0e2794"
+                                                                          },
+                  "exports\\known-results\\requests\\18-IT04-new.json":  {
+                                                                             "bytes":  4606,
+                                                                             "sha256":  "a76d3570f10d17404e19e74f728f7698720e77c0ba1adbe83efaaa9d7868b980"
+                                                                         },
+                  "responses\\05-C5-known.json":  {
+                                                      "bytes":  1475,
+                                                      "sha256":  "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+                                                  },
+                  "exports\\final-results\\requests\\20-EN02-new.json":  {
+                                                                             "bytes":  4588,
+                                                                             "sha256":  "59468c20130d224afabc9fd9fca2090028651f71ea81251d1a9f9d7d005fdeeb"
+                                                                         },
+                  "requests\\21-EN03-new.json":  {
+                                                     "bytes":  4586,
+                                                     "sha256":  "721b7ae7a1740fd4d0ac5745cbb63247eb1fd99ed9c6591fb65a3c11441bca72"
+                                                 },
+                  "requests\\33-IT01-repeat.json":  {
+                                                        "bytes":  4585,
+                                                        "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                    },
+                  "exports\\known-results\\runtime_devices.stderr.log":  {
+                                                                             "bytes":  0,
+                                                                             "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                         },
+                  "exports\\final-results\\progress.json":  {
+                                                                "bytes":  446,
+                                                                "sha256":  "d4285a1e4be54ab5b69399ce9d5e771294a126486e4f9f9d147480a762cde976"
+                                                            },
+                  "runtime_devices.stdout.log":  {
+                                                     "bytes":  80,
+                                                     "sha256":  "56e5cae8470626e291dfee4ff26c67ddcbbb3c53b5491e86120b0b8026bec1d9"
+                                                 },
+                  "exports\\known-results\\templates\\06-C6-known.json":  {
+                                                                              "bytes":  1893,
+                                                                              "sha256":  "a003de7699c3bc42b082d02a775834308924e573bd1fcdcb7bc58bda5cdec9b8"
+                                                                          },
+                  "exports\\known-results\\order.json":  {
+                                                             "bytes":  4053,
+                                                             "sha256":  "5230ca2c9ab41510e475f7718d16663ad28fa8c9f15f01b9a6f44e1c4569247d"
+                                                         },
+                  "exports\\known-results\\setup_attempt.json":  {
+                                                                     "bytes":  151,
+                                                                     "sha256":  "fffa633fee2adc3b24ebb47f048b7aafd493439bdefbd79bcbea928ad0670a0c"
+                                                                 },
+                  "exports\\final-results\\requests\\04-C4-known.json":  {
+                                                                             "bytes":  4568,
+                                                                             "sha256":  "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea"
+                                                                         },
+                  "templates\\04-C4-known.json":  {
+                                                      "bytes":  1896,
+                                                      "sha256":  "656ea5ae8fcc54fc39d47f629802308bfdce030e07c5e7add06a1a57bcd2c2fe"
+                                                  },
+                  "runtime\\ggml-cpu-ivybridge.dll":  {
+                                                          "bytes":  1314816,
+                                                          "sha256":  "1792967edf602b0a459cbb519e71a3037fba5854ba273b8328467c9d9dc201f1"
+                                                      },
+                  "exports\\known-results\\requests\\05-C5-known.json":  {
+                                                                             "bytes":  4570,
+                                                                             "sha256":  "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a"
+                                                                         },
+                  "final-results.zip":  {
+                                            "bytes":  101614,
+                                            "sha256":  "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf"
+                                        },
+                  "responses\\06-C6-known.json":  {
+                                                      "bytes":  1473,
+                                                      "sha256":  "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+                                                  },
+                  "runtime\\LICENSE-LLVM-OpenMP":  {
+                                                       "bytes":  19741,
+                                                       "sha256":  "fdad1758a9e1f9d5a81e18879b3406772115edc92c24bfa36b70c654f325e8e4"
+                                                   },
+                  "exports\\known-results\\server.stderr.log":  {
+                                                                    "bytes":  5785,
+                                                                    "sha256":  "2693cd7896e338c4f0d8b9a47285dece3b502cd11070b45c445d9134e5735b5a"
+                                                                },
+                  "runtime\\llama-gemma3-cli.exe":  {
+                                                        "bytes":  27136,
+                                                        "sha256":  "1031f697b423794b145c38818d1350d22b07d6526aececbf84299a568a47184c"
+                                                    },
+                  "exports\\known-results\\requests\\13-FR03-new.json":  {
+                                                                             "bytes":  4594,
+                                                                             "sha256":  "2e4da684714f65fca1872354f8e041417d13e31191bbdee8ba75940447964cc1"
+                                                                         },
+                  "runtime\\ggml-rpc-server.exe":  {
+                                                       "bytes":  117248,
+                                                       "sha256":  "621d99411e46c721cc7a479cfb38491525f857b9159ad2656193994751d183fa"
+                                                   },
+                  "exports\\final-results\\templates\\05-C5-known.json":  {
+                                                                              "bytes":  1910,
+                                                                              "sha256":  "d29f8aa2551522b07d266da8c77c613458e192b4fd4d79f8fb26d85df20e64f3"
+                                                                          },
+                  "exports\\final-results\\artifacts.json":  {
+                                                                 "bytes":  1206,
+                                                                 "sha256":  "1fe6f43bc0e30d29efb71e436eb277cc210e6083cf5c38e90c163437a8d12e25"
+                                                             },
+                  "exports\\final-results\\templates\\05-C5-known.tokens.json":  {
+                                                                                     "bytes":  1676,
+                                                                                     "sha256":  "9e300f9ee0d2c223993d9122f75f92c1802717d01d03d8a61a88053a366eb19c"
+                                                                                 },
+                  "exports\\known-results\\runtime_version.stdout.log":  {
+                                                                             "bytes":  0,
+                                                                             "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                         },
+                  "exports\\final-results\\requests\\32-FR01-repeat.json":  {
+                                                                                "bytes":  4592,
+                                                                                "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                                            },
+                  "exports\\known-results\\requests\\07-DE01-new.json":  {
+                                                                             "bytes":  4590,
+                                                                             "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                                         },
+                  "exports\\final-results\\responses\\03-C3-known.json":  {
+                                                                              "bytes":  1642,
+                                                                              "sha256":  "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+                                                                          },
+                  "server_properties.json":  {
+                                                 "bytes":  7459,
+                                                 "sha256":  "b78e4e0ee9e9e6b9b1b0df1f5693f791c548f6b968499c7656ef390e55c10738"
+                                             },
+                  "exports\\known-results\\templates\\06-C6-known.tokens.json":  {
+                                                                                     "bytes":  1668,
+                                                                                     "sha256":  "3f18810790d123f475442ff350a3cbdb75a69ce4c3213718623b9fcdc5d69f85"
+                                                                                 },
+                  "requests\\16-IT02-new.json":  {
+                                                     "bytes":  4599,
+                                                     "sha256":  "88215c8abda2c050024658adad2aac77390add1ab07b7eb60e0d972823ccface"
+                                                 },
+                  "exports\\known-results\\responses\\03-C3-known.json":  {
+                                                                              "bytes":  1642,
+                                                                              "sha256":  "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+                                                                          },
+                  "exports\\known-results\\runtime_version.exit.json":  {
+                                                                            "bytes":  70,
+                                                                            "sha256":  "f48110c486c5a42e8e918c8721ddb6baec570140b188a3e27ea256d7bc301f81"
+                                                                        },
+                  "exports\\final-results\\requests\\19-EN01-new.json":  {
+                                                                             "bytes":  4569,
+                                                                             "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                                         },
+                  "server.stdout.log":  {
+                                            "bytes":  0,
+                                            "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                        },
+                  "runtime\\ggml-cpu-cooperlake.dll":  {
+                                                           "bytes":  1608704,
+                                                           "sha256":  "482a40664f87b8e94bdab53c13b14fa6b722ffd743a7a7c4fa7d5cec6ed44852"
+                                                       },
+                  "Native.cs":  {
+                                    "bytes":  4656,
+                                    "sha256":  "a403c3925fcd349c6a4defe50b373cc0a78eb5497c9c08f98cb561d77268cb15"
+                                },
+                  "runtime\\llama-completion-impl.dll":  {
+                                                             "bytes":  136192,
+                                                             "sha256":  "92c753b5d1328540a43349466f892abbd34c3f902351f19b0aa58bc1752a97af"
+                                                         },
+                  "watchdog_exit.json":  {
+                                             "bytes":  80,
+                                             "sha256":  "0546c197f19a279c3e136fc4d6d73cee1bca99a753e9e3b06799013376a67353"
+                                         },
+                  "exports\\known-results\\templates\\04-C4-known.json":  {
+                                                                              "bytes":  1896,
+                                                                              "sha256":  "656ea5ae8fcc54fc39d47f629802308bfdce030e07c5e7add06a1a57bcd2c2fe"
+                                                                          },
+                  "runtime_version.stdout.log":  {
+                                                     "bytes":  0,
+                                                     "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                 },
+                  "exports\\final-results\\cases.json":  {
+                                                             "bytes":  10453,
+                                                             "sha256":  "e37c975071c3d34592dc954a06a087c9401e582872e00f2215e671247077fe5e"
+                                                         },
+                  "exports\\known-results\\requests\\32-FR01-repeat.json":  {
+                                                                                "bytes":  4592,
+                                                                                "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                                            },
+                  "exports\\known-results\\templates\\01-C1-known.tokens.json":  {
+                                                                                     "bytes":  1667,
+                                                                                     "sha256":  "ce86742c2b8c58082ea7b1a0c65e453f52277ce601fe1fe17b496c504da5c75e"
+                                                                                 },
+                  "llama-b11429-bin-win-vulkan-x64.zip":  {
+                                                              "bytes":  33337769,
+                                                              "sha256":  "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36"
+                                                          },
+                  "exports\\known-results\\watchdog_process.json":  {
+                                                                        "bytes":  71,
+                                                                        "sha256":  "48f97902f716e411df35ac065a0aac6a56fdf880694f4a60de9cf5e200db6c8c"
+                                                                    },
+                  "exports\\known-results\\requests\\20-EN02-new.json":  {
+                                                                             "bytes":  4588,
+                                                                             "sha256":  "59468c20130d224afabc9fd9fca2090028651f71ea81251d1a9f9d7d005fdeeb"
+                                                                         },
+                  "exports\\known-results\\freeze.json":  {
+                                                              "bytes":  5092,
+                                                              "sha256":  "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce"
+                                                          },
+                  "freeze.json":  {
+                                      "bytes":  5092,
+                                      "sha256":  "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce"
+                                  },
+                  "runtime\\ggml-cpu-icelake.dll":  {
+                                                        "bytes":  1606144,
+                                                        "sha256":  "c096a02ec4a9fecca14a14bd9ed5d6c9fa7569cc2a678b08dd1978646abe1e2a"
+                                                    },
+                  "exports\\known-results\\cases.json":  {
+                                                             "bytes":  10453,
+                                                             "sha256":  "e37c975071c3d34592dc954a06a087c9401e582872e00f2215e671247077fe5e"
+                                                         },
+                  "exports\\known-results\\server_properties.json":  {
+                                                                         "bytes":  7459,
+                                                                         "sha256":  "b78e4e0ee9e9e6b9b1b0df1f5693f791c548f6b968499c7656ef390e55c10738"
+                                                                     },
+                  "exports\\final-results\\requests\\31-DE01-repeat.json":  {
+                                                                                "bytes":  4590,
+                                                                                "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                                            },
+                  "runtime\\llama-perplexity-impl.dll":  {
+                                                             "bytes":  197632,
+                                                             "sha256":  "7c07c54f84dfa2c6503e83f6f2bfe9788e7f0d00280517f10e7deddcf38beb99"
+                                                         },
+                  "requests\\07-DE01-new.json":  {
+                                                     "bytes":  4590,
+                                                     "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                 },
+                  "exports\\known-results\\state.json":  {
+                                                             "bytes":  314,
+                                                             "sha256":  "b1d1eaaa7ac3b893d31cfbd51e21fed38901e67b767d9d5577f08cfc9ab9d23a"
+                                                         },
+                  "exports\\final-results\\metadata_verification.json":  {
+                                                                             "bytes":  259,
+                                                                             "sha256":  "a4674c1ef0577a5ec909e4e19dcad896493cadc1ef39b814e263a2dc35fd690e"
+                                                                         },
+                  "runtime\\llama-results.exe":  {
+                                                     "bytes":  46592,
+                                                     "sha256":  "c131056ff1c1b2e737ec2bb2506df4883d9791e0239ac4a8d398298d742f73ff"
+                                                 },
+                  "runtime\\llama-cli.exe":  {
+                                                 "bytes":  9216,
+                                                 "sha256":  "db2ca6b1255759101d8933370c992a9f2e219a0d62bc6528072eb4e0e7a323ba"
+                                             },
+                  "runtime\\ggml-cpu-alderlake.dll":  {
+                                                          "bytes":  1434624,
+                                                          "sha256":  "176045703530b923eb565052d9c622e1453c7013ac11823926f89260768cdddd"
+                                                      },
+                  "exports\\final-results\\server.stderr.log":  {
+                                                                    "bytes":  5785,
+                                                                    "sha256":  "2693cd7896e338c4f0d8b9a47285dece3b502cd11070b45c445d9134e5735b5a"
+                                                                },
+                  "exports\\final-results\\requests\\11-FR01-new.json":  {
+                                                                             "bytes":  4592,
+                                                                             "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                                         },
+                  "responses\\01-C1-known.json":  {
+                                                      "bytes":  1468,
+                                                      "sha256":  "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+                                                  },
+                  "exports\\known-results\\requests\\14-FR04-new.json":  {
+                                                                             "bytes":  4597,
+                                                                             "sha256":  "72acc39f5966c083f6e34763d78e3d5830b5e0fe1ffd7b750257958ed2531053"
+                                                                         },
+                  "requests\\29-OUT01-new.json":  {
+                                                      "bytes":  4576,
+                                                      "sha256":  "2a88aefb1b233c684ea14382f52f4de63ae7062090840f3ff3888d737b0e2794"
+                                                  },
+                  "templates\\02-C2-known.json":  {
+                                                      "bytes":  1903,
+                                                      "sha256":  "6e590fbad3a6feab3cef1121446054e5fc2dc40981c73b6ef7eb6675055ead63"
+                                                  },
+                  "runtime\\llama.dll":  {
+                                             "bytes":  3311616,
+                                             "sha256":  "48d2b52f4d6b2d7db2ca4698edbb95ecb4511b792396c566e1340668b6415a71"
+                                         },
+                  "exports\\known-results\\requests\\19-EN01-new.json":  {
+                                                                             "bytes":  4569,
+                                                                             "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                                         },
+                  "exports\\known-results\\readiness.json":  {
+                                                                 "bytes":  97,
+                                                                 "sha256":  "6931a8d71bfcb24643d72fd7e00444eb1ba3e870471fd3e830883a6e9a92cc9c"
+                                                             },
+                  "exports\\final-results\\server_process.json":  {
+                                                                      "bytes":  158,
+                                                                      "sha256":  "32d21ebd3cacfd3b5cf9eac63b7a9f27318ebdf25e0f760c2eeff9f11be18a58"
+                                                                  },
+                  "assessment.json":  {
+                                          "bytes":  12560,
+                                          "sha256":  "f86e93f44d78ea8919afbf30913e25ff0572c05e12dec4501e1bd969f7c61603"
+                                      },
+                  "exports\\known-results\\requests\\22-EN04-new.json":  {
+                                                                             "bytes":  4600,
+                                                                             "sha256":  "1e433befbc8b975b8b5a3fe95f8b088245726288bf0468241583eec8d23c039b"
+                                                                         },
+                  "requests\\06-C6-known.json":  {
+                                                     "bytes":  4565,
+                                                     "sha256":  "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df"
+                                                 },
+                  "exports\\known-results\\requests\\10-DE04-new.json":  {
+                                                                             "bytes":  4599,
+                                                                             "sha256":  "e179bd2bfcd4ca8a5489c45960e81e8e0dd7745da27ccd3e2e02763629d24768"
+                                                                         },
+                  "runtime\\ggml-cpu-x64.dll":  {
+                                                    "bytes":  908288,
+                                                    "sha256":  "b1089f3ad0cc1363519c3583b033648cf471297bdd5482e72c71dcf5c5cb0765"
+                                                },
+                  "exports\\final-results\\resources.jsonl":  {
+                                                                  "bytes":  224765,
+                                                                  "sha256":  "f12ae819a939860656e5cda16792318aa6bb8e54aacb39c2e21330c72cd2b1d2"
+                                                              },
+                  "exports\\final-results\\preload_resources.json":  {
+                                                                         "bytes":  590,
+                                                                         "sha256":  "706f35b55be5152dbc5b05e70721ad367799a3ac615e65491f4db549ff38e0c9"
+                                                                     },
+                  "exports\\final-results\\runtime_version.stderr.log":  {
+                                                                             "bytes":  94,
+                                                                             "sha256":  "d6c6a26b5891abada44728a561c3ab59c67d1f59a87e705d1232dd4e3d77fb9c"
+                                                                         },
+                  "runtime\\ggml-cpu-sandybridge.dll":  {
+                                                            "bytes":  1289728,
+                                                            "sha256":  "007dc9fca693bf1e3941c1d46bb273de587c2d0947625884ccd68154d190e03c"
+                                                        },
+                  "exports\\known-results\\requests\\08-DE02-new.json":  {
+                                                                             "bytes":  4595,
+                                                                             "sha256":  "f173eaefcfc08704fcadd9e85a54d90c5163a3a1cc3179008bfa2264fa0e884d"
+                                                                         },
+                  "requests\\28-AMB02-new.json":  {
+                                                      "bytes":  4577,
+                                                      "sha256":  "c485e70998eaf222060ad11e50b276ba48a7aeccca709ed4afca0c7168e9689d"
+                                                  },
+                  "exports\\known-results\\runtime_devices.stdout.log":  {
+                                                                             "bytes":  80,
+                                                                             "sha256":  "56e5cae8470626e291dfee4ff26c67ddcbbb3c53b5491e86120b0b8026bec1d9"
+                                                                         },
+                  "requests\\09-DE03-new.json":  {
+                                                     "bytes":  4596,
+                                                     "sha256":  "1c1609cb9b6d4b6a24f0daf668bbfc88c37c29b01d3c39b170a7c030d1dd33b7"
+                                                 },
+                  "runtime\\ggml-cpu-cascadelake.dll":  {
+                                                            "bytes":  1598976,
+                                                            "sha256":  "1db7a13737763d444c278ac218ad9dc5dc850e1fcd98bc07ece307ae6f64dda6"
+                                                        },
+                  "requests\\26-SHORT02-new.json":  {
+                                                        "bytes":  4567,
+                                                        "sha256":  "bfcefbff987d6a17162536d6cc3c5044a6ea36237e3d6124719578e066f8dde8"
+                                                    },
+                  "runtime\\llama-batched-bench-impl.dll":  {
+                                                                "bytes":  61952,
+                                                                "sha256":  "fffda75084850c467df634417ac29b0aa814146021f334cd18d91a16e97b3048"
+                                                            },
+                  "exports\\known-results\\requests\\26-SHORT02-new.json":  {
+                                                                                "bytes":  4567,
+                                                                                "sha256":  "bfcefbff987d6a17162536d6cc3c5044a6ea36237e3d6124719578e066f8dde8"
+                                                                            },
+                  "runtime\\ggml.dll":  {
+                                            "bytes":  79872,
+                                            "sha256":  "2dc74873c47a09294431af997f7d5c31bdbc0eafc49c2c30ea03b7331c1a5c3c"
+                                        },
+                  "exports\\known-results\\preflight.json":  {
+                                                                 "bytes":  581,
+                                                                 "sha256":  "0180b5d77e992c2e2c0d775994ba5aca3050c2a85cba7683f504b0d8a906c4da"
+                                                             },
+                  "state.json":  {
+                                     "bytes":  313,
+                                     "sha256":  "ad194227db8a7c5c78fe1938a6f43c01bf624c18325b8dbac3eab0eca7a212c8"
+                                 },
+                  "runtime\\llama.exe":  {
+                                             "bytes":  104448,
+                                             "sha256":  "466d9ea880c580baaea54d83dee8c70fa3b711e19076fe97a03bcd919924aa92"
+                                         },
+                  "exports\\final-results\\templates\\04-C4-known.tokens.json":  {
+                                                                                     "bytes":  1671,
+                                                                                     "sha256":  "fe0d761f402998994c84360e735f82c7f52e8c3cc5333814eec004d97b494bbf"
+                                                                                 },
+                  "requests\\04-C4-known.json":  {
+                                                     "bytes":  4568,
+                                                     "sha256":  "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea"
+                                                 },
+                  "exports\\known-results\\requests\\33-IT01-repeat.json":  {
+                                                                                "bytes":  4585,
+                                                                                "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                                            },
+                  "requests\\10-DE04-new.json":  {
+                                                     "bytes":  4599,
+                                                     "sha256":  "e179bd2bfcd4ca8a5489c45960e81e8e0dd7745da27ccd3e2e02763629d24768"
+                                                 },
+                  "runtime\\llama-quantize-impl.dll":  {
+                                                           "bytes":  137216,
+                                                           "sha256":  "a46a92fcd97eaf4db39a7460f48b744387ce257c02fa48f43f591f086d4f9f1a"
+                                                       },
+                  "exports\\final-results\\requests\\21-EN03-new.json":  {
+                                                                             "bytes":  4586,
+                                                                             "sha256":  "721b7ae7a1740fd4d0ac5745cbb63247eb1fd99ed9c6591fb65a3c11441bca72"
+                                                                         },
+                  "templates\\01-C1-known.json":  {
+                                                      "bytes":  1891,
+                                                      "sha256":  "ca7c7ed28bcc91d3303d9de752d758ea88cc00db37c29cd004282ba0011e852a"
+                                                  },
+                  "exports\\final-results\\preflight.json":  {
+                                                                 "bytes":  581,
+                                                                 "sha256":  "0180b5d77e992c2e2c0d775994ba5aca3050c2a85cba7683f504b0d8a906c4da"
+                                                             },
+                  "requests\\11-FR01-new.json":  {
+                                                     "bytes":  4592,
+                                                     "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                 },
+                  "exports\\final-results\\requests\\28-AMB02-new.json":  {
+                                                                              "bytes":  4577,
+                                                                              "sha256":  "c485e70998eaf222060ad11e50b276ba48a7aeccca709ed4afca0c7168e9689d"
+                                                                          },
+                  "exports\\known-results\\templates\\01-C1-known.json":  {
+                                                                              "bytes":  1891,
+                                                                              "sha256":  "ca7c7ed28bcc91d3303d9de752d758ea88cc00db37c29cd004282ba0011e852a"
+                                                                          },
+                  "exports\\final-results\\state.json":  {
+                                                             "bytes":  309,
+                                                             "sha256":  "2fd2080bfe794c84bfc18a3f379752ed206fdda2a95e812bde86d59314f35851"
+                                                         },
+                  "exports\\known-results\\runtime_verification.json":  {
+                                                                            "bytes":  306,
+                                                                            "sha256":  "c33ad3aacb5f500179cfb93dad160b676746fdab1fa4c7ff9306eb4eddaa7687"
+                                                                        },
+                  "exports\\known-results\\responses\\04-C4-known.json":  {
+                                                                              "bytes":  1477,
+                                                                              "sha256":  "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+                                                                          },
+                  "exports\\known-results\\requests\\21-EN03-new.json":  {
+                                                                             "bytes":  4586,
+                                                                             "sha256":  "721b7ae7a1740fd4d0ac5745cbb63247eb1fd99ed9c6591fb65a3c11441bca72"
+                                                                         },
+                  "exports\\final-results\\requests\\14-FR04-new.json":  {
+                                                                             "bytes":  4597,
+                                                                             "sha256":  "72acc39f5966c083f6e34763d78e3d5830b5e0fe1ffd7b750257958ed2531053"
+                                                                         },
+                  "exports\\final-results\\responses\\05-C5-known.json":  {
+                                                                              "bytes":  1475,
+                                                                              "sha256":  "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+                                                                          },
+                  "exports\\final-results\\templates\\03-C3-known.tokens.json":  {
+                                                                                     "bytes":  1716,
+                                                                                     "sha256":  "9e69b1836a0d25bc4dc9d9a2d49778d8ffffa84c63935c71103c6e644bc17266"
+                                                                                 },
+                  "exports\\final-results\\config.json":  {
+                                                              "bytes":  1951,
+                                                              "sha256":  "8b486fc3321675036bd1d37f712bf08a1064898d59f3c932e1535172f827903a"
+                                                          },
+                  "exports\\known-results\\requests\\02-C2-known.json":  {
+                                                                             "bytes":  4563,
+                                                                             "sha256":  "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0"
+                                                                         },
+                  "requests\\22-EN04-new.json":  {
+                                                     "bytes":  4600,
+                                                     "sha256":  "1e433befbc8b975b8b5a3fe95f8b088245726288bf0468241583eec8d23c039b"
+                                                 },
+                  "requests\\12-FR02-new.json":  {
+                                                     "bytes":  4589,
+                                                     "sha256":  "11dc237aaf5004174282c6cc79a6975efd899c97636219d94d6a9302f0c47c3a"
+                                                 },
+                  "templates\\06-C6-known.json":  {
+                                                      "bytes":  1893,
+                                                      "sha256":  "a003de7699c3bc42b082d02a775834308924e573bd1fcdcb7bc58bda5cdec9b8"
+                                                  },
+                  "progress.json":  {
+                                        "bytes":  446,
+                                        "sha256":  "d4285a1e4be54ab5b69399ce9d5e771294a126486e4f9f9d147480a762cde976"
+                                    },
+                  "runtime\\llama-quantize.exe":  {
+                                                      "bytes":  9216,
+                                                      "sha256":  "645013b453bd71f82c7849b8ceb57a745aab69fdf30fca022b20afba9cfcf3cf"
+                                                  },
+                  "exports\\known-results\\templates\\03-C3-known.json":  {
+                                                                              "bytes":  1926,
+                                                                              "sha256":  "d25cfff79619334a0a0384a17f8d83fba92c6e7651df27402316d9ccf5c6ff6f"
+                                                                          },
+                  "contract.py":  {
+                                      "bytes":  5894,
+                                      "sha256":  "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec"
+                                  },
+                  "exports\\known-results\\requests\\31-DE01-repeat.json":  {
+                                                                                "bytes":  4590,
+                                                                                "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                                            },
+                  "driver_exit.json":  {
+                                           "bytes":  128,
+                                           "sha256":  "f96756f6dd4a656fe24642c50f8982c62ac72486f869a4034d72494b3cfb79e0"
+                                       },
+                  "exports\\final-results\\assessment.json":  {
+                                                                  "bytes":  12560,
+                                                                  "sha256":  "f86e93f44d78ea8919afbf30913e25ff0572c05e12dec4501e1bd969f7c61603"
+                                                              },
+                  "templates\\02-C2-known.tokens.json":  {
+                                                             "bytes":  1667,
+                                                             "sha256":  "b6d12fcb31c7c6f867489beaeec46399949d4b4252ed3eb81b82f9d884feedb0"
+                                                         },
+                  "exports\\known-results\\run_attempt.json":  {
+                                                                   "bytes":  198,
+                                                                   "sha256":  "72acb18d48b2a7ea86e4bd7cdbc0d4415d5182aff77dae20b208f95f7c34ed45"
+                                                               },
+                  "exports\\known-results\\requests\\01-C1-known.json":  {
+                                                                             "bytes":  4563,
+                                                                             "sha256":  "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd"
+                                                                         },
+                  "Preflight.ps1":  {
+                                        "bytes":  1752,
+                                        "sha256":  "a599455f867df3f2215198b29b7f5c31f889b2be2ae21453111d547dba63ea55"
+                                    },
+                  "responses\\04-C4-known.json":  {
+                                                      "bytes":  1477,
+                                                      "sha256":  "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+                                                  },
+                  "runtime_devices.stderr.log":  {
+                                                     "bytes":  0,
+                                                     "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                 },
+                  "exports\\final-results\\requests\\17-IT03-new.json":  {
+                                                                             "bytes":  4592,
+                                                                             "sha256":  "fd043228f987c046240d7533753bd2112839daf75ab2062979b2cd5e2e27c650"
+                                                                         },
+                  "requests\\17-IT03-new.json":  {
+                                                     "bytes":  4592,
+                                                     "sha256":  "fd043228f987c046240d7533753bd2112839daf75ab2062979b2cd5e2e27c650"
+                                                 },
+                  "requests\\18-IT04-new.json":  {
+                                                     "bytes":  4606,
+                                                     "sha256":  "a76d3570f10d17404e19e74f728f7698720e77c0ba1adbe83efaaa9d7868b980"
+                                                 },
+                  "exports\\final-results\\requests\\18-IT04-new.json":  {
+                                                                             "bytes":  4606,
+                                                                             "sha256":  "a76d3570f10d17404e19e74f728f7698720e77c0ba1adbe83efaaa9d7868b980"
+                                                                         },
+                  "exports\\known-results\\responses\\06-C6-known.json":  {
+                                                                              "bytes":  1473,
+                                                                              "sha256":  "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+                                                                          },
+                  "server.stderr.log":  {
+                                            "bytes":  5785,
+                                            "sha256":  "2693cd7896e338c4f0d8b9a47285dece3b502cd11070b45c445d9134e5735b5a"
+                                        },
+                  "Cleanup.ps1":  {
+                                      "bytes":  904,
+                                      "sha256":  "1ce2e1934e5bff0c0ef9d3efedf0568779b5dc5cc41f80441e5f730366d51537"
+                                  },
+                  "runtime\\ggml-cpu-sse42.dll":  {
+                                                      "bytes":  915456,
+                                                      "sha256":  "740d3e84289733501b70274904c9d1135bdc579babf7c82825f5ae0133e5afbd"
+                                                  },
+                  "runtime\\ggml-cpu-zen4.dll":  {
+                                                     "bytes":  1615360,
+                                                     "sha256":  "7f257519148e3b81fc718acad0f7afcd381d2b429fe0032a1f97e365d7ff2db5"
+                                                 },
+                  "exports\\final-results\\order.json":  {
+                                                             "bytes":  4053,
+                                                             "sha256":  "5230ca2c9ab41510e475f7718d16663ad28fa8c9f15f01b9a6f44e1c4569247d"
+                                                         },
+                  "runtime\\llama-minicpmv-cli.exe":  {
+                                                          "bytes":  27136,
+                                                          "sha256":  "193513388b62212ee816f752e64db9a377288f3bd3acb3fb509e23ca547fa387"
+                                                      },
+                  "runtime\\ggml-vulkan.dll":  {
+                                                   "bytes":  45305344,
+                                                   "sha256":  "a5d8b5b0f48d6aa240551c53ba8d7ea43516066d30e23ece6e5152731925b502"
+                                               },
+                  "requests\\32-FR01-repeat.json":  {
+                                                        "bytes":  4592,
+                                                        "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                    },
+                  "Run.ps1":  {
+                                  "bytes":  12105,
+                                  "sha256":  "3e40f0b616ec9e41e62e4df0ce8661cdde303887f24e83c22761b642c32f5ef5"
+                              },
+                  "exports\\final-results\\responses\\01-C1-known.json":  {
+                                                                              "bytes":  1468,
+                                                                              "sha256":  "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+                                                                          },
+                  "exports\\known-results\\requests\\29-OUT01-new.json":  {
+                                                                              "bytes":  4576,
+                                                                              "sha256":  "2a88aefb1b233c684ea14382f52f4de63ae7062090840f3ff3888d737b0e2794"
+                                                                          },
+                  "templates\\05-C5-known.tokens.json":  {
+                                                             "bytes":  1676,
+                                                             "sha256":  "9e300f9ee0d2c223993d9122f75f92c1802717d01d03d8a61a88053a366eb19c"
+                                                         },
+                  "exports\\known-results\\server.stdout.log":  {
+                                                                    "bytes":  0,
+                                                                    "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+                                                                },
+                  "runtime\\llama-mtmd-debug.exe":  {
+                                                        "bytes":  55808,
+                                                        "sha256":  "bff6e878ab5814fadc82509558b81b9c17b25fee708db2fb76695c99722db527"
+                                                    },
+                  "runtime\\llama-fit-params.exe":  {
+                                                        "bytes":  9216,
+                                                        "sha256":  "c2bf85d263a04a73ed4af00e08a42296daac5a33255e31952e133b474848a494"
+                                                    },
+                  "exports\\final-results\\freeze.json":  {
+                                                              "bytes":  5092,
+                                                              "sha256":  "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce"
+                                                          },
+                  "exports\\final-results\\templates\\02-C2-known.json":  {
+                                                                              "bytes":  1903,
+                                                                              "sha256":  "6e590fbad3a6feab3cef1121446054e5fc2dc40981c73b6ef7eb6675055ead63"
+                                                                          },
+                  "requests\\03-C3-known.json":  {
+                                                     "bytes":  4598,
+                                                     "sha256":  "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c"
+                                                 },
+                  "exports\\final-results\\requests\\16-IT02-new.json":  {
+                                                                             "bytes":  4599,
+                                                                             "sha256":  "88215c8abda2c050024658adad2aac77390add1ab07b7eb60e0d972823ccface"
+                                                                         },
+                  "requests\\20-EN02-new.json":  {
+                                                     "bytes":  4588,
+                                                     "sha256":  "59468c20130d224afabc9fd9fca2090028651f71ea81251d1a9f9d7d005fdeeb"
+                                                 },
+                  "exports\\known-results\\requests\\11-FR01-new.json":  {
+                                                                             "bytes":  4592,
+                                                                             "sha256":  "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+                                                                         },
+                  "exports\\final-results\\gate.json":  {
+                                                            "bytes":  1597,
+                                                            "sha256":  "10cfe1dd03c8cc61d3751018e3c7d3bc9134e9612d298d1112a21b3261ec0d46"
+                                                        },
+                  "runtime\\llama-gguf-split.exe":  {
+                                                        "bytes":  60416,
+                                                        "sha256":  "8743e2535624e84b0bba34a36bb7b7fdfea8dc5648d8139048644ddc03d4253d"
+                                                    },
+                  "exports\\final-results\\requests\\09-DE03-new.json":  {
+                                                                             "bytes":  4596,
+                                                                             "sha256":  "1c1609cb9b6d4b6a24f0daf668bbfc88c37c29b01d3c39b170a7c030d1dd33b7"
+                                                                         },
+                  "runtime\\ggml-cpu-cannonlake.dll":  {
+                                                           "bytes":  1614336,
+                                                           "sha256":  "c9723eab21d1d80e38f3791088739c56a8a36f7db5ad2340811eac2d3fd45af7"
+                                                       },
+                  "cases.json":  {
+                                     "bytes":  10453,
+                                     "sha256":  "e37c975071c3d34592dc954a06a087c9401e582872e00f2215e671247077fe5e"
+                                 },
+                  "contract_provenance.json":  {
+                                                   "bytes":  364,
+                                                   "sha256":  "a022adb4dab793d133782241f02287b6ba833882cb039f4b1080844fcb78b632"
+                                               },
+                  "exports\\known-results\\templates\\04-C4-known.tokens.json":  {
+                                                                                     "bytes":  1671,
+                                                                                     "sha256":  "fe0d761f402998994c84360e735f82c7f52e8c3cc5333814eec004d97b494bbf"
+                                                                                 },
+                  "exports\\final-results\\run_attempt.json":  {
+                                                                   "bytes":  198,
+                                                                   "sha256":  "72acb18d48b2a7ea86e4bd7cdbc0d4415d5182aff77dae20b208f95f7c34ed45"
+                                                               },
+                  "exports\\known-results\\preload_resources.json":  {
+                                                                         "bytes":  590,
+                                                                         "sha256":  "706f35b55be5152dbc5b05e70721ad367799a3ac615e65491f4db549ff38e0c9"
+                                                                     },
+                  "README.md":  {
+                                    "bytes":  11631,
+                                    "sha256":  "09a109a5782b846c3734add719753263d4ba54480b2b6b8864676bf930feb63e"
+                                },
+                  "runtime\\llama-qwen2vl-cli.exe":  {
+                                                         "bytes":  27136,
+                                                         "sha256":  "193513388b62212ee816f752e64db9a377288f3bd3acb3fb509e23ca547fa387"
+                                                     },
+                  "exports\\final-results\\server_properties.json":  {
+                                                                         "bytes":  7459,
+                                                                         "sha256":  "b78e4e0ee9e9e6b9b1b0df1f5693f791c548f6b968499c7656ef390e55c10738"
+                                                                     },
+                  "assess.py":  {
+                                    "bytes":  9931,
+                                    "sha256":  "3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3"
+                                },
+                  "metadata_verification.json":  {
+                                                     "bytes":  259,
+                                                     "sha256":  "a4674c1ef0577a5ec909e4e19dcad896493cadc1ef39b814e263a2dc35fd690e"
+                                                 },
+                  "requests\\34-EN01-repeat.json":  {
+                                                        "bytes":  4569,
+                                                        "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                    },
+                  "exports\\known-results\\requests\\34-EN01-repeat.json":  {
+                                                                                "bytes":  4569,
+                                                                                "sha256":  "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+                                                                            },
+                  "exports\\known-results\\requests\\15-IT01-new.json":  {
+                                                                             "bytes":  4585,
+                                                                             "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                                         },
+                  "exports\\known-results\\templates\\02-C2-known.tokens.json":  {
+                                                                                     "bytes":  1667,
+                                                                                     "sha256":  "b6d12fcb31c7c6f867489beaeec46399949d4b4252ed3eb81b82f9d884feedb0"
+                                                                                 },
+                  "templates\\03-C3-known.tokens.json":  {
+                                                             "bytes":  1716,
+                                                             "sha256":  "9e69b1836a0d25bc4dc9d9a2d49778d8ffffa84c63935c71103c6e644bc17266"
+                                                         },
+                  "resources.jsonl":  {
+                                          "bytes":  224765,
+                                          "sha256":  "f12ae819a939860656e5cda16792318aa6bb8e54aacb39c2e21330c72cd2b1d2"
+                                      },
+                  "exports\\known-results\\requests\\28-AMB02-new.json":  {
+                                                                              "bytes":  4577,
+                                                                              "sha256":  "c485e70998eaf222060ad11e50b276ba48a7aeccca709ed4afca0c7168e9689d"
+                                                                          },
+                  "known-results.zip":  {
+                                            "bytes":  85457,
+                                            "sha256":  "4dffe3f3f3fb8610396be88aeb5d66463cd0ff0f14078e6fbf832479c59e7f07"
+                                        },
+                  "runtime\\llama-completion.exe":  {
+                                                        "bytes":  9216,
+                                                        "sha256":  "aaf0bba4723883b8a4f25e9d02bb23802cad1cc5f5cb2aab53098691bf7c4c0d"
+                                                    },
+                  "runtime\\llama-perplexity.exe":  {
+                                                        "bytes":  9216,
+                                                        "sha256":  "dda4774f04508bf4092e3d4e2cd13bc47b5433d3581793556f91284fb8b3c567"
+                                                    },
+                  "requests\\27-AMB01-new.json":  {
+                                                      "bytes":  4577,
+                                                      "sha256":  "ccb17388f699210f4465ad9c1c12f2458a1be692857899a6b7d4a9af6070e8be"
+                                                  },
+                  "download.json":  {
+                                        "bytes":  207,
+                                        "sha256":  "f8fe36a90f016a70eaa4c10531fb249c027c56a75e8db17dc344a464a71d8da0"
+                                    },
+                  "requests\\05-C5-known.json":  {
+                                                     "bytes":  4570,
+                                                     "sha256":  "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a"
+                                                 },
+                  "exports\\known-results\\config.json":  {
+                                                              "bytes":  1951,
+                                                              "sha256":  "8b486fc3321675036bd1d37f712bf08a1064898d59f3c932e1535172f827903a"
+                                                          },
+                  "preload_resources.json":  {
+                                                 "bytes":  590,
+                                                 "sha256":  "706f35b55be5152dbc5b05e70721ad367799a3ac615e65491f4db549ff38e0c9"
+                                             },
+                  "exports\\final-results\\readiness.json":  {
+                                                                 "bytes":  97,
+                                                                 "sha256":  "6931a8d71bfcb24643d72fd7e00444eb1ba3e870471fd3e830883a6e9a92cc9c"
+                                                             },
+                  "exports\\final-results\\requests\\24-MIX02-new.json":  {
+                                                                              "bytes":  4586,
+                                                                              "sha256":  "9f2bed71a2dd174b54518dfff6124b20dadf6cbc999a07ca90331d5a6d21bdcb"
+                                                                          },
+                  "exports\\final-results\\requests\\07-DE01-new.json":  {
+                                                                             "bytes":  4590,
+                                                                             "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                                         },
+                  "exports\\final-results\\requests\\08-DE02-new.json":  {
+                                                                             "bytes":  4595,
+                                                                             "sha256":  "f173eaefcfc08704fcadd9e85a54d90c5163a3a1cc3179008bfa2264fa0e884d"
+                                                                         },
+                  "exports\\known-results\\responses\\02-C2-known.json":  {
+                                                                              "bytes":  1468,
+                                                                              "sha256":  "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+                                                                          },
+                  "runtime\\ggml-cpu-sapphirerapids.dll":  {
+                                                               "bytes":  1885696,
+                                                               "sha256":  "72b1203f01d4aa12f22d45415d91dc046f15e3eb3da49f7110b59c888bee9978"
+                                                           },
+                  "runtime\\llama-cli-impl.dll":  {
+                                                      "bytes":  3315712,
+                                                      "sha256":  "5dc73fb3fecc0da17f6b18999a4516e6e346dcc0e1cff10379ab16a4fca182cc"
+                                                  },
+                  "requests\\23-MIX01-new.json":  {
+                                                      "bytes":  4586,
+                                                      "sha256":  "804e691a3546da50b1a9dc951bd923f53a9d5ae2f964ba96b317eebe2212c7c7"
+                                                  },
+                  "run_failure.json":  {
+                                           "bytes":  187,
+                                           "sha256":  "f4706dac93dbb29d407c12a97f3317475a0573eb9192f0f283057344dd1e1e3c"
+                                       },
+                  "exports\\known-results\\requests\\24-MIX02-new.json":  {
+                                                                              "bytes":  4586,
+                                                                              "sha256":  "9f2bed71a2dd174b54518dfff6124b20dadf6cbc999a07ca90331d5a6d21bdcb"
+                                                                          },
+                  "exports\\final-results\\runtime_devices.exit.json":  {
+                                                                            "bytes":  70,
+                                                                            "sha256":  "8187bf09566e66eb17e5befae1f848b25441848927b5e4900da403bdf2b62a3f"
+                                                                        },
+                  "runtime\\llama-llava-cli.exe":  {
+                                                       "bytes":  27136,
+                                                       "sha256":  "1031f697b423794b145c38818d1350d22b07d6526aececbf84299a568a47184c"
+                                                   },
+                  "exports\\final-results\\runtime_version.exit.json":  {
+                                                                            "bytes":  70,
+                                                                            "sha256":  "f48110c486c5a42e8e918c8721ddb6baec570140b188a3e27ea256d7bc301f81"
+                                                                        },
+                  "exports\\final-results\\download.json":  {
+                                                                "bytes":  207,
+                                                                "sha256":  "f8fe36a90f016a70eaa4c10531fb249c027c56a75e8db17dc344a464a71d8da0"
+                                                            },
+                  "exports\\known-results\\templates\\05-C5-known.json":  {
+                                                                              "bytes":  1910,
+                                                                              "sha256":  "d29f8aa2551522b07d266da8c77c613458e192b4fd4d79f8fb26d85df20e64f3"
+                                                                          },
+                  "run_attempt.json":  {
+                                           "bytes":  198,
+                                           "sha256":  "72acb18d48b2a7ea86e4bd7cdbc0d4415d5182aff77dae20b208f95f7c34ed45"
+                                       },
+                  "runtime\\llama-imatrix.exe":  {
+                                                     "bytes":  252416,
+                                                     "sha256":  "bd0e416ace4c93b30a110ce231d0afe9307b3a0ae7dc0438b4ca4b020fe9a7c6"
+                                                 },
+                  "runtime\\ggml-rpc.dll":  {
+                                                "bytes":  168960,
+                                                "sha256":  "7ba393c88878711014e57bfe77a45ec99bbcc106f945baec1c90614370dd9459"
+                                            },
+                  "requests\\30-OUT02-new.json":  {
+                                                      "bytes":  4575,
+                                                      "sha256":  "1e97c25ce465164877bd2ccc2964c7acad81ded920f3210cfa43fe92941c0403"
+                                                  },
+                  "Qwen3-8B-Q8_0.gguf":  {
+                                             "bytes":  8709518112,
+                                             "sha256":  "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6"
+                                         },
+                  "exports\\final-results\\templates\\06-C6-known.json":  {
+                                                                              "bytes":  1893,
+                                                                              "sha256":  "a003de7699c3bc42b082d02a775834308924e573bd1fcdcb7bc58bda5cdec9b8"
+                                                                          },
+                  "runtime\\llama-bench.exe":  {
+                                                   "bytes":  9216,
+                                                   "sha256":  "168ad39c85bb45b1b43b133074317bc577ed7b0a34d380d6a559207683b94114"
+                                               },
+                  "exports\\final-results\\requests\\33-IT01-repeat.json":  {
+                                                                                "bytes":  4585,
+                                                                                "sha256":  "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+                                                                            },
+                  "exports\\final-results\\server_command.json":  {
+                                                                      "bytes":  1906,
+                                                                      "sha256":  "0f8aee6fbaaff842bc008f209a6e84547ffceedb43417456063324d916609f09"
+                                                                  },
+                  "exports\\known-results\\resources.jsonl":  {
+                                                                  "bytes":  7165,
+                                                                  "sha256":  "4f56460ce6ad169949b617fddb34e8b5b45f3a8e08a4a40543bfb78afacadb49"
+                                                              },
+                  "exports\\known-results\\requests\\30-OUT02-new.json":  {
+                                                                              "bytes":  4575,
+                                                                              "sha256":  "1e97c25ce465164877bd2ccc2964c7acad81ded920f3210cfa43fe92941c0403"
+                                                                          },
+                  "config.json":  {
+                                      "bytes":  1951,
+                                      "sha256":  "8b486fc3321675036bd1d37f712bf08a1064898d59f3c932e1535172f827903a"
+                                  },
+                  "exports\\final-results\\templates\\06-C6-known.tokens.json":  {
+                                                                                     "bytes":  1668,
+                                                                                     "sha256":  "3f18810790d123f475442ff350a3cbdb75a69ce4c3213718623b9fcdc5d69f85"
+                                                                                 },
+                  "exports\\known-results\\requests\\25-SHORT01-new.json":  {
+                                                                                "bytes":  4562,
+                                                                                "sha256":  "6484d327e770a66b1ddd1a319e226a5410f458588894cf6b0307e3549327c020"
+                                                                            },
+                  "exports\\known-results\\contract_provenance.json":  {
+                                                                           "bytes":  364,
+                                                                           "sha256":  "a022adb4dab793d133782241f02287b6ba833882cb039f4b1080844fcb78b632"
+                                                                       },
+                  "requests\\24-MIX02-new.json":  {
+                                                      "bytes":  4586,
+                                                      "sha256":  "9f2bed71a2dd174b54518dfff6124b20dadf6cbc999a07ca90331d5a6d21bdcb"
+                                                  },
+                  "runtime\\llama-batched-bench.exe":  {
+                                                           "bytes":  9216,
+                                                           "sha256":  "0185ab3a5799d3452282ee01d0b501ef385769c0642a9375af2983a1834792c3"
+                                                       },
+                  "templates\\01-C1-known.tokens.json":  {
+                                                             "bytes":  1667,
+                                                             "sha256":  "ce86742c2b8c58082ea7b1a0c65e453f52277ce601fe1fe17b496c504da5c75e"
+                                                         },
+                  "artifacts.json":  {
+                                         "bytes":  1206,
+                                         "sha256":  "1fe6f43bc0e30d29efb71e436eb277cc210e6083cf5c38e90c163437a8d12e25"
+                                     },
+                  "exports\\known-results\\responses\\01-C1-known.json":  {
+                                                                              "bytes":  1468,
+                                                                              "sha256":  "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+                                                                          },
+                  "requests\\31-DE01-repeat.json":  {
+                                                        "bytes":  4590,
+                                                        "sha256":  "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+                                                    },
+                  "order.json":  {
+                                     "bytes":  4053,
+                                     "sha256":  "5230ca2c9ab41510e475f7718d16663ad28fa8c9f15f01b9a6f44e1c4569247d"
+                                 }
+              }
+}

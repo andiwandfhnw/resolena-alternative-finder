@@ -1,0 +1,21 @@
+{
+  "status": "stopped_preflight",
+  "process_exit_code": 1,
+  "command": ".venv/bin/python -B experiments/uc001_multilingual/qwen_spike/calibration_B_2026_10_11/calibrate.py",
+  "error": "Preflight RAM/disk guard",
+  "start_epoch": null,
+  "deadline_epoch": null,
+  "timed_window_started": false,
+  "model_loaded": false,
+  "requests_sent": 0,
+  "retry": false,
+  "recorded_utc": "2026-10-11T13:37:48.512400+00:00",
+  "resource_observation": {
+    "utc": "2026-10-11T13:36:20.532238+00:00",
+    "available_memory_bytes": 3933028352,
+    "disk_free_bytes": 24158359552,
+    "preflight_memory_min_bytes": 4026531840,
+    "scratch_reserve_bytes": 6442450944,
+    "measurement_scope": "Read-only observation after guard stopped; exact resource values at failing guard were not recorded"
+  }
+}

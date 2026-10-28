@@ -1,0 +1,49 @@
+{
+  "recorded_at": "2026-10-23T16:48:27.902741+00:00",
+  "recorded_before_implementation": true,
+  "contract": "O-1 intent only; exact named coverage requires independently unambiguous scope, or explicit independently supported countrywide coverage with no defeating narrower condition. Ordinary in-CH evidence is insufficient.",
+  "confirmation_representation": {
+    "client": "Existing location_choice:confirmed_unverified with current country/town/postcode; no new client token or metadata fields.",
+    "persisted_search_location": {
+      "country_code": "CH",
+      "town": "  Synthetic optional town  ",
+      "postcode": " 0123 ",
+      "locality": {
+        "confirmation": "user_confirmed",
+        "verification": "reference_unverified",
+        "normalized": {
+          "town": "synthetic optional town",
+          "postcode": "0123"
+        }
+      }
+    },
+    "normalization": "Retain raw entered strings; boundary trim and Unicode NFC/casefold for town; boundary trim only for postcode, preserving leading zeros. No lookup, reference ID or review date.",
+    "projection": "Only a newly saved confirmed-locality outcome adds search_scope equal to its persisted effective search_location. Recovery still acknowledges ID/outcome/time only.",
+    "country_provenance": "Existing server-derived interpretation.provenance.reference_versions.country remains separate from unverified locality.",
+    "minimization": "Whitelist country/town/postcode and explicit confirmation/unverified/normalized metadata; do not retain supplied reference IDs as verification."
+  },
+  "browser": {
+    "text": "Repair my bicycle without replacing it",
+    "country": "CH",
+    "town": "  Synthetic optional town  ",
+    "postcode": " 0123 ",
+    "expected_first": "Actual200/clarification_required/not_attempted, no rows added.",
+    "expected_after_explicit_confirmation": "Actual201/insufficient_coverage/saved because existing repair fixtures provide only ordinary in-CH scope.",
+    "expected_delta": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "baseline": "Existing actual React CH success; compare new IDs and preserve prior rows/snapshots/evidence.",
+    "identities": "Explicit confirmation uses a new captured key/proof and choice, retaining exact raw fields/context; edits reset choice to provided without submitting."
+  },
+  "positive_fixture": {
+    "alternative_id": "00000000-0000-4000-8000-000000000540",
+    "evidence_version_id": "30000000-0000-4000-8000-000000000540",
+    "kind": "New, explicitly fictional provider-stated repair service throughout CH, including all towns/postcodes; country_wide:true source scope, not inferred from CH.",
+    "price": "Fictional CHF45.00 per repair, parts excluded; no real provider acceptance, saving or environmental advantage.",
+    "freshness": "Existing fixed synthetic2026-10-15T10:00:00+00:00; no old evidence or review dates changed.",
+    "expected": "One qualifying alternative/evidence link only when all actual evidence, conditions/freshness/requirements/rendering gates pass; independent textual restrictions still required."
+  },
+  "limits": "One bounded O-1 branch only; no factual locality matching, all-O1 acceptance, data acquisition, models, held-out cases, language approval, delivery or phase completion."
+}

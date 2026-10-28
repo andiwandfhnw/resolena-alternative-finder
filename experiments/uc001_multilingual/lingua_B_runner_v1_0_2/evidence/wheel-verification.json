@@ -1,0 +1,33 @@
+{
+  "version": "1.0.1",
+  "wheel": "/workspaces/resolena-alternative-finder/build/lingua-b-20261015/lingua_language_detector-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+  "wheel_sha256": "63d99c7570ba09525f1702e4e4b2362f8f1f7e0a0fba93a3a53d3f322e00659d",
+  "wheel_bytes": 170332900,
+  "uncompressed_wheel_bytes": 306137618,
+  "metadata_sha256": "4b8a2befef725edc840643676d65925a4c8fdbba1624485f968255fc07b03d6b",
+  "metadata_matches_publisher": true,
+  "licenses": [
+    {
+      "declared": "LICENSE",
+      "archive_member": "lingua_language_detector-2.2.0.dist-info/licenses/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "exact_content_match": true
+    }
+  ],
+  "active_python_dependencies": [],
+  "unchanged_limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "new_acquisition_bytes": 0,
+  "installation_performed": false,
+  "lingua_imported": false,
+  "detector_calls": 0,
+  "scope": "Offline retained-artifact verification only; native loading and detector behaviour untested."
+}

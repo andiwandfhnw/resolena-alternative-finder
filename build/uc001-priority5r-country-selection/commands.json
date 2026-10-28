@@ -1,0 +1,121 @@
+[
+  {
+    "stage": "preparation_RED",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/preparation-red tests/unit/test_country_catalogue_preparation.py 2>&1 | tee build/uc001-priority5r-country-selection/preparation-red.txt",
+    "exit_code": 1,
+    "result": "4 failed, 21 passed in 0.35 s: approved-mode keyword/CLI missing; 20 original parser cases and old draft reproduction already pass."
+  },
+  {
+    "stage": "preparation_GREEN",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/preparation-green tests/unit/test_country_catalogue_preparation.py 2>&1 | tee build/uc001-priority5r-country-selection/preparation-green.txt",
+    "exit_code": 0,
+    "result": "25 passed in 0.22 s."
+  },
+  {
+    "stage": "approved_release_generation",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output docs/reference/COUNTRIES-GEONAMES-2026-10-23.json --manifest docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json --prepared-at 2026-10-23T09:35:14+00:00 --approved-release",
+    "exit_code": 0,
+    "result": "252 = 250 included + 2 excluded + 0 unresolved. Actual preparation: 2026-10-23T09:35:14+00:00; approved output SHA-256 is recorded in the release manifest."
+  },
+  {
+    "stage": "approved_release_reproduction",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output /tmp/resolena-priority5r-i7kqbmbe/approved-reproduction.json --manifest /tmp/resolena-priority5r-i7kqbmbe/approved-reproduction-manifest.json --prepared-at 2026-10-23T09:35:14+00:00 --approved-release",
+    "exit_code": 0,
+    "result": "Byte-identical 250-entry output; original 249-entry draft and pending manifest unchanged."
+  },
+  {
+    "stage": "backend_RED",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/backend-red tests/integration/test_saved_comparison.py -k 'missing_or_cleared_country or new_country_nonmembers or approved_country_membership or country_endpoint or bad_country_reference or checked_recovery_precedes_country' 2>&1 | tee build/uc001-priority5r-country-selection/backend-red.txt",
+    "exit_code": 1,
+    "result": "15 failed, 2 passed, 33 deselected in 2.15 s. Membership, provenance, loader and endpoint were missing; missing/blank country was already correct."
+  },
+  {
+    "stage": "backend_initial_GREEN",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/backend-green tests/integration/test_saved_comparison.py -k 'missing_or_cleared_country or new_country_nonmembers or approved_country_membership or country_endpoint or bad_country_reference or checked_recovery_precedes_country' 2>&1 | tee build/uc001-priority5r-country-selection/backend-green.txt",
+    "exit_code": 0,
+    "result": "17 passed, 33 deselected in 1.36 s."
+  },
+  {
+    "stage": "corrupt_metadata_RED",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/config-shape-red 'tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[bad_attribution]' 2>&1 | tee build/uc001-priority5r-country-selection/config-shape-red.txt",
+    "exit_code": 1,
+    "result": "1 failed in 1.74 s: nonstring attribution escaped configuration mapping as AttributeError. String type guard then corrected."
+  },
+  {
+    "stage": "backend_final",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5r-i7kqbmbe/backend-final tests/integration/test_saved_comparison.py -k 'missing_or_cleared_country or new_country_nonmembers or approved_country_membership or country_endpoint or bad_country_reference or checked_recovery_precedes_country or unavailable_locality_reference_requires or country_only_normalizes or country_only_fallback_preserves or locality_unavailability_does_not_conceal or same_submission_is_acknowledged or returns_only_the_committed_projection or normal_runtime_never or exact_product_and_habit' 2>&1 | tee build/uc001-priority5r-country-selection/backend-final.txt",
+    "exit_code": 0,
+    "result": "27 passed, 24 deselected in 1.81 s: 18 new country cases plus 9 directly affected existing regressions."
+  },
+  {
+    "stage": "browser_harness_precondition_failure",
+    "cwd": "/workspaces/resolena-alternative-finder/frontend",
+    "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5r-country-red.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red.json npx playwright test --grep 'approved country selector' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red.txt",
+    "exit_code": 1,
+    "result": "New case alone failed its required nonempty saved-baseline precondition before feature steps. Retained as a setup error, not feature RED."
+  },
+  {
+    "stage": "browser_feature_RED",
+    "cwd": "/workspaces/resolena-alternative-finder/frontend",
+    "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5r-country-red-baseline.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red-baseline.json npx playwright test --grep 'browser displays exactly|approved country selector' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red-baseline --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red-baseline.txt",
+    "exit_code": 1,
+    "result": "Existing React/CH baseline passes; new country case gets actual GET /api/countries 404 versus expected 200. 1 passed, 1 failed in 5.7 s. Baseline label used existing UI wording until the UI changed."
+  },
+  {
+    "stage": "browser_GREEN",
+    "cwd": "/workspaces/resolena-alternative-finder/frontend",
+    "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5r-country-green.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-green.json npx playwright test --grep 'browser displays exactly|approved country selector|direct new intent after uncertain save: country_edit|lost HTTP response after atomic commit|unavailable locality requires explicit country-only|changed-country request saves coverage' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-green --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-green.txt",
+    "exit_code": 0,
+    "result": "6 passed in 12.5 s; no skips, flaky or unexpected results, retries 0. Baseline, new journey and 4 affected existing country-edit/recovery/locality/changed-country regressions."
+  },
+  {
+    "stage": "frontend_lint",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5r-country-selection/frontend-lint.txt",
+    "exit_code": 0,
+    "result": "ESLint passes."
+  },
+  {
+    "stage": "frontend_build",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5r-country-selection/frontend-build.txt",
+    "exit_code": 0,
+    "result": "TypeScript/Vite passes; 17 modules, build 986 ms."
+  },
+  {
+    "stage": "git_diff_check_initial",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "git diff --check",
+    "exit_code": 2,
+    "result": "Only preexisting TASKS trailing whitespace at line 1997 after current authorization recording."
+  },
+  {
+    "stage": "git_diff_check_final",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "git diff --check > build/uc001-priority5r-country-selection/git-diff-check.txt 2>&1",
+    "exit_code": 2,
+    "result": "Same preserved TASKS whitespace, now line 2035 (before this slice: 1995). No added/changed-line whitespace."
+  },
+  {
+    "stage": "git_status",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "git status --short --branch > build/uc001-priority5r-country-selection/git-status.txt",
+    "exit_code": 0,
+    "result": "Existing dirty work preserved; new ADR-005 status entry; branch unchanged."
+  },
+  {
+    "stage": "preservation",
+    "cwd": "/workspaces/resolena-alternative-finder",
+    "command": "python - <<'PY'\nfrom pathlib import Path\nfrom hashlib import sha256\nimport ast,difflib,json,socket,subprocess\nout=Path('build/uc001-priority5r-country-selection')\nscratch=Path('/tmp/resolena-priority5r-i7kqbmbe')\nbaseline=json.loads((out/'preservation-baseline.json').read_text())\nchanged=[name for name,value in baseline.items() if not Path(name).is_file() or sha256(Path(name).read_bytes()).hexdigest()!=value]\nexpected=['docs/ARCHITECTURE.md','docs/TASKS.md','frontend/src/App.tsx','scripts/uc001_country_catalogue/prepare.py','src/app/application/comparisons.py','src/app/interfaces/api.py','tests/e2e/saved-comparison.spec.ts','tests/integration/test_saved_comparison.py','tests/support/product_habit.py','tests/support/source_bound_rendering.py','tests/support/synthetic.py','tests/unit/test_country_catalogue_preparation.py']\nassert sorted(changed)==expected,changed\nnew=['docs/adr/ADR-005-country-reference-development-release.md','docs/reference/COUNTRIES-GEONAMES-2026-10-23.json','docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json','src/app/application/countries.py','src/app/infrastructure/country_reference.py']\nassert all(Path(name).is_file() for name in new)\ncurrent=Path('docs/TASKS.md').read_text()\nold=(scratch/'docs/TASKS.md').read_text()\nstart=current.index('## Priority 5R \u2014 approved country reference and selection, 2026-10-23')\nend=current.index('## Priority 3 \u2014 bounded contracts/policy',start)\nhistorical=current[:start]+current[end:]\nanchor='Previous authorization, extended 2026-10-19:'\nassert historical[historical.index(anchor):]==old[old.index(anchor):]\nassert historical[:historical.index('Current authorization,')]==old[:old.index('Current authorization,')]\nassert current.splitlines()[:2]==['PHASE: 3','STATUS: in-progress']\nbrowser=Path('tests/e2e/saved-comparison.spec.ts').read_text()\nstart=browser.index(\"test('approved country selector\")\nend=browser.index('for (const fixture of [',start)\nprior_browser=browser[:start]+browser[end:]\nassert prior_browser.count(\".selectOption('DE')\")==3\nprior_browser=prior_browser.replace(\".selectOption('DE')\",\".fill('DE')\").replace(\"getByText('Development demonstration'\",\"getByText('Synthetic demonstration'\")\nassert prior_browser==(scratch/'tests/e2e/saved-comparison.spec.ts').read_text()\ndef old_functions_preserved(name):\n    previous=(scratch/name).read_text() if (scratch/name).is_file() else None\n    if previous is None:\n        raw=Path(name).read_bytes()\n        marker=b'\\n\\n@pytest.mark.parametrize(\"country\", [None, \"\"])'\n        prefix=raw[:raw.index(marker)].rstrip(b'\\n')+b'\\n'\n        assert sha256(prefix).hexdigest()==baseline[name]\n        previous=prefix.decode()\n    now=Path(name).read_text()\n    prior_defs={node.name:ast.get_source_segment(previous,node) for node in ast.parse(previous).body if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef))}\n    current_defs={node.name:ast.get_source_segment(now,node) for node in ast.parse(now).body if isinstance(node,(ast.FunctionDef,ast.AsyncFunctionDef))}\n    assert all(current_defs.get(name)==text for name,text in prior_defs.items())\nold_functions_preserved('tests/integration/test_saved_comparison.py')\nold_functions_preserved('tests/unit/test_country_catalogue_preparation.py')\nnew_whitespace=[]\nfor name in changed+new:\n    after=Path(name).read_text().splitlines()\n    if (scratch/name).is_file():\n        before=(scratch/name).read_text().splitlines()\n        for op,a,b,c,d in difflib.SequenceMatcher(a=before,b=after,autojunk=False).get_opcodes():\n            if op in ('insert','replace'):\n                new_whitespace.extend((name,i+1) for i in range(c,d) if after[i].rstrip()!=after[i])\n    elif name in new or name!='docs/TASKS.md':\n        new_whitespace.extend((name,i+1) for i,line in enumerate(after) if line.rstrip()!=line)\nassert not new_whitespace,new_whitespace\nhistorical_artifacts=[name for name in baseline if name.startswith('build/uc001-priority5')]\nassert all(sha256(Path(name).read_bytes()).hexdigest()==baseline[name] for name in historical_artifacts)\nsource=Path('build/uc001-priority5q-country-catalogue/source/countryInfo.txt')\nassert sha256(source.read_bytes()).hexdigest()=='c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab'\nmanifest=json.loads(Path('docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json').read_text())\nassert sha256(Path(manifest['normalized_output']['path']).read_bytes()).hexdigest()==manifest['normalized_output']['sha256']\nassert sha256(Path(manifest['preparation']['script']).read_bytes()).hexdigest()==manifest['preparation']['script_sha256']\nwarnings=[(i,line) for i,line in enumerate(current.splitlines(),1) if line.rstrip()!=line]\nold_warnings=[(i,line) for i,line in enumerate(old.splitlines(),1) if line.rstrip()!=line]\nassert [text for _,text in warnings]==[text for _,text in old_warnings]\nports={}\nfor port in (8011,5175):\n    with socket.socket() as connection:\n        ports[str(port)]=connection.connect_ex(('127.0.0.1',port))!=0\nassert all(ports.values())\nassert not list(out.rglob('*.har')) and not list(out.rglob('*.zip'))\nbanned={'submission_key','proof','proofDigest','proof_binding','payload_digest','key_digest','headers','request_headers','postData','postDataJSON'}\nviolations=[]\ndef inspect(item,path):\n    if isinstance(item,dict):\n        violations.extend((path,key) for key in item if key in banned)\n        for value in item.values(): inspect(value,path)\n    elif isinstance(item,list):\n        for value in item: inspect(value,path)\nfor path in out.rglob('*.json'): inspect(json.loads(path.read_text()),str(path))\nassert not violations,violations\nhead=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()\nbranch=subprocess.check_output(['git','branch','--show-current'],text=True).strip()\nassert head==(out/'git-head-before.txt').read_text().strip()\nassert branch==(out/'git-branch-before.txt').read_text().strip()\nresult={'protected_files':len(baseline),'unchanged_protected_files':len(baseline)-len(changed),\n'expected_existing_files_changed':changed,'new_source_reference_files':new,\n'all_other_protected_hashes_unchanged':True,'prior_priority5_artifacts_byte_preserved':len(historical_artifacts),\n'original_5Q_draft_manifest_raw_source_and_receipts_unchanged':True,\n'all_prior_TASKS_history_after_current_authorization_and_checkpoint_preserved':True,\n'all_prior_API_and_parser_test_functions_preserved':True,\n'all_prior_browser_assertions_preserved_except_truthful_demo_label':True,\n'browser_interaction_adaptations_only':{'DE_fill_to_selectOption':3,'demo_label_expectation':1},\n'normal_app_main_SQLite_store_domain_language_contracts_dependencies_real_knowledge_drafts_unchanged':True,\n'new_or_changed_lines_with_trailing_whitespace':new_whitespace,\n'preexisting_whitespace_warning':{'before_line':old_warnings[0][0],'current_line':warnings[0][0],'text':warnings[0][1]},\n'branch':branch,'HEAD':head,'branch_and_HEAD_unchanged':True,'owned_server_ports_closed':ports,\n'trace_or_HAR_files':0,'protected_raw_request_fields_in_new_JSON_artifacts':violations,\n'Git_delivery_CI_dependency_changes_or_deployment':False}\n(out/'preservation.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps(result,indent=2))\nPY",
+    "exit_code": 0,
+    "result": "728 protected files: 12 expected existing changes and 716 unchanged. 17 source/doc/test files in this slice; 406 prior Priority 5 artifacts preserved. Services stopped; no protected raw request fields or trace/HAR artifacts."
+  }
+]

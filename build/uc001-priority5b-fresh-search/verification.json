@@ -1,0 +1,317 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, Priority 5B only: explicit fresh search after recovered acknowledgement with current reassessment",
+  "phase": 3,
+  "status": "in-progress",
+  "priority_3": "partial",
+  "priority_4": "partial",
+  "priority_5": "partial",
+  "owner_acceptance": {
+    "priority_5a": "Accepted only reported successful atomic save / lost response / acknowledgement-only same-submission recovery scope on 2026-10-19. Not complete retry/security coverage, Priority 5, increment-1 acceptance or DEVELOP completion.",
+    "unchanged_prior_evidence": "build/uc001-priority5a-recovery/verification.json"
+  },
+  "prerequisites": {
+    "result": "confirmed; no material contract conflict, dependency, architecture or real-data activation required",
+    "references": [
+      "UC-001 O-2/AC-10/11/14/17/T-09/12/13",
+      "ADR-003 accepted recovery/fresh-search boundary",
+      "ARCHITECTURE.md API/recovery and atomic-persistence sections"
+    ],
+    "recovery": "existing acknowledgement-only path reuses captured key/proof/body and original time, bypasses reassessment",
+    "fresh_search": "existing separate reset action sends no request; next explicit submit creates new identity/proof/current fields and re-enters normal processing",
+    "test_composition": "existing React/FastAPI/real isolated SQLite with synthetic interpreter/evidence only; optional controlled test clock added, normal app.main untouched",
+    "reused_evidence": "5A preservation/atomicity/security bounds reused; only smallest directly affected regressions rerun"
+  },
+  "changed_files": [
+    "tests/integration/test_saved_comparison.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/support/source_bound_rendering.py",
+    "tests/support/demo.py",
+    "frontend/playwright.config.ts",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "docs/ARCHITECTURE.md"
+  ],
+  "implementation": {
+    "production_frontend_and_backend": "unchanged; existing fresh-search behavior already implements accepted contract",
+    "test_support": "optional callable clock reaches legacy/hourly/pending synthetic services and source-bound renderer; demo reads an explicitly zoned timestamp from a test-only JSON file beneath build/test-only",
+    "test_configuration": "unique initialized clock file default preserves normal browser command; trace defaults off; override clock path remains available",
+    "test_refactor": "shared captureAttempt validates proof shape and keeps only digest in memory for comparisons; no raw proof artifact data",
+    "tests": "existing integration and browser files extended; new browser fault still occurs after real atomic commit, and later coverage delivery is held until saved projection is checked"
+  },
+  "red": [
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_fresh_search_after_recovered_save_reassesses_at_later_clock_without_mutating_original -q",
+      "exit_code": 1,
+      "result": "1 failed: create_demo_service did not accept clock parameter",
+      "log": "build/uc001-priority5b-fresh-search/backend-red.log"
+    },
+    {
+      "command": "RESOLENA_E2E_CLOCK_FILE=/workspaces/resolena-alternative-finder/build/test-only/priority5b-clock.json npm --prefix frontend run test:e2e -- --grep 'explicit fresh search after recovered acknowledgement' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/red/browser --reporter=list",
+      "exit_code": 1,
+      "result": "1 failed: fixed assessment clock returned comparison rather than expired-evidence insufficient_coverage",
+      "log": "build/uc001-priority5b-fresh-search/browser-red.log"
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'explicit fresh search after recovered acknowledgement' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/red-default/browser --reporter=list",
+      "exit_code": 1,
+      "result": "1 failed: review finding reproduced, ordinary command lacked default synthetic clock file",
+      "log": "build/uc001-priority5b-fresh-search/browser-red-default.log"
+    }
+  ],
+  "green": [
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_fresh_search_after_recovered_save_reassesses_at_later_clock_without_mutating_original -q",
+      "exit_code": 0,
+      "passed": 1,
+      "scope": "one new backend integration scenario",
+      "log": "build/uc001-priority5b-fresh-search/backend-green-new.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_committed_save_with_lost_response_recovers_only_original_acknowledgement tests/integration/test_saved_comparison.py::test_same_submission_is_acknowledged_without_replaying_a_comparison tests/integration/test_saved_comparison.py::test_returns_only_the_committed_projection_with_saved_ids_and_evidence tests/integration/test_saved_comparison.py::test_evidence_versions_are_immutable tests/integration/test_saved_comparison.py::test_explicit_retry_reassesses_without_renewing_review_dates tests/unit/test_comparison.py::test_rendering_failure_never_enters_the_save_boundary 'tests/integration/test_source_bound_rendering.py::test_missing_review_or_rendering_is_a_limitation_without_save[pending]' 'tests/integration/test_source_bound_rendering.py::test_reviewed_synthetic_rendering_is_saved_with_original_evidence_and_unknowns[en]' -q",
+      "exit_code": 0,
+      "passed": 8,
+      "scope": "direct recovery/binding/immutability/reassessment/rendering-gate regressions only",
+      "log": "build/uc001-priority5b-fresh-search/backend-regressions.log"
+    },
+    {
+      "command": "RESOLENA_E2E_CLOCK_FILE=/workspaces/resolena-alternative-finder/build/test-only/priority5b-clock.json npm --prefix frontend run test:e2e -- --grep 'explicit fresh search after recovered acknowledgement|lost HTTP response after atomic commit' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/green/browser --reporter=list",
+      "exit_code": 0,
+      "passed": 2,
+      "scope": "one new browser journey and 5A regression, explicit clock-file configuration",
+      "log": "build/uc001-priority5b-fresh-search/browser-green.log"
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --grep 'explicit fresh search after recovered acknowledgement|lost HTTP response after atomic commit' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/final/browser --reporter=list",
+      "exit_code": 0,
+      "passed": 2,
+      "scope": "same two scenarios after default-clock review fix; no new scenarios counted",
+      "log": "build/uc001-priority5b-fresh-search/browser-final.log"
+    },
+    {
+      "command": "npm --prefix frontend run lint",
+      "exit_code": 0,
+      "runs": 2,
+      "reason": "Playwright configuration changed again after the first pass",
+      "logs": [
+        "build/uc001-priority5b-fresh-search/frontend-lint.log",
+        "build/uc001-priority5b-fresh-search/frontend-lint-final.log"
+      ]
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0,
+      "runs": 2,
+      "reason": "Playwright configuration changed again after the first pass",
+      "logs": [
+        "build/uc001-priority5b-fresh-search/frontend-build.log",
+        "build/uc001-priority5b-fresh-search/frontend-build-final.log"
+      ]
+    }
+  ],
+  "command_recording": "Every test/lint/build command above executed with set -o pipefail and 2>&1 | tee <listed-log>. List reporter avoids overwriting historical default JSON. Targeted repeats verify fixes to the same scenarios only.",
+  "browser_evidence": "build/uc001-priority5b-fresh-search/final/browser/saved-comparison-explicit--1291f-reassesses-expired-evidence/fresh-search-evidence.json",
+  "persistence": {
+    "baseline_counts_from_prior_5a_regression": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_original_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "after_recovery_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "after_fresh_counts": {
+      "search_request": 3,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "slice_relative_counts": {
+      "original": {
+        "requests": 1,
+        "options": 2,
+        "evidence_links": 2
+      },
+      "recovered": {
+        "requests": 1,
+        "options": 2,
+        "evidence_links": 2
+      },
+      "fresh": {
+        "requests": 2,
+        "options": 2,
+        "evidence_links": 2
+      }
+    },
+    "original_request_id": "9dd9bf8a-2297-408a-b4db-625c586b5ee9",
+    "fresh_request_id": "e9d7a7dd-2704-4791-b28e-bd7a769306ff",
+    "original_outcome": "comparison",
+    "fresh_outcome": "insufficient_coverage",
+    "original_assessed_at": "2026-10-15T10:00:00+00:00",
+    "fresh_assessed_at": "2027-10-16T10:00:00+00:00",
+    "controlled_time": "Synthetic instants only: fixture time followed by +366 days; not real source freshness or wall-clock verification.",
+    "original_option_ids": [
+      "d821a46a-8dfa-4aa0-9f2c-761e5bb1dea8",
+      "b7ea0975-1406-487d-a1bf-de73db80084d"
+    ],
+    "original_evidence_associations": [
+      [
+        "b7ea0975-1406-487d-a1bf-de73db80084d",
+        "30000000-0000-4000-8000-000000000002"
+      ],
+      [
+        "d821a46a-8dfa-4aa0-9f2c-761e5bb1dea8",
+        "30000000-0000-4000-8000-000000000001"
+      ]
+    ],
+    "new_evidence_link_or_option_rows": 0,
+    "expired_reasons": [
+      "essential_evidence_expired",
+      "geographic_applicability_unverified",
+      "useful_comparison_information_missing"
+    ],
+    "original_projection_options_associations_evidence_and_assessment_unchanged": true,
+    "fresh_saved_projection_matches_api_before_presentation": true
+  },
+  "observed_requests": {
+    "browser": 3,
+    "sequence": [
+      "original submit: real 201 committed, HTTP response lost",
+      "explicit recovery: 200 submission_recovered, acknowledgement only",
+      "explicit fresh submit: 201 insufficient_coverage, saved"
+    ],
+    "reset_action_requests": 0,
+    "idle_observation_ms": 300,
+    "recovery_same_key_proof_and_body": true,
+    "fresh_new_key_and_proof": true,
+    "fresh_current_text": "Velo",
+    "fresh_current_country": "CH",
+    "fresh_current_language_context": {
+      "browser_language": "en"
+    },
+    "backend_new_test": 4,
+    "backend_sequence": [
+      "save",
+      "recover",
+      "recover again at later clock without reassessing",
+      "fresh submit"
+    ],
+    "backend_processing_counts": {
+      "interpret": 2,
+      "retrieve": 2,
+      "prepare_comparison": 1,
+      "prepare_coverage": 1,
+      "clock": 2
+    },
+    "limits": "Counts and no-automatic-request assertions are bounded observations; not full retry/concurrency/fault coverage."
+  },
+  "proof_artifacts": {
+    "raw_originating_proofs_recorded": false,
+    "trace_files_created": 0,
+    "trace_disabled_for_all_runs": true,
+    "proof_comparisons": "digests in memory, booleans only in browser evidence",
+    "new_json_artifact_raw_header_or_proof_keys": false
+  },
+  "preservation": {
+    "manifest": "build/uc001-priority5b-fresh-search/preservation-before.json",
+    "checked_files": 77,
+    "all_hashes_match": true,
+    "frontend_app_unchanged": true,
+    "normal_app_main": "unchanged/unconfigured",
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "real_drafts": "inactive/unchanged",
+    "interpreter_experiments": "closed; no startup, allowance reset, detector or held-out access"
+  },
+  "remaining_priority_5": [
+    "same-key concurrency race matrix",
+    "ambiguous-commit/full persistence/transport fault matrix",
+    "complete unauthorized-disclosure matrix",
+    "real locality/reference integration",
+    "remaining fresh/recovery error/loading/field paths and broader reassessment cases"
+  ],
+  "git": {
+    "status_command": "git status --short",
+    "status_log": "build/uc001-priority5b-fresh-search/git-status.txt",
+    "same_status_entries_as_before": true,
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1440: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "historical_whitespace": "TASKS.md historical backlog trailing space exists in before snapshot and 5A evidence; preserved.",
+    "scoped_delta_check_command": "git diff --no-index --check -- <before> <current> for each changed file",
+    "scoped_delta_checks": [
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "tests/e2e/saved-comparison.spec.ts",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "tests/support/source_bound_rendering.py",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "tests/support/demo.py",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "frontend/playwright.config.ts",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "docs/TASKS.md",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "docs/PROJECT.md",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      },
+      {
+        "path": "docs/ARCHITECTURE.md",
+        "exit_code": 1,
+        "new_whitespace_issues": false
+      }
+    ],
+    "no_index_note": "Exit 1 with empty output means differing files and no new whitespace warning."
+  },
+  "documentation_checks": {
+    "phase_status_retained": true,
+    "links": [
+      {
+        "source": "docs/TASKS.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/verification.json"
+      },
+      {
+        "source": "docs/PROJECT.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/verification.json"
+      },
+      {
+        "source": "docs/ARCHITECTURE.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/verification.json"
+      }
+    ],
+    "links_valid": true
+  },
+  "review": "Read-only second-agent review found the missing default clock setup; reproduced/fixed and reviewed again with no remaining material finding. Not independent release or semantic validation.",
+  "warnings": [
+    "Existing Starlette/httpx TestClient deprecation; no dependency changes.",
+    "Existing Node NO_COLOR/FORCE_COLOR tooling warning."
+  ],
+  "excluded_work_performed": false,
+  "stop": "Await human review; Priority 5, increment 1 and DEVELOP remain incomplete."
+}

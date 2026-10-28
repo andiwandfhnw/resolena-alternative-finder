@@ -1,0 +1,364 @@
+..FFFFFFFFFFFFFFF                                                        [100%]
+=================================== FAILURES ===================================
+__ test_new_country_nonmembers_are_rejected_before_interpretation_or_save[AN] __
+
+system = (<starlette.testclient.TestClient object at 0x7888e92f35c0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e92ca180>, clock=<function create_service.<locals>.<lambda> at 0x7888e8904e00>, recognizer=None))
+country = 'AN'
+
+    @pytest.mark.parametrize("country", ["AN", "CS", "ZZ"])
+    def test_new_country_nonmembers_are_rejected_before_interpretation_or_save(system, country):
+        client, path, service = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests/integration/test_saved_comparison.py:1717: AssertionError
+__ test_new_country_nonmembers_are_rejected_before_interpretation_or_save[CS] __
+
+system = (<starlette.testclient.TestClient object at 0x7888e8920e00>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e92f04d0>, clock=<function create_service.<locals>.<lambda> at 0x7888e898de40>, recognizer=None))
+country = 'CS'
+
+    @pytest.mark.parametrize("country", ["AN", "CS", "ZZ"])
+    def test_new_country_nonmembers_are_rejected_before_interpretation_or_save(system, country):
+        client, path, service = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests/integration/test_saved_comparison.py:1717: AssertionError
+__ test_new_country_nonmembers_are_rejected_before_interpretation_or_save[ZZ] __
+
+system = (<starlette.testclient.TestClient object at 0x7888e8942d50>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e8922d50>, clock=<function create_service.<locals>.<lambda> at 0x7888e898f4c0>, recognizer=None))
+country = 'ZZ'
+
+    @pytest.mark.parametrize("country", ["AN", "CS", "ZZ"])
+    def test_new_country_nonmembers_are_rejected_before_interpretation_or_save(system, country):
+        client, path, service = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+>       assert response.status_code == 422
+E       assert 201 == 422
+E        +  where 201 = <Response [201 Created]>.status_code
+
+tests/integration/test_saved_comparison.py:1717: AssertionError
+_ test_approved_country_membership_and_reference_version_are_saved_server_side[CH] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e8943e30>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e8940260>, clock=<function create_service.<locals>.<lambda> at 0x7888e89a2de0>, recognizer=None))
+country = 'CH'
+
+    @pytest.mark.parametrize("country", ["CH", "XK", "AX", "BQ"])
+    def test_approved_country_membership_and_reference_version_are_saved_server_side(system, country):
+        client, path, _ = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == ("comparison" if country == "CH" else "insufficient_coverage")
+        assert body["persistence"]["state"] == "saved"
+        with sqlite3.connect(path) as connection:
+            original, location, interpretation, projection = connection.execute(
+                "SELECT original_text,search_location,interpretation,projection FROM search_request WHERE id = ?",
+                (body["persistence"]["request_id"],)).fetchone()
+        assert original == payload["text"] and json.loads(location) == payload["search_location"]
+        assert json.loads(projection) == body
+>       assert json.loads(interpretation)["provenance"]["reference_versions"]["country"] == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "source": "GeoNames countryInfo", "release": "geonames-countryInfo-2026-10-23-v1",
+            "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"}
+E       KeyError: 'reference_versions'
+
+tests/integration/test_saved_comparison.py:1739: KeyError
+_ test_approved_country_membership_and_reference_version_are_saved_server_side[XK] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e8942300>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e89414f0>, clock=<function create_service.<locals>.<lambda> at 0x7888e899d3a0>, recognizer=None))
+country = 'XK'
+
+    @pytest.mark.parametrize("country", ["CH", "XK", "AX", "BQ"])
+    def test_approved_country_membership_and_reference_version_are_saved_server_side(system, country):
+        client, path, _ = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == ("comparison" if country == "CH" else "insufficient_coverage")
+        assert body["persistence"]["state"] == "saved"
+        with sqlite3.connect(path) as connection:
+            original, location, interpretation, projection = connection.execute(
+                "SELECT original_text,search_location,interpretation,projection FROM search_request WHERE id = ?",
+                (body["persistence"]["request_id"],)).fetchone()
+        assert original == payload["text"] and json.loads(location) == payload["search_location"]
+        assert json.loads(projection) == body
+>       assert json.loads(interpretation)["provenance"]["reference_versions"]["country"] == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "source": "GeoNames countryInfo", "release": "geonames-countryInfo-2026-10-23-v1",
+            "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"}
+E       KeyError: 'reference_versions'
+
+tests/integration/test_saved_comparison.py:1739: KeyError
+_ test_approved_country_membership_and_reference_version_are_saved_server_side[AX] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e89ed9a0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e89aba40>, clock=<function create_service.<locals>.<lambda> at 0x7888e3e41620>, recognizer=None))
+country = 'AX'
+
+    @pytest.mark.parametrize("country", ["CH", "XK", "AX", "BQ"])
+    def test_approved_country_membership_and_reference_version_are_saved_server_side(system, country):
+        client, path, _ = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == ("comparison" if country == "CH" else "insufficient_coverage")
+        assert body["persistence"]["state"] == "saved"
+        with sqlite3.connect(path) as connection:
+            original, location, interpretation, projection = connection.execute(
+                "SELECT original_text,search_location,interpretation,projection FROM search_request WHERE id = ?",
+                (body["persistence"]["request_id"],)).fetchone()
+        assert original == payload["text"] and json.loads(location) == payload["search_location"]
+        assert json.loads(projection) == body
+>       assert json.loads(interpretation)["provenance"]["reference_versions"]["country"] == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "source": "GeoNames countryInfo", "release": "geonames-countryInfo-2026-10-23-v1",
+            "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"}
+E       KeyError: 'reference_versions'
+
+tests/integration/test_saved_comparison.py:1739: KeyError
+_ test_approved_country_membership_and_reference_version_are_saved_server_side[BQ] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e89ecc80>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e89eedb0>, clock=<function create_service.<locals>.<lambda> at 0x7888e3e3a2a0>, recognizer=None))
+country = 'BQ'
+
+    @pytest.mark.parametrize("country", ["CH", "XK", "AX", "BQ"])
+    def test_approved_country_membership_and_reference_version_are_saved_server_side(system, country):
+        client, path, _ = system
+        payload = submission()
+        payload["search_location"]["country_code"] = country
+        response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == ("comparison" if country == "CH" else "insufficient_coverage")
+        assert body["persistence"]["state"] == "saved"
+        with sqlite3.connect(path) as connection:
+            original, location, interpretation, projection = connection.execute(
+                "SELECT original_text,search_location,interpretation,projection FROM search_request WHERE id = ?",
+                (body["persistence"]["request_id"],)).fetchone()
+        assert original == payload["text"] and json.loads(location) == payload["search_location"]
+        assert json.loads(projection) == body
+>       assert json.loads(interpretation)["provenance"]["reference_versions"]["country"] == {
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            "source": "GeoNames countryInfo", "release": "geonames-countryInfo-2026-10-23-v1",
+            "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"}
+E       KeyError: 'reference_versions'
+
+tests/integration/test_saved_comparison.py:1739: KeyError
+______ test_country_endpoint_exposes_exact_canonical_approved_membership _______
+
+system = (<starlette.testclient.TestClient object at 0x7888e89edcd0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e6fd70>, clock=<function create_service.<locals>.<lambda> at 0x7888e899ea20>, recognizer=None))
+
+    def test_country_endpoint_exposes_exact_canonical_approved_membership(system):
+        from pathlib import Path
+    
+        client, _, service = system
+        response = client.get("/api/countries")
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+tests/integration/test_saved_comparison.py:1752: AssertionError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[draft] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e3e6fbc0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e6fa70>, clock=<function create_service.<locals>.<lambda> at 0x7888e3ec2ca0>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_0')
+change = 'draft'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[unapproved] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e3e84c20>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e8921670>, clock=<function create_service.<locals>.<lambda> at 0x7888e3ea5c60>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_1')
+change = 'unapproved'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[wrong_release] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e8941cd0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e870b0>, clock=<function create_service.<locals>.<lambda> at 0x7888e3e7d080>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_2')
+change = 'wrong_release'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[corrupt] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e3e5d310>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e30c20>, clock=<function create_service.<locals>.<lambda> at 0x7888e3e24f40>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_3')
+change = 'corrupt'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[missing] _
+
+system = (<starlette.testclient.TestClient object at 0x7888e3e5c7a0>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e5d070>, clock=<function create_service.<locals>.<lambda> at 0x7888e3ea8900>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_4')
+change = 'missing'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_bad_country_reference_is_configuration_failure_not_invalid_input[changed_bytes] _
+
+system = (<starlette.testclient.TestClient object at 0x7888ea162990>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e316d0>, clock=<function create_service.<locals>.<lambda> at 0x7888e3e3b880>, recognizer=None))
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/test_bad_country_reference_is_5')
+change = 'changed_bytes'
+
+    @pytest.mark.parametrize("change", ["draft", "unapproved", "wrong_release", "corrupt", "missing", "changed_bytes"])
+    def test_bad_country_reference_is_configuration_failure_not_invalid_input(system, tmp_path, change):
+        from hashlib import sha256
+        from pathlib import Path
+>       from app.infrastructure.country_reference import LocalCountryCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.country_reference'
+
+tests/integration/test_saved_comparison.py:1766: ModuleNotFoundError
+_ test_checked_recovery_precedes_country_reference_availability_and_membership _
+
+system = (<starlette.testclient.TestClient object at 0x7888e3e6d520>, PosixPath('/tmp/resolena-priority5r-i7kqbmbe/backend-red/...Store object at 0x7888e3e31100>, clock=<function create_service.<locals>.<lambda> at 0x7888e3eabd80>, recognizer=None))
+
+    def test_checked_recovery_precedes_country_reference_availability_and_membership(system):
+        _, path, service = system
+        payload = submission()
+        with TestClient(create_app(service)) as client:
+            original = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64}).json()
+        before = counts(path)
+    
+        class UnavailableReference:
+            calls = 0
+    
+            def load(self):
+                self.calls += 1
+                raise AssertionError("Committed recovery must not load or validate current countries")
+    
+        unavailable = UnavailableReference()
+>       with TestClient(create_app(replace(service, countries=unavailable))) as client:
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:1813: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+obj = CompareRequest(interpreter=<tests.support.synthetic.SyntheticInterpreter object at 0x7888ea88f380>, knowledge=<tests.s...nStore object at 0x7888e3e31100>, clock=<function create_service.<locals>.<lambda> at 0x7888e3eabd80>, recognizer=None)
+changes = {'countries': <test_saved_comparison.test_checked_recovery_precedes_country_reference_availability_and_membership.<loc...ledge object at 0x7888e89ba3f0>, 'renderer': <tests.support.synthetic.SyntheticRenderer object at 0x7888e89bbd40>, ...}
+
+    def replace(obj, /, **changes):
+        """Return a new object replacing specified fields with new values.
+    
+        This is especially useful for frozen classes.  Example usage::
+    
+          @dataclass(frozen=True)
+          class C:
+              x: int
+              y: int
+    
+          c = C(1, 2)
+          c1 = replace(c, x=3)
+          assert c1.x == 3 and c1.y == 2
+        """
+    
+        # We're going to mutate 'changes', but that's okay because it's a
+        # new dict, even if called with 'replace(obj, **my_changes)'.
+    
+        if not _is_dataclass_instance(obj):
+            raise TypeError("replace() should be called on dataclass instances")
+    
+        # It's an error to have init=False fields in 'changes'.
+        # If a field is not in 'changes', read its value from the provided obj.
+    
+        for f in getattr(obj, _FIELDS).values():
+            # Only consider normal fields or InitVars.
+            if f._field_type is _FIELD_CLASSVAR:
+                continue
+    
+            if not f.init:
+                # Error if this field is specified in changes.
+                if f.name in changes:
+                    raise ValueError(f'field {f.name} is declared with '
+                                     'init=False, it cannot be specified with '
+                                     'replace()')
+                continue
+    
+            if f.name not in changes:
+                if f._field_type is _FIELD_INITVAR and f.default is MISSING:
+                    raise ValueError(f"InitVar {f.name!r} "
+                                     'must be specified with replace()')
+                changes[f.name] = getattr(obj, f.name)
+    
+        # Create the new object, which calls __init__() and
+        # __post_init__() (if defined), using all of the init fields we've
+        # added and/or left in 'changes'.  If there are values supplied in
+        # changes that aren't fields, this will correctly raise a
+        # TypeError.
+>       return obj.__class__(**changes)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: CompareRequest.__init__() got an unexpected keyword argument 'countries'
+
+/usr/local/lib/python3.12/dataclasses.py:1588: TypeError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_new_country_nonmembers_are_rejected_before_interpretation_or_save[AN]
+FAILED tests/integration/test_saved_comparison.py::test_new_country_nonmembers_are_rejected_before_interpretation_or_save[CS]
+FAILED tests/integration/test_saved_comparison.py::test_new_country_nonmembers_are_rejected_before_interpretation_or_save[ZZ]
+FAILED tests/integration/test_saved_comparison.py::test_approved_country_membership_and_reference_version_are_saved_server_side[CH]
+FAILED tests/integration/test_saved_comparison.py::test_approved_country_membership_and_reference_version_are_saved_server_side[XK]
+FAILED tests/integration/test_saved_comparison.py::test_approved_country_membership_and_reference_version_are_saved_server_side[AX]
+FAILED tests/integration/test_saved_comparison.py::test_approved_country_membership_and_reference_version_are_saved_server_side[BQ]
+FAILED tests/integration/test_saved_comparison.py::test_country_endpoint_exposes_exact_canonical_approved_membership
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[draft]
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[unapproved]
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[wrong_release]
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[corrupt]
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[missing]
+FAILED tests/integration/test_saved_comparison.py::test_bad_country_reference_is_configuration_failure_not_invalid_input[changed_bytes]
+FAILED tests/integration/test_saved_comparison.py::test_checked_recovery_precedes_country_reference_availability_and_membership
+15 failed, 2 passed, 33 deselected, 1 warning in 2.15s

@@ -1,0 +1,5 @@
+{
+  "start_epoch": 1791670319.6960754,
+  "deadline_epoch": 1791673919.6960754,
+  "note": "First-attempt start preserved; readiness fix does not renew the inference cap."
+}

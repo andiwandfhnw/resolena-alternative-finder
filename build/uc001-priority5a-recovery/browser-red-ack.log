@@ -1,0 +1,45 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep lost HTTP response after atomic commit --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/red-ack/browser --reporter=list
+
+
+Running 1 test using 1 worker
+
+  ✘  1 ../tests/e2e/saved-comparison.spec.ts:62:5 › lost HTTP response after atomic commit requires explicit same-submission recovery (6.6s)
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:62:5 › lost HTTP response after atomic commit requires explicit same-submission recovery 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Saved submission acknowledged' })
+    Expected substring: "dec424e7-56cb-4516-a0c9-780dc71303d2"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Saved submission acknowledged' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Saved submission acknowledged' })
+
+
+      120 |     expect(!!attempts[0].proof && attempts[1].proof === attempts[0].proof).toBe(true)
+      121 |     const acknowledged = page.getByRole('region', { name: 'Saved submission acknowledged' })
+    > 122 |     await expect(acknowledged).toContainText(saved.persistence.request_id)
+          |                                ^
+      123 |     await expect(acknowledged).toContainText(`Original outcome: ${saved.outcome}`)
+      124 |     await expect(acknowledged).toContainText(`Originally assessed at: ${saved.assessed_at}`)
+      125 |     await expect(acknowledged).toContainText('does not replay a comparison or confirm present-day facts')
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:122:32
+
+    Error Context: ../build/uc001-priority5a-recovery/red-ack/browser/saved-comparison-lost-HTTP-de517-it-same-submission-recovery/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../build/uc001-priority5a-recovery/red-ack/browser/saved-comparison-lost-HTTP-de517-it-same-submission-recovery/trace.zip
+    Usage:
+
+        npx playwright show-trace ../build/uc001-priority5a-recovery/red-ack/browser/saved-comparison-lost-HTTP-de517-it-same-submission-recovery/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:62:5 › lost HTTP response after atomic commit requires explicit same-submission recovery 

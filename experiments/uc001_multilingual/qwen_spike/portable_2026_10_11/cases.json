@@ -1,0 +1,23 @@
+{
+  "classification": "Owner-approved synthetic calibration; C1 reuses observed failed smoke, no unseen-validation claim",
+  "cases": [
+    {"id": "C1", "text": "Repair my kettle.", "expected": {"status": "understood", "language": "en", "subject": "kettle", "action": "repair", "goals": [], "constraints": {}}},
+    {"id": "C2", "text": "repair my kettle.", "expected": {"status": "understood", "language": "en", "subject": "kettle", "action": "repair", "goals": [], "constraints": {}}},
+    {"id": "C3", "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.", "expected": {"status": "understood", "language": "de", "subject": "kettle", "action": "repair", "goals": [], "constraints": {"no_replacement": "true"}}},
+    {"id": "C4", "text": "Répare ma bouilloire.", "expected": {"status": "understood", "language": "fr", "subject": "kettle", "action": "repair", "goals": [], "constraints": {}}},
+    {"id": "C5", "text": "Ripara il mio bollitore.", "expected": {"status": "understood", "language": "it", "subject": "kettle", "action": "repair", "goals": [], "constraints": {}}},
+    {"id": "C6", "text": "Repara mi hervidor.", "expected": {"status": "unsupported", "language": null, "unresolved_nonempty": true}}
+  ],
+  "execution_order": [
+    {"case": "C1", "temperature": 0.7}, {"case": "C1", "temperature": 0},
+    {"case": "C2", "temperature": 0}, {"case": "C2", "temperature": 0.7},
+    {"case": "C3", "temperature": 0.7}, {"case": "C3", "temperature": 0},
+    {"case": "C4", "temperature": 0}, {"case": "C4", "temperature": 0.7},
+    {"case": "C5", "temperature": 0.7}, {"case": "C5", "temperature": 0},
+    {"case": "C6", "temperature": 0}, {"case": "C6", "temperature": 0.7}
+  ],
+  "seed": 42,
+  "order_reason": "Paired cases; alternate which temperature runs first to reduce systematic order bias. Cache usage remains measured, not assumed equal.",
+  "success": "All six temperature-zero cases must pass frozen validation and explicit expected status/language/meaning/constraints; C6 needs an explicit unresolved limitation. No heldout evaluation follows.",
+  "stop": "Startup, transport, timeout or resource failure stops immediately; semantic failures are saved and remaining planned cases continue within the fixed budget. No retries or tuning."
+}

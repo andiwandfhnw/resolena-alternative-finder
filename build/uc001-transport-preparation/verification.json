@@ -1,0 +1,208 @@
+{
+  "version": "uc001-transport-preparation-1",
+  "date": "2026-10-17",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "authorization_scope": "Record supplied native result; read-only Codespace prerequisites; prepare remaining install/authentication/transport actions for review only",
+  "native_result": {
+    "raw": "build/uc001-native-ownership-check/results_2026_10_17/windows-native-result.raw.json",
+    "raw_sha256": "99ff034e344bcb072a7f4aead818dce9516429e1ad0293e8adbd7237162d1658",
+    "verification": "build/uc001-native-ownership-check/results_2026_10_17/verification.json",
+    "outcome": "native_ownership_cleanup_passed",
+    "tested_path": "Retained/fresh PID and creation-time identity, deliberate abort, actual native owned-job closure and matching child exit confirmation",
+    "elapsed_ms": 919,
+    "worker_elapsed_ms": 256,
+    "boundary": "Owner-supplied output, not rerun; no GPU counter/model readiness or complete native failure-matrix conclusion"
+  },
+  "codespace": {
+    "record": "build/uc001-transport-preparation/codespace-read-only.json",
+    "name": "special-disco-vprpp7qrv9xrcwq6p",
+    "port49188": "No observed TCP allocations in ss and /proc snapshots; not a bind reservation",
+    "sshd": "/usr/sbin/sshd absent, openssh-server not installed, server config absent",
+    "ssh_client_installed": "1:9.2p1-2+deb12u6",
+    "utilities": [
+      "ss",
+      "timeout",
+      "Python/httpx"
+    ],
+    "cached_plan": "All eight exact package/version/filename/size/SHA-256 records match v1.3.0; simulated four new/four updates/no removals; signed-index cache only, live mirror availability not proven",
+    "service_start_policy": "Existing root-owned executable exit-101 policy preserved; no temporary replacement needed"
+  },
+  "windows_prerequisites": {
+    "basis": "Reuse supplied recorded desktop result; no new tool/version/port investigation",
+    "ssh": "OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2",
+    "gh": "2.81.0 portable acquisition/setup owner-confirmed complete",
+    "gh_path": "C:\\ResolenaExperiments\\tools\\gh-2.81.0\\bin\\gh.exe",
+    "observed_ports": [
+      49187,
+      49189
+    ],
+    "future_guard": "Fresh ownership/binding checks remain in model-free test; observations are not reservations"
+  },
+  "download_accounting": {
+    "original_cap_bytes": 104857600,
+    "portable_gh_archive_already_acquired_bytes": 18317085,
+    "remaining_before_linux_packages_bytes": 86540515,
+    "linux_packages_planned_bytes": 7508700,
+    "known_transport_tool_archive_total_bytes": 25825785,
+    "remaining_after_known_tool_archives_bytes": 79031815,
+    "prepared_windows_script_bytes": 8546,
+    "remaining_after_one_script_copy_and_archives_bytes": 79023269,
+    "new_transport_payload_downloaded_this_step_bytes": 0,
+    "ledger_scope": "Accounted stated gh acquisition and planned exact Debian archives; conservatively charge one copy of two test scripts. Any other actual transfers/re-downloads must also consume remaining allowance; no extra allowance or assumed free unreported acquisition."
+  },
+  "package_plan": [
+    {
+      "Package": "libssl-dev",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/libssl-dev_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 2449908,
+      "SHA256": "67033caa8a90696856c2967fbdae51e62b85878f055e01f03b0c732158c1682e"
+    },
+    {
+      "Package": "libssl3",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/libssl3_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 2039240,
+      "SHA256": "f0a8aa8429209e556c278a9936bbd5f7d2cdb9f7e4e23b1e43ed399217ba80c1"
+    },
+    {
+      "Package": "openssh-client",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-client_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 993532,
+      "SHA256": "42c250b8b9110382488c53c066a960bc564ddac2cb9e449f47b6cdbb5fc1cb60"
+    },
+    {
+      "Package": "openssh-sftp-server",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-sftp-server_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 65928,
+      "SHA256": "18d7ef7873861272b43b764295cbd8c04f439108fc3a4cecb3fe6e095f8ee2a8"
+    },
+    {
+      "Package": "runit-helper",
+      "Version": "2.15.2",
+      "Filename": "pool/main/d/dh-runit/runit-helper_2.15.2_all.deb",
+      "Size": 6520,
+      "SHA256": "fd08121947a1ea340d07e1b523591035419552ac151dfe6e241e8a748e15c36b"
+    },
+    {
+      "Package": "libwrap0",
+      "Version": "7.6.q-32",
+      "Filename": "pool/main/t/tcp-wrappers/libwrap0_7.6.q-32_amd64.deb",
+      "Size": 54936,
+      "SHA256": "cbce2669a3ba4d74cfdc52b14f38014893e23d85a33d109a3422c342eefc55f8"
+    },
+    {
+      "Package": "openssh-server",
+      "Version": "1:9.2p1-2+deb12u10",
+      "Filename": "pool/main/o/openssh/openssh-server_9.2p1-2+deb12u10_amd64.deb",
+      "Size": 456584,
+      "SHA256": "933cd92a2329f9bf26d22660a834ae18ebdbe8df9c6127e4d9fcb098dac9cf72"
+    },
+    {
+      "Package": "openssl",
+      "Version": "3.0.22-1~deb12u1",
+      "Filename": "pool/updates/main/o/openssl/openssl_3.0.22-1~deb12u1_amd64.deb",
+      "Size": 1442052,
+      "SHA256": "6f43fb5e9f3ceb0e36c91d0a148282a8eaf174b441c17d3665b6ba049b33d2c2"
+    }
+  ],
+  "compatibility": {
+    "static": "Pinned gh 2.81.0 SSH uses RPC StartSSHServerWithOptions and a desktop local bridge at --server-port 49189; OpenSSH remote forwarding is supported by the pinned client/server interface",
+    "remote_configuration": "Provider RPC server implementation/configuration is not established by client source/default sshd -T. Restrictive planned drop-in is prepared; actual session SSH_CONNECTION port and live binds must pass unchanged v1.3.0 verify_forward_listener. Ignore/override/wildcard stops; no workaround/guard relaxation.",
+    "authentication": "Owner-operated browser OAuth/scope proposal and gh SSH key selection/creation effects documented; no account/token/private-key/credential-store inspection or auth command executed",
+    "server_lifecycle": "Debian package autostart remains denied by existing policy. gh may start/reuse provider-managed sshd during an approved connection; no shared-daemon/key/config cleanup is authorized by this test. Persistent provider-daemon lifetime remains explicitly separate from owned forwarding/session cleanup."
+  },
+  "prepared_validation": {
+    "windows": "scripts/uc001_transport_preparation/Test-Transport.ps1",
+    "endpoint": "scripts/uc001_transport_preparation/Probe-Endpoint.ps1",
+    "codespace": "scripts/uc001_transport_preparation/probe_forward.py",
+    "gate": "-ExecuteTransportCheck requires separate transport-only approval; neither frozen model launcher nor run.main is called",
+    "listeners": {
+      "windows_probe": "127.0.0.1:49187, exactly owned PID/stable creation time",
+      "windows_gh_bridge": "49189, owned PID/stable creation time, IPv4/IPv6 loopback only",
+      "codespace_reverse": "exactly 127.0.0.1:49188",
+      "codespace_ssh": "actual SSH_CONNECTION server port, loopback only"
+    },
+    "auth": "Ephemeral random 32-byte test secret via owned stdin only; forwarded /probe requires missing=401, wrong=401, correct=200 with exact body; HTTP proxies/redirects disabled; no public-health inference",
+    "budgets": "One connection. Windows work guard45s + original two5s owned-exit waits +5s records within60s; remote Python alarm30s wrapped35s timeout/5s kill; no repair/retry/fallback",
+    "cleanup": "Actual frozen Complete-ContractCleanup closes only owned job containing test endpoint and gh/SSH subtree, confirms both owned exits, records errors. Windows remaining listeners fail without killing new/unrelated owners. Separate existing Codespace terminal check waits at most5s for49188 absence; no second SSH or daemon-name kill.",
+    "result_boundary": "Windows result deliberately leaves remote forward cleanup pending; both Windows success and separate Codespace cleanup receipt required. No model readiness/GPU measurement/semantic result or model ledger access."
+  },
+  "tdd": {
+    "red": "Initial7 failures: absent model-free service module and guarded Windows script;6 flow cases then failed on absent testable Invoke-TransportProbe dispatch",
+    "fixture_correction": "Initial flow fixture variables collided with dynamic scope in production local endpoint/tunnel variables. Replaced fixture names with explicit script-scope fake objects; this was a fixture defect, not a native/production failure claim."
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_preparation.py tests/unit/test_execution_monitor.py tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "212 passed in 108.65s",
+      "new": 14,
+      "retained": 198,
+      "boundary": "Mock HTTP transport and synthetic native/job/process/listener objects; actual new wrapper and unchanged cleanup dispatch; parser and existing retained offline controls. No Windows native transport endpoint, authentication, SSH connection, model or tunnel executed."
+    },
+    {
+      "check": "Bash setup/cleanup fences and embedded Python parse",
+      "result": "Passed without executing proposal blocks"
+    },
+    {
+      "check": "Documentation links/new whitespace/phase/script byte counts",
+      "result": "Passed; Phase3 in-progress; Windows source copy8546 bytes; preserved pre-existing TASKS backlog whitespace"
+    },
+    {
+      "check": "Preservation",
+      "result": "All 140 protected existing source/application/ZIP/evidence hashes unchanged"
+    }
+  ],
+  "instructions": "scripts/uc001_transport_preparation/README.md",
+  "primary_sources": [
+    "https://github.com/cli/cli/blob/v2.81.0/pkg/cmd/codespace/ssh.go",
+    "https://github.com/cli/cli/blob/v2.81.0/internal/codespaces/ssh.go",
+    "https://cli.github.com/manual/gh_codespace_ssh",
+    "https://cli.github.com/manual/gh_auth_login",
+    "https://man.openbsd.org/sshd_config"
+  ],
+  "remaining_actions_for_review": [
+    "Approve exact pinned package acquisition/install and OpenSSH host-key creation; preserve existing service-start denial policy",
+    "Approve restrictive loopback/auth/remote-forward drop-in and validate default configuration without starting a daemon",
+    "If needed approve owner-operated GitHub OAuth/scope/secure credential storage and gh key authorization; portable gh installation is already complete",
+    "Approve one bounded model-free test using owned endpoint and forwarding only; verify actual provider-managed listener/configuration compatibility and separate remote49188 cleanup",
+    "Real owned-GPU monitoring/allocation, fresh model-startup integrity/resources, exact-freeze qualified review and semantic suitability remain separate pending gates"
+  ],
+  "transport_setup_executed": false,
+  "authentication_inspected_or_changed": false,
+  "connection_verified": false,
+  "owned_gpu_counter_verified": false,
+  "model_readiness_verified": false,
+  "full_preflight_verified": false,
+  "model_startup_authorized": false,
+  "not_performed": [
+    "Package index refresh, payload download or installation",
+    "Authentication/account/token/private-key inspection or change",
+    "SSH/tunnel/forwarding or test endpoint startup",
+    "Model/runtime execution/inference or asset hashing",
+    "Held-out access or later-priority work",
+    "Frozen bundle, limits, model-attempt ledger or historical evidence changes",
+    "Git staging/commit/push/branch switch/deployment"
+  ],
+  "changed_files": [
+    "scripts/uc001_transport_preparation/Probe-Endpoint.ps1",
+    "scripts/uc001_transport_preparation/README.md",
+    "scripts/uc001_transport_preparation/Test-Offline.ps1",
+    "scripts/uc001_transport_preparation/Test-Transport.ps1",
+    "scripts/uc001_transport_preparation/probe_forward.py",
+    "tests/unit/test_transport_preparation.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-native-ownership-check/results_2026_10_17/windows-native-result.raw.json",
+    "build/uc001-native-ownership-check/results_2026_10_17/verification.json",
+    "build/uc001-native-ownership-check/results_2026_10_17/SHA256SUMS.txt",
+    "build/uc001-transport-preparation/baseline.json",
+    "build/uc001-transport-preparation/codespace-read-only.json",
+    "build/uc001-transport-preparation/verification.json",
+    "build/uc001-transport-preparation/SHA256SUMS.txt"
+  ]
+}

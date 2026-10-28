@@ -1,0 +1,21 @@
+{
+  "provenance": "Owner-provided attached Windows transcript; attachment preserved byte-for-byte. JSON slices retain supplied values; not independently retrieved Windows originals.",
+  "attachment_sha256": "42c8fb079bf2b952b54ef117990ff665ca824e0efda7e72e8d5e93cd34936aaf",
+  "attachment_bytes": 36732,
+  "reported_outcome": "combined_native_python_and_cleanup_passed",
+  "elapsed_ms": 1180,
+  "issue_status": "closed for tested combined stand-in setup",
+  "verified": "Native binding, actual Python ownership validation, fresh native revalidation, owned job closure and all five identity-bound exits.",
+  "verified_helper_sha256": {
+    "PythonOwnership.cs": "eff0da55fb93cf2cc5d06a843029b736496cf2f1fe80dcce8d3330fcd109fc8e",
+    "Python-Ownership.ps1": "2afb47117254ed46b3d6a5d09f177e3e011d50003aa7a1ac08c39350628514f1",
+    "harness_checks.py": "1a20604e3451c6f8e8ab8edd4929b6cd5c5d744f8a35eebf342a778981c13ee2",
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35"
+  },
+  "historical_failure": "Earlier receipts remain failed/cleanup_confirmed:false; not rewritten.",
+  "scope_limit": "No model/GPU readiness, original failed-run helper legitimacy or semantic correctness established.",
+  "both_prior_startup_allowances": "consumed",
+  "model_attempt_ledger_touched": false,
+  "expected_meanings_approved": false,
+  "semantic_review": "pending"
+}

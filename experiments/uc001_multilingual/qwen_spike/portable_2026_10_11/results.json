@@ -1,0 +1,1889 @@
+{
+  "status": "completed_fail",
+  "results": [
+    {
+      "index": 1,
+      "id": "C1",
+      "text": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0.7,
+      "request_record": "requests/01-C1-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1007"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"understood\\\", \\\"language\\\": \\\"en\\\", \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"kettle\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"repair my kettle\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733385,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":64,\"prompt_tokens\":329,\"total_tokens\":393,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-vo3z9FTHjxF419xmD3Wm8Kq12tJixqW1\",\"timings\":{\"cache_n\":0,\"prompt_n\":329,\"prompt_ms\":7876.719,\"prompt_per_token_ms\":23.941395136778116,\"prompt_per_second\":41.76866027593469,\"predicted_n\":64,\"predicted_ms\":7633.168,\"predicted_per_token_ms\":121.16139682539682,\"predicted_per_second\":8.253453873935436}}",
+        "wall_seconds": 15.523889491999853
+      },
+      "raw_content": "{\"status\": \"understood\", \"language\": \"en\", \"subject\": {\"value\": \"kettle\", \"quote\": \"kettle\"}, \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair my kettle"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 64,
+        "prompt_tokens": 329,
+        "total_tokens": 393,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 7876.719,
+        "prompt_per_token_ms": 23.941395136778116,
+        "prompt_per_second": 41.76866027593469,
+        "predicted_n": 64,
+        "predicted_ms": 7633.168,
+        "predicted_per_token_ms": 121.16139682539682,
+        "predicted_per_second": 8.253453873935436
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "correct",
+          "differences": {},
+          "projected": {
+            "subject": "kettle",
+            "action": "repair",
+            "goals": [],
+            "constraints": {}
+          }
+        },
+        "status_correct": true,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": true,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "kettle",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "repair my kettle",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 2,
+      "id": "C1",
+      "text": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0,
+      "request_record": "requests/02-C1-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1227"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"unsupported\\\",\\n  \\\"language\\\": \\\"en\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"repair my kettle\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733408,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":120,\"prompt_tokens\":329,\"total_tokens\":449,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-MRc0Rk6WfN8ZLXiDPrUbPjYrty4Mtmrb\",\"timings\":{\"cache_n\":0,\"prompt_n\":329,\"prompt_ms\":7809.446,\"prompt_per_token_ms\":23.736917933130698,\"prompt_per_second\":42.12846852388761,\"predicted_n\":120,\"predicted_ms\":14312.418,\"predicted_per_token_ms\":120.27242016806723,\"predicted_per_second\":8.314458116022045}}",
+        "wall_seconds": 22.13511435600003
+      },
+      "raw_content": "{\n  \"status\": \"unsupported\",\n  \"language\": \"en\",\n  \"subject\": {\"value\": \"kettle\", \"quote\": \"repair my kettle\"},\n  \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_repair\", \"value\": \"true\", \"quote\": \"repair my kettle\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"repair my kettle\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "repair my kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair my kettle"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_repair",
+            "value": "true",
+            "quote": "repair my kettle"
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": "repair my kettle"
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 329,
+        "total_tokens": 449,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 7809.446,
+        "prompt_per_token_ms": 23.736917933130698,
+        "prompt_per_second": 42.12846852388761,
+        "predicted_n": 120,
+        "predicted_ms": 14312.418,
+        "predicted_per_token_ms": 120.27242016806723,
+        "predicted_per_second": 8.314458116022045
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": false,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": false,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "repair my kettle",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "repair my kettle",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "repair my kettle",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "repair my kettle",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_repair": "true",
+            "no_new_purchase": "true"
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 3,
+      "id": "C2",
+      "text": "repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0,
+      "request_record": "requests/03-C2-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1226"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"unsupported\\\",\\n  \\\"language\\\": \\\"en\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"repair my kettle\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"repair my kettle\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733430,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":120,\"prompt_tokens\":329,\"total_tokens\":449,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-8GR0eSzrKwgDXIZuv1qNBeZIzQdhLzis\",\"timings\":{\"cache_n\":0,\"prompt_n\":329,\"prompt_ms\":7799.881,\"prompt_per_token_ms\":23.70784498480243,\"prompt_per_second\":42.18013069686576,\"predicted_n\":120,\"predicted_ms\":14574.081,\"predicted_per_token_ms\":122.47126890756303,\"predicted_per_second\":8.165180363688112}}",
+        "wall_seconds": 22.38644602999966
+      },
+      "raw_content": "{\n  \"status\": \"unsupported\",\n  \"language\": \"en\",\n  \"subject\": {\"value\": \"kettle\", \"quote\": \"repair my kettle\"},\n  \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_repair\", \"value\": \"true\", \"quote\": \"repair my kettle\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"repair my kettle\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "repair my kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair my kettle"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_repair",
+            "value": "true",
+            "quote": "repair my kettle"
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": "repair my kettle"
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 120,
+        "prompt_tokens": 329,
+        "total_tokens": 449,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 7799.881,
+        "prompt_per_token_ms": 23.70784498480243,
+        "prompt_per_second": 42.18013069686576,
+        "predicted_n": 120,
+        "predicted_ms": 14574.081,
+        "predicted_per_token_ms": 122.47126890756303,
+        "predicted_per_second": 8.165180363688112
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": false,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": false,
+        "uncertainty_preserved": true,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_repair": "true",
+            "no_new_purchase": "true"
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 4,
+      "id": "C2",
+      "text": "repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0.7,
+      "request_record": "requests/04-C2-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1017"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"unsupported\\\", \\\"language\\\": \\\"en\\\", \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"repair my kettle\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"repair my kettle\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733445,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":63,\"prompt_tokens\":329,\"total_tokens\":392,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-lGUTnwRSNo1CzZ49Ye8a1eGkO6ODasBQ\",\"timings\":{\"cache_n\":0,\"prompt_n\":329,\"prompt_ms\":7797.842,\"prompt_per_token_ms\":23.701647416413373,\"prompt_per_second\":42.19116006710575,\"predicted_n\":63,\"predicted_ms\":7437.75,\"predicted_per_token_ms\":119.96370967741936,\"predicted_per_second\":8.335854256999765}}",
+        "wall_seconds": 15.247586132999913
+      },
+      "raw_content": "{\"status\": \"unsupported\", \"language\": \"en\", \"subject\": {\"value\": \"kettle\", \"quote\": \"repair my kettle\"}, \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "repair my kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair my kettle"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 329,
+        "total_tokens": 392,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 7797.842,
+        "prompt_per_token_ms": 23.701647416413373,
+        "prompt_per_second": 42.19116006710575,
+        "predicted_n": 63,
+        "predicted_ms": 7437.75,
+        "predicted_per_token_ms": 119.96370967741936,
+        "predicted_per_second": 8.335854256999765
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": false,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": true,
+        "uncertainty_preserved": true,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "repair my kettle",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 5,
+      "id": "C3",
+      "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "temperature": 0.7,
+      "request_record": "requests/05-C3-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1695"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"de\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"water_kettle\\\", \\\"quote\\\": \\\"Wasserkocher\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repariere\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_replacement\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"ohne ihn zu ersetzen\\\"},\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"false\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"preserve_quality\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"budget\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"storage_min\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"cost_exclusion\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"locality\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"identifier\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733484,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":247,\"prompt_tokens\":341,\"total_tokens\":588,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-DyuVTAYzl6gQj5cUt1laBv7adAOEs55j\",\"timings\":{\"cache_n\":0,\"prompt_n\":341,\"prompt_ms\":8159.362,\"prompt_per_token_ms\":23.92774780058651,\"prompt_per_second\":41.79248328484507,\"predicted_n\":247,\"predicted_ms\":29974.341,\"predicted_per_token_ms\":121.84691463414634,\"predicted_per_second\":8.207019463747343}}",
+        "wall_seconds": 38.14556490399991
+      },
+      "raw_content": "{\n  \"status\": \"understood\",\n  \"language\": \"de\",\n  \"subject\": {\"value\": \"water_kettle\", \"quote\": \"Wasserkocher\"},\n  \"action\": {\"value\": \"repair\", \"quote\": \"Repariere\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_replacement\", \"value\": \"true\", \"quote\": \"ohne ihn zu ersetzen\"},\n    {\"kind\": \"no_repair\", \"value\": \"false\", \"quote\": \"\"},\n    {\"kind\": \"preserve_quality\", \"value\": \"true\", \"quote\": \"\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"\"},\n    {\"kind\": \"budget\", \"value\": \"\", \"quote\": \"\"},\n    {\"kind\": \"storage_min\", \"value\": \"\", \"quote\": \"\"},\n    {\"kind\": \"cost_exclusion\", \"value\": \"\", \"quote\": \"\"},\n    {\"kind\": \"locality\", \"value\": \"\", \"quote\": \"\"},\n    {\"kind\": \"identifier\", \"value\": \"\", \"quote\": \"\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "understood",
+        "language": "de",
+        "subject": {
+          "value": "water_kettle",
+          "quote": "Wasserkocher"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repariere"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_replacement",
+            "value": "true",
+            "quote": "ohne ihn zu ersetzen"
+          },
+          {
+            "kind": "no_repair",
+            "value": "false",
+            "quote": ""
+          },
+          {
+            "kind": "preserve_quality",
+            "value": "true",
+            "quote": ""
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": ""
+          },
+          {
+            "kind": "budget",
+            "value": "",
+            "quote": ""
+          },
+          {
+            "kind": "storage_min",
+            "value": "",
+            "quote": ""
+          },
+          {
+            "kind": "cost_exclusion",
+            "value": "",
+            "quote": ""
+          },
+          {
+            "kind": "locality",
+            "value": "",
+            "quote": ""
+          },
+          {
+            "kind": "identifier",
+            "value": "",
+            "quote": ""
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 247,
+        "prompt_tokens": 341,
+        "total_tokens": 588,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 341,
+        "prompt_ms": 8159.362,
+        "prompt_per_token_ms": 23.92774780058651,
+        "prompt_per_second": 41.79248328484507,
+        "predicted_n": 247,
+        "predicted_ms": 29974.341,
+        "predicted_per_token_ms": 121.84691463414634,
+        "predicted_per_second": 8.207019463747343
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "incorrect",
+          "differences": {
+            "subject": {
+              "expected": "kettle",
+              "actual": "water_kettle"
+            },
+            "constraints": {
+              "expected": {
+                "no_replacement": "true"
+              },
+              "actual": {
+                "no_replacement": "true",
+                "no_repair": "false",
+                "preserve_quality": "true",
+                "no_new_purchase": "true",
+                "budget": "",
+                "storage_min": "",
+                "cost_exclusion": "",
+                "locality": "",
+                "identifier": ""
+              }
+            }
+          },
+          "projected": {
+            "subject": "water_kettle",
+            "action": "repair",
+            "goals": [],
+            "constraints": {
+              "no_replacement": "true",
+              "no_repair": "false",
+              "preserve_quality": "true",
+              "no_new_purchase": "true",
+              "budget": "",
+              "storage_min": "",
+              "cost_exclusion": "",
+              "locality": "",
+              "identifier": ""
+            }
+          }
+        },
+        "status_correct": true,
+        "language_correct": true,
+        "meaning_correct": false,
+        "constraints_preserved": false,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "Wasserkocher",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Repariere",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "ohne ihn zu ersetzen",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[2]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[3]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[4]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[5]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[6]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[7]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[8]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "water_kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_replacement": "true",
+            "no_repair": "false",
+            "preserve_quality": "true",
+            "no_new_purchase": "true",
+            "budget": "",
+            "storage_min": "",
+            "cost_exclusion": "",
+            "locality": "",
+            "identifier": ""
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 6,
+      "id": "C3",
+      "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "temperature": 0,
+      "request_record": "requests/06-C3-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1715"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"de\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"water_kettle\\\", \\\"quote\\\": \\\"Wasserkocher\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repariere\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_replacement\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"ohne ihn zu ersetzen\\\"},\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"false\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"preserve_quality\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"budget\\\", \\\"value\\\": \\\"null\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"storage_min\\\", \\\"value\\\": \\\"null\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"cost_exclusion\\\", \\\"value\\\": \\\"null\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"locality\\\", \\\"value\\\": \\\"null\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"identifier\\\", \\\"value\\\": \\\"null\\\", \\\"quote\\\": \\\"\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733523,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":256,\"prompt_tokens\":341,\"total_tokens\":597,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-aR1d4J8EzoiTYrhnuCV9t9LhdYOSJtLm\",\"timings\":{\"cache_n\":0,\"prompt_n\":341,\"prompt_ms\":7960.906,\"prompt_per_token_ms\":23.34576539589443,\"prompt_per_second\":42.83432061627157,\"predicted_n\":256,\"predicted_ms\":31101.821,\"predicted_per_token_ms\":121.96792549019608,\"predicted_per_second\":8.198876843899269}}",
+        "wall_seconds": 39.07438563000005
+      },
+      "raw_content": "{\n  \"status\": \"understood\",\n  \"language\": \"de\",\n  \"subject\": {\"value\": \"water_kettle\", \"quote\": \"Wasserkocher\"},\n  \"action\": {\"value\": \"repair\", \"quote\": \"Repariere\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_replacement\", \"value\": \"true\", \"quote\": \"ohne ihn zu ersetzen\"},\n    {\"kind\": \"no_repair\", \"value\": \"false\", \"quote\": \"\"},\n    {\"kind\": \"preserve_quality\", \"value\": \"true\", \"quote\": \"\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"\"},\n    {\"kind\": \"budget\", \"value\": \"null\", \"quote\": \"\"},\n    {\"kind\": \"storage_min\", \"value\": \"null\", \"quote\": \"\"},\n    {\"kind\": \"cost_exclusion\", \"value\": \"null\", \"quote\": \"\"},\n    {\"kind\": \"locality\", \"value\": \"null\", \"quote\": \"\"},\n    {\"kind\": \"identifier\", \"value\": \"null\", \"quote\": \"\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "understood",
+        "language": "de",
+        "subject": {
+          "value": "water_kettle",
+          "quote": "Wasserkocher"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repariere"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_replacement",
+            "value": "true",
+            "quote": "ohne ihn zu ersetzen"
+          },
+          {
+            "kind": "no_repair",
+            "value": "false",
+            "quote": ""
+          },
+          {
+            "kind": "preserve_quality",
+            "value": "true",
+            "quote": ""
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": ""
+          },
+          {
+            "kind": "budget",
+            "value": "null",
+            "quote": ""
+          },
+          {
+            "kind": "storage_min",
+            "value": "null",
+            "quote": ""
+          },
+          {
+            "kind": "cost_exclusion",
+            "value": "null",
+            "quote": ""
+          },
+          {
+            "kind": "locality",
+            "value": "null",
+            "quote": ""
+          },
+          {
+            "kind": "identifier",
+            "value": "null",
+            "quote": ""
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 256,
+        "prompt_tokens": 341,
+        "total_tokens": 597,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 341,
+        "prompt_ms": 7960.906,
+        "prompt_per_token_ms": 23.34576539589443,
+        "prompt_per_second": 42.83432061627157,
+        "predicted_n": 256,
+        "predicted_ms": 31101.821,
+        "predicted_per_token_ms": 121.96792549019608,
+        "predicted_per_second": 8.198876843899269
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "incorrect",
+          "differences": {
+            "subject": {
+              "expected": "kettle",
+              "actual": "water_kettle"
+            },
+            "constraints": {
+              "expected": {
+                "no_replacement": "true"
+              },
+              "actual": {
+                "no_replacement": "true",
+                "no_repair": "false",
+                "preserve_quality": "true",
+                "no_new_purchase": "true",
+                "budget": "null",
+                "storage_min": "null",
+                "cost_exclusion": "null",
+                "locality": "null",
+                "identifier": "null"
+              }
+            }
+          },
+          "projected": {
+            "subject": "water_kettle",
+            "action": "repair",
+            "goals": [],
+            "constraints": {
+              "no_replacement": "true",
+              "no_repair": "false",
+              "preserve_quality": "true",
+              "no_new_purchase": "true",
+              "budget": "null",
+              "storage_min": "null",
+              "cost_exclusion": "null",
+              "locality": "null",
+              "identifier": "null"
+            }
+          }
+        },
+        "status_correct": true,
+        "language_correct": true,
+        "meaning_correct": false,
+        "constraints_preserved": false,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "Wasserkocher",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Repariere",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "ohne ihn zu ersetzen",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[2]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[3]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[4]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[5]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[6]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[7]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[8]",
+            "quote": "",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "water_kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_replacement": "true",
+            "no_repair": "false",
+            "preserve_quality": "true",
+            "no_new_purchase": "true",
+            "budget": "null",
+            "storage_min": "null",
+            "cost_exclusion": "null",
+            "locality": "null",
+            "identifier": "null"
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 7,
+      "id": "C4",
+      "text": "Répare ma bouilloire.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0,
+      "request_record": "requests/07-C4-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1031"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"understood\\\", \\\"language\\\": \\\"fr\\\", \\\"subject\\\": {\\\"value\\\": \\\"bouilloire\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733539,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":72,\"prompt_tokens\":332,\"total_tokens\":404,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-5PUftuto1R2JYTrAcpvo4vVptq60wBos\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":8056.531,\"prompt_per_token_ms\":24.266659638554216,\"prompt_per_second\":41.20880314368554,\"predicted_n\":72,\"predicted_ms\":8698.915,\"predicted_per_token_ms\":122.51992957746481,\"predicted_per_second\":8.161937437025191}}",
+        "wall_seconds": 16.767527726000026
+      },
+      "raw_content": "{\"status\": \"understood\", \"language\": \"fr\", \"subject\": {\"value\": \"bouilloire\", \"quote\": \"répare ma bouilloire\"}, \"action\": {\"value\": \"repair\", \"quote\": \"répare ma bouilloire\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "bouilloire",
+          "quote": "répare ma bouilloire"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "répare ma bouilloire"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 72,
+        "prompt_tokens": 332,
+        "total_tokens": 404,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 8056.531,
+        "prompt_per_token_ms": 24.266659638554216,
+        "prompt_per_second": 41.20880314368554,
+        "predicted_n": 72,
+        "predicted_ms": 8698.915,
+        "predicted_per_token_ms": 122.51992957746481,
+        "predicted_per_second": 8.161937437025191
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote",
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "incorrect",
+          "differences": {
+            "subject": {
+              "expected": "kettle",
+              "actual": "bouilloire"
+            }
+          },
+          "projected": {
+            "subject": "bouilloire",
+            "action": "repair",
+            "goals": [],
+            "constraints": {}
+          }
+        },
+        "status_correct": true,
+        "language_correct": true,
+        "meaning_correct": false,
+        "constraints_preserved": true,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "répare ma bouilloire",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "répare ma bouilloire",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "bouilloire",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 8,
+      "id": "C4",
+      "text": "Répare ma bouilloire.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0.7,
+      "request_record": "requests/08-C4-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1239"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"fr\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"bouilloire\\\", \\\"quote\\\": \\\"bouilloire\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"répare\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"répare ma bouilloire\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733563,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":133,\"prompt_tokens\":332,\"total_tokens\":465,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-PcfD2VcaJTIb621k3eD90MGlfg8FApjU\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":7704.201,\"prompt_per_token_ms\":23.20542469879518,\"prompt_per_second\":43.09337204468056,\"predicted_n\":133,\"predicted_ms\":16044.726,\"predicted_per_token_ms\":121.55095454545454,\"predicted_per_second\":8.227002443045771}}",
+        "wall_seconds": 23.76080370999989
+      },
+      "raw_content": "{\n  \"status\": \"understood\",\n  \"language\": \"fr\",\n  \"subject\": {\"value\": \"bouilloire\", \"quote\": \"bouilloire\"},\n  \"action\": {\"value\": \"répare\", \"quote\": \"répare ma bouilloire\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_repair\", \"value\": \"true\", \"quote\": \"répare ma bouilloire\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"répare ma bouilloire\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "bouilloire",
+          "quote": "bouilloire"
+        },
+        "action": {
+          "value": "répare",
+          "quote": "répare ma bouilloire"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_repair",
+            "value": "true",
+            "quote": "répare ma bouilloire"
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": "répare ma bouilloire"
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 133,
+        "prompt_tokens": 332,
+        "total_tokens": 465,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 7704.201,
+        "prompt_per_token_ms": 23.20542469879518,
+        "prompt_per_second": 43.09337204468056,
+        "predicted_n": 133,
+        "predicted_ms": 16044.726,
+        "predicted_per_token_ms": 121.55095454545454,
+        "predicted_per_second": 8.227002443045771
+      },
+      "assessment": {
+        "structural_errors": [
+          "ungrounded_quote",
+          "ungrounded_quote",
+          "ungrounded_quote"
+        ],
+        "frozen_semantic": {
+          "category": "incorrect",
+          "differences": {
+            "subject": {
+              "expected": "kettle",
+              "actual": "bouilloire"
+            },
+            "action": {
+              "expected": "repair",
+              "actual": "répare"
+            },
+            "constraints": {
+              "expected": {},
+              "actual": {
+                "no_repair": "true",
+                "no_new_purchase": "true"
+              }
+            }
+          },
+          "projected": {
+            "subject": "bouilloire",
+            "action": "répare",
+            "goals": [],
+            "constraints": {
+              "no_repair": "true",
+              "no_new_purchase": "true"
+            }
+          }
+        },
+        "status_correct": true,
+        "language_correct": true,
+        "meaning_correct": false,
+        "constraints_preserved": false,
+        "uncertainty_preserved": true,
+        "quotes_grounded": false,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "bouilloire",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "répare ma bouilloire",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "répare ma bouilloire",
+            "exact_substring": false,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "répare ma bouilloire",
+            "exact_substring": false,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "bouilloire",
+          "action": "répare",
+          "goals": [],
+          "constraints": {
+            "no_repair": "true",
+            "no_new_purchase": "true"
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 9,
+      "id": "C5",
+      "text": "Ripara il mio bollitore.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0.7,
+      "request_record": "requests/09-C5-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1018"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"unsupported\\\", \\\"language\\\": \\\"it\\\", \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"bollitore\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Ripara il mio bollitore\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733579,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":68,\"prompt_tokens\":334,\"total_tokens\":402,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-hlHhLO7Z1Jl8HuMQ0m0hvi3eY8jbMRSi\",\"timings\":{\"cache_n\":0,\"prompt_n\":334,\"prompt_ms\":7789.518,\"prompt_per_token_ms\":23.321910179640717,\"prompt_per_second\":42.87813443655949,\"predicted_n\":68,\"predicted_ms\":8004.667,\"predicted_per_token_ms\":119.47264179104478,\"predicted_per_second\":8.370117082946736}}",
+        "wall_seconds": 15.806559595999715
+      },
+      "raw_content": "{\"status\": \"unsupported\", \"language\": \"it\", \"subject\": {\"value\": \"kettle\", \"quote\": \"bollitore\"}, \"action\": {\"value\": \"repair\", \"quote\": \"Ripara il mio bollitore\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "unsupported",
+        "language": "it",
+        "subject": {
+          "value": "kettle",
+          "quote": "bollitore"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Ripara il mio bollitore"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 334,
+        "total_tokens": 402,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 334,
+        "prompt_ms": 7789.518,
+        "prompt_per_token_ms": 23.321910179640717,
+        "prompt_per_second": 42.87813443655949,
+        "predicted_n": 68,
+        "predicted_ms": 8004.667,
+        "predicted_per_token_ms": 119.47264179104478,
+        "predicted_per_second": 8.370117082946736
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": false,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": true,
+        "uncertainty_preserved": true,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "bollitore",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Ripara il mio bollitore",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 10,
+      "id": "C5",
+      "text": "Ripara il mio bollitore.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "temperature": 0,
+      "request_record": "requests/10-C5-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1017"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"unsupported\\\", \\\"language\\\": \\\"it\\\", \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"bollitore\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Ripara il mio bollitore\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733595,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":68,\"prompt_tokens\":334,\"total_tokens\":402,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-ufXig1VuzoPAmFXZACZ3kxX96Y96xBQh\",\"timings\":{\"cache_n\":0,\"prompt_n\":334,\"prompt_ms\":7819.194,\"prompt_per_token_ms\":23.41076047904192,\"prompt_per_second\":42.715400078320094,\"predicted_n\":68,\"predicted_ms\":8165.109,\"predicted_per_token_ms\":121.86729850746269,\"predicted_per_second\":8.20564673417097}}",
+        "wall_seconds": 15.99886391400014
+      },
+      "raw_content": "{\"status\": \"unsupported\", \"language\": \"it\", \"subject\": {\"value\": \"kettle\", \"quote\": \"bollitore\"}, \"action\": {\"value\": \"repair\", \"quote\": \"Ripara il mio bollitore\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "unsupported",
+        "language": "it",
+        "subject": {
+          "value": "kettle",
+          "quote": "bollitore"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Ripara il mio bollitore"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 68,
+        "prompt_tokens": 334,
+        "total_tokens": 402,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 334,
+        "prompt_ms": 7819.194,
+        "prompt_per_token_ms": 23.41076047904192,
+        "prompt_per_second": 42.715400078320094,
+        "predicted_n": 68,
+        "predicted_ms": 8165.109,
+        "predicted_per_token_ms": 121.86729850746269,
+        "predicted_per_second": 8.20564673417097
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": false,
+        "language_correct": true,
+        "meaning_correct": true,
+        "constraints_preserved": true,
+        "uncertainty_preserved": true,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "bollitore",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Ripara il mio bollitore",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        },
+        "pass": false
+      }
+    },
+    {
+      "index": 11,
+      "id": "C6",
+      "text": "Repara mi hervidor.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true
+      },
+      "temperature": 0,
+      "request_record": "requests/11-C6-t0.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1012"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\\"status\\\": \\\"unsupported\\\", \\\"language\\\": \\\"en\\\", \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"hervidor\\\"}, \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"}, \\\"goals\\\": [], \\\"constraints\\\": [],\\\"unresolved\\\": []}\"}}],\"created\":1791733611,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":66,\"prompt_tokens\":332,\"total_tokens\":398,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-AdRfGuL12uSdky4jkJ46m2afi1UWXuWj\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":7806.628,\"prompt_per_token_ms\":23.513939759036145,\"prompt_per_second\":42.52796469871499,\"predicted_n\":66,\"predicted_ms\":7884.178,\"predicted_per_token_ms\":121.29504615384616,\"predicted_per_second\":8.244359779802028}}",
+        "wall_seconds": 15.702116404000208
+      },
+      "raw_content": "{\"status\": \"unsupported\", \"language\": \"en\", \"subject\": {\"value\": \"kettle\", \"quote\": \"hervidor\"}, \"action\": {\"value\": \"repair\", \"quote\": \"Repara mi hervidor\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "actual": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "hervidor"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repara mi hervidor"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 66,
+        "prompt_tokens": 332,
+        "total_tokens": 398,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 7806.628,
+        "prompt_per_token_ms": 23.513939759036145,
+        "prompt_per_second": 42.52796469871499,
+        "predicted_n": 66,
+        "predicted_ms": 7884.178,
+        "predicted_per_token_ms": 121.29504615384616,
+        "predicted_per_second": 8.244359779802028
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": true,
+        "language_correct": false,
+        "meaning_correct": null,
+        "constraints_preserved": null,
+        "uncertainty_preserved": false,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Repara mi hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": null,
+        "pass": false
+      }
+    },
+    {
+      "index": 12,
+      "id": "C6",
+      "text": "Repara mi hervidor.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true
+      },
+      "temperature": 0.7,
+      "request_record": "requests/12-C6-t0.7.json",
+      "exchange": {
+        "http_status": 200,
+        "http_headers": [
+          [
+            "Server",
+            "llama.cpp"
+          ],
+          [
+            "Access-Control-Allow-Origin",
+            ""
+          ],
+          [
+            "Content-Type",
+            "application/json; charset=utf-8"
+          ],
+          [
+            "Content-Length",
+            "1320"
+          ],
+          [
+            "Keep-Alive",
+            "timeout=5, max=100"
+          ]
+        ],
+        "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"unsupported\\\",\\n  \\\"language\\\": \\\"en\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"hervidor\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n    {\\\"kind\\\": \\\"preserve_quality\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733637,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":154,\"prompt_tokens\":332,\"total_tokens\":486,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-EXJjPW23azMi8vKubPE4fQ9ezUhlKJAu\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":7854.388,\"prompt_per_token_ms\":23.657795180722893,\"prompt_per_second\":42.26936586275086,\"predicted_n\":154,\"predicted_ms\":18106.399,\"predicted_per_token_ms\":118.34247712418302,\"predicted_per_second\":8.450051277451688}}",
+        "wall_seconds": 25.97213960800036
+      },
+      "raw_content": "{\n  \"status\": \"unsupported\",\n  \"language\": \"en\",\n  \"subject\": {\"value\": \"kettle\", \"quote\": \"hervidor\"},\n  \"action\": {\"value\": \"repair\", \"quote\": \"Repara mi hervidor\"},\n  \"goals\": [],\n  \"constraints\": [\n    {\"kind\": \"no_repair\", \"value\": \"true\", \"quote\": \"Repara mi hervidor\"},\n    {\"kind\": \"preserve_quality\", \"value\": \"true\", \"quote\": \"Repara mi hervidor\"},\n    {\"kind\": \"no_new_purchase\", \"value\": \"true\", \"quote\": \"Repara mi hervidor\"}\n  ],\n  \"unresolved\": []\n}",
+      "actual": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "hervidor"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repara mi hervidor"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_repair",
+            "value": "true",
+            "quote": "Repara mi hervidor"
+          },
+          {
+            "kind": "preserve_quality",
+            "value": "true",
+            "quote": "Repara mi hervidor"
+          },
+          {
+            "kind": "no_new_purchase",
+            "value": "true",
+            "quote": "Repara mi hervidor"
+          }
+        ],
+        "unresolved": []
+      },
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 154,
+        "prompt_tokens": 332,
+        "total_tokens": 486,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 7854.388,
+        "prompt_per_token_ms": 23.657795180722893,
+        "prompt_per_second": 42.26936586275086,
+        "predicted_n": 154,
+        "predicted_ms": 18106.399,
+        "predicted_per_token_ms": 118.34247712418302,
+        "predicted_per_second": 8.450051277451688
+      },
+      "assessment": {
+        "structural_errors": [],
+        "frozen_semantic": {
+          "category": "unsupported",
+          "differences": {}
+        },
+        "status_correct": true,
+        "language_correct": false,
+        "meaning_correct": null,
+        "constraints_preserved": null,
+        "uncertainty_preserved": false,
+        "quotes_grounded": true,
+        "quotes": [
+          {
+            "field": "subject",
+            "quote": "hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "action",
+            "quote": "Repara mi hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[0]",
+            "quote": "Repara mi hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[1]",
+            "quote": "Repara mi hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          },
+          {
+            "field": "constraints[2]",
+            "quote": "Repara mi hervidor",
+            "exact_substring": true,
+            "absent_value": false
+          }
+        ],
+        "projected_meaning": null,
+        "pass": false
+      }
+    }
+  ],
+  "current_case": null,
+  "planned_order": [
+    {
+      "case": "C1",
+      "temperature": 0.7
+    },
+    {
+      "case": "C1",
+      "temperature": 0
+    },
+    {
+      "case": "C2",
+      "temperature": 0
+    },
+    {
+      "case": "C2",
+      "temperature": 0.7
+    },
+    {
+      "case": "C3",
+      "temperature": 0.7
+    },
+    {
+      "case": "C3",
+      "temperature": 0
+    },
+    {
+      "case": "C4",
+      "temperature": 0
+    },
+    {
+      "case": "C4",
+      "temperature": 0.7
+    },
+    {
+      "case": "C5",
+      "temperature": 0.7
+    },
+    {
+      "case": "C5",
+      "temperature": 0
+    },
+    {
+      "case": "C6",
+      "temperature": 0
+    },
+    {
+      "case": "C6",
+      "temperature": 0.7
+    }
+  ],
+  "temperature_zero_success": false,
+  "classification": "Synthetic calibration only; frozen evaluation never invoked",
+  "metrics": {
+    "peak_owned_rss_bytes": 2234003456,
+    "minimum_available_bytes": 13224054784,
+    "peak_scratch_bytes": 2371961845,
+    "guard_error": null,
+    "inet_activity": false
+  },
+  "elapsed_seconds": 268.90393471717834,
+  "readiness": {
+    "seconds": 1.4590775659999053,
+    "health_attempts": 7,
+    "health_status": 200,
+    "body": "{\"status\":\"ok\"}"
+  },
+  "owned_process_exit_code": 0,
+  "prior_records_preserved": true,
+  "unexecuted_order": [],
+  "retry_or_tuning": false,
+  "heldout_exposed_to_model": false
+}

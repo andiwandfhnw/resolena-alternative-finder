@@ -1,0 +1,11 @@
+{
+  "linked_attempt": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11",
+  "evaluation_runner_copied_unchanged": true,
+  "changes": [
+    "One-shot artifact-reusing orchestration and exclusive lock/process check",
+    "Short Git-ignored workspace alias for Unix socket",
+    "Fresh authorized deadline, cumulative download ledger and periodic durable resources",
+    "Retain workspace artifacts through closeout"
+  ],
+  "model_prompt_cases_scoring_changed": false
+}

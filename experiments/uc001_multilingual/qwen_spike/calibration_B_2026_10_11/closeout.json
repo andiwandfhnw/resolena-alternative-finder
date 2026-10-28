@@ -1,0 +1,27 @@
+{
+  "status": "stopped_preflight",
+  "process_exit_code": 1,
+  "calibration_success": false,
+  "reason": "Resource guard stopped execution before model loading",
+  "observed_ram_shortfall_bytes": 93503488,
+  "exact_guard_values_captured": false,
+  "resource_observation": {
+    "utc": "2026-10-11T13:36:20.532238+00:00",
+    "available_memory_bytes": 3933028352,
+    "disk_free_bytes": 24158359552,
+    "preflight_memory_min_bytes": 4026531840,
+    "scratch_reserve_bytes": 6442450944,
+    "measurement_scope": "Read-only observation after guard stopped; exact resource values at failing guard were not recorded"
+  },
+  "active_experiment_processes": [],
+  "timed_window_started": false,
+  "downloads": 0,
+  "builds": 0,
+  "model_requests": 0,
+  "retries": 0,
+  "retained_binary_model": true,
+  "original_smoke_preserved": true,
+  "all_frozen_hashes_verified": true,
+  "configuration_status": "Stopped pending review; no semantic verdict",
+  "design_acceptance": "pending"
+}

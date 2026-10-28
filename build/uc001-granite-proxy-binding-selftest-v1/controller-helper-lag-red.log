@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_already_verified_helper_may_exit_during_bounded_cleanup_without_direct_termination _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-16/test_already_verified_helper_m0')
+
+    def test_already_verified_helper_may_exit_during_bounded_cleanup_without_direct_termination(tmp_path):
+        backend,plan,clock=fixture(tmp_path,helper=True,damage='helper_lag')
+        result=selftest.run_binding_session(backend,plan,clock=clock,sleep=clock.sleep,
+            watchdog_factory=Guard,guard_validator=lambda path,pid:dict(verified=True))
+>       assert result['proxy_binding_selftest_passed'] is True,result
+E       AssertionError: {'proxy_binding_selftest_passed': False, 'windows_execution': False, 'synthetic_injected': True, 'native_binding_verified': False, ...}
+E       assert False is True
+
+tests/unit/test_granite_proxy_binding_selftest.py:285: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_already_verified_helper_may_exit_during_bounded_cleanup_without_direct_termination
+1 failed, 44 deselected in 0.18s

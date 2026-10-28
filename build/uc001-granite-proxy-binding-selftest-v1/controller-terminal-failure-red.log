@@ -1,0 +1,37 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_session_preserves_fail_closed_binding_and_cleanup[nonboolean_worker_handle] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-14/test_session_preserves_fail_cl0')
+damage = 'nonboolean_worker_handle'
+
+    @pytest.mark.parametrize('damage', ['parent','membership','handle_pid','birth_change','ready_pid',
+        'listening_pid','worker_parent','worker_handle_unclosed','missing_ack','missing_role_exit',
+        'unclosed_worker_handle','nonboolean_worker_handle','premature_launcher','premature_interpreter','extra_job_process',
+        'missing_cleanup_exit','helper_path','helper_close'])
+    def test_session_preserves_fail_closed_binding_and_cleanup(tmp_path,damage):
+        helper=damage.startswith('helper_')
+        backend,plan,clock=fixture(tmp_path,helper=helper,damage=damage)
+        result=selftest.run_binding_session(backend,plan,clock=clock,sleep=clock.sleep,
+            watchdog_factory=Guard,guard_validator=lambda path,pid:dict(verified=True))
+>       assert result['proxy_binding_selftest_passed'] is False,result
+E       AssertionError: {'proxy_binding_selftest_passed': True, 'windows_execution': False, 'synthetic_injected': True, 'native_binding_verified': False, ...}
+E       assert True is False
+
+tests/unit/test_granite_proxy_binding_selftest.py:207: AssertionError
+__ test_failure_after_evidence_directory_creation_retains_structured_failure ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-14/test_failure_after_evidence_di0')
+
+    def test_failure_after_evidence_directory_creation_retains_structured_failure(tmp_path):
+        journal=SimpleNamespace(emit=lambda *args,**kwargs:None)
+>       result=selftest.preserve_native_failure(tmp_path,journal,RuntimeError('native job creation failed'),
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                                              windows_execution=False)
+E       AttributeError: module 'scripts.uc001_granite_controller.proxy_binding_selftest' has no attribute 'preserve_native_failure'
+
+tests/unit/test_granite_proxy_binding_selftest.py:267: AttributeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_session_preserves_fail_closed_binding_and_cleanup[nonboolean_worker_handle]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_failure_after_evidence_directory_creation_retains_structured_failure
+2 failed, 42 deselected in 0.22s

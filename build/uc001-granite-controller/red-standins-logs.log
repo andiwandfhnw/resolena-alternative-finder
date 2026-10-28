@@ -1,0 +1,69 @@
+.........FFF                                                             [100%]
+=================================== FAILURES ===================================
+________ test_owned_role_root_must_match_the_launched_retained_process _________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-35/test_owned_role_root_must_matc0')
+
+    def test_owned_role_root_must_match_the_launched_retained_process(tmp_path):
+        result, _ = run_fake(tmp_path, wrong_root=True)
+>       assert result["ownership_self_test_passed"] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:250: AssertionError
+___________ test_nested_membership_requires_the_actual_parent_chain ____________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-35/test_nested_membership_require0')
+
+    def test_nested_membership_requires_the_actual_parent_chain(tmp_path):
+        result, _ = run_fake(tmp_path, wrong_parent=True)
+>       assert result["ownership_self_test_passed"] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:255: AssertionError
+__ test_standin_children_keep_separate_logs_without_launching_a_real_process ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-35/test_standin_children_keep_sep0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x73081e0d96d0>
+
+    def test_standin_children_keep_separate_logs_without_launching_a_real_process(tmp_path, monkeypatch):
+        from scripts.uc001_granite_controller import standins as module
+        clock = Clock()
+        child = SimpleNamespace(ended=False)
+        child.poll = lambda: 1 if child.ended else None
+        child.terminate = lambda: setattr(child, "ended", True)
+        child.wait = lambda timeout: 1
+        seen = {}
+        def popen(argv, **kwargs):
+            seen.update(kwargs)
+            assert Path(kwargs["stdout"].name).name == "child.stdout.log"
+            assert Path(kwargs["stderr"].name).name == "child.stderr.log"
+            return child
+        api = SimpleNamespace(k=SimpleNamespace(GetCurrentProcess=lambda: "self"), creation_time=lambda _: 42)
+        monkeypatch.setattr(module, "_native_guard", lambda: None)
+        monkeypatch.setattr(module, "_job_module", lambda: SimpleNamespace(NativeApi=lambda: api))
+        monkeypatch.setattr(module.subprocess, "Popen", popen)
+        monkeypatch.setattr(module.time, "monotonic", clock)
+        monkeypatch.setattr(module.time, "sleep", clock.sleep)
+>       module._child("root", tmp_path, 0.1, "synthetic-python.exe")
+
+tests/unit/test_granite_controller_standins.py:277: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/uc001_granite_controller/standins.py:289: in _child
+    child = subprocess.Popen([str(python_exe), "-I", str(Path(__file__).resolve()),
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+argv = ['synthetic-python.exe', '-I', '/workspaces/resolena-alternative-finder/scripts/uc001_granite_controller/standins.py', '--child-role', 'child', '--events', ...]
+kwargs = {'stdin': -3, 'stdout': -3, 'stderr': -3, 'close_fds': True, ...}
+
+    def popen(argv, **kwargs):
+        seen.update(kwargs)
+>       assert Path(kwargs["stdout"].name).name == "child.stdout.log"
+                    ^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'int' object has no attribute 'name'
+
+tests/unit/test_granite_controller_standins.py:268: AttributeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_owned_role_root_must_match_the_launched_retained_process
+FAILED tests/unit/test_granite_controller_standins.py::test_nested_membership_requires_the_actual_parent_chain
+FAILED tests/unit/test_granite_controller_standins.py::test_standin_children_keep_separate_logs_without_launching_a_real_process
+3 failed, 9 passed in 0.94s

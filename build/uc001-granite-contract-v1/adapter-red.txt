@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+_____ ERROR collecting tests/integration/test_granite_contract_adapter.py ______
+ImportError while importing test module '/workspaces/resolena-alternative-finder/tests/integration/test_granite_contract_adapter.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/integration/test_granite_contract_adapter.py:12: in <module>
+    from app.infrastructure.granite_interpreter import GraniteInterpreter, expected_prompt, transport_schema
+E   ModuleNotFoundError: No module named 'app.infrastructure.granite_interpreter'
+=========================== short test summary info ============================
+ERROR tests/integration/test_granite_contract_adapter.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.75s

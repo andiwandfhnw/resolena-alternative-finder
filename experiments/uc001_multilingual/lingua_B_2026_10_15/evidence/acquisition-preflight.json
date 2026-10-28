@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-15T17:05:16.512859+00:00",
+  "memory": {
+    "MemTotal": 8327036928,
+    "MemAvailable": 4177571840
+  },
+  "visible_cgroup": {
+    "memory.max": "max",
+    "memory.current": "2463387648",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+    "memory.pressure": "some avg10=0.00 avg60=0.02 avg300=0.03 total=821629\nfull avg10=0.00 avg60=0.02 avg300=0.03 total=608523"
+  },
+  "effective_headroom_bytes": 4177571840,
+  "free_disk_bytes": 23640469504,
+  "minimum_headroom_bytes": 1610612736,
+  "cpu_affinity": [
+    0,
+    1
+  ]
+}

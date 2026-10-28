@@ -1,0 +1,7 @@
+{
+  "checks": "owned isolated test service ports after Playwright completion",
+  "ports": {
+    "8011": "closed",
+    "5175": "closed"
+  }
+}

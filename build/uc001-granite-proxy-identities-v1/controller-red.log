@@ -1,0 +1,560 @@
+FFFFFFFFFFFFFFFF                                                         [100%]
+=================================== FAILURES ===================================
+_ test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits[True] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_distinct_ro0')
+split = True
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits(tmp_path,split):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=split)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_distinct_ro0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits[False] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_distinct_ro1')
+split = False
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits(tmp_path,split):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=split)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_distinct_ro1')
+split = False, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+___ test_proxy_binding_native_identity_gaps_fail_before_private_ack[parent] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden0')
+damage = 'parent'
+
+    @pytest.mark.parametrize('damage',['parent','membership','birth_change','handle_pid'])
+    def test_proxy_binding_native_identity_gaps_fail_before_private_ack(tmp_path,damage):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,damage=damage)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden0')
+split = True, damage = 'parent', extra = False, helper = False
+ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_native_identity_gaps_fail_before_private_ack[membership] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden1')
+damage = 'membership'
+
+    @pytest.mark.parametrize('damage',['parent','membership','birth_change','handle_pid'])
+    def test_proxy_binding_native_identity_gaps_fail_before_private_ack(tmp_path,damage):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,damage=damage)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden1')
+split = True, damage = 'membership', extra = False, helper = False
+ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_native_identity_gaps_fail_before_private_ack[birth_change] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden2')
+damage = 'birth_change'
+
+    @pytest.mark.parametrize('damage',['parent','membership','birth_change','handle_pid'])
+    def test_proxy_binding_native_identity_gaps_fail_before_private_ack(tmp_path,damage):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,damage=damage)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden2')
+split = True, damage = 'birth_change', extra = False, helper = False
+ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_native_identity_gaps_fail_before_private_ack[handle_pid] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden3')
+damage = 'handle_pid'
+
+    @pytest.mark.parametrize('damage',['parent','membership','birth_change','handle_pid'])
+    def test_proxy_binding_native_identity_gaps_fail_before_private_ack(tmp_path,damage):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,damage=damage)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:127: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_native_iden3')
+split = True, damage = 'handle_pid', extra = False, helper = False
+ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_________ test_proxy_binding_wrong_readiness_pid_is_not_any_owned_pid __________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_wrong_readi0')
+
+    def test_proxy_binding_wrong_readiness_pid_is_not_any_owned_pid(tmp_path):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:134: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_wrong_readi0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_same_process_flag_requires_actual_retained_identity[True] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_same_proces0')
+same_process = True
+
+    @pytest.mark.parametrize('same_process',[True,False])
+    def test_proxy_binding_same_process_flag_requires_actual_retained_identity(tmp_path,same_process):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=same_process)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_same_proces0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_same_process_flag_requires_actual_retained_identity[False] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_same_proces1')
+same_process = False
+
+    @pytest.mark.parametrize('same_process',[True,False])
+    def test_proxy_binding_same_process_flag_requires_actual_retained_identity(tmp_path,same_process):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,split=same_process)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_same_proces1')
+split = False, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+______________ test_proxy_binding_ledger_launcher_pid_is_rejected ______________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_ledger_laun0')
+
+    def test_proxy_binding_ledger_launcher_pid_is_rejected(tmp_path):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,ledger_pid=200)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:149: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_ledger_laun0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = 200
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_____ test_proxy_binding_premature_launcher_or_interpreter_exit_fails[200] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_premature_l0')
+pid = 200
+
+    @pytest.mark.parametrize('pid',[200,201])
+    def test_proxy_binding_premature_launcher_or_interpreter_exit_fails(tmp_path,pid):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_premature_l0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_____ test_proxy_binding_premature_launcher_or_interpreter_exit_fails[201] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_premature_l1')
+pid = 201
+
+    @pytest.mark.parametrize('pid',[200,201])
+    def test_proxy_binding_premature_launcher_or_interpreter_exit_fails(tmp_path,pid):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:156: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_premature_l1')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_terminal_requires_both_role_exit_records[proxy_launcher_exit] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_terminal_re0')
+missing = 'proxy_launcher_exit'
+
+    @pytest.mark.parametrize('missing',['proxy_launcher_exit','proxy_interpreter_exit'])
+    def test_proxy_binding_terminal_requires_both_role_exit_records(tmp_path,missing):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_terminal_re0')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_terminal_requires_both_role_exit_records[proxy_interpreter_exit] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_terminal_re1')
+missing = 'proxy_interpreter_exit'
+
+    @pytest.mark.parametrize('missing',['proxy_launcher_exit','proxy_interpreter_exit'])
+    def test_proxy_binding_terminal_requires_both_role_exit_records(tmp_path,missing):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:163: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_terminal_re1')
+split = True, damage = None, extra = False, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+__________ test_proxy_binding_unclassified_third_process_prevents_ack __________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_unclassifie0')
+
+    def test_proxy_binding_unclassified_third_process_prevents_ack(tmp_path):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,extra=True)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:169: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_unclassifie0')
+split = True, damage = None, extra = True, helper = False, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+_ test_proxy_binding_reuses_closed_console_policy_and_verifies_helper_cleanup __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_reuses_clos0')
+
+    def test_proxy_binding_reuses_closed_console_policy_and_verifies_helper_cleanup(tmp_path):
+>       monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,helper=True)
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_run.py:175: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-25/test_proxy_binding_reuses_clos0')
+split = True, damage = None, extra = False, helper = True, ledger_pid = None
+
+    def proxy_binding_monitor(tmp_path, *, split=True, damage=None, extra=False, helper=False, ledger_pid=None):
+        import hashlib
+        from scripts.uc001_granite_controller.controller import PhaseMonitor
+        backend = BindingBackend(split, damage, extra, helper)
+        launcher = proxy_identity(200,20000,100)
+        interpreter = proxy_identity(201,20001,200) if split else dict(launcher)
+        ledger = tmp_path/'binding-ledger.jsonl'
+        writer = BudgetLedger(ledger, CEILING, 7)
+        writer.record('listening', address=['127.0.0.1',12345], pid=ledger_pid or interpreter['pid'])
+        writer.record('end', status='closed_unqualified', sockets_closed=True)
+        writer.close()
+        plan = dict(name='acquisition',ledgerpath=ledger,expected_prior_bytes=7)
+        ack, journal = [], []
+>       monitor = PhaseMonitor(plan,backend,lambda event,**values:journal.append(dict(event=event,**values)),
+                               acknowledge=ack.append)
+E       TypeError: PhaseMonitor.__init__() got an unexpected keyword argument 'acknowledge'
+
+tests/unit/test_granite_controller_run.py:88: TypeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits[True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_distinct_roles_use_verified_interpreter_ledger_and_both_exits[False]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_native_identity_gaps_fail_before_private_ack[parent]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_native_identity_gaps_fail_before_private_ack[membership]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_native_identity_gaps_fail_before_private_ack[birth_change]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_native_identity_gaps_fail_before_private_ack[handle_pid]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_wrong_readiness_pid_is_not_any_owned_pid
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_same_process_flag_requires_actual_retained_identity[True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_same_process_flag_requires_actual_retained_identity[False]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_ledger_launcher_pid_is_rejected
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_premature_launcher_or_interpreter_exit_fails[200]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_premature_launcher_or_interpreter_exit_fails[201]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_terminal_requires_both_role_exit_records[proxy_launcher_exit]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_terminal_requires_both_role_exit_records[proxy_interpreter_exit]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_unclassified_third_process_prevents_ack
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_reuses_closed_console_policy_and_verifies_helper_cleanup
+16 failed, 21 deselected in 0.86s

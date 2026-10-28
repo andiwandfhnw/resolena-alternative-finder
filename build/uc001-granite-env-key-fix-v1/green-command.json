@@ -1,0 +1,20 @@
+{
+  "stage": "GREEN focused environment validation and version evidence",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_worker.py",
+    "-k",
+    "environment_guard",
+    "--tb=short"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 0.8363664150238037,
+  "worker_sha256": "7e2660e10139862c7d5542e40c5e4ad0739eea917ee97de59be3671327b8daf5",
+  "test_sha256": "9bd69406ddbb80e13407caea0cded0ddedccfe0d65f83f6d1904156986070f15",
+  "windows_execution": false,
+  "native_tools_or_network_or_acquisition": false,
+  "metadata_test": "Existing injected runner stops at synthetic source-init failure before any proxy/fetch"
+}

@@ -1,0 +1,49 @@
+[WebServer] INFO:     Started server process [8515]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:8548) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:8587) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (2.7s)
+  ✘  2 ../tests/e2e/saved-comparison.spec.ts:70:5 › explicit locality confirmation saves reference-unverified intent without unsupported coverage (5.6s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [8515]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:70:5 › explicit locality confirmation saves reference-unverified intent without unsupported coverage 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Clarification', exact: true })
+    Expected substring: "Confirmation establishes intended scope only."
+    Received string:    "The locality cannot currently be verified because locality reference data is unavailable. Correct the fields or explicitly continue country-only. This does not establish local applicability."
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Clarification', exact: true }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Clarification', exact: true })
+        14 × locator resolved to <section aria-label="Clarification">…</section>
+           - unexpected value "The locality cannot currently be verified because locality reference data is unavailable. Correct the fields or explicitly continue country-only. This does not establish local applicability."
+
+
+      93 |   expect(clarificationBody.issues).toEqual([{ code: 'locality_reference_unavailable' }])
+      94 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('cannot currently be verified')
+    > 95 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('Confirmation establishes intended scope only.')
+         |                                                                                  ^
+      96 |   await expect(page.getByRole('region', { name: 'Clarification', exact: true })).toContainText('does not verify existence, town/postcode identity, delivery, service coverage or nearby applicability')
+      97 |   const confirm = page.getByRole('button', { name: 'Confirm entered locality as intended scope', exact: true })
+      98 |   await expect(confirm).toBeEnabled()
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:95:82
+
+    Error Context: ../build/uc001-priority5s-locality-confirmation/browser-red/saved-comparison-explicit--2ad39-ithout-unsupported-coverage/error-context.md
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:70:5 › explicit locality confirmation saves reference-unverified intent without unsupported coverage 
+  1 passed (24.8s)

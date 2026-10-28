@@ -1,0 +1,146 @@
+[
+  {
+    "index": 1,
+    "case": "01-C1-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "01-C1-v2",
+    "request": "requests/01-C1-v2.json"
+  },
+  {
+    "index": 2,
+    "case": "02-C2-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "02-C2-v2",
+    "request": "requests/02-C2-v2.json"
+  },
+  {
+    "index": 3,
+    "case": "03-C3-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "03-C3-v2",
+    "request": "requests/03-C3-v2.json"
+  },
+  {
+    "index": 4,
+    "case": "04-C4-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "04-C4-v2",
+    "request": "requests/04-C4-v2.json"
+  },
+  {
+    "index": 5,
+    "case": "05-C5-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "05-C5-v2",
+    "request": "requests/05-C5-v2.json"
+  },
+  {
+    "index": 6,
+    "case": "06-C6-known",
+    "arm": "v2",
+    "stage": "known",
+    "id": "06-C6-v2",
+    "request": "requests/06-C6-v2.json"
+  },
+  {
+    "index": 7,
+    "case": "F1-DE",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "07-F1-DE-v1",
+    "request": "requests/07-F1-DE-v1.json"
+  },
+  {
+    "index": 8,
+    "case": "F1-DE",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "08-F1-DE-v2",
+    "request": "requests/08-F1-DE-v2.json"
+  },
+  {
+    "index": 9,
+    "case": "F2-FR",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "09-F2-FR-v2",
+    "request": "requests/09-F2-FR-v2.json"
+  },
+  {
+    "index": 10,
+    "case": "F2-FR",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "10-F2-FR-v1",
+    "request": "requests/10-F2-FR-v1.json"
+  },
+  {
+    "index": 11,
+    "case": "F3-IT",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "11-F3-IT-v1",
+    "request": "requests/11-F3-IT-v1.json"
+  },
+  {
+    "index": 12,
+    "case": "F3-IT",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "12-F3-IT-v2",
+    "request": "requests/12-F3-IT-v2.json"
+  },
+  {
+    "index": 13,
+    "case": "F4-EN",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "13-F4-EN-v2",
+    "request": "requests/13-F4-EN-v2.json"
+  },
+  {
+    "index": 14,
+    "case": "F4-EN",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "14-F4-EN-v1",
+    "request": "requests/14-F4-EN-v1.json"
+  },
+  {
+    "index": 15,
+    "case": "F5-ES",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "15-F5-ES-v1",
+    "request": "requests/15-F5-ES-v1.json"
+  },
+  {
+    "index": 16,
+    "case": "F5-ES",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "16-F5-ES-v2",
+    "request": "requests/16-F5-ES-v2.json"
+  },
+  {
+    "index": 17,
+    "case": "F6-AMB",
+    "arm": "v2",
+    "stage": "fresh",
+    "id": "17-F6-AMB-v2",
+    "request": "requests/17-F6-AMB-v2.json"
+  },
+  {
+    "index": 18,
+    "case": "F6-AMB",
+    "arm": "v1",
+    "stage": "fresh",
+    "id": "18-F6-AMB-v1",
+    "request": "requests/18-F6-AMB-v1.json"
+  }
+]

@@ -1,0 +1,147 @@
+{
+  "version": "uc001-contract-local-1.1.0",
+  "recorded_utc": "2026-10-18T00:01:39.751519+00:00",
+  "scope": "Technical-only review-gate revision; offline implementation and synthetic verification, no model execution",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local_v1_1_0/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_1_0/README.md",
+    "scripts/uc001_contract_local_v1_1_0/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_1_0/Test-Offline.ps1",
+    "scripts/uc001_contract_local_v1_1_0/capture.py",
+    "scripts/uc001_contract_local_v1_1_0/config.json",
+    "scripts/uc001_contract_local_v1_1_0/freeze.json",
+    "scripts/uc001_contract_local_v1_1_0/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_1_0/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_1_0/replay.py",
+    "scripts/uc001_contract_local_v1_1_0/review_gate.py",
+    "scripts/uc001_contract_local_v1_1_0/technical-decision.json",
+    "tests/unit/test_contract_local_review_gate.py",
+    "tests/integration/test_contract_local_technical_replay.py",
+    "build/uc001-contract-local-v1_1_0/windows-local-technical-source.zip",
+    "build/uc001-contract-local-v1_1_0/verification.json",
+    "build/uc001-contract-local-v1_1_0/SHA256SUMS.txt"
+  ],
+  "owner_decision": {
+    "file": "scripts/uc001_contract_local_v1_1_0/technical-decision.json",
+    "provenance": "Explicit owner decision in chat; linguistic expectations approval deferred for the original bounded technical feasibility check only",
+    "technical_execution_permitted": true,
+    "semantic_acceptance_permitted": false,
+    "expected_meanings_approved": false
+  },
+  "review_provenance": {
+    "original_file": "build/uc001-contract-local/owner-results/review_2026_10_18/partial-expectations-review.json",
+    "original_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+    "partial_review_sha256": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+    "copied_review_bytes_unchanged": true,
+    "status": "pending",
+    "confirmed_cases": [
+      2,
+      5,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "dialect_confirmation": "Case 12 Swiss German expectation retained",
+    "unapproved_cases": [
+      1,
+      3,
+      4,
+      6,
+      7,
+      8,
+      9
+    ],
+    "applicability": "Exact original review/freeze copies retained. Same parent freeze and prompt/schema/cases/config hashes establish applicability to unchanged case meanings; no earlier confirmation rewritten."
+  },
+  "behavior": [
+    "One shared technical-decision gate in launcher preflight, capture entry and owner-capture replay; missing or rewritten review/decision stops",
+    "Shared adapter/domain validation and case-state stops precede advancement; unreviewed expectations remain provisional",
+    "Capture/replay distinguish technical validation, provisional case/policy checks and pending semantic review; interpreter suitability and multilingual acceptance always false",
+    "Replay remains explicitly substituted with no network fallback and no live credit for cases 1/5/10"
+  ],
+  "preserved": {
+    "historical_files_checked": 36,
+    "changed": [],
+    "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "one_startup": 1,
+    "maximum_generations": 14,
+    "ledger": "Original create-once attempt directory and ordered RunBudget; no retry/reset/new allowance",
+    "controls": "All parent resource/time/artifact limits, prompt-fit and absolute 90-second deadline, native identity/measurement/process ownership, authentication and cleanup unchanged",
+    "unchanged_parent_inputs": {
+      "prompt.txt": "2679c83d54ba0412cbebceb77459b89a6e9b08584780008a3d4b133fdeaa0247",
+      "schema.json": "7db406ea3af7521344f536f4ca2d476b1fa5c0008e2426e28f154ce99217117d",
+      "cases.json": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+      "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7"
+    },
+    "unchanged_copies": [
+      "DeadlineGuard.cs",
+      "Test-Offline.ps1",
+      "previous-freeze.json",
+      "partial-expectations-review.json"
+    ],
+    "setup": "Previously supplied Windows Python/dependency/schema compatibility receipts reused; no acquisition or reinstall"
+  },
+  "tdd": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_review_gate.py::test_owner_decision_allows_only_technical_execution_of_unchanged_pending_expectations",
+      "result": "Failed: inherited qualified-review gate rejected the original pending review despite technical permission; then implemented separate technical gate"
+    },
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_review_gate.py tests/integration/test_contract_local_technical_replay.py tests/unit/test_contract_run_controls.py",
+      "passed": 48,
+      "exit_code": 0,
+      "seconds": 9.59,
+      "warnings": "One existing Starlette/httpx deprecation warning; dependencies unchanged"
+    },
+    "coverage": "Pending original review accepted for technical scope only; fake approval/changed case records/absent decision/input drift denied; capture/CLI/replay wiring; invalid packet/case/HTTP and prompt-fit stops; synthetic actual-launcher abort/resource/cleanup and existing-attempt rejection; full 14-case substituted policy/API replay without live credit",
+    "runtime_limit": "Codespace Python 3.12.11 and PowerShell 7.6.7 synthetic tests only; not Windows native/GPU/deadline verification"
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_1_0/windows-local-technical-source.zip",
+    "bytes": 88548,
+    "sha256": "c77e015d80ef666f6e3460e39f4f050c65252f55be4a50abcc363c80c1df3605",
+    "files": 41,
+    "freeze_sha256": "bca2f39962cb51a174fde58c51874c1139b3e13ee73e852b384beb9106e911fe",
+    "extracted_source_check": {
+      "freeze_sha256": "bca2f39962cb51a174fde58c51874c1139b3e13ee73e852b384beb9106e911fe",
+      "review_status": "pending",
+      "cases": 14,
+      "semantic_acceptance": false
+    },
+    "handoff_powershell_syntax": "Parsed offline in PowerShell 7.6.7; not Windows 5.1 execution"
+  },
+  "offline_package_checks": {
+    "extracted_shared_imports_and_gate": "Passed with existing venv, isolated interpreter and all 14 frozen cases; no Windows override or model/API call",
+    "initial_check_harness_issue": "First extraction check resolved the venv executable symlink to base Python and lacked httpx. Corrected the check to the explicit existing venv path; no source/package/dependency change.",
+    "handoff_syntax": "README Windows command parsed offline; not executed"
+  },
+  "download_accounting": {
+    "original_cap_bytes": 104857600,
+    "last_owner_setup_remaining_bytes": 46845816,
+    "new_dependencies_or_model_bytes": 0,
+    "prepared_zip_plus_checksums_bytes": 88915,
+    "prospective_remaining_before_unreported_prior_source_transfers_bytes": 46756901,
+    "note": "Do not reset allowance. Earlier source-package transfers/redownloads must also be charged; no current transfer count or actual current balance is claimed."
+  },
+  "remaining_gaps": [
+    "Fresh retained-asset integrity and native adapter/resource check before startup; historical 13,099,008-byte GPU margin is not current readiness",
+    "Actual Windows owned-GPU counters/allocation, effective runtime/context/offload/settings, independent deadline and confirmed cleanup remain pending",
+    "Qualified DE/FR/IT/EN expectations and model-output review before interpreter suitability or multilingual acceptance; partial original review remains pending",
+    "Live API/real-adapter cases 1/5/10 remain deferred; replay and English-only test rendering cannot satisfy them"
+  ],
+  "handoff": "scripts/uc001_contract_local_v1_1_0/README.md",
+  "not_performed": [
+    "Model startup/inference",
+    "Downloads/installations",
+    "Connections or SSH/Support work",
+    "Held-out access or language tuning",
+    "Later priorities, phase advance or Git delivery"
+  ]
+}

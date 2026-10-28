@@ -1,0 +1,28 @@
+{
+    "raw_lines":  [
+                      "0.01.631.565 I load_tensors: offloaded 37/37 layers to GPU",
+                      "0.01.631.568 I load_tensors:   CPU_Mapped model buffer size =   630.59 MiB",
+                      "0.01.631.569 I load_tensors:      Vulkan0 model buffer size =  7669.77 MiB",
+                      "0.04.507.690 I llama_kv_cache:    Vulkan0 KV buffer size =   288.00 MiB",
+                      "0.04.551.223 I sched_reserve:    Vulkan0 compute buffer size =    13.25 MiB",
+                      "0.04.551.227 I sched_reserve: Vulkan_Host compute buffer size =     4.25 MiB"
+                  ],
+    "speedup_established":  false,
+    "full_reported_layers":  true,
+    "owned_allocation_sample":  {
+                                    "utc":  "2026-10-14T20:06:35.6214146Z",
+                                    "available_ram_bytes":  35716190208,
+                                    "total_ram_bytes":  68640653312,
+                                    "disk_free_bytes":  570215055360,
+                                    "scratch_bytes":  8839956312,
+                                    "gpu_name":  "AMD Radeon RX 6800 XT",
+                                    "dedicated_total_bytes":  17130819584,
+                                    "adapter_dedicated_used_bytes":  10006937600,
+                                    "adapter_free_bytes":  7123881984,
+                                    "owned_gpu_bytes":  8399319040,
+                                    "owned_rss_bytes":  8157802496,
+                                    "owned_private_bytes":  8555290624,
+                                    "gpu_measurement":  "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+                                },
+    "selected_device":  "Vulkan0"
+}

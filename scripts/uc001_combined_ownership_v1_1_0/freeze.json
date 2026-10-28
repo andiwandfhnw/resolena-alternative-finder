@@ -1,0 +1,27 @@
+{
+  "version": "uc001-combined-ownership-1.1.0",
+  "purpose": "model_free_combined_native_and_python_ownership_verification",
+  "parent_freeze_sha256": "52ce263200c3b4a67ab9ace057e80e96f94199b26d380e97b1e5f9ab3b5c6fcf",
+  "original_and_additional_model_allowances": "consumed",
+  "new_model_attempt": false,
+  "changes": [
+    "One exact system console helper per verified server/Python branch; full server identity and trusted executable path.",
+    "Native/PowerShell/Python proof and cleanup consumers updated together; retained observations stay independent of role approval.",
+    "Actual Python ownership validator handshake plus final fresh native proof; no model launcher/capture/replay included."
+  ],
+  "files": {
+    "../../src/app/domain/comparison.py": "b16294df4938b67f6417e6c19c37d9970cd20b229d2cc6739355dd0b4739a2fc",
+    "../../src/app/domain/interpretation.py": "81a0dba15ee8825ab8621fd672306eadf1726b6349d9aeb7035025c28e405d25",
+    "../../src/app/domain/qualification.py": "867c3d0cceada3d5ce9f64203abd6f2f50524ebfa195f28b492ef0239d408301",
+    "../../src/app/infrastructure/llama_cpp_interpreter.py": "52f1818afe5888b9282738ee624be24e29fc0dd7b05feecf7c13711302ac9daa",
+    "../uc001_execution_v1_3_0/Common.ps1": "dacf4d2767851554d0ea5db9ba1938583357970da285f67fd94fd328cae30cac",
+    "../uc001_execution_v1_3_0/ProcessTools.cs": "8f017969cc24d29228bdebdbd3cac7931b748ad99483bc95177371f86dd49829",
+    "Check-CombinedOwnership.ps1": "d0ec7d34d1dc01198b8df7504c1bd895c9ce4b3a734983e59d8e546ff95cdcb3",
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "Python-Ownership.ps1": "2afb47117254ed46b3d6a5d09f177e3e011d50003aa7a1ac08c39350628514f1",
+    "PythonOwnership.cs": "eff0da55fb93cf2cc5d06a843029b736496cf2f1fe80dcce8d3330fcd109fc8e",
+    "README.md": "b01ecf761b827210ba2eb9e503a3b3b73bc8f634b8d6655bda5140b25065ee86",
+    "harness_checks.py": "1a20604e3451c6f8e8ab8edd4929b6cd5c5d744f8a35eebf342a778981c13ee2",
+    "idle.py": "7eef46d54421863254de0cf3e80820b5195eaf0f34edd8467a32434d12a8f33b"
+  }
+}

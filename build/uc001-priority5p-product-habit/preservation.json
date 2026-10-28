@@ -1,0 +1,30 @@
+{
+  "protected_file_count": 481,
+  "protected_files_unchanged": 477,
+  "expected_existing_files_changed": [
+    "docs/TASKS.md",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/source_bound_rendering.py"
+  ],
+  "new_source_file": "tests/support/product_habit.py",
+  "all_other_protected_hashes_unchanged": true,
+  "prior_priority5_artifact_count_unchanged": 373,
+  "all_prior_browser_tests_byte_preserved": true,
+  "all_prior_integration_tests_byte_preserved": true,
+  "all_historical_TASKS_content_after_prior_authorization_preserved": true,
+  "eight_row_checkpoint_unchanged": true,
+  "preexisting_TASKS_trailing_whitespace_preserved": true,
+  "new_or_changed_lines_with_trailing_whitespace": [],
+  "production_frontend_runner_dependencies_real_drafts_architecture_ADRs_and_experiments_unchanged": true,
+  "branch": "specify/phase-1-uc-001",
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "branch_head_and_short_status_unchanged": true,
+  "owned_server_ports_closed": {
+    "8011": true,
+    "5175": true
+  },
+  "trace_or_HAR_files": [],
+  "protected_request_fields_in_new_json_artifacts": [],
+  "status": "bounded preservation checks passed; repository diff-check still reports the preexisting TASKS whitespace"
+}

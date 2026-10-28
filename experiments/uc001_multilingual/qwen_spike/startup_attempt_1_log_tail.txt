@@ -1,0 +1,9 @@
+warning: no usable GPU found, --gpu-layers option will be ignored
+warning: one possible reason is that llama.cpp was compiled without GPU support
+warning: consult docs/build.md for compilation instructions
+0.00.012.340 I srv  llama_server: initializing ...
+0.00.012.395 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.013.883 I srv  init_listene: The UI is disabled
+0.00.013.922 I srv  init_listene: Use --ui/--no-ui (or deprecated --webui/--no-webui) to enable/disable
+0.00.014.374 W srv  llama_server: security: no API key is set and CORS allows all origins (see https://github.com/ggml-org/llama.cpp/pull/25655)
+0.00.017.753 I srv    load_model: loading model '/tmp/resolena-qwen-spike-9pmwxv4k/Qwen3-1.7B-Q8_0.gguf'

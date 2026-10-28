@@ -1,0 +1,47 @@
+{
+  "provenance": "Owner-supplied preserved corrected-attempt fields from the current request; not a Codex Windows run or reconstructed raw result directory.",
+  "recorded_date": "2026-10-26",
+  "attempt_consumed": true,
+  "controller_pid": 60812,
+  "unrelated_launcher": {
+    "pid": 61512,
+    "creation_time_100ns": 134374406347848873,
+    "parent_pid": 60812,
+    "native_identity_verified": true,
+    "in_private_job": false,
+    "exit_code": 57345,
+    "identity_verified": true
+  },
+  "unrelated_interpreter": {
+    "pid": 28420,
+    "creation_time_100ns": 134374406348037138,
+    "parent_pid": 61512,
+    "native_identity_verified": true,
+    "in_private_job": false,
+    "exit_code": 57345,
+    "identity_verified": true
+  },
+  "cleanup": {
+    "verified": true,
+    "active_processes": 0,
+    "total_processes": 0,
+    "owned_exits": []
+  },
+  "failure_reason": "StandinFailure: unknown additional unrelated process",
+  "suspended_assignment_order_verified": false,
+  "owned_identities": [],
+  "unrelated_survived": false,
+  "unrelated_cleanup_verified": false,
+  "owner_confirmed_journal_order": [
+    "launcher identity verified",
+    "interpreter manifest observed",
+    "interpreter identity verified",
+    "launcher identity reverified",
+    "failure before any owned root/worker event",
+    "empty private Job termination/cleanup",
+    "both unrelated identities exited"
+  ],
+  "acquisition_build_gpu_model_action": false,
+  "unexpected_child_edges": null,
+  "unexpected_child_edges_status": "Not recorded by the failed attempt; no PID, name or helper role inferred."
+}

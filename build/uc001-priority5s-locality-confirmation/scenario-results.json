@@ -1,0 +1,533 @@
+{
+  "browser": {
+    "evidence": "build/uc001-priority5s-locality-confirmation/browser-green/saved-comparison-explicit--2ad39-ithout-unsupported-coverage/confirmed-locality-evidence.json",
+    "before_ids": [
+      "d1d37319-0dde-4c73-b558-526db2693ed1"
+    ],
+    "saved_request_id": "a633b133-9864-4fef-913e-a7db1bc45e8c",
+    "before_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_counts": {
+      "search_request": 2,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "clarification_response": {
+      "status": 200,
+      "body": {
+        "outcome": "clarification_required",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "locality_reference_unavailable"
+          }
+        ],
+        "clarification": {
+          "message": "The locality cannot currently be verified because locality reference data is unavailable. Correct the fields, explicitly continue country-only, or confirm the entered locality as intended scope. Confirmation establishes intended scope only. It does not verify existence, town/postcode identity, delivery, service coverage or nearby applicability.",
+          "choices": []
+        }
+      }
+    },
+    "confirmed_response": {
+      "status": 201,
+      "body": {
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic-only"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "a633b133-9864-4fef-913e-a7db1bc45e8c"
+        },
+        "search_scope": {
+          "country_code": "CH",
+          "town": "  Synthetic optional town  ",
+          "postcode": " 0123 ",
+          "locality": {
+            "confirmation": "user_confirmed",
+            "verification": "reference_unverified",
+            "normalized": {
+              "town": "synthetic optional town",
+              "postcode": "0123"
+            }
+          }
+        },
+        "issues": [
+          {
+            "code": "no_qualifying_knowledge"
+          },
+          {
+            "code": "research_unavailable"
+          }
+        ],
+        "coverage": {
+          "limitation_codes": [
+            "geographic_applicability_unverified"
+          ]
+        },
+        "limitations": [
+          "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+          "Existing evidence does not establish applicability in the requested location."
+        ],
+        "rendering": {
+          "language": "en",
+          "version": "synthetic-coverage-v1"
+        }
+      }
+    },
+    "country_reference": {
+      "source": "GeoNames countryInfo",
+      "release": "geonames-countryInfo-2026-10-23-v1",
+      "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+    },
+    "posts": [
+      1,
+      2,
+      2
+    ],
+    "observations": {
+      "no_saved_rows_before_explicit_confirmation": true,
+      "confirmation_uses_new_key_and_proof_with_unchanged_text_raw_locality_and_language": true,
+      "original_no_replacement_requirement_and_span_provenance_preserved": true,
+      "raw_locality_and_normalized_leading_zero_postcode_retained_separately": true,
+      "saved_status_comes_from_actual_committed_projection": true,
+      "final_locality_edit_clears_confirmation_presentation_without_submitting": true,
+      "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+      "no_raw_key_proof_digest_header_binding_or_complete_captured_request_recorded": true
+    }
+  },
+  "api_applicability_cases": [
+    {
+      "case": "test_source_backed_countrywide0",
+      "request_id": "ddf70dc4-3ab4-448d-9f12-8cde579c6786",
+      "outcome": "comparison",
+      "counts": {
+        "search_request": 1,
+        "request_alternative": 1,
+        "request_alternative_evidence": 1
+      },
+      "location_choice": "confirmed_unverified",
+      "search_location": {
+        "country_code": "CH",
+        "town": "  Synthetic optional town  ",
+        "postcode": " 0123 ",
+        "locality": {
+          "confirmation": "user_confirmed",
+          "verification": "reference_unverified",
+          "normalized": {
+            "town": "synthetic optional town",
+            "postcode": "0123"
+          }
+        }
+      },
+      "public_search_scope": {
+        "country_code": "CH",
+        "town": "  Synthetic optional town  ",
+        "postcode": " 0123 ",
+        "locality": {
+          "confirmation": "user_confirmed",
+          "verification": "reference_unverified",
+          "normalized": {
+            "town": "synthetic optional town",
+            "postcode": "0123"
+          }
+        }
+      },
+      "country_reference": {
+        "source": "GeoNames countryInfo",
+        "release": "geonames-countryInfo-2026-10-23-v1",
+        "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+      },
+      "constraints": [
+        {
+          "value": "no_replacement",
+          "quote": "without replacing it"
+        }
+      ],
+      "projection": {
+        "outcome": "comparison",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic-only"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "ddf70dc4-3ab4-448d-9f12-8cde579c6786"
+        },
+        "comparison": {
+          "request_id": "ddf70dc4-3ab4-448d-9f12-8cde579c6786",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "explanation_language": "en",
+          "language_origin": "detected",
+          "interpretation_version": "test-only-exact-fixture-v2",
+          "options": [
+            {
+              "description": "Synthetic bicycle repair service; not a real provider.",
+              "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+              "claims": [
+                {
+                  "claim": "relevance",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000540"
+                  ],
+                  "value": "bicycle"
+                },
+                {
+                  "claim": "action:repair",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000540"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "no_replacement",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000540"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "applicability",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000540"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "financial",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "not_applicable",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000540"
+                  ],
+                  "value": {
+                    "amount": "45.00",
+                    "currency": "CHF",
+                    "unit": "repair",
+                    "period": "once",
+                    "basis": "per repair",
+                    "charges_known": false,
+                    "exclusions": [
+                      "parts"
+                    ],
+                    "assumptions": [],
+                    "price_basis": "quoted"
+                  }
+                }
+              ],
+              "financial": {
+                "amount": "45.00",
+                "currency": "CHF",
+                "unit": "repair",
+                "period": "once",
+                "basis": "per repair",
+                "charges_known": false,
+                "exclusions": [
+                  "parts"
+                ],
+                "assumptions": [],
+                "price_basis": "quoted",
+                "status": "supported",
+                "total_cost": null,
+                "difference": null,
+                "baseline": null,
+                "baseline_provenance": null
+              },
+              "environmental": {
+                "status": "unknown",
+                "explanation": "No supported environmental/resource information."
+              },
+              "availability": {
+                "status": "unknown",
+                "value": null
+              },
+              "evidence": [
+                {
+                  "version_id": "30000000-0000-4000-8000-000000000540",
+                  "publisher": "Fictional explicit-coverage repair provider",
+                  "source_reference": "synthetic:explicit-locality-coverage-v1",
+                  "source_language": "en",
+                  "supporting_quote": "Fictional test provider explicitly offers bicycle repair without replacement throughout CH, including all towns and postcodes, with no narrower locality condition. Labour CHF 45.00 per repair; parts excluded. This is not a real service, locality verification or availability guarantee.",
+                  "reviewed_at": "2026-10-15T10:00:00+00:00",
+                  "review_basis": "synthetic test metadata, not factual review",
+                  "publication_date": null,
+                  "retrieved_at": null,
+                  "data_period": null,
+                  "scope": {
+                    "country_code": "CH",
+                    "country_wide": true
+                  },
+                  "competent_claims": [
+                    "relevance",
+                    "action:repair",
+                    "no_replacement",
+                    "applicability",
+                    "financial"
+                  ],
+                  "assertions": {
+                    "relevance": "bicycle",
+                    "action:repair": true,
+                    "no_replacement": true,
+                    "applicability": true,
+                    "financial": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  },
+                  "attribution": "provider-stated",
+                  "synthetic": true
+                }
+              ],
+              "geographic_scope": {
+                "country_code": "CH",
+                "country_wide": true
+              },
+              "rendering": {
+                "language": "en",
+                "version": "synthetic-reviewed-rendering-v1",
+                "review_basis": "synthetic test fixture, not qualified linguistic review"
+              },
+              "limitations": [
+                "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+              ],
+              "synthetic": true,
+              "option_id": "9f5c0384-999b-4c04-961f-efeb3f50fac4",
+              "alternative_id": "00000000-0000-4000-8000-000000000540",
+              "position": 1,
+              "display_name": "Explicit coverage repair (synthetic)"
+            }
+          ],
+          "omitted_count": 0
+        },
+        "search_scope": {
+          "country_code": "CH",
+          "town": "  Synthetic optional town  ",
+          "postcode": " 0123 ",
+          "locality": {
+            "confirmation": "user_confirmed",
+            "verification": "reference_unverified",
+            "normalized": {
+              "town": "synthetic optional town",
+              "postcode": "0123"
+            }
+          }
+        }
+      },
+      "constraint_provenance_items": [
+        {
+          "id": "constraint",
+          "kind": "constraint",
+          "normalized": "no_replacement",
+          "span": {
+            "start": 18,
+            "end": 38,
+            "quote": "without replacing it"
+          },
+          "negation": {
+            "start": 18,
+            "end": 25,
+            "quote": "without"
+          },
+          "quantity": null
+        }
+      ]
+    },
+    {
+      "case": "test_source_backed_countrywide1",
+      "request_id": "00e4215a-58e3-439e-b249-f9a2728567d8",
+      "outcome": "insufficient_coverage",
+      "counts": {
+        "search_request": 1,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "location_choice": "confirmed_unverified",
+      "search_location": {
+        "country_code": "CH",
+        "town": "  Synthetic optional town  ",
+        "postcode": " 0123 ",
+        "locality": {
+          "confirmation": "user_confirmed",
+          "verification": "reference_unverified",
+          "normalized": {
+            "town": "synthetic optional town",
+            "postcode": "0123"
+          }
+        }
+      },
+      "public_search_scope": {
+        "country_code": "CH",
+        "town": "  Synthetic optional town  ",
+        "postcode": " 0123 ",
+        "locality": {
+          "confirmation": "user_confirmed",
+          "verification": "reference_unverified",
+          "normalized": {
+            "town": "synthetic optional town",
+            "postcode": "0123"
+          }
+        }
+      },
+      "country_reference": {
+        "source": "GeoNames countryInfo",
+        "release": "geonames-countryInfo-2026-10-23-v1",
+        "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+      },
+      "constraints": [
+        {
+          "value": "locality:Genève",
+          "quote": "in Genève"
+        }
+      ],
+      "projection": {
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "00e4215a-58e3-439e-b249-f9a2728567d8"
+        },
+        "search_scope": {
+          "country_code": "CH",
+          "town": "  Synthetic optional town  ",
+          "postcode": " 0123 ",
+          "locality": {
+            "confirmation": "user_confirmed",
+            "verification": "reference_unverified",
+            "normalized": {
+              "town": "synthetic optional town",
+              "postcode": "0123"
+            }
+          }
+        },
+        "issues": [
+          {
+            "code": "no_qualifying_knowledge"
+          },
+          {
+            "code": "research_unavailable"
+          }
+        ],
+        "coverage": {
+          "limitation_codes": [
+            "essential_freshness_unverified",
+            "essential_support_unverified"
+          ]
+        },
+        "limitations": [
+          "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+          "Required review timestamps or temporal applicability could not establish freshness.",
+          "Required information has missing or disputed source support."
+        ],
+        "rendering": {
+          "language": "en",
+          "version": "synthetic-coverage-v1"
+        }
+      },
+      "constraint_provenance_items": [
+        {
+          "id": "locality",
+          "kind": "constraint",
+          "normalized": "locality:Genève",
+          "span": {
+            "start": 15,
+            "end": 24,
+            "quote": "in Genève"
+          },
+          "negation": null,
+          "quantity": null
+        }
+      ]
+    }
+  ]
+}

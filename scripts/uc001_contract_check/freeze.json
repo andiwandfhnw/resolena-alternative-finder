@@ -1,0 +1,34 @@
+{
+  "version": "uc001-contract-preparation-v1",
+  "execution_authorized": false,
+  "files": {
+    "README.md": "2ca4b5ed461035817997f021a790b265f955239e3aa690d7032075ba62d18177",
+    "review-template.json": "c7087e28068aefe7f030f3f4c7753e461ff42abad878a75f988967e66866a712",
+    "runtime-files.json": "1f116d833c0b7557f9e63b0ff0d4c95b8b330a0e6f4e7a9b93427f298be313bb",
+    "controls.py": "90ad40b6e37d911aaaa023a61134b04630903eaa73a6d773b4618d35bc68fe72",
+    "ProcessTools.cs": "8f017969cc24d29228bdebdbd3cac7931b748ad99483bc95177371f86dd49829",
+    "prompt.txt": "2679c83d54ba0412cbebceb77459b89a6e9b08584780008a3d4b133fdeaa0247",
+    "schema.json": "7db406ea3af7521344f536f4ca2d476b1fa5c0008e2426e28f154ce99217117d",
+    "Dxgi.cs": "642991ddf1fa3fc669b1353943fe3056bcfb2d9da7e0ab01ed2c65439e9bbdd9",
+    "Common.ps1": "48b2f637fbde837b464a3e49e95545cefa42e4c80ca35deee5266dc76f6080f6",
+    "Preflight-Codespace.sh": "d6b832b2242ab0ff7812cfb08ce6c58880b730ff1692f76644de9d5c2f7a44e6",
+    "transport-plan.json": "233cf19346b50f8deba7eea9650a77d29db7e2e5b8867e350e8abca196b86be8",
+    "cases.json": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+    "Preflight-Windows.ps1": "8b358cdf87f1fb160f94376ba71fd8903f1999dbdf5159ed2413fcd7ff75754a",
+    "Run-Windows.ps1": "3d9e7ebb60901781b4b56ff0679255906534ed1d5337592dcd55ff3397248f2a",
+    "development.py": "ff4111a012797605791e6a153b10b826bf83c9d48dd2dafcc7f0767e11c5440c",
+    "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7",
+    "run.py": "c05748a9ea1956674ffe755ce084fa793a57ef6865b46b8eaeaede2ed7c16daa"
+  },
+  "application_files": {
+    "src/app/main.py": "ac2be9757842f547bb4302fa915b041222ecd21d4211159d0d4f116bc90ec266",
+    "src/app/application/comparisons.py": "f8edeabd6e7cb675185f3e338d284f3cec33277695ffe541f20daed2d7d66605",
+    "src/app/infrastructure/llama_cpp_interpreter.py": "52f1818afe5888b9282738ee624be24e29fc0dd7b05feecf7c13711302ac9daa",
+    "src/app/infrastructure/sqlite_comparisons.py": "ed64402bbd1cdb0689cd79942e59c6e2ad77c0e322c0d963eb18a2585edcb13a",
+    "src/app/domain/interpretation.py": "81a0dba15ee8825ab8621fd672306eadf1726b6349d9aeb7035025c28e405d25",
+    "src/app/domain/qualification.py": "867c3d0cceada3d5ce9f64203abd6f2f50524ebfa195f28b492ef0239d408301",
+    "src/app/domain/comparison.py": "b16294df4938b67f6417e6c19c37d9970cd20b229d2cc6739355dd0b4739a2fc",
+    "src/app/interfaces/api.py": "ff8a911f077c375e8c578d371aa94c76682a4012d3136f02e8102ef5ca79e9a9",
+    "tests/support/synthetic.py": "53b9bfbbb5920a21d3a1f5c379c4fe80d44cc9ea167195189bca58fdfcce4e51"
+  }
+}

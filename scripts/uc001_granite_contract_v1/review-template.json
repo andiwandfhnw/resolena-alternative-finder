@@ -1,0 +1,11 @@
+{
+  "bundle_id": null,
+  "case_id": null,
+  "packet_sha256": null,
+  "semantic_status": "unreviewed",
+  "qualified_review_status": "pending",
+  "reviewer": null,
+  "competence_basis": null,
+  "obligation_by_obligation_notes": [],
+  "meaning": "Human attestation after reviewing every case obligation; fields alone do not establish competence. Structural validity never implies semantic correctness."
+}

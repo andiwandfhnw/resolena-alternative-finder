@@ -1,0 +1,224 @@
+{
+  "version": "uc001-bicycle-ch-renderings-draft-1",
+  "prepared_date": "2026-10-19",
+  "preparation": "AI-prepared source-bound drafts; no qualified linguistic approval",
+  "runtime_use": false,
+  "source_packet": {
+    "path": "docs/knowledge/UC-001-BICYCLE-REPAIR-CH-DRAFT.md",
+    "sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8",
+    "factual_extraction_review_date": "2026-10-18",
+    "review_scope": "provider-stated service, published rate and listed location only",
+    "citations": [
+      {
+        "evidence_version_id": "122648bc-d6f1-4acb-99ca-bd34d305808d",
+        "source_language": "de",
+        "url": "https://thoemus.ch/services/werkstatt/"
+      },
+      {
+        "evidence_version_id": "b9053dca-7327-4056-ad78-89171163d746",
+        "source_language": "de",
+        "url": "https://thoemus.ch/uber-uns/locations/",
+        "embedded_url": "https://thoemus-bikeworld.vercel.app/"
+      }
+    ]
+  },
+  "admission_gap": "Real candidate qualification, timestamp precision, source applicability and qualified source/target review remain pending. material_sha256 must bind an actually admitted, qualified snapshot before approval; the packet hash is not runtime qualification.",
+  "renderings": [
+    {
+      "alternative_id": "348f9f82-b6ba-4679-a312-c7faf14e8e8e",
+      "language": "de",
+      "version": "uc001-bicycle-ch-de-draft-1",
+      "runtime_use": false,
+      "evidence_version_ids": [
+        "122648bc-d6f1-4acb-99ca-bd34d305808d",
+        "b9053dca-7327-4056-ad78-89171163d746"
+      ],
+      "source_packet_sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8",
+      "material_sha256": null,
+      "content": {
+        "description": "Gemäss Thömus werden Veloreparaturen angeboten.",
+        "explanation": "Thömus veröffentlicht einen stündlichen Reparaturtarif und führt die Werkstatt Oberried auf. Diese Anbieterangaben belegen weder eine uneingeschränkte Anwendbarkeit noch einen Vorteil gegenüber einer anderen Lösung.",
+        "presentation": {
+          "financial": "Publizierter Tarif gemäss Thömus: CHF 120.00 pro Arbeitsstunde. Dies ist kein Gesamtpreis für die Reparatur und keine verbindliche Offerte.",
+          "total_cost": "Unbekannt. Arbeitsdauer, Materialkosten, Steuerbehandlung, Mindestverrechnung, Rundung und weitere Gebühren sind ungeklärt; unbekannte Kosten sind nicht null. Es ist nicht bestätigt, dass alles enthalten ist.",
+          "difference": "Unbekannt; keine belegte Ersparnis oder günstigere Gesamtlösung.",
+          "baseline": "Nicht angegeben; keine Vergleichsbasis wird angenommen.",
+          "environmental": "Umwelt- und Ressourcenwirkungen sind unbekannt; kein Vorteil ist belegt. Methode, Vergleichsbasis und relevante Daten fehlen.",
+          "availability": "Termine, Ersatzteile und Reparierbarkeit dieses Velos sind unbekannt; keine Verfügbarkeit oder erfolgreiche Reparatur wird garantiert.",
+          "geographic_scope": "Gelistete Werkstatt: Thömus Factory Store, Oberriedgässli 6, 3145 Niederscherli (Oberried), Schweiz. Dies ist ein Anbieterstandort, kein angenommener Nutzerstandort. Abholung, mobiler Service, Entfernung und Erreichbarkeit von jedem Ort sind nicht belegt.",
+          "conditions": "Arbeitsumfang, Ablauf, Verfügbarkeit und Materialkosten telefonisch mit der gewählten Filiale klären. Filial- und velospezifische Geltung des Tarifs bleiben ungeklärt; keine Zusage für alle Marken oder Defekte. Marke, Motor, Defekt und Anreise werden nicht angenommen."
+        }
+      },
+      "review": {
+        "status": "pending",
+        "synthetic": false,
+        "artifact_sha256": null,
+        "source": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "de"
+          ]
+        },
+        "target": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "de"
+          ]
+        }
+      }
+    },
+    {
+      "alternative_id": "348f9f82-b6ba-4679-a312-c7faf14e8e8e",
+      "language": "fr",
+      "version": "uc001-bicycle-ch-fr-draft-1",
+      "runtime_use": false,
+      "evidence_version_ids": [
+        "122648bc-d6f1-4acb-99ca-bd34d305808d",
+        "b9053dca-7327-4056-ad78-89171163d746"
+      ],
+      "source_packet_sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8",
+      "material_sha256": null,
+      "content": {
+        "description": "Thömus déclare proposer des réparations de vélos.",
+        "explanation": "Thömus publie un tarif horaire de réparation et répertorie l’atelier d’Oberried. Ces déclarations du prestataire n’établissent ni une applicabilité sans restriction ni un avantage par rapport à une autre solution.",
+        "presentation": {
+          "financial": "Tarif publié par Thömus : CHF 120.00 par heure de main-d’œuvre. Ce n’est ni un prix total de réparation ni un devis ferme.",
+          "total_cost": "Inconnu. Durée du travail, matériaux, traitement fiscal, facturation minimale, arrondis et frais supplémentaires restent indéterminés ; les coûts inconnus ne valent pas zéro. L’absence d’exclusions confirmées ne signifie pas que tout est compris.",
+          "difference": "Inconnue ; aucune économie ni solution globalement moins chère n’est établie.",
+          "baseline": "Non précisée ; aucune base de comparaison n’est supposée.",
+          "environmental": "Les effets sur l’environnement et les ressources sont inconnus ; aucun avantage n’est établi. La méthode, la base de comparaison et les données pertinentes manquent.",
+          "availability": "Rendez-vous, pièces et réparabilité de ce vélo sont inconnus ; ni disponibilité ni réparation réussie ne sont garanties.",
+          "geographic_scope": "Atelier répertorié : Thömus Factory Store, Oberriedgässli 6, 3145 Niederscherli (Oberried), Suisse. Il s’agit du lieu du prestataire, pas d’un lieu supposé de l’utilisateur. Enlèvement, service mobile, distance et accessibilité depuis tout lieu ne sont pas établis.",
+          "conditions": "Clarifier par téléphone les travaux, la procédure, la disponibilité et le coût des matériaux avec la filiale choisie. L’application du tarif selon la filiale et le vélo reste à confirmer ; aucune garantie pour toutes les marques ou pannes. Marque, moteur, panne et trajet ne sont pas présumés."
+        }
+      },
+      "review": {
+        "status": "pending",
+        "synthetic": false,
+        "artifact_sha256": null,
+        "source": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "de"
+          ]
+        },
+        "target": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "fr"
+          ]
+        }
+      }
+    },
+    {
+      "alternative_id": "348f9f82-b6ba-4679-a312-c7faf14e8e8e",
+      "language": "it",
+      "version": "uc001-bicycle-ch-it-draft-1",
+      "runtime_use": false,
+      "evidence_version_ids": [
+        "122648bc-d6f1-4acb-99ca-bd34d305808d",
+        "b9053dca-7327-4056-ad78-89171163d746"
+      ],
+      "source_packet_sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8",
+      "material_sha256": null,
+      "content": {
+        "description": "Thömus dichiara di offrire riparazioni di biciclette.",
+        "explanation": "Thömus pubblica una tariffa oraria per le riparazioni ed elenca l’officina di Oberried. Queste dichiarazioni del fornitore non dimostrano né un’applicabilità senza restrizioni né un vantaggio rispetto ad altre soluzioni.",
+        "presentation": {
+          "financial": "Tariffa pubblicata da Thömus: CHF 120.00 per ora di manodopera. Non è un prezzo totale di riparazione né un preventivo vincolante.",
+          "total_cost": "Sconosciuto. Durata del lavoro, materiali, trattamento fiscale, fatturazione minima, arrotondamenti e altri addebiti restano da chiarire; i costi sconosciuti non sono zero. L’assenza di esclusioni confermate non significa che tutto sia incluso.",
+          "difference": "Sconosciuta; nessun risparmio o costo complessivo inferiore è comprovato.",
+          "baseline": "Non specificata; non si presume alcuna base di confronto.",
+          "environmental": "Gli effetti ambientali e sulle risorse sono sconosciuti; nessun vantaggio è comprovato. Mancano metodo, base di confronto e dati pertinenti.",
+          "availability": "Appuntamenti, ricambi e riparabilità di questa bicicletta sono sconosciuti; disponibilità e successo della riparazione non sono garantiti.",
+          "geographic_scope": "Officina elencata: Thömus Factory Store, Oberriedgässli 6, 3145 Niederscherli (Oberried), Svizzera. È la sede del fornitore, non una località presunta dell’utente. Ritiro, servizio mobile, distanza e accessibilità da qualsiasi luogo non sono comprovati.",
+          "conditions": "Chiarire telefonicamente lavori, procedura, disponibilità e costo dei materiali con la filiale scelta. L’applicazione della tariffa alla filiale e alla bicicletta resta da confermare; nessuna garanzia per tutte le marche o tutti i guasti. Non si presumono marca, motore, guasto o viaggio."
+        }
+      },
+      "review": {
+        "status": "pending",
+        "synthetic": false,
+        "artifact_sha256": null,
+        "source": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "de"
+          ]
+        },
+        "target": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "it"
+          ]
+        }
+      }
+    },
+    {
+      "alternative_id": "348f9f82-b6ba-4679-a312-c7faf14e8e8e",
+      "language": "en",
+      "version": "uc001-bicycle-ch-en-draft-1",
+      "runtime_use": false,
+      "evidence_version_ids": [
+        "122648bc-d6f1-4acb-99ca-bd34d305808d",
+        "b9053dca-7327-4056-ad78-89171163d746"
+      ],
+      "source_packet_sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8",
+      "material_sha256": null,
+      "content": {
+        "description": "Thömus states that it offers bicycle repairs.",
+        "explanation": "Thömus publishes an hourly repair rate and lists the Oberried workshop. These provider statements establish neither unrestricted applicability nor an advantage over another option.",
+        "presentation": {
+          "financial": "Provider-published Thömus rate: CHF 120.00 per labour hour. This is not a total repair price or a binding quote.",
+          "total_cost": "Unknown. Work duration, materials, tax treatment, minimum billing, rounding and other charges remain unresolved; unknown costs are not zero. No confirmed exclusions does not mean everything is included.",
+          "difference": "Unknown; no supported savings or lower total cost.",
+          "baseline": "Unspecified; no comparison baseline is assumed.",
+          "environmental": "Environmental and resource effects are unknown; no advantage is established. Method, baseline and relevant data are missing.",
+          "availability": "Appointments, parts and this bicycle’s repairability are unknown; availability and successful repair are not guaranteed.",
+          "geographic_scope": "Listed workshop: Thömus Factory Store, Oberriedgässli 6, 3145 Niederscherli (Oberried), Switzerland. This is a provider location, not an assumed user location. Collection, mobile service, distance and access from anywhere are not established.",
+          "conditions": "Contact the chosen branch by telephone about work, procedure, availability and material costs. Branch- and bicycle-specific tariff applicability remains unresolved; no all-brand or all-fault guarantee. Brand, motor, fault and travel are not assumed."
+        }
+      },
+      "review": {
+        "status": "pending",
+        "synthetic": false,
+        "artifact_sha256": null,
+        "source": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "de"
+          ]
+        },
+        "target": {
+          "reviewer": null,
+          "qualified": false,
+          "reviewed_at": null,
+          "basis": null,
+          "languages": [
+            "en"
+          ]
+        }
+      }
+    }
+  ]
+}

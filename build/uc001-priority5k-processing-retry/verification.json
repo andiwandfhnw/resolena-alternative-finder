@@ -1,0 +1,371 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5K only",
+  "recorded_date": "2026-10-21",
+  "result": "One real processing-error browser journey followed by an explicitly clicked unchanged-submission retry and atomic saving verified against existing production behavior; awaiting human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priority_3": "partial",
+    "priority_4": "partial",
+    "priority_5": "partial",
+    "increment_1": "incomplete",
+    "DEVELOP": "in-progress"
+  },
+  "prior_5J_acceptance": {
+    "scope": "Required-second-option INSERT failure and whole-result rollback only.",
+    "behavior": "One new scenario plus evidence-link rollback and committed-projection regressions passed first run against existing production, without a fix or artificial RED.",
+    "credited": [
+      "Successful request/first-option/first-link writes before actual second-option rejection",
+      "Exact503/persistence_error/failed response",
+      "Absence of all failed-submission identities",
+      "Preserved committed baseline"
+    ],
+    "receipt": "build/uc001-priority5j-option-rollback/verification.json",
+    "original_receipt_sha256": "4c521631d0657dda1e875f6ccf381022f4e98601ad10821d7b7eda081044a6d3",
+    "receipt_and_limits_unchanged": true,
+    "complete_persistence_priority_5_DEVELOP_acceptance_claimed": false
+  },
+  "targeted_prerequisites": {
+    "material_contract_conflict_or_consequential_unapproved_architecture_schema_dependency_requirement": false,
+    "sources": [
+      "UC-001 Errors / O-2 processing-error and explicit-retry rules",
+      "Architecture canonical captured-payload binding and retry/fresh/recovery/loading contracts",
+      "Current App.tsx captured Attempt, unchanged fingerprint, generic processing-error and finally loading handling",
+      "Existing isolated demo/runner, synthetic ports and focused browser tests"
+    ],
+    "confirmed": "On a fresh page, a real500 retains the captured attempt with recovering=false. Unchanged explicit retry reuses its serialized body/key/proof. With no committed record, CompareRequest re-enters processing and a new successful save returns201 rather than acknowledgement.",
+    "equivalent_browser_scenario_found": false,
+    "equivalence_search_scope": "Existing sole e2e suite: save-error case only enables retry; clicked Try again cases address language clarification/rendering limitations. Backend retrieval-error coverage does not establish a clicked browser retry.",
+    "checkpoint_reinvestigated": false
+  },
+  "test_first": {
+    "new_browser_and_support_regressions_authored_before_support_implementation": true,
+    "support_RED": "Missing optional factory wiring only; not a production processing/retry defect.",
+    "support_GREEN": "One focused new composition-isolation test passed.",
+    "browser_production_behavior": "First run passed against unchanged App/application/API/SQLite adapter; no artificial production RED or production fix."
+  },
+  "fault": {
+    "source": "tests/support/processing_error.py:50",
+    "composition_source": "tests/support/source_bound_rendering.py:115",
+    "exact_boundary": "One targeted RuntimeError is raised by the test-only Knowledge.retrieve wrapper after the actual interpreter returned and language/locality policies completed, before original synthetic lookup/assessment clock/rendering/save. The application/API perform their ordinary exception mapping.",
+    "targeting": "Only the existing exact understood EXAMPLE, CH without optional locality and designated submission-key digest. Missing/unmatched controls and hourly/pending fixtures delegate unchanged; instrumentation is installed after seeding.",
+    "one_shot": "Matching control is removed and the retrieval fault consumed before the real500 is delivered. The controller remains to count the unchanged retry, then is disabled at cleanup.",
+    "normal_runtime_switch_public_endpoint_or_general_fault_framework": false,
+    "fabricated_HTTP_response_transport_abort_canned_save_or_postcommit_failure": false
+  },
+  "browser_journey": {
+    "source": "tests/e2e/saved-comparison.spec.ts:70",
+    "artifact": "build/uc001-priority5k-processing-retry/browser/saved-comparison-actual-pr-64dc3-ion-retry-and-atomic-saving/processing-error-retry-evidence.json",
+    "ordinary_runner_nonempty_baseline": true,
+    "fresh_page_without_prior_uncertainty": true,
+    "fixture": "Repair my bicycle without replacing it; CH; no optional locality; fixed synthetic fixture clock.",
+    "actual_error_response": {
+      "status": 500,
+      "body": {
+        "outcome": "processing_error",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "comparison_processing_failed"
+          }
+        ]
+      }
+    },
+    "error_UI": {
+      "preparation_failure_alert_prefix": "The comparison could not be prepared",
+      "loading_ended_form_not_busy": true,
+      "fields_preserved_controls_enabled": true,
+      "captured_language_context_preserved": true,
+      "comparison_saved_coverage_acknowledgement_presented": false,
+      "confirmed_rollback_unknown_delivery_coverage_or_unsupported_language_claimed": false
+    },
+    "bounded_idle_observation_ms": 300,
+    "POSTs_during_error_and_idle": 1,
+    "explicit_action": "Clicked existing Try again without edits.",
+    "same_submission": {
+      "same_serialized_body": true,
+      "same_key": true,
+      "same_proof": true,
+      "same_captured_language_context": true,
+      "proof_check": "Proof digests compared only in page-test memory; proof/digest/header/request contents are not exported."
+    },
+    "actual_retry_status": 201,
+    "actual_retry_outcome": "comparison",
+    "actual_saved_persistence": {
+      "state": "saved",
+      "request_id": "992cd2eb-2fa8-402a-bc9e-c71cc3607fb9"
+    },
+    "saved_response_full_body_in_artifact": true,
+    "saved_request_id": "992cd2eb-2fa8-402a-bc9e-c71cc3607fb9",
+    "saved_option_ids": [
+      "e79844d7-f266-4219-ad90-49aefef8b3c3",
+      "d206e611-66e4-4382-a39e-6a5ee0cc9a74"
+    ],
+    "assessed_at": "2026-10-15T10:00:00+00:00",
+    "time_note": "Fixed synthetic time is not current factual or linguistic validation; original source review dates remain unchanged.",
+    "actual_retry_not_acknowledgement": true,
+    "displayed_request_option_IDs_names_match_saved_projection": true,
+    "loading_ended_error_cleared_controls_usable": true,
+    "target_browser_POSTs": 2,
+    "replacement_submission_identity_or_automatic_second_write": false
+  },
+  "scoped_processing_counts": {
+    "failed_attempt": {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 0,
+        "prepare": 0,
+        "prepare_coverage": 0,
+        "save": 0
+      },
+      "fault_raised": true,
+      "returned_outcome": null,
+      "timeline": [
+        "interpret_entered",
+        "interpret_returned",
+        "retrieve_entered",
+        "matching_control_consumed",
+        "retrieval_exception_after_interpretation"
+      ]
+    },
+    "explicit_retry": {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1
+      },
+      "fault_raised": false,
+      "returned_outcome": "comparison",
+      "timeline": [
+        "interpret_entered",
+        "interpret_returned",
+        "retrieve_entered",
+        "retrieve_returned",
+        "assess_clock_entered",
+        "assess_clock_returned",
+        "prepare_entered",
+        "prepare_returned",
+        "save_entered",
+        "save_returned"
+      ]
+    },
+    "totals": {
+      "interpret": 2,
+      "retrieve": 2,
+      "assess_clock": 1,
+      "prepare": 1,
+      "prepare_coverage": 0,
+      "save": 1
+    },
+    "count_scope": "Only the designated target. Baseline setup and unrelated delivered-unknown regression excluded. retrieve counts retrieval-port entry; assess_clock counts the real assessment-clock call, not candidate qualification calls.",
+    "original_adapters_unchanged": true,
+    "fault_consumed_before_retry": true
+  },
+  "database_observations": {
+    "before_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_500_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_explicit_retry_counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "after_500_full_safe_state_equals_baseline": true,
+    "retry_delta": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "new_saved_request_identified_by_ID_difference": true,
+    "persisted_projection_equals_actual_201_response": true,
+    "prior_requests_options_links_and_source_evidence_preserved": true,
+    "source_review_dates_unchanged": true
+  },
+  "support_isolation": {
+    "source": "tests/integration/test_uncertain_save_support.py:207",
+    "artifact": "support-evidence.json",
+    "normal_missing_and_unmatched_control_requests_and_reseeding_unaffected": true,
+    "control_consumed_before_same_body_proof_retry": true,
+    "baseline_counts_asserted": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "error_counts_asserted": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "successful_retry_counts_asserted": {
+      "search_request": 3,
+      "request_alternative": 6,
+      "request_alternative_evidence": 6
+    },
+    "prior_protected_request_rows_equal_in_memory_only": true,
+    "same_shared_store_retained": true
+  },
+  "cleanup": {
+    "fault_control_consumed_and_absent_after_error_retry": true,
+    "browser_finally_removes_only_owned_control_file": true,
+    "controller_cleanup_disables_instrumentation_and_removes_owned_control": true,
+    "original_ports_never_mutated_no_global_patch_to_restore": true,
+    "support_finally_disposes_engine": true,
+    "owned_test_ports_closed": {
+      "8011": true,
+      "5175": true
+    },
+    "assertion_failure_or_cancellation_variants_executed": false
+  },
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5k-tcpkobx8/pytest-support-red tests/integration/test_uncertain_save_support.py::test_retrieval_failure_control_isolated_and_same_submission_retry_saves_once | tee build/uc001-priority5k-processing-retry/support-red.txt",
+      "exit_code": 1,
+      "result": "1 failed: create_demo_service did not yet accept processing_error_file. Test-only composition RED; no production defect.",
+      "artifact": "support-red.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5k-tcpkobx8/pytest-support-green tests/integration/test_uncertain_save_support.py::test_retrieval_failure_control_isolated_and_same_submission_retry_saves_once | tee build/uc001-priority5k-processing-retry/support-green.txt",
+      "exit_code": 0,
+      "result": "1 passed, existing Starlette/httpx warning, 2.15s; targeting/consumption/unchanged retry/isolation only.",
+      "artifact": "support-green.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5k-processing-retry/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|actual processing failure allows explicit unchanged-submission retry and atomic saving|delivered unknown persistence error' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5k-processing-retry/browser --reporter=list,json 2>&1 | tee build/uc001-priority5k-processing-retry/browser.txt",
+      "exit_code": 0,
+      "result": "3 passed on first browser invocation (16.2s): existing success baseline, new actual500/clicked-retry journey (1.2s), delivered-unknown regression for shared demo/store wiring.",
+      "artifact": "browser-report.json"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5k-processing-retry/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "Passed; runner configuration changed.",
+      "artifact": "frontend-lint.txt"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5k-processing-retry/frontend-build.txt",
+      "exit_code": 0,
+      "result": "Passed (TypeScript and Vite); production App unchanged.",
+      "artifact": "frontend-build.txt"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "docs/TASKS.md:1777: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+      "artifact": "git-diff-check.txt"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "Same preexisting modified/untracked entries as at task entry; no staging or branch change.",
+      "artifact": "git-status.txt"
+    }
+  ],
+  "direct_regression_reason": "The demo factory now decorates its legacy service while sharing the existing store fault wiring. Delivered-unknown remains the one concrete regression check for delegation to that existing support. No delayed-save or full fault/language/concurrency matrix rerun.",
+  "warnings": "Existing Starlette/httpx deprecation and NO_COLOR/FORCE_COLOR runner warning; no dependency changes.",
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "b3ee65071ff219113354450cc3364acf0aaa8a73a4c23db9d7e9f7eb39c7883e"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "sha256": "facfc5278a7ee901c6106ae583b54dba35e440089e28191b156a6cb3dc4d91c7"
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "b5356b1e7065543b22377ae48614a94eeca858f645b7c45fefa6e89cbca254c3"
+    },
+    {
+      "path": "tests/integration/test_uncertain_save_support.py",
+      "sha256": "6518eee31b06a4478c8290a232fbe7f76fb44c43f9dc72e0c3983326dd3e3f72"
+    },
+    {
+      "path": "tests/support/demo.py",
+      "sha256": "8246b8c4f8f844455bda054b1f011f2c67c66fdee76c545f9fa3bd6d195a0d3d"
+    },
+    {
+      "path": "tests/support/source_bound_rendering.py",
+      "sha256": "972148a84114c35dd8861ff1140cfe1ecf23914ee22d75398bba140c55b78fb1"
+    },
+    {
+      "path": "tests/support/processing_error.py",
+      "sha256": "c03170ba3cae6936436de9356d059a3fe9a42708c8ab144cadaa447fc4ae2162"
+    }
+  ],
+  "preservation": {
+    "phase": 3,
+    "status": "in-progress",
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "frontend/playwright.config.ts",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_uncertain_save_support.py",
+      "tests/support/demo.py",
+      "tests/support/source_bound_rendering.py"
+    ],
+    "new_source_file": [
+      "tests/support/processing_error.py"
+    ],
+    "protected_baseline_files": 174,
+    "unchanged_baseline_files": 168,
+    "all_H_I_J_artifacts_and_prior_receipts_unchanged": true,
+    "dated_checkpoint_and_all_historical_TASKS_text_unchanged": true,
+    "old_browser_scenarios_and_existing_support_tests_unchanged": true,
+    "production_source_App_and_normal_main_unchanged": true,
+    "dependencies_and_real_drafts_unchanged": true,
+    "branch_and_HEAD": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "git_status_entries_unchanged": true,
+    "task_local_whitespace_clean": [
+      "docs/TASKS.md",
+      "frontend/playwright.config.ts",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_uncertain_save_support.py",
+      "tests/support/demo.py",
+      "tests/support/processing_error.py",
+      "tests/support/source_bound_rendering.py"
+    ],
+    "repository_diff_check_exit": 2,
+    "repository_diff_check_output": "docs/TASKS.md:1777: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "owned_test_ports_closed": {
+      "8011": true,
+      "5175": true
+    }
+  },
+  "artifact_privacy": {
+    "trace": "off",
+    "HAR": "not enabled",
+    "raw_proofs": false,
+    "headers": false,
+    "binding_values": false,
+    "complete_captured_requests": false,
+    "protected_exception_contexts": false,
+    "production_data": false
+  },
+  "checkpoint_credit": "Only actual-processing-error -> clicked unchanged explicit retry -> saved comparison. Product/habit examples and other retry transitions remain pending.",
+  "excluded_work_not_performed": [
+    "Prior-uncertainty -> processing-error transition",
+    "Unknown/absent recovery or direct fresh/edited intent after uncertainty",
+    "403/409 browser cases or additional fault origins",
+    "Product/habit fixtures, country/locality reference work, Priority 6, research or UC-003",
+    "Real knowledge/rendering activation, interpreter/model/detector startup, held-out access, linguistic approval or TL-03",
+    "Production/normal app.main configuration or dependency changes",
+    "Staging, commits, push, merge, branch switch/reset, unrelated cleanup, CI/CD or deployment"
+  ],
+  "stop": "Stop after this journey for human review."
+}

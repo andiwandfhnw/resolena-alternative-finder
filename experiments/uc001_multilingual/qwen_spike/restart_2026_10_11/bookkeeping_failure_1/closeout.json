@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-11T12:27:25.364702+00:00",
+  "status": "stopped",
+  "error": "event() got multiple values for argument 'name'",
+  "exit_code": 1,
+  "elapsed_seconds": 893.83775639534,
+  "deadline_epoch": 1791727951.526963,
+  "resources": {
+    "peak_owned_rss_bytes": 648036352,
+    "minimum_available_bytes": 4390957056,
+    "peak_temporary_bytes": 427218208
+  },
+  "prior_records_preserved": true,
+  "artifact_tree_retained": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx",
+  "verified_cumulative_download_bytes": 185797378,
+  "design_acceptance": "pending",
+  "automatic_restart": false
+}

@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "identity": {
+    "pid": "positive exact integer DWORD; never bool/float",
+    "creation_time_100ns": "positive exact integer FILETIME",
+    "parent_pid": "positive exact integer native parent",
+    "in_any_job": "true; preliminary worker observation, not exact-Job authority"
+  },
+  "worker_events": {
+    "proxy_launcher_started": {
+      "schema": 1,
+      "launcher": "full retained Popen identity"
+    },
+    "proxy_binding_requested": {
+      "schema": 1,
+      "launcher": "full retained launcher identity",
+      "interpreter": "full retained executing interpreter identity",
+      "same_process": "strict boolean, independently proved through retained handle",
+      "ready_pid": "interpreter.pid"
+    },
+    "proxy_listening": {
+      "schema": 1,
+      "launcher": "full identity",
+      "interpreter": "full identity",
+      "listening_pid": "interpreter.pid, exact integer"
+    },
+    "proxy_closing": {
+      "schema": 1,
+      "launcher": "full identity",
+      "interpreter": "full identity",
+      "listening_pid": "interpreter.pid, exact integer"
+    },
+    "proxy_interpreter_exit": {
+      "schema": 1,
+      "identity": "full interpreter identity",
+      "exit_code": 0,
+      "identity_verified": true
+    },
+    "proxy_launcher_exit": {
+      "schema": 1,
+      "identity": "full launcher identity",
+      "exit_code": 0,
+      "identity_verified": true
+    },
+    "acquisition_terminal": {
+      "proxy_identity_schema": 1,
+      "proxy_launcher_pid": "launcher.pid",
+      "proxy_interpreter_pid": "interpreter.pid",
+      "ledger_path": "exact configured path",
+      "ledger_sha256": "exact final ledger SHA256",
+      "cumulative_bytes": "unchanged conservative integer counter",
+      "prior_bytes": "unchanged reviewed prior integer"
+    }
+  },
+  "controller_events": {
+    "proxy_binding_verified": "native exact PID/birth/parent/private-Job and branch proof before ACK",
+    "proxy_identity_cleanup": "phase, binding_established, identities by role with Job-confirmed exit, helper query-handle closure and verified flag"
+  },
+  "ack": {
+    "bytes_utf8": "PROXY_BOUND\n",
+    "channel": "fresh private acquisition-worker stdin pipe",
+    "cardinality": "once after one verified binding request",
+    "before": "proxy_listening and any source-fetch invocation",
+    "deadline": "counts within original acquisition deadline; no reset"
+  },
+  "split": "interpreter PID distinct, birth>=launcher birth, exact native parent launcher PID, retained stable handles and exact same private Job",
+  "no_split": "same actual retained launcher handle/process proves both role identities; two role exits refer to one physical process; any extra child fails",
+  "branch": "only verified split launcher/interpreter edge plus unchanged accepted optional exact system console helper; unexpected/unclassified process fails",
+  "legacy": "generic child_started/child_exit retain non-proxy meanings; legacy proxy_started/proxy generic-child events rejected",
+  "listening_pid_authority": "accepted proxy os.getpid() validated as retained interpreter identity; never replaced with launcher PID",
+  "cleanup": "normal protocol needs both zero-exit role events and retained native proofs; final Job cleanup confirms each role key; abort cleanup proof does not turn phase failure into success",
+  "future_readiness": "structural only, no native APIs/live proxy/ownership/acquisition/build; NOT AUTHORIZED / NOT EXECUTED"
+}

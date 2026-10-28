@@ -1,0 +1,41 @@
+{
+  "archive_entries": 8,
+  "archive_manifest_hashes_match": true,
+  "packaged_helpers_match_current": true,
+  "inactive_manifest": true,
+  "python_ast_paths": [
+    "scripts/uc001_granite_controller/standins.py",
+    "scripts/uc001_granite_controller/windows_job.py",
+    "tests/unit/test_granite_controller_standins.py",
+    "tests/unit/test_granite_windows_job.py",
+    "tests/unit/test_granite_controller_identity_package.py",
+    "build/uc001-granite-controller-identity-diagnostic-v1/build_package.py"
+  ],
+  "existing_native_methods_unchanged": [
+    "checked",
+    "query",
+    "create_job",
+    "job_configuration",
+    "controller_in_job",
+    "in_job",
+    "job_pids",
+    "create_suspended",
+    "creation_time",
+    "assign",
+    "resume",
+    "process_id",
+    "parent_pid",
+    "open_process",
+    "children_of",
+    "exit_code",
+    "terminate_process",
+    "terminate_job",
+    "close_handle",
+    "job_state",
+    "notifications",
+    "write_pipe",
+    "host_resources"
+  ],
+  "future_command_powershell_parse_exit": 0,
+  "future_command_executed": false
+}

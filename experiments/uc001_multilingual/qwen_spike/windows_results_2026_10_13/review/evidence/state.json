@@ -1,0 +1,8 @@
+{
+    "status":  "stopped_pending_review",
+    "started_utc":  "2026-10-13T19:08:07.0420656Z",
+    "setup_deadline_utc":  "2026-10-13T20:08:07.0420656Z",
+    "version":  "1.0.0",
+    "total_deadline_utc":  "2026-10-13T21:08:07.0420656Z",
+    "evaluation_deadline_utc":  "2026-10-13T19:48:56.8806763Z"
+}

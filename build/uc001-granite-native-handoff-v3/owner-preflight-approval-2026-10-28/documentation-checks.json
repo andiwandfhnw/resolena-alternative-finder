@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-28",
+  "scope": "Documentation/JSON/link/hash and read-only Git preservation only; no tests, scripts or Windows execution",
+  "passed": true,
+  "protected_existing_files": 221,
+  "changed_existing_files": [
+    "build/uc001-granite-native-handoff-v3/README.md",
+    "docs/TASKS.md"
+  ],
+  "unchanged_existing_files": 219,
+  "missing_existing_files": [],
+  "issued_v3_zip_package_inactive_config_manifest_inventory_and_prior_verification_unchanged": true,
+  "v2_failed_evidence_and_prior_approvals_unchanged": true,
+  "original_outer_readme_preserved": true,
+  "tasks_changes_only_current_summary_and_dated_approval": true,
+  "preflight_command_changes_only_two_approval_string_literals": true,
+  "activation_and_step4_blocks_unchanged": true,
+  "all_six_required_report_conditions_retained": true,
+  "local_links_checked": 13,
+  "json_checks_passed": true,
+  "new_documentation_whitespace_clean": true,
+  "windows_preflight_status": "Exactly one authorized owner attempt; pending owner output",
+  "execution_authorized": false,
+  "source_build_authorized": false,
+  "test_package_script_preflight_diagnostic_or_windows_execution": false,
+  "git_preservation": {
+    "branch --show-current": "unchanged",
+    "rev-parse HEAD": "unchanged",
+    "status --short": "unchanged",
+    "diff --cached --raw": "unchanged",
+    "ls-files --stage": "unchanged"
+  },
+  "git_diff_check": {
+    "exit_code": 2,
+    "output": "docs/TASKS.md:3570: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "only_historical_warning_preserved": true
+  },
+  "artifact_sha256": {
+    "README.md": "980c0068cdf0d5166e9ec5810755e0049cdc0dc639eca299b3c3bbf21c4105f0",
+    "docs/TASKS.md": "ed655f3da69de69d8a2aca8c11df762dc608a01ad6fc72e07a2910ea26608ba6",
+    "owner-preflight-approval-2026-10-28/approval.json": "63a1f9269c948d809d8c23d43aaa56cb036fc035ab80003eaa74a753e013c799",
+    "owner-preflight-approval-2026-10-28/README.before.md": "546580209d502958f9f46d1facf832132d650e2bf3f4a4c1388741996d186162"
+  }
+}

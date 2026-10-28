@@ -1,0 +1,12 @@
+{
+  "v1_frozen_payload_hashes_verified": 49,
+  "uploads_unchanged": 3,
+  "recorded_archive_entries_unchanged": 86,
+  "earlier_reference_hashes_verified": 8,
+  "reviewed_prompt_unchanged": true,
+  "scorer_native_and_base_copies_byte_identical": true,
+  "logging_source_hashes_verified": 6,
+  "original_gate_allowed": false,
+  "heldout_contents_read": false,
+  "temporary_baseline": "The /tmp baseline did not survive the reconnection; checks use persisted frozen/evidence manifests rather than recreating a before-state claim."
+}

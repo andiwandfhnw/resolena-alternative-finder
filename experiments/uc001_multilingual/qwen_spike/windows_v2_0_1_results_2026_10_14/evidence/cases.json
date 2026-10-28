@@ -1,0 +1,185 @@
+[
+  {
+    "id": "01-C1-known",
+    "text": "Repair my kettle.",
+    "expected": {
+      "status": "understood",
+      "language": "en",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {}
+    },
+    "historical_request_sha256": "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd",
+    "historical_response_sha256": "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+  },
+  {
+    "id": "02-C2-known",
+    "text": "repair my kettle.",
+    "expected": {
+      "status": "understood",
+      "language": "en",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {}
+    },
+    "historical_request_sha256": "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0",
+    "historical_response_sha256": "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+  },
+  {
+    "id": "03-C3-known",
+    "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+    "expected": {
+      "status": "understood",
+      "language": "de",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {
+        "no_replacement": "true"
+      }
+    },
+    "historical_request_sha256": "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c",
+    "historical_response_sha256": "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+  },
+  {
+    "id": "04-C4-known",
+    "text": "Répare ma bouilloire.",
+    "expected": {
+      "status": "understood",
+      "language": "fr",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {}
+    },
+    "historical_request_sha256": "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea",
+    "historical_response_sha256": "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+  },
+  {
+    "id": "05-C5-known",
+    "text": "Ripara il mio bollitore.",
+    "expected": {
+      "status": "understood",
+      "language": "it",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {}
+    },
+    "historical_request_sha256": "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a",
+    "historical_response_sha256": "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+  },
+  {
+    "id": "06-C6-known",
+    "text": "Repara mi hervidor.",
+    "expected": {
+      "status": "unsupported",
+      "language": null,
+      "unresolved_nonempty": true
+    },
+    "historical_request_sha256": "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df",
+    "historical_response_sha256": "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+  },
+  {
+    "id": "F1-DE",
+    "text": "Bitte repariere meinen Drucker, ohne ihn zu ersetzen.",
+    "role": "Supported German; normalization beyond kettle and no replacement",
+    "expected": {
+      "status": "understood",
+      "language": "de",
+      "subject": "printer",
+      "action": "repair",
+      "goals": [],
+      "constraints": {
+        "no_replacement": "true"
+      }
+    }
+  },
+  {
+    "id": "F2-FR",
+    "text": "Répare mon ordinateur ; garde au moins 256 GB de stockage.",
+    "role": "Supported French; new subject and protected numeric/unit constraint",
+    "protected_literals": [
+      "256 GB"
+    ],
+    "expected": {
+      "status": "understood",
+      "language": "fr",
+      "subject": "computer",
+      "action": "repair",
+      "goals": [],
+      "constraints": {
+        "storage_min": "256 GB"
+      }
+    }
+  },
+  {
+    "id": "F3-IT",
+    "text": "Riutilizza il mio contenitore, senza comprarne uno nuovo.",
+    "role": "Supported Italian; new subject/action and no new purchase",
+    "expected": {
+      "status": "understood",
+      "language": "it",
+      "subject": "container",
+      "action": "reuse",
+      "goals": [],
+      "constraints": {
+        "no_new_purchase": "true"
+      }
+    }
+  },
+  {
+    "id": "F4-EN",
+    "text": "Repair my vacuum cleaner; budget 85 CHF, excluding delivery.",
+    "role": "Supported English control; explicit budget/cost exclusion",
+    "protected_literals": [
+      "85 CHF"
+    ],
+    "expected": {
+      "status": "understood",
+      "language": "en",
+      "subject": "vacuum",
+      "action": "repair",
+      "goals": [],
+      "constraints": {
+        "budget": "85 CHF",
+        "cost_exclusion": "delivery"
+      }
+    }
+  },
+  {
+    "id": "F5-ES",
+    "text": "Repara mi impresora.",
+    "role": "Spanish unsupported-language negative control; no Spanish support claim",
+    "expected": {
+      "status": "unsupported",
+      "language": null,
+      "unresolved_nonempty": true,
+      "allowed_subjects": [
+        null,
+        "printer"
+      ],
+      "allowed_actions": [
+        null,
+        "repair"
+      ],
+      "goals": [],
+      "constraints": {}
+    }
+  },
+  {
+    "id": "F6-AMB",
+    "text": "Taxi",
+    "role": "Recognizable shared-language subject; no forced supported-language label",
+    "expected": {
+      "status": "understood",
+      "language": null,
+      "subject": "taxi",
+      "action": null,
+      "goals": [],
+      "constraints": {}
+    }
+  }
+]

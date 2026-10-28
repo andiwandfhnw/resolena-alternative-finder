@@ -1,0 +1,192 @@
+{
+  "date": "2026-10-16",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial; offline preparation only",
+  "changed_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "src/app/infrastructure/llama_cpp_interpreter.py",
+    "tests/integration/test_llama_contract_adapter_api.py",
+    "tests/unit/test_llama_decoding.py",
+    "tests/unit/test_contract_run_controls.py",
+    "scripts/uc001_contract_check/Common.ps1",
+    "scripts/uc001_contract_check/Dxgi.cs",
+    "scripts/uc001_contract_check/Preflight-Codespace.sh",
+    "scripts/uc001_contract_check/Preflight-Windows.ps1",
+    "scripts/uc001_contract_check/ProcessTools.cs",
+    "scripts/uc001_contract_check/README.md",
+    "scripts/uc001_contract_check/Run-Windows.ps1",
+    "scripts/uc001_contract_check/cases.json",
+    "scripts/uc001_contract_check/config.json",
+    "scripts/uc001_contract_check/controls.py",
+    "scripts/uc001_contract_check/development.py",
+    "scripts/uc001_contract_check/freeze.json",
+    "scripts/uc001_contract_check/prompt.txt",
+    "scripts/uc001_contract_check/review-template.json",
+    "scripts/uc001_contract_check/run.py",
+    "scripts/uc001_contract_check/runtime-files.json",
+    "scripts/uc001_contract_check/schema.json",
+    "scripts/uc001_contract_check/transport-plan.json"
+  ],
+  "checks": {
+    "backend": {
+      "command": ".venv/bin/python -m pytest -q",
+      "passed": 165,
+      "new_offline_tests": 52,
+      "earlier_retained": 113
+    },
+    "browser": {
+      "command": "npm --prefix frontend run test:e2e",
+      "passed": 8,
+      "new_scenarios": 0,
+      "seconds": 22.8
+    },
+    "frontend_lint": "passed",
+    "frontend_build": "passed",
+    "powershell": "AST parsed; pure resource/capacity guards tested with synthetic metadata; C# compiled without native calls",
+    "codespace_preflight": "read-only check and exact eight-package simulation completed; sshd absent",
+    "bundle": "all frozen hashes and ZIP member bytes match",
+    "powershell_optional_tool": "Pre-existing pwsh available; all checks ran (no skips). On other hosts absence is reported as skipped/unverified, never installed automatically."
+  },
+  "red_green": [
+    "HTTP adapter and control modules missing at initial test collection",
+    "unverified thinking template incorrectly reached generation; assertion RED then guard GREEN",
+    "schema response_format json_schema differed from retained json_object envelope; assertion RED then GREEN",
+    "read-only Windows capacity function missing; mocked active-device/64-bit mapping RED then GREEN"
+  ],
+  "criteria": [
+    "AC-01/09/10/11/13/15",
+    "L-01/02/03/06",
+    "TL-01/02/04 contract/routing boundaries only; no real semantic validation"
+  ],
+  "case_policy": {
+    "Velo": "meaning clarification: bicycle/veil; preference and country cannot establish meaning",
+    "mixed": "understood only with full meaning; honest meaning uncertainty/capability limitation records a suitability gap",
+    "number": "1,200 unresolved; no language/country-based guess; no saving"
+  },
+  "qualified_review": "AI-generated expectations only; pending competent DE/FR/IT/EN review before inference and later output semantic adjudication; dialect review if understanding claimed",
+  "limits": {
+    "generations": 14,
+    "startup_count": 1,
+    "total_seconds": 2400,
+    "model_seconds": 1500,
+    "readiness_seconds": 90,
+    "request_seconds": 90,
+    "rss_bytes": 17179869184,
+    "ram_preflight_bytes": 21474836480,
+    "ram_floor_bytes": 4294967296,
+    "gpu_preflight_free_bytes": 15032385536,
+    "gpu_owned_bytes": 12884901888,
+    "gpu_floor_bytes": 2147483648,
+    "artifact_bytes": 1073741824,
+    "disk_preflight_free_bytes": 6442450944,
+    "disk_floor_bytes": 5368709120,
+    "sample_seconds": 1,
+    "windows_artifact_bytes": 536870912,
+    "codespace_artifact_bytes": 536870912
+  },
+  "unresolved": [
+    "Windows retained assets, client tools and current resources not directly inspected",
+    "read-only registry/WDDM association may be unavailable/ambiguous; must stop, no guessed capacity",
+    "transport installation and gh-managed SSH config/binding not verified; no tunnel established",
+    "rich JSON-schema/runtime compatibility, actual context/offload/prompt fit and live resource use pending",
+    "candidate known Spanish unsupported-routing failure remains unresolved",
+    "structural validation cannot detect all semantic omissions; qualified semantic review pending",
+    "English-only synthetic renderer; Priority 4 and real knowledge/reference/recovery dependencies unchanged"
+  ],
+  "warnings": [
+    "existing Starlette/httpx deprecation",
+    "historical docs/TASKS.md trailing whitespace already present in baseline"
+  ],
+  "preservation": {
+    "baseline_files": 42,
+    "changed_existing_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "docs/PROJECT.md"
+    ],
+    "unchanged_existing_code_and_tests": true,
+    "accepted_UC_AGENTS_ADRs_unchanged": true,
+    "normal_main_unconfigured": true,
+    "earlier_verification_files_retained": true,
+    "historical_experiments_edited": false,
+    "held_out_access": false,
+    "inference_or_model_detector_execution": false,
+    "downloads_or_installations": false,
+    "tunnel_established": false,
+    "git_delivery": false
+  },
+  "bundle": {
+    "freeze_sha256": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "zip": "build/uc001-contract-preparation/windows-preparation.zip",
+    "zip_sha256": "d7fd83f68d9888973e55c4cc5a94658a180467058f8bbdc7ad1f2d21af5d7333",
+    "zip_bytes": 36395
+  },
+  "next_windows_preflight": "powershell.exe -NoProfile -File C:\\ResolenaExperiments\\uc001-contract-v1\\Preflight-Windows.ps1",
+  "windows_preflight_followups": [
+    {
+      "recorded_date": "2026-10-16",
+      "source": "owner-reported Windows preflight failure; no live Windows data inspected here",
+      "reported_execution_policy": "process-only RemoteSigned; no policy changes made by this diagnostic task",
+      "reported_error": "Read-only active-adapter/WDDM association is ambiguous; stop without a measurement substitute.",
+      "reported_location": {
+        "file": "Common.ps1",
+        "line": 38,
+        "character": 112
+      },
+      "stage": "Get-ReadOnlyContractAdapter called by Preflight-Windows.ps1; before Get-ContractResources",
+      "possible_guard_branches": [
+        "zero WDDM adapter-memory instances",
+        "more than one WDDM adapter-memory instance",
+        "one instance whose Name does not match the frozen exact pattern"
+      ],
+      "actual_branch": "unknown pending diagnostic output",
+      "authorized_scope": "diagnosis only; no matching or resource-guard correction",
+      "diagnostic": "build/uc001-contract-preparation/diagnose-wddm-readonly.ps1",
+      "diagnostic_checks": "PowerShell AST and nine synthetic branches verified with existing Linux pwsh; not Windows hardware verification. Includes zero/multiple adapters/counters, wrong name, missing capacity/usage and unavailable provider; zero usage retained as a real value.",
+      "frozen_bundle_and_zip_hashes_unchanged": true,
+      "no_model_hashes_repeated": true,
+      "no_native_compilation_installation_tunnel_or_model_execution": true,
+      "phase": 3,
+      "status": "in-progress",
+      "priority3": "partial"
+    },
+    {
+      "recorded_date": "2026-10-16",
+      "scope": "separate adapter identity diagnostic preparation only",
+      "confirmed_branch": "multiple WDDM instances; two distinct LUIDs, both phys_0; one matching CIM RX 6800 XT and present Int64 registry capacity",
+      "owner_report": "build/uc001-contract-preparation/adapter-identity/owner-supplied-cim-wddm.json",
+      "association_status": "unproven; no LUID selected from order or usage",
+      "diagnostic": "build/uc001-contract-preparation/adapter-identity/Diagnose-DxgiWddmIdentity.ps1",
+      "reuse": "original helper descriptor/delegate/release/unsigned LUID format; DXGI 1.1 EnumAdapters1/GetDesc1 adds raw PCI/ACPI IDs and software flags",
+      "effects": "Add-Type C# compilation and native dxgi.dll/COM calls required on Windows; Windows PowerShell 5.1 compiler may create temporary source/assembly/compiler files in TEMP. No installation, explicit output assembly or launcher/preflight initialization. Compiler cleanup not verified on desktop.",
+      "offline_checks": {
+        "command": "pwsh -NoProfile -NonInteractive -File build/uc001-contract-preparation/adapter-identity/offline-check.ps1",
+        "result": "passed",
+        "coverage": [
+          "PowerShell AST and C# compilation",
+          "x64 descriptor size312/flags offset304/LUID offset296",
+          "unsigned high/low LUID formatting",
+          "hardware/software flags; exact names; zero/nonzero values retained",
+          "missing/duplicate adapter identities and counters; name lookalikes and unmatched phys_1",
+          "missing/null usage; global DXGI/WDDM failure and partial per-adapter failure"
+        ],
+        "native_reader_invoked": false,
+        "Windows_queries_executed": false,
+        "Windows_PowerShell_51_execution_verified": false,
+        "SDK_method_slots": "Microsoft SDK header confirms EnumAdapters1 slot12 and GetDesc1 slot10"
+      },
+      "frozen_bundle_and_original_zip_unchanged": true,
+      "asset_hashes_repeated": false,
+      "guard_or_threshold_changes": false,
+      "installation_driver_settings_transport_inference_heldout_access": false,
+      "actual_Windows_DXGI_output": "pending",
+      "phase": 3,
+      "status": "in-progress",
+      "priority3": "partial",
+      "next_windows_command": "powershell.exe -NoProfile -File C:\\ResolenaExperiments\\diagnostics\\Diagnose-DxgiWddmIdentity.ps1"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "version": "uc001-preflight-association-v1.1.0",
+  "date": "2026-10-16",
+  "scope": "Bounded adapter association correction and separate resource preflight only",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "owner_evidence": {
+    "association": "Owner reports separate RX 6800 XT hardware and Microsoft Basic Render Driver DXGI identities, each with exactly one matching WDDM counter; raw new DXGI output was not imported",
+    "reported_available_gib": "13.651",
+    "unchanged_start_threshold_gib": "14",
+    "headroom_status": "Owner-reported estimate below threshold; independent of association defect; fresh actual Windows measurement remains pending"
+  },
+  "implementation": [
+    "Retain exactly one intended CIM RX 6800 XT, resolve registry driver/capacity through its PNP ID",
+    "Match one hardware DXGI descriptor by full description and dynamic PCI vendor/device/subsystem/revision; require complete successful enumeration",
+    "Obtain LUID afresh on each association; require unique descriptor LUID and matching DXGI/64-bit registry capacity",
+    "Require exactly one fresh WDDM counter for that LUID, with exact phys_0 identity; reject duplicate/other physical counters for the same LUID",
+    "Typed nonnegative measurement validation preserves genuine zero and stops on missing/inconsistent/failed data",
+    "Separate association, measurement and resource guard outcomes without launcher initialization or model/runtime asset hashing"
+  ],
+  "tdd": {
+    "red": [
+      "hardware_and_software rejected the original cloned global-single-counter guard at Common.ps1:38",
+      "null_flags and invalid_flags demonstrated acceptance of missing/string flags before native field validation",
+      "multiple_physical_counters demonstrated acceptance of phys_0 plus phys_1 before per-LUID ambiguity enforcement"
+    ],
+    "green": "All focused tests and existing run-control regressions pass after correction",
+    "fixture_correction": "Linux test run-root fixed in the routing fixture; this environment-only failure is not claimed as a production defect"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "56 passed in 23.48s",
+      "new_tests": 44,
+      "existing_regressions": 12,
+      "boundaries": "Synthetic Windows data, offline PowerShell parsing/C# compilation/layout and pure description mapping only; no native reader or actual Windows queries invoked"
+    },
+    {
+      "check": "PowerShell AST comparison of Assert-ContractResources function extent",
+      "result": "Exact source equality with original"
+    },
+    {
+      "check": "Protected original preparation, ZIP and historical evidence hashes",
+      "result": "All 30 match baseline.json"
+    },
+    {
+      "check": "New ZIP CRC, member set, source bytes and frozen member hashes",
+      "result": "Passed; 9 flat files, no launcher/runner"
+    },
+    {
+      "check": "Changed/new text whitespace",
+      "result": "No new warning; preserve historical TASKS.md backlog trailing space"
+    }
+  ],
+  "preserved": {
+    "baseline": "baseline.json",
+    "files_checked": 30,
+    "parent_freeze_sha256": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "parent_zip_sha256": "d7fd83f68d9888973e55c4cc5a94658a180467058f8bbdc7ad1f2d21af5d7333",
+    "config_and_runtime_files": "Byte-identical to original",
+    "prompt_schema_cases": "Original protected files unchanged; not duplicated in new package",
+    "resource_guard_function": "Exact source equality; capacity/headroom/runtime thresholds unchanged",
+    "application": "No domain/API/SQLite/frontend/normal composition changes; earlier application guarantees unaffected"
+  },
+  "package": {
+    "path": "build/uc001-preflight-association-v1_1_0/windows-preflight-association-v1_1_0.zip",
+    "bytes": 17269,
+    "sha256": "a5e89b340156d7db9de9cffa6d72dab0ef35b91f257e9f05525ea4765eaf1f03",
+    "freeze_path": "scripts/uc001_preflight_association_v1_1_0/freeze.json",
+    "freeze_sha256": "9b910db4b71e6ee1c7768223ab4a3d9331c411d3f218eb7a710c81e88c57ed5a",
+    "hashes": "build/uc001-preflight-association-v1_1_0/SHA256SUMS.txt",
+    "version_record": "scripts/uc001_preflight_association_v1_1_0/VERSION.json"
+  },
+  "changed_source_and_documentation": [
+    "scripts/uc001_preflight_association_v1_1_0/AdapterIdentity.cs",
+    "scripts/uc001_preflight_association_v1_1_0/Common.ps1",
+    "scripts/uc001_preflight_association_v1_1_0/Preflight-Adapter.ps1",
+    "scripts/uc001_preflight_association_v1_1_0/README.md",
+    "scripts/uc001_preflight_association_v1_1_0/Test-Offline.ps1",
+    "scripts/uc001_preflight_association_v1_1_0/VERSION.json",
+    "scripts/uc001_preflight_association_v1_1_0/config.json",
+    "scripts/uc001_preflight_association_v1_1_0/freeze.json",
+    "scripts/uc001_preflight_association_v1_1_0/runtime-files.json",
+    "tests/unit/test_preflight_adapter_association.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md"
+  ],
+  "new_artifacts": [
+    "build/uc001-preflight-association-v1_1_0/baseline.json",
+    "build/uc001-preflight-association-v1_1_0/SHA256SUMS.txt",
+    "build/uc001-preflight-association-v1_1_0/verification.json",
+    "build/uc001-preflight-association-v1_1_0/windows-preflight-association-v1_1_0.zip"
+  ],
+  "native_effects": "On Windows, Add-Type compiles/loads AdapterIdentity.cs and may create temporary compiler/source/assembly files under TEMP; native CreateDXGIFactory1, EnumAdapters1, GetDesc1 and COM release; no device/model creation, no automatic tool installation; desktop temporary-file cleanup unverified",
+  "windows_verification": "Pending: actual 64-bit Windows PowerShell 5.1 compilation, descriptor/PCI/capacity agreement, fresh LUID/counter association and resource outcome",
+  "remaining_limits": [
+    "Offline synthetic checks cannot prove actual desktop association, capacity or current headroom",
+    "Reported 13.651 GiB sample remains below 14 GiB and must not be waived",
+    "Preflight success would verify only identity/resource snapshot, not full runtime suitability or semantic language capability",
+    "No backend/browser reruns: application/frontend untouched; relevant existing run-control regressions ran"
+  ],
+  "not_performed": [
+    "Model/runtime asset hashing",
+    "Native DXGI execution or actual Windows queries in Codespace",
+    "Installation/download",
+    "Transport/tunnel",
+    "Model/detector execution or inference",
+    "Held-out access",
+    "Priority 4 work",
+    "Git staging/commit/push/branch switch/deployment"
+  ]
+}

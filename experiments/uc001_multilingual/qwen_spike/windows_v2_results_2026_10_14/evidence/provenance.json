@@ -1,0 +1,27 @@
+{
+  "parent_freeze_sha256": "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+  "parent_results_zip_sha256": "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf",
+  "reviewed_prompt_v2_sha256": "070f4efbd1233f450eb8b1b4f3d1d57a398db0c73b39e90c0aa84640aa6b60da",
+  "unchanged_contract_sha256": "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec",
+  "unchanged_assessor_sha256": "3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3",
+  "schema_sha256_canonical_json": "a3d836da2fa28ccb72553a1fb0309f80cd4af8f982f467fb9e950f5906ddd5cd",
+  "source_logging": {
+    "observed_verbosity": 3,
+    "pinned_library_INFO_callback_verbosity": 4,
+    "actual_full_offload_confirmed": false,
+    "required_before_generation": "Equal positive offloaded N/N layer counts, Vulkan device/buffer identity, owned allocation and complete startup capture; stop if absent within readiness budget",
+    "pinned_source_revision": "d81235049384534c167caea52b85a694f6103d14",
+    "inspected_local_source_hashes": {
+      "common/arg.cpp": "60fe5331fbc60b7dcefcebce8d2097b5b986a1cd3a4dca126c0e6d21060df4d3",
+      "common/log.cpp": "a5c1edc4c446a406233b803a935438f1064201764ec8bb515dc91a16619a3b1b",
+      "common/log.h": "f84dcd0519a8ec2b527d9bd9c39d5f4757d7ff5b2ba8e4d10c7ab8b9154be88b",
+      "common/common.cpp": "0f124bb94a2d82881fffdb745c3524b74fd23f41127b4a720dc9e9934b6eb883",
+      "src/llama-model.cpp": "c29d7f29c3e760f90855755748edc56fcdf62f0628b0c572f06ffb4c377db5f5",
+      "tools/server/server.cpp": "525d74866c4606c0252aa09ec8b8b51ff95d98b861e5ac06f3aa3256c7c2cccc",
+      "src/llama.cpp": "8058a140d444b67bf64a1ce393d241dfd60080f4b117130c6f82e637e2109233",
+      "src/llama-kv-cache.cpp": "4ac534956aa0b384a9a707c778527a4e7cd4ebfbea9c895e531b0935485de3c8"
+    }
+  },
+  "authorization": "2026-10-14 bundle preparation and offline checks only; Windows inference not authorized",
+  "heldout_contents_read": false
+}

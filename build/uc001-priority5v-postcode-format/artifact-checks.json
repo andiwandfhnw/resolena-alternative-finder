@@ -1,0 +1,10 @@
+{
+  "JSON_files_parsed": 11,
+  "receipt_links_exist": true,
+  "six_file_hashes_match_final_audit": true,
+  "retained_source_hash_matches": true,
+  "phase_3_in_progress": true,
+  "actual_persisted_browser_submission_digests_or_bindings_in_text_artifacts": 0,
+  "trace_HAR_exports": 0,
+  "new_text_artifacts_checked": 31
+}

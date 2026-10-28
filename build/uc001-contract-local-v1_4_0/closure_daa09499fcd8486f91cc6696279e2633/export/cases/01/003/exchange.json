@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/v1/chat/completions",
+  "status": 200,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "complete": true,
+  "exported": true,
+  "failure": null,
+  "request_sha256": "356e0012aee8a8cb3d9b9511297ddb4e087691e1a9e7b49724fee2d9c7294936",
+  "response_sha256": "c5028cb9a346d67480c71699361576540786abc80b832f6a1af04a765f424680"
+}

@@ -1,0 +1,77 @@
+{
+  "reported_date": "2026-10-17",
+  "execution_time": null,
+  "source": "Owner-supplied raw remaining-desktop-check JSON; no execution timestamp was supplied",
+  "raw_path": "build/uc001-desktop-readiness/results_2026_10_17/remaining-desktop-result.raw.json",
+  "raw_sha256": "f6a8f233f3263bf0e8f6fb2d79bc7dc12d0a04448b0a5276f28b35f40f03f1ab",
+  "recorded_result": "remaining_desktop_tools_versions_and_observed_ports_passed",
+  "verified_in_supplied_result": {
+    "ssh_native_and_path": "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+    "ssh_version": "OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2",
+    "gh_path": "C:\\ResolenaExperiments\\tools\\gh-2.81.0\\bin\\gh.exe",
+    "gh_version": "2.81.0",
+    "desktop_ports_no_observed_allocations": [
+      49187,
+      49189
+    ]
+  },
+  "integrity_scope": {
+    "historical_completion_inferred": 54,
+    "freshly_hashed": false,
+    "current_integrity_verified": false,
+    "remaining_from_reported_attempt": [],
+    "fresh_before_startup_required": true
+  },
+  "raw_execution_blocker_preserved": "Original launcher identity and monitor usage rules require alignment with v1.2.0 before execution.",
+  "blocker_interpretation": {
+    "original_frozen_launcher": "Still refers correctly to the preserved original implementation",
+    "separate_correction": "v1.3.0 implements and offline-verifies identity/capacity/counter/owned-process/cleanup correction; this checker predates that correction and its static string does not assess the new bundle",
+    "v1_3_0_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+    "windows_runtime_verified": false,
+    "new_execution_authorization": false
+  },
+  "remaining": [
+    "Codespace port 49188 and future actual bind/forwarding verification",
+    "Approved transport prerequisites, authenticated loopback/proxy control validation; credentials not inspected",
+    "Fresh asset-integrity/identity/resource validation before any separately authorized startup; earlier 13099008-byte margin is historical only",
+    "Windows owned-process counter/lifetime/native cleanup behavior for v1.3.0",
+    "Qualified review for exact v1.3.0 freeze before inference and later semantic output review",
+    "Effective runtime settings/context/offload/schema/prompt fit and interpreter suitability"
+  ],
+  "qualified_review_file": {
+    "exists": false,
+    "matches_v1_3_0": false
+  },
+  "full_preflight_verified": false,
+  "startup_authorized": false,
+  "interpreter_suitability_verified": false,
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "checks": [
+    "Raw JSON parses and all reported tool/port/scope fields reconcile with unchanged checker",
+    "All 76 prior small artifact/application-pin baseline hashes match",
+    "All current v1.3.0 frozen source/application hashes and ZIP hash unchanged",
+    "Original readiness script hash unchanged; raw blocker string retained",
+    "Maintained task/project local links and unchanged Phase 3/in-progress checked"
+  ],
+  "tests": "No code tests rerun: documentation/evidence-only update; prior 174-test result retained as historical evidence, not rerun or Windows verification",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-desktop-readiness/results_2026_10_17/remaining-desktop-result.raw.json",
+    "build/uc001-desktop-readiness/results_2026_10_17/verification.json",
+    "build/uc001-desktop-readiness/results_2026_10_17/SHA256SUMS.txt"
+  ],
+  "not_performed": [
+    "Application/script/package changes",
+    "Asset hashing",
+    "Install/download",
+    "Credential inspection or authentication change",
+    "Windows/Codespace port/tool/resource query",
+    "Model/runtime/transport startup",
+    "Inference",
+    "Held-out access",
+    "Git delivery"
+  ]
+}

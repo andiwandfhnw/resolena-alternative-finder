@@ -1,0 +1,113 @@
+--- a/tests/unit/test_granite_controller_worker.py
++++ b/tests/unit/test_granite_controller_worker.py
+@@ -62,6 +62,110 @@
+     assert result['GIT_LFS_SKIP_SMUDGE'] == '1'
+     with pytest.raises(WorkerFailure):
+         validate_environment(dict(env, CC='unreviewed'), exists=lambda _: True, which=lookup.get)
++
++
++@pytest.fixture
++def windows_environment():
++    return {'VCTOOLSVERSION': '14.43.34808\\', 'WINDOWSSDKVERSION': '10.0.22621.0\\',
++            'VSCMD_ARG_HOST_ARCH': 'x64', 'VSCMD_ARG_TGT_ARCH': 'x64',
++            'VULKAN_SDK': SDK, 'VK_SDK_PATH': SDK,
++            'PATH': r'C:\synthetic\existing-bin', 'GRANITE_UNRELATED': 'preserve'}
++
++
++def environment_tool(name):
++    return {'cl.exe': CL, 'glslc.exe': SDK + r'\Bin\glslc.exe'}.get(name)
++
++
++def test_environment_guard_accepts_windows_uppercase_keys(windows_environment):
++    original = dict(windows_environment)
++    result = validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
++    assert result['PATH'] == NINJA.rsplit('\\', 1)[0] + ';' + original['PATH']
++    assert result['CMAKE_BUILD_PARALLEL_LEVEL'] == '2'
++    assert result['GIT_LFS_SKIP_SMUDGE'] == '1'
++    assert result['GRANITE_UNRELATED'] == 'preserve'
++    assert result is not windows_environment
++    assert windows_environment == original
++
++
++@pytest.mark.parametrize('architecture', ['x64', 'amd64'])
++def test_environment_guard_accepts_mixed_case_keys(windows_environment, architecture):
++    aliases = {'VCTOOLSVERSION': 'VCToolsVersion', 'WINDOWSSDKVERSION': 'WindowsSDKVersion',
++               'VSCMD_ARG_HOST_ARCH': 'Vscmd_arg_host_arch', 'VSCMD_ARG_TGT_ARCH': 'vscmd_arg_tgt_arch',
++               'VULKAN_SDK': 'Vulkan_Sdk', 'VK_SDK_PATH': 'Vk_Sdk_Path', 'PATH': 'Path'}
++    env = {aliases.get(key, key): value for key, value in windows_environment.items()}
++    env['Vscmd_arg_host_arch'] = env['vscmd_arg_tgt_arch'] = architecture
++    original = dict(env)
++    result = validate_environment(env, exists=lambda _: True, which=environment_tool)
++    assert result['PATH'] == NINJA.rsplit('\\', 1)[0] + ';' + original['Path']
++    assert result['CMAKE_BUILD_PARALLEL_LEVEL'] == '2'
++    assert result['GIT_LFS_SKIP_SMUDGE'] == '1'
++    assert env == original
++
++
++@pytest.mark.parametrize('key,value', [
++    ('VCTOOLSVERSION', None), ('VCTOOLSVERSION', ''), ('VCTOOLSVERSION', '14.43.00000'),
++    ('WINDOWSSDKVERSION', None), ('WINDOWSSDKVERSION', ''), ('WINDOWSSDKVERSION', '10.0.00000.0'),
++    ('VSCMD_ARG_HOST_ARCH', None), ('VSCMD_ARG_HOST_ARCH', 'x86'),
++    ('VSCMD_ARG_TGT_ARCH', None), ('VSCMD_ARG_TGT_ARCH', 'x86'),
++])
++def test_environment_guard_rejects_missing_wrong_versions_or_architecture(windows_environment, key, value):
++    if value is None:
++        windows_environment.pop(key)
++    else:
++        windows_environment[key] = value
++    original = dict(windows_environment)
++    with pytest.raises(WorkerFailure, match='frozen_x64_environment_not_active'):
++        validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
++    assert windows_environment == original
++
++
++@pytest.mark.parametrize('key', ['VULKAN_SDK', 'VK_SDK_PATH'])
++@pytest.mark.parametrize('value', [None, r'C:\VulkanSDK\unapproved'])
++def test_environment_guard_rejects_missing_wrong_sdk(windows_environment, key, value):
++    if value is None:
++        windows_environment.pop(key)
++    else:
++        windows_environment[key] = value
++    with pytest.raises(WorkerFailure, match='pinned_vulkan_environment_differs'):
++        validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
++
++
++@pytest.mark.parametrize('missing', [GIT, CMAKE, NINJA, CL, SDK + r'\Bin\glslc.exe',
++                                     SDK + r'\Lib\cmake\SPIRV-Headers\SPIRV-HeadersConfig.cmake'])
++def test_environment_guard_rejects_missing_existing_tool(windows_environment, missing):
++    with pytest.raises(WorkerFailure, match='required_existing_tool_missing'):
++        validate_environment(windows_environment, exists=lambda path: path != missing, which=environment_tool)
++
++
++@pytest.mark.parametrize('name', ['cl.exe', 'glslc.exe'])
++@pytest.mark.parametrize('replacement', [None, r'C:\unapproved\tool.exe'])
++def test_environment_guard_rejects_missing_wrong_active_tool(windows_environment, name, replacement):
++    with pytest.raises(WorkerFailure, match='active_tool_differs:' + name):
++        validate_environment(windows_environment, exists=lambda _: True,
++                             which=lambda tool: replacement if tool == name else environment_tool(tool))
++
++
++@pytest.mark.parametrize('key', ['CC', 'cc', 'CXX', 'cXx', 'CMAKE_TOOLCHAIN_FILE',
++                                 'Cmake_Toolchain_File', 'CMAKE_PREFIX_PATH', 'cmake_prefix_path'])
++def test_environment_guard_rejects_case_variant_overrides(windows_environment, key):
++    windows_environment[key] = 'unreviewed'
++    original = dict(windows_environment)
++    with pytest.raises(WorkerFailure, match='unreviewed_toolchain_override'):
++        validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
++    assert windows_environment == original
++
++
++def test_environment_guard_preserves_pinned_version_evidence(tmp_path, monkeypatch, windows_environment):
++    value = acquisition_config(tmp_path, monkeypatch)
++    value['environment'] = validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
++    root = Path(value['root'])
++    runner = AcquisitionRunner(root, failed='source-init')
++    with pytest.raises(WorkerFailure, match='synthetic command failed'):
++        run_acquisition(value, Events(), runner=runner)
++    metadata = json.loads((root / 'evidence/build-environment.json').read_text())
++    assert metadata == {'VCToolsVersion': '14.43.34808\\', 'WindowsSDKVersion': '10.0.22621.0\\',
++                        'VULKAN_SDK': SDK}
++    assert [label for _, label, _ in runner.commands] == ['git-version', 'cmake-version', 'ninja-version', 'source-init']
+ 
+ 
+ def test_archive_extraction_rejects_path_traversal(tmp_path):

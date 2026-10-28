@@ -1,0 +1,40 @@
+{
+  "expected_changed_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "frontend/src/App.tsx",
+    "src/app/application/comparisons.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/synthetic.py",
+    "tests/unit/test_language_policy.py"
+  ],
+  "current_baseline_files": 121,
+  "unchanged_current_baseline_files": 113,
+  "reused_checkpoint_protected_files": 247,
+  "reused_checkpoint_hash_mismatches": [],
+  "checkpoint_eight_row_section_unchanged": true,
+  "all_other_historical_TASKS_text_unchanged": true,
+  "phase": 3,
+  "status": "in-progress",
+  "branch_head_unchanged": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "git_status_entries_unchanged": true,
+  "task_local_whitespace_clean_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "frontend/src/App.tsx",
+    "src/app/application/comparisons.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/synthetic.py",
+    "tests/unit/test_language_policy.py"
+  ],
+  "new_document_links_checked": [],
+  "owned_test_ports_closed": {
+    "8011": true,
+    "5175": true
+  }
+}

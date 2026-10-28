@@ -1,0 +1,226 @@
+{
+  "recorded_at": "2026-10-23T20:11:40.889091+00:00",
+  "scope": "Priority 5W only: one selected-country-mismatch React UI-contract input, explicit country correction, then real approved LI reference assessment and SQLite save.",
+  "phase": 3,
+  "status": "in-progress",
+  "result": "Verified on first browser run without production changes; stopped for human review. Priority 5, increment 1 and DEVELOP remain incomplete.",
+  "recorded_5V_acceptance": {
+    "bounded_acceptance": "Demonstrated retained CH/LI postcode-format validation and explicit correction only. Four ASCII digits after boundary trim implement the documented four-digit field, not a verbatim publisher regex. Raw values/leading zeros preserved; country-only discards first; retained unverified confirmation validates; well-formed unmatched stays reference-unknown. Actual browser 422, edit without submit, then explicit honest saved insufficient coverage.",
+    "RED_GREEN_preserved": "Prior receipt unchanged: rule 4 genuine RED/5 already-correct passes ->9 GREEN; API 3 genuine RED/7 passes ->14 GREEN; browser1 RED/1 baseline pass ->2 GREEN. Prior configured-loader-before-format limit and all other recorded limits remain.",
+    "advisor_review_limit": "Receipt and command record only; not changed source, live worktree or independently executed tests."
+  },
+  "prerequisites": {
+    "blockers": [],
+    "equivalent_UI_coverage": "None found. Existing postcode-correction, standalone country-edit and denial cases do not exercise E-CL-02 mismatch response correction.",
+    "accepted_requirements": "UC-001 E-CL-02 (line 530), AC-02 and input/error field-preservation requirements (133–139,360–369); explain demonstrated inconsistency, allow correction and never substitute silently.",
+    "accepted_stub_use": "ARCHITECTURE.md React interaction allocation (line 732) explicitly permits API stubs for thin checks. Existing 5L browser tests already use mocked input followed by real saving; helpers and ordinary runner reused.",
+    "existing_backend_evidence": {
+      "source": "tests/integration/test_saved_comparison.py:test_selected_association_is_checked_against_release_country_and_all_fields[foreign_country]",
+      "meaning": "5U changed country to LI while retaining approved CH record10 pointer; asserted 422 invalid_input/locality_country_mismatch/not_attempted with 0/0/0 rows. Prior accepted receipt records 29 API passes; not rerun.",
+      "contract_sources": "application/comparisons.py checked selected-country mismatch; interfaces/api.py InputOutcome mapping.",
+      "limit": "A failed name/postcode lookup is reference_unknown, not demonstrated mismatch. This browser mock does not establish that CH+Vaduz/9490 without a checked pointer would trigger backend mismatch."
+    },
+    "pretest_contract": "case-contract.json",
+    "pretest_recorded_at": "2026-10-23T20:06:05.125729+00:00",
+    "expected_single_match": {
+      "reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "source_record": 5590
+      },
+      "country_code": "LI",
+      "locality_name": "Vaduz",
+      "postcode": "9490",
+      "source_postcode_id": "5393",
+      "additional_number": "00",
+      "administrative": {
+        "municipality_name": "Vaduz",
+        "municipality_id": "7001",
+        "canton": ""
+      }
+    },
+    "match_cardinality": 1,
+    "approved_reference_scope": "Existing country/locality releases and bytes unchanged; development/demo/test only. No new data, interpreter, provider evidence or format policy."
+  },
+  "mocked_UI_contract_input": {
+    "mocked": true,
+    "status": 422,
+    "body": {
+      "outcome": "invalid_input",
+      "persistence": {
+        "state": "not_attempted"
+      },
+      "issues": [
+        {
+          "code": "locality_country_mismatch"
+        }
+      ],
+      "clarification": {
+        "message": "The selected reference association belongs to a different search country. Correct the country or locality selection explicitly.",
+        "choices": [],
+        "associations": []
+      }
+    },
+    "backend_mismatch_detection_verified_by_this_input": false
+  },
+  "first_run_evidence": {
+    "command_record": "commands.json",
+    "log": "browser-first-run.txt",
+    "runner_JSON": "browser-first-run.json",
+    "result": "2 passed in 6.2 seconds, no failures/retries: one existing CH success baseline and one new interaction case.",
+    "TDD": "Test added before deciding on implementation. Existing behavior passed first run; no genuine RED, production fix, refactor or test-assertion correction manufactured.",
+    "not_repeated": "No backend mismatch/selection/reliability matrices. No 5V regression because shared production handling unchanged. No frontend lint/build because frontend/runner unchanged.",
+    "warnings": "Existing NO_COLOR/FORCE_COLOR warning only; no new dependencies."
+  },
+  "actual_browser_case": {
+    "artifact": "build/uc001-priority5w-country-mismatch-ui/browser-first-run/saved-comparison-mocked-se-7b2d3-efore-real-saved-assessment/country-mismatch-correction-evidence.json",
+    "database": "build/test-only/uc001-priority5w-mismatch-ui.sqlite3",
+    "initial_fields": {
+      "country": "CH",
+      "town": "Vaduz",
+      "postcode": "9490",
+      "meaning": "Existing understood synthetic bicycle-repair/no-replacement request; fresh page without prior uncertainty."
+    },
+    "mock_observations": "Exact422 body displayed in Clarification with generic field-preservation alert. Loading ends, fields enabled and unchanged, country remains CH. No saved result/options/identity, coverage claim, recovery action, implicit continuation or association selector. Committed state equals baseline.",
+    "correction_observations": "Actual country selector CH->LI clears stale error/clarification, keeps town/postcode/request and language context, leaves no association selector. Editing alone sends no comparison POST and preserves entire committed state.",
+    "request_counts": {
+      "after_mismatch": 1,
+      "after_country_edit": 1,
+      "after_explicit_submission": 2,
+      "mocked_responses": 1,
+      "actual_backend_requests_forwarded": 1
+    },
+    "separate_CH_baseline": "One additional real comparison POST belongs to the preservation baseline, outside the target case. Target case is exactly 1 intercepted mock plus 1 actual forwarded POST.",
+    "bounded_no_automatic_request_ms_per_state": 300,
+    "new_identity_booleans": {
+      "new_submission_key": true,
+      "new_originating_proof": true,
+      "no_reference_pointer_in_either_request": true,
+      "current_corrected_fields_used": true,
+      "language_context_preserved": true
+    },
+    "actual_corrected_response": {
+      "mocked": false,
+      "status": 201,
+      "outcome": "insufficient_coverage",
+      "persistence": {
+        "state": "saved",
+        "request_id": "b736cc41-b035-4e59-bcd7-a3a07e143139"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "limitation_codes": [
+        "geographic_applicability_unverified",
+        "useful_comparison_information_missing"
+      ],
+      "search_scope": {
+        "country_code": "LI",
+        "town": "Vaduz",
+        "postcode": "9490",
+        "locality": {
+          "verification": "matched_in_reference",
+          "selection": "single_match",
+          "normalized": {
+            "town": "vaduz",
+            "postcode": "9490"
+          },
+          "association": {
+            "reference": {
+              "source": "swisstopo",
+              "release": "swisstopo-chli-associations-2026-10-01-v1",
+              "source_record": 5590
+            },
+            "country_code": "LI",
+            "locality_name": "Vaduz",
+            "postcode": "9490",
+            "source_postcode_id": "5393",
+            "additional_number": "00",
+            "administrative": {
+              "municipality_name": "Vaduz",
+              "municipality_id": "7001",
+              "canton": ""
+            }
+          }
+        }
+      }
+    },
+    "prior_request_ids": [
+      "aa7510bd-39b6-49e4-8f4d-8549303cf922"
+    ],
+    "new_request_id": "b736cc41-b035-4e59-bcd7-a3a07e143139",
+    "row_counts": {
+      "before": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_mocked_mismatch": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_country_edit": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    "delta_after_real_submission": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "saved_observations": "Actual single_match record 5590 and server-derived locality provenance. Real LI assessment honestly saves insufficient_coverage with geographic_applicability_unverified and useful_comparison_information_missing; CH-only alternative evidence invents no LI coverage. UI identity/scope equal actual API and committed SQLite projection; loading ends, feedback clears, fields remain. New request identified by baseline-ID difference.",
+    "preservation": "Prior request projections, option snapshots, associations and source evidence/review dates equal baseline. New stored original text/language context and no_replacement requirement span 18..38 retained.",
+    "locality_provenance": {
+      "source": "swisstopo",
+      "release": "swisstopo-chli-associations-2026-10-01-v1",
+      "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+      "snapshot_at": "2026-10-01T00:00:00Z"
+    },
+    "time_limit": "Assessed_at uses the existing controlled fixture clock; it is not the execution date or a freshness renewal.",
+    "pointer_limit": "Both captured payloads omit reference; no old pointer is reused. No initially non-null selected pointer was created, so this case does not independently test that transition. Existing clearing safeguards remain unchanged."
+  },
+  "changes": {
+    "existing_files": [
+      "docs/TASKS.md",
+      "tests/e2e/saved-comparison.spec.ts"
+    ],
+    "test": "One new case at tests/e2e/saved-comparison.spec.ts:85, using existing helpers and first-request route mock.",
+    "documentation": "Current authorization and one concise 5W result in TASKS; dated history unchanged.",
+    "production": "No frontend/backend/domain/infrastructure/API/schema/reference/config/dependency changes.",
+    "new_evidence_directory": "build/uc001-priority5w-country-mismatch-ui"
+  },
+  "verification_and_preservation": {
+    "audit": "preservation-audit.json",
+    "artifact_checks": "artifact-checks.json",
+    "baseline_files": 1752,
+    "unchanged_files": 1750,
+    "intended_existing_file_changes": 2,
+    "missing_files": 0,
+    "directory_symlinks_preserved": 1,
+    "historical_integrity": "All prior references, drafts, experiments, receipts and other entry fingerprints preserved. Removing the one new test reproduces the entire prior browser file byte-for-byte. TASKS history preserved apart from current authorization plus new result; original whitespace retained.",
+    "review": "Assistant read-only source/test review found no concrete issue; not independent human validation.",
+    "credentials": "Captured request/key/proof and proof digest compared only in memory; artifacts export public projections/identities and booleans, no raw credentials, headers or complete captured requests. Trace/HAR disabled.",
+    "services": "Ordinary runner terminated owned services; ports 8011/5175 closed."
+  },
+  "git": {
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "status": "git-status.txt; byte-identical to entry, large preexisting dirty/untracked worktree preserved.",
+    "index": "git-index.txt equals entry; no staging.",
+    "diff_check_exit": 2,
+    "diff_check": "Only preserved preexisting docs/TASKS.md:2246 trailing whitespace; slice delta has no new whitespace defects.",
+    "delivery": "No commit/push/merge/reset/branch change/CI/CD/deployment."
+  },
+  "limits_and_stop": [
+    "Credits only this mocked-response UI correction observable plus real corrected LI save. Reuses 5U backend detection evidence; does not establish new backend detection, actual CH+Vaduz text mismatch, or complete locality acceptance.",
+    "No worldwide acquisition/format policy, GUID enrichment, coverage research or extra fault variants. Unreviewed other-country formats remain limitations, not newly mandatory requirements.",
+    "Approved references remain development-only. Real alternative/rendering drafts inactive; experiments closed; normal app.main unconfigured. No model/detector startup, held-out use, linguistic approval, TL-03, runtime research, UC-003 or Priority 6.",
+    "DE/FR/IT/EN, Resolena-controlled processing, atomic save-before-presentation and immutable history unchanged. No automatic next task. PHASE 3 / STATUS in-progress; Priority 5, increment 1 and DEVELOP incomplete. Stop for human review."
+  ]
+}

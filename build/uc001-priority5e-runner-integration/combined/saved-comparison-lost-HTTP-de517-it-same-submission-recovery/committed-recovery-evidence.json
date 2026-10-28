@@ -1,0 +1,1829 @@
+{
+  "before_counts": {
+    "search_request": 1,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "committed": {
+    "rows": [
+      {
+        "id": "46f5658c-b999-4b73-b494-350724d3c903",
+        "projection": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "46f5658c-b999-4b73-b494-350724d3c903"
+          },
+          "comparison": {
+            "request_id": "46f5658c-b999-4b73-b494-350724d3c903",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "be1c3c60-773a-4c80-be04-b91eeec1545d",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      },
+      {
+        "id": "feb3580d-412b-4392-814b-e19b0125c210",
+        "projection": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "feb3580d-412b-4392-814b-e19b0125c210"
+          },
+          "comparison": {
+            "request_id": "feb3580d-412b-4392-814b-e19b0125c210",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "b8c8b139-af87-4439-a677-122ce6820471",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      }
+    ],
+    "counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "snapshots": {
+      "request_alternative": [
+        [
+          "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+          "feb3580d-412b-4392-814b-e19b0125c210",
+          "00000000-0000-4000-8000-000000000002",
+          2,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"96dd0465-3ff9-419f-a2c4-1396ef34a4ee\", \"alternative_id\": \"00000000-0000-4000-8000-000000000002\", \"position\": 2, \"display_name\": \"Zeta repair (synthetic)\"}"
+        ],
+        [
+          "b8c8b139-af87-4439-a677-122ce6820471",
+          "feb3580d-412b-4392-814b-e19b0125c210",
+          "00000000-0000-4000-8000-000000000001",
+          1,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"b8c8b139-af87-4439-a677-122ce6820471\", \"alternative_id\": \"00000000-0000-4000-8000-000000000001\", \"position\": 1, \"display_name\": \"Alpha repair (synthetic)\"}"
+        ],
+        [
+          "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+          "46f5658c-b999-4b73-b494-350724d3c903",
+          "00000000-0000-4000-8000-000000000001",
+          1,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"bdf8401f-7526-4ce6-8488-a2537a5e1216\", \"alternative_id\": \"00000000-0000-4000-8000-000000000001\", \"position\": 1, \"display_name\": \"Alpha repair (synthetic)\"}"
+        ],
+        [
+          "be1c3c60-773a-4c80-be04-b91eeec1545d",
+          "46f5658c-b999-4b73-b494-350724d3c903",
+          "00000000-0000-4000-8000-000000000002",
+          2,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"be1c3c60-773a-4c80-be04-b91eeec1545d\", \"alternative_id\": \"00000000-0000-4000-8000-000000000002\", \"position\": 2, \"display_name\": \"Zeta repair (synthetic)\"}"
+        ]
+      ],
+      "request_alternative_evidence": [
+        [
+          "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+          "30000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "b8c8b139-af87-4439-a677-122ce6820471",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "be1c3c60-773a-4c80-be04-b91eeec1545d",
+          "30000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "evidence": [
+        [
+          "30000000-0000-4000-8000-000000000001",
+          "00000000-0000-4000-8000-000000000001",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ],
+        [
+          "30000000-0000-4000-8000-000000000002",
+          "00000000-0000-4000-8000-000000000002",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ],
+        [
+          "30000000-0000-4000-8000-000000000120",
+          "00000000-0000-4000-8000-000000000120",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000120\", \"publisher\": \"Synthetic hourly provider\", \"source_reference\": \"https://synthetic.example.invalid/hourly-repair-v1\", \"source_language\": \"de\", \"supporting_quote\": \"Synthetische Reparatur ohne Ersatz in CH; CHF 120.00 pro Arbeitsstunde. Kosten und Verf\\u00fcgbarkeit unklar.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"120.00\", \"currency\": \"CHF\", \"unit\": \"workshop labour hour\", \"period\": \"once\", \"basis\": \"hourly repair rate; not a complete repair quote\", \"charges_known\": false, \"exclusions\": [], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ]
+      ]
+    }
+  },
+  "recovered": {
+    "rows": [
+      {
+        "id": "46f5658c-b999-4b73-b494-350724d3c903",
+        "projection": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "46f5658c-b999-4b73-b494-350724d3c903"
+          },
+          "comparison": {
+            "request_id": "46f5658c-b999-4b73-b494-350724d3c903",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "be1c3c60-773a-4c80-be04-b91eeec1545d",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      },
+      {
+        "id": "feb3580d-412b-4392-814b-e19b0125c210",
+        "projection": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "feb3580d-412b-4392-814b-e19b0125c210"
+          },
+          "comparison": {
+            "request_id": "feb3580d-412b-4392-814b-e19b0125c210",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "b8c8b139-af87-4439-a677-122ce6820471",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      }
+    ],
+    "counts": {
+      "search_request": 2,
+      "request_alternative": 4,
+      "request_alternative_evidence": 4
+    },
+    "snapshots": {
+      "request_alternative": [
+        [
+          "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+          "feb3580d-412b-4392-814b-e19b0125c210",
+          "00000000-0000-4000-8000-000000000002",
+          2,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"96dd0465-3ff9-419f-a2c4-1396ef34a4ee\", \"alternative_id\": \"00000000-0000-4000-8000-000000000002\", \"position\": 2, \"display_name\": \"Zeta repair (synthetic)\"}"
+        ],
+        [
+          "b8c8b139-af87-4439-a677-122ce6820471",
+          "feb3580d-412b-4392-814b-e19b0125c210",
+          "00000000-0000-4000-8000-000000000001",
+          1,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"b8c8b139-af87-4439-a677-122ce6820471\", \"alternative_id\": \"00000000-0000-4000-8000-000000000001\", \"position\": 1, \"display_name\": \"Alpha repair (synthetic)\"}"
+        ],
+        [
+          "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+          "46f5658c-b999-4b73-b494-350724d3c903",
+          "00000000-0000-4000-8000-000000000001",
+          1,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000001\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"bdf8401f-7526-4ce6-8488-a2537a5e1216\", \"alternative_id\": \"00000000-0000-4000-8000-000000000001\", \"position\": 1, \"display_name\": \"Alpha repair (synthetic)\"}"
+        ],
+        [
+          "be1c3c60-773a-4c80-be04-b91eeec1545d",
+          "46f5658c-b999-4b73-b494-350724d3c903",
+          "00000000-0000-4000-8000-000000000002",
+          2,
+          "{\"description\": \"Synthetic bicycle repair service; not a real provider.\", \"explanation\": \"Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.\", \"claims\": [{\"claim\": \"relevance\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": \"bicycle\"}, {\"claim\": \"action:repair\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"no_replacement\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"applicability\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"satisfied\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": true}, {\"claim\": \"financial\", \"support\": \"supported\", \"freshness\": \"fresh\", \"requirement\": \"not_applicable\", \"attribution\": [\"provider-stated\"], \"checked_at\": [\"2026-10-15T10:00:00+00:00\"], \"independent_verification\": false, \"evidence_version_ids\": [\"30000000-0000-4000-8000-000000000002\"], \"value\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}], \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\", \"status\": \"supported\", \"total_cost\": null, \"difference\": null, \"baseline\": null, \"baseline_provenance\": null}, \"environmental\": {\"status\": \"unknown\", \"explanation\": \"No supported environmental/resource information.\"}, \"availability\": {\"status\": \"unknown\", \"value\": null}, \"evidence\": [{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}], \"geographic_scope\": {\"country_code\": \"CH\"}, \"rendering\": {\"language\": \"en\", \"version\": \"synthetic-reviewed-rendering-v1\", \"review_basis\": \"synthetic test fixture, not qualified linguistic review\"}, \"limitations\": [\"Synthetic fixtures only; no verified provider, saving or environmental advantage.\", \"Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation.\"], \"synthetic\": true, \"option_id\": \"be1c3c60-773a-4c80-be04-b91eeec1545d\", \"alternative_id\": \"00000000-0000-4000-8000-000000000002\", \"position\": 2, \"display_name\": \"Zeta repair (synthetic)\"}"
+        ]
+      ],
+      "request_alternative_evidence": [
+        [
+          "96dd0465-3ff9-419f-a2c4-1396ef34a4ee",
+          "30000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "b8c8b139-af87-4439-a677-122ce6820471",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "bdf8401f-7526-4ce6-8488-a2537a5e1216",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "be1c3c60-773a-4c80-be04-b91eeec1545d",
+          "30000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "evidence": [
+        [
+          "30000000-0000-4000-8000-000000000001",
+          "00000000-0000-4000-8000-000000000001",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ],
+        [
+          "30000000-0000-4000-8000-000000000002",
+          "00000000-0000-4000-8000-000000000002",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ],
+        [
+          "30000000-0000-4000-8000-000000000120",
+          "00000000-0000-4000-8000-000000000120",
+          "{\"version_id\": \"30000000-0000-4000-8000-000000000120\", \"publisher\": \"Synthetic hourly provider\", \"source_reference\": \"https://synthetic.example.invalid/hourly-repair-v1\", \"source_language\": \"de\", \"supporting_quote\": \"Synthetische Reparatur ohne Ersatz in CH; CHF 120.00 pro Arbeitsstunde. Kosten und Verf\\u00fcgbarkeit unklar.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"120.00\", \"currency\": \"CHF\", \"unit\": \"workshop labour hour\", \"period\": \"once\", \"basis\": \"hourly repair rate; not a complete repair quote\", \"charges_known\": false, \"exclusions\": [], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+        ]
+      ]
+    }
+  },
+  "acknowledgement": {
+    "outcome": "submission_recovered",
+    "persistence": {
+      "state": "saved",
+      "request_id": "feb3580d-412b-4392-814b-e19b0125c210"
+    },
+    "assessed_at": "2026-10-15T10:00:00+00:00",
+    "saved_outcome": "comparison"
+  },
+  "requests": 2,
+  "same_key_payload_and_proof": true,
+  "fault": "Real API 201 verified in SQLite, then browser delivery aborted before presentation",
+  "no_automatic_retry_observed_ms": 300,
+  "fresh_action_sends_request": false
+}

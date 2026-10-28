@@ -1,0 +1,14 @@
+{
+  "status": "pending",
+  "freeze_sha256": null,
+  "expected_meanings_approved": false,
+  "reviewers": [],
+  "required_languages": [
+    "de",
+    "fr",
+    "it",
+    "en"
+  ],
+  "dialect_review_if_claimed": true,
+  "note": "Do not mark reviewed based on AI generation. Each reviewer needs name/role, competent languages, date, artifact hash and corrections."
+}

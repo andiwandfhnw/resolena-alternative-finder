@@ -1,0 +1,35 @@
+{
+  "recorded_date": "2026-10-16",
+  "scope": "separate adapter identity diagnostic preparation only",
+  "confirmed_branch": "multiple WDDM instances; two distinct LUIDs, both phys_0; one matching CIM RX 6800 XT and present Int64 registry capacity",
+  "owner_report": "build/uc001-contract-preparation/adapter-identity/owner-supplied-cim-wddm.json",
+  "association_status": "unproven; no LUID selected from order or usage",
+  "diagnostic": "build/uc001-contract-preparation/adapter-identity/Diagnose-DxgiWddmIdentity.ps1",
+  "reuse": "original helper descriptor/delegate/release/unsigned LUID format; DXGI 1.1 EnumAdapters1/GetDesc1 adds raw PCI/ACPI IDs and software flags",
+  "effects": "Add-Type C# compilation and native dxgi.dll/COM calls required on Windows; Windows PowerShell 5.1 compiler may create temporary source/assembly/compiler files in TEMP. No installation, explicit output assembly or launcher/preflight initialization. Compiler cleanup not verified on desktop.",
+  "offline_checks": {
+    "command": "pwsh -NoProfile -NonInteractive -File build/uc001-contract-preparation/adapter-identity/offline-check.ps1",
+    "result": "passed",
+    "coverage": [
+      "PowerShell AST and C# compilation",
+      "x64 descriptor size312/flags offset304/LUID offset296",
+      "unsigned high/low LUID formatting",
+      "hardware/software flags; exact names; zero/nonzero values retained",
+      "missing/duplicate adapter identities and counters; name lookalikes and unmatched phys_1",
+      "missing/null usage; global DXGI/WDDM failure and partial per-adapter failure"
+    ],
+    "native_reader_invoked": false,
+    "Windows_queries_executed": false,
+    "Windows_PowerShell_51_execution_verified": false,
+    "SDK_method_slots": "Microsoft SDK header confirms EnumAdapters1 slot12 and GetDesc1 slot10"
+  },
+  "frozen_bundle_and_original_zip_unchanged": true,
+  "asset_hashes_repeated": false,
+  "guard_or_threshold_changes": false,
+  "installation_driver_settings_transport_inference_heldout_access": false,
+  "actual_Windows_DXGI_output": "pending",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "next_windows_command": "powershell.exe -NoProfile -File C:\\ResolenaExperiments\\diagnostics\\Diagnose-DxgiWddmIdentity.ps1"
+}

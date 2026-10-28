@@ -1,0 +1,15 @@
+{
+  "execution_authorized": false,
+  "owner": "Project owner; inactive draft pending separate execution approval",
+  "root": "C:\\Resolena\\gn1-20261025",
+  "proxy_helper": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3\\proxy.py",
+  "prior_receipt": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3\\prior-budget.json",
+  "prior_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+  "frozen_config": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3\\frozen-config.json",
+  "helper_hashes": {
+    "controller.py": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+    "worker.py": "7e2660e10139862c7d5542e40c5e4ad0739eea917ee97de59be3671327b8daf5",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22"
+  }
+}

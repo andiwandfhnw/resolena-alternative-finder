@@ -1,0 +1,17 @@
+{
+  "version": "uc001-combined-ownership-1",
+  "purpose": "model_free_combined_reproduction_and_safe_observed_cleanup",
+  "role_policy": "unchanged pending actual Windows branch evidence",
+  "model_startup_authorized": false,
+  "files": {
+    "Check-CombinedOwnership.ps1": "fea0a30afa3b0f7b9c01c54b161259040362572f1a3e025bce44fdf851cadd30",
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "Python-Ownership.ps1": "43a3f7f3f2610e2dc58419a179b18d0b75404dad11afbb1d9837284e1219310f",
+    "PythonOwnership.cs": "92bc642f6145049a68601179f689f8a5b8e38179dfe4451adaaad0a75d7bc8d9",
+    "README.md": "064ac2d4da0a891e64a443a5e0a7dfdbf272b35c9985b9f65d25a381ea805fe0",
+    "harness_checks.py": "e4078c8dda253bedcc4d2d88f398a62370d4ec419bbdbb066e5ff08f18ddab2c",
+    "idle.py": "f878bc968332e1cdadae049ba1ccc14dbb949844a6194c6638438262319d01ed",
+    "../uc001_execution_v1_3_0/Common.ps1": "dacf4d2767851554d0ea5db9ba1938583357970da285f67fd94fd328cae30cac",
+    "../uc001_execution_v1_3_0/ProcessTools.cs": "8f017969cc24d29228bdebdbd3cac7931b748ad99483bc95177371f86dd49829"
+  }
+}

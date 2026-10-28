@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-16",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Diagnose only the stopped v1.1.0 capacity comparison; no package or guard changes",
+  "attempts": [
+    {
+      "id": "earlier-incomplete-extraction",
+      "source": "Owner reference in current request",
+      "outcome": "incomplete-extraction failure",
+      "raw_transcript": null,
+      "note": "No transcript/details or exact execution timestamp supplied or found in the inspected local records; retained as a distinct referenced attempt, not reconstructed"
+    },
+    {
+      "id": "v1.1.0-capacity-disagreement",
+      "source": "Owner-reported current request",
+      "outcome": "stopped at DXGI/registry capacity disagreement",
+      "code_message": "DXGI capacity and active-device registry capacity disagree.",
+      "raw_transcript": null,
+      "raw_capacity_values": null,
+      "exact_execution_time": null,
+      "inference": "None performed; no claim that WDDM lookup/resource acceptance ran. Code puts equality before those operations."
+    }
+  ],
+  "findings": {
+    "comparison": "Common.ps1 Get-ReadOnlyContractAdapter compares exact Int64-normalized DXGI DedicatedBytes and registry capacity; positive integral data only; no rounding",
+    "field": "AdapterIdentity.cs Reader.Describe maps DXGI_ADAPTER_DESC1 DedicatedVideoMemory through Desc1.DedicatedVideo (UIntPtr) to DedicatedBytes (UInt64) using ToUInt64()",
+    "layout": "Compile-only x64 Marshal checks: size 312; Vendor 256, Device 260, Subsystem 264, Revision 268, DedicatedVideo 272, DedicatedSystem 280, SharedSystem 288, Id 296, Flags 304; consistent with documented field order/type sizes/alignment",
+    "conversion": "Pure synthetic mapping preserves UInt64.MaxValue without truncation; existing guard intentionally rejects values above Int64.MaxValue rather than wrapping",
+    "mapping": "Current code follows CIM PNPDeviceID -> Enum device Driver value -> Control/Class device driver key, not an arbitrary numbered class key; actual fresh path/value still required",
+    "equality_justification": "Exact equality is a harness assumption introduced in v1.1.0. No requirement for equality to HardwareInformation.qwMemorySize found in the primary documentation checked. The hardware-registration page documents different HardwareInformation.MemorySize (ULONG in megabytes), not qwMemorySize. Absence in checked documents is not a universal claim that no documentation exists.",
+    "registry_boundary": "Microsoft documents device-specific driver-key properties and cautions that direct Enum layout access is not a supported application interface. This diagnosis retains the existing mapping to expose its actual inputs; it does not redesign it.",
+    "cause": "Unresolved; no reserved-memory explanation, tolerance, capacity source choice or threshold change is inferred"
+  },
+  "primary_sources": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/dxgi/ns-dxgi-dxgi_adapter_desc1",
+    "https://learn.microsoft.com/en-us/cpp/build/x64-software-conventions?view=msvc-170",
+    "https://learn.microsoft.com/en-us/windows/win32/winprog/windows-data-types",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/install/devpkey-device-driver",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/display/registering-hardware-information",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/install/hklm-system-currentcontrolset-enum-registry-tree"
+  ],
+  "diagnostic": {
+    "path": "build/uc001-preflight-association-v1_1_0/capacity-disagreement/Diagnose-Capacity.ps1",
+    "uses": "Already-extracted v1.1.0 AdapterIdentity.cs only; no Common.ps1, equality guard, resource acceptance or launcher",
+    "output": "CIM identity and PNP path, registry Driver/path and raw type/value, fresh complete DXGI scan and unique matching hardware descriptor/PCI/LUID, raw UInt64 dedicated bytes, exact decimal byte strings and BigInteger DXGI-minus-registry difference",
+    "failure_states": "Missing, ambiguous, unavailable, invalid and query-failed states remain explicit; absent data never becomes zero; registry/native failures reported independently after CIM identity",
+    "native_effects": "Loads System.Numerics; Add-Type compiles/loads existing AdapterIdentity.cs if not already loaded. Windows may create temporary source/assembly/compiler files under TEMP; no explicit output DLL or automatic installation. Reader calls CreateDXGIFactory1 (dxgi.dll), EnumAdapters1, GetDesc1 and COM release; no device/model created. Fresh Reader.Read() each invocation.",
+    "windows_execution": "Not performed; owner-run diagnostic output pending"
+  },
+  "checks": [
+    {
+      "command": "pwsh -NoProfile -NonInteractive -File build/uc001-preflight-association-v1_1_0/capacity-disagreement/offline-check.ps1",
+      "red": "Capacity diagnostic is absent (RED).",
+      "green": "PASS 20 synthetic cases; x64 layout and unsigned conversion; no native reader called",
+      "boundary": "Existing Codespace PowerShell and C# compiler only; no Windows CIM/registry/native calls. Does not verify actual Windows PowerShell 5.1 compilation or current hardware data."
+    },
+    {
+      "check": "Original protected-file hashes",
+      "result": "All 30 unchanged"
+    },
+    {
+      "check": "v1.1.0 frozen source and ZIP",
+      "result": "All frozen hashes and archived bytes match; no new version or repackaging"
+    },
+    {
+      "check": "Prior verification records",
+      "result": "Preserved; this separate record adds current owner-reported stop without revising earlier evidence"
+    }
+  ],
+  "unchanged_v1_1_0_zip_sha256": "a5e89b340156d7db9de9cffa6d72dab0ef35b91f257e9f05525ea4765eaf1f03",
+  "unchanged_v1_1_0_freeze_sha256": "9b910db4b71e6ee1c7768223ab4a3d9331c411d3f218eb7a710c81e88c57ed5a",
+  "retained_small_evidence_hashes": {
+    "build/uc001-preflight-association-v1_1_0/baseline.json": "3cc6e54591d87d32d9ca83e0f973a2934f5c864e8f7b82c28aa446a4b9d4c975",
+    "build/uc001-preflight-association-v1_1_0/verification.json": "497dedccb63fa4cc5cc61f2e9d5fe1d7d5b817542cafffde2a5805149b0cb67b",
+    "build/uc001-preflight-association-v1_1_0/SHA256SUMS.txt": "16ed4992580cdcd973fe27296aa332f42d5bc694c97b46144989e0049a5e538e"
+  },
+  "diagnostic_hashes": {
+    "Diagnose-Capacity.ps1": "b9b0f996316a1caafba424039004af6dc626c193c7c2ce8cc7854843aaa7a7ab",
+    "offline-check.ps1": "26d0132e28e4050e22620b269e18848c607150ca8144f69f3c2faac281616ff3"
+  },
+  "changed_files": [
+    "docs/TASKS.md",
+    "build/uc001-preflight-association-v1_1_0/capacity-disagreement/Diagnose-Capacity.ps1",
+    "build/uc001-preflight-association-v1_1_0/capacity-disagreement/offline-check.ps1",
+    "build/uc001-preflight-association-v1_1_0/capacity-disagreement/verification.json"
+  ],
+  "not_performed": [
+    "Windows diagnostic/native reader execution",
+    "Model/runtime asset hashing",
+    "Downloads/installations",
+    "Transport/tunnel",
+    "Inference/model/detector execution",
+    "Held-out access",
+    "Guard/threshold/source/tolerance changes",
+    "New package version",
+    "Git delivery"
+  ]
+}

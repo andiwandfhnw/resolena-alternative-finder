@@ -1,0 +1,27 @@
+{
+  "runner_version": "1.0.2",
+  "status": "preparing",
+  "started_utc": "2026-10-15T17:41:37.510502+00:00",
+  "deadline_utc": "2026-10-15T18:11:37.510502+00:00",
+  "started_owner_time": "2026-10-15T19:41:37.510502+02:00",
+  "deadline_owner_time": "2026-10-15T20:11:37.510502+02:00",
+  "started_monotonic": 1875.674808245,
+  "deadline_monotonic": 3675.674808245,
+  "deadline_wall_unix": 1792087897.5105112,
+  "authorization": "One owner-approved attempt after offline checks and resource preflight; no downloads, retries, tuning or fallback. Preparation counts within deadline.",
+  "run_dir": "/workspaces/resolena-alternative-finder/build/lingua-b-v1-0-2-20261015",
+  "limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "boot_id": "980e7292-20b2-4db7-a0d7-ae34d0ee6bdc",
+  "freeze_sha256": "627ce075a72bdd7e719d977a909155b2317b493ad2778e79f208997663276f19",
+  "original_freeze_sha256": "20c23e875547f114d57298c60b6c1e6fa8ee304bfd3347298228e9e815661194",
+  "new_acquisition_permitted_bytes": 0,
+  "retained_wheel_dir": "/workspaces/resolena-alternative-finder/build/lingua-b-20261015"
+}

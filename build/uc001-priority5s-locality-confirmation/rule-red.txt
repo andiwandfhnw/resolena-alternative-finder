@@ -1,0 +1,15 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_______ test_country_and_intended_locality_require_independent_coverage ________
+
+    def test_country_and_intended_locality_require_independent_coverage():
+        assert not assess(location={"country_code": "DE"}).qualified
+>       assert not assess(location={"country_code": "CH", "town": "Intended synthetic town"}).qualified
+E       AssertionError: assert not True
+E        +  where True = Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000002', display_name='Zeta repair (sy...c_scope': {'country_code': 'CH'}}, evidence_version_ids=('30000000-0000-4000-8000-000000000002',), limitation_codes=()).qualified
+E        +    where Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000002', display_name='Zeta repair (sy...c_scope': {'country_code': 'CH'}}, evidence_version_ids=('30000000-0000-4000-8000-000000000002',), limitation_codes=()) = assess(location={'country_code': 'CH', 'town': 'Intended synthetic town'})
+
+tests/unit/test_qualification.py:96: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_qualification.py::test_country_and_intended_locality_require_independent_coverage
+1 failed, 1 passed, 42 deselected in 0.82s

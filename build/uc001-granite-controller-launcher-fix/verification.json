@@ -1,0 +1,124 @@
+{
+  "recorded_on": "2026-10-25",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Bounded harmless ownership self-test launcher/interpreter correction only",
+  "owner_observations": "owner-confirmed-observations.json; extracted supplied values, not reconstructed raw failed-attempt result",
+  "failed_windows_attempt_preserved": "Owner retained desktop path unchanged; no remote writes or retry performed. Exact old controller/helper/test/template bytes snapshotted before editing.",
+  "another_windows_attempt_authorized": false,
+  "windows_native_execution_by_codex": false,
+  "acquisition_build_gpu_model_actions": false,
+  "dependencies_added": [],
+  "corrected_model": {
+    "owned_identities": 6,
+    "unrelated_identities": 2,
+    "controller_separate": true,
+    "required_identity": "native retained PID + creation FILETIME + parent + Job membership",
+    "owned_job_active_and_lifetime_count": 6,
+    "owned_cleanup": "active0, lifetime6, all6 identity-bound exits",
+    "outside_cleanup": "both verified retained handles signalled; no inference from launcher exit",
+    "selftest_seconds": 20,
+    "atomic_suspended_job_association": "unchanged",
+    "build_memory_metric": "unchanged aggregate committed Job bytes, not RSS"
+  },
+  "final_tests": {
+    "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py tests/unit/test_granite_windows_job.py tests/unit/test_granite_controller_cli.py tests/unit/test_granite_controller_correction_package.py",
+    "result": "94 passed in 4.74s",
+    "pytest_exit_code": 0,
+    "log": "green-final-correction.log",
+    "counts_not_cumulative": true,
+    "native_and_process_calls": "injected except Linux PowerShell package-gate fixtures using harmless marker executable; no actual ownership test"
+  },
+  "red_logs": [
+    "red-agent-final-count-races.log",
+    "red-correction-package.log",
+    "red-native-identities.log",
+    "red-native-total-processes.log",
+    "red-poststop-watchdog.log",
+    "red-split-all.log",
+    "red-split.log"
+  ],
+  "package": {
+    "archive": "/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/uc001-granite-controller-launcher-fix-v1.zip",
+    "bytes": 31769,
+    "sha256": "5efbb4a13d45cbc8e187dcdffe08614f01d8d8d045d0b14a4eec45aca8ac638a",
+    "manifest_sha256": "f072e378ce1da2827edb6aa8e754d66e641f5ce65c8d0cf2279962a4b5203f13",
+    "template_sha256": "c7833fe714979ceb31a1254426827ea7471f00cbe1581f099d87addc3a60c9fc"
+  },
+  "artifacts": {
+    "scripts/uc001_granite_controller/standins.py": {
+      "bytes": 23950,
+      "sha256": "766615ea7d258442f93b31de24f920bd5738db45bad1ee91cd09505fef07be18"
+    },
+    "scripts/uc001_granite_controller/windows_job.py": {
+      "bytes": 35221,
+      "sha256": "0d36c4f73469016cb6a9e1634de840d1d3b689a8b6cf33b67bd046631fb10383"
+    },
+    "tests/unit/test_granite_controller_standins.py": {
+      "bytes": 25657,
+      "sha256": "8291e75338d33dd341678851884545bfbdd9a55208319bf52bf04ddb0070f361"
+    },
+    "tests/unit/test_granite_windows_job.py": {
+      "bytes": 26579,
+      "sha256": "c397145cdd1c7f119475b2a84945d8c53853d3e8a50d9c26676824a82e341238"
+    },
+    "tests/unit/test_granite_controller_correction_package.py": {
+      "bytes": 4145,
+      "sha256": "1a5d2a10a3e7457488eec9597458c1baf786875bae710d6ee505420379c23068"
+    },
+    "build/uc001-granite-controller-launcher-fix/build_package.py": {
+      "bytes": 1978,
+      "sha256": "c68cc4ec3ded7e7ea5512ffd5ba5e79105da7ada5922498ebaa018a8425c2ac4"
+    },
+    "build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1": {
+      "bytes": 3185,
+      "sha256": "23b6c247c4d778de0da3fb00598dfe8e838631b0e3b9899083de6406cc660f32"
+    },
+    "build/uc001-granite-controller-launcher-fix/package-readme.md": {
+      "bytes": 1383,
+      "sha256": "09d5fb50c29f3aaf2b12a60a5ae036202c56a4432b7b1d7dc86fbcca40dcb74d"
+    },
+    "build/uc001-granite-controller-launcher-fix/owner-confirmed-observations.json": {
+      "bytes": 1573,
+      "sha256": "389121080efdd68a9c8a5fe361781e456ade01a85079b9d2738d9778faaa7e3f"
+    },
+    "build/uc001-granite-controller-launcher-fix/uc001-granite-controller-launcher-fix-v1.zip": {
+      "bytes": 31769,
+      "sha256": "5efbb4a13d45cbc8e187dcdffe08614f01d8d8d045d0b14a4eec45aca8ac638a"
+    }
+  },
+  "evidence_limits": [
+    "Windows-native correction remains unverified; no new Windows attempt authorized.",
+    "Post-failure template/helper matches are current owner reports, not retroactive failed-run integrity.",
+    "Scoped outside child-edge snapshots do not establish complete historical process trace.",
+    "Intermediate green-poststop-watchdog.log overwritten by later28-test run after earlier82-test run; earlier summary tooltranscriptonly, no raw log reconstruction. Final94-test log separate.",
+    "General acquisition/build launcher integration is outside this correction and not qualified."
+  ],
+  "preservation": {
+    "original_protected_files_unchanged": 832,
+    "previous_accepted_artifacts_unchanged_except_authorized_source_tests": 148,
+    "authorized_changed_paths": [
+      "scripts/uc001_granite_controller/standins.py",
+      "scripts/uc001_granite_controller/windows_job.py",
+      "tests/unit/test_granite_controller_standins.py",
+      "tests/unit/test_granite_windows_job.py"
+    ],
+    "before_snapshots_verified": 7,
+    "old_receipts_proxy_native_procedure_frozen_archives": "unchanged",
+    "original_template_5b6a_unchanged": true,
+    "history_priority5": "unchanged",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index": "unchanged",
+    "existing_git_status": "unchanged",
+    "git_diff_check_exit": 2,
+    "git_diff_check_output": "docs/TASKS.md:2678: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "checks": {
+    "python_syntax_new_source_tests": "passed",
+    "package_contents_manifest_hashes": "passed",
+    "helper_bytes_match_source": "passed",
+    "documentation_checks": "passed: local links/fences/new whitespace",
+    "powershell_syntax": "runner plus one future owner command block parsed; no command executed"
+  }
+}

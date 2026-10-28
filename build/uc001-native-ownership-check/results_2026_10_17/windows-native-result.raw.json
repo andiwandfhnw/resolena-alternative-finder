@@ -1,0 +1,45 @@
+{
+    "version":  "uc001-native-ownership-check-1",
+    "outcome":  "native_ownership_cleanup_passed",
+    "worker_identity":  {
+                            "Id":  48196,
+                            "Started":  "\/Date(1792248821935)\/"
+                        },
+    "native_result":  {
+                          "outcome":  "native_ownership_cleanup_passed",
+                          "expected_abort_exercised":  true,
+                          "identity":  {
+                                           "Id":  38000,
+                                           "Started":  "\/Date(1792248822473)\/"
+                                       },
+                          "cleanup":  {
+                                          "owned_job_closed":  true,
+                                          "owned_exits":  [
+                                                              {
+                                                                  "exit_confirmed":  true,
+                                                                  "pid":  38000
+                                                              }
+                                                          ],
+                                          "retained_assets_preserved":  true,
+                                          "errors":  [
+
+                                                     ],
+                                          "owned_job_created":  true
+                                      },
+                          "errors":  [
+
+                                     ],
+                          "elapsed_ms":  256,
+                          "owned_gpu_counter_verified":  false,
+                          "model_allocation_verified":  false
+                      },
+    "errors":  [
+
+               ],
+    "elapsed_ms":  919,
+    "deadline_ms":  60000,
+    "result_directory":  "C:\\ResolenaExperiments\\uc001-native-ownership-check\\results\\1256f8b0-0b89-47f6-bf1e-f742e9a427da",
+    "owned_gpu_counter_verified":  false,
+    "model_allocation_verified":  false,
+    "model_attempt_ledger_touched":  false
+}

@@ -1,0 +1,6 @@
+{
+    "allowed":  true,
+    "approved_freeze_sha256":  "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+    "recorded_utc":  "2026-10-14T20:06:18.9839954Z",
+    "scope":  "One v2.0.1 run; at most 18 requests within 1800 seconds; existing artifacts and resource/stop gates; no downloads, retries or automatic fallback."
+}

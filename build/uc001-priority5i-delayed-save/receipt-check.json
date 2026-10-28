@@ -1,0 +1,10 @@
+{
+  "receipt_and_referenced_artifacts_valid": true,
+  "six_task_file_hashes_match_receipt": true,
+  "original_5H_receipt_hash_unchanged": true,
+  "TASKS_receipt_link_valid": true,
+  "gate_identity_commit_and_row_counts_consistent": true,
+  "no_trace_or_HAR_artifacts": true,
+  "phase": 3,
+  "status": "in-progress"
+}

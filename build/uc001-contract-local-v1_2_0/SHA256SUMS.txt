@@ -1,0 +1,4 @@
+ddaa1794271611310f08d019dad10aee1047dbc7788785d1741a5523d8da5e4a  build/uc001-contract-local-v1_2_0/model-free-harness-correction.zip
+4eb2462af2d93fe0722877f4ce0a55d47d0a83184a871354e545db4d9822e547  scripts/uc001_contract_local_v1_2_0/freeze.json
+adfaeb06f55be539b6cd1ec4ddd2281157f09120d2674e011d06e72f324602e6  build/uc001-contract-local-v1_2_0/owner-reported-failure.json
+bc8457022de4da4c2a88ac118846c99b1c3404491643790ebc6819358276887b  build/uc001-contract-local-v1_2_0/verification.json

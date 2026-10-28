@@ -1,0 +1,401 @@
+{
+  "version": "uc001-granite-contract-preparation-v1",
+  "recorded_date": "2026-10-25",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Implemented separate provisional Granite adapter and froze one non-inference application-contract assessment package for owner review.",
+  "candidate_suitable_interpreter_accepted": false,
+  "native_model_generations": 0,
+  "model_startups": 0,
+  "candidate": {
+    "repository": "ibm-granite/granite-3.3-8b-instruct-GGUF",
+    "revision": "e40e9dd739c7be00fa965c16ce167088190ce114",
+    "artifact": "granite-3.3-8b-instruct-Q8_0.gguf",
+    "expected_bytes": 8684264992,
+    "expected_sha256": "8ced2b014c6b5d4b1be698fd2cb5b051b08ce0b439d2584eb358e0d3f0a00611",
+    "provenance": "Publisher IBM GGUF conversion; upstream conversion revision not established.",
+    "upstream_conversion_revision": null,
+    "license": "Apache-2.0",
+    "expected_template_sha256": "8a58e18acd9ca00a43a285fe6ba3760efbda06b5ab7fb57875bfacd72957ed5e",
+    "artifact_header_tokenizer_template_verified": false
+  },
+  "runtime": {
+    "repository": "ggml-org/llama.cpp",
+    "version": "v0.7.0",
+    "revision": "620d2225cc436ab0b001e3200e590e3b286ef9ab",
+    "platform": "Windows x64",
+    "backend": "Vulkan on recorded owner desktop, not verified",
+    "license": "MIT",
+    "source_archive_sha256": null,
+    "executable_sha256": null,
+    "build_options": {
+      "GGML_VULKAN": "ON",
+      "LLAMA_BUILD_SERVER": "ON",
+      "LLAMA_BUILD_TOOLS": "ON",
+      "LLAMA_BUILD_COMMON": "ON",
+      "LLAMA_BUILD_IS_DEV": "OFF",
+      "LLAMA_BUILD_TESTS": "OFF",
+      "LLAMA_BUILD_EXAMPLES": "OFF",
+      "LLAMA_BUILD_APP": "OFF",
+      "LLAMA_BUILD_UI": "OFF",
+      "LLAMA_USE_PREBUILT_UI": "OFF",
+      "LLAMA_OPENSSL": "OFF",
+      "LLAMA_SUBPROCESS": "OFF",
+      "LLAMA_LLGUIDANCE": "OFF",
+      "FETCHCONTENT_FULLY_DISCONNECTED": "ON",
+      "LLAMA_BUILD_COMMIT": "620d2225cc436ab0b001e3200e590e3b286ef9ab",
+      "LLAMA_BUILD_NUMBER": "0"
+    }
+  },
+  "changes": {
+    "existing_files": [
+      "docs/TASKS.md"
+    ],
+    "new_implementation_tests_and_package_files": [
+      "src/app/infrastructure/granite_interpreter.py",
+      "tests/integration/test_granite_contract_adapter.py",
+      "tests/unit/test_granite_package.py",
+      "scripts/uc001_granite_contract_v1/README.md",
+      "scripts/uc001_granite_contract_v1/approval-template.json",
+      "scripts/uc001_granite_contract_v1/assess.py",
+      "scripts/uc001_granite_contract_v1/cases.json",
+      "scripts/uc001_granite_contract_v1/config.json",
+      "scripts/uc001_granite_contract_v1/freeze.json",
+      "scripts/uc001_granite_contract_v1/native-inspection/CMakeLists.txt",
+      "scripts/uc001_granite_contract_v1/native-inspection/inspect-schema.cpp",
+      "scripts/uc001_granite_contract_v1/package.py",
+      "scripts/uc001_granite_contract_v1/prompt.txt",
+      "scripts/uc001_granite_contract_v1/review-template.json",
+      "scripts/uc001_granite_contract_v1/schema-audit.md",
+      "scripts/uc001_granite_contract_v1/schema.json",
+      "scripts/uc001_granite_contract_v1/system-prompt.txt",
+      "scripts/uc001_granite_contract_v1/validation-dependencies.json",
+      "scripts/uc001_granite_contract_v1/wire-schema.json"
+    ],
+    "new_evidence_directory": "build/uc001-granite-contract-v1"
+  },
+  "implementation": [
+    "Unchanged interpreter port/domain/application policy and old Qwen adapter. New explicit Granite version, native apply-template/tokenize/completion route, strict unchanged raw decoding and quotation occurrence mapping.",
+    "Authenticated explicit 127.0.0.1 endpoint, no environment proxies/redirect/retry/external fallback; bounded response and whole-operation deadline. Full output reserve; exact expected template compared, not claimed actually verified.",
+    "Checks native EOS/completeness/truncation, effective settings including zero dynamic range, model identity, full prompt/output accounting. Finite schema inlining rejects unaccounted validation loss; no unrestricted JSON/grammar override.",
+    "Frozen future owner-gated client: ordered once-per-case reservations, closed failure ledger, no automatic continuation; separate competent review bound to exact raw packet hashes. Owner attestations do not prove reviewer competence or process supervision.",
+    "g04-en application observation is a planned captured-result API/SQLite replay with zero extra generations; no second live interpreter claim. Shared/mixed policy replays do not add model calls."
+  ],
+  "tdd": {
+    "genuine_red": [
+      "adapter-red.txt",
+      "adapter-audit-red.txt",
+      "package-red.txt",
+      "assessment-gate-red.txt",
+      "package-metadata-red.txt",
+      "greedy-setting-red.txt"
+    ],
+    "final_green": {
+      "command_log": "offline-refined-final.txt",
+      "passed": 43,
+      "warnings": 1,
+      "warning": "Existing Starlette/httpx deprecation; no dependency change."
+    },
+    "minimum_existing_regressions": {
+      "command_log": "decoder-policy-regressions.txt",
+      "passed": 7,
+      "deselected": 45,
+      "warnings": 1
+    },
+    "already_correct": "Added timeout/deadline/byte-limit checks passed existing new adapter guards; do not label those as reproduced implementation failures.",
+    "refactor": "Reused strict decoder/domain mapping and existing synthetic composition; centralized frozen request settings; no unrelated refactor.",
+    "test_harness_error": "First assessment-gate GREEN attempt had 9 passed / 1 failed because the test compared a constant deadline with actual monotonic time. Corrected by injecting the test clock; no production fix inferred. Its log path was overwritten by the subsequent successful 10-pass run; original failed output is only in the tool transcript, not reconstructed."
+  },
+  "frozen_package": {
+    "path": "scripts/uc001_granite_contract_v1",
+    "bundle_id": "9a4acb903c834737809b2648c358da9f2d91b116471966fb7b691847a069f4b4",
+    "file_count": 39,
+    "uncompressed_source_bytes": 2525031,
+    "freeze_manifest": "scripts/uc001_granite_contract_v1/freeze.json",
+    "archive": "build/uc001-granite-contract-v1/desktop-transfer.zip",
+    "archive_sha256": "10df90cc82de5ba92891993f3bd372978561c19c9e4f36e8277a635c5df91abd",
+    "archive_bytes": 229509,
+    "archive_created_locally_only": true,
+    "desktop_transfer_performed": false,
+    "current_worktree_import_closure": "handoff-closure.json",
+    "secrets_private_databases_caches_heldout_excluded": true,
+    "system_prompt_bytes": 8655,
+    "system_prompt_sha256": "588785a412a02eece5a671bbc6cb4c928285a1839b782a48b6ee462731919eb3"
+  },
+  "ordered_exposed_case_manifest": [
+    {
+      "order": 1,
+      "id": "g01-de",
+      "text": "Ich möchte mein Fahrrad reparieren, ohne es zu ersetzen.",
+      "input_utf8_bytes": 57,
+      "input_utf8_sha256": "f1222a3b4c47223f1d016d94b52afb9b18c748d596f725cad1619fe9cdc4e890",
+      "criteria": [
+        "AC-15",
+        "LAC-01",
+        "TL-01"
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ]
+    },
+    {
+      "order": 2,
+      "id": "g02-fr",
+      "text": "Je veux réparer mon vélo sans le remplacer.",
+      "input_utf8_bytes": 45,
+      "input_utf8_sha256": "09a1c0a048f4eb8c042934cfe1a9dd2c32fa1256a882766c7e07a3c519c5d84b",
+      "criteria": [
+        "AC-15",
+        "LAC-02",
+        "TL-01"
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ]
+    },
+    {
+      "order": 3,
+      "id": "g03-it",
+      "text": "Vorrei riparare la mia bicicletta senza sostituirla.",
+      "input_utf8_bytes": 52,
+      "input_utf8_sha256": "7c34313ce0ec96099c47089ecd8a4f021b988298163ab977265da131fbc2f31a",
+      "criteria": [
+        "AC-15",
+        "LAC-03",
+        "TL-01"
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ]
+    },
+    {
+      "order": 4,
+      "id": "g04-en",
+      "text": "I want to repair my bicycle without replacing it.",
+      "input_utf8_bytes": 49,
+      "input_utf8_sha256": "b525b1be60e28eaa98c78da63d09be26a10bb2fac3f0dd491ba4002a45521157",
+      "criteria": [
+        "AC-15",
+        "LAC-04",
+        "TL-01",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ]
+    },
+    {
+      "order": 5,
+      "id": "g05-shared",
+      "text": "Velo",
+      "input_utf8_bytes": 4,
+      "input_utf8_sha256": "5d1e437e74a365f9b15ce20130505fd6470219dc43c7b884247dae5627b9a7c0",
+      "criteria": [
+        "AC-15",
+        "LAC-05",
+        "TL-02",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification"
+      ]
+    },
+    {
+      "order": 6,
+      "id": "g06-mixed-primary",
+      "text": "Please repair my bicycle, sans remplacement",
+      "input_utf8_bytes": 43,
+      "input_utf8_sha256": "9898afb3945202f7beec3d86735ce541ebdf97956c1dc290320064ee72377070",
+      "criteria": [
+        "AC-15",
+        "LAC-06",
+        "TL-02"
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ]
+    },
+    {
+      "order": 7,
+      "id": "g07-mixed-balanced",
+      "text": "Fahrrad repair, sans remplacement",
+      "input_utf8_bytes": 33,
+      "input_utf8_sha256": "073c5362e6d2ccb3deac1d4f3a5320fad6386c6d74dda44d7c6a81e973938378",
+      "criteria": [
+        "AC-15",
+        "LAC-06",
+        "TL-02",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ]
+    },
+    {
+      "order": 8,
+      "id": "g08-protected-values",
+      "text": "Réparer le vélo Acme X-2 à Genève, sans le remplacer; budget 49,90 CHF pour une réparation.",
+      "input_utf8_bytes": 96,
+      "input_utf8_sha256": "047bc4a1c979bfe925512cbbc89373433045f35084b7e25bb58416868c665f9d",
+      "criteria": [
+        "AC-15",
+        "LAC-07",
+        "TL-01"
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ]
+    },
+    {
+      "order": 9,
+      "id": "g09-ambiguous-amount",
+      "text": "1,200 CHF",
+      "input_utf8_bytes": 9,
+      "input_utf8_sha256": "b46d0e472ea4f13284514612b609b2296197ff862329d6d5e5308e7df3e4142f",
+      "criteria": [
+        "AC-15",
+        "LAC-08",
+        "TL-01",
+        "TL-02",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "needs_clarification",
+        "understood"
+      ]
+    },
+    {
+      "order": 10,
+      "id": "g10-out-of-scope",
+      "text": "Repara mi hervidor.",
+      "input_utf8_bytes": 19,
+      "input_utf8_sha256": "680313abecc5159c2b57c28409ff4b884d73b1fab32bd9b838adb71e1e686cdb",
+      "criteria": [
+        "AC-15",
+        "LAC-10",
+        "TL-02",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "unsupported"
+      ]
+    },
+    {
+      "order": 11,
+      "id": "g11-unvalidated-dialect",
+      "text": "Velo flicke, nöd neu.",
+      "input_utf8_bytes": 22,
+      "input_utf8_sha256": "6449c4a5ce67c77b37680e41d4b4ffce436d5b33bbf14b707004d9cedbc573f1",
+      "criteria": [
+        "AC-15",
+        "LAC-10",
+        "TL-02",
+        "TL-04"
+      ],
+      "acceptable_meaning_states": [
+        "unsupported",
+        "needs_clarification"
+      ]
+    }
+  ],
+  "case_obligations": "Exact source references, UTF-8 base64/bytes/hashes, complete semantic obligations and acceptable outcomes are in cases.json; no expected packets or case literals enter system-prompt.txt.",
+  "proposed_execution_limits": {
+    "acquisition_seconds": 1800,
+    "acquisition_total_bytes": 10737418240,
+    "build_seconds": 2700,
+    "build_output_bytes": 12884901888,
+    "build_parallelism": 2,
+    "initial_disk_free_bytes": 51539607552,
+    "prestart_disk_free_bytes": 25769803776,
+    "stop_disk_free_below_bytes": 8589934592,
+    "prestart_host_free_bytes": 25769803776,
+    "maximum_build_process_memory_bytes": 25769803776,
+    "maximum_server_rss_bytes": 17179869184,
+    "maximum_client_rss_bytes": 2147483648,
+    "maximum_combined_rss_bytes": 19327352832,
+    "stop_host_free_below_bytes": 4294967296,
+    "prestart_gpu_free_bytes": 12884901888,
+    "stop_gpu_free_below_bytes": 1073741824,
+    "startup_seconds": 180,
+    "per_interpretation_seconds": 120,
+    "assessment_seconds": 1800,
+    "per_case_review_seconds": 120,
+    "maximum_startups": 1,
+    "maximum_total_inferences": 11,
+    "maximum_per_case_inferences": 1,
+    "maximum_capture_bytes": 1073741824,
+    "maximum_http_response_bytes": 262144,
+    "warmups": 0
+  },
+  "limits_status": "Proposed operational safety bounds, not measured fit/product acceptance thresholds. Trustworthy Windows PID/resource/global-deadline supervision is not supplied or verified by the Python client; missing support blocks live execution.",
+  "separate_approval_required": "Owner must separately approve this exact bundle and acquisition/build, current-worktree transfer, trustworthy Windows PID/resource/deadline supervisor/cleanup and desktop prerequisites, named competent review, and at most one startup/eleven ordered generations. Current false templates authorize nothing.",
+  "remaining_prerequisites": [
+    "No weights/source archive/runtime binary acquired. Verify exact selected artifact bytes/hash, GGUF header/tokenizer/embedded template; unknown upstream conversion revision and source/binary hashes remain unknown.",
+    "Pinned source and model-free native inspector are not built/run. Actual converter output/stderr/constraint retention, Windows toolchain/runtime compatibility and actual template/token fit/settings remain unverified.",
+    "Fresh Windows environment, approved Python/dependencies, Git/CMake/Ninja/MSVC/Vulkan SDK/driver and actual resource headroom/usable GPU offload not established. Codespace GPU access not assumed. Missing prerequisites stop, without installation or investigation.",
+    "Trustworthy Windows ownership/resource/global-clock enforcement and cleanup are not supplied or verified by the client. Lack of approved supervision blocks live launch; numeric bounds are proposals, not measurements.",
+    "Named competent source-language/meaning review remains unavailable/pending; structural validity is separate from semantic suitability and qualified linguistic/TL-03 acceptance.",
+    "Future captured-result replay helper remains unexecuted here. Existing mocked-model adapter test did exercise the real in-process API/application/SQLite boundary; it is not a live model demonstration."
+  ],
+  "static_audit_limit": "schema-audit.md records pinned-source inspection only. Source tests support references despite the older guide warning; finite inlining is conservative, not observed native failure. C++ inspector source was neither compiled nor executed. Six PowerShell snippets were parsed without running any block.",
+  "execution_incidents": [
+    "Automatic approval review initially rejected schema-export imports using the earlier selection-only restriction. Latest explicit offline-preparation authorization and no-startup module inspection supported a narrower schema-only export, which succeeded; no unresolved blocker.",
+    "Automatic approval review rejected an optional additional direct captured-replay integration test as outside its interpreted scope. That test was not added or run. Required mocked adapter/API checks passed; future captured replay remains expressly unverified.",
+    "A metadata-writing command used system python3 and failed because FastAPI distribution metadata was absent there; remaining metadata was produced with existing .venv/bin/python. No dependency was installed.",
+    "A final status-set assertion initially included the before snapshot branch header, absent from the after short-only format. Excluding only that header confirmed all prior file entries retained; branch/head/index separately matched. No worktree inconsistency found."
+  ],
+  "commands": "commands.json",
+  "preservation": "preservation-check.json",
+  "boundaries": {
+    "priority5_acceptance_and_ADR007": "unchanged",
+    "priorities3_and4": "partial",
+    "priority6_and_phase4": "pending",
+    "normal_app_main": "unchanged/unconfigured",
+    "real_knowledge_renderings": "inactive",
+    "references": "existing development-only permissions unchanged",
+    "Qwen_feasibility_and_experiments": "closed; no attempt reopened",
+    "downloads_build_services_inference_hardware_probes_transport_changes_new_dependencies_heldout_access": "none",
+    "git_delivery_branch_changes_cleanup_deployment": "none"
+  },
+  "stop": "Preparation finished for owner review only; no suitability acceptance or further task/startup inferred.",
+  "check_results": {
+    "final_focused_offline": "43 passed",
+    "minimum_existing_regressions": "7 passed, 45 deselected",
+    "final_PowerShell_syntax": "6 blocks parsed; none executed",
+    "freeze_verify_and_archive_verify": "passed; 39 current-worktree files",
+    "isolated_import_closure": "passed locally; Windows compatibility not established",
+    "preservation": {
+      "protected_files": 833,
+      "unchanged_protected_files": 832,
+      "authorized_existing_changes": [
+        "docs/TASKS.md"
+      ],
+      "priority5_status_and_all_following_history_unchanged": true,
+      "head_unchanged": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+      "branch_unchanged": "specify/phase-1-uc-001",
+      "index_unchanged": true,
+      "phase": 3,
+      "status": "in-progress",
+      "new_task_links_checked": [
+        "../scripts/uc001_granite_contract_v1/README.md",
+        "../build/uc001-granite-contract-v1/verification.json"
+      ],
+      "json_files_parsed": 10,
+      "readme_server_arguments_match_frozen_config": true,
+      "new_file_whitespace_errors": [],
+      "git_diff_check_exit_code": 2,
+      "git_diff_check": "docs/TASKS.md:2420: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+      "historical_whitespace_warning_preserved": true,
+      "git_status_prior_entries_retained": true,
+      "git_status_comparison_note": "Before used short+branch; after used short. Branch header excluded from file-status comparison; branch identity checked separately.",
+      "git_status_added_entries": [
+        "?? scripts/uc001_granite_contract_v1/"
+      ]
+    }
+  }
+}

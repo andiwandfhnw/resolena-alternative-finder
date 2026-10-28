@@ -1,0 +1,99 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, bounded Priority 4 source-bound rendering only",
+  "phase": 3,
+  "status": "in-progress",
+  "priority_3": "partial",
+  "priority_4": "partial",
+  "changed_files": [
+    "src/app/application/rendering.py",
+    "frontend/src/App.tsx",
+    "docs/knowledge/UC-001-BICYCLE-REPAIR-CH-RENDERINGS.json",
+    "tests/unit/test_reviewed_rendering.py",
+    "tests/integration/test_source_bound_rendering.py",
+    "tests/support/source_bound_rendering.py",
+    "tests/support/demo.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "docs/ARCHITECTURE.md"
+  ],
+  "preserved_packet": {
+    "path": "docs/knowledge/UC-001-BICYCLE-REPAIR-CH-DRAFT.md",
+    "sha256": "a9fc34ac959c47aa911bfe614123ae1e1f297beaeb5ead89dd8ad7472ed0ffe8"
+  },
+  "red": [
+    {
+      "check": "new adapter contract tests",
+      "result": "missing implementation (import error)"
+    },
+    {
+      "check": "unchecked review/content/version/material/condition paths",
+      "result": "5 failed, 1 passed; incorrect 201 comparison responses demonstrated missing enforcement"
+    },
+    {
+      "check": "request-specific requirement labels in rendering binding",
+      "result": "1 failed; subsequently kept qualification labels separate from source meaning"
+    },
+    {
+      "check": "French browser display",
+      "result": "failed: committed translated financial wording not displayed by the original UI"
+    },
+    {
+      "check": "blank or non-text reviewer identity/basis",
+      "result": "4 failed before strict review-metadata enforcement; now rejected as rendering_unavailable"
+    }
+  ],
+  "green": [
+    {
+      "command": ".venv/bin/python -m pytest tests/unit/test_comparison.py tests/unit/test_qualification.py tests/unit/test_language_policy.py tests/unit/test_reviewed_rendering.py tests/integration/test_saved_comparison.py tests/integration/test_language_contract_api.py tests/integration/test_source_bound_rendering.py -q",
+      "passed": 150,
+      "new_rendering_checks": 37
+    },
+    {
+      "command": "npm --prefix frontend run test:e2e -- --output /workspaces/resolena-alternative-finder/build/uc001-priority4-rendering/browser --reporter=list",
+      "passed": 13
+    },
+    {
+      "command": "npm --prefix frontend run lint",
+      "exit_code": 0
+    },
+    {
+      "command": "npm --prefix frontend run build",
+      "exit_code": 0
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_source_bound_rendering.py -q -k \"save_failure or real_packet\"",
+      "passed": 2,
+      "reason": "Confirmed v2 wording affects only a new saved comparison and real packet drafts remain inactive."
+    }
+  ],
+  "warning": "Existing Starlette/httpx test-client deprecation; no dependency changes.",
+  "acceptance_mapping": {
+    "AC-04/05/06/09/12": "Source attribution, immutable evidence/currency/unit/basis/conditions/unknowns preserved; qualifications and current freshness remain domain responsibilities.",
+    "AC-10; LAC-12": "Reviewed content and derivation saved atomically before presentation; missing review and invalid bindings never save a comparison; rollback and immutable snapshot regressions pass.",
+    "AC-15; LAC-09/11/12; TL-03": "Four draft target wordings and isolated synthetic paths only; qualified linguistic semantics and four-source-language matrix remain unverified."
+  },
+  "pending": [
+    "Qualified German-source and DE/FR/IT/EN target review of each complete wording/version.",
+    "Real source admission/current freshness, tariff conditions and branch/bicycle applicability; real candidate qualification.",
+    "Binding of real wordings to a genuinely admitted qualified snapshot before any future activation.",
+    "TL-03 real cross-language semantic matrix and end-to-end acceptance; this slice addresses one scenario only."
+  ],
+  "real_renderings_runtime_use": false,
+  "qualified_linguistic_review": "pending",
+  "semantic_accuracy_verified": false,
+  "normal_app_main": "unconfigured",
+  "fixtures": "synthetic providers/reviews in tests/support only; explicit opt-in",
+  "application_guarantees": "qualification before ordering/limit; authoritative snapshots; atomic save before successful presentation unchanged",
+  "historical_frozen_bundles_and_attempts": "unchanged; no startup allowance reset",
+  "research_model_experiments_heldout_or_delivery": false,
+  "documentation_checks": {
+    "passed": true,
+    "new_local_links_checked": 7,
+    "source_packet_hash_unchanged": true,
+    "four_drafts_pending_inactive": true
+  },
+  "draft_renderings_sha256": "37cd5c008a49cdea33dec9db0f150ba3568c2cd97867b189bb956dfa79c27051",
+  "whitespace_observation": "git diff --check reported trailing whitespace in an untouched historical TASKS.md line (observed line 1375); preserved with existing work."
+}

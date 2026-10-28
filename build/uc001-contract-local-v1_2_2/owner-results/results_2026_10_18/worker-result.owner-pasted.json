@@ -1,0 +1,13 @@
+{
+  "saved_report_compatible": true,
+  "reported_task_default": -1,
+  "request_limit_code": 3072,
+  "cli_execution_verified": false,
+  "cli_evidence": "unavailable_in_saved_receipt",
+  "generation_evidence": "unavailable",
+  "model_readiness_verified": false,
+  "outcome": "model_free_worker_checks_passed",
+  "ownership": "verified_redirector_and_interpreter",
+  "startup_authorized": false,
+  "model_attempt_ledger_touched": false
+}

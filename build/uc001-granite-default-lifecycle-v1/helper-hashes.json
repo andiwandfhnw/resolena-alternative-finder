@@ -1,0 +1,9 @@
+{
+  "scripts/uc001_granite_controller/controller.py": "790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179",
+  "scripts/uc001_granite_controller/worker.py": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+  "scripts/uc001_granite_controller/standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+  "scripts/uc001_granite_controller/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+  "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+  "scripts/uc001_granite_contract_v1/config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+  "build/uc001-granite-prior-accounting-final-v1/prior-budget.json": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a"
+}

@@ -1,0 +1,2 @@
+a5e89b340156d7db9de9cffa6d72dab0ef35b91f257e9f05525ea4765eaf1f03  windows-preflight-association-v1_1_0.zip
+9b910db4b71e6ee1c7768223ab4a3d9331c411d3f218eb7a710c81e88c57ed5a  freeze.json (inside ZIP)

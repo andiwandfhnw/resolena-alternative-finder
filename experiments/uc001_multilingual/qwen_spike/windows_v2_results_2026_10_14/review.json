@@ -1,0 +1,85 @@
+{
+  "reviewed_utc": "2026-10-14T19:14:42.911574+00:00",
+  "classification": "Operational failure before evaluation; not a semantic model result",
+  "original_archive": "build/windows-v2-results-20261014/final-results.zip",
+  "original_archive_sha256": "404b1620056c8cdc023d36d3d164ffcbc9bf5b3caf9d2ddecf2de9335b805d2c",
+  "run_id": "727afaa2-2b48-48e8-b8b5-d01754405e50",
+  "original_freeze_sha256": "00fc5dd00449456bfe5d054110b463f642815f092cfc4cea8a3c1e05d24bbceb",
+  "original_start_utc": "2026-10-14T18:39:27.9483386Z",
+  "original_deadline_utc": "2026-10-14T19:09:27.9483386Z",
+  "observed_evaluation_requests": 0,
+  "planned_requests": 18,
+  "completed_ids": [],
+  "response_files": 0,
+  "logged_generation_task_launches": 0,
+  "prompt_capacity_measured": false,
+  "qualified_language_validation": "pending",
+  "heldout_contents_read": false,
+  "DESIGN": "pending",
+  "failure": {
+    "primary": "The property 'Groups' cannot be found on this object. Verify that the property exists.",
+    "elapsed_seconds_at_primary_failure": 18.5647622,
+    "driver_elapsed_seconds": 20.0707831,
+    "driver_exit_code": 1,
+    "root_cause": "PowerShell variable names are case-insensitive. Successful underlying matches in -notmatch checks replace local $matches via automatic $Matches; foreach then sees a hashtable without Groups. New isolated Windows regression must confirm behaviour locally.",
+    "Linux_PowerShell_reproduction": false
+  },
+  "watchdog": {
+    "recorded_error": "Ownership changed; no unrelated process stopped.",
+    "guard_record_utc": "2026-10-14T18:39:47.9734881Z",
+    "last_sample_utc": "2026-10-14T18:39:46.1851140Z",
+    "server_confirmed_exit_utc": "2026-10-14T18:39:47.3213919Z",
+    "guard_record_after_confirmed_server_exit_seconds": 0.652097,
+    "race_interpretation": "Consistent with shutdown between process lookup and metadata read; failing observed identity/HasExited values were not captured, so not proven. Live mismatches remain fail-closed.",
+    "recorded_watchdog_exit_code": 1
+  },
+  "startup_evidence": {
+    "logged_offloaded_layers": [
+      [
+        37,
+        37
+      ]
+    ],
+    "device": "Vulkan0 / AMD Radeon RX 6800 XT",
+    "model_buffer_MiB": 7669.77,
+    "KV_buffer_MiB": 288.0,
+    "CPU_mapped_model_buffer_MiB": 630.59,
+    "server_context": 2048,
+    "server_listening_logged": true,
+    "harness_readiness_recorded": false,
+    "acceleration_measured": false,
+    "language_capability_measured": false,
+    "request_nonthinking_and_cache_usage_verified": false
+  },
+  "resources": {
+    "samples": 3,
+    "sampled_max_owned_gpu_bytes": 8075534336,
+    "sampled_max_owned_rss_bytes": 7804915712,
+    "resource_threshold_violation_recorded": false,
+    "qualification": "Three startup samples only; guard failure was ownership-related, not a resource threshold."
+  },
+  "closeout": {
+    "server_exit": {
+      "confirmed_exited": true,
+      "utc": "2026-10-14T18:39:47.3213919Z",
+      "planned_owned_shutdown": true,
+      "exit_code": -1
+    },
+    "watchdog_exit": {
+      "status": "guard_stopped",
+      "utc": "2026-10-14T18:39:47.9887458Z",
+      "original_deadline_utc": "2026-10-14T19:09:27.9483386Z",
+      "exit_code": 1
+    },
+    "watchdog_process_exit": {
+      "confirmed_exited": true,
+      "utc": "2026-10-14T18:39:48.0173318Z",
+      "exit_code": 1
+    },
+    "artifacts_preserved_recorded": true,
+    "cleanup_entries_verified": 56,
+    "live_Windows_state_verified": false
+  },
+  "patch_scope": "Separate harness 2.0.1 preparation/offline checks only; no new inference approval",
+  "preserved_entries": 57
+}

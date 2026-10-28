@@ -1,0 +1,552 @@
+[
+  {
+    "id": "S-DE1",
+    "category": "supported_clear",
+    "text": "Ich möchte meine Waschmaschine reparieren lassen, ohne sie zu ersetzen.",
+    "expected_language_candidates": [
+      "de"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Repair washing machine; no replacement.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "de",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "de"
+      ]
+    ],
+    "expected_explanation_language": "de"
+  },
+  {
+    "id": "S-DE2",
+    "category": "supported_clear",
+    "text": "Für meine Winterjacke suche ich eine Reparatur, die höchstens 60 CHF kostet.",
+    "expected_language_candidates": [
+      "de"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Repair winter jacket; budget at most 60 CHF.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "de",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "de"
+      ]
+    ],
+    "expected_explanation_language": "de"
+  },
+  {
+    "id": "S-FR1",
+    "category": "supported_clear",
+    "text": "Je cherche un abonnement internet moins cher sans réduire le débit.",
+    "expected_language_candidates": [
+      "fr"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Cheaper internet subscription; preserve throughput.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "fr",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "fr"
+      ]
+    ],
+    "expected_explanation_language": "fr"
+  },
+  {
+    "id": "S-FR2",
+    "category": "supported_clear",
+    "text": "Je voudrais faire réparer mes chaussures plutôt que les remplacer.",
+    "expected_language_candidates": [
+      "fr"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Repair shoes rather than replace them.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "fr",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "fr"
+      ]
+    ],
+    "expected_explanation_language": "fr"
+  },
+  {
+    "id": "S-IT1",
+    "category": "supported_clear",
+    "text": "Vorrei riparare il mio aspirapolvere senza comprarne uno nuovo.",
+    "expected_language_candidates": [
+      "it"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Repair vacuum; do not purchase new.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "it",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "it"
+      ]
+    ],
+    "expected_explanation_language": "it"
+  },
+  {
+    "id": "S-IT2",
+    "category": "supported_clear",
+    "text": "Cerco un servizio di lavanderia che costi meno di 40 CHF al mese.",
+    "expected_language_candidates": [
+      "it"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Laundry service; less than 40 CHF per month.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "it",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "it"
+      ]
+    ],
+    "expected_explanation_language": "it"
+  },
+  {
+    "id": "S-EN1",
+    "category": "supported_clear",
+    "text": "I want to mend my raincoat without reducing its waterproofing.",
+    "expected_language_candidates": [
+      "en"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Mend raincoat; preserve waterproofing.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "en",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "en"
+      ]
+    ],
+    "expected_explanation_language": "en"
+  },
+  {
+    "id": "S-EN2",
+    "category": "supported_clear",
+    "text": "Compare reusable lunch containers that cost no more than 35 CHF.",
+    "expected_language_candidates": [
+      "en"
+    ],
+    "expected_contract_route": "understood_if_meaning_established",
+    "meaning_reference": "Compare reusable lunch containers; at most 35 CHF.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "en",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "en"
+      ]
+    ],
+    "expected_explanation_language": "en"
+  },
+  {
+    "id": "U-ES",
+    "category": "unsupported_clear",
+    "text": "Quiero reparar mi lavadora sin comprar una nueva.",
+    "expected_language_candidates": [
+      "es"
+    ],
+    "expected_contract_route": "unsupported_limitation_rephrase",
+    "meaning_reference": "Unsupported-language negative control; no interpretation/translation support is required.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "es",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "U-PT",
+    "category": "unsupported_clear",
+    "text": "Quero reduzir os gastos com aquecimento sem perder conforto.",
+    "expected_language_candidates": [
+      "pt"
+    ],
+    "expected_contract_route": "unsupported_limitation_rephrase",
+    "meaning_reference": "Unsupported-language negative control; no interpretation/translation support is required.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "pt",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "U-NL",
+    "category": "unsupported_clear",
+    "text": "Ik wil mijn schoenen laten repareren in plaats van nieuwe te kopen.",
+    "expected_language_candidates": [
+      "nl"
+    ],
+    "expected_contract_route": "unsupported_limitation_rephrase",
+    "meaning_reference": "Unsupported-language negative control; no interpretation/translation support is required.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "nl",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "U-PL",
+    "category": "unsupported_clear",
+    "text": "Chcę naprawić mój telefon bez wymiany urządzenia.",
+    "expected_language_candidates": [
+      "pl"
+    ],
+    "expected_contract_route": "unsupported_limitation_rephrase",
+    "meaning_reference": "Unsupported-language negative control; no interpretation/translation support is required.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "pl",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "A-PORT",
+    "category": "short_shared",
+    "text": "Port",
+    "expected_language_candidates": null,
+    "expected_contract_route": "clarify_meaning",
+    "meaning_reference": "Shared word with materially ambiguous subject sense; no reliable input-language claim.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "clarification",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "A-TAXI",
+    "category": "short_shared",
+    "text": "Taxi",
+    "expected_language_candidates": null,
+    "expected_contract_route": "understood_preference_if_meaning_established",
+    "meaning_reference": "Recognisable transport subject; language unknown; use supported browser preference, not claimed detection.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "it",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        null
+      ]
+    ],
+    "expected_explanation_language": "it"
+  },
+  {
+    "id": "A-NAME",
+    "category": "short_shared",
+    "text": "Acme X-2",
+    "expected_language_candidates": null,
+    "expected_contract_route": "clarify_subject",
+    "meaning_reference": "An identifier alone does not establish a product or input language.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "clarification",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "A-PLACE",
+    "category": "short_shared",
+    "text": "Genève",
+    "expected_language_candidates": null,
+    "expected_contract_route": "clarify_subject",
+    "meaning_reference": "A place name alone does not establish the requested subject or language; keep country independent.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "clarification",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "M-PRIMARY",
+    "category": "mixed_dialect",
+    "text": "Please repair my washing machine, sans remplacement.",
+    "expected_language_candidates": [
+      "en",
+      "fr"
+    ],
+    "expected_contract_route": "understood_mixed_if_every_clause_established",
+    "meaning_reference": "Primary English with French no-replacement constraint; do not drop the minority clause.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "mixed"
+      ]
+    ],
+    "expected_explanation_language": "en",
+    "expected_span_languages": [
+      "en",
+      "fr"
+    ]
+  },
+  {
+    "id": "M-BALANCED",
+    "category": "mixed_dialect",
+    "text": "Schuhe repair, sans remplacement.",
+    "expected_language_candidates": [
+      "de",
+      "en",
+      "fr"
+    ],
+    "expected_contract_route": "understood_mixed_preference_if_every_clause_established",
+    "meaning_reference": "Balanced supported mixture; repair shoes with no replacement, only if meaning established.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": "it",
+    "browser_language": "fr",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        "mixed"
+      ]
+    ],
+    "expected_explanation_language": "it",
+    "expected_span_languages": [
+      "de",
+      "en",
+      "fr"
+    ]
+  },
+  {
+    "id": "M-UNRESOLVED",
+    "category": "mixed_dialect",
+    "text": "Please mend my raincoat, sin perder la impermeabilidad.",
+    "expected_language_candidates": [
+      "en",
+      "es"
+    ],
+    "expected_contract_route": "clarify_or_capability_rephrase",
+    "meaning_reference": "Material Spanish clause must not be ignored or assumed understood; no understood route certified.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "clarification",
+        "en"
+      ],
+      [
+        "clarification",
+        null
+      ],
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true,
+    "expected_span_languages": [
+      "en",
+      "es"
+    ]
+  },
+  {
+    "id": "M-DIALECT",
+    "category": "mixed_dialect",
+    "text": "Ich wett mini Schueh flicke, aber nöd neu chaufe.",
+    "expected_language_candidates": null,
+    "expected_contract_route": "unsupported_dialect_limitation_rephrase",
+    "meaning_reference": "Unvalidated Swiss-German negation; a de hypothesis cannot certify standard-German capability.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  },
+  {
+    "id": "P-COUNTRY-CH",
+    "category": "preference_country_uncertainty",
+    "text": "Velo",
+    "expected_language_candidates": null,
+    "expected_contract_route": "understood_existing_preference_if_meaning_established",
+    "meaning_reference": "Recognisable bicycle subject; existing French preference precedes German browser language.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": "fr",
+    "browser_language": "de",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        null
+      ]
+    ],
+    "expected_explanation_language": "fr",
+    "matched_counterfactual": "P-COUNTRY-DE"
+  },
+  {
+    "id": "P-COUNTRY-DE",
+    "category": "preference_country_uncertainty",
+    "text": "Velo",
+    "expected_language_candidates": null,
+    "expected_contract_route": "understood_existing_preference_if_meaning_established",
+    "meaning_reference": "Same text/preferences as paired CH control; different search country must not change recognition or explanation choice.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "DE",
+    "existing_explanation_language": "fr",
+    "browser_language": "de",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        null
+      ]
+    ],
+    "expected_explanation_language": "fr",
+    "matched_counterfactual": "P-COUNTRY-CH"
+  },
+  {
+    "id": "P-NO-PREF",
+    "category": "preference_country_uncertainty",
+    "text": "Radio",
+    "expected_language_candidates": null,
+    "expected_contract_route": "one_time_supported_explanation_choice_if_meaning_established",
+    "meaning_reference": "Shared subject, no existing preference and unsupported Spanish browser; do not force English or infer language from country.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "FR",
+    "existing_explanation_language": null,
+    "browser_language": "es",
+    "allowed_external_pairs": [
+      [
+        "understood",
+        null
+      ]
+    ],
+    "expected_explanation_language": null
+  },
+  {
+    "id": "P-AMOUNT",
+    "category": "preference_country_uncertainty",
+    "text": "Please repair my amplifier; my budget is 1,200 CHF.",
+    "expected_language_candidates": [
+      "en"
+    ],
+    "expected_contract_route": "clarify_amount",
+    "meaning_reference": "Input English is clear; numeric magnitude is genuinely unresolved, regardless of country/language.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "allowed_external_pairs": [
+      [
+        "clarification",
+        "en"
+      ]
+    ],
+    "unresolved_required": true,
+    "auxiliary_clear_top1": "en"
+  },
+  {
+    "id": "C6-EXPOSED",
+    "category": "exposed_anchor",
+    "text": "Repara mi hervidor.",
+    "expected_language_candidates": [
+      "es"
+    ],
+    "expected_contract_route": "unsupported_limitation_rephrase",
+    "meaning_reference": "Exposed Spanish unsupported-language negative control from closed Qwen v2.0.1; no new model response or repaired model score.",
+    "expectations_provenance": "AI-assisted synthetic; not independently linguistically validated",
+    "country": "CH",
+    "existing_explanation_language": null,
+    "browser_language": "en",
+    "required_clear_top1": "es",
+    "allowed_external_pairs": [
+      [
+        "unsupported",
+        null
+      ]
+    ],
+    "unresolved_required": true
+  }
+]

@@ -1,0 +1,178 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+____ test_new_archive_includes_template_all_helpers_and_one_stopping_runner ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-53/test_new_archive_includes_temp0')
+
+    def test_new_archive_includes_template_all_helpers_and_one_stopping_runner(tmp_path):
+>       result=builder().build_package(Path.cwd(),tmp_path/'package',ARTIFACT/'Run-OwnershipCheck.ps1',ARTIFACT/'package-readme.md')
+               ^^^^^^^^^
+
+tests/unit/test_granite_controller_correction_package.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_controller_correction_package.py:19: in builder
+    spec.loader.exec_module(module)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x74dbcea537d0>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+__________________ test_packager_refuses_existing_destination __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-53/test_packager_refuses_existing0')
+
+    def test_packager_refuses_existing_destination(tmp_path):
+        destination=tmp_path/'package';destination.mkdir();(destination/'old.txt').write_text('retain')
+        with pytest.raises(FileExistsError):
+>           builder().build_package(Path.cwd(),destination,ARTIFACT/'Run-OwnershipCheck.ps1',ARTIFACT/'package-readme.md')
+            ^^^^^^^^^
+
+tests/unit/test_granite_controller_correction_package.py:45: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/unit/test_granite_controller_correction_package.py:19: in builder
+    spec.loader.exec_module(module)
+<frozen importlib._bootstrap_external>:995: in exec_module
+    ???
+<frozen importlib._bootstrap_external>:1132: in get_code
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <_frozen_importlib_external.SourceFileLoader object at 0x74dbcea56d80>
+path = '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/build_package.py'
+
+>   ???
+E   FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/build_package.py'
+
+<frozen importlib._bootstrap_external>:1190: FileNotFoundError
+_ test_single_powershell_script_cannot_continue_after_failed_precheck[missing_template] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-53/test_single_powershell_script_0')
+defect = 'missing_template'
+
+    @pytest.mark.parametrize('defect',['missing_template','bad_helper','valid'])
+    def test_single_powershell_script_cannot_continue_after_failed_precheck(tmp_path,defect):
+        # An isolated synthetic copy substitutes only a harmless local marker program.
+        pwsh=shutil.which('pwsh');assert pwsh
+        package=tmp_path/'gate';package.mkdir()
+        marker=tmp_path/'invoked'
+        fake=tmp_path/'fake-python'
+        fake.write_text('#!/bin/sh\nprintf invoked > '+str(marker)+'\nexit 0\n');fake.chmod(0o700)
+>       script=(ARTIFACT/'Run-OwnershipCheck.ps1').read_text()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_correction_package.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_ test_single_powershell_script_cannot_continue_after_failed_precheck[bad_helper] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-53/test_single_powershell_script_1')
+defect = 'bad_helper'
+
+    @pytest.mark.parametrize('defect',['missing_template','bad_helper','valid'])
+    def test_single_powershell_script_cannot_continue_after_failed_precheck(tmp_path,defect):
+        # An isolated synthetic copy substitutes only a harmless local marker program.
+        pwsh=shutil.which('pwsh');assert pwsh
+        package=tmp_path/'gate';package.mkdir()
+        marker=tmp_path/'invoked'
+        fake=tmp_path/'fake-python'
+        fake.write_text('#!/bin/sh\nprintf invoked > '+str(marker)+'\nexit 0\n');fake.chmod(0o700)
+>       script=(ARTIFACT/'Run-OwnershipCheck.ps1').read_text()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_correction_package.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ test_single_powershell_script_cannot_continue_after_failed_precheck[valid] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-53/test_single_powershell_script_2')
+defect = 'valid'
+
+    @pytest.mark.parametrize('defect',['missing_template','bad_helper','valid'])
+    def test_single_powershell_script_cannot_continue_after_failed_precheck(tmp_path,defect):
+        # An isolated synthetic copy substitutes only a harmless local marker program.
+        pwsh=shutil.which('pwsh');assert pwsh
+        package=tmp_path/'gate';package.mkdir()
+        marker=tmp_path/'invoked'
+        fake=tmp_path/'fake-python'
+        fake.write_text('#!/bin/sh\nprintf invoked > '+str(marker)+'\nexit 0\n');fake.chmod(0o700)
+>       script=(ARTIFACT/'Run-OwnershipCheck.ps1').read_text()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_correction_package.py:57: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/workspaces/resolena-alternative-finder/build/uc001-granite-controller-launcher-fix/Run-OwnershipCheck.ps1'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_correction_package.py::test_new_archive_includes_template_all_helpers_and_one_stopping_runner
+FAILED tests/unit/test_granite_controller_correction_package.py::test_packager_refuses_existing_destination
+FAILED tests/unit/test_granite_controller_correction_package.py::test_single_powershell_script_cannot_continue_after_failed_precheck[missing_template]
+FAILED tests/unit/test_granite_controller_correction_package.py::test_single_powershell_script_cannot_continue_after_failed_precheck[bad_helper]
+FAILED tests/unit/test_granite_controller_correction_package.py::test_single_powershell_script_cannot_continue_after_failed_precheck[valid]
+5 failed in 0.34s

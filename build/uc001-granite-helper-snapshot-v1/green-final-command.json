@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py",
+    "tests/unit/test_granite_controller_cli.py"
+  ],
+  "exit_code": 0,
+  "scope": "Actual default run_session snapshot follow-up, existing helper-query/unknown-descendant cases and canonical config checks only; closed diagnostic/backend/application suites excluded"
+}

@@ -1,0 +1,31 @@
+{
+  "artifact": "build/uc001-priority5r-country-selection/browser-green/saved-comparison-approved--55241-input-and-saves-XK-coverage/approved-country-selector-evidence.json",
+  "request_id": "010becd0-338f-4065-b951-3a620f846917",
+  "HTTP_status": 201,
+  "outcome": "insufficient_coverage",
+  "before": {
+    "search_request": 1,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "after_empty": {
+    "search_request": 1,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "after_XK": {
+    "search_request": 2,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "country_reference": {
+    "source": "GeoNames countryInfo",
+    "release": "geonames-countryInfo-2026-10-23-v1",
+    "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+  },
+  "final_after_six_browser_cases": {
+    "search_request": 7,
+    "request_alternative": 8,
+    "request_alternative_evidence": 8
+  }
+}

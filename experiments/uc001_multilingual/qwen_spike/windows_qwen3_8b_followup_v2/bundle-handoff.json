@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "zip": "build/checkpoints/windows-qwen3-8b-v2.zip",
+  "bytes": 146909,
+  "sha256": "c14eb3656f3fab621f32d130f378e556207a70517f19752562f2f389f11cbb32",
+  "freeze_sha256": "00fc5dd00449456bfe5d054110b463f642815f092cfc4cea8a3c1e05d24bbceb",
+  "payload_files": 42,
+  "request_count": 18,
+  "case_count": 12,
+  "checkpoint_indices": [
+    6,
+    8,
+    9,
+    12,
+    13,
+    16,
+    17,
+    18
+  ],
+  "generation_authorized": false,
+  "model_artifacts_included": false,
+  "offline_test_count": 14,
+  "parent_upload_sha256": "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf",
+  "reviewed_draft_hashes": {
+    "PROPOSAL.md": "10e858d1bc1db9b8bc0f3a8084ca4079e933f2e054138ff49af72544dbef5a47",
+    "prompt-v2.txt": "070f4efbd1233f450eb8b1b4f3d1d57a398db0c73b39e90c0aa84640aa6b60da",
+    "prompt-v2.diff": "be12d4757688a18cd5fc2c8396c748c9fe8d7fc45959791dbd98660880ef3c49",
+    "draft-plan.json": "982b6067ec3a137f907385c5efff0b183e08cc0cfa56663759017e69e76de765"
+  }
+}

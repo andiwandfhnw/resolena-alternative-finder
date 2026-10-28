@@ -1,0 +1,96 @@
+{
+    "context":  2048,
+    "output_tokens":  384,
+    "requests":  {
+                     "06-C6-v2":  {
+                                      "tokens":  662,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "ec337b4a9b4476acce68deb1334c9e3f3ea061235c186903371fab4f29197299"
+                                  },
+                     "07-F1-DE-v1":  {
+                                         "tokens":  339,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "de361db7407ac5ed0edae6109ba44c8d8ead61a3b8f02f4908477a25572bed2c"
+                                     },
+                     "17-F6-AMB-v2":  {
+                                          "tokens":  657,
+                                          "nonthinking":  true,
+                                          "request_sha256":  "94bcf1d486d5a188ce02b18bfa0afe1620d2112693a4b9e96d9ab2ab83102851"
+                                      },
+                     "14-F4-EN-v1":  {
+                                         "tokens":  340,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "538760be281f34a84634a898d83f67cf46c77390ed7eca21d7a2a82803d3489b"
+                                     },
+                     "18-F6-AMB-v1":  {
+                                          "tokens":  327,
+                                          "nonthinking":  true,
+                                          "request_sha256":  "541ae0b0780486bf4f19fc40e563fffbb878bf38d33a03a6bcaaa2457e9a8c6c"
+                                      },
+                     "09-F2-FR-v2":  {
+                                         "tokens":  675,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "8e12e74a1e29c3699400c65b7458c51a8a8e7b10bcb949ab86531f67c3386396"
+                                     },
+                     "08-F1-DE-v2":  {
+                                         "tokens":  669,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "f1af02fde9689874777ffdcdea467d1c124591647d67df50786442c6dec92837"
+                                     },
+                     "10-F2-FR-v1":  {
+                                         "tokens":  345,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "8bbcc8c97034396788d326aa22dea981fd4a00d7358cc3e155257282c90fc0ac"
+                                     },
+                     "02-C2-v2":  {
+                                      "tokens":  659,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "8b8b623ea84c38970750236ab30bcbe4bbdcedbf3f6d80dd03ff94cd537f3299"
+                                  },
+                     "03-C3-v2":  {
+                                      "tokens":  671,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "d617c454dce6aa8828438edfa9147a58eff6eaac8bba53da4413c205e05c4f0d"
+                                  },
+                     "11-F3-IT-v1":  {
+                                         "tokens":  340,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "7e8f941923dd22c4b3aed8f6eb3dd9b0f9765c7ed194bfb668eae589b8e24de7"
+                                     },
+                     "16-F5-ES-v2":  {
+                                         "tokens":  661,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "21f5297e9d009439c474574ad6294d976a1af35abc80736d424b90e4b5d8796d"
+                                     },
+                     "12-F3-IT-v2":  {
+                                         "tokens":  670,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "ed9707545b315261ff8403254e13c76f63c8b89dd5eed57781856e834e1a126f"
+                                     },
+                     "04-C4-v2":  {
+                                      "tokens":  662,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "8d646cc3db877b2c81bc54d8483db89008667470f12efee93ba26ff3e64fb553"
+                                  },
+                     "13-F4-EN-v2":  {
+                                         "tokens":  670,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "c258c0bc02ef9f6aaca92a015723c1d236f99524b8de0253059e612041faaba3"
+                                     },
+                     "01-C1-v2":  {
+                                      "tokens":  659,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "3c58b63c198055e443a0ef4c6836b32f9813fedc0d9eb0e16a0899a7fef507d2"
+                                  },
+                     "15-F5-ES-v1":  {
+                                         "tokens":  331,
+                                         "nonthinking":  true,
+                                         "request_sha256":  "cd07487dd10b24590f4cea4bad9441132efa36214bf709a079cf7f2933e39884"
+                                     },
+                     "05-C5-v2":  {
+                                      "tokens":  664,
+                                      "nonthinking":  true,
+                                      "request_sha256":  "1ce4924b5e88311fdcd23cd4ed230cda46b8b804bc4110c4885a21db694258b5"
+                                  }
+                 }
+}

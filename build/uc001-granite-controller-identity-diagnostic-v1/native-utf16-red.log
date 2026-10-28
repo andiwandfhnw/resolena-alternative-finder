@@ -1,0 +1,33 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+___________ test_identity_query_image_utf16_units_allow_non_bmp_path ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a3242b2b5f0>
+
+    def test_identity_query_image_utf16_units_allow_non_bmp_path(monkeypatch):
+        path='C:\\Synthetic\\\U0001f6b2.exe'
+        units=len(path.encode('utf-16-le'))//2
+        api,calls=image_query_api(monkeypatch,path=path,length=units)
+>       assert api.image_path('query-only')==path
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_windows_job.py:765: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x7a3242b280b0>
+handle = 'query-only'
+
+    def image_path(self, handle):
+        capacity = 32768
+        buffer = c.create_unicode_buffer(capacity)
+        length = DWORD(capacity)
+        self.checked(self.k.QueryFullProcessImageNameW(handle,0,buffer,c.byref(length)),
+                     'QueryFullProcessImageNameW')
+        if not 0 < length.value < capacity or len(buffer.value) != length.value:
+>           raise JobError('native image path length unavailable or truncated')
+E           scripts.uc001_granite_controller.windows_job.JobError: native image path length unavailable or truncated
+
+scripts/uc001_granite_controller/windows_job.py:354: JobError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_utf16_units_allow_non_bmp_path
+1 failed, 78 deselected in 0.16s

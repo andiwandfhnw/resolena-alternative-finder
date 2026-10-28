@@ -1,0 +1,206 @@
+[
+  {
+    "id": "01-C1-known",
+    "case": "C1",
+    "stage": "known",
+    "request": "requests/01-C1-known.json"
+  },
+  {
+    "id": "02-C2-known",
+    "case": "C2",
+    "stage": "known",
+    "request": "requests/02-C2-known.json"
+  },
+  {
+    "id": "03-C3-known",
+    "case": "C3",
+    "stage": "known",
+    "request": "requests/03-C3-known.json"
+  },
+  {
+    "id": "04-C4-known",
+    "case": "C4",
+    "stage": "known",
+    "request": "requests/04-C4-known.json"
+  },
+  {
+    "id": "05-C5-known",
+    "case": "C5",
+    "stage": "known",
+    "request": "requests/05-C5-known.json"
+  },
+  {
+    "id": "06-C6-known",
+    "case": "C6",
+    "stage": "known",
+    "request": "requests/06-C6-known.json"
+  },
+  {
+    "id": "07-DE01-new",
+    "case": "DE01",
+    "stage": "new",
+    "request": "requests/07-DE01-new.json"
+  },
+  {
+    "id": "08-DE02-new",
+    "case": "DE02",
+    "stage": "new",
+    "request": "requests/08-DE02-new.json"
+  },
+  {
+    "id": "09-DE03-new",
+    "case": "DE03",
+    "stage": "new",
+    "request": "requests/09-DE03-new.json"
+  },
+  {
+    "id": "10-DE04-new",
+    "case": "DE04",
+    "stage": "new",
+    "request": "requests/10-DE04-new.json"
+  },
+  {
+    "id": "11-FR01-new",
+    "case": "FR01",
+    "stage": "new",
+    "request": "requests/11-FR01-new.json"
+  },
+  {
+    "id": "12-FR02-new",
+    "case": "FR02",
+    "stage": "new",
+    "request": "requests/12-FR02-new.json"
+  },
+  {
+    "id": "13-FR03-new",
+    "case": "FR03",
+    "stage": "new",
+    "request": "requests/13-FR03-new.json"
+  },
+  {
+    "id": "14-FR04-new",
+    "case": "FR04",
+    "stage": "new",
+    "request": "requests/14-FR04-new.json"
+  },
+  {
+    "id": "15-IT01-new",
+    "case": "IT01",
+    "stage": "new",
+    "request": "requests/15-IT01-new.json"
+  },
+  {
+    "id": "16-IT02-new",
+    "case": "IT02",
+    "stage": "new",
+    "request": "requests/16-IT02-new.json"
+  },
+  {
+    "id": "17-IT03-new",
+    "case": "IT03",
+    "stage": "new",
+    "request": "requests/17-IT03-new.json"
+  },
+  {
+    "id": "18-IT04-new",
+    "case": "IT04",
+    "stage": "new",
+    "request": "requests/18-IT04-new.json"
+  },
+  {
+    "id": "19-EN01-new",
+    "case": "EN01",
+    "stage": "new",
+    "request": "requests/19-EN01-new.json"
+  },
+  {
+    "id": "20-EN02-new",
+    "case": "EN02",
+    "stage": "new",
+    "request": "requests/20-EN02-new.json"
+  },
+  {
+    "id": "21-EN03-new",
+    "case": "EN03",
+    "stage": "new",
+    "request": "requests/21-EN03-new.json"
+  },
+  {
+    "id": "22-EN04-new",
+    "case": "EN04",
+    "stage": "new",
+    "request": "requests/22-EN04-new.json"
+  },
+  {
+    "id": "23-MIX01-new",
+    "case": "MIX01",
+    "stage": "new",
+    "request": "requests/23-MIX01-new.json"
+  },
+  {
+    "id": "24-MIX02-new",
+    "case": "MIX02",
+    "stage": "new",
+    "request": "requests/24-MIX02-new.json"
+  },
+  {
+    "id": "25-SHORT01-new",
+    "case": "SHORT01",
+    "stage": "new",
+    "request": "requests/25-SHORT01-new.json"
+  },
+  {
+    "id": "26-SHORT02-new",
+    "case": "SHORT02",
+    "stage": "new",
+    "request": "requests/26-SHORT02-new.json"
+  },
+  {
+    "id": "27-AMB01-new",
+    "case": "AMB01",
+    "stage": "new",
+    "request": "requests/27-AMB01-new.json"
+  },
+  {
+    "id": "28-AMB02-new",
+    "case": "AMB02",
+    "stage": "new",
+    "request": "requests/28-AMB02-new.json"
+  },
+  {
+    "id": "29-OUT01-new",
+    "case": "OUT01",
+    "stage": "new",
+    "request": "requests/29-OUT01-new.json"
+  },
+  {
+    "id": "30-OUT02-new",
+    "case": "OUT02",
+    "stage": "new",
+    "request": "requests/30-OUT02-new.json"
+  },
+  {
+    "id": "31-DE01-repeat",
+    "case": "DE01",
+    "stage": "repeat",
+    "request": "requests/31-DE01-repeat.json"
+  },
+  {
+    "id": "32-FR01-repeat",
+    "case": "FR01",
+    "stage": "repeat",
+    "request": "requests/32-FR01-repeat.json"
+  },
+  {
+    "id": "33-IT01-repeat",
+    "case": "IT01",
+    "stage": "repeat",
+    "request": "requests/33-IT01-repeat.json"
+  },
+  {
+    "id": "34-EN01-repeat",
+    "case": "EN01",
+    "stage": "repeat",
+    "request": "requests/34-EN01-repeat.json"
+  }
+]

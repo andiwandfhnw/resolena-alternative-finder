@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-11",
+  "harness_tests_passed": 6,
+  "local_links_checked": 132,
+  "local_link_errors": [],
+  "json_errors": [],
+  "preserved_files": {
+    "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md": true,
+    "docs/specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md": true,
+    "docs/adr/ADR-001-codex-repository-workflow.md": true,
+    "docs/adr/ADR-002-use-case-decomposition.md": true,
+    "docs/adr/ADR-003-persisted-comparison-boundary.md": true,
+    "docs/PROJECT.md": true,
+    "docs/PRODUCT_CONTEXT.md": true,
+    "docs/DEVELOPMENT_WORKFLOW.md": true,
+    "AGENTS.md": true,
+    "skills/ai-sdlc-2-design/SKILL.md": true,
+    "requirements.txt": true,
+    "frontend/package.json": true,
+    "frontend/package-lock.json": true,
+    "experiments/uc001_multilingual/prototype.py": true,
+    "experiments/uc001_multilingual/heldout.json": true,
+    "experiments/uc001_multilingual/results.json": true
+  },
+  "raw_log_whitespace_preserved": [
+    {
+      "file": "experiments/uc001_multilingual/qwen_spike/configure_log_tail.txt",
+      "line": 33
+    }
+  ],
+  "executed_harness_reconstruction_matches": true,
+  "index_empty": true,
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "branch": "specify/phase-1-uc-001",
+  "scope": "Closeout artifact/document checks; no model inference or application validation."
+}

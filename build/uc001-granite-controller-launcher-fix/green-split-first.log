@@ -1,0 +1,79 @@
+...........F..............                                               [100%]
+=================================== FAILURES ===================================
+__ test_standin_children_keep_separate_logs_without_launching_a_real_process ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-48/test_standin_children_keep_sep0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x735001f25d90>
+
+    def test_standin_children_keep_separate_logs_without_launching_a_real_process(tmp_path, monkeypatch):
+        from scripts.uc001_granite_controller import standins as module
+        clock = Clock()
+        child = SimpleNamespace(ended=False, pid=102, _handle="child-launcher")
+        child.poll = lambda: 1 if child.ended else None
+        child.terminate = lambda: setattr(child, "ended", True)
+        child.wait = lambda timeout: 1
+        seen = {}
+        def popen(argv, **kwargs):
+            seen.update(kwargs)
+            assert Path(kwargs["stdout"].name).name == "child.stdout.log"
+            assert Path(kwargs["stderr"].name).name == "child.stderr.log"
+            return child
+        api = SimpleNamespace(
+            k=SimpleNamespace(GetCurrentProcess=lambda: "self"),
+            creation_time=lambda handle: 42 if handle == "self" else 43,
+            process_id=lambda handle: os.getpid() if handle == "self" else 102,
+            parent_pid=lambda handle: os.getppid() if handle == "self" else os.getpid(),
+            open_process=lambda pid, **kwargs: "child-launcher",
+            close_handle=lambda handle: None,
+        )
+        monkeypatch.setattr(module, "_native_guard", lambda: None)
+        monkeypatch.setattr(module, "_job_module", lambda: SimpleNamespace(NativeApi=lambda: api))
+        monkeypatch.setattr(module.subprocess, "Popen", popen)
+        monkeypatch.setattr(module.time, "monotonic", clock)
+        monkeypatch.setattr(module.time, "sleep", clock.sleep)
+>       module._child("root", tmp_path, 0.1, "synthetic-python.exe")
+
+tests/unit/test_granite_controller_standins.py:272: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+role = 'root'
+events = PosixPath('/tmp/pytest-of-vscode/pytest-48/test_standin_children_keep_sep0')
+safety_seconds = 0.1, python_exe = 'synthetic-python.exe'
+
+    def _child(role, events, safety_seconds, python_exe):
+        _native_guard()
+        if role not in {"root", "child", "grandchild", "unrelated"} or not 0 < safety_seconds <= 30:
+            raise StandinFailure("unapproved harmless stand-in role or safety deadline")
+        events = Path(events).resolve(strict=True)
+        if not events.is_dir():
+            raise StandinFailure("existing self-test event directory required")
+        module = _job_module()
+        api = module.NativeApi()
+        identity = dict(role=role, pid=os.getpid(), parent_pid=os.getppid(),
+                        creation_time_100ns=api.creation_time(api.k.GetCurrentProcess()),
+                        timestamp_utc=_utc(), monotonic_ns=time.monotonic_ns())
+        pending = events / f"{role}.identity.pending"
+        final = events / f"{role}.identity.json"
+        _write_new(pending, identity)
+        if final.exists():
+            raise StandinFailure("stand-in identity already exists")
+        os.replace(pending, final)
+        child = None
+        deadline = time.monotonic() + safety_seconds
+        try:
+            if role in {"root", "child"}:
+                next_role = "child" if role == "root" else "grandchild"
+                with (events / f"{next_role}.stdout.log").open("xb") as stdout, (events / f"{next_role}.stderr.log").open("xb") as stderr:
+                    child = subprocess.Popen([str(python_exe), "-I", str(Path(__file__).resolve()),
+                                              "--child-role", next_role, "--events", str(events),
+                                              "--safety-seconds", str(safety_seconds)],
+                                             stdin=subprocess.DEVNULL, stdout=stdout,
+                                             stderr=stderr, close_fds=True, creationflags=0x08000000)
+>               child_handle = int(child._handle)
+                               ^^^^^^^^^^^^^^^^^^
+E               ValueError: invalid literal for int() with base 10: 'child-launcher'
+
+scripts/uc001_granite_controller/standins.py:407: ValueError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_standin_children_keep_separate_logs_without_launching_a_real_process
+1 failed, 25 passed in 2.20s

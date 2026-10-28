@@ -1,0 +1,18 @@
+{
+  "phase": "install",
+  "identity": {
+    "pid": 13263,
+    "pgrp": 13263,
+    "start_ticks": 223251,
+    "rss": 7114752,
+    "hwm": 7114752,
+    "threads": 1
+  },
+  "exit_code": 0,
+  "failure": null,
+  "process_absent": true,
+  "peak_owned_rss_bytes": 120528896,
+  "peak_hwm_sum_bytes": 120528896,
+  "peak_scratch_bytes": 477405184,
+  "end_monotonic": 2236.632631362
+}

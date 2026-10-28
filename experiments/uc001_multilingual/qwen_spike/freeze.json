@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-10T22:13:23.259470+00:00",
+  "files": {
+    "heldout_v2.json": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08",
+    "calibration.json": "55f2427cde70a557667c0c01e50950d739176816ff96f3d5512120cf9512a3d4",
+    "config.json": "e82f18a3f4d160f839f3f92e3970faa6dc0d6b42c319271173fb41c5c9837207",
+    "evaluate_model.py": "0a426b7dd8803344e355fbf1c328609ce4dd7875629ce489b88507ec050a22ba",
+    "test_spike.py": "2dbd5b0b92c0cb98aebe27c67da7af651787e9d9e5a041e902b8be99003cf5e4"
+  },
+  "note": "Operational readiness fix only; no successful calibration/evaluation, prompt/scorer unchanged. Original inference cap preserved."
+}

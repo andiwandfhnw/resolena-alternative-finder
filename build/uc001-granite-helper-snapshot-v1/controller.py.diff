@@ -1,0 +1,80 @@
+--- before/controller.py
++++ controller.py
+@@ -347,6 +347,8 @@
+         self.proxy_role_exits = {}
+         self.proxy_helpers, self.proxy_queries = {}, {}
+         self.proxy_helper_processes = {}
++        self.proxy_helper_active_observed = set()
++        self.phase_helper_exits_observed = set()
+         self.proxy_bound = self.proxy_listening = False
+         self.same_process = None
+         self.query_handles_closed = False
+@@ -420,7 +422,10 @@
+                 "unexpected proxy branch process",timeout)
+             for ref in self.proxy_helpers.values():
+                 key = ref["pid"], ref["creation_time_100ns"]
+-                self.proxy_helper_processes[key] = self.backend.validate_pid(*key)
++                process = self.backend.validate_pid(*key)
++                self.proxy_helper_processes[key] = process
++                if self.backend.process_exit(process) is None:
++                    self.proxy_helper_active_observed.add(key)
+         except Exception as error:
+             raise ControllerFailure("proxy_branch_unverified:" + str(error)) from error
+ 
+@@ -567,7 +572,7 @@
+         rows = observation.get("owned")
+         if not isinstance(rows, list):
+             raise ControllerFailure("phase_owned_identities_unknown")
+-        active, seen = set(), set()
++        active, seen, row_exits = set(), set(), {}
+         for row in rows:
+             if (not isinstance(row, dict) or type(row.get("pid")) is not int
+                     or not 0 < row["pid"] <= 0xFFFFFFFF
+@@ -579,12 +584,14 @@
+             if key in seen:
+                 raise ControllerFailure("phase_owned_identity_duplicate")
+             seen.add(key)
++            row_exits[key] = row["exit_code"]
+             if row["exit_code"] is None:
+                 active.add(key)
+         helpers = {(ref["pid"], ref["creation_time_100ns"]): ref for ref in self.proxy_helpers.values()}
+-        if len(active) != count or not active <= helpers.keys():
++        if len(active) > count or not active <= helpers.keys():
+             raise ControllerFailure("active_descendants_after_worker_exit")
+         api = self.backend.api
++        confirmed_exits = set()
+         for key, ref in helpers.items():
+             self.check_deadline()
+             process = self.proxy_helper_processes.get(key)
+@@ -604,6 +611,8 @@
+                 self.check_deadline()
+                 code = self.backend.process_exit(process)
+             if code is None:
++                if key in self.phase_helper_exits_observed:
++                    raise ControllerFailure("phase_helper_exit_observation_reversed")
+                 if (key not in active or raw_code != 259
+                         or api.in_job(handle, self.backend.handle) is not True
+                         or api.parent_pid(handle) != ref["parent_pid"]):
+@@ -613,8 +622,22 @@
+                     raise ControllerFailure("phase_helper_path_differs")
+             elif type(code) is not int or not 0 <= code <= 0xFFFFFFFF or raw_code != code:
+                 raise ControllerFailure("phase_helper_exit_unverified")
++            else:
++                if row_exits[key] is not None and row_exits[key] != code:
++                    raise ControllerFailure("phase_helper_exit_unverified")
++                if key in self.phase_helper_exits_observed and key in active:
++                    raise ControllerFailure("phase_helper_exit_observation_reversed")
++                confirmed_exits.add(key)
+             if api.process_id(handle) != key[0] or api.creation_time(handle) != key[1]:
+                 raise ControllerFailure("phase_helper_retained_identity_changed")
++        if count > len(active):
++            newly_exited = ((confirmed_exits & self.proxy_helper_active_observed)
++                            - self.phase_helper_exits_observed - active)
++            if count - len(active) != len(newly_exited):
++                raise ControllerFailure("active_descendants_after_worker_exit")
++            self.phase_helper_exits_observed.update(confirmed_exits)
++            return True
++        self.phase_helper_exits_observed.update(confirmed_exits)
+         return count != 0
+ 
+     def finish(self):

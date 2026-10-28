@@ -1,0 +1,456 @@
+{
+  "classification": "AI-assisted synthetic exploratory calibration; not independently linguistically validated",
+  "known_cases": [
+    {
+      "id": "C1",
+      "text": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "C2",
+      "text": "repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "C3",
+      "text": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "C4",
+      "text": "Répare ma bouilloire.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "C5",
+      "text": "Ripara il mio bollitore.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "C6",
+      "text": "Repara mi hervidor.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true
+      }
+    }
+  ],
+  "new_cases": [
+    {
+      "id": "DE01",
+      "text": "Ich möchte mein Velo instand setzen lassen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "DE02",
+      "text": "Vergleiche Alternativen zu meiner Kaffeemaschine.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "coffee_machine",
+        "action": "compare",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "DE03",
+      "text": "Repariere mein Smartphone; ich will keinen Ersatz.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "smartphone",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "DE04",
+      "text": "Repariere das Velo Acme Z7 für höchstens 49.90 CHF.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7",
+          "budget": "49.90 CHF"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7",
+        "49.90 CHF"
+      ]
+    },
+    {
+      "id": "FR01",
+      "text": "Je voudrais faire remettre mon vélo en état.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "FR02",
+      "text": "Compare les alternatives à mon aspirateur.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "vacuum",
+        "action": "compare",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "FR03",
+      "text": "Répare mon téléphone sans en acheter un neuf.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "smartphone",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      }
+    },
+    {
+      "id": "FR04",
+      "text": "Répare le vélo Acme Z7 pour au maximum 49.90 CHF.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7",
+          "budget": "49.90 CHF"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7",
+        "49.90 CHF"
+      ]
+    },
+    {
+      "id": "IT01",
+      "text": "Vorrei far sistemare la mia bicicletta.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "IT02",
+      "text": "Confronta le alternative alla mia macchina da caffè.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "coffee_machine",
+        "action": "compare",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "IT03",
+      "text": "Ripara il mio aspirapolvere senza sostituirlo.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "vacuum",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "IT04",
+      "text": "Ripara la bicicletta Acme Z7 spendendo al massimo 49.90 CHF.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7",
+          "budget": "49.90 CHF"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7",
+        "49.90 CHF"
+      ]
+    },
+    {
+      "id": "EN01",
+      "text": "Please mend my bicycle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "EN02",
+      "text": "Compare alternatives to my vacuum cleaner.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "vacuum",
+        "action": "compare",
+        "goals": [],
+        "constraints": {}
+      }
+    },
+    {
+      "id": "EN03",
+      "text": "Repair my smartphone; do not replace it.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "smartphone",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "EN04",
+      "text": "Repair the Acme Z7 bicycle for no more than 49.90 CHF.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7",
+          "budget": "49.90 CHF"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7",
+        "49.90 CHF"
+      ]
+    },
+    {
+      "id": "MIX01",
+      "text": "Repair my bicycle, sans acheter du neuf.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_new_purchase": "true"
+        }
+      }
+    },
+    {
+      "id": "MIX02",
+      "text": "Répare mon vélo, without replacing it.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "bicycle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      }
+    },
+    {
+      "id": "SHORT01",
+      "text": "Velo — Acme Z7",
+      "expected": {
+        "status": "understood",
+        "language": null,
+        "subject": "bicycle",
+        "action": null,
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7"
+      ]
+    },
+    {
+      "id": "SHORT02",
+      "text": "Streaming — Acme Z7",
+      "expected": {
+        "status": "understood",
+        "language": null,
+        "subject": "streaming",
+        "action": null,
+        "goals": [],
+        "constraints": {
+          "identifier": "Acme Z7"
+        }
+      },
+      "protected_literals": [
+        "Acme Z7"
+      ]
+    },
+    {
+      "id": "AMB01",
+      "text": "Repair my kettle for 1,200 CHF.",
+      "expected": {
+        "status": "clarification",
+        "language": "en",
+        "unresolved_nonempty": true,
+        "uncertainty_terms": [
+          "1,200",
+          "ambig",
+          "numeric",
+          "number",
+          "amount"
+        ],
+        "allowed_subjects": [
+          null,
+          "kettle"
+        ],
+        "allowed_actions": [
+          null,
+          "repair"
+        ]
+      }
+    },
+    {
+      "id": "AMB02",
+      "text": "Je veux quelque chose de mieux.",
+      "expected": {
+        "status": "clarification",
+        "language": "fr",
+        "unresolved_nonempty": true,
+        "uncertainty_terms": [
+          "subject",
+          "objet",
+          "meaning",
+          "ambig",
+          "unclear",
+          "request"
+        ],
+        "allowed_subjects": [
+          null
+        ],
+        "allowed_actions": [
+          null
+        ]
+      }
+    },
+    {
+      "id": "OUT01",
+      "text": "Necesito reparar mi bicicleta.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true,
+        "allowed_subjects": [
+          null,
+          "bicycle"
+        ],
+        "allowed_actions": [
+          null,
+          "repair"
+        ]
+      }
+    },
+    {
+      "id": "OUT02",
+      "text": "Mis Velo sött gflickt werde.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true,
+        "allowed_subjects": [
+          null,
+          "bicycle"
+        ],
+        "allowed_actions": [
+          null,
+          "repair"
+        ]
+      }
+    }
+  ],
+  "repeats": [
+    "DE01",
+    "FR01",
+    "IT01",
+    "EN01"
+  ],
+  "oracle_note": "AI-assisted expectations, no independent human review; uncertainty wording terms are an exploratory automated proxy, not linguistic acceptance."
+}

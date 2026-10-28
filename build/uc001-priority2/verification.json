@@ -1,0 +1,43 @@
+{
+  "use_case": "UC-001 increment 1",
+  "date": "2026-10-15",
+  "phase": 3,
+  "phase_status": "in-progress",
+  "scope": "Priority 2 — Qualification & Coverage only",
+  "priority_status": "implemented and verified; stopped",
+  "client": "desktop",
+  "execution": "existing Codespace",
+  "synthetic_only": true,
+  "checks": {
+    "backend": {"command": ".venv/bin/python -m pytest -q", "passed": 57, "exit_code": 0},
+    "browser": {"command": "npm --prefix frontend run test:e2e", "passed": 4, "exit_code": 0, "real_api_sqlite": true},
+    "lint": {"command": "npm --prefix frontend run lint", "exit_code": 0},
+    "build": {"command": "npm --prefix frontend run build", "exit_code": 0},
+    "index": {"command": "git diff --cached --name-only", "empty": true},
+    "diff_whitespace": {"command": "git diff --check", "exit_code": 2, "preexisting_warning": "Historical TASKS.md backlog trailing space preserved"}
+  },
+  "tdd_red_observed": [
+    "Missing qualification module",
+    "Coverage saving and expired-evidence API assertions",
+    "Missing browser coverage presentation",
+    "Cost label, source-market, unknown-charge, calculation-input, JSON reopening, component-total and baseline-preservation regressions"
+  ],
+  "criteria": {
+    "focused_policy_coverage": ["AC-03", "AC-04", "AC-05", "AC-06", "AC-07", "AC-08", "AC-09", "AC-12"],
+    "partial_boundary_coverage": ["AC-01", "AC-02", "AC-10", "AC-11", "AC-13", "AC-14", "AC-16"],
+    "full_increment_complete": false
+  },
+  "remaining": [
+    "Real interpreter, ordinary language and faithful four-language renderings",
+    "Genuinely reviewed knowledge and reference-data releases",
+    "Qualified source/target-language review",
+    "Complete locality/input, recovery/security/concurrency, fault and loading matrices",
+    "Priorities 3–6, increment acceptance and delivery"
+  ],
+  "restrictions_respected": [
+    "No real interpreter/model/detector run or held-out access",
+    "No later priority, requirement amendment or phase transition",
+    "No staging, commit, push or deployment",
+    "Priority-1 verification.json retained; evidence extended with new versions"
+  ]
+}

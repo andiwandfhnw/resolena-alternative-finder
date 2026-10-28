@@ -1,0 +1,343 @@
+FFFFFFFFFFFFFFFF                                                         [100%]
+=================================== FAILURES ===================================
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64576c90>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64ccb8f0>))
+country = 'CH', town = '  jouxtens-mézery  ', postcode = ' 1008 ', record = 10
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:1991: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64576c90>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64ccb8f0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64e87530>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64e877a0>))
+country = 'LI', town = 'Vaduz', postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:1991: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64e87530>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64e877a0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f963c0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...e0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f96720>))
+country = 'LI', town = None, postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:1991: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f963c0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...e0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f96720>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+__ test_multiple_reference_associations_stay_unsaved_until_checked_selection ___
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f09d60>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f0acc0>))
+
+    def test_multiple_reference_associations_stay_unsaved_until_checked_selection(system):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2025: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f09d60>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f0acc0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[stale] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64eb5b50>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...20>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64eb5d90>))
+case = 'stale'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2058: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64eb5b50>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...20>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64eb5d90>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[fabricated] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f28f50>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f299d0>))
+case = 'fabricated'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2058: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f28f50>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f299d0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[wrong_fields] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f8df40>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...80>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f8e300>))
+case = 'wrong_fields'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2058: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f8df40>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...80>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f8e300>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[foreign_country] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64ef9340>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64efa000>))
+case = 'foreign_country'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2058: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64ef9340>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64efa000>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_selected_association_is_checked_against_release_country_and_all_fields[edited_label] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f8cbc0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...40>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64ef9940>))
+case = 'edited_label'
+
+    @pytest.mark.parametrize("case", ["stale", "fabricated", "wrong_fields", "foreign_country", "edited_label"])
+    def test_selected_association_is_checked_against_release_country_and_all_fields(system, case):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2058: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f8cbc0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...40>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64ef9940>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_missing_or_out_of_scope_associations_are_unknown_not_invalid[CH-Lausanne-9490] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64eb6840>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...80>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f28260>))
+country = 'CH', town = 'Lausanne', postcode = '9490'
+
+    @pytest.mark.parametrize("country,town,postcode", [("CH", "Lausanne", "9490"), ("DE", "Vaduz", "9490")])
+    def test_missing_or_out_of_scope_associations_are_unknown_not_invalid(system, country, town, postcode):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64eb6840>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...80>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f28260>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_missing_or_out_of_scope_associations_are_unknown_not_invalid[DE-Vaduz-9490] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f96690>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f0aba0>))
+country = 'DE', town = 'Vaduz', postcode = '9490'
+
+    @pytest.mark.parametrize("country,town,postcode", [("CH", "Lausanne", "9490"), ("DE", "Vaduz", "9490")])
+    def test_missing_or_out_of_scope_associations_are_unknown_not_invalid(system, country, town, postcode):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2077: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f96690>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...a0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f0aba0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_broken_locality_loading_cannot_masquerade_as_missing_match[unusable-503-configuration_unavailable] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f628a0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...e0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f2a9f0>))
+mode = 'unusable', status = 503, outcome = 'configuration_unavailable'
+
+    @pytest.mark.parametrize("mode,status,outcome", [("unusable", 503, "configuration_unavailable"), ("processing", 500, "processing_error")])
+    def test_broken_locality_loading_cannot_masquerade_as_missing_match(system, mode, status, outcome):
+>       from app.application.localities import LocalityReferenceUnavailable
+E       ModuleNotFoundError: No module named 'app.application.localities'
+
+tests/integration/test_saved_comparison.py:2092: ModuleNotFoundError
+_ test_broken_locality_loading_cannot_masquerade_as_missing_match[processing-500-processing_error] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f36ea0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...c0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f37a10>))
+mode = 'processing', status = 500, outcome = 'processing_error'
+
+    @pytest.mark.parametrize("mode,status,outcome", [("unusable", 503, "configuration_unavailable"), ("processing", 500, "processing_error")])
+    def test_broken_locality_loading_cannot_masquerade_as_missing_match(system, mode, status, outcome):
+>       from app.application.localities import LocalityReferenceUnavailable
+E       ModuleNotFoundError: No module named 'app.application.localities'
+
+tests/integration/test_saved_comparison.py:2092: ModuleNotFoundError
+_ test_matched_association_recovery_precedes_references_and_keeps_payload_binding _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f138f0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...e0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f12a80>))
+
+    def test_matched_association_recovery_precedes_references_and_keeps_payload_binding(system):
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2109: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f138f0>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...e0>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f12a80>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_matched_reference_does_not_replace_independent_applicability_evidence[False] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f11e20>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f114f0>))
+independent_constraint = False
+
+    @pytest.mark.parametrize("independent_constraint", [False, True])
+    def test_matched_reference_does_not_replace_independent_applicability_evidence(system, independent_constraint):
+        from tests.support.locality_confirmation import candidate
+        from tests.support.synthetic import represented_locality
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64f11e20>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...00>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64f114f0>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+_ test_matched_reference_does_not_replace_independent_applicability_evidence[True] _
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64e85c40>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...20>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64cbe090>))
+independent_constraint = True
+
+    @pytest.mark.parametrize("independent_constraint", [False, True])
+    def test_matched_reference_does_not_replace_independent_applicability_evidence(system, independent_constraint):
+        from tests.support.locality_confirmation import candidate
+        from tests.support.synthetic import represented_locality
+>       path, service = locality_matching_service(system)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/integration/test_saved_comparison.py:2135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+system = (<starlette.testclient.TestClient object at 0x7c9f64e85c40>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-red/test...20>, recognizer=None, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x7c9f64cbe090>))
+
+    def locality_matching_service(system):
+>       from app.infrastructure.locality_reference import LocalLocalityCatalogue
+E       ModuleNotFoundError: No module named 'app.infrastructure.locality_reference'
+
+tests/integration/test_saved_comparison.py:1975: ModuleNotFoundError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590]
+FAILED tests/integration/test_saved_comparison.py::test_multiple_reference_associations_stay_unsaved_until_checked_selection
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[stale]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[fabricated]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[wrong_fields]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[foreign_country]
+FAILED tests/integration/test_saved_comparison.py::test_selected_association_is_checked_against_release_country_and_all_fields[edited_label]
+FAILED tests/integration/test_saved_comparison.py::test_missing_or_out_of_scope_associations_are_unknown_not_invalid[CH-Lausanne-9490]
+FAILED tests/integration/test_saved_comparison.py::test_missing_or_out_of_scope_associations_are_unknown_not_invalid[DE-Vaduz-9490]
+FAILED tests/integration/test_saved_comparison.py::test_broken_locality_loading_cannot_masquerade_as_missing_match[unusable-503-configuration_unavailable]
+FAILED tests/integration/test_saved_comparison.py::test_broken_locality_loading_cannot_masquerade_as_missing_match[processing-500-processing_error]
+FAILED tests/integration/test_saved_comparison.py::test_matched_association_recovery_precedes_references_and_keeps_payload_binding
+FAILED tests/integration/test_saved_comparison.py::test_matched_reference_does_not_replace_independent_applicability_evidence[False]
+FAILED tests/integration/test_saved_comparison.py::test_matched_reference_does_not_replace_independent_applicability_evidence[True]
+16 failed, 55 deselected, 1 warning in 3.27s

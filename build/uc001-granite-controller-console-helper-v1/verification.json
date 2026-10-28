@@ -1,0 +1,313 @@
+{
+  "recorded_date": "2026-10-26",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Bounded offline console-helper correction for harmless ownership self-test only.",
+  "owner_identity_attempt_consumed": true,
+  "owner_result": "owner-confirmed-identity-attempt.json",
+  "windows_native_execution_authorized": false,
+  "windows_native_execution_performed": false,
+  "ready": "Ready for offline owner review only; another Windows-native self-test requires separate explicit owner authorization.",
+  "helper_invariant": {
+    "optional_helpers_per_verified_launcher": [
+      0,
+      1
+    ],
+    "parent": "exact verified launcher only; interpreter sibling",
+    "cardinality": "all mandatory base edges present; sole extra direct child; all candidates validate before new promotions",
+    "handle_rights": "query-only 0x1000, non-inherited, no terminate or synchronize",
+    "identity": "observed PID equals retained handle PID; positive stable integer FILETIME >= retained launcher birth; exact native launcher parent",
+    "image": "full GetSystemDirectoryW-derived conhost.exe path under Windows case-insensitive equality; no basename-only/general-system acceptance",
+    "membership": "strict False unrelated / True owned root-child-grandchild",
+    "query_errors": "none",
+    "retention": "same helper PID/birth per launcher; missing/replacement/additional helpers fail",
+    "unknown_direct_termination_authority_added": false
+  },
+  "owned_proof": {
+    "base_processes": 6,
+    "max_optional_helpers": 3,
+    "early_structural_cap": 9,
+    "acceptance": "exact live identities, observed identity union, active count and lifetime total equal six base + admitted helpers",
+    "helper_tracking": "existing Job.validate_pid + identity-bound wait/exit receipts"
+  },
+  "cleanup": {
+    "pre_cleanup_revalidation": true,
+    "outside_helper": "same query-only handle, stable PID/birth, non259 raw exit before existing20s deadline; no direct termination",
+    "owned_helper": "same stable query handle + matching existing Job wait-confirmed exit identity/code",
+    "outside_259": "unresolved/failure",
+    "every_helper_exit_required": true,
+    "every_helper_query_handle_closed": true,
+    "close_failure_prevents_success": true,
+    "cleanup_scope_does_not_claim_termination_applied": true,
+    "intermediate_exit_event": "console_helper_cleanup",
+    "final_event": "console_helper_cleanup_complete"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py -k console_role",
+      "runs": [
+        {
+          "stage": "RED",
+          "exit_code": 1,
+          "failed": 28,
+          "log": "standins-red.log"
+        },
+        {
+          "stage": "GREEN",
+          "exit_code": 0,
+          "passed": 28,
+          "log": "standins-green-first.log"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_windows_job.py -k console_system",
+      "runs": [
+        {
+          "stage": "RED",
+          "exit_code": 1,
+          "failed": 12,
+          "log": "native-red.log"
+        },
+        {
+          "stage": "GREEN",
+          "exit_code": 0,
+          "passed": 12,
+          "log": "native-green.log"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_console_package.py",
+      "runs": [
+        {
+          "stage": "RED",
+          "exit_code": 1,
+          "failed": 5,
+          "log": "package-red.log"
+        },
+        {
+          "stage": "intermediate wording assertion",
+          "exit_code": 1,
+          "failed": 1,
+          "passed": 4,
+          "log": "package-green-first.log"
+        },
+        {
+          "stage": "GREEN",
+          "exit_code": 0,
+          "passed": 5,
+          "log": "package-green.log"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py -k 'console_role_owned_helpers or console_role_handle_close_failure'",
+      "stage": "review RED",
+      "exit_code": 1,
+      "failed": 2,
+      "log": "receipt-cleanup-red.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py tests/unit/test_granite_windows_job.py tests/unit/test_granite_controller_cli.py tests/unit/test_granite_controller_console_package.py",
+      "runs": [
+        {
+          "stage": "bounded-scope regression expectation",
+          "exit_code": 1,
+          "failed": 1,
+          "passed": 185,
+          "log": "green-regression-first.log"
+        },
+        {
+          "stage": "pre-review pass",
+          "exit_code": 0,
+          "passed": 189,
+          "log": "green-final-focused.log"
+        },
+        {
+          "stage": "reviewed source/package wording assertion",
+          "exit_code": 1,
+          "failed": 1,
+          "passed": 189,
+          "log": "green-final-reviewed.log"
+        },
+        {
+          "stage": "FINAL",
+          "exit_code": 0,
+          "passed": 190,
+          "seconds": 3.01,
+          "log": "green-final.log",
+          "breakdown": {
+            "standins": 90,
+            "native_bindings": 91,
+            "cli": 4,
+            "package": 5
+          }
+        }
+      ]
+    }
+  ],
+  "static_checks": {
+    "archive_entries": 8,
+    "archive_manifest_hashes_match": true,
+    "packaged_helpers_match_current": true,
+    "inactive_manifest": true,
+    "python_ast_paths": [
+      "scripts/uc001_granite_controller/standins.py",
+      "scripts/uc001_granite_controller/windows_job.py",
+      "tests/unit/test_granite_controller_standins.py",
+      "tests/unit/test_granite_windows_job.py",
+      "tests/unit/test_granite_controller_console_package.py",
+      "build/uc001-granite-controller-console-helper-v1/build_package.py"
+    ],
+    "existing_native_methods_unchanged": [
+      "checked",
+      "query",
+      "create_job",
+      "job_configuration",
+      "controller_in_job",
+      "in_job",
+      "job_pids",
+      "create_suspended",
+      "creation_time",
+      "assign",
+      "resume",
+      "process_id",
+      "parent_pid",
+      "open_process",
+      "open_query_process",
+      "image_path",
+      "query_exit_code",
+      "children_of",
+      "exit_code",
+      "terminate_process",
+      "terminate_job",
+      "close_handle",
+      "job_state",
+      "notifications",
+      "write_pipe",
+      "host_resources"
+    ],
+    "modified_existing_test_expectation": [
+      "test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence"
+    ],
+    "existing_native_tests_preserved_as_prefix": true,
+    "future_command_parse_exit": 0,
+    "future_command_executed": false,
+    "intermediate_package_preserved": true
+  },
+  "package": {
+    "archive": "/workspaces/resolena-alternative-finder/build/uc001-granite-controller-console-helper-v1/uc001-granite-controller-console-helper-v1.zip",
+    "bytes": 36126,
+    "sha256": "70f048452a65f619e60c350334fa658280ec8bbfd63b18c1fe9001e3513989e5",
+    "manifest_sha256": "c9e011f8a483153c25c7ce01be91f1a67f4b505c7280f6a328905e44b7990880",
+    "template_sha256": "269adcff1eec7e77566915a9d266ac8428efab6257fa19cd0f9eb8cad50b98cf"
+  },
+  "intermediate_package": {
+    "path": "intermediate-package/uc001-granite-controller-console-helper-v1.zip",
+    "original_metadata": "intermediate-package/package-result.json",
+    "preserved_unchanged": true,
+    "reason": "Review corrected receipt-scope wording, handle-close verification and package description before owner delivery."
+  },
+  "preservation": {
+    "protected_existing_files": 1320,
+    "unchanged_existing_files": 1315,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/standins.py",
+      "scripts/uc001_granite_controller/windows_job.py",
+      "tests/unit/test_granite_controller_standins.py",
+      "tests/unit/test_granite_windows_job.py"
+    ],
+    "missing_files": [],
+    "prior_granite_artifacts_unchanged": true,
+    "historical_task_entries_unchanged": true,
+    "priority5_and_later_history_unchanged": true,
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index_unchanged": true,
+    "status_unchanged": true,
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:2859: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "evidence_limits": [
+    "Owner fields are supplied observations, not a Codex Windows run or reconstructed desktop raw evidence.",
+    "Only the historical observed unrelated console association is owner-accepted; corrected admission/owned behavior/cleanup remain unverified on Windows.",
+    "Toolhelp gives no birth identity, so snapshot-to-open PID reuse is not ruled out.",
+    "Outside scoped snapshots cannot exclude every unobserved transient process; owned lifetime counters catch additional owned processes.",
+    "A system image path does not establish file signature/content verification.",
+    "Open87 and raw259 retain explicit limits; outside259 never proves cleanup.",
+    "Raw metadata rows grant no role; separate console_helper_accepted/revalidated events express admission.",
+    "Only harmless self-test model changed; actual acquisition/build worker/composition, proxy/native procedure, frozen package, pins and limits unchanged.",
+    "All current intermediate logs/packages and all previous evidence are preserved; no cumulative pass total or Windows/model suitability claimed."
+  ],
+  "helper_sha256": {
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f"
+  },
+  "evidence_sha256": {
+    "README.md": "eb6b3e2faa704430cfefacf4ad6014e1722562d7b3b6324a90e4061515a080ce",
+    "Run-ConsoleHelperCheck.ps1": "b49d55dbf9cf6f94f5748ddaa7b0b5a3a71fc32a2d4224a0d71fd6eeff0839e9",
+    "before/standins.py": "ba9fc0933d55a1cc63cd66fd8cfd465c2bcabc86df03b354f9c7764449438fa2",
+    "before/test_granite_controller_standins.py": "cce03cbef753cc33a1c870ad7d8cf27b118e73609daab9c188794a26aac1acee",
+    "before/test_granite_windows_job.py": "f10da53bb45dafcc7005b965d11a0256cc1fdf0cab221b603651f26521f01e7e",
+    "before/windows_job.py": "ed3a7f03b033679716f04e213e9aac53f8c4c143abe0904886650ac82cfbacf3",
+    "build_package.py": "1fd02753a86b8ed2ec57a85df3b52bd40b0bceb7d6028f71c916f87bec85ec3d",
+    "git-diff-check.txt": "fdc01370ded9a2054dfaabb864118c86ca9d6479fdc1b14136e79e9e0efdec61",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "green-final-focused.log": "69e1d3ac9ae7d48dd5fd378f31ae4464fece121abaf5639e8af5eaaac7c7c7a3",
+    "green-final-reviewed.log": "ce4e73140d865a8176462a4b9d541259f876cfb7d4f6d378a4d628ccb61af0c7",
+    "green-final.log": "40a5f5fa96503a5f7f79255da81fbeae8069284f5e33e6f8bd405a8c7854a45b",
+    "green-regression-first.log": "fc70bfb6d4bb24be351e1efdd17389feda82d994395995a61de0cd158d711eb4",
+    "intermediate-package/README.md": "a3e28d8cbefcba564f6c03dd2cfbce39f94a62ac394c17e00f40b064f18b783d",
+    "intermediate-package/package/README.md": "6e4035bffabe62eb386298ee5cb8e7b083fb35ae8980aea487be52d9c11aabed",
+    "intermediate-package/package/Run-ConsoleHelperCheck.ps1": "b49d55dbf9cf6f94f5748ddaa7b0b5a3a71fc32a2d4224a0d71fd6eeff0839e9",
+    "intermediate-package/package/controller-config.template.json": "658884d5a4a17a9255b632c06dd02154f8d640348e709bc6da607a15f6a330ab",
+    "intermediate-package/package/controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "intermediate-package/package/manifest.json": "72f482afe9fba51b96f3b9353f924609ef5defdd7f6ac481c49eccc5319ff139",
+    "intermediate-package/package/standins.py": "ae7c3659babb83d7b0488807a5cf44444c529a3bc3308434eac3ccbc85012c8a",
+    "intermediate-package/package/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "intermediate-package/package/worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "intermediate-package/package-result.json": "fc6877fe59097f9446b7cac29b960cb206992c9bc8cbd5e3ee644341fb823961",
+    "intermediate-package/uc001-granite-controller-console-helper-v1.zip": "22cca25b0d497c814103bb176100943ac1b95081d534000bc85e235a7a58f380",
+    "native-green.log": "3bcde56d3d22ed05af12ab1963e3ea9795bf2e65e357d8bb46e2bd3364b379d4",
+    "native-red.log": "81b9e76cf4377fbcf33ccacbe4625be4f4ced315f56ff7da5f25c407887365cf",
+    "owner-confirmed-identity-attempt.json": "1f092a335c2a55312ffb16d13edd28f13a4eaa2c17f09d11c559e025f48ad062",
+    "package/README.md": "2a3a3619331a6cf8ffb93dc7d4d61e0df6db4b49780972b2537305d0b1a06006",
+    "package/Run-ConsoleHelperCheck.ps1": "b49d55dbf9cf6f94f5748ddaa7b0b5a3a71fc32a2d4224a0d71fd6eeff0839e9",
+    "package/controller-config.template.json": "269adcff1eec7e77566915a9d266ac8428efab6257fa19cd0f9eb8cad50b98cf",
+    "package/controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "package/manifest.json": "c9e011f8a483153c25c7ce01be91f1a67f4b505c7280f6a328905e44b7990880",
+    "package/standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "package/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "package/worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "package-green-first.log": "8b6f7c745186dc1aa63766d60456ea85baf1b3dc6df0fd41194146fc065de308",
+    "package-green.log": "6abad1658387cd3a04620f2c53625edd73095251f681f43bec807a97b68ee2e7",
+    "package-readme.md": "2a3a3619331a6cf8ffb93dc7d4d61e0df6db4b49780972b2537305d0b1a06006",
+    "package-red.log": "d28fc00498609e147e23002ae75dd328b96c6505cabefa3cb61369c64aff1440",
+    "package-result.json": "244035473640d59a46e2e818708f0bfa118eee6b3fa4c97f75171025269c3234",
+    "preservation-before.json": "e376dfda9fa619590d192f8621b5db366dcbe299843d65ae63495b27d223e9e0",
+    "preservation-checks.json": "7767b631680e2451ead68d384ac91487b861269946b2a4ca5859b73b8ee49135",
+    "receipt-cleanup-red.log": "52f2423b3287db55eeec78660d24062340c80be28c493d02d33113dbd1360a6d",
+    "standins-green-first.log": "49b53f853cc50d677bfcb55b2502031e976ec7a7a8776aac969a7ecd2665ab94",
+    "standins-red.log": "54297de5e0044b6f35afd669c6a0e0813604d8486ed3978fd718ec6f30223331",
+    "standins.py.diff": "41a9664b4e0097c4a8d4f46d44746918b73f5f6ff2715bfd6596c4439106a02a",
+    "static-checks.json": "bf27b049160be5737bda6921dc221b0f61fc40508755382156e398f5150d8ed2",
+    "test_granite_controller_standins.py.diff": "50483c24beddf25a68bc19772b28e6043d71ce3ad8f06789196107174b01c349",
+    "test_granite_windows_job.py.diff": "5028d7e80eef95b9f828e9504c066476726ffb17ecebb0e3ebe43c58ead4faf5",
+    "uc001-granite-controller-console-helper-v1.zip": "70f048452a65f619e60c350334fa658280ec8bbfd63b18c1fe9001e3513989e5",
+    "windows_job.py.diff": "8f2db5fabdad6ebb64b446d85ba8dbf22d284065cf46ec2efce0d8e1d380a262"
+  },
+  "future_owner_command": "README.md: Future owner command \u2014 NOT AUTHORIZED / NOT EXECUTED",
+  "documentation_checks": {
+    "local_links_passed": true,
+    "evidence_hashes_passed": true,
+    "owner_path_and_historical_false_flags_exact": true,
+    "existing_native_guard_deadline_watchdog_and_termination_functions_unchanged": true,
+    "current_scope_phase_consistent": true,
+    "future_execution_not_authorized": true,
+    "final_read_only_git_checks_passed": true
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v24.21.0/bin/node",
+      "/workspaces/resolena-alternative-finder/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "approved country selector",
+      "--trace=off",
+      "--output=/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspaces/resolena-alternative-finder/frontend/playwright.config.ts",
+    "rootDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "snapshotDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "trace": "off"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "saved-comparison.spec.ts",
+      "file": "saved-comparison.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "approved country selector preserves cleared input and saves XK coverage",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 606,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:72:44",
+                    "location": {
+                      "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                      "column": 44,
+                      "line": 72
+                    },
+                    "snippet": "  70 | test('approved country selector preserves cleared input and saves XK coverage', async ({ page }, testInfo) => {\n  71 |   const before = inspectDatabase()\n> 72 |   expect(before.counts.search_request > 0).toBe(true)\n     |                                            ^\n  73 |   const priorRequestIds = new Set<string>(before.rows.map((row: { id: string }) => row.id))\n  74 |   const priorOptionIds = new Set<string>(before.snapshots.request_alternative.map(([id]: [string, ...unknown[]]) => id))\n  75 |   const catalogueResponse = await page.request.get('/api/countries')"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                        "column": 44,
+                        "line": 72
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  70 | test('approved country selector preserves cleared input and saves XK coverage', async ({ page }, testInfo) => {\n  71 |   const before = inspectDatabase()\n> 72 |   expect(before.counts.search_request > 0).toBe(true)\n     |                                            ^\n  73 |   const priorRequestIds = new Set<string>(before.rows.map((row: { id: string }) => row.id))\n  74 |   const priorOptionIds = new Set<string>(before.snapshots.request_alternative.map(([id]: [string, ...unknown[]]) => id))\n  75 |   const catalogueResponse = await page.request.get('/api/countries')\n    at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:72:44"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T09:34:22.955Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5r-country-selection/browser-red/saved-comparison-approved--55241-input-and-saves-XK-coverage/error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts",
+                    "column": 44,
+                    "line": 72
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-cfc469fc2cbb5d949987",
+          "file": "saved-comparison.spec.ts",
+          "line": 70,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T09:34:19.224Z",
+    "duration": 5993.911999999999,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,300 @@
+FF.......................                                                [100%]
+=================================== FAILURES ===================================
+____ test_selftest_worker_reuses_real_binding_and_closes_without_git[True] _____
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re0/selftest/evidence/acquisition-proxy.jsonl')
+expected_prior_bytes = 0, expected_pid = 701
+
+    def validate_proxy_terminal(path, expected_prior_bytes, expected_pid=None):
+        if type(expected_prior_bytes) is not int or not 0 <= expected_prior_bytes < DOWNLOAD_CEILING:
+            raise ControllerFailure("prior_accounting_unknown")
+        if expected_pid is not None and (type(expected_pid) is not int or not 0 < expected_pid <= 0xFFFFFFFF):
+            raise ControllerFailure('proxy_expected_pid_invalid')
+        total = expected_prior_bytes
+        opened, ended, amounts = set(), set(), {}
+        seen_start = seen_end = seen_listener = False
+        last_stamp = -1
+        try:
+            with Path(path).open("rb") as stream:
+                for raw in stream:
+                    if len(raw) > 8192 or not raw.endswith(b"\n") or seen_end:
+                        raise ValueError("partial_or_extra_proxy_record")
+                    row = strict_json(raw)
+                    event = row["event"]
+                    stamp = row["monotonic_ns"]
+                    if type(stamp) is not int or stamp < last_stamp:
+                        raise ValueError("proxy_clock_invalid")
+                    last_stamp = stamp
+                    timestamp = datetime.fromisoformat(row["timestamp_utc"])
+                    if timestamp.tzinfo is None:
+                        raise ValueError("proxy_utc_missing")
+                    key, dest = row.get("tunnel_id"), row.get("destination")
+                    if event == "start":
+                        if seen_start or type(row.get("prior_bytes")) is not int or row.get("prior_bytes") != expected_prior_bytes or row.get("allowance_bytes") != DOWNLOAD_CEILING:
+                            raise ValueError("proxy_start_differs")
+                        seen_start = True
+                    elif not seen_start:
+                        raise ValueError("proxy_start_missing")
+                    elif event == "listening":
+                        if (seen_listener or type(row.get('pid')) is not int or not 0 < row['pid'] <= 0xFFFFFFFF
+                                or expected_pid is not None and row['pid'] != expected_pid):
+                            raise ValueError("proxy_identity_differs")
+                        if row.get("address", [None])[0] != "127.0.0.1":
+                            raise ValueError("proxy_not_loopback")
+                        seen_listener = True
+                    elif event == "acquisition_clock":
+>                       if not 0 < row["remaining_seconds"] <= ACQUISITION_SECONDS:
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E                       KeyError: 'remaining_seconds'
+
+scripts/uc001_granite_controller/controller.py:137: KeyError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a217f848ec0>
+split = True
+
+    @pytest.mark.parametrize('split', [True, False])
+    def test_selftest_worker_reuses_real_binding_and_closes_without_git(tmp_path, monkeypatch, split):
+        config, journal, runner = fixture(tmp_path, monkeypatch, split=split)
+>       worker.run_proxy_binding_selftest(config, journal, runner=runner)
+
+tests/unit/test_granite_proxy_binding_worker.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/uc001_granite_controller/worker.py:593: in run_proxy_binding_selftest
+    observation=checks.validate_zero_acquisition_ledger(ledger,expected_prior=prior,
+scripts/uc001_granite_controller/proxy_binding_selftest.py:91: in validate_zero_acquisition_ledger
+    controller.validate_proxy_terminal(path, expected_prior, expected_pid)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re0/selftest/evidence/acquisition-proxy.jsonl')
+expected_prior_bytes = 0, expected_pid = 701
+
+    def validate_proxy_terminal(path, expected_prior_bytes, expected_pid=None):
+        if type(expected_prior_bytes) is not int or not 0 <= expected_prior_bytes < DOWNLOAD_CEILING:
+            raise ControllerFailure("prior_accounting_unknown")
+        if expected_pid is not None and (type(expected_pid) is not int or not 0 < expected_pid <= 0xFFFFFFFF):
+            raise ControllerFailure('proxy_expected_pid_invalid')
+        total = expected_prior_bytes
+        opened, ended, amounts = set(), set(), {}
+        seen_start = seen_end = seen_listener = False
+        last_stamp = -1
+        try:
+            with Path(path).open("rb") as stream:
+                for raw in stream:
+                    if len(raw) > 8192 or not raw.endswith(b"\n") or seen_end:
+                        raise ValueError("partial_or_extra_proxy_record")
+                    row = strict_json(raw)
+                    event = row["event"]
+                    stamp = row["monotonic_ns"]
+                    if type(stamp) is not int or stamp < last_stamp:
+                        raise ValueError("proxy_clock_invalid")
+                    last_stamp = stamp
+                    timestamp = datetime.fromisoformat(row["timestamp_utc"])
+                    if timestamp.tzinfo is None:
+                        raise ValueError("proxy_utc_missing")
+                    key, dest = row.get("tunnel_id"), row.get("destination")
+                    if event == "start":
+                        if seen_start or type(row.get("prior_bytes")) is not int or row.get("prior_bytes") != expected_prior_bytes or row.get("allowance_bytes") != DOWNLOAD_CEILING:
+                            raise ValueError("proxy_start_differs")
+                        seen_start = True
+                    elif not seen_start:
+                        raise ValueError("proxy_start_missing")
+                    elif event == "listening":
+                        if (seen_listener or type(row.get('pid')) is not int or not 0 < row['pid'] <= 0xFFFFFFFF
+                                or expected_pid is not None and row['pid'] != expected_pid):
+                            raise ValueError("proxy_identity_differs")
+                        if row.get("address", [None])[0] != "127.0.0.1":
+                            raise ValueError("proxy_not_loopback")
+                        seen_listener = True
+                    elif event == "acquisition_clock":
+                        if not 0 < row["remaining_seconds"] <= ACQUISITION_SECONDS:
+                            raise ValueError("proxy_clock_allowance")
+                    elif event in ("tunnel_start", "debit", "tunnel_end"):
+                        if not isinstance(key, str) or not key or dest != "github.com:443":
+                            raise ValueError("proxy_tunnel_identity")
+                        if event == "tunnel_start":
+                            if key in opened:
+                                raise ValueError("duplicate_tunnel")
+                            opened.add(key)
+                            amounts[key] = 0
+                        elif key not in opened or key in ended:
+                            raise ValueError("proxy_tunnel_sequence")
+                        elif event == "debit":
+                            debit = row["bytes_read"]
+                            if type(debit) is not int or debit <= 0:
+                                raise ValueError("proxy_debit_invalid")
+                            total += debit
+                            amounts[key] += debit
+                        else:
+                            ended.add(key)
+                        if row.get("tunnel_bytes") != amounts[key]:
+                            raise ValueError("proxy_tunnel_total_differs")
+                    elif event == "end":
+                        if row.get("status") != "closed_unqualified" or row.get("sockets_closed") is not True or opened != ended:
+                            raise ValueError("proxy_terminal_failed_or_open_tunnels")
+                        seen_end = True
+                    else:
+                        raise ValueError("unexpected_proxy_record")
+                    if type(row.get("cumulative_bytes")) is not int or row["cumulative_bytes"] != total or total >= DOWNLOAD_CEILING:
+                        raise ValueError("proxy_accounting_or_exhaustion")
+            if not seen_start or not seen_listener or not seen_end:
+                raise ValueError("proxy_terminal_missing")
+            return total
+        except (OSError, ValueError, TypeError, KeyError, IndexError) as error:
+>           raise ControllerFailure("proxy_ledger_invalid:" + str(error)) from error
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: proxy_ledger_invalid:'remaining_seconds'
+
+scripts/uc001_granite_controller/controller.py:171: ControllerFailure
+____ test_selftest_worker_reuses_real_binding_and_closes_without_git[False] ____
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re1/selftest/evidence/acquisition-proxy.jsonl')
+expected_prior_bytes = 0, expected_pid = 700
+
+    def validate_proxy_terminal(path, expected_prior_bytes, expected_pid=None):
+        if type(expected_prior_bytes) is not int or not 0 <= expected_prior_bytes < DOWNLOAD_CEILING:
+            raise ControllerFailure("prior_accounting_unknown")
+        if expected_pid is not None and (type(expected_pid) is not int or not 0 < expected_pid <= 0xFFFFFFFF):
+            raise ControllerFailure('proxy_expected_pid_invalid')
+        total = expected_prior_bytes
+        opened, ended, amounts = set(), set(), {}
+        seen_start = seen_end = seen_listener = False
+        last_stamp = -1
+        try:
+            with Path(path).open("rb") as stream:
+                for raw in stream:
+                    if len(raw) > 8192 or not raw.endswith(b"\n") or seen_end:
+                        raise ValueError("partial_or_extra_proxy_record")
+                    row = strict_json(raw)
+                    event = row["event"]
+                    stamp = row["monotonic_ns"]
+                    if type(stamp) is not int or stamp < last_stamp:
+                        raise ValueError("proxy_clock_invalid")
+                    last_stamp = stamp
+                    timestamp = datetime.fromisoformat(row["timestamp_utc"])
+                    if timestamp.tzinfo is None:
+                        raise ValueError("proxy_utc_missing")
+                    key, dest = row.get("tunnel_id"), row.get("destination")
+                    if event == "start":
+                        if seen_start or type(row.get("prior_bytes")) is not int or row.get("prior_bytes") != expected_prior_bytes or row.get("allowance_bytes") != DOWNLOAD_CEILING:
+                            raise ValueError("proxy_start_differs")
+                        seen_start = True
+                    elif not seen_start:
+                        raise ValueError("proxy_start_missing")
+                    elif event == "listening":
+                        if (seen_listener or type(row.get('pid')) is not int or not 0 < row['pid'] <= 0xFFFFFFFF
+                                or expected_pid is not None and row['pid'] != expected_pid):
+                            raise ValueError("proxy_identity_differs")
+                        if row.get("address", [None])[0] != "127.0.0.1":
+                            raise ValueError("proxy_not_loopback")
+                        seen_listener = True
+                    elif event == "acquisition_clock":
+>                       if not 0 < row["remaining_seconds"] <= ACQUISITION_SECONDS:
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E                       KeyError: 'remaining_seconds'
+
+scripts/uc001_granite_controller/controller.py:137: KeyError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a217fcff530>
+split = False
+
+    @pytest.mark.parametrize('split', [True, False])
+    def test_selftest_worker_reuses_real_binding_and_closes_without_git(tmp_path, monkeypatch, split):
+        config, journal, runner = fixture(tmp_path, monkeypatch, split=split)
+>       worker.run_proxy_binding_selftest(config, journal, runner=runner)
+
+tests/unit/test_granite_proxy_binding_worker.py:124: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/uc001_granite_controller/worker.py:593: in run_proxy_binding_selftest
+    observation=checks.validate_zero_acquisition_ledger(ledger,expected_prior=prior,
+scripts/uc001_granite_controller/proxy_binding_selftest.py:91: in validate_zero_acquisition_ledger
+    controller.validate_proxy_terminal(path, expected_prior, expected_pid)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_selftest_worker_reuses_re1/selftest/evidence/acquisition-proxy.jsonl')
+expected_prior_bytes = 0, expected_pid = 700
+
+    def validate_proxy_terminal(path, expected_prior_bytes, expected_pid=None):
+        if type(expected_prior_bytes) is not int or not 0 <= expected_prior_bytes < DOWNLOAD_CEILING:
+            raise ControllerFailure("prior_accounting_unknown")
+        if expected_pid is not None and (type(expected_pid) is not int or not 0 < expected_pid <= 0xFFFFFFFF):
+            raise ControllerFailure('proxy_expected_pid_invalid')
+        total = expected_prior_bytes
+        opened, ended, amounts = set(), set(), {}
+        seen_start = seen_end = seen_listener = False
+        last_stamp = -1
+        try:
+            with Path(path).open("rb") as stream:
+                for raw in stream:
+                    if len(raw) > 8192 or not raw.endswith(b"\n") or seen_end:
+                        raise ValueError("partial_or_extra_proxy_record")
+                    row = strict_json(raw)
+                    event = row["event"]
+                    stamp = row["monotonic_ns"]
+                    if type(stamp) is not int or stamp < last_stamp:
+                        raise ValueError("proxy_clock_invalid")
+                    last_stamp = stamp
+                    timestamp = datetime.fromisoformat(row["timestamp_utc"])
+                    if timestamp.tzinfo is None:
+                        raise ValueError("proxy_utc_missing")
+                    key, dest = row.get("tunnel_id"), row.get("destination")
+                    if event == "start":
+                        if seen_start or type(row.get("prior_bytes")) is not int or row.get("prior_bytes") != expected_prior_bytes or row.get("allowance_bytes") != DOWNLOAD_CEILING:
+                            raise ValueError("proxy_start_differs")
+                        seen_start = True
+                    elif not seen_start:
+                        raise ValueError("proxy_start_missing")
+                    elif event == "listening":
+                        if (seen_listener or type(row.get('pid')) is not int or not 0 < row['pid'] <= 0xFFFFFFFF
+                                or expected_pid is not None and row['pid'] != expected_pid):
+                            raise ValueError("proxy_identity_differs")
+                        if row.get("address", [None])[0] != "127.0.0.1":
+                            raise ValueError("proxy_not_loopback")
+                        seen_listener = True
+                    elif event == "acquisition_clock":
+                        if not 0 < row["remaining_seconds"] <= ACQUISITION_SECONDS:
+                            raise ValueError("proxy_clock_allowance")
+                    elif event in ("tunnel_start", "debit", "tunnel_end"):
+                        if not isinstance(key, str) or not key or dest != "github.com:443":
+                            raise ValueError("proxy_tunnel_identity")
+                        if event == "tunnel_start":
+                            if key in opened:
+                                raise ValueError("duplicate_tunnel")
+                            opened.add(key)
+                            amounts[key] = 0
+                        elif key not in opened or key in ended:
+                            raise ValueError("proxy_tunnel_sequence")
+                        elif event == "debit":
+                            debit = row["bytes_read"]
+                            if type(debit) is not int or debit <= 0:
+                                raise ValueError("proxy_debit_invalid")
+                            total += debit
+                            amounts[key] += debit
+                        else:
+                            ended.add(key)
+                        if row.get("tunnel_bytes") != amounts[key]:
+                            raise ValueError("proxy_tunnel_total_differs")
+                    elif event == "end":
+                        if row.get("status") != "closed_unqualified" or row.get("sockets_closed") is not True or opened != ended:
+                            raise ValueError("proxy_terminal_failed_or_open_tunnels")
+                        seen_end = True
+                    else:
+                        raise ValueError("unexpected_proxy_record")
+                    if type(row.get("cumulative_bytes")) is not int or row["cumulative_bytes"] != total or total >= DOWNLOAD_CEILING:
+                        raise ValueError("proxy_accounting_or_exhaustion")
+            if not seen_start or not seen_listener or not seen_end:
+                raise ValueError("proxy_terminal_missing")
+            return total
+        except (OSError, ValueError, TypeError, KeyError, IndexError) as error:
+>           raise ControllerFailure("proxy_ledger_invalid:" + str(error)) from error
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: proxy_ledger_invalid:'remaining_seconds'
+
+scripts/uc001_granite_controller/controller.py:171: ControllerFailure
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_reuses_real_binding_and_closes_without_git[True]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_reuses_real_binding_and_closes_without_git[False]
+2 failed, 23 passed in 0.65s

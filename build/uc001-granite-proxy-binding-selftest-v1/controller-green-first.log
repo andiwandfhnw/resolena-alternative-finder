@@ -1,0 +1,1429 @@
+.FFFFFFFFFFFFFF....................FF                                    [100%]
+=================================== FAILURES ===================================
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[CONNECT] __
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_0/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_0')
+event = 'CONNECT'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_0/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[connect] __
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_1/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_1')
+event = 'connect'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_1/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[tunnel_start] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_2/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_2')
+event = 'tunnel_start'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_2/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[tunnel_end] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_3/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_3')
+event = 'tunnel_end'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_3/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+__ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[debit] ___
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_4/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_4')
+event = 'debit'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_4/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[upstream] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_5/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_5')
+event = 'upstream'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_5/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[outbound] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_6/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_6')
+event = 'outbound'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_6/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[unknown] __
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_7/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+>                   raise ValueError('outbound_or_tunnel_event')
+E                   ValueError: outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:59: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_7')
+event = 'unknown'
+
+    @pytest.mark.parametrize('event', ['CONNECT', 'connect', 'tunnel_start', 'tunnel_end', 'debit',
+                                      'upstream', 'outbound', 'unknown'])
+    def test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes(tmp_path, event):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows.insert(-1, dict(rows[1], event=event, tunnel_id='x', destination='github.com:443'))
+        path.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:37: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_every_tunnel_or_outbound_7/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_tunnel_event
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[prior_hash] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_0/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+>                   raise ValueError('selftest_receipt_binding_differs')
+E                   ValueError: selftest_receipt_binding_differs
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:72: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_0')
+damage = 'prior_hash'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'counter', 'pid', 'partial', 'missing_end'])
+    def test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal(tmp_path, damage):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if damage == 'prior_hash': rows[0]['prior_receipt_sha256'] = '0'*64
+        if damage == 'counter': rows[1]['cumulative_bytes'] = 1
+        if damage == 'pid': rows[1]['pid'] = 200
+        if damage == 'missing_end': rows.pop()
+        text = ''.join(json.dumps(row)+'\n' for row in rows)
+        path.write_text(text+'{' if damage == 'partial' else text)
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_0/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:selftest_receipt_binding_differs
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[counter] _
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_1/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+>                   raise ValueError('outbound_or_debit_fields')
+E                   ValueError: outbound_or_debit_fields
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:64: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_1')
+damage = 'counter'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'counter', 'pid', 'partial', 'missing_end'])
+    def test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal(tmp_path, damage):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if damage == 'prior_hash': rows[0]['prior_receipt_sha256'] = '0'*64
+        if damage == 'counter': rows[1]['cumulative_bytes'] = 1
+        if damage == 'pid': rows[1]['pid'] = 200
+        if damage == 'missing_end': rows.pop()
+        text = ''.join(json.dumps(row)+'\n' for row in rows)
+        path.write_text(text+'{' if damage == 'partial' else text)
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_1/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:outbound_or_debit_fields
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+___ test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[pid] ___
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_2/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+>                       raise ValueError('selftest_listening_identity_differs')
+E                       ValueError: selftest_listening_identity_differs
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:77: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_2')
+damage = 'pid'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'counter', 'pid', 'partial', 'missing_end'])
+    def test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal(tmp_path, damage):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if damage == 'prior_hash': rows[0]['prior_receipt_sha256'] = '0'*64
+        if damage == 'counter': rows[1]['cumulative_bytes'] = 1
+        if damage == 'pid': rows[1]['pid'] = 200
+        if damage == 'missing_end': rows.pop()
+        text = ''.join(json.dumps(row)+'\n' for row in rows)
+        path.write_text(text+'{' if damage == 'partial' else text)
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_2/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+>               raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_zero_acquisition_guard:selftest_listening_identity_differs
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:84: ControllerFailure
+_ test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[partial] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_3')
+damage = 'partial'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'counter', 'pid', 'partial', 'missing_end'])
+    def test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal(tmp_path, damage):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if damage == 'prior_hash': rows[0]['prior_receipt_sha256'] = '0'*64
+        if damage == 'counter': rows[1]['cumulative_bytes'] = 1
+        if damage == 'pid': rows[1]['pid'] = 200
+        if damage == 'missing_end': rows.pop()
+        text = ''.join(json.dumps(row)+'\n' for row in rows)
+        path.write_text(text+'{' if damage == 'partial' else text)
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_3/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+>           raise ControllerFailure('selftest_ledger_partial')
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_ledger_partial
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:50: ControllerFailure
+_ test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[missing_end] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_4')
+damage = 'missing_end'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'counter', 'pid', 'partial', 'missing_end'])
+    def test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal(tmp_path, damage):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        if damage == 'prior_hash': rows[0]['prior_receipt_sha256'] = '0'*64
+        if damage == 'counter': rows[1]['cumulative_bytes'] = 1
+        if damage == 'pid': rows[1]['pid'] = 200
+        if damage == 'missing_end': rows.pop()
+        text = ''.join(json.dumps(row)+'\n' for row in rows)
+        path.write_text(text+'{' if damage == 'partial' else text)
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:51: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_zero_guard_fails_unknown_4/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+            raise ControllerFailure('selftest_ledger_partial')
+        counts = {}
+        ended = False
+        listening_pid = None
+        for raw in data[:complete_size].splitlines():
+            try:
+                row = controller.strict_json(raw)
+                event = row['event']
+                if event not in {'start', 'acquisition_clock', 'listening', 'end'} or ended:
+                    raise ValueError('outbound_or_tunnel_event')
+                if (row.get('tunnel_id') is not None or row.get('destination') is not None
+                        or type(row.get('tunnel_bytes')) is not int or row['tunnel_bytes'] != 0
+                        or type(row.get('cumulative_bytes')) is not int or row['cumulative_bytes'] != expected_prior
+                        or 'bytes_read' in row or 'bytes_forwarded' in row):
+                    raise ValueError('outbound_or_debit_fields')
+                counts[event] = counts.get(event, 0) + 1
+                if counts[event] != 1 or not counts.get('start'):
+                    raise ValueError('selftest_ledger_sequence')
+                if event == 'start' and (len(counts) != 1
+                        or row.get('prior_receipt_sha256') != PRIOR_SHA256
+                        or type(row.get('prior_bytes')) is not int or row['prior_bytes'] != expected_prior
+                        or row.get('allowance_bytes') != controller.DOWNLOAD_CEILING):
+                    raise ValueError('selftest_receipt_binding_differs')
+                if event == 'listening':
+                    listening_pid = row.get('pid')
+                    if (type(listening_pid) is not int or not 0 < listening_pid <= 0xFFFFFFFF
+                            or expected_pid is not None and listening_pid != expected_pid):
+                        raise ValueError('selftest_listening_identity_differs')
+                    address = row.get('address')
+                    if (not isinstance(address, list) or len(address) != 2 or address[0] != '127.0.0.1'
+                            or type(address[1]) is not int or not 0 < address[1] <= 65535):
+                        raise ValueError('selftest_listener_not_loopback')
+                ended = event == 'end'
+            except (ValueError, TypeError, KeyError) as error:
+                raise ControllerFailure('selftest_zero_acquisition_guard:' + str(error)) from error
+        if terminal:
+            if not ended:
+>               raise ControllerFailure('selftest_ledger_terminal_missing')
+E               _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_ledger_terminal_missing
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:87: ControllerFailure
+____ test_live_guard_tolerates_only_an_unfinished_tail_and_then_rechecks_it ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_live_guard_tolerates_only0')
+
+    def test_live_guard_tolerates_only_an_unfinished_tail_and_then_rechecks_it(tmp_path):
+        path = tmp_path/'proxy.jsonl'; ledger(path)
+        path.write_bytes(path.read_bytes()+b'{')
+        assert selftest.validate_zero_acquisition_ledger(path, 0, 201)['complete'] is True
+        with pytest.raises(ControllerFailure):
+>           selftest.validate_zero_acquisition_ledger(path, 0, 201, terminal=True)
+
+tests/unit/test_granite_proxy_binding_selftest.py:59: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_live_guard_tolerates_only0/proxy.jsonl')
+expected_prior = 0, expected_pid = 201, terminal = True
+
+    def validate_zero_acquisition_ledger(path, expected_prior=0, expected_pid=None, terminal=False):
+        if type(expected_prior) is not int or expected_prior != 0:
+            raise ControllerFailure('selftest_prior_must_be_owner_attested_zero')
+        path = Path(path)
+        try:
+            data = path.read_bytes()
+        except FileNotFoundError:
+            if terminal:
+                raise ControllerFailure('selftest_ledger_missing') from None
+            return dict(records=0, complete=False, total=expected_prior, listening_pid=None, event_counts={})
+        if len(data) > 65536:
+            raise ControllerFailure('selftest_ledger_size_invalid')
+        complete_size = data.rfind(b'\n') + 1
+        if terminal and complete_size != len(data) or len(data) - complete_size > 8192:
+>           raise ControllerFailure('selftest_ledger_partial')
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_ledger_partial
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:50: ControllerFailure
+_ test_native_main_rejects_without_explicit_owner_authorization_before_native_api _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_native_main_rejects_witho0')
+
+    def test_native_main_rejects_without_explicit_owner_authorization_before_native_api(tmp_path):
+        with pytest.raises(ControllerFailure,match='not_authorized'):
+>           selftest.native_selftest(tmp_path/'config.json',tmp_path/'result',owner_authorized=False)
+
+tests/unit/test_granite_proxy_binding_selftest.py:204: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_native_main_rejects_witho0/config.json')
+output = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_native_main_rejects_witho0/result')
+owner_authorized = False
+
+    def native_selftest(config_path, output, *, owner_authorized=False):
+        if owner_authorized is not True:
+>           raise ControllerFailure('proxy_binding_selftest_not_authorized')
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: proxy_binding_selftest_not_authorized
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:363: ControllerFailure
+_ test_acceptance_prior_hash_is_fixed_and_not_replaceable_with_another_zero_receipt _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_acceptance_prior_hash_is_0')
+
+    def test_acceptance_prior_hash_is_fixed_and_not_replaceable_with_another_zero_receipt(tmp_path):
+        with pytest.raises(ControllerFailure,match='prior_receipt'):
+>           selftest.validate_preparation(dict(selftest_only=True,prior_sha256='0'*64),tmp_path)
+
+tests/unit/test_granite_proxy_binding_selftest.py:209: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = {'selftest_only': True, 'prior_sha256': '0000000000000000000000000000000000000000000000000000000000000000'}
+helper_dir = PosixPath('/tmp/pytest-of-vscode/pytest-4/test_acceptance_prior_hash_is_0')
+
+    def validate_preparation(config, helper_dir):
+        helper_dir = Path(helper_dir).resolve()
+        if config.get('prior_sha256') != PRIOR_SHA256:
+>           raise ControllerFailure('selftest_accepted_prior_receipt_hash_required')
+E           _granite_proxy_binding_selftest_controller.ControllerFailure: selftest_accepted_prior_receipt_hash_required
+
+scripts/uc001_granite_controller/proxy_binding_selftest.py:96: ControllerFailure
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[CONNECT]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[connect]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[tunnel_start]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[tunnel_end]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[debit]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[upstream]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[outbound]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_every_tunnel_or_outbound_event_is_rejected_even_at_zero_bytes[unknown]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[prior_hash]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[counter]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[pid]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[partial]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_zero_guard_fails_unknown_or_wrong_receipt_listener_or_terminal[missing_end]
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_live_guard_tolerates_only_an_unfinished_tail_and_then_rechecks_it
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_native_main_rejects_without_explicit_owner_authorization_before_native_api
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_acceptance_prior_hash_is_fixed_and_not_replaceable_with_another_zero_receipt
+16 failed, 21 passed in 0.97s

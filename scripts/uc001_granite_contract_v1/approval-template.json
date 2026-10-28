@@ -1,0 +1,13 @@
+{
+  "bundle_id": null,
+  "owner": null,
+  "authorized_on": null,
+  "acquisition_approved": false,
+  "build_approved": false,
+  "live_execution_approved": false,
+  "maximum_startups": 1,
+  "maximum_generations": 11,
+  "desktop_prerequisites_and_resource_supervision_confirmed": false,
+  "assessment_start_utc": null,
+  "meaning": "Template grants no authorization. Owner records start UTC before the single future server launch; a supervisor must enforce startup/resource/deadline and owned exit."
+}

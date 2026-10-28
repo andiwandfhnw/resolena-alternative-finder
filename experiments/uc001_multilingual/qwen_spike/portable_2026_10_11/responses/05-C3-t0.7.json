@@ -1,0 +1,27 @@
+{
+  "http_status": 200,
+  "http_headers": [
+    [
+      "Server",
+      "llama.cpp"
+    ],
+    [
+      "Access-Control-Allow-Origin",
+      ""
+    ],
+    [
+      "Content-Type",
+      "application/json; charset=utf-8"
+    ],
+    [
+      "Content-Length",
+      "1695"
+    ],
+    [
+      "Keep-Alive",
+      "timeout=5, max=100"
+    ]
+  ],
+  "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"de\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"water_kettle\\\", \\\"quote\\\": \\\"Wasserkocher\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repariere\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_replacement\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"ohne ihn zu ersetzen\\\"},\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"false\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"preserve_quality\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"budget\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"storage_min\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"cost_exclusion\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"locality\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"},\\n    {\\\"kind\\\": \\\"identifier\\\", \\\"value\\\": \\\"\\\", \\\"quote\\\": \\\"\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733484,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":247,\"prompt_tokens\":341,\"total_tokens\":588,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-DyuVTAYzl6gQj5cUt1laBv7adAOEs55j\",\"timings\":{\"cache_n\":0,\"prompt_n\":341,\"prompt_ms\":8159.362,\"prompt_per_token_ms\":23.92774780058651,\"prompt_per_second\":41.79248328484507,\"predicted_n\":247,\"predicted_ms\":29974.341,\"predicted_per_token_ms\":121.84691463414634,\"predicted_per_second\":8.207019463747343}}",
+  "wall_seconds": 38.14556490399991
+}

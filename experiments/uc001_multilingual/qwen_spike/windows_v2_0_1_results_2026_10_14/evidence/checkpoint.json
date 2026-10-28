@@ -1,0 +1,59 @@
+{
+    "completed_ids":  [
+                          "01-C1-v2",
+                          "02-C2-v2",
+                          "03-C3-v2",
+                          "04-C4-v2",
+                          "05-C5-v2",
+                          "06-C6-v2"
+                      ],
+    "deadline_utc":  "2026-10-14T20:36:19.1580353Z",
+    "freeze_sha256":  "8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d",
+    "checkpoint_id":  "cp06",
+    "nonce":  "dd4d55be-1ff0-4039-892c-fc5d20f40879",
+    "receipts":  [
+                     {
+                         "arm":  "v2",
+                         "case":  "01-C1-known",
+                         "response_sha256":  "12729f685baf23a9fcc9960350051eaa85b1fd6c1bd62266d24c6393446921ba",
+                         "id":  "01-C1-v2",
+                         "request_sha256":  "3c58b63c198055e443a0ef4c6836b32f9813fedc0d9eb0e16a0899a7fef507d2"
+                     },
+                     {
+                         "arm":  "v2",
+                         "case":  "02-C2-known",
+                         "response_sha256":  "7a2e6ec63cefe2ba815e6eb21da5cc3af39be5b442100ca3e121f8dc58552b4b",
+                         "id":  "02-C2-v2",
+                         "request_sha256":  "8b8b623ea84c38970750236ab30bcbe4bbdcedbf3f6d80dd03ff94cd537f3299"
+                     },
+                     {
+                         "arm":  "v2",
+                         "case":  "03-C3-known",
+                         "response_sha256":  "329b773390e9c714c4e43b4f189ffcebcf14f26002c813067075021df5600fe9",
+                         "id":  "03-C3-v2",
+                         "request_sha256":  "d617c454dce6aa8828438edfa9147a58eff6eaac8bba53da4413c205e05c4f0d"
+                     },
+                     {
+                         "arm":  "v2",
+                         "case":  "04-C4-known",
+                         "response_sha256":  "a007f7d282526b9590443d69bc38c64c8451b716318f6488b50150b6686c334b",
+                         "id":  "04-C4-v2",
+                         "request_sha256":  "8d646cc3db877b2c81bc54d8483db89008667470f12efee93ba26ff3e64fb553"
+                     },
+                     {
+                         "arm":  "v2",
+                         "case":  "05-C5-known",
+                         "response_sha256":  "f49b138f8ee91e3a7286322fe37809d165ff82d1f1a494a04619a10b4da5c781",
+                         "id":  "05-C5-v2",
+                         "request_sha256":  "1ce4924b5e88311fdcd23cd4ed230cda46b8b804bc4110c4885a21db694258b5"
+                     },
+                     {
+                         "arm":  "v2",
+                         "case":  "06-C6-known",
+                         "response_sha256":  "2cebd985afc89aaf2828ff78488da65ec1a14bb820dc89a46e0a18045ece8ec2",
+                         "id":  "06-C6-v2",
+                         "request_sha256":  "ec337b4a9b4476acce68deb1334c9e3f3ea061235c186903371fab4f29197299"
+                     }
+                 ],
+    "run_id":  "b8591094-a685-48f4-88ef-3420d8b68d90"
+}

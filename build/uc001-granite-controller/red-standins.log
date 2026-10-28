@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+_______ ERROR collecting tests/unit/test_granite_controller_standins.py ________
+ImportError while importing test module '/workspaces/resolena-alternative-finder/tests/unit/test_granite_controller_standins.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/test_granite_controller_standins.py:7: in <module>
+    from scripts.uc001_granite_controller.standins import StandinFailure, run_ownership_selftest
+E   ModuleNotFoundError: No module named 'scripts.uc001_granite_controller.standins'
+=========================== short test summary info ============================
+ERROR tests/unit/test_granite_controller_standins.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.51s

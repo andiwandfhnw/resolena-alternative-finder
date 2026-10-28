@@ -1,0 +1,596 @@
+{
+  "recorded_at": "2026-10-23T18:24:29.840418+00:00",
+  "scope": "UC-001 increment 1, Phase 3 DEVELOP, Priority 5U only: approved development reference release, exact CH/LI association matching, unsaved clarification and explicit association continuation.",
+  "phase": 3,
+  "status": "in-progress",
+  "result": "Bounded implementation and focused verification complete for human review. Priority 5, increment 1 and DEVELOP remain incomplete.",
+  "recorded_owner_approval": {
+    "approved_on": "2026-10-23",
+    "ADR": "../../docs/adr/ADR-006-locality-association-development-release.md",
+    "acceptance": "Priority 5T accepted only as demonstrated inactive reference preparation. Owner accepts the pinned swisstopo 2026-10-01 source-based policy/release basis,5,716 associations,CH/LI derivation, field mapping, attribution and limitations; not independent factual verification of every association or linguistic approval.",
+    "identity_boundary": "Preserve every postal/municipal association; no invented locality GUID or consolidation by name/postcode/ZIP_ID/municipality. Presence does not prove delivery/service coverage; absence alone does not prove invalidity.",
+    "activation_scope": "Priority 5U development slice and isolated demo/test composition only",
+    "production_activation_approved": false,
+    "original_draft_and_manifest": "Original5Tdraft/manifest/source/acquisition/receipts remain byte-unchanged; approval is in separate release metadata, not a rewrite of their historical pending-review state."
+  },
+  "prerequisites": {
+    "material_conflict": false,
+    "current_contracts": [
+      "Current worktree UC-001 locality matching/O-1 requirements and relevant acceptance criteria.",
+      "Current ARCHITECTURE location/identity/retention/qualification/recovery guidance and ADR005 development-reference conventions.",
+      "Accepted5Tmanifest and existing5H/5R/5S behavior; existing application/API/React/SQLite paths."
+    ],
+    "findings": [
+      "Existing API accepts a reference dictionary with existing location_choice provided; no new input enum or token framework is necessary.",
+      "Existing200clarification_required/not_attempted supports locality uncertainty; additional source-backed association metadata stays separate from language choices. Known selected-country mismatch uses existing422invalid_input; inconsistent selection clarifies.",
+      "Existing JSON metadata/projections suffice; no SQL schema, dependency or normal runtime configuration change.",
+      "Atomic save-before-presentation and immutable saved projections are reused. Ownership/payload-bound committed recovery remains before interpretation and both current references.",
+      "No equivalent exact association matching implementation existed. Country membership remains validated first; absent capability, no match, broken loader and processing fault must stay distinct."
+    ],
+    "reuse": "No source acquisition/reselection, worldwide dataset, eight-row checkpoint, interpreter investigation or completed reliability matrix repeated."
+  },
+  "approved_reference_release": {
+    "release_id": "swisstopo-chli-associations-2026-10-01-v1",
+    "release": "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01.json",
+    "approval_manifest": "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-APPROVAL.json",
+    "release_sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+    "approval_manifest_sha256": "bf61d58e2aaa302aa487a032633d1b52f7131bbd45e35fade81d9cc870aeb87a",
+    "data_bytes": 2265497,
+    "raw_source": {
+      "path": "build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip",
+      "sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+      "bytes": 132697,
+      "format": "ZIP with one UTF-8 BOM semicolon CSV; twelve exact columns",
+      "member": {
+        "path": "AMTOVZ_CSV_LV95/AMTOVZ_CSV_LV95.csv",
+        "sha256": "ae33ad60171374afcb39ddd9cc5268a1fe5b71f40bf21961373f4e6fb65abe02",
+        "bytes": 503281
+      }
+    },
+    "source_dates": {
+      "snapshot_at": "2026-10-01T00:00:00Z",
+      "metadata_updated_at": "2026-10-01T04:45:13.574657Z",
+      "publication_date": null,
+      "reviewed_at": null,
+      "publisher_HTTP_last_modified": "Thu, 01 Oct 2026 04:45:06 GMT",
+      "format_document_version": "1.2",
+      "format_document_version_date": "2026-01-01",
+      "limits": "STAC snapshot and update times describe this export; HTTP Last-Modified is a resource timestamp. CSV Validity is locality-name effective date, not export/retrieval/review time; omitted from draft. No per-entry factual currentness inferred."
+    },
+    "retrieved_at": "2026-10-23T17:16:08.019270+00:00",
+    "actual_prepared_at": "2026-10-23T17:57:36+00:00",
+    "owner_approval": {
+      "owner_approved": true,
+      "approved_on": "2026-10-23",
+      "approved_at": null,
+      "scope": "Priority 5U development slice and isolated demo/test composition only",
+      "production_activation_approved": false,
+      "independent_factual_review": false,
+      "linguistic_approval": false,
+      "basis": "Owner acceptance of the pinned source-based association policy and release basis; no independent factual verification of every association or linguistic approval."
+    },
+    "date_boundary": "Actual preparation/retrieval/source timestamps and date-only owner approval are distinct; none is backdated to the synthetic2026-10-15 assessment clock.",
+    "counts": {
+      "source_records": 5716,
+      "included": 5716,
+      "excluded": 0,
+      "unresolved": 0,
+      "duplicate_source_records": 0,
+      "duplicate_retained_associations": 0
+    },
+    "structural_summary": {
+      "country_association_counts": {
+        "CH": 5696,
+        "LI": 20
+      },
+      "distinct_postal_ids": 4073,
+      "postal_ids_with_multiple_associations": 1206,
+      "postal_ids_across_canton_labels": 167
+    },
+    "byte_preservation": "Approved data bytes equal accepted draft SHA eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9. Source ZIP pin 0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b.",
+    "preparation_command": "release-preparation-command.txt",
+    "attribution": {
+      "credit": "Federal Office of Topography swisstopo",
+      "source_reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+      "terms_reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "terms_version": "1.3.2021",
+      "basis": "Publisher OGD terms allow use, redistribution and processing with mandatory source credit. STAC labels the licence proprietary; no Creative Commons or endorsement claim is inferred.",
+      "modification_notice": "Selected non-spatial association columns, derived country/matching keys and extraction provenance; excluded coordinates/address shares/language/validity. Source spelling and postal strings unchanged. Owner accepted the source-based policy and release basis on 2026-10-23; no independent factual or linguistic approval."
+    },
+    "approval_limits": "Development slice/isolated demo-test use only. No production activation, independent per-association factual/linguistic approval or automatic replacement."
+  },
+  "matching_and_selection_contract": {
+    "port": "app.application.localities.LocalityReference/LocalityCatalogue",
+    "adapter": "app.infrastructure.locality_reference.LocalLocalityCatalogue enforces approved identity,owner scope,source/output pins,structure and attribution; no external runtime request.",
+    "rules": "Within selected country only; town boundary-trim/NFC/casefold and trimmed postcode strings intersect. Exact source names only; no alias invention, accent stripping, multilingual-name splitting, fuzzy matching, nearby/physical-location inference.",
+    "input_pointer": {
+      "location_choice": "provided",
+      "search_location.reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "source_record": 16
+      }
+    },
+    "pointer_validation": "Exact source/release/source_record keys/types; server fetches canonical association, validates selected country and all supplied town/postcode values. Client matched flags, edited labels, stale/fabricated/inconsistent pointers are not trusted.",
+    "response_categories": {
+      "single_match": "Actual assessment then atomic201comparison or insufficient_coverage.",
+      "multiple": "200clarification_required/not_attempted; issue locality_reference_ambiguous; source-backed clarification.associations and empty language choices.",
+      "no_match_or_outside_CH_LI": "200clarification_required/not_attempted; locality_reference_unknown, not an invalidity claim. Other approved countries remain valid choices.",
+      "absent_port": "Existing200locality_reference_unavailable clarification.",
+      "configured_unusable_loader": "503configuration_unavailable/locality_reference_unavailable; never a fabricated empty lookup.",
+      "unexpected_processing_fault": "500processing_error.",
+      "known_selected_country_mismatch": "422invalid_input/locality_country_mismatch with correction explanation.",
+      "stale_fabricated_edited_or_field_inconsistent_pointer": "200clarification_required/locality_selection_inconsistent; no save."
+    },
+    "user_actions": "Association selection alone and country/town/postcode editing send nothing. Labelled Continue with selected association captures fresh key/proof/payload. Location edits clear selected association and presentation. Ordinary Recovery retains original captured body; a fresh search creates new intent.",
+    "saved_scope_example": {
+      "country_code": "CH",
+      "town": "Lausanne",
+      "postcode": "1015",
+      "locality": {
+        "verification": "matched_in_reference",
+        "selection": "explicit",
+        "normalized": {
+          "town": "lausanne",
+          "postcode": "1015"
+        },
+        "association": {
+          "reference": {
+            "source": "swisstopo",
+            "release": "swisstopo-chli-associations-2026-10-01-v1",
+            "source_record": 16
+          },
+          "country_code": "CH",
+          "locality_name": "Lausanne",
+          "postcode": "1015",
+          "source_postcode_id": "163",
+          "additional_number": "00",
+          "administrative": {
+            "municipality_name": "Saint-Sulpice (VD)",
+            "municipality_id": "5648",
+            "canton": "VD"
+          }
+        }
+      }
+    },
+    "minimal_persistence": "Original text/independent span requirements and raw entered locality remain separate from normalized fields, explicit choice, one canonical association/pointer and server-derived release provenance. No candidate list is saved.",
+    "provenance_field": "interpretation.provenance.reference_versions.locality:{source,release,sha256,snapshot_at}, separate from country reference and captured client payload digest.",
+    "identity_limits": "source_record is meaningful only with this pinned release. ZIP_ID is postal identity; neither is a locality GUID. No cross-postcode equivalence or consolidation.",
+    "qualification_boundary": "Canonical selected association town/postcode guide actual applicability assessment, including postcode-only intent; raw fields remain unchanged in persistence. Matching does not establish provider coverage. Existing5S countrywide/unambiguously scoped evidence,freshness,rendering and essential textual requirements still govern qualification.",
+    "presentation": "Actual saved search_scope alone drives Matched in this reference wording,necessary labels and source credit; no verified delivery/user-location/universal-currentness claim. Recovery acknowledgement excludes saved scope/comparison replay."
+  },
+  "test_first_evidence": {
+    "plan": "fixture-plan.json records exact source rows and expected honest insufficient_coverage before implementation.",
+    "reference_RED": "One collection error: new port/module absent. Approved preparation RED: one missing --approved-release failure. Missing new support, not a production defect.",
+    "reference_GREEN": "29 new loader/matching/pointer checks passed;2 preparation checks passed, including directly affected legacy draft-mode reproduction.",
+    "API_RED": "Initial16 missing-adapter failures, then16 behavior failures after adapter/port available: old policy still produced unavailable clarification rather than exact matching/selection.",
+    "API_correction": "First policy GREEN attempt13 passed / 3 failed because a new string assertion matched associations in release ID. Corrected to test for the JSON candidate-list key; no product behavior weakened.",
+    "API_final": "29 passed/42 deselected (16 new,13 directly affected existing), plus1 separately executed textual-locality-constraint regression.",
+    "browser_feature_RED": "Existing country-only CH success baseline passed;2 new journeys failed (expected201received200; expectedambiguousreceivedunavailable).",
+    "initial_browser_GREEN": "4 normal-reference cases passed and4 explicit absent-port regressions passed in separate runs; retained unchanged.",
+    "runner_composition_RED": "Default mixed-run check: baseline passed,2 original unavailable cases failed because configured reference correctly returned unknown. This exposed a harness-composition mismatch, not a matching defect.",
+    "runner_composition_fix": "Unique owned build/test-only control file arms ONLY the two exact existing unavailable-case titles. beforeEach resets;afterEach removes. Demo selects an immutable real CompareRequest clone with localities=None and shared real store/clock; normal missing-file mode retains approved reference/fault wrappers. Malformed controls fail as test-composition errors. No endpoint/header, application response stub or weakened old assertion.",
+    "final_browser_GREEN": "7 passed in13.7s under ordinary runner: baseline,two new association journeys,unchanged confirmed-unverified,country-only,country-edit and lost-HTTP recovery cases. At most two new browser journeys; no broad matrix.",
+    "frontend": "Final lint and TypeScript/Vite build passed. Prior successful logs preserved before source-credit and composition changes; reruns justified by affected frontend/config edits.",
+    "exact_commands": "commands.json",
+    "final_browser_report": "browser-composition-green.json",
+    "limitations": "Prepared synthetic request meaning/provider evidence and fixed assessment clock; real approved public reference data. No real interpreter/provider/linguistic acceptance established. Automated checks are not whole-row closure."
+  },
+  "actual_final_browser_journeys": [
+    {
+      "journey": "single_match",
+      "evidence": "build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-2fb64-onest-insufficient-coverage/association-single_match-evidence.json",
+      "before_ids": [
+        "70a419a1-cb5a-4a8b-94da-ef33ec3f9657"
+      ],
+      "before_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_clarification_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "saved_request_id": "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9",
+      "saved_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9"
+          },
+          "search_scope": {
+            "country_code": "CH",
+            "town": "  jouxtens-mézery  ",
+            "postcode": " 1008 ",
+            "locality": {
+              "verification": "matched_in_reference",
+              "selection": "single_match",
+              "normalized": {
+                "town": "jouxtens-mézery",
+                "postcode": "1008"
+              },
+              "association": {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 10
+                },
+                "country_code": "CH",
+                "locality_name": "Jouxtens-Mézery",
+                "postcode": "1008",
+                "source_postcode_id": "5852",
+                "additional_number": "02",
+                "administrative": {
+                  "municipality_name": "Jouxtens-Mézery",
+                  "municipality_id": "5585",
+                  "canton": "VD"
+                }
+              }
+            }
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "geographic_applicability_unverified"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Existing evidence does not establish applicability in the requested location."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "clarification_response": null,
+      "association": {
+        "reference": {
+          "source": "swisstopo",
+          "release": "swisstopo-chli-associations-2026-10-01-v1",
+          "source_record": 10
+        },
+        "country_code": "CH",
+        "locality_name": "Jouxtens-Mézery",
+        "postcode": "1008",
+        "source_postcode_id": "5852",
+        "additional_number": "02",
+        "administrative": {
+          "municipality_name": "Jouxtens-Mézery",
+          "municipality_id": "5585",
+          "canton": "VD"
+        }
+      },
+      "release_reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+        "snapshot_at": "2026-10-01T00:00:00Z"
+      },
+      "POSTs": 1,
+      "observations": {
+        "exact_raw_values_language_and_independent_requirement_span_preserved": true,
+        "saved_scope_and_display_come_from_committed_projection": true,
+        "final_edit_sends_no_request_and_clears_selection_presentation": true,
+        "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+        "raw_keys_proofs_digests_headers_bindings_or_complete_captured_requests_recorded": false
+      }
+    },
+    {
+      "journey": "explicit",
+      "evidence": "build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-33493-onest-insufficient-coverage/association-explicit-evidence.json",
+      "before_ids": [
+        "70a419a1-cb5a-4a8b-94da-ef33ec3f9657",
+        "4b647eba-0bbf-4ac9-8cf9-a47a2d6beae9"
+      ],
+      "before_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_clarification_counts": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 3,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "saved_request_id": "7b744a25-e224-4101-aba5-e61197b87fbf",
+      "saved_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "7b744a25-e224-4101-aba5-e61197b87fbf"
+          },
+          "search_scope": {
+            "country_code": "CH",
+            "town": "Lausanne",
+            "postcode": "1015",
+            "locality": {
+              "verification": "matched_in_reference",
+              "selection": "explicit",
+              "normalized": {
+                "town": "lausanne",
+                "postcode": "1015"
+              },
+              "association": {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 16
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Saint-Sulpice (VD)",
+                  "municipality_id": "5648",
+                  "canton": "VD"
+                }
+              }
+            }
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "geographic_applicability_unverified"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Existing evidence does not establish applicability in the requested location."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "clarification_response": {
+        "status": 200,
+        "body": {
+          "outcome": "clarification_required",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "locality_reference_ambiguous"
+            }
+          ],
+          "clarification": {
+            "message": "Multiple reference associations match the entered fields. These are postal/municipal associations, not a count of distinct physical localities. Select a supported association and continue explicitly, correct the fields or continue country-only.",
+            "choices": [],
+            "associations": [
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 15
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Ecublens (VD)",
+                  "municipality_id": "5635",
+                  "canton": "VD"
+                }
+              },
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 16
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Saint-Sulpice (VD)",
+                  "municipality_id": "5648",
+                  "canton": "VD"
+                }
+              },
+              {
+                "reference": {
+                  "source": "swisstopo",
+                  "release": "swisstopo-chli-associations-2026-10-01-v1",
+                  "source_record": 17
+                },
+                "country_code": "CH",
+                "locality_name": "Lausanne",
+                "postcode": "1015",
+                "source_postcode_id": "163",
+                "additional_number": "00",
+                "administrative": {
+                  "municipality_name": "Chavannes-près-Renens",
+                  "municipality_id": "5627",
+                  "canton": "VD"
+                }
+              }
+            ]
+          }
+        }
+      },
+      "association": {
+        "reference": {
+          "source": "swisstopo",
+          "release": "swisstopo-chli-associations-2026-10-01-v1",
+          "source_record": 16
+        },
+        "country_code": "CH",
+        "locality_name": "Lausanne",
+        "postcode": "1015",
+        "source_postcode_id": "163",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Saint-Sulpice (VD)",
+          "municipality_id": "5648",
+          "canton": "VD"
+        }
+      },
+      "release_reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+        "snapshot_at": "2026-10-01T00:00:00Z"
+      },
+      "POSTs": 2,
+      "observations": {
+        "exact_raw_values_language_and_independent_requirement_span_preserved": true,
+        "no_save_during_unresolved_clarification_or_selection": true,
+        "explicit_choice_uses_new_key_and_proof": true,
+        "saved_scope_and_display_come_from_committed_projection": true,
+        "final_edit_sends_no_request_and_clears_selection_presentation": true,
+        "prior_records_options_links_source_versions_and_review_dates_preserved": true,
+        "raw_keys_proofs_digests_headers_bindings_or_complete_captured_requests_recorded": false
+      }
+    }
+  ],
+  "qualification_and_recovery_evidence": {
+    "unsupported_geography": "Both new browser journeys actually return201/saved insufficient_coverage with geographic_applicability_unverified and +1request/+0options/+0links. Ordinary CH evidence is not upgraded by a reference match.",
+    "positive_and_constraint_negative": "Focused API checks use the separate previously prepared fictional countrywide evidence: actual comparison has1/1/1; adding independent locality:Genève requirement yields actual insufficient_coverage1/0/0. Requirements/provenance survive.",
+    "checked_selection": "API rejects stale/fabricated/edited pointers, changed-field selection and known foreign-country association without search writes. Changed pointer under committed key returns409 before reference processing.",
+    "committed_recovery": "Focused API deliberately makes both references and interpretation raise if touched; correct unchanged payload still returns200submission_recovered with original saved ID/outcome/assessment time and unchanged counts. Existing browser lost-response recovery passes without historical comparison replay.",
+    "no_pre_choice_save": "Ambiguous three-association response and selecting association16 preserve complete before-state; only explicit continuation saves one new outcome. New identities are found by ID difference, never first-row assumptions.",
+    "no_automatic_submission_or_duplicate_save": "Observed POSTs:single1;explicit2 (clarify+explicitcontinue). Selection and final edit add no POST or save. Each journey adds exactly one saved request; old requests/options/links/source evidence remain exact.",
+    "API_artifact_limit": "Earlier private pytest basetemp databases are no longer available; API logs/assertions are retained. No private identities or credentials reconstructed. Final browser projections,identities,counts and reference metadata are durably captured in sidecars/scenario-results.json."
+  },
+  "changes": {
+    "modified_existing_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "frontend/playwright.config.ts",
+      "frontend/src/App.tsx",
+      "scripts/uc001_locality_reference/prepare.py",
+      "src/app/application/comparisons.py",
+      "src/app/interfaces/api.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_locality_reference_manifest.py",
+      "tests/integration/test_saved_comparison.py",
+      "tests/support/demo.py",
+      "tests/support/source_bound_rendering.py"
+    ],
+    "new_source_reference_files": [
+      "docs/adr/ADR-006-locality-association-development-release.md",
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01.json",
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-APPROVAL.json",
+      "src/app/application/localities.py",
+      "src/app/infrastructure/locality_reference.py",
+      "tests/unit/test_locality_reference.py"
+    ],
+    "new_evidence_directory": "build/uc001-priority5u-association-matching",
+    "canonical_updates": "Dated owner decision in ADR006 without changing ADR005 history; one TASKS result and current architecture description. Normal app.main and SQL schema unchanged."
+  },
+  "preservation": {
+    "baseline": "preservation-baseline.json",
+    "audit": "preservation-audit.json",
+    "baseline_files": 881,
+    "unchanged_files": 869,
+    "prior_evidence_files_unchanged": 585,
+    "all_prior_reference_artifacts_unchanged": true,
+    "old_browser_case_bodies_and_API_prefix_preserved": true,
+    "TASKS_history_and_existing_whitespace_preserved": true,
+    "prior_preparation_script_snapshot": {
+      "path": "build/uc001-priority5u-association-matching/prior-5t-preparation-script.py",
+      "sha256": "7cfc42ba3081ac40d54cad8ef5c9ee0fdb097cc9982762fe9fde0796ef17d97a"
+    },
+    "services_stopped": {
+      "8011": "closed",
+      "5175": "closed"
+    },
+    "test_control_files_remaining": [],
+    "protected_paths_unchanged": {
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json": true,
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json": true,
+      "src/app/main.py": true,
+      "src/app/domain/qualification.py": true,
+      "src/app/infrastructure/sqlite_comparisons.py": true,
+      "frontend/package.json": true,
+      "frontend/package-lock.json": true,
+      "docs/adr/ADR-005-country-reference-development-release.md": true
+    }
+  },
+  "git": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "unchanged": true,
+    "status": "git-status.txt",
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "evidence": "git-diff-check.txt",
+      "only_issue": "Byte-preserved pre-existing TASKS trailing whitespace moved from line2117 to2168; no new whitespace issues."
+    },
+    "actions": "No staging,commit,push,merge,reset,branch switch,CI/CD or deployment."
+  },
+  "remaining_and_stop": [
+    "This delivers only the approved pinned-association development slice; do not mark the whole locality row,Priority 5,increment 1 or DEVELOP complete.",
+    "Cross-postcode locality identity/GUID enrichment/consolidation remains unresolved and unimplemented. Worldwide matching outside CH/LI is absent; approved countries still support country-only/unverified routes.",
+    "Remaining accepted malformed/mismatch/ambiguity variants and separate postcode-format obligations are not fully implemented or tested; no fuzzy correction,geocoding,nearby filtering or location detection.",
+    "Reference presence does not prove delivery/service coverage. Absence alone does not prove entered locality invalid.",
+    "No provider-coverage research,real alternative/rendering activation,real interpreter/model/detector work,held-out access,linguistic/TL03acceptance,runtime research,UC003orPriority6. Experiments remain closed.",
+    "Normal app.main remains unconfigured. Development-only activation; production use,replacement and further implementation require explicit authorization. DE/FR/IT/EN,Resolena-controlled processing,atomic persistence and immutable evidence remain preserved.",
+    "PHASE 3 / STATUS in-progress. Stop after this bounded slice for human review."
+  ]
+}

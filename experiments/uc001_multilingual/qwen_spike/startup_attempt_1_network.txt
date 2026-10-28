@@ -1,0 +1,33 @@
+76749 +++ exited with 0 +++
+76748 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+76748 connect(3, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+76748 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+76748 connect(3, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+76748 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC, 0) = 3
+76748 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
+76748 bind(3, {sa_family=AF_UNIX, sun_path="/tmp/resolena-qwen-spike-9pmwxv4k/inference.sock"}, 50) = 0
+76748 listen(3, 512)                    = 0
+76757 accept4(3, NULL, NULL, SOCK_CLOEXEC) = 4
+76757 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+76757 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+76757 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+76757 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+76752 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+76752 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=76742, uid=1000, gid=1000}, [12]) = 0
+76752 getsockname(4, {sa_family=AF_UNIX, sun_path="/tmp/resolena-qwen-spike-9pmwxv4k/inference.sock"}, [128 => 51]) = 0
+76752 recvfrom(4, "POST /v1/chat/completions HTTP/1"..., 4096, 0, NULL, NULL) = 3224
+76752 sendto(4, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+76752 shutdown(4, SHUT_WR)              = 0
+76752 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+76752 shutdown(4, SHUT_RDWR)            = 0
+76748 --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=76742, si_uid=1000} ---
+76757 <... accept4 resumed>)            = ?
+76757 +++ killed by SIGTERM +++
+76752 +++ killed by SIGTERM +++
+76751 +++ killed by SIGTERM +++
+76750 +++ killed by SIGTERM +++
+76753 +++ killed by SIGTERM +++
+76756 +++ killed by SIGTERM +++
+76754 +++ killed by SIGTERM +++
+76755 +++ killed by SIGTERM +++
+76748 +++ killed by SIGTERM +++

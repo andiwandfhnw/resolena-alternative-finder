@@ -1,0 +1,353 @@
+{
+  "$defs": {
+    "Hypothesis": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "supported",
+            "unsupported",
+            "mixed",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "enum": [
+                "de",
+                "fr",
+                "it",
+                "en"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Language"
+        }
+      },
+      "required": [
+        "status",
+        "language"
+      ],
+      "title": "Hypothesis",
+      "type": "object"
+    },
+    "Item": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "subject",
+            "action",
+            "goal",
+            "constraint",
+            "name",
+            "place",
+            "budget",
+            "baseline",
+            "quantity",
+            "context"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        },
+        "span": {
+          "$ref": "#/$defs/Quote"
+        },
+        "negation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Quote"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WireQuantity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "normalized",
+        "span",
+        "negation",
+        "quantity"
+      ],
+      "title": "Item",
+      "type": "object"
+    },
+    "Quote": {
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "minLength": 1,
+          "title": "Quote",
+          "type": "string"
+        },
+        "occurrence": {
+          "minimum": 1,
+          "title": "Occurrence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "quote",
+        "occurrence"
+      ],
+      "title": "Quote",
+      "type": "object"
+    },
+    "Value": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "span": {
+          "$ref": "#/$defs/Quote"
+        }
+      },
+      "required": [
+        "value",
+        "span"
+      ],
+      "title": "Value",
+      "type": "object"
+    },
+    "WireClause": {
+      "additionalProperties": false,
+      "properties": {
+        "span": {
+          "$ref": "#/$defs/Quote"
+        },
+        "meaning_status": {
+          "enum": [
+            "understood",
+            "needs_clarification",
+            "unsupported"
+          ],
+          "title": "Meaning Status",
+          "type": "string"
+        },
+        "normalized": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Normalized"
+        },
+        "item_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Item Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "span",
+        "meaning_status",
+        "normalized",
+        "item_ids"
+      ],
+      "title": "WireClause",
+      "type": "object"
+    },
+    "WireQuantity": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Amount"
+        },
+        "number": {
+          "$ref": "#/$defs/Quote"
+        },
+        "decimal_separator": {
+          "anyOf": [
+            {
+              "enum": [
+                ".",
+                ","
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Decimal Separator"
+        },
+        "grouping_separator": {
+          "anyOf": [
+            {
+              "enum": [
+                ".",
+                ",",
+                "'",
+                " ",
+                "\u202f"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Grouping Separator"
+        },
+        "currency": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "period": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "basis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Value"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "charges_known": {
+          "title": "Charges Known",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "amount",
+        "number",
+        "decimal_separator",
+        "grouping_separator",
+        "currency",
+        "unit",
+        "period",
+        "basis",
+        "charges_known"
+      ],
+      "title": "WireQuantity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "recognition": {
+      "$ref": "#/$defs/Hypothesis"
+    },
+    "meaning_status": {
+      "enum": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ],
+      "title": "Meaning Status",
+      "type": "string"
+    },
+    "clauses": {
+      "items": {
+        "$ref": "#/$defs/WireClause"
+      },
+      "title": "Clauses",
+      "type": "array"
+    },
+    "items": {
+      "items": {
+        "$ref": "#/$defs/Item"
+      },
+      "title": "Items",
+      "type": "array"
+    },
+    "message": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Message"
+    }
+  },
+  "required": [
+    "recognition",
+    "meaning_status",
+    "clauses",
+    "items",
+    "message"
+  ],
+  "title": "WireResult",
+  "type": "object"
+}

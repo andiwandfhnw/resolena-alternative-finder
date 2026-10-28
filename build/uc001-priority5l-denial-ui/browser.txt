@@ -1,0 +1,24 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep browser displays exactly|mocked denial UI contract --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5l-denial-ui/browser --reporter=list,json
+
+[WebServer] INFO:     Started server process [38025]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:38054) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:38085) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (1.2s)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:74:7 › mocked denial UI contract 403 requires explicit fresh reset before unchanged-value submission (1.4s)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:74:7 › mocked denial UI contract 409 requires explicit fresh reset before unchanged-value submission (1.5s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [38025]
+
+  3 passed (8.5s)

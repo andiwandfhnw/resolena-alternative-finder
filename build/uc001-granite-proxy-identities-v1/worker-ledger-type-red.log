@@ -1,0 +1,21 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_____ test_proxy_identity_ledger_boolean_pid_cannot_equal_integer_identity _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-36/test_proxy_identity_ledger_boo0')
+
+    def test_proxy_identity_ledger_boolean_pid_cannot_equal_integer_identity(tmp_path):
+        path=ledger_fixture(tmp_path)
+        rows=path.read_text().splitlines()
+        rows.insert(1,json.dumps(dict(event='listening',pid=True,cumulative_bytes=7)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed=dict(status='meter_closed_unqualified',cleanup_verified=True,cumulative_bytes=12,
+                    ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       with pytest.raises(WorkerFailure):validate_proxy_terminal(path,closed,7,expected_pid=1)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE WorkerFailure
+
+tests/unit/test_granite_controller_worker.py:594: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_ledger_boolean_pid_cannot_equal_integer_identity
+1 failed, 46 deselected in 0.14s

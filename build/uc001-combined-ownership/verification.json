@@ -1,0 +1,108 @@
+{
+  "version": "uc001-combined-ownership-1",
+  "recorded_utc": "2026-10-18T17:47:20.511248+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Only v1.3.0 console_helper_ambiguous follow-up; no model execution or further model-attempt proposal",
+  "completion_boundary": "Safe observation-retention/cleanup correction offline verified. Helper-role policy correction is pending actual combined Windows reproduction; it is not claimed implemented or Windows verified.",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_combined_ownership/Check-CombinedOwnership.ps1",
+    "scripts/uc001_combined_ownership/DeadlineGuard.cs",
+    "scripts/uc001_combined_ownership/Python-Ownership.ps1",
+    "scripts/uc001_combined_ownership/PythonOwnership.cs",
+    "scripts/uc001_combined_ownership/README.md",
+    "scripts/uc001_combined_ownership/freeze.json",
+    "scripts/uc001_combined_ownership/harness_checks.py",
+    "scripts/uc001_combined_ownership/idle.py",
+    "tests/unit/test_combined_ownership.py",
+    "tests/support/uc001_combined_offline.ps1",
+    "build/uc001-combined-ownership/owner-reported-v1_3_0-failure.json",
+    "build/uc001-combined-ownership/combined-ownership-reproduction.zip",
+    "build/uc001-combined-ownership/verification.json",
+    "build/uc001-combined-ownership/SHA256SUMS.txt"
+  ],
+  "owner_evidence": {
+    "file": "build/uc001-combined-ownership/owner-reported-v1_3_0-failure.json",
+    "provenance": "Owner-reported facts, not reconstructed raw Windows receipts",
+    "both_model_allowances": "consumed; no further model startup/inference authorized",
+    "generation_count": "not supplied; no ledger read/reset/reconstruction",
+    "failed_helpers": "identities/ancestry/legitimacy not established"
+  },
+  "confirmed_findings": [
+    "Native AccountMembers globally caps helpers at one and accepts only Python-branch parents. Python verifier has the same restrictions.",
+    "The successful v1.2.2 Windows check covered only the Python branch. No combined server/Python native evidence was supplied.",
+    "Bind disposed temporary observed handles on classification failure, preventing independent cleanup exit confirmation."
+  ],
+  "supported_correction": {
+    "native": "Retain observations before identity/job reads and role classification. Reset fresh-verification flags before each read. Keep exact-job/native-lifetime-verified held handles available after rejection; missing verification remains unknown.",
+    "cleanup": "Confirm retained observation exits without approving roles. Approved/observed aliases waited once; missing identity/handle/job data or unconfirmed exit fails. Missing approved interpreter identity still fails. No termination by name or guessed PID.",
+    "reporting": "Primary, cleanup, deadline and observation channels stay independent. Failed startup without returned identity cannot become confirmed cleanup. Raw errors, unknown paths and process logs remain private."
+  },
+  "policy_pending": {
+    "native_AccountMembers": "Unchanged method body, including global cap and Python-only parents",
+    "harness_checks_py": "Whole file byte-equal to frozen v1.3.0; review copy, not loaded by stdlib idle worker",
+    "why": "Codespace execution host is Linux; it cannot establish native Windows helper identities/ancestry. Synthetic fixtures do not establish legitimacy.",
+    "required_next_evidence": "One owner-operated Windows check: result.json, observation.json, cleanup.json. Fresh identities/creation/parent/job flags and all observed held-handle exits for both branches. Stand-in evidence does not itself authenticate helpers from the failed model run.",
+    "next_step": "Use actual Windows data to justify any narrow native/Python role-policy change; do not simply raise the global count. No new model run is proposed."
+  },
+  "tdd": {
+    "red": [
+      "Before correction, retention assertion failed because ObservedMembers did not exist.",
+      "Same synthetic fixture against frozen legacy cleanup reproduces lost observations: Observed handles lost when role classification failed."
+    ],
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_combined_ownership.py tests/unit/test_contract_local_harness_correction.py::test_ownership_rejects_unverified_lifetime_chain_or_job tests/unit/test_contract_local_harness_correction.py::test_model_free_corrected_ownership_and_cleanup_paths_with_explicit_substitutes --tb=short",
+      "passed": 36,
+      "seconds": 15.42,
+      "exit_code": 0,
+      "warnings": 0
+    },
+    "coverage": [
+      "Synthetic native and Python two-branch/server-parent rejections; unexpected members",
+      "Actual corrected cleanup with explicit held-process substitutes: partial binding, unknown roles, aliases, missing identity/handle/job evidence and unconfirmed exits",
+      "Actual combined invocation with native/process substitutes: independent primary ambiguity, cleanup and elapsed deadline; attempted startup without returned identity",
+      "Production primitive/observation/binding dispatch, fresh-read flag and existing strict identity/cleanup regressions"
+    ],
+    "limits": "Codespace synthetic process/native substitutes, pure native role policy and C# compilation only. No Windows native reproduction or model execution."
+  },
+  "windows_handoff": {
+    "readme": "scripts/uc001_combined_ownership/README.md",
+    "script": "scripts/uc001_combined_ownership/Check-CombinedOwnership.ps1",
+    "execution_status": "prepared only; actual Windows observations pending",
+    "setup": "Same production server/Python launch primitives in one owned job: native-system PowerShell sleep stand-in and installed venv redirector/base interpreter running only idle.py. No extra supervisor process or model executable.",
+    "observation": "Native current-supervisor/server/redirector/observed-member identities, creation time, ancestry, exact job flags and labelled readiness hint; cached snapshot refreshed after rejection. Parent labels do not approve roles.",
+    "budget": "10-second setup check; independent native job close by 30 seconds; 20ms polls/200ms membership stability; 45-second overall acceptance budget; original base exit waits <=5 seconds each and observed waits <=5 seconds/remaining budget. Compilation/native calls checked after return, not claimed cancellable.",
+    "expected": "May reproduce helper-count/server-parent rejection and exit 1 with preserved observations/exits. Missing approved interpreter remains a cleanup failure even if observed exits confirm. A pass covers this harmless observed native setup only. No retries.",
+    "native_effects": "Add-Type compilation/possible temporary compiler files; existing kernel32/Nt process/job/pipe/image/creation calls and system-directory lookup; private ACLs, owned handles/job cleanup only. No asset hashing, ports, HTTP/GPU, transport, installation or model-ledger access."
+  },
+  "package": {
+    "path": "build/uc001-combined-ownership/combined-ownership-reproduction.zip",
+    "files": 10,
+    "bytes": 26526,
+    "sha256": "9a99a5d4d9e940df9844b544e185672e37dc6f2c5c15a0223d939ca4d66afe04",
+    "freeze_sha256": "52ce263200c3b4a67ab9ace057e80e96f94199b26d380e97b1e5f9ab3b5c6fcf",
+    "offline_checks": "All extracted source hashes and PowerShell sources/one owner sequence parse. Windows entry point not executed."
+  },
+  "preservation": {
+    "initial_baseline_comparison": "142 prior small source/package/evidence files matched during the completed pre-package extraction check",
+    "final_recheck": "Three published prior package hashes and all 47 archived v1.3.0 source files match; the transient initial baseline was unavailable for a further repeat.",
+    "prior_files_changed_by_task": [],
+    "unchanged": "Original/additional consumed attempts and all prior packages/receipts. Model/runtime settings, prompt/schema/14 cases, resource/output/time limits and application contracts untouched.",
+    "held_out": "unopened",
+    "ssh_support": "paused",
+    "semantic_review": "pending/false"
+  },
+  "download_accounting": {
+    "external_assets_acquired_bytes": 0,
+    "rule": "Charge actual source handoff transfers to existing cumulative allowance; no reset or invented current balance."
+  },
+  "not_performed": [
+    "Actual Windows/native reproduction",
+    "Model/runtime startup, inference, new model-attempt proposal or ledger reset",
+    "Downloads/installations, SSH/Support, language/held-out/later-priority work",
+    "Git delivery or phase advancement"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "execution_authorized": false,
+  "owner": "",
+  "root": "C:\\Resolena\\gn1-20261025",
+  "proxy_helper": "C:\\Users\\AndiWand\\Downloads\\granite-acquisition-proxy-v1\\proxy.py",
+  "prior_receipt": "C:\\Users\\AndiWand\\Downloads\\granite-acquisition-proxy-v1\\prior-budget.json",
+  "prior_sha256": "",
+  "frozen_config": "C:\\Users\\AndiWand\\Downloads\\granite-handoff-2026-10-25\\scripts\\uc001_granite_contract_v1\\config.json",
+  "helper_hashes": {
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "windows_job.py": "ed3a7f03b033679716f04e213e9aac53f8c4c143abe0904886650ac82cfbacf3",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "standins.py": "ba9fc0933d55a1cc63cd66fd8cfd465c2bcabc86df03b354f9c7764449438fa2"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "before_model_execution": true,
+  "changes": [
+    {
+      "artifact": "heldout_v2.json",
+      "case": "CONTROL-SHORT-2",
+      "old_input": "Tasse",
+      "new_input": "Apple",
+      "reason": "Avoid requiring clarification for a potentially understandable cup subject solely because of language ambiguity.",
+      "old_sha256": "75edf14753bf50c388296a04ab175d2c1a3abe13f38a2bc0f07f47ee08bd3917"
+    },
+    {
+      "artifact": "evaluate_model.py",
+      "reason": "Before any successful calibration or evaluation: poll local health after socket creation to wait for model readiness; preserve the original inference deadline.",
+      "tuning": false,
+      "old_evaluation_cases_executed": 0,
+      "new_evaluation_cases_executed": 0
+    }
+  ],
+  "closeout_operational_change": {
+    "artifact": "evaluate_model.py",
+    "reason": "After the second failed startup, add a probe that removes only a connection-refused owned Unix socket; refuse replacement of a live listener.",
+    "executed_against_model": false,
+    "prompt_or_scorer_tuning": false,
+    "executed_revision_sha256": "0a426b7dd8803344e355fbf1c328609ce4dd7875629ce489b88507ec050a22ba",
+    "current_unexecuted_revision_sha256": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+    "review_date": "2026-10-11"
+  },
+  "model_or_prompt_tuning": []
+}

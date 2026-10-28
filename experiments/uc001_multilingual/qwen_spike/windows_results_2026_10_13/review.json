@@ -1,0 +1,1108 @@
+{
+  "review_version": 1,
+  "reviewed_utc": "2026-10-13T20:15:36.363197+00:00",
+  "scope": "Offline review of owner-uploaded Windows evidence; no inference, provisioning, downloads, installation or process control",
+  "classification": "AI-assisted synthetic exploratory calibration; not independently linguistically validated",
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "phase": 2,
+  "STATUS": "in-progress",
+  "DESIGN": "pending",
+  "linguistic_validation": "pending",
+  "product_direction": "ADR-004 option A unchanged",
+  "production_configuration_accepted": false,
+  "generalizes_to_all_local_models": false,
+  "uploads": {
+    "final-results.zip": {
+      "bytes": 101614,
+      "sha256": "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf"
+    },
+    "watchdog_exit.json": {
+      "bytes": 80,
+      "sha256": "0546c197f19a279c3e136fc4d6d73cee1bca99a753e9e3b06799013376a67353"
+    },
+    "cleanup_manifest.json": {
+      "bytes": 112003,
+      "sha256": "b6ed39c76990f3ed342c4c94df6a496f858e053f99b5f347c57e16523314b7cd"
+    }
+  },
+  "originals_unchanged": true,
+  "archive": {
+    "members": 86,
+    "expanded_bytes": 467635,
+    "CRC_test": "passed",
+    "normalized_windows_separators": true,
+    "unsafe_or_duplicate_entries": 0,
+    "files": {
+      "requests/01-C1-known.json": {
+        "archive_name": "requests\\01-C1-known.json",
+        "bytes": 4563,
+        "sha256": "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd"
+      },
+      "requests/02-C2-known.json": {
+        "archive_name": "requests\\02-C2-known.json",
+        "bytes": 4563,
+        "sha256": "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0"
+      },
+      "requests/03-C3-known.json": {
+        "archive_name": "requests\\03-C3-known.json",
+        "bytes": 4598,
+        "sha256": "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c"
+      },
+      "requests/04-C4-known.json": {
+        "archive_name": "requests\\04-C4-known.json",
+        "bytes": 4568,
+        "sha256": "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea"
+      },
+      "requests/05-C5-known.json": {
+        "archive_name": "requests\\05-C5-known.json",
+        "bytes": 4570,
+        "sha256": "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a"
+      },
+      "requests/06-C6-known.json": {
+        "archive_name": "requests\\06-C6-known.json",
+        "bytes": 4565,
+        "sha256": "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df"
+      },
+      "requests/07-DE01-new.json": {
+        "archive_name": "requests\\07-DE01-new.json",
+        "bytes": 4590,
+        "sha256": "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+      },
+      "requests/08-DE02-new.json": {
+        "archive_name": "requests\\08-DE02-new.json",
+        "bytes": 4595,
+        "sha256": "f173eaefcfc08704fcadd9e85a54d90c5163a3a1cc3179008bfa2264fa0e884d"
+      },
+      "requests/09-DE03-new.json": {
+        "archive_name": "requests\\09-DE03-new.json",
+        "bytes": 4596,
+        "sha256": "1c1609cb9b6d4b6a24f0daf668bbfc88c37c29b01d3c39b170a7c030d1dd33b7"
+      },
+      "requests/10-DE04-new.json": {
+        "archive_name": "requests\\10-DE04-new.json",
+        "bytes": 4599,
+        "sha256": "e179bd2bfcd4ca8a5489c45960e81e8e0dd7745da27ccd3e2e02763629d24768"
+      },
+      "requests/11-FR01-new.json": {
+        "archive_name": "requests\\11-FR01-new.json",
+        "bytes": 4592,
+        "sha256": "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+      },
+      "requests/12-FR02-new.json": {
+        "archive_name": "requests\\12-FR02-new.json",
+        "bytes": 4589,
+        "sha256": "11dc237aaf5004174282c6cc79a6975efd899c97636219d94d6a9302f0c47c3a"
+      },
+      "requests/13-FR03-new.json": {
+        "archive_name": "requests\\13-FR03-new.json",
+        "bytes": 4594,
+        "sha256": "2e4da684714f65fca1872354f8e041417d13e31191bbdee8ba75940447964cc1"
+      },
+      "requests/14-FR04-new.json": {
+        "archive_name": "requests\\14-FR04-new.json",
+        "bytes": 4597,
+        "sha256": "72acc39f5966c083f6e34763d78e3d5830b5e0fe1ffd7b750257958ed2531053"
+      },
+      "requests/15-IT01-new.json": {
+        "archive_name": "requests\\15-IT01-new.json",
+        "bytes": 4585,
+        "sha256": "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+      },
+      "requests/16-IT02-new.json": {
+        "archive_name": "requests\\16-IT02-new.json",
+        "bytes": 4599,
+        "sha256": "88215c8abda2c050024658adad2aac77390add1ab07b7eb60e0d972823ccface"
+      },
+      "requests/17-IT03-new.json": {
+        "archive_name": "requests\\17-IT03-new.json",
+        "bytes": 4592,
+        "sha256": "fd043228f987c046240d7533753bd2112839daf75ab2062979b2cd5e2e27c650"
+      },
+      "requests/18-IT04-new.json": {
+        "archive_name": "requests\\18-IT04-new.json",
+        "bytes": 4606,
+        "sha256": "a76d3570f10d17404e19e74f728f7698720e77c0ba1adbe83efaaa9d7868b980"
+      },
+      "requests/19-EN01-new.json": {
+        "archive_name": "requests\\19-EN01-new.json",
+        "bytes": 4569,
+        "sha256": "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+      },
+      "requests/20-EN02-new.json": {
+        "archive_name": "requests\\20-EN02-new.json",
+        "bytes": 4588,
+        "sha256": "59468c20130d224afabc9fd9fca2090028651f71ea81251d1a9f9d7d005fdeeb"
+      },
+      "requests/21-EN03-new.json": {
+        "archive_name": "requests\\21-EN03-new.json",
+        "bytes": 4586,
+        "sha256": "721b7ae7a1740fd4d0ac5745cbb63247eb1fd99ed9c6591fb65a3c11441bca72"
+      },
+      "requests/22-EN04-new.json": {
+        "archive_name": "requests\\22-EN04-new.json",
+        "bytes": 4600,
+        "sha256": "1e433befbc8b975b8b5a3fe95f8b088245726288bf0468241583eec8d23c039b"
+      },
+      "requests/23-MIX01-new.json": {
+        "archive_name": "requests\\23-MIX01-new.json",
+        "bytes": 4586,
+        "sha256": "804e691a3546da50b1a9dc951bd923f53a9d5ae2f964ba96b317eebe2212c7c7"
+      },
+      "requests/24-MIX02-new.json": {
+        "archive_name": "requests\\24-MIX02-new.json",
+        "bytes": 4586,
+        "sha256": "9f2bed71a2dd174b54518dfff6124b20dadf6cbc999a07ca90331d5a6d21bdcb"
+      },
+      "requests/25-SHORT01-new.json": {
+        "archive_name": "requests\\25-SHORT01-new.json",
+        "bytes": 4562,
+        "sha256": "6484d327e770a66b1ddd1a319e226a5410f458588894cf6b0307e3549327c020"
+      },
+      "requests/26-SHORT02-new.json": {
+        "archive_name": "requests\\26-SHORT02-new.json",
+        "bytes": 4567,
+        "sha256": "bfcefbff987d6a17162536d6cc3c5044a6ea36237e3d6124719578e066f8dde8"
+      },
+      "requests/27-AMB01-new.json": {
+        "archive_name": "requests\\27-AMB01-new.json",
+        "bytes": 4577,
+        "sha256": "ccb17388f699210f4465ad9c1c12f2458a1be692857899a6b7d4a9af6070e8be"
+      },
+      "requests/28-AMB02-new.json": {
+        "archive_name": "requests\\28-AMB02-new.json",
+        "bytes": 4577,
+        "sha256": "c485e70998eaf222060ad11e50b276ba48a7aeccca709ed4afca0c7168e9689d"
+      },
+      "requests/29-OUT01-new.json": {
+        "archive_name": "requests\\29-OUT01-new.json",
+        "bytes": 4576,
+        "sha256": "2a88aefb1b233c684ea14382f52f4de63ae7062090840f3ff3888d737b0e2794"
+      },
+      "requests/30-OUT02-new.json": {
+        "archive_name": "requests\\30-OUT02-new.json",
+        "bytes": 4575,
+        "sha256": "1e97c25ce465164877bd2ccc2964c7acad81ded920f3210cfa43fe92941c0403"
+      },
+      "requests/31-DE01-repeat.json": {
+        "archive_name": "requests\\31-DE01-repeat.json",
+        "bytes": 4590,
+        "sha256": "16e86440c30ca7d82764006c1a7e59ead7e2a710898d31dfdf8c4ec945dea8c1"
+      },
+      "requests/32-FR01-repeat.json": {
+        "archive_name": "requests\\32-FR01-repeat.json",
+        "bytes": 4592,
+        "sha256": "a0c82a378936d1eaf9a79dfc2b01014898230aaa2680614924bc9324d2e3714a"
+      },
+      "requests/33-IT01-repeat.json": {
+        "archive_name": "requests\\33-IT01-repeat.json",
+        "bytes": 4585,
+        "sha256": "807ecd5b15b59fc9ddd58c4defb892a105c19a2e4d71e7228aa29db6716769ce"
+      },
+      "requests/34-EN01-repeat.json": {
+        "archive_name": "requests\\34-EN01-repeat.json",
+        "bytes": 4569,
+        "sha256": "93fc5d723b6a28a8534e0cec87bb5c93d13d83dcb374f8fa8df6095dce2a52db"
+      },
+      "responses/01-C1-known.json": {
+        "archive_name": "responses\\01-C1-known.json",
+        "bytes": 1468,
+        "sha256": "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+      },
+      "responses/02-C2-known.json": {
+        "archive_name": "responses\\02-C2-known.json",
+        "bytes": 1468,
+        "sha256": "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+      },
+      "responses/03-C3-known.json": {
+        "archive_name": "responses\\03-C3-known.json",
+        "bytes": 1642,
+        "sha256": "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+      },
+      "responses/04-C4-known.json": {
+        "archive_name": "responses\\04-C4-known.json",
+        "bytes": 1477,
+        "sha256": "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+      },
+      "responses/05-C5-known.json": {
+        "archive_name": "responses\\05-C5-known.json",
+        "bytes": 1475,
+        "sha256": "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+      },
+      "responses/06-C6-known.json": {
+        "archive_name": "responses\\06-C6-known.json",
+        "bytes": 1473,
+        "sha256": "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+      },
+      "templates/01-C1-known.json": {
+        "archive_name": "templates\\01-C1-known.json",
+        "bytes": 1891,
+        "sha256": "ca7c7ed28bcc91d3303d9de752d758ea88cc00db37c29cd004282ba0011e852a"
+      },
+      "templates/01-C1-known.tokens.json": {
+        "archive_name": "templates\\01-C1-known.tokens.json",
+        "bytes": 1667,
+        "sha256": "ce86742c2b8c58082ea7b1a0c65e453f52277ce601fe1fe17b496c504da5c75e"
+      },
+      "templates/02-C2-known.json": {
+        "archive_name": "templates\\02-C2-known.json",
+        "bytes": 1903,
+        "sha256": "6e590fbad3a6feab3cef1121446054e5fc2dc40981c73b6ef7eb6675055ead63"
+      },
+      "templates/02-C2-known.tokens.json": {
+        "archive_name": "templates\\02-C2-known.tokens.json",
+        "bytes": 1667,
+        "sha256": "b6d12fcb31c7c6f867489beaeec46399949d4b4252ed3eb81b82f9d884feedb0"
+      },
+      "templates/03-C3-known.json": {
+        "archive_name": "templates\\03-C3-known.json",
+        "bytes": 1926,
+        "sha256": "d25cfff79619334a0a0384a17f8d83fba92c6e7651df27402316d9ccf5c6ff6f"
+      },
+      "templates/03-C3-known.tokens.json": {
+        "archive_name": "templates\\03-C3-known.tokens.json",
+        "bytes": 1716,
+        "sha256": "9e69b1836a0d25bc4dc9d9a2d49778d8ffffa84c63935c71103c6e644bc17266"
+      },
+      "templates/04-C4-known.json": {
+        "archive_name": "templates\\04-C4-known.json",
+        "bytes": 1896,
+        "sha256": "656ea5ae8fcc54fc39d47f629802308bfdce030e07c5e7add06a1a57bcd2c2fe"
+      },
+      "templates/04-C4-known.tokens.json": {
+        "archive_name": "templates\\04-C4-known.tokens.json",
+        "bytes": 1671,
+        "sha256": "fe0d761f402998994c84360e735f82c7f52e8c3cc5333814eec004d97b494bbf"
+      },
+      "templates/05-C5-known.json": {
+        "archive_name": "templates\\05-C5-known.json",
+        "bytes": 1910,
+        "sha256": "d29f8aa2551522b07d266da8c77c613458e192b4fd4d79f8fb26d85df20e64f3"
+      },
+      "templates/05-C5-known.tokens.json": {
+        "archive_name": "templates\\05-C5-known.tokens.json",
+        "bytes": 1676,
+        "sha256": "9e300f9ee0d2c223993d9122f75f92c1802717d01d03d8a61a88053a366eb19c"
+      },
+      "templates/06-C6-known.json": {
+        "archive_name": "templates\\06-C6-known.json",
+        "bytes": 1893,
+        "sha256": "a003de7699c3bc42b082d02a775834308924e573bd1fcdcb7bc58bda5cdec9b8"
+      },
+      "templates/06-C6-known.tokens.json": {
+        "archive_name": "templates\\06-C6-known.tokens.json",
+        "bytes": 1668,
+        "sha256": "3f18810790d123f475442ff350a3cbdb75a69ce4c3213718623b9fcdc5d69f85"
+      },
+      "artifacts.json": {
+        "archive_name": "artifacts.json",
+        "bytes": 1206,
+        "sha256": "1fe6f43bc0e30d29efb71e436eb277cc210e6083cf5c38e90c163437a8d12e25"
+      },
+      "assessment.json": {
+        "archive_name": "assessment.json",
+        "bytes": 12560,
+        "sha256": "f86e93f44d78ea8919afbf30913e25ff0572c05e12dec4501e1bd969f7c61603"
+      },
+      "cases.json": {
+        "archive_name": "cases.json",
+        "bytes": 10453,
+        "sha256": "e37c975071c3d34592dc954a06a087c9401e582872e00f2215e671247077fe5e"
+      },
+      "config.json": {
+        "archive_name": "config.json",
+        "bytes": 1951,
+        "sha256": "8b486fc3321675036bd1d37f712bf08a1064898d59f3c932e1535172f827903a"
+      },
+      "contract_provenance.json": {
+        "archive_name": "contract_provenance.json",
+        "bytes": 364,
+        "sha256": "a022adb4dab793d133782241f02287b6ba833882cb039f4b1080844fcb78b632"
+      },
+      "download.json": {
+        "archive_name": "download.json",
+        "bytes": 207,
+        "sha256": "f8fe36a90f016a70eaa4c10531fb249c027c56a75e8db17dc344a464a71d8da0"
+      },
+      "driver_exit.json": {
+        "archive_name": "driver_exit.json",
+        "bytes": 128,
+        "sha256": "f96756f6dd4a656fe24642c50f8982c62ac72486f869a4034d72494b3cfb79e0"
+      },
+      "freeze.json": {
+        "archive_name": "freeze.json",
+        "bytes": 5092,
+        "sha256": "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce"
+      },
+      "gate.json": {
+        "archive_name": "gate.json",
+        "bytes": 1597,
+        "sha256": "10cfe1dd03c8cc61d3751018e3c7d3bc9134e9612d298d1112a21b3261ec0d46"
+      },
+      "metadata_verification.json": {
+        "archive_name": "metadata_verification.json",
+        "bytes": 259,
+        "sha256": "a4674c1ef0577a5ec909e4e19dcad896493cadc1ef39b814e263a2dc35fd690e"
+      },
+      "order.json": {
+        "archive_name": "order.json",
+        "bytes": 4053,
+        "sha256": "5230ca2c9ab41510e475f7718d16663ad28fa8c9f15f01b9a6f44e1c4569247d"
+      },
+      "preflight.json": {
+        "archive_name": "preflight.json",
+        "bytes": 581,
+        "sha256": "0180b5d77e992c2e2c0d775994ba5aca3050c2a85cba7683f504b0d8a906c4da"
+      },
+      "preload_resources.json": {
+        "archive_name": "preload_resources.json",
+        "bytes": 590,
+        "sha256": "706f35b55be5152dbc5b05e70721ad367799a3ac615e65491f4db549ff38e0c9"
+      },
+      "progress.json": {
+        "archive_name": "progress.json",
+        "bytes": 446,
+        "sha256": "d4285a1e4be54ab5b69399ce9d5e771294a126486e4f9f9d147480a762cde976"
+      },
+      "readiness.json": {
+        "archive_name": "readiness.json",
+        "bytes": 97,
+        "sha256": "6931a8d71bfcb24643d72fd7e00444eb1ba3e870471fd3e830883a6e9a92cc9c"
+      },
+      "resources.jsonl": {
+        "archive_name": "resources.jsonl",
+        "bytes": 224765,
+        "sha256": "f12ae819a939860656e5cda16792318aa6bb8e54aacb39c2e21330c72cd2b1d2"
+      },
+      "runtime_devices.exit.json": {
+        "archive_name": "runtime_devices.exit.json",
+        "bytes": 70,
+        "sha256": "8187bf09566e66eb17e5befae1f848b25441848927b5e4900da403bdf2b62a3f"
+      },
+      "runtime_devices.stderr.log": {
+        "archive_name": "runtime_devices.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "runtime_devices.stdout.log": {
+        "archive_name": "runtime_devices.stdout.log",
+        "bytes": 80,
+        "sha256": "56e5cae8470626e291dfee4ff26c67ddcbbb3c53b5491e86120b0b8026bec1d9"
+      },
+      "runtime_verification.json": {
+        "archive_name": "runtime_verification.json",
+        "bytes": 306,
+        "sha256": "c33ad3aacb5f500179cfb93dad160b676746fdab1fa4c7ff9306eb4eddaa7687"
+      },
+      "runtime_version.exit.json": {
+        "archive_name": "runtime_version.exit.json",
+        "bytes": 70,
+        "sha256": "f48110c486c5a42e8e918c8721ddb6baec570140b188a3e27ea256d7bc301f81"
+      },
+      "runtime_version.stderr.log": {
+        "archive_name": "runtime_version.stderr.log",
+        "bytes": 94,
+        "sha256": "d6c6a26b5891abada44728a561c3ab59c67d1f59a87e705d1232dd4e3d77fb9c"
+      },
+      "runtime_version.stdout.log": {
+        "archive_name": "runtime_version.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "run_attempt.json": {
+        "archive_name": "run_attempt.json",
+        "bytes": 198,
+        "sha256": "72acb18d48b2a7ea86e4bd7cdbc0d4415d5182aff77dae20b208f95f7c34ed45"
+      },
+      "run_failure.json": {
+        "archive_name": "run_failure.json",
+        "bytes": 187,
+        "sha256": "f4706dac93dbb29d407c12a97f3317475a0573eb9192f0f283057344dd1e1e3c"
+      },
+      "server.stderr.log": {
+        "archive_name": "server.stderr.log",
+        "bytes": 5785,
+        "sha256": "2693cd7896e338c4f0d8b9a47285dece3b502cd11070b45c445d9134e5735b5a"
+      },
+      "server.stdout.log": {
+        "archive_name": "server.stdout.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "server_command.json": {
+        "archive_name": "server_command.json",
+        "bytes": 1906,
+        "sha256": "0f8aee6fbaaff842bc008f209a6e84547ffceedb43417456063324d916609f09"
+      },
+      "server_exit.json": {
+        "archive_name": "server_exit.json",
+        "bytes": 109,
+        "sha256": "445db1624244dcf362f58e9edc5be141ff7c33e7f7b3450a7ee4a8166c072456"
+      },
+      "server_process.json": {
+        "archive_name": "server_process.json",
+        "bytes": 158,
+        "sha256": "32d21ebd3cacfd3b5cf9eac63b7a9f27318ebdf25e0f760c2eeff9f11be18a58"
+      },
+      "server_properties.json": {
+        "archive_name": "server_properties.json",
+        "bytes": 7459,
+        "sha256": "b78e4e0ee9e9e6b9b1b0df1f5693f791c548f6b968499c7656ef390e55c10738"
+      },
+      "setup_attempt.json": {
+        "archive_name": "setup_attempt.json",
+        "bytes": 151,
+        "sha256": "fffa633fee2adc3b24ebb47f048b7aafd493439bdefbd79bcbea928ad0670a0c"
+      },
+      "state.json": {
+        "archive_name": "state.json",
+        "bytes": 309,
+        "sha256": "2fd2080bfe794c84bfc18a3f379752ed206fdda2a95e812bde86d59314f35851"
+      },
+      "watchdog_process.json": {
+        "archive_name": "watchdog_process.json",
+        "bytes": 71,
+        "sha256": "48f97902f716e411df35ac065a0aac6a56fdf880694f4a60de9cf5e200db6c8c"
+      }
+    }
+  },
+  "provenance": {
+    "bundle_version": "1.0.0",
+    "freeze_sha256": "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+    "local_payload_hashes_verified": 49,
+    "archive_frozen_payload_hashes_verified": 39,
+    "cleanup_payload_hashes_match": 49,
+    "cleanup_export_hashes_match": 86,
+    "cleanup_root_hashes_match": 85,
+    "cleanup_root_state_difference": "Exact new hash reconstructed by changing only status from stopped_pending_review to closed_artifacts_preserved",
+    "request_response_receipts_verified": 6,
+    "recorded_assessment_sha256": "f86e93f44d78ea8919afbf30913e25ff0572c05e12dec4501e1bd969f7c61603",
+    "recorded_gate_sha256": "10cfe1dd03c8cc61d3751018e3c7d3bc9134e9612d298d1112a21b3261ec0d46",
+    "model_manifest_entry": {
+      "bytes": 8709518112,
+      "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6"
+    },
+    "runtime_archive_manifest_entry": {
+      "bytes": 33337769,
+      "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36"
+    },
+    "runtime_executable_manifest_entry": {
+      "bytes": 9216,
+      "sha256": "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6"
+    },
+    "limitation": "Unsigned owner-supplied evidence; Codespace cannot independently hash Windows artifacts or observe live Windows processes"
+  },
+  "reassessment": {
+    "command": "python3 -B experiments/uc001_multilingual/qwen_spike/windows_qwen3_8b_v1/assess.py known build/checkpoints/windows-qwen3-8b-review-20261013/reassessment",
+    "assessor_sha256": "3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3",
+    "contract_sha256": "40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec",
+    "exit_code": 1,
+    "meaning_of_exit": "Expected failed gate; no assessor crash",
+    "separate_working_copy": "build/checkpoints/windows-qwen3-8b-review-20261013/reassessment",
+    "strict_passes": 2,
+    "request_count": 6,
+    "per_case_results_identical": true,
+    "failure_list_identical": true,
+    "latency_identical": true,
+    "allowed": false,
+    "receipt_map_identical": true,
+    "only_assessment_difference": {
+      "gpu_offload.positive_memory_samples": {
+        "recorded": 14,
+        "reassessed": 439
+      },
+      "reason": "Earlier assessment resource snapshot is exact hash-matching 7165-byte prefix of final log"
+    },
+    "reassessment_sha256": "6fbc69f01ab1f28d14a20edac3da384b2c9c12ce6fe001b1c2e4aacfd0e66ace",
+    "reassessed_gate_sha256": "3881bed42138f2772837c759aa5de6a8efe9fe25eaac4ab18d6e3e21e9bd4b79"
+  },
+  "cases": [
+    {
+      "id": "01-C1-known",
+      "input": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repair"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "strict_pass": true,
+      "semantic_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.4981967,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 329,
+        "total_tokens": 407,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 997.764,
+        "prompt_per_token_ms": 3.0327173252279636,
+        "prompt_per_second": 329.7372925862228,
+        "predicted_n": 78,
+        "predicted_ms": 1491.922,
+        "predicted_per_token_ms": 19.37561038961039,
+        "predicted_per_second": 51.61127726516534
+      },
+      "request_sha256": "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd",
+      "response_sha256": "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+    },
+    {
+      "id": "02-C2-known",
+      "input": "repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "language": "en",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "strict_pass": true,
+      "semantic_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.0421727,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 329,
+        "total_tokens": 407,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 493.911,
+        "prompt_per_token_ms": 1.5012492401215805,
+        "prompt_per_second": 666.1119108503354,
+        "predicted_n": 78,
+        "predicted_ms": 1540.431,
+        "predicted_per_token_ms": 20.005597402597402,
+        "predicted_per_second": 49.9860104087752
+      },
+      "request_sha256": "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0",
+      "response_sha256": "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+    },
+    {
+      "id": "03-C3-known",
+      "input": "Repariere meinen Wasserkocher, ohne ihn zu ersetzen.",
+      "expected": {
+        "status": "understood",
+        "language": "de",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {
+          "no_replacement": "true"
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "de",
+        "subject": {
+          "value": "Wasserkocher",
+          "quote": "Wasserkocher"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repariere"
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_replacement",
+            "value": "true",
+            "quote": "ohne ihn zu ersetzen"
+          }
+        ],
+        "unresolved": []
+      },
+      "strict_pass": false,
+      "semantic_errors": [],
+      "label_mismatches": {
+        "subject": {
+          "expected": "kettle",
+          "actual": "wasserkocher"
+        }
+      },
+      "meaning_inconclusive": [
+        "subject: plausible equivalent label, not qualified linguistic validation"
+      ],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.8588837,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 121,
+        "prompt_tokens": 341,
+        "total_tokens": 462,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 341,
+        "prompt_ms": 498.135,
+        "prompt_per_token_ms": 1.4608064516129031,
+        "prompt_per_second": 684.553384122778,
+        "predicted_n": 121,
+        "predicted_ms": 2350.298,
+        "predicted_per_token_ms": 19.585816666666666,
+        "predicted_per_second": 51.057355280053855
+      },
+      "request_sha256": "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c",
+      "response_sha256": "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+    },
+    {
+      "id": "04-C4-known",
+      "input": "Répare ma bouilloire.",
+      "expected": {
+        "status": "understood",
+        "language": "fr",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "bouilloire",
+          "quote": "bouilloire"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Répare"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "strict_pass": false,
+      "semantic_errors": [],
+      "label_mismatches": {
+        "subject": {
+          "expected": "kettle",
+          "actual": "bouilloire"
+        }
+      },
+      "meaning_inconclusive": [
+        "subject: plausible equivalent label, not qualified linguistic validation"
+      ],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.1363992,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 84,
+        "prompt_tokens": 332,
+        "total_tokens": 416,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 493.603,
+        "prompt_per_token_ms": 1.4867560240963855,
+        "prompt_per_second": 672.6053123664159,
+        "predicted_n": 84,
+        "predicted_ms": 1634.795,
+        "predicted_per_token_ms": 19.69632530120482,
+        "predicted_per_second": 50.77089176318743
+      },
+      "request_sha256": "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea",
+      "response_sha256": "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+    },
+    {
+      "id": "05-C5-known",
+      "input": "Ripara il mio bollitore.",
+      "expected": {
+        "status": "understood",
+        "language": "it",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "actual": {
+        "status": "understood",
+        "language": "it",
+        "subject": {
+          "value": "bollitore",
+          "quote": "bollitore"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Ripara"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "strict_pass": false,
+      "semantic_errors": [],
+      "label_mismatches": {
+        "subject": {
+          "expected": "kettle",
+          "actual": "bollitore"
+        }
+      },
+      "meaning_inconclusive": [
+        "subject: plausible equivalent label, not qualified linguistic validation"
+      ],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.0957718,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 334,
+        "total_tokens": 416,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 334,
+        "prompt_ms": 495.089,
+        "prompt_per_token_ms": 1.4823023952095808,
+        "prompt_per_second": 674.6261783234933,
+        "predicted_n": 82,
+        "predicted_ms": 1592.455,
+        "predicted_per_token_ms": 19.659938271604936,
+        "predicted_per_second": 50.86485960356808
+      },
+      "request_sha256": "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a",
+      "response_sha256": "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+    },
+    {
+      "id": "06-C6-known",
+      "input": "Repara mi hervidor.",
+      "expected": {
+        "status": "unsupported",
+        "language": null,
+        "unresolved_nonempty": true
+      },
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "hervidor",
+          "quote": "hervidor"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repara"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "strict_pass": false,
+      "semantic_errors": [
+        "status",
+        "language",
+        "missing_uncertainty",
+        "subject"
+      ],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "operational_errors": [],
+      "wall_seconds": 2.0872018,
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 82,
+        "prompt_tokens": 332,
+        "total_tokens": 414,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 332,
+        "prompt_ms": 494.946,
+        "prompt_per_token_ms": 1.4908012048192771,
+        "prompt_per_second": 670.7802467339872,
+        "predicted_n": 82,
+        "predicted_ms": 1583.888,
+        "predicted_per_token_ms": 19.554172839506172,
+        "predicted_per_second": 51.13997959451678
+      },
+      "request_sha256": "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df",
+      "response_sha256": "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+    }
+  ],
+  "grounding": {
+    "passed_requests": 6,
+    "populated_exact_unique_quotes": 13,
+    "does_not_establish": "Correct status/meaning or faithful rendering of source evidence"
+  },
+  "execution": {
+    "completed_requests": 6,
+    "server_inference_task_launches": 6,
+    "unrun_additional_requests": 28,
+    "unrun_new_cases": 24,
+    "unrun_repetitions": 4,
+    "heldout_case_count": 55,
+    "heldout_bundle_included": false,
+    "heldout_contents_read_in_review": false,
+    "heldout_model_exposure_recorded": 0,
+    "gate_allowed": false,
+    "run_failure": {
+      "error": "Known-case strict gate failed or assessment provenance incomplete. STOP before new cases.",
+      "utc": "2026-10-13T19:29:11.8295110Z",
+      "orchestration_exit": 1
+    },
+    "readiness": {
+      "utc": "2026-10-13T19:19:03.5506722Z",
+      "seconds": 6.5712097,
+      "ready": true
+    },
+    "sampling_requested": {
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0.0,
+      "seed": 42
+    },
+    "actual_sampler_values_independently_echoed": false,
+    "template_sha256": "57f1fd00f0013a2be96aa79b857391f27e23df5b5f847072b524c897e24d0361",
+    "runtime_build": "b11429-d81235049",
+    "context": 2048,
+    "slots": 1,
+    "output_limit": 384,
+    "prompt_token_counts": [
+      329,
+      329,
+      341,
+      332,
+      334,
+      332
+    ],
+    "completion_token_counts": [
+      78,
+      78,
+      121,
+      84,
+      82,
+      82
+    ],
+    "all_finish_reason_stop": true,
+    "server_truncated_counts_zero": true,
+    "nonthinking_prefix_confirmed": true,
+    "cache_counters_all_zero": true,
+    "latency": {
+      "first_seconds": 2.4981967,
+      "warm_n": 5,
+      "warm_median_seconds": 2.0957718,
+      "warm_p95_seconds": 2.8588837,
+      "targets_met": true
+    },
+    "performance_limits": "Five warm samples, graph reuse and possible OS cache warming; no CPU comparison or general latency reliability established"
+  },
+  "resources": {
+    "preflight": {
+      "utc": "2026-10-13T19:08:06.9077935Z",
+      "available_ram_bytes": 43939479552,
+      "total_ram_bytes": 68640653312,
+      "disk_free_bytes": 581292466176,
+      "scratch_bytes": 0,
+      "gpu_name": "AMD Radeon RX 6800 XT",
+      "dedicated_total_bytes": 17130819584,
+      "adapter_dedicated_used_bytes": 1515642880,
+      "adapter_free_bytes": 15615176704,
+      "owned_gpu_bytes": 0,
+      "owned_rss_bytes": 0,
+      "owned_private_bytes": 0,
+      "gpu_measurement": "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+    },
+    "preload": {
+      "utc": "2026-10-13T19:18:48.0663288Z",
+      "available_ram_bytes": 43673776128,
+      "total_ram_bytes": 68640653312,
+      "disk_free_bytes": 571977748480,
+      "scratch_bytes": 8837908063,
+      "gpu_name": "AMD Radeon RX 6800 XT",
+      "dedicated_total_bytes": 17130819584,
+      "adapter_dedicated_used_bytes": 1819701248,
+      "adapter_free_bytes": 15311118336,
+      "owned_gpu_bytes": 0,
+      "owned_rss_bytes": 0,
+      "owned_private_bytes": 0,
+      "gpu_measurement": "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+    },
+    "sample_count": 439,
+    "positive_gpu_samples": 439,
+    "recorded_ranges": {
+      "owned_gpu_bytes": {
+        "minimum_bytes": 4209041408,
+        "maximum_bytes": 8421654528
+      },
+      "owned_rss_bytes": {
+        "minimum_bytes": 125673472,
+        "maximum_bytes": 8202661888
+      },
+      "owned_private_bytes": {
+        "minimum_bytes": 4313743360,
+        "maximum_bytes": 8602992640
+      },
+      "scratch_bytes": {
+        "minimum_bytes": 8837911569,
+        "maximum_bytes": 8838514472
+      },
+      "available_ram_bytes": {
+        "minimum_bytes": 33030774784,
+        "maximum_bytes": 43398160384
+      },
+      "adapter_free_bytes": {
+        "minimum_bytes": 6034919424,
+        "maximum_bytes": 11100372992
+      },
+      "disk_free_bytes": {
+        "minimum_bytes": 571935932416,
+        "maximum_bytes": 571977711616
+      }
+    },
+    "guard_violations_in_samples": [],
+    "guard_failure_present": false,
+    "full_offload_confirmed": false,
+    "offloaded_layer_counts_recorded": [],
+    "acceleration_established": false,
+    "measurement_limitations": [
+      "Sampled peaks can miss shorter peaks",
+      "WDDM dedicated-usage gauge against DXGI capacity, not per-process dynamic residency budget",
+      "No full-offload layer-count evidence in either server log"
+    ]
+  },
+  "closeout": {
+    "setup_started_utc": "2026-10-13T19:08:07.0420656Z",
+    "evaluation_started_utc": "2026-10-13T19:18:56.880676+00:00",
+    "original_deadlines": {
+      "setup_deadline_utc": "2026-10-13T20:08:07.0420656Z",
+      "total_deadline_utc": "2026-10-13T21:08:07.0420656Z",
+      "evaluation_deadline_utc": "2026-10-13T19:48:56.8806763Z"
+    },
+    "elapsed_setup_to_shutdown_seconds": 1265.631906,
+    "elapsed_evaluation_to_shutdown_seconds": 615.793295,
+    "sixth_completion_to_gate_rejection_seconds": 594.378138,
+    "transfer_and_owner_assessment_timings_separately_measured": false,
+    "download_ledger": {
+      "completed": [
+        "runtime",
+        "model"
+      ],
+      "status": "verified_complete",
+      "cap_bytes": 10000000000,
+      "bytes": 8743904457
+    },
+    "server_exit": {
+      "utc": "2026-10-13T19:29:12.6739716Z",
+      "planned_owned_shutdown": true,
+      "exit_code": -1
+    },
+    "driver_exit": {
+      "utc": "2026-10-13T19:29:12.6759803Z",
+      "model_correctness": "separate offline assessment",
+      "exit_code": 1
+    },
+    "watchdog_exit": {
+      "status": "server_ended",
+      "utc": "2026-10-13T19:29:12.7813935Z"
+    },
+    "watchdog_process_exit_code_captured": false,
+    "cleanup_utc": "2026-10-13T19:34:28.8576899Z",
+    "cleanup_effect": "Only matching owned server stopped. Models/results/markers/logs remain; no deletion.",
+    "recorded_artifact_preservation": true,
+    "live_windows_process_state_verified": false,
+    "live_windows_artifact_existence_verified": false
+  },
+  "preservation_checks": {
+    "bundle_hashes_unchanged": true,
+    "approved_spec_and_unedited_reference_hashes_unchanged": {
+      "AGENTS.md": "eea25ffd5a1595625f4d4ac6acf788243d1e061f8b46ffe7ea215f2a40a967aa",
+      "docs/PROJECT.md": "d0a1236066a5221084d8e000e3c62758830505972385f3af17790b448f1fe5be",
+      "docs/PRODUCT_CONTEXT.md": "846f9135beb346112edb2f7fb7e193aa2f5c03247cba17471557215b93af4587",
+      "docs/DEVELOPMENT_WORKFLOW.md": "ccea68fe2f9a78ccd3a626abc077ed8c26fd15bca0bb30ff8ab3155941928839",
+      "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md": "37235ade5dcb1f695802afbeccb0a76db401ac94b3ac05bbbe313e90cb99b951",
+      "docs/adr/ADR-003-persisted-comparison-boundary.md": "57199a60d856fa2e10d981e727db52b458049102d5895bcac725c30b7968e391",
+      "experiments/uc001_multilingual/qwen_spike/portable_2026_10_11/results.json": "ab90c1016f94541e60ff21307980ca4ab17c899d248450fc707e7dad85d9ffad",
+      "experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/results.json": "a2daea6083e7eafec5bff6aa68224f578f8ed113e75cd3ae77a176d1508a7a18"
+    },
+    "archived_design_history_sha256": "1804b9babe97e215d9452f3e0f94ef46c80d2902268e9f7b306d048f80482829",
+    "document_before_sha256": {
+      "docs/TASKS.md": "f8e9dff74ff704a168d822c057d8456a3d39700186799118b8b7c12f48a69d54",
+      "docs/ARCHITECTURE.md": "5678be3a742b7f69e273dce7ce67d0f581bc192c15d2b9cd75cb482c5ada488e",
+      "docs/adr/ADR-004-multilingual-interpretation-scope.md": "6c85d7e87af01230831e0c70f807eaab237ced0ed44d7314566745e43066d5b3",
+      "experiments/uc001_multilingual/qwen_spike/REPRODUCE.md": "a9f0141250684ae32925b52c6aae3a520d4629f7d7ef50af7ea0e66f45f86227"
+    }
+  },
+  "next_investigation_proposal": "Review unsupported-language handling offline using the existing Spanish negative control for limitation/rephrasing behaviour. Review DE/FR/IT canonical-label mismatches separately; missing full-offload evidence is an operational issue. Proposals only; no new inference or experiment is authorized.",
+  "owner_scope_clarification": {
+    "date": "2026-10-13",
+    "supported_languages": ["en", "de", "fr", "it"],
+    "negative_control_case": "06-C6-known",
+    "negative_control_role": "Spanish unsupported-language negative control: verify appropriate limitation/rephrasing behaviour, not Spanish interpretation or translation support",
+    "adds_language_requirement": false,
+    "authorizes_new_inference_or_experiment": false,
+    "frozen_test_original_results_and_failed_gate_unchanged": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "status":  "server_ended",
+    "utc":  "2026-10-14T20:14:46.6921781Z",
+    "original_deadline_utc":  "2026-10-14T20:36:19.1580353Z",
+    "ownership_observation":  {
+                                  "observed_start_ticks":  null,
+                                  "expected_executable":  "C:\\ResolenaExperiments\\qwen3-8b-v1\\runtime\\llama-server.exe",
+                                  "state":  "ended",
+                                  "observed_pid":  22120,
+                                  "observed_executable":  null,
+                                  "utc":  "2026-10-14T20:14:46.6830701Z",
+                                  "error":  null,
+                                  "expected_pid":  22120,
+                                  "expected_start_ticks":  639276051907339038
+                              },
+    "exit_code":  0
+}

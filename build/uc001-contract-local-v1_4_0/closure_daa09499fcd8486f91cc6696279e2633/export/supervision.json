@@ -1,0 +1,144 @@
+{
+    "semantic_review":  "pending",
+    "deferred_live_cases":  [
+                                1,
+                                5,
+                                10
+                            ],
+    "incomplete":  "Unfinished raw bodies remain private; do not manually copy private files or logs to Codespace.",
+    "execution_purpose":  "technical_feasibility_only",
+    "completed":  false,
+    "multilingual_acceptance_verified":  false,
+    "expected_meanings_approved":  false,
+    "live_api_real_adapter_verified":  false,
+    "interpreter_suitability_verified":  false,
+    "cases":  [
+                  {
+                      "private_bodies":  [
+                                             {
+                                                 "private_bytes":  5041,
+                                                 "exchange":  "001",
+                                                 "kind":  "request.bin"
+                                             },
+                                             {
+                                                 "private_bytes":  5010,
+                                                 "exchange":  "001",
+                                                 "kind":  "response.bin"
+                                             },
+                                             {
+                                                 "private_bytes":  5072,
+                                                 "exchange":  "002",
+                                                 "kind":  "request.bin"
+                                             },
+                                             {
+                                                 "private_bytes":  4387,
+                                                 "exchange":  "002",
+                                                 "kind":  "response.bin"
+                                             },
+                                             {
+                                                 "private_bytes":  8460,
+                                                 "exchange":  "003",
+                                                 "kind":  "request.bin"
+                                             },
+                                             {
+                                                 "private_bytes":  2284,
+                                                 "exchange":  "003",
+                                                 "kind":  "response.bin"
+                                             }
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  1
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  2
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  3
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  4
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  5
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  6
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  7
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  8
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  9
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  10
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  11
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  12
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  13
+                  },
+                  {
+                      "private_bodies":  [
+
+                                         ],
+                      "accepted_before_deadline":  false,
+                      "case":  14
+                  }
+              ]
+}

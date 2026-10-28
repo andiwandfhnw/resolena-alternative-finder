@@ -1,0 +1,28 @@
+{
+  "version": "1.0.0",
+  "frozen_utc": "2026-10-15T17:04:34.549231+00:00",
+  "files": {
+    "preservation-before.json": "0a147c1aa5dc53baf5cd7be657106b6764a941b7fb660c405d1b06aa2ad85e21",
+    "test_operations.py": "8e02359f8c692963a6ea8afed64df100a47c9f0ba163e51af0de806e694ef742",
+    "requirements.lock": "3ee3f701d8351852f3d6af3170e3831409f93565a8b1c6b5d5dbc038fcbd5ef8",
+    "acquire.py": "d3e01fc0b3ef9330be51c36650b1f5c44ce61d07a2958bb8b9838e693251e8c7",
+    "publisher-wheel.METADATA": "4b8a2befef725edc840643676d65925a4c8fdbba1624485f968255fc07b03d6b",
+    "PROCEDURE.md": "0250379337f8f2a718d0f52eaf9504a8ce141e630e76d0b3fd66ade4457de7bd",
+    "approval.json": "7924a1958f573f6189ce2234c94f2533ad390dcc7fcec3196bec4a0d0328ade4",
+    "pre-execution-checks.json": "851654648309af1c4a0fbfbfe75fa05b5f49123fd2f545aa07c219140b09bb0d",
+    "worker.py": "8a5ae3c5af873ac05bfa9cf95c84237f778ee4c02807055e5aded0efef3d1f91",
+    "supervise.py": "2eaefe782b8dba64407130a6259fcddc2f12b4c921e7e726b46477552cf29694",
+    "artifact-pin.json": "8c38022e870d122c0dda49f7955f114394b7b1e1a8b2b15608e545665cad3510",
+    "publisher-LICENSE.txt": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "order.json": "42d7d4f93cc44ef69967cda8c30b38df5f24eceb321232657e8430abb7126651",
+    "cases.json": "6e34913c78fe9f8ef6bd25186f202cbc344d7f0ba6e68a1d76df0ea0617fbc30",
+    "config.json": "672984febcf2ea8b195435379a361f294c3bd819aa8f928432ecfd39ca4c6c8a"
+  },
+  "control_ids": 25,
+  "unique_original_texts": 24,
+  "passes": 2,
+  "records": 50,
+  "classification_calls_max": 100,
+  "LLM_calls": 0,
+  "held_out_access": false
+}

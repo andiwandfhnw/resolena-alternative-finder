@@ -1,0 +1,155 @@
+--- before/controller.py
++++ controller.py
+@@ -346,6 +346,7 @@
+         self.proxy_identities = {}
+         self.proxy_role_exits = {}
+         self.proxy_helpers, self.proxy_queries = {}, {}
++        self.proxy_helper_processes = {}
+         self.proxy_bound = self.proxy_listening = False
+         self.same_process = None
+         self.query_handles_closed = False
+@@ -418,7 +419,8 @@
+                 self.proxy_helpers,self.proxy_queries,journal,self.clock,self.check_deadline,
+                 "unexpected proxy branch process",timeout)
+             for ref in self.proxy_helpers.values():
+-                self.backend.validate_pid(ref["pid"],ref["creation_time_100ns"])
++                key = ref["pid"], ref["creation_time_100ns"]
++                self.proxy_helper_processes[key] = self.backend.validate_pid(*key)
+         except Exception as error:
+             raise ControllerFailure("proxy_branch_unverified:" + str(error)) from error
+ 
+@@ -538,16 +540,82 @@
+             else:
+                 raise ControllerFailure("unexpected_worker_event:" + kind)
+ 
+-    def poll_proxy(self):
++    def poll_proxy(self, reconcile_exit=None):
+         if self.proxy_launcher is not None and not self.proxy_bound:
+             self.verify_retained(self.proxy_identities["launcher"],self.proxy_launcher,
+                                  alive=True,metadata=True)
+         if self.proxy_bound:
+             for role, process in (("launcher",self.proxy_launcher),("interpreter",self.proxy)):
++                if (reconcile_exit is not None and not self.proxy_closing
++                        and self.backend.process_exit(process) is not None):
++                    reconcile_exit()
+                 self.verify_retained(self.proxy_identities[role],process,metadata=not self.proxy_closing)
+                 if not self.proxy_closing and self.backend.process_exit(process) is not None:
+-                    raise ControllerFailure("proxy_" + role + "_premature_exit")
++                    if reconcile_exit is not None:
++                        reconcile_exit()
++                    if not self.proxy_closing:
++                        raise ControllerFailure("proxy_" + role + "_premature_exit")
+             self.check_proxy_branch()
++
++    def phase_helpers_pending(self, observation):
++        count = observation.get("active_processes")
++        if type(count) is not int or count < 0:
++            raise ControllerFailure("phase_active_processes_unknown")
++        if not self.proxy_helpers:
++            if count:
++                raise ControllerFailure("active_descendants_after_worker_exit")
++        rows = observation.get("owned")
++        if not isinstance(rows, list):
++            raise ControllerFailure("phase_owned_identities_unknown")
++        active, seen = set(), set()
++        for row in rows:
++            if (not isinstance(row, dict) or type(row.get("pid")) is not int
++                    or not 0 < row["pid"] <= 0xFFFFFFFF
++                    or type(row.get("creation_time_100ns")) is not int or row["creation_time_100ns"] <= 0
++                    or "exit_code" not in row
++                    or row["exit_code"] is not None and type(row["exit_code"]) is not int):
++                raise ControllerFailure("phase_owned_identity_invalid")
++            key = row["pid"], row["creation_time_100ns"]
++            if key in seen:
++                raise ControllerFailure("phase_owned_identity_duplicate")
++            seen.add(key)
++            if row["exit_code"] is None:
++                active.add(key)
++        helpers = {(ref["pid"], ref["creation_time_100ns"]): ref for ref in self.proxy_helpers.values()}
++        if len(active) != count or not active <= helpers.keys():
++            raise ControllerFailure("active_descendants_after_worker_exit")
++        api = self.backend.api
++        for key, ref in helpers.items():
++            self.check_deadline()
++            process = self.proxy_helper_processes.get(key)
++            handle = ref.get("handle")
++            if (key not in seen or process is None or handle is None
++                    or self.proxy_queries.get(key[0]) is not ref
++                    or ref.get("accepted_helper") is not True or ref.get("verified") is not True
++                    or ref.get("expected_inside") is not True
++                    or (process.pid, process.creation_time_100ns) != key
++                    or api.process_id(handle) != key[0] or api.creation_time(handle) != key[1]):
++                raise ControllerFailure("phase_helper_retained_identity_unverified")
++            code = self.backend.process_exit(process)
++            raw_code = api.query_exit_code(handle)
++            if type(raw_code) is not int or not 0 <= raw_code <= 0xFFFFFFFF:
++                raise ControllerFailure("phase_helper_exit_unverified")
++            if code is None and raw_code != 259:
++                self.check_deadline()
++                code = self.backend.process_exit(process)
++            if code is None:
++                if (key not in active or raw_code != 259
++                        or api.in_job(handle, self.backend.handle) is not True
++                        or api.parent_pid(handle) != ref["parent_pid"]):
++                    raise ControllerFailure("phase_helper_membership_or_exit_unverified")
++                import ntpath
++                if ntpath.normcase(api.image_path(handle)) != ntpath.normcase(api.system_console_path()):
++                    raise ControllerFailure("phase_helper_path_differs")
++            elif type(code) is not int or not 0 <= code <= 0xFFFFFFFF or raw_code != code:
++                raise ControllerFailure("phase_helper_exit_unverified")
++            if api.process_id(handle) != key[0] or api.creation_time(handle) != key[1]:
++                raise ControllerFailure("phase_helper_retained_identity_changed")
++        return count != 0
+ 
+     def finish(self):
+         if not self.complete or self.terminal is None or self.children.keys() != self.exits.keys():
+@@ -665,8 +733,13 @@
+             emit("phase_worker", phase=phase, pid=worker.pid, creation_time_100ns=worker.creation_time_100ns)
+             reader = plan.get("events_reader") or FileEvents(plan["events"])
+             acknowledge = (lambda data: backend.write_stdin(worker,data)) if plan.get("stdin_pipe") else plan.get("proxy_acknowledge")
++            def check_phase():
++                guard.beat(phase, state)
++                if guard.failure:
++                    raise ControllerFailure(guard.failure)
++                state.assess(phase, clock(), sampler.latest())
+             monitor = PhaseMonitor(plan,backend,emit,acknowledge=acknowledge,clock=clock,
+-                                   check_deadline=lambda phase=phase: state.assess(phase,clock(),sampler.latest()),
++                                   check_deadline=check_phase,
+                                    remaining_seconds=lambda: ACQUISITION_SECONDS-(clock()-state.started_mono))
+             monitors.append(monitor)
+             while True:
+@@ -680,15 +753,30 @@
+                     for event in backend.drain_events():
+                         emit("ownership", record=event)
+                 monitor.accept(reader.read())
+-                monitor.poll_proxy()
+                 exit_code = backend.process_exit(worker)
++                reconciled = False
++                def reconcile_exit():
++                    nonlocal reconciled
++                    if not reconciled:
++                        reconciled = True
++                        check_phase()
++                        monitor.accept(reader.read(terminal=exit_code is not None))
++                        check_phase()
+                 if exit_code is not None:
+-                    monitor.accept(reader.read(terminal=True))
++                    reconcile_exit()
++                monitor.poll_proxy(reconcile_exit)
++                if exit_code is not None:
+                     if exit_code != 0:
+                         raise ControllerFailure("phase_worker_exit:" + str(exit_code))
+-                    if backend.snapshot()["active_processes"] != 0:
+-                        raise ControllerFailure("active_descendants_after_worker_exit")
+                     total = monitor.finish()
++                    while True:
++                        check_phase()
++                        if not monitor.phase_helpers_pending(backend.snapshot()):
++                            break
++                        emit("phase_helper_wait", phase=phase,
++                             identities=[dict(pid=pid,creation_time_100ns=birth)
++                                         for pid,birth in monitor.proxy_helper_processes])
++                        sleep(POLL_SECONDS)
+                     state.assess(phase, clock(), sampler.latest())
+                     if total is not None:
+                         result["downloaded_upper_bound_bytes"] = total

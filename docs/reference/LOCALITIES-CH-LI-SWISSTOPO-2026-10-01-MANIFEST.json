@@ -1,0 +1,195 @@
+{
+  "status": "draft",
+  "runtime_use": false,
+  "synthetic": false,
+  "review": {
+    "status": "pending",
+    "owner_approved": false,
+    "activation_approved": false,
+    "reviewer": null,
+    "reviewed_at": null
+  },
+  "publisher": "Federal Office of Topography swisstopo",
+  "source_reference": "https://data.geo.admin.ch/ch.swisstopo-vd.ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz_2056.csv.zip",
+  "snapshot_id": "swisstopo-ortschaften-2026-10-01-sha256-0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+  "export_identity": "ortschaftenverzeichnis_plz",
+  "raw_source": {
+    "path": "build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip",
+    "sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+    "bytes": 132697,
+    "format": "ZIP with one UTF-8 BOM semicolon CSV; twelve exact columns",
+    "member": {
+      "path": "AMTOVZ_CSV_LV95/AMTOVZ_CSV_LV95.csv",
+      "sha256": "ae33ad60171374afcb39ddd9cc5268a1fe5b71f40bf21961373f4e6fb65abe02",
+      "bytes": 503281
+    }
+  },
+  "source_dates": {
+    "snapshot_at": "2026-10-01T00:00:00Z",
+    "metadata_updated_at": "2026-10-01T04:45:13.574657Z",
+    "publication_date": null,
+    "reviewed_at": null,
+    "publisher_HTTP_last_modified": "Thu, 01 Oct 2026 04:45:06 GMT",
+    "format_document_version": "1.2",
+    "format_document_version_date": "2026-01-01",
+    "limits": "STAC snapshot and update times describe this export; HTTP Last-Modified is a resource timestamp. CSV Validity is locality-name effective date, not export/retrieval/review time; omitted from draft. No per-entry factual currentness inferred."
+  },
+  "retrieved_at": "2026-10-23T17:16:08.019270+00:00",
+  "prepared_at": "2026-10-23T17:24:45.554962+00:00",
+  "acquisition_record": "build/uc001-priority5t-locality-reference/acquisition.json",
+  "documentation": [
+    {
+      "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz",
+      "path": "build/uc001-priority5t-locality-reference/source/collection.json",
+      "sha256": "e97d1c2c067de39d118353dec62b28e368af9486128e8ebdc293b283c4404eea",
+      "bytes": 2482,
+      "retrieved_at": "2026-10-23T17:15:51.238717+00:00"
+    },
+    {
+      "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz/items",
+      "path": "build/uc001-priority5t-locality-reference/source/items.json",
+      "sha256": "04890aeffd0b49bff37a0c3bb9ba0d5bdfb3364bdadea7fb06ab506f7ded58fe",
+      "bytes": 3899,
+      "retrieved_at": "2026-10-23T17:15:51.396311+00:00"
+    },
+    {
+      "reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+      "path": "build/uc001-priority5t-locality-reference/source/product.html",
+      "sha256": "6c6ca4ec29939493839a5655be8ca85640389acd30400dd2ab6f54ce1b2bad4b",
+      "bytes": 316301,
+      "retrieved_at": "2026-10-23T17:16:33.550241+00:00"
+    },
+    {
+      "reference": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+      "path": "build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf",
+      "sha256": "45779d8fbb26006c1692fdf8b1aa1a0bb7a525bced1c5d1fdfe4950ae6c17b50",
+      "bytes": 525109,
+      "retrieved_at": "2026-10-23T17:16:34.652314+00:00"
+    },
+    {
+      "reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "path": "build/uc001-priority5t-locality-reference/source/terms.html",
+      "sha256": "ef27221806608ba1519cb31f9c46c381e7fe767f19bf986f8896961a93fc7f7f",
+      "bytes": 261589,
+      "retrieved_at": "2026-10-23T17:16:35.036663+00:00"
+    }
+  ],
+  "normalized_output": {
+    "path": "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json",
+    "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+    "bytes": 2265497,
+    "order": "source data record order; source_record is one-based after the header"
+  },
+  "field_mapping": {
+    "Ortschaftsname": "locality_name (verbatim)",
+    "PLZ4": "postcode (string, verbatim)",
+    "ZIP_ID": "source_postcode_id (string, PLZ6/ONRP identifier only)",
+    "Zusatzziffer": "additional_number (string, verbatim; separate from PLZ4)",
+    "Gemeindename": "administrative.municipality_name (label, not locality identity)",
+    "BFS-Nr": "administrative.municipality_id (source municipal identifier, string)",
+    "Kantonskürzel": "administrative.canton (verbatim) and documented derived country",
+    "Adressenanteil,E,N,Sprache,Validity": "omitted; no spatial/address-share fields, invented aliases or verification dates"
+  },
+  "country_derivation": {
+    "raw_country_column_supplied": false,
+    "rule": "Documented empty canton denotes LI; the 26 observed Swiss canton labels denote CH. Unexpected labels remain unresolved.",
+    "CH_canton_labels": [
+      "AG",
+      "AI",
+      "AR",
+      "BE",
+      "BL",
+      "BS",
+      "FR",
+      "GE",
+      "GL",
+      "GR",
+      "JU",
+      "LU",
+      "NE",
+      "NW",
+      "OW",
+      "SG",
+      "SH",
+      "SO",
+      "SZ",
+      "TG",
+      "TI",
+      "UR",
+      "VD",
+      "VS",
+      "ZG",
+      "ZH"
+    ],
+    "basis": "Product information January 2026, attribute catalogue page 7; product coverage page 4."
+  },
+  "identity": {
+    "locality_id_supplied": false,
+    "postal_id_column": "ZIP_ID",
+    "basis": "Product information pages 5-7: LOCALITYID is a locality GUID but is absent from this CSV; ZIP_ID identifies PLZ6 and is assigned by Swiss Post (ONRP).",
+    "rule": "One row per locality/postcode/municipality association. source_record identifies an extraction record within this pinned input, never an authoritative locality. Do not merge by name, PLZ4, ZIP_ID or municipality; cross-postcode locality identity remains unreviewed."
+  },
+  "preparation_rules": [
+    "Strict documented header/UTF-8/semicolon format. Preserve exact raw Unicode, whitespace, postcodes, additional numbers and identifier strings.",
+    "Derived matching.locality_name uses boundary trim, Unicode NFC then casefold; matching.postcode uses boundary trim only. No numeric postcode conversion, format resolver, split multilingual names, translations or aliases.",
+    "Retain municipality/BFS/canton labels to preserve source associations and enable later human disambiguation; municipality is not locality.",
+    "Every data record is included, excluded blank or unresolved with reason; source_record links back to the exact pinned CSV record.",
+    "Conflicting country/name/postcode/additional values for one ZIP_ID remain unresolved. Different municipality/canton associations within CH are retained.",
+    "Duplicate records remain included. Duplicate counts overlap: exact-source duplicates are also retained-association duplicates; neither count is an excluded disposition."
+  ],
+  "counts": {
+    "source_records": 5716,
+    "included": 5716,
+    "excluded": 0,
+    "unresolved": 0,
+    "duplicate_source_records": 0,
+    "duplicate_retained_associations": 0
+  },
+  "excluded": [],
+  "unresolved": [],
+  "duplicates": [],
+  "structural_summary": {
+    "country_association_counts": {
+      "CH": 5696,
+      "LI": 20
+    },
+    "distinct_postal_ids": 4073,
+    "postal_ids_with_multiple_associations": 1206,
+    "postal_ids_across_canton_labels": 167
+  },
+  "coverage": {
+    "countries": [
+      "CH",
+      "LI"
+    ],
+    "scope": "Official localities/building-address postcodes; not all postal purposes.",
+    "omissions": "Non-address/administrative postcode types, including PO-box/company/internal postcodes, are omitted; see publisher product FAQ and technical documentation."
+  },
+  "attribution": {
+    "credit": "Federal Office of Topography swisstopo",
+    "source_reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+    "terms_reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+    "terms_version": "1.3.2021",
+    "basis": "Publisher OGD terms allow use, redistribution and processing with mandatory source credit. STAC labels the licence proprietary; no Creative Commons or endorsement claim is inferred.",
+    "modification_notice": "Selected non-spatial association columns, derived country/matching keys and extraction provenance; excluded coordinates/address shares/language/validity. Source spelling and postal strings unchanged. Human factual/release review pending."
+  },
+  "outstanding_review": [
+    "Approve source snapshot, field meanings and all association/country dispositions; automated checks are not factual or release approval.",
+    "Review documented empty-canton LI derivation and retained municipal/canton labels, including cross-canton associations.",
+    "No locality GUID in the CSV: determine whether/when reviewed locality identity across postal IDs is needed. No consolidation or resolver is authorized.",
+    "Review coverage omissions, attribution/licensing basis and source-provided multilingual spellings; no qualified DE/FR/IT/EN linguistic acceptance.",
+    "Any unresolved/duplicate ledgers require review; zero unresolved source records does not resolve these identity or release decisions.",
+    "Activation, replacement and application integration each require explicit authorization."
+  ],
+  "limitations": [
+    "Reference presence does not prove delivery or service availability.",
+    "Reference absence alone does not prove an entered locality is invalid.",
+    "No geometry, full addresses, fuzzy matching, geocoding or runtime publisher request.",
+    "Inactive preparation only; approved country artifacts, saved requests and immutable alternative evidence unchanged."
+  ],
+  "preparation": {
+    "script": "scripts/uc001_locality_reference/prepare.py",
+    "script_sha256": "7cfc42ba3081ac40d54cad8ef5c9ee0fdb097cc9982762fe9fde0796ef17d97a",
+    "command": ".venv/bin/python scripts/uc001_locality_reference/prepare.py --source build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip --acquisition build/uc001-priority5t-locality-reference/acquisition.json --source-sha256 0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b --output docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json --manifest docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json --prepared-at 2026-10-23T17:24:45.554962+00:00"
+  }
+}

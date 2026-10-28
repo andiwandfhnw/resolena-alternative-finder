@@ -1,0 +1,421 @@
+FFFFFFFFFFFFFFFFFFFF                                                     [100%]
+=================================== FAILURES ===================================
+____ test_selftest_worker_reuses_real_binding_and_closes_without_git[True] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_reuses_re0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d69040>
+split = True
+
+    @pytest.mark.parametrize('split', [True, False])
+    def test_selftest_worker_reuses_real_binding_and_closes_without_git(tmp_path, monkeypatch, split):
+        config, journal, runner = fixture(tmp_path, monkeypatch, split=split)
+>       worker.run_proxy_binding_selftest(config, journal, runner=runner)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:124: AttributeError
+____ test_selftest_worker_reuses_real_binding_and_closes_without_git[False] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_reuses_re1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7003888e68a0>
+split = False
+
+    @pytest.mark.parametrize('split', [True, False])
+    def test_selftest_worker_reuses_real_binding_and_closes_without_git(tmp_path, monkeypatch, split):
+        config, journal, runner = fixture(tmp_path, monkeypatch, split=split)
+>       worker.run_proxy_binding_selftest(config, journal, runner=runner)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:124: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_ready_pid] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9fb30>
+damage = 'wrong_ready_pid'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_parent] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9cc80>
+damage = 'wrong_parent'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_member] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9d520>
+damage = 'wrong_member'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[changed_birth] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9df70>
+damage = 'changed_birth'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+__ test_selftest_worker_fails_closed_and_closes_retained_queries[missing_ack] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9eb70>
+damage = 'missing_ack'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[premature_launcher] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9f7a0>
+damage = 'premature_launcher'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[premature_interpreter] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da0f80>
+damage = 'premature_interpreter'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_listening_pid] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9fec0>
+damage = 'wrong_listening_pid'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+____ test_selftest_worker_fails_closed_and_closes_retained_queries[CONNECT] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9d370>
+damage = 'CONNECT'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_ test_selftest_worker_fails_closed_and_closes_retained_queries[tunnel_start] __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9d820>
+damage = 'tunnel_start'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+__ test_selftest_worker_fails_closed_and_closes_retained_queries[tunnel_end] ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo10')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d9d160>
+damage = 'tunnel_end'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+_____ test_selftest_worker_fails_closed_and_closes_retained_queries[debit] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo11')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7003888fed20>
+damage = 'debit'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+___ test_selftest_worker_fails_closed_and_closes_retained_queries[outbound] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_fails_clo12')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388d5fb60>
+damage = 'outbound'
+
+    @pytest.mark.parametrize('damage', ['wrong_ready_pid', 'wrong_parent', 'wrong_member', 'changed_birth',
+                                       'missing_ack', 'premature_launcher', 'premature_interpreter',
+                                       'wrong_listening_pid', 'CONNECT', 'tunnel_start', 'tunnel_end',
+                                       'debit', 'outbound'])
+    def test_selftest_worker_fails_closed_and_closes_retained_queries(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch, damage=damage)
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:150: AttributeError
+______ test_selftest_worker_rejects_changed_pins_before_start[prior_hash] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_rejects_c0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da0c50>
+damage = 'prior_hash'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'prior_bytes', 'guard_hash', 'not_selftest', 'real_root'])
+    def test_selftest_worker_rejects_changed_pins_before_start(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        if damage == 'prior_hash':
+            config['prior_sha256'] = '0' * 64
+        elif damage == 'prior_bytes':
+            changed = tmp_path / 'changed-prior.json'
+            changed.write_bytes(Path(config['prior_receipt']).read_bytes() + b'\n')
+            config['prior_receipt'] = str(changed)
+        elif damage == 'guard_hash':
+            config['guard_sha256'] = '0' * 64
+        elif damage == 'not_selftest':
+            config['selftest_only'] = False
+        else:
+            config['root'] = worker.ROOT
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:171: AttributeError
+_____ test_selftest_worker_rejects_changed_pins_before_start[prior_bytes] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_rejects_c1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da3b60>
+damage = 'prior_bytes'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'prior_bytes', 'guard_hash', 'not_selftest', 'real_root'])
+    def test_selftest_worker_rejects_changed_pins_before_start(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        if damage == 'prior_hash':
+            config['prior_sha256'] = '0' * 64
+        elif damage == 'prior_bytes':
+            changed = tmp_path / 'changed-prior.json'
+            changed.write_bytes(Path(config['prior_receipt']).read_bytes() + b'\n')
+            config['prior_receipt'] = str(changed)
+        elif damage == 'guard_hash':
+            config['guard_sha256'] = '0' * 64
+        elif damage == 'not_selftest':
+            config['selftest_only'] = False
+        else:
+            config['root'] = worker.ROOT
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:171: AttributeError
+______ test_selftest_worker_rejects_changed_pins_before_start[guard_hash] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_rejects_c2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da1df0>
+damage = 'guard_hash'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'prior_bytes', 'guard_hash', 'not_selftest', 'real_root'])
+    def test_selftest_worker_rejects_changed_pins_before_start(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        if damage == 'prior_hash':
+            config['prior_sha256'] = '0' * 64
+        elif damage == 'prior_bytes':
+            changed = tmp_path / 'changed-prior.json'
+            changed.write_bytes(Path(config['prior_receipt']).read_bytes() + b'\n')
+            config['prior_receipt'] = str(changed)
+        elif damage == 'guard_hash':
+            config['guard_sha256'] = '0' * 64
+        elif damage == 'not_selftest':
+            config['selftest_only'] = False
+        else:
+            config['root'] = worker.ROOT
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:171: AttributeError
+_____ test_selftest_worker_rejects_changed_pins_before_start[not_selftest] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_rejects_c3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da1310>
+damage = 'not_selftest'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'prior_bytes', 'guard_hash', 'not_selftest', 'real_root'])
+    def test_selftest_worker_rejects_changed_pins_before_start(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        if damage == 'prior_hash':
+            config['prior_sha256'] = '0' * 64
+        elif damage == 'prior_bytes':
+            changed = tmp_path / 'changed-prior.json'
+            changed.write_bytes(Path(config['prior_receipt']).read_bytes() + b'\n')
+            config['prior_receipt'] = str(changed)
+        elif damage == 'guard_hash':
+            config['guard_sha256'] = '0' * 64
+        elif damage == 'not_selftest':
+            config['selftest_only'] = False
+        else:
+            config['root'] = worker.ROOT
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:171: AttributeError
+______ test_selftest_worker_rejects_changed_pins_before_start[real_root] _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_selftest_worker_rejects_c4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x700388da3890>
+damage = 'real_root'
+
+    @pytest.mark.parametrize('damage', ['prior_hash', 'prior_bytes', 'guard_hash', 'not_selftest', 'real_root'])
+    def test_selftest_worker_rejects_changed_pins_before_start(tmp_path, monkeypatch, damage):
+        config, journal, runner = fixture(tmp_path, monkeypatch)
+        if damage == 'prior_hash':
+            config['prior_sha256'] = '0' * 64
+        elif damage == 'prior_bytes':
+            changed = tmp_path / 'changed-prior.json'
+            changed.write_bytes(Path(config['prior_receipt']).read_bytes() + b'\n')
+            config['prior_receipt'] = str(changed)
+        elif damage == 'guard_hash':
+            config['guard_sha256'] = '0' * 64
+        elif damage == 'not_selftest':
+            config['selftest_only'] = False
+        else:
+            config['root'] = worker.ROOT
+        with pytest.raises((worker.WorkerFailure, RuntimeError)):
+>           worker.run_proxy_binding_selftest(config, journal, runner=runner)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'scripts.uc001_granite_controller.worker' has no attribute 'run_proxy_binding_selftest'
+
+tests/unit/test_granite_proxy_binding_worker.py:171: AttributeError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_reuses_real_binding_and_closes_without_git[True]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_reuses_real_binding_and_closes_without_git[False]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_ready_pid]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_parent]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_member]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[changed_birth]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[missing_ack]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[premature_launcher]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[premature_interpreter]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[wrong_listening_pid]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[CONNECT]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[tunnel_start]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[tunnel_end]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[debit]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_fails_closed_and_closes_retained_queries[outbound]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_rejects_changed_pins_before_start[prior_hash]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_rejects_changed_pins_before_start[prior_bytes]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_rejects_changed_pins_before_start[guard_hash]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_rejects_changed_pins_before_start[not_selftest]
+FAILED tests/unit/test_granite_proxy_binding_worker.py::test_selftest_worker_rejects_changed_pins_before_start[real_root]
+20 failed in 0.44s

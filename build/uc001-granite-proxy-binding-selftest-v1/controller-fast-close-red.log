@@ -1,0 +1,18 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_fast_planned_close_drains_durable_events_before_premature_exit_checks __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-10/test_fast_planned_close_drains0')
+
+    def test_fast_planned_close_drains_durable_events_before_premature_exit_checks(tmp_path):
+        backend,plan,clock=fixture(tmp_path,damage='fast_close')
+        result=selftest.run_binding_session(backend,plan,clock=clock,sleep=clock.sleep,
+            watchdog_factory=Guard,guard_validator=lambda path,pid:dict(verified=True))
+>       assert result['proxy_binding_selftest_passed'] is True,result
+E       AssertionError: {'proxy_binding_selftest_passed': False, 'windows_execution': False, 'synthetic_injected': True, 'native_binding_verified': False, ...}
+E       assert False is True
+
+tests/unit/test_granite_proxy_binding_selftest.py:223: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_selftest.py::test_fast_planned_close_drains_durable_events_before_premature_exit_checks
+1 failed, 39 deselected in 0.17s

@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "browser_cases_passed": 3,
+  "case_evidence": [
+    {
+      "status": 403,
+      "artifact": "build/uc001-priority5l-denial-ui/browser/saved-comparison-mocked-de-baad8--unchanged-value-submission/mocked-403-fresh-action-evidence.json",
+      "saved_request_id": "5a76aa44-610c-4e44-ac9c-79fd8c269bdb",
+      "counts": {
+        "before": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_denial": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_reset": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        }
+      }
+    },
+    {
+      "status": 409,
+      "artifact": "build/uc001-priority5l-denial-ui/browser/saved-comparison-mocked-de-d7148--unchanged-value-submission/mocked-409-fresh-action-evidence.json",
+      "saved_request_id": "9eb52d81-65d9-4bd6-b8e4-68f5f8cd97fc",
+      "counts": {
+        "before": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_denial": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_reset": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after": {
+          "search_request": 3,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        }
+      }
+    }
+  ],
+  "protected_files_checked": 430,
+  "unchanged_protected_files": 428,
+  "task_local_whitespace_clean": true,
+  "historical_state_preserved": true,
+  "safe_case_json_artifacts_checked": 2,
+  "traces_or_HAR_present": false,
+  "owned_test_servers_stopped": true
+}

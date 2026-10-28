@@ -1,0 +1,56 @@
+{
+  "owned_job_closed": true,
+  "owned_exits": [
+    {
+      "exit_confirmed": true,
+      "pid": 13888
+    },
+    {
+      "exit_confirmed": true,
+      "pid": 8896,
+      "role": "redirector",
+      "created": 134368194867296906
+    },
+    {
+      "identity_state": "not_identified",
+      "pid": null,
+      "exit_confirmation": "unavailable",
+      "created": null,
+      "role": "interpreter",
+      "exit_confirmed": false
+    },
+    {
+      "requested_pid": 50508,
+      "role_approved": false,
+      "pid": 50508,
+      "identity_state": "verified_job_identity",
+      "created": 134368194866973533,
+      "role": "observed_job_member",
+      "exit_confirmed": true
+    },
+    {
+      "requested_pid": 45732,
+      "role_approved": false,
+      "pid": 45732,
+      "identity_state": "verified_job_identity",
+      "created": 134368194867382491,
+      "role": "observed_job_member",
+      "exit_confirmed": true
+    },
+    {
+      "requested_pid": 12204,
+      "role_approved": false,
+      "pid": 12204,
+      "identity_state": "verified_job_identity",
+      "created": 134368194867506922,
+      "role": "observed_job_member",
+      "exit_confirmed": true
+    }
+  ],
+  "retained_assets_preserved": true,
+  "errors": [
+    "cleanup/interpreter_not_identified"
+  ],
+  "owned_job_created": true,
+  "unidentified_job_pids": []
+}

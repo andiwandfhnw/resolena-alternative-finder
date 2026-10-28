@@ -1,0 +1,31 @@
+{
+  "wheel_members": [
+    "lingua/__init__.py",
+    "lingua/__init__.pyi",
+    "lingua/lingua.cpython-312-x86_64-linux-gnu.so",
+    "lingua/py.typed",
+    "lingua_language_detector-2.2.0.dist-info/METADATA",
+    "lingua_language_detector-2.2.0.dist-info/WHEEL",
+    "lingua_language_detector-2.2.0.dist-info/licenses/LICENSE",
+    "lingua_language_detector-2.2.0.dist-info/sboms/lingua.cyclonedx.json",
+    "lingua_language_detector-2.2.0.dist-info/RECORD"
+  ],
+  "uncompressed_bytes": 306137618,
+  "metadata_equal_publisher": true,
+  "declared_license_files": [
+    "LICENSE"
+  ],
+  "license_expression": null,
+  "classifiers": [
+    "License :: OSI Approved :: Apache Software License"
+  ],
+  "candidate_license_members": [
+    {
+      "path": "lingua_language_detector-2.2.0.dist-info/licenses/LICENSE",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "matches_publisher_license": true
+    }
+  ],
+  "wheel_tag_text": "Wheel-Version: 1.0\nGenerator: maturin (1.12.6)\nRoot-Is-Purelib: false\nTag: cp312-cp312-manylinux_2_17_x86_64\nTag: cp312-cp312-manylinux2014_x86_64\n"
+}

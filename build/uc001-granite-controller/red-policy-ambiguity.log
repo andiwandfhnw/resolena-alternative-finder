@@ -1,0 +1,33 @@
+...................................................FF                    [100%]
+=================================== FAILURES ===================================
+____________ test_duplicate_proxy_json_keys_are_unknown_accounting _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-30/test_duplicate_proxy_json_keys0')
+
+    def test_duplicate_proxy_json_keys_are_unknown_accounting(tmp_path):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        path=proxy_ledger(tmp_path)
+        data=path.read_text().replace('"cumulative_bytes": 7','"cumulative_bytes": 7, "cumulative_bytes": 7',1)
+        path.write_text(data)
+>       with pytest.raises(ControllerFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller.py:294: Failed
+____________ test_boolean_prior_is_not_an_integer_download_receipt _____________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-30/test_boolean_prior_is_not_an_i0')
+
+    def test_boolean_prior_is_not_an_integer_download_receipt(tmp_path):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        path=proxy_ledger(tmp_path,prior=0)
+        rows=read_records(path);rows[0]['prior_bytes']=False;write_records(path,rows)
+>       with pytest.raises(ControllerFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller.py:302: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller.py::test_duplicate_proxy_json_keys_are_unknown_accounting
+FAILED tests/unit/test_granite_controller.py::test_boolean_prior_is_not_an_integer_download_receipt
+2 failed, 51 passed in 0.23s

@@ -1,0 +1,124 @@
+{
+  "type": "json_object",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "status": {
+        "enum": [
+          "understood",
+          "clarification",
+          "unsupported"
+        ]
+      },
+      "language": {
+        "enum": [
+          "de",
+          "fr",
+          "it",
+          "en",
+          "mixed",
+          null
+        ]
+      },
+      "subject": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "quote"
+        ],
+        "additionalProperties": false
+      },
+      "action": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quote": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "quote"
+        ],
+        "additionalProperties": false
+      },
+      "goals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "quote": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "quote"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "constraints": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            },
+            "quote": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "quote"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "unresolved": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "required": [
+      "status",
+      "language",
+      "subject",
+      "action",
+      "goals",
+      "constraints",
+      "unresolved"
+    ],
+    "additionalProperties": false
+  }
+}

@@ -1,0 +1,39 @@
+........................................................................ [ 37%]
+........................................................................ [ 75%]
+.........................................F....                           [100%]
+=================================== FAILURES ===================================
+__ test_console_archive_is_complete_hash_bound_and_native_execution_disabled ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-20/test_console_archive_is_comple0')
+
+    def test_console_archive_is_complete_hash_bound_and_native_execution_disabled(tmp_path):
+        result = builder().build_package(Path.cwd(), tmp_path/'package',
+            ARTIFACT/'Run-ConsoleHelperCheck.ps1', ARTIFACT/'package-readme.md')
+        with ZipFile(result['archive']) as archive:
+            names = set(archive.namelist())
+            assert names == {'controller.py', 'windows_job.py', 'worker.py', 'standins.py',
+                'controller-config.template.json', 'Run-ConsoleHelperCheck.ps1', 'README.md', 'manifest.json'}
+            manifest = json.loads(archive.read('manifest.json'))
+            assert manifest['version'] == VERSION
+            assert manifest['execution_authorized'] is False
+            assert manifest['purpose'] == 'offline-prepared-scoped-console-helper-correction'
+            assert set(manifest['files']) == names-{'manifest.json'}
+            for name, digest in manifest['files'].items():
+                assert hashlib.sha256(archive.read(name)).hexdigest() == digest
+            config = json.loads(archive.read('controller-config.template.json'))
+            assert config['execution_authorized'] is False
+            assert set(config['helper_hashes']) == {'controller.py', 'windows_job.py', 'worker.py', 'standins.py'}
+            for name, digest in config['helper_hashes'].items():
+                assert hashlib.sha256(archive.read(name)).hexdigest() == digest
+            readme = archive.read('README.md').decode()
+            assert 'NOT AUTHORIZED / NOT EXECUTED' in readme
+            assert 'query-only' in readme
+            assert 'unclassified children are never directly terminated' in readme
+            assert 'cleanup' in readme
+>           assert 'current Windows system directory' in readme
+E           AssertionError: assert 'current Windows system directory' in '# Console-helper correction — NOT AUTHORIZED / NOT EXECUTED\n\nThis separate package prepares the harmless ownership ...ized. Preserve original packages,\nconsumed attempts, frozen Granite settings, Python environments and all evidence.\n'
+
+tests/unit/test_granite_controller_console_package.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_console_package.py::test_console_archive_is_complete_hash_bound_and_native_execution_disabled
+1 failed, 189 passed in 3.33s

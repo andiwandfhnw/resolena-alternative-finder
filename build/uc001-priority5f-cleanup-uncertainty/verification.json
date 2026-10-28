@@ -1,0 +1,277 @@
+{
+  "date": "2026-10-20",
+  "scope": "UC-001 increment1 Priority5F only: real commit/confirmation loss plus one failure at explicit commit-error transaction cleanup, then explicit checked recovery",
+  "phase": 3,
+  "status": "in-progress",
+  "priorities_3_4_5": "partial",
+  "increment_1_and_develop_complete": false,
+  "owner_acceptance": {
+    "priority_5e": "Accepted only demonstrated delivered503unknown -> explicit checked recovery and standalone/three-test combined integration verification. Original frontend passed first run without a production fix; runner follow-up reproduced/corrected missing default control setup and empty/shared-database assumptions.",
+    "limits": "Serial composition, observed-state and300ms retry-observation limits retained. No acceptance of full browser suite/Priority5/DEVELOP. Both5E receipts and earlier evidence unchanged."
+  },
+  "prerequisites": {
+    "result": "Accepted contract clear; no architecture/schema/dependency decision.",
+    "references": [
+      "UC-001 O-2/AC-17 and Errors: uncertain commits stay unknown",
+      "ADR-003 accepted decision: outcome not established -> uncertainty; checked acknowledgement only on committed recovery",
+      "ARCHITECTURE.md503persistence_error unknown versus500processing_error not_attempted",
+      "SQLiteComparisonStore.save, CompareRequest persistence exception handling and actual FastAPI catch order",
+      "Existing5D real DBAPI commit-loss, read-failure and independent-observer seams"
+    ],
+    "before_exception_path": "Commit SQLAlchemyError -> unguarded explicit transaction.rollback() -> cleanup OperationalError escapes before guarded reconciliation -> CompareRequest catches neither plain SQLAlchemyError nor translates it -> API generic Exception maps to500processing_error/not_attempted. Actual RED API response confirms this; not inferred from adapter alone.",
+    "accepted_error": "When persistence cannot safely be established,503persistence_error with persistence.state unknown; no saved/unsaved certainty, comparison payload or internal details. A safely found/checked committed outcome still receives200ack as confirmed by unchanged5D FOUND regression."
+  },
+  "changed_files": [
+    "src/app/infrastructure/sqlite_comparisons.py",
+    "tests/integration/test_saved_comparison.py",
+    "docs/TASKS.md"
+  ],
+  "production_change": "Only the explicit rollback inside commit-error handling gains a nested exceptSQLAlchemyError -> PersistenceFailure(unknown) fromNone. Application attaches original assessed_outcome; existing API maps to503unknown. No global exception handler/suppressor, write retry or broad persistence refactor. Write-error rollback/collision handling, connection context manager and guarded readback on successful cleanup stay unchanged.",
+  "red": {
+    "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_commit_confirmation_loss_and_explicit_cleanup_failure_preserve_uncertainty_until_recovery -q --basetemp=build/uc001-priority5f-cleanup-uncertainty/red-check 2>&1 | tee build/uc001-priority5f-cleanup-uncertainty/scenario-red.log",
+    "exit_code": 1,
+    "result": "1failed: actual500 versus expected503; real commit/lost confirmation/explicit cleanup fault occurred, no reconciliation.",
+    "log": "build/uc001-priority5f-cleanup-uncertainty/scenario-red.log",
+    "evidence": "build/uc001-priority5f-cleanup-uncertainty/red-check/test_commit_confirmation_loss_0/cleanup-error-evidence.json",
+    "actual_response": {
+      "status": 500,
+      "body": {
+        "outcome": "processing_error",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "comparison_processing_failed"
+          }
+        ]
+      }
+    }
+  },
+  "green": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_commit_confirmation_loss_and_explicit_cleanup_failure_preserve_uncertainty_until_recovery -q --basetemp=build/uc001-priority5f-cleanup-uncertainty/green-check 2>&1 | tee build/uc001-priority5f-cleanup-uncertainty/scenario-green.log",
+      "exit_code": 0,
+      "result": "1passed,1existing warning in0.82s",
+      "log": "build/uc001-priority5f-cleanup-uncertainty/scenario-green.log",
+      "evidence": "build/uc001-priority5f-cleanup-uncertainty/green-check/test_commit_confirmation_loss_0/cleanup-recovery-evidence.json"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery tests/integration/test_saved_comparison.py::test_unconfirmed_commit_reconciliation_found_or_absent -q --basetemp=build/uc001-priority5f-cleanup-uncertainty/5d-regressions 2>&1 | tee build/uc001-priority5f-cleanup-uncertainty/5d-regressions.log",
+      "exit_code": 0,
+      "result": "3passed,1existing warning in0.85s",
+      "log": "build/uc001-priority5f-cleanup-uncertainty/5d-regressions.log",
+      "scope": "Existing5D unavailable readback plus both FOUND/ABSENT parameter cases, only shared commit-error paths."
+    }
+  ],
+  "checks_not_run": "Confirmed-write-rollback regression not rerun because its handling is byte-unchanged; no additional concrete changed-path risk. No browser/frontend/lint/build, other matrices or full suite run.",
+  "fault_point": {
+    "capture": "After seeding, engine-local commit event captures the exact real Connection.get_transaction() root while active.",
+    "confirmation": "Engine-local dialect.do_commit delegates underlying real SQLite commit, independent observer verifies committed rows, then test raises before confirmation returns to SQLAlchemy/production.",
+    "cleanup": "Patch only public RootTransaction.rollback for the exact captured root, post-confirmation-loss and once; assert root inactive. Raise SQLAlchemy OperationalError(None,None,synthetic sqlite OperationalError,hide_parameters=True) before delegating that explicit call. All other rollback calls delegate normally.",
+    "distinction": "SQLAlchemy internal commit-finally deactivation has already completed; the fault hits the adapter explicit rollback call, not that internal cleanup or later Connection.close/disposal. It is inactive transaction bookkeeping cleanup failure, not evidence of an attempted DBAPI undo of the committed rows.",
+    "read": "Existing one-shot unavailable search_request SELECT seam armed after loss; remains unconsumed because cleanup failure prevents reconciliation.",
+    "removal": "All three injected methods restored after initial API response, before explicit recovery. Counting delegates remain but supply no outcomes or row data.",
+    "observer": "Raw independent sqlite3 reads used only for assertions/artifacts; their actual committed-state knowledge is never returned to application logic."
+  },
+  "executed_branch": {
+    "timeline": [
+      "actual_commit_transaction_captured",
+      "real_sqlite_commit_returned_to_test_shim",
+      "independent_observer_sees_committed_rows_test_only",
+      "confirmation_error_before_return_to_production",
+      "explicit_commit_error_transaction_rollback_failed",
+      "initial_api_response",
+      "all_injected_faults_removed",
+      "explicit_same_submission_recovery"
+    ],
+    "fault_counts": {
+      "real_commits": 1,
+      "confirmation_losses": 1,
+      "explicit_cleanup_failures": 1,
+      "read_failures": 0
+    },
+    "explicit_cleanup": [
+      {
+        "captured_commit_transaction": true,
+        "active_before": false
+      }
+    ],
+    "reconciliation": {
+      "attempted": false,
+      "read_fault_armed_but_unconsumed": true,
+      "reason": "Explicit commit-error cleanup failed; persistence outcome cannot safely be established."
+    },
+    "contract_basis": "Production never received successful commit confirmation and obtained no committed-row read. Failed explicit cleanup leaves connection/transaction bookkeeping unestablished; conservatively return persistence uncertainty. No read is forced through it. Normal Connection context exit runs; disposal failure variants remain unverified. Observer-known commit is not application-known commit."
+  },
+  "actual_initial_response": {
+    "status": 503,
+    "body": {
+      "outcome": "persistence_error",
+      "persistence": {
+        "state": "unknown"
+      },
+      "issues": [
+        {
+          "code": "comparison_save_failed"
+        }
+      ],
+      "assessed_outcome": "comparison"
+    }
+  },
+  "actual_recovery_response": {
+    "status": 200,
+    "body": {
+      "outcome": "submission_recovered",
+      "persistence": {
+        "state": "saved",
+        "request_id": "08e62f7e-688f-4da4-8965-ba170fbc99d6"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_outcome": "comparison"
+    }
+  },
+  "calls": {
+    "at_error": {
+      "interpret": 1,
+      "retrieve": 1,
+      "prepare": 1,
+      "prepare_coverage": 0,
+      "find": 1,
+      "save": 1,
+      "clock": 1,
+      "api": 1
+    },
+    "after_recovery": {
+      "interpret": 1,
+      "retrieve": 1,
+      "prepare": 1,
+      "prepare_coverage": 0,
+      "find": 2,
+      "save": 1,
+      "clock": 1,
+      "api": 2
+    },
+    "initial_request_insert_attempts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "counter_scope": "Counts delegate actual interpreter/retrieval/rendering/find/save/clock/API methods. At error find1 is only initial lookup; adapter reconciliation0. Explicit recovery adds find1 andAPI1, no preparation/save/clock. INSERT hook covers initial faulted request only; later no-save proof is unchanged save/processing counters and full DB equality.",
+    "prepared_request_ids": [
+      "08e62f7e-688f-4da4-8965-ba170fbc99d6"
+    ],
+    "actual_recovery_ownership_then_payload_check_results": [
+      true,
+      true
+    ]
+  },
+  "persistence": {
+    "before_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "independent_after_real_commit_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_error_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_recovery_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "request_id": "08e62f7e-688f-4da4-8965-ba170fbc99d6",
+    "saved_outcome": "comparison",
+    "original_assessed_at": "2026-10-15T10:00:00+00:00",
+    "option_ids": [
+      "cfdd78ef-883e-4d18-873d-a2e6a9fa7f5f",
+      "5fe80bdb-4084-49c2-b61b-f211c854334d"
+    ],
+    "evidence_associations": [
+      [
+        "5fe80bdb-4084-49c2-b61b-f211c854334d",
+        "30000000-0000-4000-8000-000000000002"
+      ],
+      [
+        "cfdd78ef-883e-4d18-873d-a2e6a9fa7f5f",
+        "30000000-0000-4000-8000-000000000001"
+      ]
+    ],
+    "all_committed_request_projections_options_snapshots_links_evidence_unchanged": true,
+    "source_evidence_unchanged_from_baseline": true
+  },
+  "tested_assertions": {
+    "one_save_and_one_prepared_identity": true,
+    "no_second_processing_clock_or_save_on_recovery": true,
+    "actual_error_has_no_claims_saved_id_or_internal_exception_details": true,
+    "actual_recovery_ack_only_no_comparison_claims": true,
+    "same_key_proof_unchanged_payload": true,
+    "no_observer_knowledge_supplied_to_application": true
+  },
+  "protected_data": "No raw proofs,headers,SQLparameters,complete request objects or protected exception contexts recorded. Error constructors use no statement/parameters; exported data is counters/booleans,API bodies,synthetic saved projections/snapshots/IDs only.",
+  "preservation": {
+    "protected_files": 202,
+    "mismatches": [],
+    "all_preexisting_test_bytes_preserved": true,
+    "only_commit_error_cleanup_changed_in_production": true,
+    "write_error_handling_unchanged": true,
+    "original_5e_tasks_notes_preserved": true,
+    "identity": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "same_git_identity": true,
+    "scoped_delta_checks": [
+      {
+        "path": "src/app/infrastructure/sqlite_comparisons.py",
+        "command": "git diff --no-index --check -- build/uc001-priority5f-cleanup-uncertainty/before/src/app/infrastructure/sqlite_comparisons.py src/app/infrastructure/sqlite_comparisons.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "command": "git diff --no-index --check -- build/uc001-priority5f-cleanup-uncertainty/before/tests/integration/test_saved_comparison.py tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "docs/TASKS.md",
+        "command": "git diff --no-index --check -- build/uc001-priority5f-cleanup-uncertainty/before/docs/TASKS.md docs/TASKS.md",
+        "exit_code": 1,
+        "output": ""
+      }
+    ]
+  },
+  "preservation_manifest": "build/uc001-priority5f-cleanup-uncertainty/preservation-before.json",
+  "git": {
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1551: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "status_command": "git status --short",
+    "same_status_entries_as_before": true
+  },
+  "whitespace": "Globaldiffcheck exit2 reports only preserved historical TASKS backlog trailing space, nowline1551. Three task-local no-index checks outputempty; exit1 denotes differing files without new whitespace errors.",
+  "remaining_unverified": [
+    "Failures inside SQLAlchemy internal commit cleanup or later Connection.close/pool/disposal",
+    "Other cleanup exception types/points, multiple failures,invalidated connections and successful reconciliation after a different safely resolved cleanup outcome",
+    "Broader persistence/read/write/commit/concurrency/disclosure matrices and physical-crash durability",
+    "Browser handling of this5F branch and other remaining Priority5 obligations,real locality/reference integration"
+  ],
+  "boundaries": "DE/FR/IT/EN,Resolena-controlled processing,atomic save-before-presentation and immutable evidence preserved. Normalapp.main unconfigured,real drafts inactive,experiments closed. No startup,heldout,linguistic/TL-03,research,UC-003,Priority6,dependencies,staging/Gitdelivery/branch/reset,CI/CD/deployment.",
+  "review": "Independent read-only prerequisite, test/fix and final receipt/TASKS review found no material issue. Actual logs/artifacts agree with API responses, exact inactive-root cleanup fault, prevented reconciliation, counters and unchanged observer state. Human5F review remains pending.",
+  "warning": "Existing Starlette/httpx TestClient deprecation; no dependency change.",
+  "stop": "Await human review. Priority5,increment1 andDEVELOP remain incomplete.",
+  "final_checks": {
+    "proof_safe_json_artifacts_audited": 8,
+    "protected_hashes_rechecked": 202,
+    "single_tasks_evidence_link_valid": true,
+    "phase3_in_progress": true
+  }
+}

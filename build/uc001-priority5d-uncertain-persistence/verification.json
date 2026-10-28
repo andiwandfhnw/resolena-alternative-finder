@@ -1,0 +1,287 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, Priority 5D only: real commit with unavailable persistence confirmation/readback, then explicit recovery",
+  "phase": 3,
+  "status": "in-progress",
+  "priority_3": "partial",
+  "priority_4": "partial",
+  "priority_5": "partial",
+  "owner_acceptance": {
+    "priority_5c": "Only the demonstrated overlapping same-key/proof/payload initial misses, distinct preparations, real controlled unique collision and checked loser acknowledgement are accepted as verification of existing production behavior. No prior RED failure or fix is relabelled.",
+    "retained_limits": "Original 5C interleaving, application-facing port counters and concurrency limits remain unchanged."
+  },
+  "prerequisites": {
+    "result": "clear accepted contract; no architecture/schema/dependency change required",
+    "references": [
+      "UC-001 O-2/AC-10/11/17",
+      "ADR-003: uncertainty if commit cannot be established, same-identity checked acknowledgement",
+      "ARCHITECTURE.md HTTP response table and atomic persistence/recovery"
+    ],
+    "accepted_error": "503 / persistence_error / persistence.state unknown when commit confirmation is unavailable; confirmed write rollback remains failed",
+    "current_gap": "Commit-error branch already returned unknown, but skipped immediate reconciliation. Normal post-success readback fault alone would leave production with known commit success and would not establish this scenario.",
+    "faithful_seam": "Only this SQLite engine dialect do_commit invokes the real DBAPI commit and then raises before returning confirmation to SQLAlchemy/production. Its first ensuing committed-key SELECT is separately failed in dialect do_execute.",
+    "reused_evidence": [
+      "build/uc001-priority5a-recovery/verification.json",
+      "build/uc001-priority5b-fresh-search/verification.json",
+      "build/uc001-priority5c-concurrency/verification.json"
+    ]
+  },
+  "changed_files": [
+    "src/app/infrastructure/sqlite_comparisons.py",
+    "tests/integration/test_saved_comparison.py",
+    "docs/TASKS.md"
+  ],
+  "production_change": {
+    "file": "src/app/infrastructure/sqlite_comparisons.py",
+    "behavior": "Track whether transaction.commit returned successfully. Commit-error cleanup now falls through to one existing guarded readback after connection cleanup. Failed/absent read stays unknown. A found record with unconfirmed commit routes through DuplicateSubmission and existing ownership/payload-checked acknowledgement, never an uncertain comparison projection.",
+    "unchanged": "Public statuses/endpoints, atomic write boundary, write-error collision handling, ownership/payload binding, schema/dependencies and normal app.main configuration."
+  },
+  "red": {
+    "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery -q --basetemp=build/uc001-priority5d-uncertain-persistence/red-check",
+    "exit_code": 1,
+    "result": "1 failed: initial503/unknown already passed; real commit and lost confirmation occurred, but required read_failures was0 instead of1. No immediate reconciliation was attempted.",
+    "log": "build/uc001-priority5d-uncertain-persistence/scenario-red.log",
+    "evidence": "build/uc001-priority5d-uncertain-persistence/red-check/test_unconfirmed_commit_and_un0/uncertain-error-evidence.json"
+  },
+  "green": [
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery -q --basetemp=build/uc001-priority5d-uncertain-persistence/green-check",
+      "exit_code": 0,
+      "passed": 1,
+      "scope": "one focused scenario",
+      "log": "build/uc001-priority5d-uncertain-persistence/scenario-green.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_required_evidence_write_failure_rolls_back_the_entire_comparison tests/integration/test_saved_comparison.py::test_returns_only_the_committed_projection_with_saved_ids_and_evidence tests/integration/test_saved_comparison.py::test_same_submission_is_acknowledged_without_replaying_a_comparison tests/integration/test_saved_comparison.py::test_evidence_versions_are_immutable tests/integration/test_saved_comparison.py::test_concurrent_same_submission_commits_one_winner_and_acknowledges_loser -q --basetemp=build/uc001-priority5d-uncertain-persistence/regression-check",
+      "exit_code": 0,
+      "passed": 5,
+      "scope": "affected rollback, projection, proof/payload, evidence immutability and required5C collision regression",
+      "log": "build/uc001-priority5d-uncertain-persistence/regressions.log"
+    }
+  ],
+  "command_recording": "Commands executed with set -o pipefail and 2>&1 | tee <listed-log>. Each --basetemp was a new dedicated directory; historical evidence was not reused or reset.",
+  "fault_and_recovery_evidence": "build/uc001-priority5d-uncertain-persistence/green-check/test_unconfirmed_commit_and_un0/uncertain-recovery-evidence.json",
+  "collision_regression_evidence": "build/uc001-priority5d-uncertain-persistence/regression-check/test_concurrent_same_submissio0/concurrent-save-evidence.json",
+  "fault_boundaries": {
+    "commit": "Saved real dialect.do_commit(connection) completes actual SQLite commit. Independent raw sqlite3 observer reads the committed rows. Test shim then raises sqlite3.OperationalError before returning to the production commit call; this is not HTTP loss or a patched final save/API outcome.",
+    "read": "A one-shot sqlite3.OperationalError is raised for this engine first search_request SELECT after lost confirmation, through production find after transaction cleanup. No SELECT result reaches application logic.",
+    "observer": "Separate raw sqlite3 connections bypass the patched engine and are used only for assertions/artifacts. Their committed-state observation is never returned to application logic.",
+    "fault_removal": "Both injecting dialect methods are restored after initial API response and before explicit same-key/proof/unchanged-payload recovery.",
+    "timeline": [
+      "dbapi_commit_entered",
+      "real_sqlite_commit_returned_to_test_shim",
+      "independent_observer_sees_committed_rows_test_only",
+      "commit_confirmation_error_before_return_to_production",
+      "commit_error_transaction_rollback_cleanup_entered",
+      "commit_error_transaction_rollback_cleanup_returned",
+      "production_reconciliation_select_unavailable",
+      "first_api_response",
+      "injected_faults_removed",
+      "explicit_recovery_requested"
+    ],
+    "fault_counts": {
+      "real_commits": 1,
+      "confirmation_losses": 1,
+      "read_failures": 1
+    }
+  },
+  "application_knowledge_at_error": {
+    "commit_returned_successfully": false,
+    "commit_error_cleanup_called": true,
+    "reconciliation_attempts": 1,
+    "reconciliation_result": "read failed; outcome could not be established",
+    "observer_rows_supplied_to_application": false,
+    "conclusion": "unknown, not confirmed failure/rollback/not-saved, not comparison success and not insufficient coverage",
+    "initial_response": {
+      "status": 503,
+      "body": {
+        "outcome": "persistence_error",
+        "persistence": {
+          "state": "unknown"
+        },
+        "issues": [
+          {
+            "code": "comparison_save_failed"
+          }
+        ],
+        "assessed_outcome": "comparison"
+      }
+    }
+  },
+  "rollback_observations": {
+    "transaction_cleanup": [
+      {
+        "active_before": false
+      }
+    ],
+    "driver_calls_during_requests": [
+      {
+        "after_confirmation_loss": false,
+        "sqlite_in_transaction_before": false
+      },
+      {
+        "after_confirmation_loss": true,
+        "sqlite_in_transaction_before": false
+      },
+      {
+        "after_confirmation_loss": true,
+        "sqlite_in_transaction_before": false
+      },
+      {
+        "after_confirmation_loss": true,
+        "sqlite_in_transaction_before": false
+      }
+    ],
+    "meaning": "SQLAlchemy transaction was inactive at explicit commit-error rollback cleanup. Observed driver rollback/reset calls saw SQLite in_transaction false. Committed observer snapshots remain unchanged; cleanup is not evidence that the real commit was undone."
+  },
+  "recovery_response": {
+    "status": 200,
+    "body": {
+      "outcome": "submission_recovered",
+      "persistence": {
+        "state": "saved",
+        "request_id": "dc220d00-bdf1-4044-a4b6-48e44993d523"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_outcome": "comparison"
+    }
+  },
+  "persistence": {
+    "before_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "independent_after_commit_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_error_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_recovery_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "request_id": "dc220d00-bdf1-4044-a4b6-48e44993d523",
+    "original_outcome": "comparison",
+    "original_assessed_at": "2026-10-15T10:00:00+00:00",
+    "option_ids": [
+      "4547dbd2-5739-44ed-a882-84fed8dd431c",
+      "48d4b9dc-756b-4817-9190-9e97328c46eb"
+    ],
+    "evidence_associations": [
+      [
+        "4547dbd2-5739-44ed-a882-84fed8dd431c",
+        "30000000-0000-4000-8000-000000000001"
+      ],
+      [
+        "48d4b9dc-756b-4817-9190-9e97328c46eb",
+        "30000000-0000-4000-8000-000000000002"
+      ]
+    ],
+    "all_committed_projections_options_links_evidence_unchanged_after_recovery": true,
+    "source_review_dates_unchanged": true
+  },
+  "call_observations": {
+    "at_error": {
+      "interpret": 1,
+      "retrieve": 1,
+      "prepare": 1,
+      "prepare_coverage": 0,
+      "find": 2,
+      "save": 1,
+      "clock": 1,
+      "api": 1
+    },
+    "after_recovery": {
+      "interpret": 1,
+      "retrieve": 1,
+      "prepare": 1,
+      "prepare_coverage": 0,
+      "find": 3,
+      "save": 1,
+      "clock": 1,
+      "api": 2
+    },
+    "initial_request_insert_attempts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "insert_counter_limit": "The do_execute insert hook covers the initial injected request only. No later save is established by unchanged save/processing/clock counts and complete observer snapshots, not by extended hook coverage.",
+    "one_save_attempt_total": true,
+    "no_reassessment_on_recovery": true,
+    "no_write_retry_or_replacement_identity": true,
+    "recovery_has_no_comparison_claims": true
+  },
+  "proof_and_protected_data": {
+    "raw_originating_proofs_or_headers_recorded": false,
+    "sql_parameters_or_exception_contexts_recorded": false,
+    "note": "Only counters, booleans, API bodies and independent synthetic row snapshots are recorded; never PreparedSave/Submission objects, raw headers, SQL parameters or exception contexts."
+  },
+  "preservation": {
+    "manifest": "build/uc001-priority5d-uncertain-persistence/preservation-before.json",
+    "protected_files": 94,
+    "all_hashes_match": true,
+    "all_preexisting_test_bytes_preserved": true,
+    "only_production_source_changed": "src/app/infrastructure/sqlite_comparisons.py",
+    "frontend_project_architecture_and_browser_files_unchanged": true,
+    "normal_app_main": "unchanged/unconfigured",
+    "real_drafts": "inactive/unchanged",
+    "experiments": "closed; no startup/allowance reset/held-out or linguistic work",
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "remaining_priority_5": [
+    "successful or absent reconciliation after lost acknowledgement and other commit/read/cleanup fault variants",
+    "physical-crash durability and all ambiguous-commit outcomes",
+    "full persistence/disclosure/concurrency lock/process matrices",
+    "real locality/reference integration",
+    "remaining browser error/recovery/fresh-search/loading cases"
+  ],
+  "browser_presentation_of_this_backend_error": "unverified; no browser journey or frontend feature/change",
+  "git": {
+    "status_command": "git status --short",
+    "status_log": "build/uc001-priority5d-uncertain-persistence/git-status.txt",
+    "same_status_entries_as_before": true,
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1498: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "historical_whitespace": "Existing TASKS.md backlog trailing space preserved, as in before snapshot and prior evidence.",
+    "scoped_delta_check_command": "git diff --no-index --check -- <before> <current> for each changed file",
+    "scoped_delta_checks": [
+      {
+        "path": "src/app/infrastructure/sqlite_comparisons.py",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      },
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      },
+      {
+        "path": "docs/TASKS.md",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      }
+    ],
+    "no_index_note": "Exit1 with empty output denotes differing files without added whitespace errors."
+  },
+  "documentation_checks": {
+    "one_concise_scoped_result": "docs/TASKS.md Priority5D; no duplicate result histories or response bodies added to Markdown",
+    "phase_status_preserved": true,
+    "local_links": [
+      "/workspaces/resolena-alternative-finder/build/uc001-priority5d-uncertain-persistence/verification.json"
+    ],
+    "links_valid": true
+  },
+  "warning": "Existing Starlette/httpx TestClient deprecation; no dependency changes.",
+  "excluded_work_performed": false,
+  "stop": "Await human review. Priority5, increment1 and DEVELOP remain incomplete."
+}

@@ -1,0 +1,14 @@
+{
+  "approved": false,
+  "owner": "andiwandfhnw",
+  "approval_reference": null,
+  "attempt_identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "proposal_sha256": "ae4f28af48da5b93392152ed0d8e9c81e2d58054c1eb71d643f61e20beac641b",
+  "additional_startups": 1,
+  "generations": 14,
+  "purpose": "technical_feasibility_only",
+  "allowance_reset": false,
+  "freeze_sha256": null,
+  "previous_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8"
+}

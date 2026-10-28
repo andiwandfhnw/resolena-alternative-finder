@@ -1,0 +1,58 @@
+{
+  "attempts": [
+    {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 0,
+        "prepare": 0,
+        "prepare_coverage": 0,
+        "save": 0
+      },
+      "fault_raised": true,
+      "returned_outcome": null,
+      "timeline": [
+        "interpret_entered",
+        "interpret_returned",
+        "retrieve_entered",
+        "matching_control_consumed",
+        "retrieval_exception_after_interpretation"
+      ]
+    },
+    {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1
+      },
+      "fault_raised": false,
+      "returned_outcome": "comparison",
+      "timeline": [
+        "interpret_entered",
+        "interpret_returned",
+        "retrieve_entered",
+        "retrieve_returned",
+        "assess_clock_entered",
+        "assess_clock_returned",
+        "prepare_entered",
+        "prepare_returned",
+        "save_entered",
+        "save_returned"
+      ]
+    }
+  ],
+  "total_counts": {
+    "interpret": 2,
+    "retrieve": 2,
+    "assess_clock": 1,
+    "prepare": 1,
+    "prepare_coverage": 0,
+    "save": 1
+  },
+  "fault_consumed": true,
+  "original_adapters_unchanged": true,
+  "raw_originating_proofs_or_requests_recorded": false
+}

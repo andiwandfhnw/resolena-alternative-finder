@@ -1,0 +1,13 @@
+{
+  "method": "GET",
+  "path": "/v1/models",
+  "status": 401,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "complete": true,
+  "exported": true,
+  "failure": null,
+  "request_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "response_sha256": "9956a1bd32a70211ff9f3c2e1af8a868de778deffa0689020fe5bea61027c713"
+}

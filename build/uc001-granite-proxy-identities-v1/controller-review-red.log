@@ -1,0 +1,211 @@
+FFFFFFFFF                                                                [100%]
+=================================== FAILURES ===================================
+____ test_proxy_binding_schema_must_be_exact_integer_version[launcher-True] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must0')
+schema = True, stage = 'launcher'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+>           with pytest.raises(ControllerFailure):monitor.accept(start)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:191: Failed
+____ test_proxy_binding_schema_must_be_exact_integer_version[launcher-1.0] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must1')
+schema = 1.0, stage = 'launcher'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+>           with pytest.raises(ControllerFailure):monitor.accept(start)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:191: Failed
+____ test_proxy_binding_schema_must_be_exact_integer_version[request-True] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must2')
+schema = True, stage = 'request'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+>           with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:195: Failed
+_____ test_proxy_binding_schema_must_be_exact_integer_version[request-1.0] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must3')
+schema = 1.0, stage = 'request'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+>           with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:195: Failed
+___ test_proxy_binding_schema_must_be_exact_integer_version[listening-True] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must4')
+schema = True, stage = 'listening'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+            return
+        monitor.accept(start+[request])
+        if stage=='listening':
+            row=dict(event='proxy_listening',schema=schema,launcher=request['launcher'],
+                     interpreter=request['interpreter'],listening_pid=201)
+>           with pytest.raises(ControllerFailure):monitor.accept([row])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:201: Failed
+____ test_proxy_binding_schema_must_be_exact_integer_version[listening-1.0] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must5')
+schema = 1.0, stage = 'listening'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+            return
+        monitor.accept(start+[request])
+        if stage=='listening':
+            row=dict(event='proxy_listening',schema=schema,launcher=request['launcher'],
+                     interpreter=request['interpreter'],listening_pid=201)
+>           with pytest.raises(ControllerFailure):monitor.accept([row])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:201: Failed
+____ test_proxy_binding_schema_must_be_exact_integer_version[terminal-True] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must6')
+schema = True, stage = 'terminal'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+            return
+        monitor.accept(start+[request])
+        if stage=='listening':
+            row=dict(event='proxy_listening',schema=schema,launcher=request['launcher'],
+                     interpreter=request['interpreter'],listening_pid=201)
+            with pytest.raises(ControllerFailure):monitor.accept([row])
+            return
+        terminal['proxy_identity_schema']=schema
+        complete_proxy_binding(monitor,backend,request,terminal)
+>       with pytest.raises(ControllerFailure):monitor.finish()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:205: Failed
+____ test_proxy_binding_schema_must_be_exact_integer_version[terminal-1.0] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_schema_must7')
+schema = 1.0, stage = 'terminal'
+
+    @pytest.mark.parametrize('schema',[True,1.0])
+    @pytest.mark.parametrize('stage',['launcher','request','listening','terminal'])
+    def test_proxy_binding_schema_must_be_exact_integer_version(tmp_path,schema,stage):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path)
+        if stage=='launcher':
+            start[-1]['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start)
+            return
+        if stage=='request':
+            request['schema']=schema
+            with pytest.raises(ControllerFailure):monitor.accept(start+[request])
+            return
+        monitor.accept(start+[request])
+        if stage=='listening':
+            row=dict(event='proxy_listening',schema=schema,launcher=request['launcher'],
+                     interpreter=request['interpreter'],listening_pid=201)
+            with pytest.raises(ControllerFailure):monitor.accept([row])
+            return
+        terminal['proxy_identity_schema']=schema
+        complete_proxy_binding(monitor,backend,request,terminal)
+>       with pytest.raises(ControllerFailure):monitor.finish()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_controller_run.py:205: Failed
+___ test_proxy_binding_missing_accepted_helper_handle_cannot_verify_cleanup ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-33/test_proxy_binding_missing_acc0')
+
+    def test_proxy_binding_missing_accepted_helper_handle_cannot_verify_cleanup(tmp_path):
+        monitor,backend,ack,journal,start,request,terminal=proxy_binding_monitor(tmp_path,helper=True)
+        monitor.accept(start+[request]);complete_proxy_binding(monitor,backend,request,terminal)
+        monitor.proxy_queries[202]['handle']=None
+        cleanup=dict(verified=True,active_processes=0,owned_exits=[dict(pid=pid,creation_time_100ns=fact['birth'],exit_code=0)
+            for pid,fact in backend.facts.items()])
+>       assert monitor.cleanup(cleanup)['verified'] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_run.py:214: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[launcher-True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[launcher-1.0]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[request-True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[request-1.0]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[listening-True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[listening-1.0]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[terminal-True]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_schema_must_be_exact_integer_version[terminal-1.0]
+FAILED tests/unit/test_granite_controller_run.py::test_proxy_binding_missing_accepted_helper_handle_cannot_verify_cleanup
+9 failed, 37 deselected in 0.34s

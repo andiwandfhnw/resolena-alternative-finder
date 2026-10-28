@@ -1,0 +1,34 @@
+..................................FF                                     [100%]
+=================================== FAILURES ===================================
+__________ test_git_common_directory_cannot_redirect_validated_config __________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-7/test_git_common_directory_cann0')
+
+    def test_git_common_directory_cannot_redirect_validated_config(tmp_path):
+        from scripts.uc001_granite_acquisition_proxy import proxy as module
+        repo, config, hooks = git_route_fixture(tmp_path, module.SOURCE)
+        (repo / '.git/commondir').write_text('../other-git-directory')
+>       with pytest.raises(ProxyFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProxyFailure
+
+tests/unit/test_granite_acquisition_proxy.py:570: Failed
+__________________ test_git_directory_symlink_is_not_followed __________________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-7/test_git_directory_symlink_is_0')
+
+    def test_git_directory_symlink_is_not_followed(tmp_path):
+        from scripts.uc001_granite_acquisition_proxy import proxy as module
+        repo, config, hooks = git_route_fixture(tmp_path, module.SOURCE)
+        target = tmp_path / 'redirected-git'
+        (repo / '.git').rename(target)
+        (repo / '.git').symlink_to(target, target_is_directory=True)
+>       with pytest.raises(ProxyFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProxyFailure
+
+tests/unit/test_granite_acquisition_proxy.py:580: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_acquisition_proxy.py::test_git_common_directory_cannot_redirect_validated_config
+FAILED tests/unit/test_granite_acquisition_proxy.py::test_git_directory_symlink_is_not_followed
+2 failed, 34 passed in 1.72s

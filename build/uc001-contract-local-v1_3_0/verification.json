@@ -1,0 +1,174 @@
+{
+  "version": "uc001-contract-local-1.3.0-proposed",
+  "recorded_utc": "2026-10-18T16:53:57.448273+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Record owner-pasted v1.2.2 native success and close harness debugging; prepare one additional approval-blocked technical-feasibility attempt, with focused offline wiring checks only",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local_v1_3_0/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_3_0/PINNED-SOURCE.md",
+    "scripts/uc001_contract_local_v1_3_0/Python-Ownership.ps1",
+    "scripts/uc001_contract_local_v1_3_0/PythonOwnership.cs",
+    "scripts/uc001_contract_local_v1_3_0/README.md",
+    "scripts/uc001_contract_local_v1_3_0/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_3_0/approval.pending.json",
+    "scripts/uc001_contract_local_v1_3_0/capture.py",
+    "scripts/uc001_contract_local_v1_3_0/config.json",
+    "scripts/uc001_contract_local_v1_3_0/execution-proposal.json",
+    "scripts/uc001_contract_local_v1_3_0/execution_gate.py",
+    "scripts/uc001_contract_local_v1_3_0/freeze.json",
+    "scripts/uc001_contract_local_v1_3_0/harness_checks.py",
+    "scripts/uc001_contract_local_v1_3_0/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_3_0/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_3_0/replay.py",
+    "scripts/uc001_contract_local_v1_3_0/review_gate.py",
+    "scripts/uc001_contract_local_v1_3_0/technical-decision.json",
+    "tests/unit/test_contract_local_additional_attempt.py",
+    "tests/support/uc001_additional_launcher.ps1",
+    "build/uc001-contract-local-v1_2_2/owner-results/results_2026_10_18/cleanup.owner-pasted.json",
+    "build/uc001-contract-local-v1_2_2/owner-results/results_2026_10_18/result.owner-pasted.json",
+    "build/uc001-contract-local-v1_2_2/owner-results/results_2026_10_18/verification.json",
+    "build/uc001-contract-local-v1_2_2/owner-results/results_2026_10_18/worker-result.owner-pasted.json",
+    "build/uc001-contract-local-v1_3_0/proposed-execution.zip",
+    "build/uc001-contract-local-v1_3_0/verification.json",
+    "build/uc001-contract-local-v1_3_0/SHA256SUMS.txt"
+  ],
+  "native_harness_closure": {
+    "status": "closed",
+    "verification": "tested native ownership/binding/cleanup verified as owner reported",
+    "receipt_directory": "build/uc001-contract-local-v1_2_2/owner-results/results_2026_10_18",
+    "receipt_hashes": {
+      "cleanup.owner-pasted.json": "93228b998fb454687de09d78cf0e9275b7143b852a6478ccb23fd58abfa15a7b",
+      "result.owner-pasted.json": "c4abfd285b281610c1e0d300900288c1f7057d64dfa39d6fc37610377c0c05ef",
+      "verification.json": "80568e9a71ccb6ad4771a088c6039d09e8d21561cbf6e7a1f6b180eb69d9fab1",
+      "worker-result.owner-pasted.json": "6c31ed434854059d2a977aa6bc473b73df9ce4e1e6d54303ec0f52490105130c"
+    },
+    "provenance": "Three owner-pasted JSON receipts; original Windows files neither accessed nor claimed byte-identical",
+    "elapsed_ms": 1667,
+    "passed": "Bound redirector 46024, interpreter 53216 and console helper 50576; supervisor chain and reported creation identities/job members; worker checks; job closed and all three exits confirmed; no failure channels",
+    "not_inferred": [
+      "Model/GPU readiness",
+      "Semantic correctness or full DE/FR/IT/EN capability",
+      "Historical CLI evidence or generation count",
+      "Authorization for another model startup"
+    ],
+    "receipt_consistency": "Result worker equals separate worker receipt; cleanup PID/creation identities match proof; all reported exits confirmed. No Windows check repeated."
+  },
+  "execution_proposal": {
+    "version": "uc001-additional-technical-feasibility-1",
+    "status": "proposed_pending_explicit_owner_approval",
+    "attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "original_startup_allowance_consumed": true,
+    "allowance_reset": false,
+    "purpose": "technical_feasibility_only",
+    "additional_startups": 1,
+    "generations": 14,
+    "cases_sha256": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+    "order": "unchanged frozen cases 1 through 14",
+    "retry": false,
+    "downloads": false,
+    "semantic_review": "pending",
+    "expected_meanings_approved": false,
+    "deferred_live_api_cases": [
+      1,
+      5,
+      10
+    ]
+  },
+  "approval": {
+    "state": "pending_explicit_owner_approval",
+    "packaged_template": "scripts/uc001_contract_local_v1_3_0/approval.pending.json",
+    "packaged_approved": false,
+    "guards": "Launcher preflight and actual capture CLI/run_capture require a separate true owner record with nonempty approval reference and exact proposal hash, freeze hash, both attempt identities and fixed allowance. Missing/false/mismatched records stop before assets/startup/generation ledger. No approved record shipped.",
+    "future_owner_sequence": "scripts/uc001_contract_local_v1_3_0/README.md; blank approval reference intentionally stops. No automatic execution."
+  },
+  "implementation": {
+    "verified_source_reused_unchanged": [
+      "PythonOwnership.cs",
+      "Python-Ownership.ps1",
+      "harness_checks.py",
+      "DeadlineGuard.cs"
+    ],
+    "prospective_evidence": "Exclusive linked additional-attempt reservation; startup-attempt.json before startup records exact executable/argv/command line, startup-started.json after returned identity. Actual launch argv enters receipt and corrected settings validation; unchanged RunBudget records actual generation attempts before dispatch. No historical zero ledger or reset.",
+    "wiring": "Actual launcher calls versioned capture with isolated installed Python and approval path, gets verified native ownership/helper proof with selected server PID, writes proof before releasing stdin key, arms/disarms owned-job timer for each case, validates before next acknowledgment, invokes retained helper-aware cleanup on abort/success. Capture enforces corrected task-default/CLI/request settings before ledger and retains shared adapter/domain/check_case_state.",
+    "replay": "Separately labelled test substitutes; verifies additional provenance/approval and all expected helper cleanup identities rather than a fixed three-exit count. No network fallback; cases 1/5/10 get no live credit.",
+    "privacy": "Key remains environment/stdin only; exported request/response bodies retain existing bound/secret scan. Raw errors/process logs/incomplete captures remain private. Safe stage/reason plus independent primary/cleanup/deadline fields retained."
+  },
+  "tests": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_additional_attempt.py -k 'pending_or_mismatched and pending' --tb=short",
+      "failed": 10,
+      "reason": "New approval guard tests failed before implementation because execution_gate did not exist. Guard/wiring/replay tests were written before the implementation."
+    },
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_additional_attempt.py tests/unit/test_contract_local.py tests/unit/test_contract_local_harness_correction.py::test_pinned_reported_default_requires_separate_cli_and_request_limit_evidence tests/unit/test_contract_local_harness_correction.py::test_output_limit_and_all_other_settings_remain_strict --tb=short",
+      "passed": 83,
+      "seconds": 18.81,
+      "exit_code": 0,
+      "warnings": 1,
+      "warning": "Existing Starlette/httpx deprecation; no dependency changes."
+    },
+    "coverage": [
+      "Missing/pending/mismatched/boolean approval, proposal/freeze/identity/budget binding and unchanged original review",
+      "Actual capture preflight default refusal before stdin/attempt; actual run_capture corrected settings, ordered prospective ledger and stop-before-next-validation behavior using explicit synthetic responses/proofs",
+      "Actual launcher dispatch with explicit process/HTTP/native substitutes: one startup, approval propagation, exclusive new identity, original marker untouched, exact prospective argv, request timers, native proof dispatch, helper exit cleanup, existing attempt/resource/settings/late-validation/cleanup stops",
+      "Helper-aware full synthetic replay and unconfirmed-helper rejection, preserving pending semantics/no live API credit",
+      "Relevant existing bounded raw-capture/privacy/prompt-fit/deadline/run-control/settings regressions"
+    ],
+    "limits": "Offline tests use labelled synthetic approvals, native/process/HTTP substitutes and replay packets. These are not owner approval, new Windows execution or model/semantic evidence. Passed native Windows check was not repeated."
+  },
+  "preservation": {
+    "prior_small_files_checked": 117,
+    "changed": [],
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "original_startup_allowance": "consumed, unchanged",
+    "historical_counters": "Untouched; no historical CLI investigation or zero-generation reconstruction",
+    "unchanged": "All frozen prior packages/receipts; parent 20-file model/runtime/prompt/schema/cases/configuration freeze and nine application/shared files; model arguments byte-equal to v1.2.2; all thresholds/deadlines/cadence/owned-job cleanup and semantic gates",
+    "semantic_review": "pending",
+    "expected_meanings_approved": false,
+    "deferred_live_api_cases": [
+      1,
+      5,
+      10
+    ],
+    "ssh_support": "paused",
+    "held_out": "unopened"
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_3_0/proposed-execution.zip",
+    "files": 47,
+    "bytes": 100265,
+    "sha256": "8ec224f00581e529122ad3bcc9df040c37e41da2b013942882dfe0bda6dc7415",
+    "freeze_sha256": "36040de4ede59d3699cf847332dfd324b38e610eef967df2f5a20b7b0690331b",
+    "validated_extraction": "Isolated imports, shared generated/frozen schema comparison, parent/local hash validation, 14-case manifest, original review applicability and real capture CLI rejecting pending approval passed. All PS scripts and the single owner sequence parsed without execution.",
+    "no_ledgers_in_bundle": true
+  },
+  "windows_handoff": {
+    "instructions": "scripts/uc001_contract_local_v1_3_0/README.md",
+    "status": "Prepared for review only; explicit additional allowance approval absent",
+    "fresh_before_start": "Retained asset integrity (ZIP/model/52 runtime files), source/environment pins, DXGI/CIM/PCI/LUID and exact WDDM capacity/measurement/headroom, port 49187; after startup protected auth, owned loopback listener, real owned-GPU allocation/resources/effective settings and native job proof",
+    "native_effects": "Future Add-Type/native Win32/Nt process/job/DXGI/resource calls and possible temporary compilation files; cleanup confined to owned job/process handles",
+    "expected_evidence": "Prospective reservation/startup argv/returned identity, safe stop/independent cleanup evidence, actual generation attempts, exact bounded requests/responses, per-case supervision and scanned export. Missing/incomplete evidence remains explicit.",
+    "replay_command": ".venv/bin/python -m scripts.uc001_contract_local_v1_3_0.replay --export <copied-export> --output build/test-only/<new-replay-directory>"
+  },
+  "download_accounting": {
+    "dependencies_or_models_acquired_bytes": 0,
+    "handoff_zip_bytes": 100265,
+    "rule": "Charge actual source handoff transfers against existing cumulative allowance; no reset or invented current balance. Reuse installed Python/dependencies; no asset downloads."
+  },
+  "remaining_gaps": [
+    "Explicit owner approval of one additional startup/at most 14 generations is absent; execution blocked.",
+    "Fresh Windows model/GPU/listener/resource/effective-settings and actual capture integration remain unverified until an approved run.",
+    "Qualified semantic review and output review remain required before interpreter suitability/multilingual acceptance.",
+    "Replay cannot satisfy live API/real-adapter cases 1/5/10; Priority 3 partial, Phase 3 in-progress."
+  ],
+  "not_performed": [
+    "Model/runtime startup, inference or additional Windows check",
+    "Downloads/installations, transport/SSH/support, credential inspection, held-out access or tuning",
+    "Original attempt/counter reset, automatic retry, Git delivery or phase advancement"
+  ]
+}

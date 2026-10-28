@@ -1,0 +1,72 @@
+{
+  "source": "owner-supplied previous CIM/registry-only diagnostic; not a fresh DXGI measurement",
+  "adapters": {
+    "total_state": "single",
+    "matching": 1,
+    "total": 1,
+    "instances": [
+      {
+        "Name": "AMD Radeon RX 6800 XT",
+        "DeviceID": "VideoController1",
+        "PNPDeviceID": "PCI\\VEN_1002&DEV_73BF&SUBSYS_E4381DA2&REV_C1\\6&1C0D423A&0&00000019",
+        "DriverVersion": "32.0.21045.5002"
+      }
+    ],
+    "matching_state": "single",
+    "query": "ok"
+  },
+  "registry": [
+    {
+      "adapter": "AMD Radeon RX 6800 XT",
+      "pnp_id": "PCI\\VEN_1002&DEV_73BF&SUBSYS_E4381DA2&REV_C1\\6&1C0D423A&0&00000019",
+      "enum_path": "HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\PCI\\VEN_1002&DEV_73BF&SUBSYS_E4381DA2&REV_C1\\6&1C0D423A&0&00000019",
+      "Driver": {
+        "status": "present",
+        "value": "{4d36e968-e325-11ce-bfc1-08002be10318}\\0000",
+        "type": "System.String"
+      },
+      "driver_path": "HKLM:\\SYSTEM\\CurrentControlSet\\Control\\Class\\{4d36e968-e325-11ce-bfc1-08002be10318}\\0000",
+      "capacity_raw": {
+        "status": "present",
+        "value": 17163091968,
+        "type": "System.Int64"
+      }
+    }
+  ],
+  "wddm": {
+    "total_state": "multiple",
+    "matching_state": "multiple",
+    "matching": 2,
+    "total": 2,
+    "instances": [
+      {
+        "Name": {
+          "status": "present",
+          "value": "luid_0x00000000_0x00014BCE_phys_0",
+          "type": "System.String"
+        },
+        "matches_pattern": true,
+        "DedicatedUsage": {
+          "status": "present",
+          "value": 0,
+          "type": "System.UInt64"
+        }
+      },
+      {
+        "Name": {
+          "status": "present",
+          "value": "luid_0x00000000_0x00012526_phys_0",
+          "type": "System.String"
+        },
+        "matches_pattern": true,
+        "DedicatedUsage": {
+          "status": "present",
+          "value": 2479300608,
+          "type": "System.UInt64"
+        }
+      }
+    ],
+    "expected_name_pattern": "^luid_0x[0-9a-fA-F]{8}_0x[0-9a-fA-F]{8}_phys_0$",
+    "query": "ok"
+  }
+}

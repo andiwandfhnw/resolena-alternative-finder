@@ -1,0 +1,18 @@
+{
+  "receipt_and_JSON_links": "passed",
+  "approved_release_equals_original_draft": true,
+  "source_and_release_and_approval_and_script_hashes_match": true,
+  "JSON_artifacts_checked": 42,
+  "captured_credential_request_fields": [],
+  "trace_or_HAR_files": [],
+  "preservation_rechecked_after_receipt": true,
+  "prior_evidence_files_unchanged": 585,
+  "owned_services_stopped": {
+    "8011": "closed",
+    "5175": "closed"
+  },
+  "control_files_remaining": [],
+  "phase": 3,
+  "status": "in-progress",
+  "stop": "Bounded Priority5U only; human review before any further implementation."
+}

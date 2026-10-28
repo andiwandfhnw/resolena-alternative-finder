@@ -1,0 +1,281 @@
+--- scripts/uc001_granite_controller/worker.py (before)
++++ scripts/uc001_granite_controller/worker.py
+@@ -26,6 +26,8 @@
+ SDK = r'C:\VulkanSDK\1.4.357.0'
+ PROXY_SHA256 = 'a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d'
+ CEILING = 10737418240
++PROXY_IDENTITY_SCHEMA = 1
++PROXY_BOUND_ACK = b'PROXY_BOUND\n'
+ 
+ 
+ class WorkerFailure(RuntimeError):
+@@ -131,11 +133,40 @@
+     stdout_file: object
+     stderr_file: object
+     identity: dict
++    binding: object = None
++    interpreter_handle: object = None
++    interpreter_opened: bool = False
++    controller_bound: bool = False
++    closing: bool = False
+ 
+ 
+ class NativeRunner:
+-    def __init__(self, root, journal, environment):
++    def __init__(self, root, journal, environment, *, api=None, control=None, sleep=time.sleep):
+         self.root, self.journal, self.environment = Path(root), journal, environment
++        self._api, self.control, self.sleep = api, control, sleep
++    def native_api(self):
++        if self._api is None:
++            path=Path(__file__).with_name('windows_job.py')
++            module=types.ModuleType('_granite_worker_windows_job')
++            module.__file__=str(path)
++            sys.modules[module.__name__]=module
++            exec(compile(path.read_bytes(),str(path),'exec'),module.__dict__)
++            self._api=module.NativeApi()
++        return self._api
++    def retained_identity(self,handle,pid,*,birth=None,parent=None):
++        api=self.native_api()
++        if type(pid) is not int or not 0<pid<=0xFFFFFFFF:
++            raise WorkerFailure('proxy_identity_pid_invalid')
++        observed_pid,created,native_parent=api.process_id(handle),api.creation_time(handle),api.parent_pid(handle)
++        member=ctypes.c_int32()
++        api.checked(api.k.IsProcessInJob(handle,None,ctypes.byref(member)),'proxy_any_job_query')
++        if (observed_pid!=pid or type(created) is not int or created<=0 or not member.value
++                or type(native_parent) is not int or native_parent<=0
++                or birth is not None and created!=birth or parent is not None and native_parent!=parent
++                or api.exit_code(handle) is not None
++                or api.process_id(handle)!=pid or api.creation_time(handle)!=created):
++            raise WorkerFailure('proxy_retained_identity_invalid')
++        return dict(pid=pid,creation_time_100ns=created,parent_pid=native_parent,in_any_job=True)
+     def start(self, argv, label, env=None, stdin=False):
+         evidence = self.root / 'evidence'
+         out_path, err_path = evidence / (label + '.stdout.log'), evidence / (label + '.stderr.log')
+@@ -144,17 +175,24 @@
+             process = subprocess.Popen(argv, cwd=self.root, env=env or self.environment,
+                                        stdin=subprocess.PIPE if stdin else subprocess.DEVNULL,
+                                        stdout=out, stderr=err, shell=False)
+-            identity = child_identity(process)
+-            self.journal.emit('child_started', label=label, argv=[str(a) for a in argv], **identity)
++            if label=='proxy':
++                identity=self.retained_identity(process._handle,process.pid,parent=os.getpid())
++                self.journal.emit('proxy_launcher_started',schema=PROXY_IDENTITY_SCHEMA,launcher=identity)
++            else:
++                identity = child_identity(process)
++                self.journal.emit('child_started', label=label, argv=[str(a) for a in argv], **identity)
+             return Child(process, label, out_path, err_path, out, err, identity)
+         except BaseException:
+             out.close(); err.close()
+             raise
+     def wait(self, child, proxy=None):
++        if child.label=='proxy':
++            return self.wait_proxy(child)
++        if proxy is not None:self.check_proxy(proxy)
+         while child.process.poll() is None:
+-            if proxy is not None and proxy.process.poll() is not None:
+-                raise WorkerFailure('proxy_premature_exit')
++            if proxy is not None:self.check_proxy(proxy)
+             time.sleep(0.025)
++        if proxy is not None:self.check_proxy(proxy)
+         code = child.process.wait()
+         for stream in (child.stdout_file, child.stderr_file):
+             stream.flush(); os.fsync(stream.fileno()); stream.close()
+@@ -167,7 +205,94 @@
+             return child.stdout_path.read_text(encoding='utf-8')
+         return ''
+     def run(self, argv, label, env=None, proxy=None):
++        if proxy is not None:self.check_proxy(proxy)
+         return self.wait(self.start(argv, label, env), proxy)
++    def bind_proxy(self,proxy,ready):
++        try:
++            api=self.native_api()
++            launcher=self.retained_identity(proxy.process._handle,proxy.process.pid,
++                birth=proxy.identity['creation_time_100ns'],parent=proxy.identity['parent_pid'])
++            if launcher!=proxy.identity:raise WorkerFailure('proxy_launcher_identity_changed')
++            pid=ready.get('pid')
++            if type(pid) is not int or not 0<pid<=0xFFFFFFFF:
++                raise WorkerFailure('proxy_readiness_pid_invalid')
++            same=pid==launcher['pid']
++            if same:
++                handle=proxy.process._handle
++                interpreter=self.retained_identity(handle,pid,birth=launcher['creation_time_100ns'],
++                                                   parent=launcher['parent_pid'])
++            else:
++                handle=api.open_process(pid)
++                proxy.interpreter_handle,proxy.interpreter_opened=handle,True
++                interpreter=self.retained_identity(handle,pid,parent=launcher['pid'])
++                if interpreter['creation_time_100ns']<launcher['creation_time_100ns']:
++                    raise WorkerFailure('proxy_interpreter_predates_launcher')
++            proxy.interpreter_handle=handle
++            binding=dict(schema=PROXY_IDENTITY_SCHEMA,launcher=launcher,interpreter=interpreter,
++                         same_process=same,ready_pid=pid)
++            proxy.binding=binding
++            self.journal.emit('proxy_binding_requested',**binding)
++            control=self.control if self.control is not None else getattr(sys.stdin,'buffer',sys.stdin)
++            if control.readline(len(PROXY_BOUND_ACK)+1)!=PROXY_BOUND_ACK:
++                raise WorkerFailure('proxy_controller_binding_ack_missing')
++            proxy.controller_bound=True
++            self.check_proxy(proxy)
++            return binding
++        except WorkerFailure:
++            raise
++        except Exception as error:
++            raise WorkerFailure('proxy_identity_binding_failed:'+type(error).__name__) from error
++    def proxy_states(self,proxy):
++        if not proxy.controller_bound or not proxy.binding:
++            raise WorkerFailure('proxy_controller_binding_unverified')
++        api=self.native_api();codes=[]
++        for role,handle in [('launcher',proxy.process._handle),('interpreter',proxy.interpreter_handle)]:
++            identity=proxy.binding[role]
++            if (api.process_id(handle)!=identity['pid']
++                    or api.creation_time(handle)!=identity['creation_time_100ns']):
++                raise WorkerFailure('proxy_'+role+'_identity_changed')
++            code=api.exit_code(handle)
++            if code is None:
++                self.retained_identity(handle,identity['pid'],birth=identity['creation_time_100ns'],
++                                       parent=identity['parent_pid'])
++            if (api.process_id(handle)!=identity['pid']
++                    or api.creation_time(handle)!=identity['creation_time_100ns']):
++                raise WorkerFailure('proxy_'+role+'_identity_changed')
++            codes.append(code)
++        return codes
++    def check_proxy(self,proxy):
++        codes=self.proxy_states(proxy)
++        for role,code in zip(('launcher','interpreter'),codes):
++            if code is not None:raise WorkerFailure('proxy_'+role+'_premature_exit')
++    def mark_proxy_closing(self,proxy):
++        if proxy.closing:raise WorkerFailure('proxy_close_already_requested')
++        self.check_proxy(proxy);proxy.closing=True
++    def wait_proxy(self,proxy):
++        if not proxy.closing:raise WorkerFailure('proxy_close_not_requested')
++        while True:
++            launcher_code,interpreter_code=self.proxy_states(proxy)
++            if launcher_code is not None and interpreter_code is None:
++                raise WorkerFailure('proxy_launcher_exit_before_interpreter')
++            if launcher_code is not None and interpreter_code is not None:break
++            self.sleep(0.025)
++        if launcher_code!=0 or interpreter_code!=0 or proxy.process.wait()!=launcher_code:
++            raise WorkerFailure('proxy_identity_exit_failed')
++        for stream in (proxy.stdout_file,proxy.stderr_file):
++            stream.flush();os.fsync(stream.fileno());stream.close()
++        for role in ('interpreter','launcher'):
++            self.journal.emit('proxy_'+role+'_exit',schema=PROXY_IDENTITY_SCHEMA,
++                identity=proxy.binding[role],exit_code=0,identity_verified=True)
++        if proxy.stdout_path.stat().st_size>1024*1024:
++            raise WorkerFailure('unexpected_metadata_output_size')
++        return proxy.stdout_path.read_text(encoding='utf-8')
++    def close_proxy_handles(self,proxy):
++        try:
++            if proxy.interpreter_opened and proxy.interpreter_handle is not None:
++                self.native_api().close_handle(proxy.interpreter_handle)
++                proxy.interpreter_handle=None
++        finally:
++            for stream in (proxy.stdout_file,proxy.stderr_file):
++                if not stream.closed:stream.close()
+     def ready(self, proxy):
+         started = time.monotonic()
+         while time.monotonic() - started < 10:
+@@ -195,7 +320,7 @@
+     return module
+ 
+ 
+-def validate_proxy_terminal(path, closed, prior):
++def validate_proxy_terminal(path, closed, prior, expected_pid=None):
+     try:
+         data = Path(path).read_bytes()
+     except OSError as error:
+@@ -208,6 +333,9 @@
+             raise ValueError('initial credit differs')
+         total = prior
+         totals = {}
++        listening=0
++        if expected_pid is not None and (type(expected_pid) is not int or expected_pid<=0):
++            raise ValueError('expected interpreter PID invalid')
+         for index, row in enumerate(records):
+             if row['event'] not in {'start', 'acquisition_clock', 'listening', 'tunnel_start', 'debit', 'tunnel_end', 'end'}:
+                 raise ValueError('unknown ledger event')
+@@ -216,6 +344,11 @@
+             value = row['cumulative_bytes']
+             if type(value) is not int or not prior <= value < CEILING:
+                 raise ValueError('counter outside remaining allowance')
++            if row['event']=='listening':
++                listening+=1
++                if expected_pid is not None and (listening!=1 or type(row.get('pid')) is not int
++                                                or row.get('pid')!=expected_pid):
++                    raise ValueError('proxy listening identity differs')
+             if row['event'] == 'debit':
+                 count = row['bytes_read']
+                 key = row['tunnel_id']
+@@ -230,6 +363,7 @@
+                 raise ValueError('records after terminal')
+             total = value
+         end = records[-1]
++        if expected_pid is not None and listening!=1:raise ValueError('proxy listening identity missing')
+         if end['event'] != 'end' or end['status'] != 'closed_unqualified' or end['sockets_closed'] is not True:
+             raise ValueError('missing or failed terminal')
+         if (closed['status'] != 'meter_closed_unqualified' or closed['cleanup_verified'] is not True
+@@ -290,25 +424,35 @@
+             '--prior-receipt', str(config['prior_receipt']), '--prior-sha256', config['prior_sha256'],
+             '--acquisition-started-utc', config['original_start_utc']]
+     proxy = runner.start(argv, 'proxy', env, stdin=True)
+-    ready = runner.ready(proxy)
+-    if (ready.get('pid') != proxy.identity['pid'] or ready.get('ledger') != str(ledger)
+-            or ready.get('prior_bytes') != prior or ready.get('remaining_bytes') != CEILING - prior):
+-        raise WorkerFailure('proxy_readiness_identity_differs')
+-    from urllib.parse import urlsplit
+-    url = urlsplit(ready['proxy_url'])
+-    if url.scheme != 'http' or url.hostname != '127.0.0.1' or url.path or url.username or not url.port:
+-        raise WorkerFailure('proxy_readiness_address_differs')
+-    journal.emit('proxy_started', ledger_path=str(ledger), **proxy.identity)
+-    fetch_argv, fetch_env = module.git_fetch_spec(GIT, repo, ('127.0.0.1', url.port), empty, hooks, env)
+-    write_json(evidence / 'source-fetch.proxy-spec.json', {'argv': fetch_argv,
+-               'proxy_url': ready['proxy_url'], 'proxy_pid': proxy.identity['pid']})
+-    runner.run(fetch_argv, 'source-fetch', fetch_env, proxy)
+-    journal.emit('proxy_closing', **proxy.identity)
+-    proxy.process.stdin.write(b'CLOSE\n'); proxy.process.stdin.flush(); proxy.process.stdin.close()
+-    proxy_lines = [json.loads(line) for line in runner.wait(proxy).splitlines()]
+-    if len(proxy_lines) != 2 or proxy_lines[0] != ready:
+-        raise WorkerFailure('proxy_stdout_terminal_differs')
+-    total = validate_proxy_terminal(ledger, proxy_lines[1], prior)
++    try:
++        ready = runner.ready(proxy)
++        if (ready.get('ledger') != str(ledger) or ready.get('prior_bytes') != prior
++                or ready.get('remaining_bytes') != CEILING - prior):
++            raise WorkerFailure('proxy_readiness_accounting_differs')
++        from urllib.parse import urlsplit
++        url = urlsplit(ready['proxy_url'])
++        if url.scheme != 'http' or url.hostname != '127.0.0.1' or url.path or url.username or not url.port:
++            raise WorkerFailure('proxy_readiness_address_differs')
++        binding=runner.bind_proxy(proxy,ready)
++        pair=dict(schema=PROXY_IDENTITY_SCHEMA,launcher=binding['launcher'],
++                  interpreter=binding['interpreter'],listening_pid=binding['interpreter']['pid'])
++        journal.emit('proxy_listening',**pair)
++        fetch_argv, fetch_env = module.git_fetch_spec(GIT, repo, ('127.0.0.1', url.port), empty, hooks, env)
++        write_json(evidence / 'source-fetch.proxy-spec.json', {'argv': fetch_argv,
++                   'proxy_url': ready['proxy_url'], 'proxy_identity_schema': PROXY_IDENTITY_SCHEMA,
++                   'proxy_launcher_pid':binding['launcher']['pid'],
++                   'proxy_interpreter_pid':binding['interpreter']['pid']})
++        runner.run(fetch_argv, 'source-fetch', fetch_env, proxy)
++        runner.mark_proxy_closing(proxy)
++        journal.emit('proxy_closing',**pair)
++        proxy.process.stdin.write(b'CLOSE\n'); proxy.process.stdin.flush(); proxy.process.stdin.close()
++        proxy_lines = [json.loads(line) for line in runner.wait(proxy).splitlines()]
++        if len(proxy_lines) != 2 or proxy_lines[0] != ready:
++            raise WorkerFailure('proxy_stdout_terminal_differs')
++        total = validate_proxy_terminal(ledger, proxy_lines[1], prior,
++                                        expected_pid=binding['interpreter']['pid'])
++    finally:
++        runner.close_proxy_handles(proxy)
+     if digest(config['proxy_helper']) != PROXY_SHA256:
+         raise WorkerFailure('proxy_changed_during_acquisition')
+     revision = runner.run([GIT, '-C', str(repo), 'rev-parse', '--verify', 'FETCH_HEAD^{commit}'],
+@@ -326,7 +470,8 @@
+                archive=str(archive), bytes=archive.stat().st_size, sha256=digest(archive)))
+     extract_source(archive, root / 'src')
+     journal.emit('acquisition_terminal', ledger_path=str(ledger), ledger_sha256=digest(ledger),
+-                 cumulative_bytes=total, prior_bytes=prior, proxy_pid=proxy.identity['pid'])
++                 cumulative_bytes=total, prior_bytes=prior, proxy_identity_schema=PROXY_IDENTITY_SCHEMA,
++                 proxy_launcher_pid=binding['launcher']['pid'],proxy_interpreter_pid=binding['interpreter']['pid'])
+     journal.emit('phase_complete', phase='acquisition')
+ 
+ 

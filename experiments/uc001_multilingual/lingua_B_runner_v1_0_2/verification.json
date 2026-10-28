@@ -1,0 +1,87 @@
+{
+  "verified_utc": "2026-10-15T17:54:36.754586+00:00",
+  "owner_time": "2026-10-15T19:54:36.754586+02:00",
+  "runner_freeze_sha256": "627ce075a72bdd7e719d977a909155b2317b493ad2778e79f208997663276f19",
+  "original_attempt_verifier_and_retained_files_unchanged": 61,
+  "earlier_evidence_and_application_metadata_files_unchanged": 576,
+  "runner_frozen_files_unchanged": 7,
+  "original_frozen_files_unchanged": 15,
+  "held_out_opened": false,
+  "new_download_bytes": 0,
+  "retained_wheel_copies_created": 0,
+  "wheel_hash": "63d99c7570ba09525f1702e4e4b2362f8f1f7e0a0fba93a3a53d3f322e00659d",
+  "actual_phase_exits_all_zero": true,
+  "supervisor_exit_code": 0,
+  "live_owned_process_checks": [
+    {
+      "pid": 13251,
+      "start_ticks": 223044,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13252,
+      "start_ticks": 223050,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13261,
+      "start_ticks": 223222,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13262,
+      "start_ticks": 223227,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13263,
+      "start_ticks": 223251,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13264,
+      "start_ticks": 223255,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13347,
+      "start_ticks": 223345,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    },
+    {
+      "pid": 13384,
+      "start_ticks": 223663,
+      "same_owned_process_alive": false,
+      "pid_present_now": false
+    }
+  ],
+  "cleanup_confirmed": true,
+  "artifacts_preserved": "New isolated environment and retained original wheel kept; no cleanup deletions.",
+  "environment_isolated": true,
+  "installed_package_only": "lingua-language-detector 2.2.0",
+  "deadline_and_limits_propagation": "All four worker startup records exactly match context; checked before analysis.",
+  "retries_tuning_threshold_changes": false,
+  "application_routing_or_interpretation_tested": false,
+  "record_count": 50,
+  "detector_classification_calls": 100,
+  "primary_raw_label_gate": "failed C6 es->pt; unchanged 12/13 each pass",
+  "local_links_checked": 11,
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "branch": "specify/phase-1-uc-001",
+  "index_empty": true,
+  "analysis_sha256": "722f48d19c246eef5623fc976efa14ec8fb57316da53738484de562dfbdef885",
+  "contract_review_sha256": "6a94ed38f8fbd060b6feab0dd4949426a02978686d6bbc9001e8e579b8a92033",
+  "resource_scope": "All retained/new Lingua experiment roots, wheel counted once per inode; evidence copies and isolated environment included.",
+  "final_scratch": {
+    "logical_bytes": 478073594,
+    "allocated_bytes": 478535680
+  },
+  "DESIGN": "Phase 2 / in-progress; qualified linguistic review and final acceptance pending."
+}

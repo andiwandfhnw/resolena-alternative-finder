@@ -1,0 +1,7 @@
+{
+    "executable_sha256":  "7e236243c9b670c6a49410c03186fd575c57a0efe3fd8a21d8727503d571d5b6",
+    "version_pin":  "d81235049384534c167caea52b85a694f6103d14",
+    "model_loaded":  false,
+    "device":  "Vulkan0",
+    "executable":  "C:\\ResolenaExperiments\\qwen3-8b-v1\\runtime\\llama-server.exe"
+}

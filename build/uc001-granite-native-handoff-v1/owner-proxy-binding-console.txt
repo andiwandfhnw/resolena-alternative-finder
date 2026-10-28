@@ -1,0 +1,165 @@
+Proxy binding self-test result directory: C:\Users\AndiWand\Downloads\proxy-binding-result-3be1821d-59fe-4ccd-9194-6205cb3b4763
+{
+  "proxy_binding_selftest_passed": true,
+  "windows_execution": true,
+  "synthetic_injected": false,
+  "native_binding_verified": true,
+  "resource_fit_established": false,
+  "acquisition_or_build": false,
+  "ownership_selftest_run": false,
+  "gpu_model_inference": false,
+  "zero_acquisition_events_verified": true,
+  "network_guard_verified": true,
+  "suspended_assignment_order_verified": true,
+  "cleanup": {
+    "verified": true,
+    "active_processes": 0,
+    "total_processes": 5,
+    "owned_exits": [
+      {
+        "pid": 56344,
+        "creation_time_100ns": 134376059362176827,
+        "exit_code": 0
+      },
+      {
+        "pid": 56388,
+        "creation_time_100ns": 134376059362361995,
+        "exit_code": 0
+      },
+      {
+        "pid": 56428,
+        "creation_time_100ns": 134376059363509667,
+        "exit_code": 0
+      },
+      {
+        "pid": 56444,
+        "creation_time_100ns": 134376059363598819,
+        "exit_code": 0
+      },
+      {
+        "pid": 56352,
+        "creation_time_100ns": 134376059362240762,
+        "exit_code": 0
+      }
+    ],
+    "errors": []
+  },
+  "proxy_identity_cleanup": {
+    "phase": "acquisition",
+    "verified": true,
+    "binding_established": true,
+    "identities": [
+      {
+        "role": "launcher",
+        "creation_time_100ns": 134376059363509667,
+        "in_any_job": true,
+        "parent_pid": 56388,
+        "pid": 56428,
+        "exit_code": 0,
+        "exit_verified": true
+      },
+      {
+        "role": "interpreter",
+        "creation_time_100ns": 134376059363598819,
+        "in_any_job": true,
+        "parent_pid": 56428,
+        "pid": 56444,
+        "exit_code": 0,
+        "exit_verified": true
+      }
+    ],
+    "helper_queries": [],
+    "query_handles_closed": true
+  },
+  "worker_identity_cleanup": {
+    "phase": "acquisition",
+    "verified": true,
+    "binding_established": true,
+    "identities": [
+      {
+        "role": "launcher",
+        "pid": 56344,
+        "creation_time_100ns": 134376059362176827,
+        "parent_pid": 51008,
+        "in_any_job": true,
+        "exit_code": 0,
+        "exit_verified": true
+      },
+      {
+        "role": "interpreter",
+        "creation_time_100ns": 134376059362361995,
+        "in_any_job": true,
+        "parent_pid": 56344,
+        "pid": 56388,
+        "exit_code": 0,
+        "exit_verified": true
+      }
+    ],
+    "helper_queries": [
+      {
+        "pid": 56352,
+        "accepted": true,
+        "query_handle_closed": true,
+        "termination_requested": false,
+        "exit_code": 0
+      }
+    ],
+    "query_handles_closed": true
+  },
+  "controller_pid": 51008,
+  "controller_outside_private_job": true,
+  "failure_reason": null,
+  "started_utc": "2026-10-27T20:18:56.215899+00:00",
+  "timeout_seconds": 20,
+  "verified_helpers_pending_cleanup": 0,
+  "worker_terminal": {
+    "cumulative_bytes": 0,
+    "event": "acquisition_terminal",
+    "guard_log": "C:\\Users\\AndiWand\\Downloads\\proxy-binding-result-3be1821d-59fe-4ccd-9194-6205cb3b4763\\evidence\\proxy-no-network.jsonl",
+    "ledger_path": "C:\\Users\\AndiWand\\Downloads\\proxy-binding-result-3be1821d-59fe-4ccd-9194-6205cb3b4763\\evidence\\acquisition-proxy.jsonl",
+    "ledger_sha256": "7eedadcf1fff7fb082fa10793593fab6e80b86c0d39f638c1398f5a80a2ba411",
+    "monotonic_ns": 10501328000000,
+    "prior_bytes": 0,
+    "proxy_binding_selftest": true,
+    "proxy_identity_schema": 1,
+    "proxy_interpreter_pid": 56444,
+    "proxy_launcher_pid": 56428,
+    "timestamp_utc": "2026-10-27T20:18:56.717951+00:00",
+    "worker_handles_closed": {
+      "interpreter_query": true,
+      "launcher_handle": true,
+      "stderr": true,
+      "stdout": true
+    },
+    "zero_acquisition_events": true
+  },
+  "private_job_handle_closed": true,
+  "ended_utc": "2026-10-27T20:18:56.785565+00:00",
+  "elapsed_seconds": 0.5619999999998981,
+  "owned_expected_identities": [
+    {
+      "pid": 56344,
+      "creation_time_100ns": 134376059362176827
+    },
+    {
+      "pid": 56352,
+      "creation_time_100ns": 134376059362240762
+    },
+    {
+      "pid": 56388,
+      "creation_time_100ns": 134376059362361995
+    },
+    {
+      "pid": 56428,
+      "creation_time_100ns": 134376059363509667
+    },
+    {
+      "pid": 56444,
+      "creation_time_100ns": 134376059363598819
+    }
+  ],
+  "scope": "harmless_network_free_proxy_binding_only",
+  "accepted_prior_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+  "accepted_proxy_sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d"
+}
+Proxy binding self-test result retained: C:\Users\AndiWand\Downloads\proxy-binding-result-3be1821d-59fe-4ccd-9194-6205cb3b4763

@@ -1,0 +1,20 @@
+{
+  "version": "uc001-contract-local-1.1.0",
+  "parent_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "files": {
+    "DeadlineGuard.cs": "bbd12c535320f05dea1c934de487f48851cbb37fc3c863eb64ec0e24b8a56d35",
+    "README.md": "c29e866abc8eaa9b88ed260c9fe910b7b7907d684227ece1036576e4911c5c04",
+    "Run-Windows.ps1": "8039aa8698e1d8a10db73addc1719cdd2308a522456d78e0072b57c7801ac727",
+    "Test-Offline.ps1": "86611fc11c975fb16bfd31af6b97cd832c6468efdaba1f0ec1184b69b556af10",
+    "capture.py": "51bea9821a23fb3c3430fb80ea57652627e692cb667f5b6833117629f7a0111f",
+    "config.json": "7ffa154df8fdff24cd34f0029b6bb022bdb3a268350895c106d8e20f67efdbb7",
+    "partial-expectations-review.json": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+    "previous-freeze.json": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+    "replay.py": "b2e2a77b172b31cc1d13d084d6e25a6e161e59348b74cfa92fe2de5438efe80f",
+    "review_gate.py": "907f35039abe0640c005c29c15dbb0ee76583a8ad6cc6d01a8652cb4161d088c",
+    "technical-decision.json": "cd94e136adc1f6a61fbb555df6dba1d36e3b4096024a4ea3081ee2844af5e040"
+  },
+  "purpose": "technical_feasibility_only",
+  "previous_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079"
+}

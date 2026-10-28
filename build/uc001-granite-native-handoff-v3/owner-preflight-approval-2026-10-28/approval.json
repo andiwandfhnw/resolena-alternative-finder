@@ -1,0 +1,78 @@
+{
+  "schema": "uc001-granite-native-v3-preflight-approval",
+  "version": 1,
+  "date": "2026-10-28",
+  "phase": 3,
+  "status": "in-progress",
+  "owner_offline_preparation_accepted": true,
+  "windows_preflight_authorized": true,
+  "maximum_attempts": 1,
+  "execution_status": "PENDING OWNER EXECUTION/OUTPUT; no Windows execution by Codex",
+  "execution_authorized": false,
+  "source_build_authorized": false,
+  "active_configuration_creation_authorized": false,
+  "archive": "uc001-granite-native-handoff-v3.zip",
+  "archive_bytes": 73206,
+  "archive_files": 15,
+  "archive_sha256": "978123b4263ed39ea7758574bccb60ab4a8f3b945f6f2699705e1dd304c256a2",
+  "manifest_sha256": "45b224d7a4dbb036f1db8f091214633125e256953b2e3564db9640a8feb7a30e",
+  "inactive_configuration_sha256": "b9e1a4e78a03488d8b332308f818c43e9d882d75c10591f65bc5bbcf16564793",
+  "approval_reference": "Owner approval 2026-10-28: exactly ONE Windows v3 preflight, steps 1-3 only; no build or retry.",
+  "authorized_steps": [
+    1,
+    2,
+    3
+  ],
+  "scope": [
+    "Exact archive/manifest integrity and fresh distinct extraction without overwrite",
+    "Shell-local activation of existing pinned x64 toolchain",
+    "Prepared v3 preflight including actual corrected packaged worker.validate_environment",
+    "Prepared Git/CMake/Ninja version queries",
+    "Scoped environment/tool/SDK/disk/host-memory observations and retained reports"
+  ],
+  "required_report": {
+    "worker_environment_validation_required": true,
+    "worker_environment_validation_passed": true,
+    "worker_module_path": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3\\worker.py",
+    "preflight_passed": true,
+    "configuration_inactive": true,
+    "execution_authorized": false
+  },
+  "destination": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v3",
+  "report_prefix": "Downloads/granite-native-v3-preflight-<GUID>",
+  "native_output_prefix": "Downloads/granite-native-v3-run-<GUID>; string only; do not create",
+  "execution_policy": {
+    "argument": "-ExecutionPolicy Bypass",
+    "scope": "Prepared child powershell.exe preflight invocation only",
+    "persistent_change_authorized": false,
+    "elevation_authorized": false,
+    "installation_authorized": false
+  },
+  "advisor_evidence": "Uploaded ZIP/CRC, file hashes, inventory/destinations, JSON/configuration, Python syntax and source differences checked statically; no package scripts, worker code, behavioral tests or Windows commands executed",
+  "seven_focused_passes": "Codex recorded Codespaces evidence; no rerun for this approval",
+  "preserve": [
+    "Issued v3 ZIP/payload/inactive config/manifest/inventory/verification receipts",
+    "All v2/failed Step 4/earlier approval and evidence files",
+    "Existing destinations; never delete or overwrite"
+  ],
+  "prohibited": [
+    "Step 4/controller native invocation",
+    "Active config/build-approval record/real source-build root/native-run directory creation",
+    "Job/proxy/closed diagnostics",
+    "Network acquisition/configure/build/compiler/glslc/GPU/model-server/inference",
+    "Installations/elevation/persistent policy change/Git delivery"
+  ],
+  "failure_semantics": "Preserve complete report directory and console output; stop without fixes or retry",
+  "old_step4_allowance": "Consumed; not renewed by this approval",
+  "accounting_and_timing_unchanged": true,
+  "real_acquisition_clock_started_by_preflight": false,
+  "original_outer_readme": {
+    "path": "README.before.md",
+    "sha256": "546580209d502958f9f46d1facf832132d650e2bf3f4a4c1388741996d186162"
+  },
+  "prior_verification_receipt_unchanged": true,
+  "documentation_checks": "documentation-checks.json",
+  "tests_or_package_scripts_rerun": false,
+  "windows_executed_by_codex": false,
+  "stopping_point": "Return authorized steps 1\u20133; stop before Step 4 and await owner output"
+}

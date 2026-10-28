@@ -1,0 +1,14 @@
+{
+  "receipt_JSON_and_links": "passed",
+  "canonical_draft_manifest_hashes": "passed",
+  "all_new_evidence_JSON_parses": "passed",
+  "normalized_draft_has_no_prohibited_fields": "passed",
+  "preservation_rechecked_after_receipt": "passed",
+  "baseline_files": 845,
+  "unchanged": 843,
+  "review": "pending",
+  "runtime_use": false,
+  "PHASE": 3,
+  "STATUS": "in-progress",
+  "stop": "Human review; no further implementation."
+}

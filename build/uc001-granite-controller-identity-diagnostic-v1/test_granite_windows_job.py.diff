@@ -1,0 +1,124 @@
+--- tests/unit/test_granite_windows_job.py (before)
++++ tests/unit/test_granite_windows_job.py
+@@ -646,3 +646,121 @@
+     assert result['active_processes']==0
+     assert result['total_processes']==2
+     job.close()
++
++
++def test_identity_query_open_uses_only_limited_query_rights_without_inheritance():
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    calls=[]
++    api=object.__new__(module.NativeApi)
++    api.k=SimpleNamespace(OpenProcess=lambda access,inherit,pid:calls.append((access,inherit,pid)) or 77)
++    assert api.open_query_process(38564)==77
++    assert calls==[(0x1000,False,38564)]
++
++
++@pytest.mark.parametrize('pid',[0,-1,True,2**32])
++def test_identity_query_open_rejects_invalid_pid_without_native_call(pid):
++    from scripts.uc001_granite_controller import windows_job as module
++    api=object.__new__(module.NativeApi)
++    with pytest.raises(JobError):
++        api.open_query_process(pid)
++
++
++@pytest.mark.parametrize('error_code',[5,87])
++def test_identity_query_open_preserves_native_failure_code(monkeypatch,error_code):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    api=object.__new__(module.NativeApi)
++    api.k=SimpleNamespace(OpenProcess=lambda *_:0)
++    error=OSError('synthetic query-only open failure');error.winerror=error_code
++    monkeypatch.setattr(module.c,'get_last_error',lambda:error_code,raising=False)
++    monkeypatch.setattr(module.c,'WinError',lambda value:error if value==error_code else None,raising=False)
++    with pytest.raises(OSError) as caught:
++        api.open_query_process(38564)
++    assert caught.value.winerror==error_code
++
++
++def image_query_api(monkeypatch,*,path=r'C:\Windows\System32\conhost.exe',length=None,success=1):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    api=object.__new__(module.NativeApi);calls=[]
++    def query(handle,flags,buffer,size):
++        incoming=ctypes.cast(size,ctypes.POINTER(module.DWORD))
++        calls.append((handle,flags,incoming[0],len(buffer)))
++        if path is not None:
++            buffer.value=path
++        incoming[0]=len(path) if length is None else length
++        return success
++    api.k=SimpleNamespace(QueryFullProcessImageNameW=query)
++    monkeypatch.setattr(module.c,'get_last_error',lambda:122,raising=False)
++    monkeypatch.setattr(module.c,'WinError',lambda code:OSError(code,'synthetic path query failure'),raising=False)
++    return api,calls
++
++
++def test_identity_query_image_path_is_full_unicode_win32_path_with_fixed_bound(monkeypatch):
++    path=r'C:\Windows\System32\conhost.exe'
++    api,calls=image_query_api(monkeypatch,path=path)
++    assert api.image_path('query-only')==path
++    assert calls==[('query-only',0,32768,32768)]
++
++
++@pytest.mark.parametrize('changes',[
++    {'success':0},{'length':0},{'length':32768},{'length':32769},
++    {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
++    {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
++])
++def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
++    api,calls=image_query_api(monkeypatch,**changes)
++    with pytest.raises(JobError):
++        api.image_path('query-only')
++    assert len(calls)==1
++
++
++@pytest.mark.parametrize('raw_code',[0,259,57345,0xFFFFFFFF])
++def test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status(raw_code):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    def get_code(handle,pointer):
++        assert handle=='query-only'
++        ctypes.cast(pointer,ctypes.POINTER(module.DWORD))[0]=raw_code
++        return 1
++    api=object.__new__(module.NativeApi)
++    api.k=SimpleNamespace(GetExitCodeProcess=get_code)
++    assert api.query_exit_code('query-only')==raw_code
++
++
++def test_identity_query_exit_code_failure_cannot_be_a_live_or_zero_status(monkeypatch):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    api=object.__new__(module.NativeApi)
++    api.k=SimpleNamespace(GetExitCodeProcess=lambda *_:0)
++    monkeypatch.setattr(module.c,'get_last_error',lambda:5,raising=False)
++    monkeypatch.setattr(module.c,'WinError',lambda code:OSError(code,'synthetic status query failure'),raising=False)
++    with pytest.raises(JobError):
++        api.query_exit_code('query-only')
++
++
++def test_identity_query_image_binding_has_pointer_safe_unicode_signature(monkeypatch):
++    from types import SimpleNamespace
++    from scripts.uc001_granite_controller import windows_job as module
++    class Function:
++        argtypes=None
++        restype=None
++    class Library:
++        def __init__(self):self.functions={}
++        def __getattr__(self,name):return self.functions.setdefault(name,Function())
++    kernel,ntdll=Library(),Library()
++    monkeypatch.setattr(module,'os',SimpleNamespace(name='nt'))
++    monkeypatch.setattr(module.c,'WinDLL',lambda name,**kwargs:ntdll if name=='ntdll' else kernel,raising=False)
++    module.NativeApi()
++    function=kernel.functions['QueryFullProcessImageNameW']
++    assert function.restype is module.BOOL
++    assert function.argtypes==[module.HANDLE,module.DWORD,ctypes.POINTER(ctypes.c_wchar),ctypes.POINTER(module.DWORD)]
++
++
++def test_identity_query_image_utf16_units_allow_non_bmp_path(monkeypatch):
++    path='C:\\Synthetic\\\U0001f6b2.exe'
++    units=len(path.encode('utf-16-le'))//2
++    api,calls=image_query_api(monkeypatch,path=path,length=units)
++    assert api.image_path('query-only')==path
++    assert len(calls)==1

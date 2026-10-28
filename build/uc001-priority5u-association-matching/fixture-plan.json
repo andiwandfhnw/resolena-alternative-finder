@@ -1,0 +1,113 @@
+{
+  "recorded_at": "2026-10-23T17:53:33.637576+00:00",
+  "before_implementation": true,
+  "source_pin": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+  "release_data_pin": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+  "release_id": "swisstopo-chli-associations-2026-10-01-v1",
+  "examples": {
+    "CH_single": [
+      {
+        "source_record": 10,
+        "country_code": "CH",
+        "locality_name": "Jouxtens-Mézery",
+        "postcode": "1008",
+        "source_postcode_id": "5852",
+        "additional_number": "02",
+        "administrative": {
+          "municipality_name": "Jouxtens-Mézery",
+          "municipality_id": "5585",
+          "canton": "VD"
+        },
+        "matching": {
+          "locality_name": "jouxtens-mézery",
+          "postcode": "1008"
+        }
+      }
+    ],
+    "CH_multiple": [
+      {
+        "source_record": 15,
+        "country_code": "CH",
+        "locality_name": "Lausanne",
+        "postcode": "1015",
+        "source_postcode_id": "163",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Ecublens (VD)",
+          "municipality_id": "5635",
+          "canton": "VD"
+        },
+        "matching": {
+          "locality_name": "lausanne",
+          "postcode": "1015"
+        }
+      },
+      {
+        "source_record": 16,
+        "country_code": "CH",
+        "locality_name": "Lausanne",
+        "postcode": "1015",
+        "source_postcode_id": "163",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Saint-Sulpice (VD)",
+          "municipality_id": "5648",
+          "canton": "VD"
+        },
+        "matching": {
+          "locality_name": "lausanne",
+          "postcode": "1015"
+        }
+      },
+      {
+        "source_record": 17,
+        "country_code": "CH",
+        "locality_name": "Lausanne",
+        "postcode": "1015",
+        "source_postcode_id": "163",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Chavannes-près-Renens",
+          "municipality_id": "5627",
+          "canton": "VD"
+        },
+        "matching": {
+          "locality_name": "lausanne",
+          "postcode": "1015"
+        }
+      }
+    ],
+    "LI_single": [
+      {
+        "source_record": 5590,
+        "country_code": "LI",
+        "locality_name": "Vaduz",
+        "postcode": "9490",
+        "source_postcode_id": "5393",
+        "additional_number": "00",
+        "administrative": {
+          "municipality_name": "Vaduz",
+          "municipality_id": "7001",
+          "canton": ""
+        },
+        "matching": {
+          "locality_name": "vaduz",
+          "postcode": "9490"
+        }
+      }
+    ]
+  },
+  "pointer": {
+    "source": "swisstopo",
+    "release": "swisstopo-chli-associations-2026-10-01-v1",
+    "source_record": 16
+  },
+  "input_contract": "Existing location_choice provided; optional search_location.reference contains only source/release/source_record. Explicit selection continuation creates fresh capture/key/proof, selection or editing alone sends nothing. No client matched flag or labels trusted.",
+  "clarification_contract": "Existing 200 clarification_required/not_attempted, choices remains language choices; additional associations are source-backed metadata. Multiple/unknown/unavailable have distinct issue codes. Demonstrated selected association country mismatch uses existing invalid_input category. Broken configured loader remains configuration_unavailable; actual processing fault remains processing_error.",
+  "saved_representation": "Minimal raw country/town/postcode plus locality.verification=matched_in_reference, locality.selection=single_match|explicit, normalized user fields, one canonical association+pointer. Separate interpretation.provenance.reference_versions.locality holds server-derived release/hash/source timestamp; no candidate-list persistence.",
+  "expected_browser_A": "Actual201 insufficient_coverage, +1 request/+0 options/+0 links; ordinary in-CH evidence remains insufficient for optional locality.",
+  "expected_browser_B": "Actual200 unsaved3associationclarification atLausanne1015, selectsource_record16 (notfirst) noPOST; explicitcontinue actual201 insufficient_coverage +1/0/0.",
+  "baseline": "Existing CH country-only actual comparison first; preserve exact prior rows/options/links/evidence using nonempty before state and ID difference.",
+  "unavailable_regressions": "Defaultisolateddemo gets approvedreference. Existing unavailable country-only/confirmed-unverified journeys retain exact expectations and use RESOLENA_TEST_LOCALITY_REFERENCE_UNAVAILABLE=1 in separate isolated test composition.",
+  "limits": "Association matches within one pinned dev reference, no locality GUID/cross-postcode consolidation/provider coverage/physical location inference; normal app.main unconfigured; no acquisition/models/experiments/Git delivery."
+}

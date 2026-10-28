@@ -1,0 +1,49 @@
+{
+    "owned_job_closed":  true,
+    "owned_exits":  [
+                        {
+                            "exit_confirmed":  true,
+                            "pid":  54080,
+                            "role":  "server",
+                            "created":  134368248617958083
+                        },
+                        {
+                            "exit_confirmed":  true,
+                            "pid":  50532,
+                            "role":  "redirector",
+                            "created":  134368248675491472
+                        },
+                        {
+                            "identity_state":  "identified",
+                            "pid":  43780,
+                            "exit_confirmation":  "confirmed",
+                            "created":  134368248675686379,
+                            "role":  "interpreter",
+                            "exit_confirmed":  true
+                        },
+                        {
+                            "identity_state":  "identified",
+                            "pid":  53704,
+                            "exit_confirmation":  "confirmed",
+                            "created":  134368248618052028,
+                            "role":  "console_helper",
+                            "exit_confirmed":  true
+                        },
+                        {
+                            "identity_state":  "identified",
+                            "pid":  37072,
+                            "exit_confirmation":  "confirmed",
+                            "created":  134368248675562210,
+                            "role":  "console_helper",
+                            "exit_confirmed":  true
+                        }
+                    ],
+    "retained_assets_preserved":  true,
+    "errors":  [
+
+               ],
+    "owned_job_created":  true,
+    "unidentified_job_pids":  [
+
+                              ]
+}

@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "effective_architecture_switches": [
+    "-march=x86-64",
+    "-mavx",
+    "-mavx2",
+    "-mbmi2",
+    "-mf16c",
+    "-mfma",
+    "-msse4.2",
+    "-mtune=generic"
+  ],
+  "required_host_features": [
+    "avx",
+    "avx2",
+    "bmi2",
+    "f16c",
+    "fma",
+    "sse4_2"
+  ],
+  "compile_commands_checked": 223,
+  "native_flags_absent": true,
+  "utc": "2026-10-11T15:29:37.049359+00:00",
+  "compile_commands_sha256": "3077f4420a042a0c4c937373cca2f47b074e64f333a97900a7a2cccae3efa7b8",
+  "cache_sha256": "899a5d530983405be8b2aecda06f6bb4d3adf10c314224420cb1f8979de9dcb1"
+}

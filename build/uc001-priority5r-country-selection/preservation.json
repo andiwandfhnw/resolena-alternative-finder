@@ -1,0 +1,52 @@
+{
+  "protected_files": 728,
+  "unchanged_protected_files": 716,
+  "expected_existing_files_changed": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "frontend/src/App.tsx",
+    "scripts/uc001_country_catalogue/prepare.py",
+    "src/app/application/comparisons.py",
+    "src/app/interfaces/api.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/product_habit.py",
+    "tests/support/source_bound_rendering.py",
+    "tests/support/synthetic.py",
+    "tests/unit/test_country_catalogue_preparation.py"
+  ],
+  "new_source_reference_files": [
+    "docs/adr/ADR-005-country-reference-development-release.md",
+    "docs/reference/COUNTRIES-GEONAMES-2026-10-23.json",
+    "docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json",
+    "src/app/application/countries.py",
+    "src/app/infrastructure/country_reference.py"
+  ],
+  "all_other_protected_hashes_unchanged": true,
+  "prior_priority5_artifacts_byte_preserved": 406,
+  "original_5Q_draft_manifest_raw_source_and_receipts_unchanged": true,
+  "all_prior_TASKS_history_after_current_authorization_and_checkpoint_preserved": true,
+  "all_prior_API_and_parser_test_functions_preserved": true,
+  "all_prior_browser_assertions_preserved_except_truthful_demo_label": true,
+  "browser_interaction_adaptations_only": {
+    "DE_fill_to_selectOption": 3,
+    "demo_label_expectation": 1
+  },
+  "normal_app_main_SQLite_store_domain_language_contracts_dependencies_real_knowledge_drafts_unchanged": true,
+  "new_or_changed_lines_with_trailing_whitespace": [],
+  "preexisting_whitespace_warning": {
+    "before_line": 1995,
+    "current_line": 2035,
+    "text": "  evidence-backed comparisons and persistence. "
+  },
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "branch_and_HEAD_unchanged": true,
+  "owned_server_ports_closed": {
+    "8011": true,
+    "5175": true
+  },
+  "trace_or_HAR_files": 0,
+  "protected_raw_request_fields_in_new_JSON_artifacts": [],
+  "Git_delivery_CI_dependency_changes_or_deployment": false
+}

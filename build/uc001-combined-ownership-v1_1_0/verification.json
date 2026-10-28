@@ -1,0 +1,127 @@
+{
+  "version": "uc001-combined-ownership-1.1.0",
+  "recorded_utc": "2026-10-18T18:09:06.068480+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Branch-specific combined ownership correction and one model-free Windows verification handoff only",
+  "changed_files": [
+    "scripts/uc001_combined_ownership_v1_1_0/Check-CombinedOwnership.ps1",
+    "scripts/uc001_combined_ownership_v1_1_0/DeadlineGuard.cs",
+    "scripts/uc001_combined_ownership_v1_1_0/Python-Ownership.ps1",
+    "scripts/uc001_combined_ownership_v1_1_0/PythonOwnership.cs",
+    "scripts/uc001_combined_ownership_v1_1_0/README.md",
+    "scripts/uc001_combined_ownership_v1_1_0/freeze.json",
+    "scripts/uc001_combined_ownership_v1_1_0/harness_checks.py",
+    "scripts/uc001_combined_ownership_v1_1_0/idle.py",
+    "build/uc001-combined-ownership-v1_1_0/owner-evidence/cleanup.owner-pasted.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-evidence/observation.owner-pasted.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-evidence/provenance.json",
+    "build/uc001-combined-ownership-v1_1_0/owner-evidence/result.owner-pasted.json",
+    "tests/unit/test_combined_ownership.py",
+    "tests/support/uc001_combined_branches_offline.ps1",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-combined-ownership-v1_1_0/combined-ownership-check.zip",
+    "build/uc001-combined-ownership-v1_1_0/verification.json",
+    "build/uc001-combined-ownership-v1_1_0/SHA256SUMS.txt"
+  ],
+  "owner_evidence": {
+    "provenance": "build/uc001-combined-ownership-v1_1_0/owner-evidence/provenance.json",
+    "records": [
+      "build/uc001-combined-ownership-v1_1_0/owner-evidence/cleanup.owner-pasted.json",
+      "build/uc001-combined-ownership-v1_1_0/owner-evidence/observation.owner-pasted.json",
+      "build/uc001-combined-ownership-v1_1_0/owner-evidence/provenance.json",
+      "build/uc001-combined-ownership-v1_1_0/owner-evidence/result.owner-pasted.json"
+    ],
+    "recording": "Owner-pasted JSON values faithfully transcribed; normalized formatting, not byte-identical Windows originals.",
+    "established": "System conhost under server stand-in, system conhost under Python redirector, base interpreter under redirector; five native identities have confirmed physical exits.",
+    "historical_status": "Failed console_helper_ambiguous; cleanup_confirmed remains false and cleanup/interpreter_not_identified retained. The null interpreter role is neither filled in nor erased.",
+    "boundary": "Earlier model-run helpers remain unauthenticated; no historical generation count or ledger is reconstructed."
+  },
+  "correction": {
+    "native": "One exact system conhost per verified server/Python branch. Held server Process, trusted expected executable, original full identity, supervisor ancestry, lifetime and exact fresh job membership required before role accounting and again for completed proof. No global helper-cap increase or PID selection.",
+    "python": "Actual verify_python_ownership checks fresh identities including full server, trusted caller-supplied server path, branch-specific parents/lifetimes, own interpreter/redirector identity and exact native-authoritative membership set. PID-only server proofs fail.",
+    "consumers": "Corrected native proof producer, PowerShell bridge, model-free Python worker, result acceptance and cleanup consumer changed together. Historical frozen model launch/capture/replay packages remain untouched; no model-attempt package is created.",
+    "cleanup": "Retained native observation handles remain independent of role approval. Server creation time added to cleanup proof; both helper identities waited once. Unknown roles remain unapproved, missing interpreter identity or missing job/handle verification still fails.",
+    "acceptance": "Actual Python validator result must match issued combined proof; a final fresh native binding must agree before owned job closure and exit-confirmation cleanup. Native-only success is insufficient.",
+    "failures": "Primary, cleanup, deadline and observation channels remain independent; raw errors/process logs stay local under private ACLs."
+  },
+  "tdd": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_combined_ownership.py::test_python_accepts_one_exact_helper_per_fully_verified_branch tests/unit/test_combined_ownership.py::test_corrected_combined_native_and_supervision_offline --maxfail=2 --tb=short",
+      "failed": 2,
+      "seconds": 9.75,
+      "evidence": "Copied legacy implementation lacks the trusted full-server native/Python APIs. Existing legacy policy checks reproduce console_helper_ambiguous and the Python-only parent rejection; the owner-observed topology also fails the legacy Python validator."
+    },
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_combined_ownership.py tests/unit/test_contract_local_harness_correction.py::test_ownership_rejects_unverified_lifetime_chain_or_job tests/unit/test_contract_local_harness_correction.py::test_model_free_corrected_ownership_and_cleanup_paths_with_explicit_substitutes tests/unit/test_contract_local_failure_reporting.py --tb=short",
+      "passed": 135,
+      "seconds": 67.12,
+      "exit_code": 0
+    },
+    "coverage": [
+      "Owner-observed and explicit synthetic combined topology; helper-before-interpreter; helper parented to interpreter.",
+      "Wrong helper/server path, parent and creation time; reused/missing server identity, PID-only server, duplicate branch helpers/interpreters and extra/missing/duplicate job members.",
+      "Actual corrected PowerShell bridge and supervisor dispatch with explicit native/process substitutes: full server arguments, Python-proof handshake, final rebind, failed Python validation, deadline and simultaneous primary/cleanup/deadline failures.",
+      "Actual Python worker and actual Python validator with explicitly substituted native identity readers, including server rejection.",
+      "Actual cleanup with explicit held-process substitutes: both helper branches, partial binding/unapproved observations, missing identity and unconfirmed exit; historical strict ownership/failure/cleanup regressions."
+    ],
+    "limit": "Codespace synthetic native/process readers and pure C# role policy/compilation. These results are not Windows native runtime verification."
+  },
+  "offline_package_checks": {
+    "archive_and_all_frozen_files": "passed",
+    "fresh_extraction_imports": "Owned worker/shared harness and unchanged adapter/domain modules import from extracted paths under isolated existing venv Python; no worker main/native process check executed.",
+    "powershell": "Packaged PowerShell sources and exact README sequence parsed by PowerShell Core; not Windows PowerShell execution.",
+    "unchanged_components": "Production native Python Start implementation, DeadlineGuard, effective-settings checks and four unchanged shared source modules match originals; four source modules also match frozen v1.3.0 archive."
+  },
+  "windows_handoff": {
+    "readme": "scripts/uc001_combined_ownership_v1_1_0/README.md",
+    "script": "scripts/uc001_combined_ownership_v1_1_0/Check-CombinedOwnership.ps1",
+    "status": "prepared, not executed; corrected native Windows verification pending",
+    "operation": "Production server and Python launch primitives in one owned kill-on-close job; sleeping native-system PowerShell stand-in and installed venv/base interpreter. Both observed helper branches required. No model binary.",
+    "proof": "Native full server/redirector/interpreter/helpers proof, actual Python validator via owned stdin, final fresh native identity/job validation, then all held-process exit confirmations.",
+    "result_files": [
+      "result.json",
+      "python-result.json",
+      "ownership.json",
+      "observation.json",
+      "cleanup.json"
+    ],
+    "expected_outcome": "combined_native_python_and_cleanup_passed; Python python_combined_ownership_verified; five confirmed exits; no primary/cleanup/deadline/observation failures.",
+    "limits": "Existing separate-check 10-second setup check, 30-second independent job-close guard, 20ms polls/200ms initial stability, 45-second acceptance deadline, <=5-second base waits and <=5-second/remaining-budget retained waits. Compilation/native query time checked after calls, not claimed cancellable.",
+    "native_effects": "Add-Type compilation may create compiler files under Windows TEMP; existing kernel32/Nt process/job/pipe/time/image APIs plus actual Python ctypes process queries. Private result ACLs; owned job/handles only.",
+    "pending": "Actual corrected Windows combined native/Python/cleanup path. This cannot establish GPU counters, allocation/model readiness, semantic correctness or original failed-run helper legitimacy."
+  },
+  "package": {
+    "path": "build/uc001-combined-ownership-v1_1_0/combined-ownership-check.zip",
+    "files": 14,
+    "bytes": 39388,
+    "sha256": "b34bb71e8d54411cf3e1b1d2739d4905c9f9e179cd3740f6d894e21d0fc6b030",
+    "freeze_sha256": "b707643595e90a010a5f1284f620f9cecfb56500c684fc45b49cb8b97e15a4ba",
+    "hashes": "build/uc001-combined-ownership-v1_1_0/SHA256SUMS.txt"
+  },
+  "preservation": {
+    "prior_source_package_evidence_files_checked": 348,
+    "changed": [],
+    "both_model_startup_allowances": "consumed; no further startup proposed/authorized",
+    "model_attempt_ledger_touched": false,
+    "frozen_model_settings_cases_contracts": "unchanged",
+    "expected_meanings_approved": false,
+    "semantic_review": "pending",
+    "held_out": "unopened",
+    "ssh_support": "paused"
+  },
+  "download_accounting": {
+    "external_assets_acquired_bytes": 0,
+    "handoff_archive_bytes": 39388,
+    "rule": "Charge actual source transfers against existing cumulative allowance; no reset or reconstructed current balance."
+  },
+  "not_performed": [
+    "Windows/native check execution",
+    "Model startup, inference or model-attempt creation",
+    "Downloads/installations or transport connections",
+    "Held-out/language/semantic/later-priority work",
+    "Git delivery or phase advancement"
+  ]
+}

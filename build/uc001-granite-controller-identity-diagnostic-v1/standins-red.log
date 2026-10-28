@@ -1,0 +1,240 @@
+.FFFFFFFFFFFFF                                                           [100%]
+=================================== FAILURES ===================================
+_ test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[C:\\Synthetic\\unknown.exe] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_query0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced8526f0>
+path = 'C:\\Synthetic\\unknown.exe'
+
+    @pytest.mark.parametrize('path',[r'C:\Synthetic\unknown.exe',r'C:\Windows\System32\conhost.exe',r'D:\Other\conhost.exe'])
+    def test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected(tmp_path,monkeypatch,path):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,unknown_path=path)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert 'owned_root_launched_once' not in calls
+>       assert observations
+E       assert []
+
+tests/unit/test_granite_controller_standins.py:733: AssertionError
+_ test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[C:\\Windows\\System32\\conhost.exe] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_query1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced42f260>
+path = 'C:\\Windows\\System32\\conhost.exe'
+
+    @pytest.mark.parametrize('path',[r'C:\Synthetic\unknown.exe',r'C:\Windows\System32\conhost.exe',r'D:\Other\conhost.exe'])
+    def test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected(tmp_path,monkeypatch,path):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,unknown_path=path)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert 'owned_root_launched_once' not in calls
+>       assert observations
+E       assert []
+
+tests/unit/test_granite_controller_standins.py:733: AssertionError
+_ test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[D:\\Other\\conhost.exe] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_query2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced42fb90>
+path = 'D:\\Other\\conhost.exe'
+
+    @pytest.mark.parametrize('path',[r'C:\Synthetic\unknown.exe',r'C:\Windows\System32\conhost.exe',r'D:\Other\conhost.exe'])
+    def test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected(tmp_path,monkeypatch,path):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,unknown_path=path)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+        assert result['ownership_self_test_passed'] is False
+        assert 'owned_root_launched_once' not in calls
+>       assert observations
+E       assert []
+
+tests/unit/test_granite_controller_standins.py:733: AssertionError
+_ test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown[87-not_found_or_invalid_pid_before_binding] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_disap0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced42f9e0>
+error = 87, status = 'not_found_or_invalid_pid_before_binding'
+
+    @pytest.mark.parametrize('error,status',[(87,'not_found_or_invalid_pid_before_binding'),(5,'process_open_failed')])
+    def test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown(tmp_path,monkeypatch,error,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,open_error=error)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:762: IndexError
+_ test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown[5-process_open_failed] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_disap1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced42e780>
+error = 5, status = 'process_open_failed'
+
+    @pytest.mark.parametrize('error,status',[(87,'not_found_or_invalid_pid_before_binding'),(5,'process_open_failed')])
+    def test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown(tmp_path,monkeypatch,error,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,open_error=error)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:762: IndexError
+_ test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_pid] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_chang0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced43a1e0>
+option = 'changed_unknown_pid'
+
+    @pytest.mark.parametrize('option',['changed_unknown_pid','changed_unknown_birth'])
+    def test_identity_diagnostic_changed_identity_is_never_bound(tmp_path,monkeypatch,option):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**{option:True})
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']=='identity_changed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:775: IndexError
+_ test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_birth] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_chang1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced438e90>
+option = 'changed_unknown_birth'
+
+    @pytest.mark.parametrize('option',['changed_unknown_pid','changed_unknown_birth'])
+    def test_identity_diagnostic_changed_identity_is_never_bound(tmp_path,monkeypatch,option):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**{option:True})
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']=='identity_changed'
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:775: IndexError
+_ test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options0-parent_mismatch] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_nativ0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced439e80>
+options = {'unknown_parent_mismatch': True}, status = 'parent_mismatch'
+
+    @pytest.mark.parametrize('options,status',[
+        ({'unknown_parent_mismatch':True},'parent_mismatch'),
+        ({'unknown_membership':True},'job_membership_mismatch'),
+        ({'unknown_membership':None},'job_membership_unknown'),
+        ({'path_failure':True},'path_query_failed'),
+    ])
+    def test_identity_diagnostic_native_query_gaps_cannot_accept_unknown(tmp_path,monkeypatch,options,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**options)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:789: IndexError
+_ test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options1-job_membership_mismatch] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_nativ1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced43b350>
+options = {'unknown_membership': True}, status = 'job_membership_mismatch'
+
+    @pytest.mark.parametrize('options,status',[
+        ({'unknown_parent_mismatch':True},'parent_mismatch'),
+        ({'unknown_membership':True},'job_membership_mismatch'),
+        ({'unknown_membership':None},'job_membership_unknown'),
+        ({'path_failure':True},'path_query_failed'),
+    ])
+    def test_identity_diagnostic_native_query_gaps_cannot_accept_unknown(tmp_path,monkeypatch,options,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**options)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:789: IndexError
+_ test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options2-job_membership_unknown] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_nativ2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced6acbc0>
+options = {'unknown_membership': None}, status = 'job_membership_unknown'
+
+    @pytest.mark.parametrize('options,status',[
+        ({'unknown_parent_mismatch':True},'parent_mismatch'),
+        ({'unknown_membership':True},'job_membership_mismatch'),
+        ({'unknown_membership':None},'job_membership_unknown'),
+        ({'path_failure':True},'path_query_failed'),
+    ])
+    def test_identity_diagnostic_native_query_gaps_cannot_accept_unknown(tmp_path,monkeypatch,options,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**options)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:789: IndexError
+_ test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options3-path_query_failed] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_nativ3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced6ac350>
+options = {'path_failure': True}, status = 'path_query_failed'
+
+    @pytest.mark.parametrize('options,status',[
+        ({'unknown_parent_mismatch':True},'parent_mismatch'),
+        ({'unknown_membership':True},'job_membership_mismatch'),
+        ({'unknown_membership':None},'job_membership_unknown'),
+        ({'path_failure':True},'path_query_failed'),
+    ])
+    def test_identity_diagnostic_native_query_gaps_cannot_accept_unknown(tmp_path,monkeypatch,options,status):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**options)
+        assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+>       assert observations[0]['status']==status
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:789: IndexError
+_____ test_identity_diagnostic_revalidates_retained_handle_before_cleanup ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_reval0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced6ad460>
+
+    def test_identity_diagnostic_revalidates_retained_handle_before_cleanup(tmp_path,monkeypatch):
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,
+            changed_unknown_birth=True,change_at_cleanup=True)
+>       assert observations[0]['identity_bound'] is True
+               ^^^^^^^^^^^^^^^
+E       IndexError: list index out of range
+
+tests/unit/test_granite_controller_standins.py:797: IndexError
+_ test_identity_diagnostic_journal_failure_still_closes_unknown_without_termination _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-8/test_identity_diagnostic_journ0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7d2ced6afb60>
+
+    def test_identity_diagnostic_journal_failure_still_closes_unknown_without_termination(tmp_path,monkeypatch):
+        from scripts.uc001_granite_controller import standins as module
+        original=module.Journal.record
+        def record(self,event,**values):
+            if event=='unknown_child_identity':
+                raise OSError('unknown identity journal unavailable')
+            return original(self,event,**values)
+        monkeypatch.setattr(module.Journal,'record',record)
+        result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch)
+        assert result['ownership_self_test_passed'] is False
+        assert 'owned_root_launched_once' not in calls
+>       assert calls.count(('close_query_or_known_handle',SYNTHETIC_UNKNOWN_PID))==1
+E       AssertionError: assert 0 == 1
+E        +  where 0 = <built-in method count of list object at 0x7d2cecc4c980>(('close_query_or_known_handle', 38564))
+E        +    where <built-in method count of list object at 0x7d2cecc4c980> = ['private_job_created', 'unrelated_started', ('open_process', 61196, {'can_terminate': True}), ('open_process', 61020, {'can_terminate': True}), 'terminate_private_job_only', 'job_cleanup', ...].count
+
+tests/unit/test_granite_controller_standins.py:815: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[C:\\Synthetic\\unknown.exe]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[C:\\Windows\\System32\\conhost.exe]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected[D:\\Other\\conhost.exe]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown[87-not_found_or_invalid_pid_before_binding]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown[5-process_open_failed]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_pid]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_changed_identity_is_never_bound[changed_unknown_birth]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options0-parent_mismatch]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options1-job_membership_mismatch]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options2-job_membership_unknown]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_native_query_gaps_cannot_accept_unknown[options3-path_query_failed]
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_revalidates_retained_handle_before_cleanup
+FAILED tests/unit/test_granite_controller_standins.py::test_identity_diagnostic_journal_failure_still_closes_unknown_without_termination
+13 failed, 1 passed, 43 deselected in 0.52s

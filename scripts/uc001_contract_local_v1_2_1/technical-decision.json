@@ -1,0 +1,23 @@
+{
+  "provenance": "Owner decision in chat; bounded technical feasibility only, not qualified linguistic approval.",
+  "owner": {
+    "role": "project owner",
+    "github_account": "andiwandfhnw"
+  },
+  "purpose": "technical_feasibility_only",
+  "technical_execution_permitted": true,
+  "semantic_acceptance_permitted": false,
+  "expected_meanings_approved": false,
+  "allowance_reset": false,
+  "previous_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+  "partial_review_sha256": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+  "attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "unchanged_inputs": {
+    "prompt.txt": "2679c83d54ba0412cbebceb77459b89a6e9b08584780008a3d4b133fdeaa0247",
+    "schema.json": "7db406ea3af7521344f536f4ca2d476b1fa5c0008e2426e28f154ce99217117d",
+    "cases.json": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+    "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7"
+  },
+  "applicability": "The original partial review remains bound to the previous local freeze. Its cases, expectations, prompt, schema and runtime configuration are unchanged; no earlier confirmation is rewritten.",
+  "acceptance_boundary": "Outstanding qualified linguistic approvals remain required before interpreter suitability or multilingual acceptance can be claimed. Unreviewed expectations are provisional checks; all existing stop rules remain binding."
+}

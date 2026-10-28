@@ -1,0 +1,14 @@
+{
+  "version": "uc001-granite-controller-edge-diagnostic-v1",
+  "execution_authorized": false,
+  "purpose": "offline-prepared-scoped-child-edge-diagnostic",
+  "files": {
+    "README.md": "52b6eadf2d86ccb463b98a33212dc2cb23286ac6471b7fffc26ca0b1fd8c97c6",
+    "Run-OwnershipDiagnostic.ps1": "31d02d204904b532993e4019398f444c36156157fa938abdb28b55873e809c40",
+    "controller-config.template.json": "6e3fd2efaa86c333ddd822c9a22fafb4e84795739a28ea8067ee10a192951692",
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "standins.py": "09ac0ce995489c035baa31099db2ccc223c1aabbb99c134329fee626cee8451a",
+    "windows_job.py": "0d36c4f73469016cb6a9e1634de840d1d3b689a8b6cf33b67bd046631fb10383",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891"
+  }
+}

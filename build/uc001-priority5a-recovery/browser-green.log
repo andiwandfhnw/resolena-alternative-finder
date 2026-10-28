@@ -1,0 +1,13 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep lost HTTP response after atomic commit|real SQLite write failure|language correction is a new explicit submission|browser displays exactly --output /workspaces/resolena-alternative-finder/build/uc001-priority5a-recovery/green/browser --reporter=list
+
+
+Running 4 tests using 1 worker
+
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:31:5 › browser displays exactly the committed API comparison and stable database identities (1.4s)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:62:5 › lost HTTP response after atomic commit requires explicit same-submission recovery (2.5s)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:153:5 › real SQLite write failure preserves fields and never presents a completed comparison (737ms)
+  ✓  4 ../tests/e2e/saved-comparison.spec.ts:242:5 › language correction is a new explicit submission and does not fake a missing translation (1.0s)
+
+  4 passed (7.9s)

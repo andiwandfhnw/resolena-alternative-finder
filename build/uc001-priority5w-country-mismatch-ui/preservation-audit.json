@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-23T20:09:36.576418+00:00",
+  "baseline_files": 1752,
+  "unchanged_files": 1750,
+  "changed_files": [
+    "docs/TASKS.md",
+    "tests/e2e/saved-comparison.spec.ts"
+  ],
+  "missing_files": [],
+  "directory_symlinks_preserved": 1,
+  "entire_prior_browser_file_byte_preserved_after_removing_one_new_case": true,
+  "dated_TASKS_history_and_original_whitespace_preserved": true,
+  "no_new_whitespace_in_slice_delta": true,
+  "branch_HEAD_index_and_status_bytes_unchanged": true,
+  "owned_test_ports_closed": {
+    "8011": true,
+    "5175": true
+  },
+  "final_changed_file_sha256": {
+    "docs/TASKS.md": "d741added987deabda7b1aebe94d4a94bc7bbcde48a8631b42c4aacf6a55cab4",
+    "tests/e2e/saved-comparison.spec.ts": "22807074b8ea88e61dadbd23cdebfe00c40da36b8d2df96c863e1ef768fabcfd"
+  }
+}

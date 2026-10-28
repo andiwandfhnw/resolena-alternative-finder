@@ -1,0 +1,47 @@
+--- before/docs/TASKS.md
++++ docs/TASKS.md
+@@ -46,10 +46,40 @@
+ is consumed. Offline exact-byte replay reproduces a domain-contract rejection; cases 2–14
+ were not attempted. No further startup/retry is authorized; Priority 3 remains partial.
+ 
+-Current authorization, 2026-10-25: documentation only — record the owner's Priority 5
+-acceptance in TASKS. Preserve earlier history, checkpoints, receipts and all work.
+-No further Priority 5 implementation/investigation, next priority, phase advancement
+-or Git delivery is authorized. PHASE: 3 / STATUS: in-progress; stop after recording.
++Current authorization, 2026-10-25: one non-inference Priority 3 preparation —
++implement the separate opt-in provisional Granite adapter with mocked offline tests
++and freeze one application-contract assessment package. No model/runtime acquisition,
++build, startup, inference, hardware probes or transport changes. Preserve the closed
++Qwen check and Priority 5 acceptance; normal app.main remains unconfigured.
++PHASE: 3 / STATUS: in-progress. Stop with the frozen package for owner review;
++no further priority or Git delivery is authorized.
++
++### Priority 3 — provisional Granite offline preparation, 2026-10-25
++
++Owner selected IBM Granite 3.3 8B Instruct only as the provisional candidate for
++this non-inference preparation. The separate opt-in native adapter reuses strict
++decoding and exact-span mapping without changing the interpreter port, domain,
++application policy, existing Qwen adapter or normal app.main configuration.
++Mocked TDD covers native requests, raw-output rejection, settings/accounting,
++termination, authenticated loopback transport and no automatic retry.
++
++The [versioned assessment package](../scripts/uc001_granite_contract_v1/README.md)
++freezes prompt/schema/configuration, eleven exposed inputs and review obligations,
++future pinned commands, proposed numerical limits and a hash-bound current-worktree
++handoff. The API/SQLite observation is planned as captured-result replay, with zero
++additional generations. Separate owner authorization, acquired-artifact/template/
++native-runtime verification, desktop prerequisites, trustworthy process/resource
++supervision and competent review remain gates; none is established by mocks.
++
++RED exposed missing adapter/package/gates and specific native-boundary gaps;
++GREEN: **43 focused offline tests passed**, plus **7 targeted existing decoder/
++policy regressions passed**. Schema-source inspection is separate from unexecuted
++native conversion and semantic acceptance. Commands, evidence limits, preservation
++checks and frozen identities: [verification receipt](../build/uc001-granite-contract-v1/verification.json).
++No acquisition, build, startup, inference, hardware probe, transport change,
++held-out access or activation occurred. The closed Qwen result and Priority 5
++acceptance remain unchanged. Priorities 3/4 remain partial; Priority 6 and Phase 4
++remain pending. PHASE: 3 / STATUS: in-progress. Stop for owner review.
+ 
+ Current Priority 5 work-package status: **Owner-accepted for the amended increment-1 scope; evidence limits retained.**
+ 

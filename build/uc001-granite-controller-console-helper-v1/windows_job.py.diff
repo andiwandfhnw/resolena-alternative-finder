@@ -1,0 +1,30 @@
+--- scripts/uc001_granite_controller/windows_job.py (before)
++++ scripts/uc001_granite_controller/windows_job.py
+@@ -137,6 +137,7 @@
+             'WaitForSingleObject': (DWORD,[HANDLE,DWORD]),
+             'GetExitCodeProcess': (BOOL,[HANDLE,c.POINTER(DWORD)]),
+             'QueryFullProcessImageNameW': (BOOL,[HANDLE,DWORD,c.POINTER(c.c_wchar),c.POINTER(DWORD)]),
++            'GetSystemDirectoryW': (DWORD,[c.POINTER(c.c_wchar),DWORD]),
+             'TerminateProcess': (BOOL,[HANDLE,DWORD]),
+             'TerminateJobObject': (BOOL,[HANDLE,DWORD]),
+             'CloseHandle': (BOOL,[HANDLE]),
+@@ -365,6 +366,19 @@
+                      'GetExitCodeProcess query-only observation')
+         return int(code.value)
+ 
++    def system_console_path(self):
++        capacity = 32768
++        buffer = c.create_unicode_buffer(capacity)
++        length = int(self.k.GetSystemDirectoryW(buffer,capacity))
++        self.checked(length,'GetSystemDirectoryW')
++        directory = buffer.value
++        units = len(directory.encode('utf-16-le','surrogatepass')) // 2
++        drive, tail = ntpath.splitdrive(directory)
++        if (not 0 < length < capacity or units != length or not drive
++                or not tail.startswith('\\') or ntpath.normpath(directory) != directory):
++            raise JobError('native Windows system directory unavailable or truncated')
++        return ntpath.join(directory,'conhost.exe')
++
+     def children_of(self, parent_pids, timeout_seconds=1.0):
+         parents = set(parent_pids)
+         if (not parents or any(type(pid) is not int or not 0 < pid <= 0xFFFFFFFF for pid in parents)

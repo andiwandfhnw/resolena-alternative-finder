@@ -1,0 +1,190 @@
+{
+  "scope": "Offline closure of owner-supplied v1.4.0 export only; no model/runtime/transport execution or experiment rerun.",
+  "provenance": "ZIP supplied by owner in repository. Original bytes retained; extracted files are exact copies with Windows ZIP path separators normalized only for extraction paths.",
+  "input": {
+    "path": "build/uc001-contract-local-v1_4_0/v1.4.0-export-daa09499fcd8486f91cc6696279e2633.zip",
+    "bytes": 29056,
+    "sha256": "befeec7d30bf472afb5bce087d56dec154846e66a69ab7c060c7affb01e7c7ee",
+    "entries": 36,
+    "uncompressed_bytes": 65394
+  },
+  "integrity": {
+    "crc": "passed",
+    "paths_and_duplicates": "passed after safe Windows-separator normalization",
+    "file_bytes_and_hashes": "passed",
+    "original_zip_preserved": true,
+    "frozen_preparation": "unchanged source/prompt/schema/cases/dependencies loaded successfully",
+    "exported_exchange_hashes": "7 complete exported exchanges verified"
+  },
+  "attempt": {
+    "identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+    "original_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "previous_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+    "recorded_approval": "Matches the frozen proposal/identities/freeze; owner-provided record, not new authorization by this analysis.",
+    "model_startups_recorded": 1,
+    "generation_attempts_recorded": 1,
+    "generation_case_ids": [
+      1
+    ],
+    "accepted_cases": [],
+    "case_results_saved": [],
+    "cases_2_through_14": "not attempted in supplied ledger/export",
+    "outcome": {
+      "expected_meanings_approved": false,
+      "deadline_failures": [],
+      "cleanup_failures": [],
+      "primary_failure": {
+        "reason": "check_failed",
+        "stage": "worker"
+      },
+      "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+      "execution_purpose": "technical_feasibility_only",
+      "attempt_identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+      "deferred_live_cases": [
+        1,
+        5,
+        10
+      ],
+      "completed": false,
+      "cleanup_confirmed": true,
+      "live_api_real_adapter_verified": false,
+      "semantic_review": "pending",
+      "previous_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8"
+    },
+    "additional_allowance": "consumed; no further startup/retry authorized or proposed",
+    "reservation_utc": "2026-10-18T19:21:01.3848363Z",
+    "startup_utc": "2026-10-18T19:21:01.7882986Z"
+  },
+  "recorded_infrastructure": {
+    "identity_cleanup": "Full server/redirector/interpreter and two helpers match proof and confirmed exits; owned job closed; no cleanup errors.",
+    "settings": {
+      "reported_task_default": -1,
+      "cli_limit": 3072,
+      "request_limit": 3072
+    },
+    "authentication_verified_receipt": true,
+    "resource_snapshot": {
+      "utc": "2026-10-18T19:21:07.5256008Z",
+      "ram_free": 35408097280,
+      "ram_total": 68640653312,
+      "disk_free": 582388723712,
+      "gpu_free": 6320689152,
+      "gpu_total": 17130819584,
+      "owned_gpu": 9309626368,
+      "owned_rss": 8158896128,
+      "artifact_bytes": 21344,
+      "owned_gpu_state": "measured",
+      "owned_rss_state": "measured",
+      "owned_pid": 54080,
+      "owned_started_utc": "2026-10-18T19:21:01.7958083Z",
+      "owned_counter": "pid_54080_luid_0x00000000_0x00012534_phys_0"
+    },
+    "startup_log": "Pinned build, Vulkan0 RX 6800 XT, 37/37 offload, context/batch/cache/thread assertions passed unchanged verifier.",
+    "limit": "Historical owner-export receipts/consistency, not fresh Windows observation or proof of every startup integrity/resource/deadline check. Full resources.jsonl/private logs/preflight hash receipt are not included."
+  },
+  "offline_checks": {
+    "full_replay": {
+      "type": "ValueError",
+      "message": "Windows supervision stopped; no complete feasibility pass",
+      "output_created": false
+    },
+    "case_1_exact_byte_replay": {
+      "type": "ContractViolation",
+      "message": "Meaning items must each belong to one original clause"
+    },
+    "separate_raw_wire_case_state_check": {
+      "type": "ValueError",
+      "message": "Declared meaning state violates the frozen case boundary",
+      "normal_pipeline_stage": "Not reached after shared-domain failure; forensic check only"
+    }
+  },
+  "case_1": {
+    "original": "Repara mi hervidor.",
+    "criteria": [
+      "AC-15",
+      "L-01",
+      "L-03",
+      "LAC-10",
+      "TL-02"
+    ],
+    "wire_schema": "passed",
+    "original_item_and_clause_quotes": "exact original occurrences mapped",
+    "earliest_reproduced_failure": "Meaning items must each belong to one original clause",
+    "cause": "Clause lists item_0 only; item_1 exists but belongs to no clause.",
+    "clause_item_ids": [
+      [
+        "item_0"
+      ]
+    ],
+    "item_ids": [
+      "item_0",
+      "item_1"
+    ],
+    "unreferenced_item_ids": [
+      "item_1"
+    ],
+    "additional_unmodified_packet_findings": [
+      "Action and subject items both contain non-null quantity objects; domain forbids quantity objects on these item kinds. This is later than the reproduced initial failure.",
+      "Spanish unsupported control is declared supported/en and understood with no capability/rephrasing message; conflicts with frozen case 1 and accepted LAC-10. English normalization does not establish original-input English."
+    ],
+    "recognition": {
+      "status": "supported",
+      "language": "en"
+    },
+    "meaning_status": "understood",
+    "message": null,
+    "usage": {
+      "completion_tokens": 401,
+      "prompt_tokens": 919,
+      "total_tokens": 1320,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      }
+    },
+    "prompt_fit": {
+      "tokens": 919,
+      "output_allowance": 3072,
+      "context": 8192
+    },
+    "windows_primary_failure": {
+      "reason": "check_failed",
+      "stage": "worker"
+    },
+    "windows_detailed_stop": "capture-stopped.json/private Python error log absent from export; exact Windows exception text is not asserted.",
+    "pipeline_boundary": "Domain validation fails before check_case_state and before application policy/API/rendering; no full replay, live API or semantic acceptance credit."
+  },
+  "classification": {
+    "technical_feasibility": "failed at first captured response",
+    "infrastructure_path": "recorded real-server startup, ownership and cleanup path exercised; not a suitability acceptance",
+    "semantic_review": "pending",
+    "expected_meanings_approved": false,
+    "DE_FR_IT_EN": "not evaluated by this attempt: cases 2 onward did not run",
+    "live_api_real_adapter_verified": false,
+    "deferred_live_cases": [
+      1,
+      5,
+      10
+    ],
+    "priority3": "partial",
+    "phase": 3,
+    "status": "in-progress"
+  },
+  "missing_evidence": [
+    "Private capture-stopped.json/error details not exported; unchanged exact-byte replay independently identifies the deterministic packet rejection.",
+    "No accepted-case timing receipts, case result files, full resource timeline or new DE/FR/IT/EN responses."
+  ],
+  "next_action": "Review this saved packet against the frozen output contract and unsupported-input policy offline before proposing any change. No automatic repair, tuning or additional model attempt.",
+  "not_performed": [
+    "Inference or experiment retry",
+    "Packet/requirements/prompt/schema/source changes",
+    "Windows native/GPU/transport execution",
+    "Held-out access, language tuning or later priorities",
+    "Regression reruns or Git delivery"
+  ],
+  "preservation": {
+    "protected_files_checked": 25,
+    "changed": [],
+    "input_zip_unchanged": true,
+    "ledgers": "Source/extracted ledger bytes unchanged; no historical reset/reconstruction"
+  }
+}

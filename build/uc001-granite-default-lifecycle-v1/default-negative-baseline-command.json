@@ -1,0 +1,15 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py",
+    "-k",
+    "default_session_durable_exit_reconciliation_never_accepts_invalid_lifecycle or default_session_wait_rejects_unknown_changed_or_unproven_helper or default_session_final_cleanup_proof_remains_mandatory or default_session_deadlines_and_resources_remain_active_during_exit_handling or default_session_reconciled_exit_still_requires_original_accounting_and_interpreter_ledger"
+  ],
+  "exit_code": 0,
+  "classification": "Post-correction intermediate GREEN only; filename is not evidence of a pre-fix baseline",
+  "result": "21 passed, 49 deselected in 0.50s",
+  "timing_note": "Parent controller implementation landed before this invocation; genuine default-path RED remains separately preserved in default-positive-red.log"
+}

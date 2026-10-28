@@ -1,0 +1,112 @@
+{
+  "recorded_date": "2026-10-26",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Record owner native success and perform read-only acquisition/build readiness review.",
+  "owner_report": "owner-success.json",
+  "owner_attempt_consumed": true,
+  "owner_harmless_ownership_helper_blocker": "CLOSED for demonstrated harmless self-test model only",
+  "codex_windows_execution": false,
+  "tests_run": false,
+  "ownership_rerun": false,
+  "source_acquired": false,
+  "configure_build_compiler_glslc_run": false,
+  "gpu_model_inference": false,
+  "resource_fit_established": false,
+  "real_acquisition_build_execution_proposal_ready": false,
+  "immediate_blocker": {
+    "kind": "Actual worker/proxy identity contract mismatch",
+    "observed_failure": false,
+    "source_analysis": true,
+    "details": "Popen launcher identity is compared to proxy interpreter readiness PID and carried into controller listening-ledger binding; cannot represent demonstrated venv split.",
+    "source_lines": {
+      "scripts/uc001_granite_controller/worker.py": [
+        104,
+        121,
+        144,
+        288,
+        294
+      ],
+      "scripts/uc001_granite_controller/controller.py": [
+        369,
+        406,
+        548,
+        568
+      ],
+      "scripts/uc001_granite_acquisition_proxy/proxy.py": [
+        128,
+        412,
+        482
+      ]
+    }
+  },
+  "exactly_one_smallest_preparation": {
+    "recommendation": "Bounded offline worker/proxy/controller launcher-interpreter identity-binding correction preparation.",
+    "authorized": false,
+    "implemented": false,
+    "limits": "Strict PID/birth/native-parent/private-Job readiness/ledger/exit binding; accepted proxy unchanged; no Windows, live network/proxy, ownership rerun, acquisition/configure/build/glslc/GPU/model."
+  },
+  "remaining_execution_inputs": [
+    "Complete owner-reviewed SHA-bound prior-budget receipt with explicit prior integer charge; no guessed zero/reset.",
+    "Separate execution authorization and current approved config/helper hashes/frozen bindings.",
+    "Fresh activated pinned tools/SDK, fixed root/evidence paths and live resource/monitoring preflight."
+  ],
+  "satisfied_scoped_gates": [
+    "Owner-accepted harmless Windows native ownership/helper self-test.",
+    "Accepted acquisition-meter preparation.",
+    "Accepted pinned native model-free source/build procedure.",
+    "Owner-accepted25769803776-byte aggregate Job committed-memory metric, notRSS.",
+    "Owner-reported installed VulkanSDK1.4.357.0 and directSPIRV-HeadersCONFIGtarget.",
+    "Owner-reported Python3.12.11 and synthetic Windows application-dependency path.",
+    "Frozen pins/settings/limits unchanged."
+  ],
+  "read_only_source_sha256": {
+    "scripts/uc001_granite_controller/worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "scripts/uc001_granite_controller/controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d"
+  },
+  "preservation": {
+    "changed_existing_files": [
+      "docs/TASKS.md"
+    ],
+    "unchanged_existing_files": 1372,
+    "missing_files": [],
+    "historical_task_entries_unchanged": true,
+    "priority5_and_later_history_unchanged": true,
+    "source_all_prior_artifacts_unchanged": true,
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index_unchanged": true,
+    "status_unchanged": true,
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:2926: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "checks": [
+    "Relevant source/accepted receipts read only.",
+    "No tests/native/service/network/acquisition/build/model execution.",
+    "Documentation/JSON/local-link consistency and read-only Git preservation."
+  ],
+  "evidence_limits": [
+    "Owner Windows results are supplied fields, not a Codex run or reconstructed desktop export.",
+    "No acquisition/build/resource-fit/runtime/model/semantic readiness inferred from harmless success.",
+    "No completed prior receipt supplied by this evidence; no claim about unseen desktop files.",
+    "Source-inferred PID mismatch was not executed.",
+    "Historical pending/failed entries and verification receipts unchanged."
+  ],
+  "evidence_sha256": {
+    "README.md": "276abba99eddd2efe316b3952bc68e4daf701058b9a5d636c828e9a1deff35bf",
+    "git-diff-check.txt": "a54f4f54057c09ac634fec84ea495f059540975f03ad5f6984ce3cefbab33667",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "owner-success.json": "812df4d42d2c61c9346abd6247a3beef3ca772c83012b08568dcad521b3fab2c",
+    "preservation-before.json": "a85b525d7507cfd5f74cd6e32dee383512c307c3efc0e779ce9b40c1c4b4517a",
+    "preservation-checks.json": "31f23afa1837ec0d4e4a06d95a145037da26000979c11d442d0336ca01520dd5"
+  },
+  "documentation_checks": {
+    "local_links_passed": true,
+    "evidence_hashes_passed": true,
+    "owner_field_consistency_passed": true,
+    "current_scope_phase_consistent": true,
+    "no_native_execution_or_next_preparation_authorized": true,
+    "final_read_only_git_checks_passed": true
+  }
+}

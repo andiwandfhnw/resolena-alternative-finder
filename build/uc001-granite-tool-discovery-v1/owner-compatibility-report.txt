@@ -1,0 +1,39 @@
+The owner executed the prepared Windows compatibility check successfully.
+
+Record the attached output as owner-executed evidence, reviewed by the
+advisor—not as a Codex-executed Windows run.
+
+Observed:
+2026-10-25T17:10:05.928520+00:00
+
+Check SHA-256:
+8a3bf0f118bb467d7e77c0108af1d7635c7210147de47e59e90ba81180777f7f
+
+Results:
+- Python 3.12.11 in the separate Granite environment.
+- Project imports resolve from the transferred frozen worktree.
+- Exactly one in-process API POST.
+- Actual 201 / comparison / saved.
+- Request/options/evidence links: 0/0/0 → 1/2/2.
+- Seeded alternatives/evidence remain 2/2.
+- projection_matches: true.
+- option_snapshots_match: true.
+- client_closed: true.
+- engines_disposed: 1.
+- forbidden_attempts: [].
+- model_started: false.
+- live_assessment_invoked: false.
+- windows_application_compatibility_passed: true.
+
+Saved request:
+c236c561-7fa3-4acb-8ab3-660e186d7817
+
+Owner-retained output directory:
+C:\Users\AndiWand\Downloads\granite-handoff-2026-10-25\build\test-only\granite-windows-compat-v1-dd960796-e5a1-41f4-bb85-c3b09c89ba86
+
+The advisor checked consistency within the uploaded response, identities
+and evidence-link lists, not the desktop SQLite file directly.
+
+Credit only this synthetic Windows application-dependency path.
+Granite suitability, native runtime compatibility and live execution remain
+unverified. Do not repeat Python setup, handoff verification or this check.

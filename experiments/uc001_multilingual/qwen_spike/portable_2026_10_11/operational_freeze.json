@@ -1,0 +1,35 @@
+{
+  "utc": "2026-10-11T15:27:56.177094+00:00",
+  "parent": "calibration_B_2026_10_11",
+  "linked_compatibility_stop": "build/checkpoints/uc001-machine-change-20261011-1427/post_change_closeout.json",
+  "files": {
+    "calibrate.py": "bb576167181137f679251be1877bc2a571c0c228cb1075c62d8000dc1bf50f33",
+    "calibrate_portable.py": "f27b6c391934f38ea726cde9af745dbbfdb2c7a2d1a18f1aa3e876975f8b0138",
+    "cases.json": "41ef10d1603d5412568ea5860dc01fa17405513c9f206a77488768e037fdccfe",
+    "config.json": "d03ce8128e97a989dd37cd4c6fd853855edba1498a586456c2fa2ca48e28d394",
+    "extend.py": "099123b5d705e9fd5f04648c9133f341427c63cc77a00a0122dc4d6ee0665c3a",
+    "freeze.json": "e5060e13e03ecc3db278111b39b29db8d97e78b586e5495ebd402d1636abe655",
+    "harness_checks.json": "2b49fc87dd39328479608970fdc8238f7eb6f7ab92711a4c4b7acc6f6cd2e0c1",
+    "memory_preflight.py": "78e7081c3fcbee8f69be0455d58c5f338b1592ae7a5da7271b8476b5e8264aee",
+    "portable_checks.py": "703d704a0866ae241164049a829e08dbc6e9467d2127199896ce0c78bc6a76ba",
+    "test_checks.py": "ebf7896dfd99c72fe7ffe345b862caae2ab17f39a7c6128fc3f5577cf646ab6a",
+    "test_portable_checks.py": "76a0aaa7217a59ae3ba32e955d966a4a4bccac6b1e4a0a00efe13c86d83cc8bb",
+    "test_preflight_logging.py": "492272fea5dec52273c3182401c7e9e62631229142e643dad5538d18c058c01e"
+  },
+  "unchanged_inputs": [
+    "calibrate.py",
+    "cases.json",
+    "config.json",
+    "freeze.json",
+    "test_checks.py",
+    "memory_preflight.py",
+    "test_preflight_logging.py"
+  ],
+  "only_build_and_operational_changes": true,
+  "one_shot": true,
+  "total_seconds": 2700,
+  "build_seconds": 1800,
+  "calibration_seconds": 900,
+  "heldout_model_exposure": false,
+  "design_acceptance": "pending"
+}

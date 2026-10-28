@@ -1,0 +1,32 @@
+{
+  "utc": "2026-10-11T15:42:44.657087+00:00",
+  "server_sha256": "f23f15623f4e28dbf362f159744cbf6141e023cd5971fc29b2f8336ba81e0c8a",
+  "compiler_flags": {
+    "passed": true,
+    "effective_architecture_switches": [
+      "-march=x86-64",
+      "-mavx",
+      "-mavx2",
+      "-mbmi2",
+      "-mf16c",
+      "-mfma",
+      "-msse4.2",
+      "-mtune=generic"
+    ],
+    "required_host_features": [
+      "avx",
+      "avx2",
+      "bmi2",
+      "f16c",
+      "fma",
+      "sse4_2"
+    ],
+    "compile_commands_checked": 223,
+    "native_flags_absent": true
+  },
+  "model_sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a",
+  "version_exit_code": 0,
+  "native_cpu_specific_flags_absent": true,
+  "runtime_source_pin": "d81235049384534c167caea52b85a694f6103d14",
+  "metadata_note": "Version output may show enclosing repository metadata; actual runtime provenance is pinned unchanged source plus build manifest"
+}

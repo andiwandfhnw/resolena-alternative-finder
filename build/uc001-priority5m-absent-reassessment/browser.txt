@@ -1,0 +1,24 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep browser displays exactly|unknown absent persistence explicitly recovers with current reassessment|delivered unknown persistence error --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5m-absent-reassessment/browser --reporter=list,json
+
+[WebServer] INFO:     Started server process [20051]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:20085) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:20139) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (2.1s)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:70:5 › unknown absent persistence explicitly recovers with current reassessment (1.0s)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:771:5 › delivered unknown persistence error requires explicit same-submission recovery (1.1s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [20051]
+
+  3 passed (18.6s)

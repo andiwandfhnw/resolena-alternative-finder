@@ -1,0 +1,425 @@
+FFFFFFFFFFFFFFFFFFFFFFF                                                  [100%]
+=================================== FAILURES ===================================
+_ test_identity_query_open_uses_only_limited_query_rights_without_inheritance __
+
+    def test_identity_query_open_uses_only_limited_query_rights_without_inheritance():
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        calls=[]
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(OpenProcess=lambda access,inherit,pid:calls.append((access,inherit,pid)) or 77)
+>       assert api.open_query_process(38564)==77
+               ^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:657: AttributeError
+_____ test_identity_query_open_rejects_invalid_pid_without_native_call[0] ______
+
+pid = 0
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_identity_query_open_rejects_invalid_pid_without_native_call(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_query_process(pid)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:666: AttributeError
+_____ test_identity_query_open_rejects_invalid_pid_without_native_call[-1] _____
+
+pid = -1
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_identity_query_open_rejects_invalid_pid_without_native_call(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_query_process(pid)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:666: AttributeError
+____ test_identity_query_open_rejects_invalid_pid_without_native_call[True] ____
+
+pid = True
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_identity_query_open_rejects_invalid_pid_without_native_call(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_query_process(pid)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:666: AttributeError
+_ test_identity_query_open_rejects_invalid_pid_without_native_call[4294967296] _
+
+pid = 4294967296
+
+    @pytest.mark.parametrize('pid',[0,-1,True,2**32])
+    def test_identity_query_open_rejects_invalid_pid_without_native_call(pid):
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        with pytest.raises(JobError):
+>           api.open_query_process(pid)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:666: AttributeError
+__________ test_identity_query_open_preserves_native_failure_code[5] ___________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b482510>
+error_code = 5
+
+    @pytest.mark.parametrize('error_code',[5,87])
+    def test_identity_query_open_preserves_native_failure_code(monkeypatch,error_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(OpenProcess=lambda *_:0)
+        error=OSError('synthetic query-only open failure');error.winerror=error_code
+        monkeypatch.setattr(module.c,'get_last_error',lambda:error_code,raising=False)
+        monkeypatch.setattr(module.c,'WinError',lambda value:error if value==error_code else None,raising=False)
+        with pytest.raises(OSError) as caught:
+>           api.open_query_process(38564)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:679: AttributeError
+__________ test_identity_query_open_preserves_native_failure_code[87] __________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b48ccb0>
+error_code = 87
+
+    @pytest.mark.parametrize('error_code',[5,87])
+    def test_identity_query_open_preserves_native_failure_code(monkeypatch,error_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(OpenProcess=lambda *_:0)
+        error=OSError('synthetic query-only open failure');error.winerror=error_code
+        monkeypatch.setattr(module.c,'get_last_error',lambda:error_code,raising=False)
+        monkeypatch.setattr(module.c,'WinError',lambda value:error if value==error_code else None,raising=False)
+        with pytest.raises(OSError) as caught:
+>           api.open_query_process(38564)
+            ^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'open_query_process'
+
+tests/unit/test_granite_windows_job.py:679: AttributeError
+__ test_identity_query_image_path_is_full_unicode_win32_path_with_fixed_bound __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d92e0>
+
+    def test_identity_query_image_path_is_full_unicode_win32_path_with_fixed_bound(monkeypatch):
+        path=r'C:\Windows\System32\conhost.exe'
+        api,calls=image_query_api(monkeypatch,path=path)
+>       assert api.image_path('query-only')==path
+               ^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:703: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes0] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4daea0>
+changes = {'success': 0}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes1] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4db5c0>
+changes = {'length': 0}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes2] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d8320>
+changes = {'length': 32768}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes3] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4da6c0>
+changes = {'length': 32769}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes4] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d93d0>
+changes = {'length': 2}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes5] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d43b0>
+changes = {'path': 'conhost.exe'}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes6] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d5460>
+changes = {'path': '\\Windows\\conhost.exe'}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes7] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4d6ab0>
+changes = {'path': 'C:conhost.exe'}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+___ test_identity_query_image_failure_or_malformed_path_is_unknown[changes8] ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48b4da480>
+changes = {'path': 'C:/Windows/'}
+
+    @pytest.mark.parametrize('changes',[
+        {'success':0},{'length':0},{'length':32768},{'length':32769},
+        {'length':2},{'path':'conhost.exe'},{'path':r'\Windows\conhost.exe'},
+        {'path':r'C:conhost.exe'},{'path':'C:/Windows/'},
+    ])
+    def test_identity_query_image_failure_or_malformed_path_is_unknown(monkeypatch,changes):
+        api,calls=image_query_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.image_path('query-only')
+            ^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'image_path'
+
+tests/unit/test_granite_windows_job.py:715: AttributeError
+_ test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[0] __
+
+raw_code = 0
+
+    @pytest.mark.parametrize('raw_code',[0,259,57345,0xFFFFFFFF])
+    def test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status(raw_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        def get_code(handle,pointer):
+            assert handle=='query-only'
+            ctypes.cast(pointer,ctypes.POINTER(module.DWORD))[0]=raw_code
+            return 1
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(GetExitCodeProcess=get_code)
+>       assert api.query_exit_code('query-only')==raw_code
+               ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'query_exit_code'
+
+tests/unit/test_granite_windows_job.py:729: AttributeError
+_ test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[259] _
+
+raw_code = 259
+
+    @pytest.mark.parametrize('raw_code',[0,259,57345,0xFFFFFFFF])
+    def test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status(raw_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        def get_code(handle,pointer):
+            assert handle=='query-only'
+            ctypes.cast(pointer,ctypes.POINTER(module.DWORD))[0]=raw_code
+            return 1
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(GetExitCodeProcess=get_code)
+>       assert api.query_exit_code('query-only')==raw_code
+               ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'query_exit_code'
+
+tests/unit/test_granite_windows_job.py:729: AttributeError
+_ test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[57345] _
+
+raw_code = 57345
+
+    @pytest.mark.parametrize('raw_code',[0,259,57345,0xFFFFFFFF])
+    def test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status(raw_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        def get_code(handle,pointer):
+            assert handle=='query-only'
+            ctypes.cast(pointer,ctypes.POINTER(module.DWORD))[0]=raw_code
+            return 1
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(GetExitCodeProcess=get_code)
+>       assert api.query_exit_code('query-only')==raw_code
+               ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'query_exit_code'
+
+tests/unit/test_granite_windows_job.py:729: AttributeError
+_ test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[4294967295] _
+
+raw_code = 4294967295
+
+    @pytest.mark.parametrize('raw_code',[0,259,57345,0xFFFFFFFF])
+    def test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status(raw_code):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        def get_code(handle,pointer):
+            assert handle=='query-only'
+            ctypes.cast(pointer,ctypes.POINTER(module.DWORD))[0]=raw_code
+            return 1
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(GetExitCodeProcess=get_code)
+>       assert api.query_exit_code('query-only')==raw_code
+               ^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'query_exit_code'
+
+tests/unit/test_granite_windows_job.py:729: AttributeError
+____ test_identity_query_exit_code_failure_cannot_be_a_live_or_zero_status _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48afbfcb0>
+
+    def test_identity_query_exit_code_failure_cannot_be_a_live_or_zero_status(monkeypatch):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        api=object.__new__(module.NativeApi)
+        api.k=SimpleNamespace(GetExitCodeProcess=lambda *_:0)
+        monkeypatch.setattr(module.c,'get_last_error',lambda:5,raising=False)
+        monkeypatch.setattr(module.c,'WinError',lambda code:OSError(code,'synthetic status query failure'),raising=False)
+        with pytest.raises(JobError):
+>           api.query_exit_code('query-only')
+            ^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'query_exit_code'
+
+tests/unit/test_granite_windows_job.py:740: AttributeError
+_____ test_identity_query_image_binding_has_pointer_safe_unicode_signature _____
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x78a48afbee70>
+
+    def test_identity_query_image_binding_has_pointer_safe_unicode_signature(monkeypatch):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        class Function:
+            argtypes=None
+            restype=None
+        class Library:
+            def __init__(self):self.functions={}
+            def __getattr__(self,name):return self.functions.setdefault(name,Function())
+        kernel,ntdll=Library(),Library()
+        monkeypatch.setattr(module,'os',SimpleNamespace(name='nt'))
+        monkeypatch.setattr(module.c,'WinDLL',lambda name,**kwargs:ntdll if name=='ntdll' else kernel,raising=False)
+        module.NativeApi()
+>       function=kernel.functions['QueryFullProcessImageNameW']
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'QueryFullProcessImageNameW'
+
+tests/unit/test_granite_windows_job.py:756: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_uses_only_limited_query_rights_without_inheritance
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_rejects_invalid_pid_without_native_call[0]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_rejects_invalid_pid_without_native_call[-1]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_rejects_invalid_pid_without_native_call[True]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_rejects_invalid_pid_without_native_call[4294967296]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_preserves_native_failure_code[5]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_open_preserves_native_failure_code[87]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_path_is_full_unicode_win32_path_with_fixed_bound
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes0]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes1]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes2]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes3]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes4]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes5]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes6]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes7]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_failure_or_malformed_path_is_unknown[changes8]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[0]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[259]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[57345]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_exit_code_uses_no_wait_rights_and_retains_raw_status[4294967295]
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_exit_code_failure_cannot_be_a_live_or_zero_status
+FAILED tests/unit/test_granite_windows_job.py::test_identity_query_image_binding_has_pointer_safe_unicode_signature
+23 failed, 55 deselected in 1.11s

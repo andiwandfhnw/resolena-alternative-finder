@@ -1,0 +1,84 @@
+..FFFF...                                                                [100%]
+=================================== FAILURES ===================================
+_ test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10A8-CH] _
+
+country = 'CH', postcode = '10A8'
+
+    @pytest.mark.parametrize("country", ["CH", "LI"])
+    @pytest.mark.parametrize("postcode", ["10A8", "10080"])
+    def test_declared_postcode_format_rejects_malformed_retained_CH_LI_input(country, postcode):
+        submitted = postcode_submission(country, postcode)
+    
+        with pytest.raises(InputOutcome) as caught:
+            effective_search_location(submitted)
+    
+>       assert caught.value.outcome == "invalid_input"
+E       AssertionError: assert 'clarification_required' == 'invalid_input'
+E         
+E         - invalid_input
+E         + clarification_required
+
+tests/unit/test_locality_reference.py:153: AssertionError
+_ test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10A8-LI] _
+
+country = 'LI', postcode = '10A8'
+
+    @pytest.mark.parametrize("country", ["CH", "LI"])
+    @pytest.mark.parametrize("postcode", ["10A8", "10080"])
+    def test_declared_postcode_format_rejects_malformed_retained_CH_LI_input(country, postcode):
+        submitted = postcode_submission(country, postcode)
+    
+        with pytest.raises(InputOutcome) as caught:
+            effective_search_location(submitted)
+    
+>       assert caught.value.outcome == "invalid_input"
+E       AssertionError: assert 'clarification_required' == 'invalid_input'
+E         
+E         - invalid_input
+E         + clarification_required
+
+tests/unit/test_locality_reference.py:153: AssertionError
+_ test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10080-CH] _
+
+country = 'CH', postcode = '10080'
+
+    @pytest.mark.parametrize("country", ["CH", "LI"])
+    @pytest.mark.parametrize("postcode", ["10A8", "10080"])
+    def test_declared_postcode_format_rejects_malformed_retained_CH_LI_input(country, postcode):
+        submitted = postcode_submission(country, postcode)
+    
+        with pytest.raises(InputOutcome) as caught:
+            effective_search_location(submitted)
+    
+>       assert caught.value.outcome == "invalid_input"
+E       AssertionError: assert 'clarification_required' == 'invalid_input'
+E         
+E         - invalid_input
+E         + clarification_required
+
+tests/unit/test_locality_reference.py:153: AssertionError
+_ test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10080-LI] _
+
+country = 'LI', postcode = '10080'
+
+    @pytest.mark.parametrize("country", ["CH", "LI"])
+    @pytest.mark.parametrize("postcode", ["10A8", "10080"])
+    def test_declared_postcode_format_rejects_malformed_retained_CH_LI_input(country, postcode):
+        submitted = postcode_submission(country, postcode)
+    
+        with pytest.raises(InputOutcome) as caught:
+            effective_search_location(submitted)
+    
+>       assert caught.value.outcome == "invalid_input"
+E       AssertionError: assert 'clarification_required' == 'invalid_input'
+E         
+E         - invalid_input
+E         + clarification_required
+
+tests/unit/test_locality_reference.py:153: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_locality_reference.py::test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10A8-CH]
+FAILED tests/unit/test_locality_reference.py::test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10A8-LI]
+FAILED tests/unit/test_locality_reference.py::test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10080-CH]
+FAILED tests/unit/test_locality_reference.py::test_declared_postcode_format_rejects_malformed_retained_CH_LI_input[10080-LI]
+4 failed, 5 passed, 29 deselected in 0.13s

@@ -1,0 +1,123 @@
+{
+  "version": "uc001-preflight-capacity-v1.2.0",
+  "date": "2026-10-16",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Bounded DXGI capacity-source correction; separate preflight-only package; offline verification only",
+  "owner_diagnostic": {
+    "verbatim_excerpt": "build/uc001-preflight-capacity-v1_2_0/owner-supplied-diagnostic.txt",
+    "sha256": "5479ab30566a2afd06cc83bb60f04c0571edd19dd402dbb2e90c0c816e0c475b",
+    "dxgi_bytes": 17130819584,
+    "registry_bytes": 17163091968,
+    "dxgi_minus_registry_bytes": -32272384,
+    "identity": "Owner reports matching RX 6800 XT CIM/PCI/DXGI identity; not re-measured here",
+    "provenance_limit": "Only the supplied excerpt is preserved verbatim; complete diagnostic JSON was not provided in this turn",
+    "cause": "unknown; no reserved-memory or other explanation inferred"
+  },
+  "implementation": [
+    "DedicatedBytes and GPU resource sampling use only identified hardware DXGI_ADAPTER_DESC1.DedicatedVideoMemory",
+    "Remove registry equality gate; explicit CapacitySource identifies DXGI; no tolerance, rounding, min/max, nominal value or fallback",
+    "RegistryCapacity retains PNP/driver paths, availability/error status, raw type/value, decoded byte string and exact signed BigInteger DXGI-minus-registry difference",
+    "Missing/invalid/unreadable registry data is diagnostic only; invalid/missing/nonpositive/unsupported-range DXGI capacity still stops",
+    "Retain unique descriptor/all PCI fields/fresh unique LUID/exact WDDM phys_0 matching, valid zero usage, invalid measurement and insufficient-resource stops",
+    "Versioned entry point and complete nine-file fresh extraction instructions; no live launcher/runner bundled"
+  ],
+  "tdd": {
+    "red_command": ".venv/bin/python -m pytest -q tests/unit/test_preflight_adapter_association.py -k 'test_dxgi_capacity_preflight_offline and (capacity_dxgi_lower or capacity_dxgi_higher or missing_registry)'",
+    "red_result": "3 failed, 99 deselected: both unequal-reading cases reached original equality rejection; missing registry reached original blocking registry-capacity guard",
+    "green_command": ".venv/bin/python -m pytest -q tests/unit/test_preflight_adapter_association.py -k test_dxgi_capacity_preflight_offline",
+    "green_result": "56 passed, 46 deselected in 30.53s"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "114 passed in 55.33s",
+      "new": 58,
+      "earlier_association_package": 44,
+      "existing_run_control": 12
+    },
+    {
+      "check": "Source-only PowerShell AST comparison to v1.1.0",
+      "result": "Read-AssociationDxgi, Get-AssociationInteger, Get-AssociatedUsage, Get-ContractResources and Assert-ContractResources are source-identical"
+    },
+    {
+      "check": "Prior source/bundle/diagnostic/failure evidence preservation",
+      "result": "All 46 protected-file hashes unchanged",
+      "baseline": "build/uc001-preflight-capacity-v1_2_0/baseline.json"
+    },
+    {
+      "check": "config.json/runtime-files.json/native reader",
+      "result": "Byte-identical to v1.1.0; all resource thresholds, pins and budgets retained"
+    },
+    {
+      "check": "New package freeze/member hashes/source bytes/ZIP CRC and membership",
+      "result": "Passed; nine flat files, no launcher/runner"
+    },
+    {
+      "check": "New source whitespace and two new documentation links",
+      "result": "Passed"
+    },
+    {
+      "command": "git diff --check",
+      "result": "Only pre-existing historical TASKS.md backlog trailing whitespace; preserved"
+    }
+  ],
+  "offline_boundary": "Existing Codespace PowerShell uses synthetic CIM/registry/DXGI/WDDM metadata, including owner-reported numbers as fixture values; C# compiles/layout tests and pure Describe mapping run without Reader.Read/native enumeration. No actual Windows queries or live resource measurements.",
+  "package": {
+    "path": "build/uc001-preflight-capacity-v1_2_0/windows-preflight-capacity-v1_2_0.zip",
+    "bytes": 18804,
+    "sha256": "f60b3a00c687a469ca969ead966611219dab484fd03c25853e8ccf44034937d8",
+    "freeze": "scripts/uc001_preflight_capacity_v1_2_0/freeze.json",
+    "freeze_sha256": "b083c3821590e85c56729d8238e18f0ed500dfcce36fcf175054c3367601217e",
+    "hashes": "build/uc001-preflight-capacity-v1_2_0/SHA256SUMS.txt",
+    "version_record": "scripts/uc001_preflight_capacity_v1_2_0/VERSION.json",
+    "instructions": "scripts/uc001_preflight_capacity_v1_2_0/README.md"
+  },
+  "changed_source_tests_documentation": [
+    "scripts/uc001_preflight_capacity_v1_2_0/AdapterIdentity.cs",
+    "scripts/uc001_preflight_capacity_v1_2_0/Common.ps1",
+    "scripts/uc001_preflight_capacity_v1_2_0/Preflight-Adapter.ps1",
+    "scripts/uc001_preflight_capacity_v1_2_0/README.md",
+    "scripts/uc001_preflight_capacity_v1_2_0/Test-Offline.ps1",
+    "scripts/uc001_preflight_capacity_v1_2_0/VERSION.json",
+    "scripts/uc001_preflight_capacity_v1_2_0/config.json",
+    "scripts/uc001_preflight_capacity_v1_2_0/freeze.json",
+    "scripts/uc001_preflight_capacity_v1_2_0/runtime-files.json",
+    "tests/unit/test_preflight_adapter_association.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md"
+  ],
+  "new_artifacts": [
+    "build/uc001-preflight-capacity-v1_2_0/baseline.json",
+    "build/uc001-preflight-capacity-v1_2_0/owner-supplied-diagnostic.txt",
+    "build/uc001-preflight-capacity-v1_2_0/SHA256SUMS.txt",
+    "build/uc001-preflight-capacity-v1_2_0/verification.json",
+    "build/uc001-preflight-capacity-v1_2_0/windows-preflight-capacity-v1_2_0.zip"
+  ],
+  "windows_execution": {
+    "status": "pending; not performed here",
+    "location": "Desktop Windows, distinct from Codespace hardware/localhost",
+    "download_name": "windows-preflight-capacity-v1_2_0.zip",
+    "fresh_extract_directory": "C:\\ResolenaExperiments\\uc001-preflight-capacity-v1_2_0",
+    "command": "& \"$env:WINDIR\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -File C:\\ResolenaExperiments\\uc001-preflight-capacity-v1_2_0\\Preflight-Adapter.ps1",
+    "expected_boundary": "Identity and one resource snapshot only; 14 GiB free GPU start threshold and every other guard unchanged. No fresh headroom inferred from earlier snapshots."
+  },
+  "native_effects": "Unchanged Add-Type C# reader may create temporary source/assembly/compiler files under Windows TEMP. CreateDXGIFactory1 (dxgi.dll), EnumAdapters1, GetDesc1 and COM release; no device/model creation or automatic compiler installation. System.Numerics assembly loads for exact diagnostic differences; temporary-file cleanup on desktop remains unverified.",
+  "remaining_limits": [
+    "Actual Windows PowerShell 5.1/native association, measurement and resource outcome pending",
+    "Cause of differing capacity reports remains unknown",
+    "Preflight success would not prove runtime suitability or semantic language capability",
+    "No backend/browser reruns because application code is unchanged; relevant association/run-control regressions retained"
+  ],
+  "not_performed": [
+    "Application changes",
+    "Model/runtime asset hashing",
+    "Installation/download",
+    "Transport/tunnel",
+    "Inference/model/detector execution",
+    "Held-out access",
+    "Later priorities",
+    "Staging/commit/push/branch switch/deployment"
+  ]
+}

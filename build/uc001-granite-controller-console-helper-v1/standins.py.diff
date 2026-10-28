@@ -1,0 +1,334 @@
+--- scripts/uc001_granite_controller/standins.py (before)
++++ scripts/uc001_granite_controller/standins.py
+@@ -4,6 +4,7 @@
+ import hashlib
+ import importlib.util
+ import json
++import ntpath
+ import os
+ from pathlib import Path
+ import subprocess
+@@ -138,13 +139,15 @@
+                creation_time_100ns=None, native_parent_pid=None, in_private_job=None,
+                image_path=None, image_path_status='unavailable', raw_exit_code=None,
+                exit_state='unknown', query_errors=[])
++    row['expected_in_private_job'] = ref.get('expected_inside', False)
++    row['previously_accepted_console_helper'] = ref.get('accepted_helper', False)
+     check_deadline()
+     try:
+         _stable(api, ref['parent'])
+     except Exception as error:
+         row.update(status='verified_parent_identity_unavailable', error_type=type(error).__name__)
+         journal.record('unknown_child_identity', **row)
+-        return
++        return row
+     if not ref.get('open_attempted'):
+         ref['open_attempted'] = True
+         try:
+@@ -157,7 +160,7 @@
+         row['status'] = ('not_found_or_invalid_pid_before_binding'
+                          if row['open_error_winerror'] == 87 else 'process_open_failed')
+         journal.record('unknown_child_identity', **row)
+-        return
++        return row
+     handle = ref['handle']
+     try:
+         check_deadline()
+@@ -194,7 +197,7 @@
+                 row['status'] = 'parent_mismatch' if row['native_parent_pid'] is not None else 'parent_query_failed'
+             elif type(row['in_private_job']) is not bool:
+                 row['status'] = 'job_membership_unknown'
+-            elif row['in_private_job']:
++            elif row['in_private_job'] is not row['expected_in_private_job']:
+                 row['status'] = 'job_membership_mismatch'
+             elif row['image_path_status'] != 'observed':
+                 row['status'] = 'path_query_failed'
+@@ -205,6 +208,71 @@
+     except Exception as error:
+         row.update(status='identity_query_failed', error_type=type(error).__name__)
+     journal.record('unknown_child_identity', **row)
++    return row
++
++
++def _console_proof(api, ref, row):
++    expected = api.system_console_path()
++    return (row['status'] == 'identity_bound_unknown' and row['identity_bound'] is True
++            and row['query_errors'] == [] and ref['parent']['kind'] == 'launcher'
++            and row['native_parent_pid'] == ref['parent']['pid']
++            and row['creation_time_100ns'] >= ref['parent']['creation_time_100ns']
++            and row['in_private_job'] is ref.get('expected_inside', False)
++            and row['image_path_status'] == 'observed'
++            and ntpath.normcase(row['image_path']) == ntpath.normcase(expected))
++
++
++def _check_console_shape(api, private_job, refs, base_edges, inside, helpers, unknown,
++                         journal, clock, check_deadline, failure_text, observation_timeout):
++    check_deadline()
++    edges = _observe_scoped_edges(api, refs, observation_timeout, journal, clock)
++    parents = {ref['pid']: ref for ref in refs if ref.get('verified')}
++    extras = edges - base_edges
++    observations = {}
++    for child, parent in sorted(extras):
++        check_deadline()
++        ref = unknown.setdefault(child, dict(pid=child, parent=parents[parent]))
++        if ref.get('accepted_helper') and (ref['parent_pid'] != parent
++                or ref['expected_inside'] is not inside):
++            raise StandinFailure(failure_text)
++        ref['parent'], ref['expected_inside'] = parents[parent], inside
++        observations[(child, parent)] = _query_unknown_identity(
++            api, private_job, ref, journal, check_deadline, 'scoped_observation')
++    launchers = {pid: ref for pid, ref in parents.items() if ref['kind'] == 'launcher'}
++    if (not base_edges <= edges or any(parent not in launchers for child, parent in extras)
++            or any(sum(parent == pid for child, parent in extras) > 1 for pid in launchers)):
++        raise StandinFailure(failure_text)
++    candidates = []
++    for pid in launchers:
++        children = [child for child, parent in extras if parent == pid]
++        previous = helpers.get(pid)
++        if previous is not None and children != [previous['pid']]:
++            raise StandinFailure(failure_text)
++        if children:
++            child = children[0]
++            ref, row = unknown[child], observations[(child, pid)]
++            try:
++                valid = _console_proof(api, ref, row)
++            except Exception:
++                valid = False
++            if not valid:
++                raise StandinFailure(failure_text)
++            if previous is not None and previous['creation_time_100ns'] != row['creation_time_100ns']:
++                raise StandinFailure(failure_text)
++            candidates.append(ref)
++    for ref in candidates:
++        if not ref.get('accepted_helper'):
++            ref.update(role=ref['parent']['role'], kind='console_helper',
++                       creation_time_100ns=ref['bound_birth'], parent_pid=ref['parent']['pid'],
++                       accepted_helper=True, verified=True)
++            helpers[ref['parent']['pid']] = ref
++            journal.record('console_helper_accepted', identity=_public_identity(ref),
++                           expected_in_private_job=inside, role_accepted=True,
++                           expected_system_path=api.system_console_path())
++        else:
++            journal.record('console_helper_revalidated', identity=_public_identity(ref),
++                           phase='scoped_observation', verified=True)
++    return edges
+ 
+ 
+ def run_ownership_selftest(output, python_exe=sys.executable, *, job_factory=None,
+@@ -226,6 +294,7 @@
+     outside = []
+     owned = []
+     unknown = {}
++    helpers = {}
+     outside_shape_verified = False
+     expired, watchdog_stop, terminated = threading.Event(), threading.Event(), threading.Event()
+     terminate_lock = threading.Lock()
+@@ -237,6 +306,7 @@
+                   suspended_assignment_order_verified=False, owned_identities=[],
+                   unrelated_identities=[], unrelated_exits=[], unrelated_survived=False,
+                   unrelated_cleanup_verified=False,
++                  console_helpers=[], console_helper_exits=[], console_helper_cleanup_verified=False,
+                   cleanup=dict(verified=False, active_processes=None, owned_exits=[]),
+                   failure_reason=None, cleanup_errors=[], resource_fit_established=False,
+                   model_started=False, gpu_probe=False, acquisition_or_build=False,
+@@ -280,18 +350,67 @@
+         outside_shape_verified = False
+         check_deadline()
+         launcher, interpreter = outside
+-        edges = _observe_scoped_edges(job.api, outside, min(1.0, deadline-clock()), journal, clock)
+-        parents = {ref['pid']: ref for ref in outside if ref.get('verified')}
+-        for child, parent in sorted(edges - {(interpreter['pid'], launcher['pid'])}):
+-            check_deadline()
+-            ref = unknown.setdefault(child, dict(pid=child, parent=parents[parent]))
+-            ref['parent'] = parents[parent]
+-            _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline, 'scoped_observation')
+-        if edges != {(interpreter['pid'], launcher['pid'])}:
+-            raise StandinFailure('unknown additional unrelated process')
++        _check_console_shape(job.api, job.handle, outside, {(interpreter['pid'], launcher['pid'])},
++            False, helpers, unknown, journal, clock, check_deadline,
++            'unknown additional unrelated process', min(1.0, deadline-clock()))
++        result['console_helpers'] = [_public_identity(ref) for ref in helpers.values()]
+         for ref in outside:
+             _stable(job.api, ref)
+         outside_shape_verified = True
++
++    def revalidate_query(ref, phase):
++        row = _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline, phase)
++        if ref.get('accepted_helper'):
++            try:
++                valid = _console_proof(job.api, ref, row)
++            except Exception:
++                valid = False
++            journal.record('console_helper_revalidated', identity=_public_identity(ref),
++                           phase=phase, verified=valid)
++            if not valid:
++                ref['revalidation_failed'] = True
++                raise StandinFailure('accepted console helper revalidation failed')
++
++    def helper_exits():
++        job_exits = {(row['pid'], row['creation_time_100ns']): row.get('exit_code')
++                     for row in result['cleanup'].get('owned_exits', [])}
++        while True:
++            observations, pending = [], False
++            for ref in helpers.values():
++                row = dict(_public_identity(ref), identity_verified=False, exit_code=None,
++                           raw_exit_code=None, cleanup_verified=False, direct_termination_requested=False,
++                           private_job_cleanup_scope=ref['expected_inside'], exit_proof=None,
++                           query_handle_closed=False)
++                try:
++                    _stable(job.api, ref)
++                    code = job.api.query_exit_code(ref['handle'])
++                    _stable(job.api, ref)
++                    row['identity_verified'], row['raw_exit_code'] = True, code
++                    if type(code) is int and 0 <= code <= 0xFFFFFFFF:
++                        if ref['expected_inside']:
++                            proven = job_exits.get((ref['pid'], ref['creation_time_100ns']))
++                            exited = type(proven) is int and proven == code
++                        else:
++                            exited = code != 259
++                        if exited:
++                            row['exit_code'] = code
++                            row['cleanup_verified'] = not ref.get('revalidation_failed', False)
++                            row['exit_proof'] = ('private_job_wait_and_query' if ref['expected_inside']
++                                                 else 'retained_query_non259')
++                        elif not ref['expected_inside'] and code == 259:
++                            pending = True
++                except Exception as error:
++                    row['error_type'] = type(error).__name__
++                observations.append(row)
++            result['console_helper_exits'] = observations
++            if not pending or clock() >= deadline:
++                break
++            sleep(min(0.01, max(0, deadline-clock())))
++        result['console_helper_cleanup_verified'] = all(row['cleanup_verified'] for row in observations)
++        record('console_helper_cleanup', exits=observations,
++               verified=result['console_helper_cleanup_verified'])
++        if not result['console_helper_cleanup_verified']:
++            failure('console helper identity-bound cleanup unverified')
+ 
+     def watchdog_main():
+         if not watchdog_stop.wait(max(0, deadline-clock())):
+@@ -366,7 +485,7 @@
+             journal.record('owned_observation', snapshot=snapshot)
+             members = {(row['pid'],row['creation_time_100ns']) for row in snapshot['owned']}
+             observed_members |= members
+-            if snapshot.get('total_processes', 0) > 6 or len(observed_members) > 6:
++            if snapshot.get('total_processes', 0) > 9 or len(observed_members) > 9:
+                 raise StandinFailure('unknown additional owned process')
+             if all(path.is_file() for path in files):
+                 parent = os.getpid()
+@@ -391,14 +510,23 @@
+                     _verify(job.api, job, ref, True, journal)
+                     owned.append(ref)
+                     parent = ref['pid']
++                base_edges = {(owned[i+1]['pid'], owned[i]['pid']) for i in range(5)}
++                _check_console_shape(job.api, job.handle, owned, base_edges,
++                    True, helpers, unknown, journal, clock, check_deadline,
++                    'unknown additional owned process', min(1.0, deadline-clock()))
++                owned_helpers = [ref for ref in helpers.values() if ref['expected_inside']]
++                for ref in owned_helpers:
++                    job.validate_pid(ref['pid'], ref['creation_time_100ns'])
++                result['console_helpers'] = [_public_identity(ref) for ref in helpers.values()]
+                 expected = {(ref['pid'],ref['creation_time_100ns']) for ref in owned}
++                expected |= {(ref['pid'],ref['creation_time_100ns']) for ref in owned_helpers}
+                 snapshot = job.snapshot()
+                 journal.record('owned_observation_after_identity_verification', snapshot=snapshot)
+                 observed_members |= {(row['pid'],row['creation_time_100ns']) for row in snapshot['owned']}
+                 live = {(row['pid'],row['creation_time_100ns']) for row in snapshot['owned']
+                         if row['in_job'] and row['exit_code'] is None}
+-                if (len(expected) != 6 or live != expected or observed_members != expected
+-                        or snapshot.get('active_processes') != 6 or snapshot.get('total_processes') != 6):
++                if (len(expected) != 6 + len(owned_helpers) or live != expected or observed_members != expected
++                        or snapshot.get('active_processes') != len(expected) or snapshot.get('total_processes') != len(expected)):
+                     raise StandinFailure('owned launcher/interpreter tree is incomplete or additional')
+                 outside_shape()
+                 result['owned_identities'] = [_public_identity(ref) for ref in owned]
+@@ -409,11 +537,11 @@
+         failure('controller_interruption' if isinstance(error, KeyboardInterrupt)
+                 else type(error).__name__ + ': ' + str(error))
+     finally:
++        result['console_helpers'] = [_public_identity(ref) for ref in helpers.values()]
+         for ref in unknown.values():
+             if ref.get('handle') is not None:
+                 try:
+-                    _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline,
+-                                            'before_private_job_cleanup')
++                    revalidate_query(ref, 'before_private_job_cleanup')
+                 except BaseException as error:
+                     failure('unknown identity diagnostic revalidation failed')
+                     result['cleanup_errors'].append(str(error))
+@@ -426,12 +554,14 @@
+         if job is not None:
+             try:
+                 result['cleanup'] = job.cleanup(timeout_seconds=max(0,min(5,deadline-clock())))
+-                expected_total = 6 if worker is not None else 0
++                owned_helpers = [ref for ref in helpers.values() if ref['expected_inside']]
++                expected_total = (6 if worker is not None else 0) + len(owned_helpers)
+                 if result['cleanup'].get('total_processes') != expected_total:
+                     result['cleanup']['verified'] = False
+                     result['cleanup'].setdefault('errors', []).append('unexpected or unknown lifetime process count')
+                     failure('unknown additional owned process at cleanup')
+                 expected = {(ref['pid'],ref['creation_time_100ns']) for ref in owned}
++                expected |= {(ref['pid'],ref['creation_time_100ns']) for ref in owned_helpers}
+                 exits = {(row['pid'],row['creation_time_100ns']) for row in result['cleanup'].get('owned_exits',[])
+                          if type(row.get('exit_code')) is int}
+                 if (result['cleanup'].get('verified') is not True or result['cleanup'].get('active_processes') != 0
+@@ -457,9 +587,10 @@
+                 failure(str(error))
+             for ref in unknown.values():
+                 if ref.get('handle') is not None:
++                    if ref.get('accepted_helper') and ref['expected_inside']:
++                        continue
+                     try:
+-                        _query_unknown_identity(job.api, job.handle, ref, journal, check_deadline,
+-                                                'before_unrelated_cleanup')
++                        revalidate_query(ref, 'before_unrelated_cleanup')
+                     except BaseException as error:
+                         failure('unknown identity diagnostic revalidation failed')
+                         result['cleanup_errors'].append(str(error))
+@@ -481,7 +612,11 @@
+                 if not waiting or clock() >= deadline:
+                     break
+                 sleep(min(0.01,max(0,deadline-clock())))
++            helper_exits()
++            outside_helpers_clean = all(row['cleanup_verified'] for row in result['console_helper_exits']
++                                        if row['role'] == 'unrelated')
+             result['unrelated_cleanup_verified'] = (outside_shape_verified and len(outside)==2
++                and outside_helpers_clean
+                 and all(row['identity_verified'] and type(row['exit_code']) is int for row in result['unrelated_exits']))
+             if not result['unrelated_cleanup_verified']:
+                 failure('both unrelated identity-bound exits unverified')
+@@ -509,10 +644,23 @@
+             if ref.get('handle') is not None:
+                 try:
+                     job.api.close_handle(ref['handle'])
++                    for row in result['console_helper_exits']:
++                        if (row['pid'], row['creation_time_100ns']) == (ref['pid'], ref.get('bound_birth')):
++                            row['query_handle_closed'] = True
+                     record('unknown_query_handle_closed', pid=ref['pid'], termination_requested=False)
+                 except BaseException as error:
++                    if ref.get('accepted_helper'):
++                        result['console_helper_cleanup_verified'] = False
++                        if ref['role'] == 'unrelated':
++                            result['unrelated_cleanup_verified'] = False
++                        for row in result['console_helper_exits']:
++                            if row['pid'] == ref['pid']:
++                                row['cleanup_verified'] = False
++                                row['handle_close_error'] = type(error).__name__
+                     failure('unknown query handle close failed')
+                     result['cleanup_errors'].append(str(error))
++        record('console_helper_cleanup_complete', exits=result['console_helper_exits'],
++               verified=result['console_helper_cleanup_verified'])
+         result['deadline_exceeded'] = expired.is_set() or clock() >= deadline
+         result['termination_reason'] = ('ownership self-test deadline' if result['deadline_exceeded']
+                                         else result['failure_reason'] or 'completed ownership observations')
+@@ -521,7 +669,8 @@
+         result['ownership_self_test_passed'] = (result['failure_reason'] is None
+             and result['controller_outside_private_job'] and result['suspended_assignment_order_verified']
+             and len(result['owned_identities'])==6 and result['unrelated_survived']
+-            and result['unrelated_cleanup_verified'] and result['cleanup'].get('verified') is True)
++            and result['unrelated_cleanup_verified'] and result['cleanup'].get('verified') is True
++            and result['console_helper_cleanup_verified'])
+         result['ended_utc'],result['ended_monotonic'] = _utc(),clock()
+         result['elapsed_seconds'] = result['ended_monotonic']-started
+         record('selftest_end', passed=result['ownership_self_test_passed'],

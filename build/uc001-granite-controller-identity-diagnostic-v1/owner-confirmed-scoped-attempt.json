@@ -1,0 +1,47 @@
+{
+  "provenance": "Owner-supplied preserved diagnostic evidence summarized from the request; not a Codex Windows execution or reconstructed raw desktop directory.",
+  "recorded_date": "2026-10-26",
+  "attempt_consumed": true,
+  "controller": {"pid": 14444, "verified": true},
+  "launcher": {
+    "pid": 17520,
+    "creation_time_100ns": 134375170217369722,
+    "parent_pid": 14444,
+    "verified": true
+  },
+  "interpreter": {
+    "pid": 28924,
+    "creation_time_100ns": 134375170217547838,
+    "parent_pid": 17520,
+    "verified": true
+  },
+  "observations": [
+    {
+      "utc_time_approx": "19:37:01.871",
+      "date_not_supplied": true,
+      "after_private_job_termination": false,
+      "parent_child_edges": [[17520, 28924], [17520, 38564]]
+    },
+    {
+      "utc_time_approx": "19:37:01.888",
+      "date_not_supplied": true,
+      "after_private_job_termination": true,
+      "parent_child_edges": [[17520, 28924], [17520, 38564]]
+    }
+  ],
+  "unexpected_child": {
+    "pid": 38564,
+    "parent_pid": 17520,
+    "parent_evidence": "Scoped Toolhelp edge beneath verified launcher; no retained unknown-child handle.",
+    "creation_time_100ns": null,
+    "retained_verified_handle": false,
+    "image_path": null,
+    "role": "UNKNOWN"
+  },
+  "reported_failure": "StandinFailure: unknown additional unrelated process",
+  "snapshot_race_demonstrated": false,
+  "owned_worker_created": false,
+  "job_object_failure_established": false,
+  "process_name_inferred": false,
+  "codex_acquisition_build_gpu_model_action": false
+}

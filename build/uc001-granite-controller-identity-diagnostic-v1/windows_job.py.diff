@@ -1,0 +1,46 @@
+--- scripts/uc001_granite_controller/windows_job.py (before)
++++ scripts/uc001_granite_controller/windows_job.py
+@@ -136,6 +136,7 @@
+             'OpenProcess': (HANDLE,[DWORD,BOOL,DWORD]),
+             'WaitForSingleObject': (DWORD,[HANDLE,DWORD]),
+             'GetExitCodeProcess': (BOOL,[HANDLE,c.POINTER(DWORD)]),
++            'QueryFullProcessImageNameW': (BOOL,[HANDLE,DWORD,c.POINTER(c.c_wchar),c.POINTER(DWORD)]),
+             'TerminateProcess': (BOOL,[HANDLE,DWORD]),
+             'TerminateJobObject': (BOOL,[HANDLE,DWORD]),
+             'CloseHandle': (BOOL,[HANDLE]),
+@@ -335,6 +336,35 @@
+         access = 0x1000 | 0x100000 | (0x1 if can_terminate else 0)
+         return self.checked(self.k.OpenProcess(access,False,pid),'OpenProcess for retained identity')
+ 
++    def open_query_process(self, pid):
++        if type(pid) is not int or not 0 < pid <= 0xFFFFFFFF:
++            raise JobError('explicit valid query-only process identity required')
++        handle = self.k.OpenProcess(0x1000,False,pid)
++        if not handle:
++            raise c.WinError(c.get_last_error())
++        return handle
++
++    def image_path(self, handle):
++        capacity = 32768
++        buffer = c.create_unicode_buffer(capacity)
++        length = DWORD(capacity)
++        self.checked(self.k.QueryFullProcessImageNameW(handle,0,buffer,c.byref(length)),
++                     'QueryFullProcessImageNameW')
++        path = buffer.value
++        units = len(path.encode('utf-16-le', 'surrogatepass')) // 2
++        if not 0 < length.value < capacity or units != length.value:
++            raise JobError('native image path length unavailable or truncated')
++        drive, tail = ntpath.splitdrive(path)
++        if not drive or not tail.startswith(('\\','/')) or not ntpath.basename(path):
++            raise JobError('native full image path unavailable')
++        return path
++
++    def query_exit_code(self, handle):
++        code = DWORD()
++        self.checked(self.k.GetExitCodeProcess(handle,c.byref(code)),
++                     'GetExitCodeProcess query-only observation')
++        return int(code.value)
++
+     def children_of(self, parent_pids, timeout_seconds=1.0):
+         parents = set(parent_pids)
+         if (not parents or any(type(pid) is not int or not 0 < pid <= 0xFFFFFFFF for pid in parents)

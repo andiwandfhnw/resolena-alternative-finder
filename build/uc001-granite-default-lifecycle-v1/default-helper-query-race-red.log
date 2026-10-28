@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_default_session_reconciles_verified_helper_exit_between_native_queries __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-3/test_default_session_reconcile0')
+
+    def test_default_session_reconciles_verified_helper_exit_between_native_queries(tmp_path):
+        result, backend = lifecycle_session(tmp_path,'helper_lag','helper_query_race')
+>       assert result['status']=='controlled_phases_passed', result
+E       AssertionError: {'status': 'failure', 'started_utc': '2026-10-27T21:07:48.693848+00:00', 'started_mono': 100.0, 'downloaded_upper_bound_bytes': None, ...}
+E       assert 'failure' == 'controlled_phases_passed'
+E         
+E         - controlled_phases_passed
+E         + failure
+
+tests/unit/test_granite_controller_run.py:816: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_run.py::test_default_session_reconciles_verified_helper_exit_between_native_queries
+1 failed in 0.20s

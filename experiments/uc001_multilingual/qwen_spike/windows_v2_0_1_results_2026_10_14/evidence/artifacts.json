@@ -1,0 +1,27 @@
+{
+  "metadata_checked_utc": "2026-10-13T18:29:39.068781+00:00",
+  "cap_bytes": 10000000000,
+  "reserved_bundle_and_metadata_bytes": 1048576,
+  "artifacts": [
+    {
+      "id": "runtime",
+      "file": "llama-b11429-bin-win-vulkan-x64.zip",
+      "version": "b11429",
+      "source_commit": "d81235049384534c167caea52b85a694f6103d14",
+      "bytes": 33337769,
+      "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11429/llama-b11429-bin-win-vulkan-x64.zip",
+      "metadata_url": "https://api.github.com/repos/ggml-org/llama.cpp/releases/tags/b11429"
+    },
+    {
+      "id": "model",
+      "file": "Qwen3-8B-Q8_0.gguf",
+      "repo": "Qwen/Qwen3-8B-GGUF",
+      "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+      "bytes": 8709518112,
+      "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+      "url": "https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q8_0.gguf",
+      "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF/revision/7c41481f57cb95916b40956ab2f0b139b296d974?blobs=true"
+    }
+  ]
+}

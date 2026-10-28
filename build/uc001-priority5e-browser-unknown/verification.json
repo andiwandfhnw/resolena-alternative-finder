@@ -1,0 +1,242 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment1 Priority5E only: delivered real persistence-error/unknown through browser, then explicit same-submission recovery",
+  "phase": 3,
+  "status": "in-progress",
+  "priorities_3_4_5": "partial",
+  "increment_1_and_develop_complete": false,
+  "owner_acceptance": {
+    "priority_5d_found_absent": "Accepted only for its two demonstrated integration scenarios: first-pass verification of existing production behavior, no fix or artificial RED. Original5D and supplementary5D receipts/logs remain unchanged.",
+    "retained_limits": "No complete persistence/cleanup/disclosure/browser coverage inferred."
+  },
+  "prerequisites": {
+    "result": "No material accepted-contract conflict or architecture/schema/dependency decision.",
+    "references": [
+      "UC-001 O-2/AC-17 and Errors",
+      "ADR-003 accepted atomic persistence/uncertainty/acknowledgement decision",
+      "ARCHITECTURE.md accepted503persistence_error unknown and200submission_recovered response table",
+      "App.submit unknown-before-generic-error, captured Attempt.body/key/proof and acknowledgement rendering",
+      "Existing5A browser recovery and isolated demo/Playwright composition",
+      "Original5D real DBAPI commit-confirmation/readback fault seam"
+    ],
+    "accepted_behavior": "Delivered503/persistence_error/unknown communicates saving could not be confirmed, ends loading and offers explicit unchanged-submission recovery; successful checked recovery acknowledges only saved ID/original outcome/original assessed-at.",
+    "test_support_gap": "Missing browser-server opt-in fault wiring only. Added a narrowly scoped digest-matched file control in tests/support, not an endpoint/framework or a production adapter/API change."
+  },
+  "changed_files": [
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/support/demo.py",
+    "tests/support/uncertain_save.py",
+    "tests/integration/test_uncertain_save_support.py",
+    "docs/TASKS.md"
+  ],
+  "test_first": {
+    "sequence": "Browser regression authored first; focused support-isolation test authored before helper/demo bridge. Minimal test-only setup added before browser execution.",
+    "first_browser_invocation": "1passed against unchanged App/frontend production code. Existing-behavior verification; no frontend RED or production correction.",
+    "focused_support_first_invocation": "1passed; no manufactured missing-setup RED.",
+    "production_edits": false
+  },
+  "implementation": "One browser journey forwards the actual backend response after a controlled loading gate. Demo optionally installs test-only store.save wrapper after seeding; only matching submission-key digest consumes control. Real underlying commit precedes lost confirmation, one real reconciliation SELECT is made unavailable, both engine-local dialect methods are restored before actual PersistenceFailure reaches the API. No final save/API response is fabricated.",
+  "executed_tests": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest tests/integration/test_uncertain_save_support.py -q --basetemp=build/uc001-priority5e-browser-unknown/support-green 2>&1 | tee build/uc001-priority5e-browser-unknown/support-green.log",
+      "exit_code": 0,
+      "result": "1passed,1existingStarlettewarning in1.56s",
+      "log": "build/uc001-priority5e-browser-unknown/support-green.log",
+      "scope": "Concrete shared demo/fault-hook regression risk: missing/unmatched controls and seeding, targetedfault, restoration/recovery and later unaffected save."
+    },
+    {
+      "command": "set -o pipefail\nRESOLENA_TEST_UNCERTAIN_SAVE_FILE=$(.venv/bin/python -c 'import json; print(json.load(open(\"build/uc001-priority5e-browser-unknown/test-control-location.json\"))[\"control_file\"])') npm --prefix frontend run test:e2e -- --grep 'delivered unknown persistence error requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-browser-unknown/browser-first --reporter=list 2>&1 | tee build/uc001-priority5e-browser-unknown/browser-first.log",
+      "exit_code": 0,
+      "result": "1passed(7.3s),test2.2s",
+      "log": "build/uc001-priority5e-browser-unknown/browser-first.log",
+      "scope": "The one newly authorized browser journey, first invocation."
+    },
+    {
+      "command": "set -o pipefail\nRESOLENA_TEST_UNCERTAIN_SAVE_FILE=$(.venv/bin/python -c 'import json; print(json.load(open(\"build/uc001-priority5e-browser-unknown/test-control-location.json\"))[\"control_file\"])') npm --prefix frontend run test:e2e -- --grep 'lost HTTP response after atomic commit requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-browser-unknown/browser-5a-regression --reporter=list 2>&1 | tee build/uc001-priority5e-browser-unknown/browser-5a-regression.log",
+      "exit_code": 0,
+      "result": "1passed(5.5s),test1.5s",
+      "log": "build/uc001-priority5e-browser-unknown/browser-5a-regression.log",
+      "scope": "Required5A browser regression after shared browser/test-server support changed; separate freshdatabase, hook enabled but unarmed."
+    }
+  ],
+  "frontend_lint_build": "Not run: frontend/ and Playwright configuration unchanged; only tests/e2e and Python test support changed.",
+  "unrelated_suites": "Not run: reconciliation/concurrency/rendering/language matrices or interpreter/model investigations.",
+  "browser_evidence": "build/uc001-priority5e-browser-unknown/browser-first/saved-comparison-delivered-71376-it-same-submission-recovery/delivered-unknown-recovery-evidence.json",
+  "browser_observations": {
+    "controlled_delivery": "route.fetch(maxRetries:0) obtains real503/body; held until status visible, form aria-busy true, Processing disabled, no options/alert. route.fulfill({response}) forwards that actual response unchanged; no abort or status/body substitution.",
+    "after_delivered_error": "Actual browser response503/body equals backend error. Saving could not be confirmed / may already be saved shown. Loading/status ends; aria-busy false. Original text/CH fields preserved, Recover and separate fresh action enabled; no comparison/coverage result.",
+    "bounded_no_retry": {
+      "milliseconds": 300,
+      "submissions_before_explicit_recovery": 1,
+      "event_path_inspected": "App.submit is explicitly dispatched from form event, has inFlight guard, no effect/timer/retry scheduling, clears presentation before fetch and finishes loading in finally. This evidence is limited to the affected path and observation window."
+    },
+    "explicit_recovery": "Same serialized body (including key) and in-memory proof digest comparison both true. Actual200ack contains original saved identity/outcome/time; UI displays those and explicitly disclaims current comparison/facts. Form fields remain; no comparison claims.",
+    "browser_submissions": 2,
+    "same_serialized_body_key_and_proof": true,
+    "fresh_search": "Existing action shown but not clicked; production fresh-search code unchanged. No new fresh-search journey.",
+    "stale_result_limit": "Journey starts with a blank page. No comparison is shown during/error/after recovery. Clearing an earlier result is supported by inspected clearPresentation event path; no separate prior-result journey was added."
+  },
+  "actual_error_response": {
+    "status": 503,
+    "body": {
+      "outcome": "persistence_error",
+      "persistence": {
+        "state": "unknown"
+      },
+      "issues": [
+        {
+          "code": "comparison_save_failed"
+        }
+      ],
+      "assessed_outcome": "comparison"
+    }
+  },
+  "actual_recovery_response": {
+    "status": 200,
+    "body": {
+      "outcome": "submission_recovered",
+      "persistence": {
+        "state": "saved",
+        "request_id": "7a3b1666-1a3c-4d1a-a4f8-9b09ee2cb91a"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_outcome": "comparison"
+    }
+  },
+  "persistence": {
+    "before_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "after_real_commit_and_error_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "after_recovery_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "saved_request_id": "7a3b1666-1a3c-4d1a-a4f8-9b09ee2cb91a",
+    "original_saved_outcome": "comparison",
+    "original_assessed_at": "2026-10-15T10:00:00+00:00",
+    "saved_option_ids": [
+      "740eff48-78a5-4b60-8c16-dc7c8500fc03",
+      "8073ba8e-2d6e-4c4d-8f3e-3abad1e35bb9"
+    ],
+    "evidence_associations": [
+      [
+        "740eff48-78a5-4b60-8c16-dc7c8500fc03",
+        "30000000-0000-4000-8000-000000000001"
+      ],
+      [
+        "8073ba8e-2d6e-4c4d-8f3e-3abad1e35bb9",
+        "30000000-0000-4000-8000-000000000002"
+      ]
+    ],
+    "complete_committed_state_unchanged_after_recovery": true,
+    "source_evidence_unchanged_from_baseline": true
+  },
+  "fault_isolation": {
+    "control_file": "/workspaces/resolena-alternative-finder/build/test-only/priority5e-uncertain-save-8ccd90a7f87b48a68e14931feb421900.json",
+    "control_consumed_before_faults": true,
+    "control_absent_after_journey": true,
+    "fault_counts": {
+      "real_commits": 1,
+      "confirmation_losses": 1,
+      "read_failures": 1
+    },
+    "timeline": [
+      "matching_control_consumed",
+      "real_sqlite_commit_returned_to_test_shim",
+      "independent_observer_sees_committed_rows_test_only",
+      "confirmation_error_before_return_to_production",
+      "production_reconciliation_select_unavailable",
+      "dialect_methods_restored"
+    ],
+    "dialect_methods_restored_before_api_error_and_recovery": true,
+    "independent_observer_matches_browser_sqlite_observer": true,
+    "observer_rows_supplied_to_application": false,
+    "isolation_limit": "One serial isolated test composition. Temporary dialect patches apply to that store engine only during designated save; no claim for concurrent unrelated requests.",
+    "support_check_database": "Separate backend-support database: two unarmed/unmatched fixture saves precede target, target adds one rowset, recovery adds none, later separate fixture save succeeds. Counts2/4/4 ->3/6/6 ->3/6/6 ->4/8/8. These are isolation fixtures, not duplicate browser saves."
+  },
+  "protected_data": {
+    "raw_proofs_headers_sql_parameters_exception_contexts_or_complete_request_objects_recorded": false,
+    "proof_comparisons": "In memory only; receipts contain comparison booleans, not raw proof or digest values.",
+    "tracing_and_har": "Traceoff in configuration and both commands; no HAR recording/browser persistent storage or credentials added. Reporter=list avoids overwriting historical default JSONreporter output."
+  },
+  "preservation": {
+    "protected_files": 139,
+    "mismatches": [],
+    "all_preexisting_browser_test_bytes_preserved_except_added_imports": true,
+    "original_5d_and_followup_tasks_notes_preserved": true,
+    "identity": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "same_git_identity": true,
+    "scoped_delta_checks": [
+      {
+        "path": "tests/e2e/saved-comparison.spec.ts",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-browser-unknown/before/tests/e2e/saved-comparison.spec.ts tests/e2e/saved-comparison.spec.ts",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "tests/support/demo.py",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-browser-unknown/before/tests/support/demo.py tests/support/demo.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "docs/TASKS.md",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-browser-unknown/before/docs/TASKS.md docs/TASKS.md",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "tests/support/uncertain_save.py",
+        "command": "git diff --no-index --check -- /dev/null tests/support/uncertain_save.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "tests/integration/test_uncertain_save_support.py",
+        "command": "git diff --no-index --check -- /dev/null tests/integration/test_uncertain_save_support.py",
+        "exit_code": 1,
+        "output": ""
+      }
+    ]
+  },
+  "preservation_manifest": "build/uc001-priority5e-browser-unknown/preservation-before.json",
+  "git": {
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1524: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "status_command": "git status --short",
+    "same_status_entries_as_before": true
+  },
+  "whitespace": "Globaldiffcheck exit2 reports only preserved historical TASKS trailing space, nowline1524. Five task-local no-index --check deltas have empty output; exit1 indicates differing files without new whitespace errors.",
+  "remaining_priority_5_gaps": [
+    "Remaining API/browser error/loading/recovery/fresh-search paths and complete originating-client disclosure matrix",
+    "Cleanup failures, other persistence/read/write/commit faults and physical-crash durability",
+    "Further concurrency/lock/process variants",
+    "Real locality/reference integration and full Priority5 completion"
+  ],
+  "boundaries": "DE/FR/IT/EN contracts and local/Resolena-controlled processing preserved. Normalapp.main unconfigured, real drafts inactive, experiments closed. No model/detector startup, held-out, linguistic/TL-03 approval, research,UC-003,Priority6,dependencies,Gitdelivery/branch changes,CI/CD/deployment.",
+  "review": "Independent read-only browser/event-path and test-support review found no material issues; serial isolation and bounded retry limits recorded.",
+  "warnings": [
+    "Existing Starlette/httpx TestClient deprecation",
+    "Existing Node NO_COLOR/FORCE_COLOR warnings"
+  ],
+  "stop": "Await human review; Priority5,increment1,DEVELOP remain incomplete.",
+  "final_checks": {
+    "supplementary_receipt_and_browser_json_key_audit": "passed; no protected request/header/proof/context keys",
+    "no_trace_or_har_artifacts": true,
+    "phase3_in_progress": true,
+    "one_tasks_evidence_link_valid": true,
+    "protected_hashes_rechecked": 139
+  }
+}

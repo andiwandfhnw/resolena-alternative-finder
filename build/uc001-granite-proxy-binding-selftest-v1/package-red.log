@@ -1,0 +1,126 @@
+FFFF                                                                     [100%]
+=================================== FAILURES ===================================
+____________ test_archive_contains_exact_final_sources_and_receipt _____________
+
+    def test_archive_contains_exact_final_sources_and_receipt():
+>       receipt = json.loads((ROOT / 'package-result.json').read_text())
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_binding_package.py:20: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('build/uc001-granite-proxy-binding-selftest-v1/package-result.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'build/uc001-granite-proxy-binding-selftest-v1/package-result.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_____ test_configuration_is_explicitly_selftest_only_with_fixed_accounting _____
+
+    def test_configuration_is_explicitly_selftest_only_with_fixed_accounting():
+>       config = json.loads((PACKAGE / 'selftest-config.json').read_text())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_binding_package.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('build/uc001-granite-proxy-binding-selftest-v1/package/selftest-config.json')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'build/uc001-granite-proxy-binding-selftest-v1/package/selftest-config.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+__ test_wrapper_requires_owner_gate_and_external_manifest_before_native_call ___
+
+    def test_wrapper_requires_owner_gate_and_external_manifest_before_native_call():
+>       script = (PACKAGE / 'Run-ProxyBindingCheck.ps1').read_text()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_binding_package.py:56: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1027: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('build/uc001-granite-proxy-binding-selftest-v1/package/Run-ProxyBindingCheck.ps1')
+mode = 'r', buffering = -1, encoding = 'locale', errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'build/uc001-granite-proxy-binding-selftest-v1/package/Run-ProxyBindingCheck.ps1'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_______ test_old_receipt_and_owner_statement_are_copied_without_refreeze _______
+
+    def test_old_receipt_and_owner_statement_are_copied_without_refreeze():
+        prior = Path('build/uc001-granite-prior-accounting-final-v1')
+        for name in ('prior-budget.json', 'prior-budget.json.sha256', 'owner-statement.txt'):
+>           assert (PACKAGE / name).read_bytes() == (prior / name).read_bytes()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_binding_package.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('build/uc001-granite-proxy-binding-selftest-v1/package/prior-budget.json')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: 'build/uc001-granite-proxy-binding-selftest-v1/package/prior-budget.json'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_binding_package.py::test_archive_contains_exact_final_sources_and_receipt
+FAILED tests/unit/test_granite_proxy_binding_package.py::test_configuration_is_explicitly_selftest_only_with_fixed_accounting
+FAILED tests/unit/test_granite_proxy_binding_package.py::test_wrapper_requires_owner_gate_and_external_manifest_before_native_call
+FAILED tests/unit/test_granite_proxy_binding_package.py::test_old_receipt_and_owner_statement_are_copied_without_refreeze
+4 failed in 0.15s

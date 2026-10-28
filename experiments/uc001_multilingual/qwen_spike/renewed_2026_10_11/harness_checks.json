@@ -1,0 +1,27 @@
+{
+  "authorization_date": "2026-10-11",
+  "initial_red": "Missing operations module before helper implementation.",
+  "green_results": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "f26371",
+        "wall_time_seconds": 1.267212406,
+        "exit_code": 0,
+        "original_token_count": 229,
+        "output": "test_expired_deadline_and_exited_process_stop (test_operations.OperationsChecks.test_expired_deadline_and_exited_process_stop) ... ok\ntest_guards_and_owned_child_monitoring (test_operations.OperationsChecks.test_guards_and_owned_child_monitoring) ... ok\ntest_health_503_waits_until_200 (test_operations.OperationsChecks.test_health_503_waits_until_200) ... ok\ntest_live_socket_preserved (test_operations.OperationsChecks.test_live_socket_preserved) ... ok\ntest_non_socket_and_foreign_path_preserved (test_operations.OperationsChecks.test_non_socket_and_foreign_path_preserved) ... ok\ntest_post_response_handling_without_model (test_operations.OperationsChecks.test_post_response_handling_without_model) ... ok\ntest_stale_owned_socket_removed (test_operations.OperationsChecks.test_stale_owned_socket_removed) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 1.123s\n\nOK\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "e5d54e",
+        "wall_time_seconds": 0.104638115,
+        "exit_code": 0,
+        "original_token_count": 200,
+        "output": "test_bad_offset_rejected (test_spike.SpikeChecks.test_bad_offset_rejected) ... ok\ntest_explicit_unknown_goal_stays_missing (test_spike.SpikeChecks.test_explicit_unknown_goal_stays_missing) ... ok\ntest_missing_constraint_is_semantic_error (test_spike.SpikeChecks.test_missing_constraint_is_semantic_error) ... ok\ntest_rejected_partial_fields_cannot_be_accepted (test_spike.SpikeChecks.test_rejected_partial_fields_cannot_be_accepted) ... ok\ntest_reversed_negation_is_semantic_error_even_with_valid_spans (test_spike.SpikeChecks.test_reversed_negation_is_semantic_error_even_with_valid_spans) ... ok\ntest_valid_quote_is_only_structural (test_spike.SpikeChecks.test_valid_quote_is_only_structural) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.008s\n\nOK\n"
+      }
+    }
+  ],
+  "classification": "Operational/scoring harness checks only; not model-capability results."
+}

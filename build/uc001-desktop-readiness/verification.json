@@ -1,0 +1,156 @@
+{
+  "date": "2026-10-16",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Record owner-supplied successful adapter identity/resource snapshot, audit prior integrity completion and prepare remaining read-only desktop checks only",
+  "snapshot": {
+    "raw_path": "build/uc001-desktop-readiness/windows-v1_2_0-result.raw.json",
+    "sha256": "35e35dccf7b34e432cc5ebeed9e7f8140b7afb6087a391f6646e9dd6f7197a91",
+    "source": "Owner supplied raw JSON in response during this task; preserved separately without editing earlier records",
+    "utc": "2026-10-16T17:53:32.1248009Z",
+    "recorded_result": "successful_adapter_identity_resource_snapshot",
+    "raw_outcome_preserved": "preflight_passed",
+    "association": "verified",
+    "capacity_source": "DXGI_ADAPTER_DESC1.DedicatedVideoMemory",
+    "capacity_bytes": 17130819584,
+    "gpu_free_bytes": 15045484544,
+    "start_threshold_bytes": 15032385536,
+    "margin_bytes": 13099008,
+    "thresholds": "All raw limits exactly match unchanged v1.2.0 config; existing pure resource guard passes on supplied data",
+    "scope_limit": "identity and one resource snapshot only; no model/runtime or transport verification",
+    "full_preflight_verified": false,
+    "interpreter_suitability_verified": false,
+    "fresh_startup_check": "Mandatory immediately before any separately authorized model startup; thin margin is not reserved or predicted future headroom",
+    "registry_difference_cause": "unknown"
+  },
+  "integrity_audit": {
+    "earlier_event": "Owner-reported original Preflight-Windows.ps1 stop at Common.ps1:38",
+    "code_order": "Preflight-Windows.ps1 calls Assert-ContractBundle and Get-ContractAssets before Get-ReadOnlyContractAdapter. Get-ContractAssets stops on every missing/size/hash failure; original top-level Stop policy and no recovery/catch permit no later adapter check after a failure.",
+    "historical_model_and_runtime_zip": [
+      {
+        "id": "runtime",
+        "file": "llama-b11429-bin-win-vulkan-x64.zip",
+        "version": "b11429",
+        "source_commit": "d81235049384534c167caea52b85a694f6103d14",
+        "bytes": 33337769,
+        "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+        "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11429/llama-b11429-bin-win-vulkan-x64.zip",
+        "metadata_url": "https://api.github.com/repos/ggml-org/llama.cpp/releases/tags/b11429"
+      },
+      {
+        "id": "model",
+        "file": "Qwen3-8B-Q8_0.gguf",
+        "repo": "Qwen/Qwen3-8B-GGUF",
+        "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+        "bytes": 8709518112,
+        "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+        "url": "https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q8_0.gguf",
+        "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF/revision/7c41481f57cb95916b40956ab2f0b139b296d974?blobs=true"
+      }
+    ],
+    "historical_extracted_runtime_files": 52,
+    "runtime_manifest": "scripts/uc001_contract_check/runtime-files.json",
+    "historical_total": 54,
+    "evidence_grade": "Historical completion inferred from frozen code order and owner-reported unchanged original command/inputs. No per-file original Windows hash receipt supplied; current contents not independently verified.",
+    "other_support": "Closed 2026-10-14 REVIEW.md records earlier model/runtime/executable integrity; historical only. No cases/outputs or held-out material opened.",
+    "remaining_checks_from_reported_attempt": [],
+    "asset_hashes_repeated_in_this_task": false,
+    "current_integrity_verified": false,
+    "future_requirement": "Fresh integrity validation before a future authorized startup remains required; remaining-check success is not a substitute."
+  },
+  "launcher_monitor_audit": {
+    "execution_compatible": false,
+    "source_files": [
+      "scripts/uc001_contract_check/Run-Windows.ps1",
+      "scripts/uc001_contract_check/Common.ps1",
+      "scripts/uc001_contract_check/Dxgi.cs"
+    ],
+    "capacity_field": "Original launcher already uses DXGI DedicatedVideoMemory; it does not take registry capacity or perform the v1.1.0 equality check.",
+    "identity_discrepancy": "Original Get-ContractAdapter checks AMD vendor/name, without matching CIM/all PCI fields/software flag/unique LUID; original native enumeration silently caps at 32. v1.2.0 requires complete unique hardware/CIM/PCI/LUID identity.",
+    "monitor_discrepancy": "Original Get-ContractResources accepts loose CounterKey prefix and casts usage to Int64, without v1.2.0 exact phys_0 association, strict integral/range and usage-within-capacity validation. Runtime Check-Running calls it.",
+    "required_correction": "Separately reviewed launcher/monitor must reuse v1.2.0 policy, preserve all thresholds/budgets/receipts/cleanup and perform fresh startup validation.",
+    "corrected_here": false,
+    "runtime_owned_process_monitor_verified": false
+  },
+  "prepared_check": {
+    "path": "scripts/uc001_desktop_readiness/Check-RemainingReadiness.ps1",
+    "sha256": "cec723c2544e7a8c649bc483511b45dc6d26a7f567eb0f313c35b3eea77e05da",
+    "windows_command": "& \"$env:WINDIR\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -NoProfile -File C:\\ResolenaExperiments\\diagnostics\\Check-RemainingReadiness.ps1 -BundlePath C:\\ResolenaExperiments\\uc001-preflight-capacity-v1_2_0",
+    "uses": "Complete unchanged v1.2.0 Common/config/runtime metadata; verifies pinned small-file freeze, no original preflight invocation",
+    "checks": [
+      "Native Windows OpenSSH -V, availability and PATH consistency",
+      "Existing gh --version exactly 2.81.0",
+      "Observed desktop TCP allocations at 49187 and 49189; failed query never implies free"
+    ],
+    "asset_hashes_to_finish_original_attempt": [],
+    "effects": "Two existing client version processes only, five-second limit, stdout/stderr capture and owned process cleanup on timeout. No model/runtime binary, native GPU reader, resource monitor, network connection, authentication query or credential inspection.",
+    "not_verified": [
+      "Current retained asset bytes",
+      "Future successful bind/firewall/excluded-port compatibility",
+      "Remote Codespace 49188",
+      "Transport/authenticated forwarding and effective loopback binding",
+      "Full preflight or interpreter suitability"
+    ],
+    "actual_windows_execution": "pending"
+  },
+  "checks": [
+    {
+      "red": "New checker absent; focused test failed before implementation"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "124 passed in 57.11s",
+      "new": 10,
+      "retained": 114,
+      "boundary": "Mock Windows versions/ports/queries, raw owner JSON assertions and historical preservation; existing local PowerShell child tests stderr success and exit failure; retained C# compile/layout and synthetic association/capacity controls. No real Windows/native/model calls."
+    },
+    {
+      "check": "Existing pure v1.2.0 Assert-ContractResources on supplied raw resources",
+      "result": "Passed; no current/native/query calls"
+    },
+    {
+      "check": "Prior small source/ZIP/evidence preservation",
+      "result": "All 60 baseline hashes unchanged"
+    },
+    {
+      "check": "New source whitespace/documentation links/current phase",
+      "result": "Passed; historical TASKS trailing-space warning preserved"
+    }
+  ],
+  "remaining_dependencies": [
+    "Actual new Windows client/version/port output",
+    "Launcher/monitor policy alignment before execution",
+    "Fresh v1.2.0 policy/resource and asset-integrity checks before separately authorized startup",
+    "Codespace 49188 and approved pinned transport setup; no installs in this task",
+    "Existing gh authorization not inspected; future authenticated loopback forwarding/proxy-bypass validation",
+    "Actual model/runtime schema/context/offload/prompt fit under frozen limits",
+    "Qualified DE/FR/IT/EN expectations approval before inference and later output semantic review; known Spanish route failure remains unresolved",
+    "Real knowledge/faithful rendering and later priorities remain pending; English-only renderer does not prove/refute input interpretation"
+  ],
+  "preservation_baseline": "build/uc001-desktop-readiness/baseline.json",
+  "sha256_records": "build/uc001-desktop-readiness/SHA256SUMS.txt",
+  "changed_files": [
+    "scripts/uc001_desktop_readiness/Check-RemainingReadiness.ps1",
+    "scripts/uc001_desktop_readiness/README.md",
+    "tests/unit/test_preflight_adapter_association.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-desktop-readiness/baseline.json",
+    "build/uc001-desktop-readiness/windows-v1_2_0-result.raw.json",
+    "build/uc001-desktop-readiness/offline-check.ps1",
+    "build/uc001-desktop-readiness/SHA256SUMS.txt",
+    "build/uc001-desktop-readiness/verification.json"
+  ],
+  "not_performed": [
+    "Model/runtime asset hashing",
+    "Download/installation",
+    "Authentication changes or credential inspection",
+    "Tunnel/network connection",
+    "Model/runtime startup or inference",
+    "Held-out access",
+    "Original/earlier bundle or failure mutation",
+    "Application change",
+    "Git staging/commit/push/branch switch/deployment"
+  ]
+}

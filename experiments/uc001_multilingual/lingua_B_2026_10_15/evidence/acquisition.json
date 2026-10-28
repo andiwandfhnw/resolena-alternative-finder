@@ -1,0 +1,36 @@
+[
+  {
+    "url": "https://pypi.org/pypi/lingua-language-detector/2.2.0/json",
+    "resolved_url": "https://pypi.org/pypi/lingua-language-detector/2.2.0/json",
+    "path": "pypi-2.2.0.json",
+    "bytes": 54184,
+    "sha256": "844273425a542be0f1a29c1ee44dbfedd674ed7a89372a7e1743634696173d40",
+    "kind": "publisher_metadata",
+    "utc_unix": 1792083423.678162
+  },
+  {
+    "url": "https://files.pythonhosted.org/packages/44/a0/7322a0c50db8f82836ef40b14986dfcfad17bd837bfa5782562fec143bf0/lingua_language_detector-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata",
+    "resolved_url": "https://files.pythonhosted.org/packages/44/a0/7322a0c50db8f82836ef40b14986dfcfad17bd837bfa5782562fec143bf0/lingua_language_detector-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata",
+    "path": "publisher-wheel.METADATA",
+    "bytes": 31882,
+    "sha256": "4b8a2befef725edc840643676d65925a4c8fdbba1624485f968255fc07b03d6b",
+    "kind": "publisher_metadata",
+    "utc_unix": 1792083423.7347767
+  },
+  {
+    "url": "https://raw.githubusercontent.com/pemistahl/lingua-py/v2.2.0/LICENSE.txt",
+    "resolved_url": "https://raw.githubusercontent.com/pemistahl/lingua-py/v2.2.0/LICENSE.txt",
+    "path": "publisher-LICENSE.txt",
+    "bytes": 11357,
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "kind": "publisher_license",
+    "utc_unix": 1792083448.2167358
+  },
+  {
+    "kind": "wheel",
+    "url": "https://files.pythonhosted.org/packages/44/a0/7322a0c50db8f82836ef40b14986dfcfad17bd837bfa5782562fec143bf0/lingua_language_detector-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "path": "lingua_language_detector-2.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "bytes": 170332900,
+    "sha256": "63d99c7570ba09525f1702e4e4b2362f8f1f7e0a0fba93a3a53d3f322e00659d"
+  }
+]

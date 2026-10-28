@@ -1,0 +1,15 @@
+{
+  "version": "uc001-preflight-association-v1.1.0",
+  "execution_authorized": false,
+  "scope": "adapter/resource preflight only; no model/runtime/transport execution",
+  "files": {
+    "AdapterIdentity.cs": "42b1e44c505d46fe7ce0b15624cb4a48827804cebd379cd8fd271ec14e541936",
+    "Common.ps1": "b683d2c561604cdd8942d66154391973fe3d17b31a9356d0302754b4042cb9eb",
+    "Preflight-Adapter.ps1": "5060d96d1b5ef776ac844f8781008605c45638cb6ffc7c023fa49c63b7a00867",
+    "README.md": "2a63d655b0ef8697804c7c8394ac27880248761702521c059829f478521884a9",
+    "Test-Offline.ps1": "0eeba54e3a8d8d58e82451c61cead0ac11718dab8e1a801dea166113680a29ba",
+    "VERSION.json": "d42ef0a0f0ab97cf31fb633d5d66904d74a6076e43114e46a5d8211a4b8d971b",
+    "config.json": "247b151109b5d3b918b84a0481522d8c5740cfa0a368c63f338972e5a93e4ed7",
+    "runtime-files.json": "1f116d833c0b7557f9e63b0ff0d4c95b8b330a0e6f4e7a9b93427f298be313bb"
+  }
+}

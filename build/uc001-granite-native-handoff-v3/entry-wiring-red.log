@@ -1,0 +1,23 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________________ test_cli_wires_explicit_environment_check ___________________
+tests/unit/test_granite_handoff_v3_entry.py:91: in test_cli_wires_explicit_environment_check
+    assert verifier.main() == 0
+           ^^^^^^^^^^^^^^^
+build/uc001-granite-native-handoff-v3/verify_config.py:153: in main
+    args = parser.parse_args()
+           ^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/argparse.py:1908: in parse_args
+    self.error(msg)
+/usr/local/lib/python3.12/argparse.py:2650: in error
+    self.exit(2, _('%(prog)s: error: %(message)s\n') % args)
+/usr/local/lib/python3.12/argparse.py:2637: in exit
+    _sys.exit(status)
+E   SystemExit: 2
+----------------------------- Captured stderr call -----------------------------
+usage: verify_config.py [-h] --package-root PACKAGE_ROOT
+                        --expected-manifest-sha256 EXPECTED_MANIFEST_SHA256
+verify_config.py: error: unrecognized arguments: --check-environment
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_handoff_v3_entry.py::test_cli_wires_explicit_environment_check
+1 failed in 0.18s

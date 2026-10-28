@@ -1,0 +1,15 @@
+{
+  "actual_function": "controller.run_session",
+  "status": "failure",
+  "reason": "active_descendants_after_worker_exit",
+  "workers_launched": 1,
+  "timeline": [
+    "launch:100",
+    "base_processes_exited_helper_still_active",
+    "snapshot_count_observed:1",
+    "helper_exited_before_owned_rows",
+    "final_job_cleanup"
+  ],
+  "windows_execution": false,
+  "native_process_boundaries_injected": true
+}

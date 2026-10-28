@@ -1,0 +1,28 @@
+{
+  "check_scope": "Codespace offline loader/preflight contract only",
+  "acquisition_ceiling_bytes": 10737418240,
+  "bundle_id": "9a4acb903c834737809b2648c358da9f2d91b116471966fb7b691847a069f4b4",
+  "accepted_proxy_sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+  "frozen_config_sha256": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+  "template_proxy_rejection": "prior_accounting_unknown",
+  "template_controller_rejection": "native_preflight_failed:prior_accounting_unknown",
+  "template_unchanged": true,
+  "final_prior_receipt_issued": false,
+  "prior_bytes": null,
+  "native_execution": false,
+  "network": false,
+  "acquisition_or_build": false,
+  "evidence_sha256": {
+    "build/uc001-granite-acquisition-proxy/prior-budget.template.json": "444b260756d907a4cc04cb9655feabb0feab8f2a1a9245e34638fa8125bc6a92",
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "scripts/uc001_granite_contract_v1/config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+    "scripts/uc001_granite_controller/controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "scripts/uc001_granite_controller/worker.py": "6c786d97f23a92b5ee6f6699d2b92a3de0bdb9913a332e3a8d046a67fe4aca85",
+    "build/uc001-granite-proxy-identities-v1/uc001-granite-proxy-identities-v1.zip": "5e17772727fae81fb73f48f734e7301a148d56927841fe0c7f5ade0c70f18ade",
+    "build/uc001-granite-proxy-identities-v1/package/manifest.json": "8b9a01de56eb28f1b4b0040d3626158c2b64010bf69e3df357ef19644bbb9f33",
+    "build/uc001-granite-native-build-preparation/README.md": "f3a0968ab48314573ca9be0c416e4733db1276e56f965d7d1429790e73f1af65",
+    "build/uc001-granite-contract-v1/verification.json": "a9781f4a788bc9f46dda3816154473a820eaf0ba6b1d3eb5d3ef4005646648f3",
+    "build/uc001-granite-native-readiness-v1/README.md": "276abba99eddd2efe316b3952bc68e4daf701058b9a5d636c828e9a1deff35bf",
+    "scripts/uc001_granite_contract_v1/README.md": "3042254d8b821fa269b25178dc7bd146fd852564ba20517a946ed058a982bef6"
+  }
+}

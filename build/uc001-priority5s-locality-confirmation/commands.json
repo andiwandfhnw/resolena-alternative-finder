@@ -1,0 +1,130 @@
+{
+  "verification_commands": [
+    {
+      "check": "Initial partial rule RED selection",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/rule-red tests/unit/test_qualification.py -k 'country_and_intended_locality or confirmed_locality' 2>&1 | tee build/uc001-priority5s-locality-confirmation/rule-red.txt",
+      "exit_code": 1,
+      "result": "1 failed, 1 passed, 42 deselected; incomplete filter retained, not full branch RED",
+      "evidence": "rule-red.txt"
+    },
+    {
+      "check": "Complete focused rule RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/rule-red-complete tests/unit/test_qualification.py -k 'country_and_intended_locality or ordinary_country_statement or unambiguous_source_scoped or matching_place_text or countrywide' 2>&1 | tee build/uc001-priority5s-locality-confirmation/rule-red-complete.txt",
+      "exit_code": 1,
+      "result": "3 failed, 4 passed, 37 deselected",
+      "evidence": "rule-red-complete.txt"
+    },
+    {
+      "check": "Focused rule GREEN with existing narrow identity check",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/rule-green tests/unit/test_qualification.py -k 'country_and_intended_locality or confirmation_cannot_turn or unambiguous_source_scoped or matching_place_text or source_backed_explicit_countrywide or countrywide_marker or narrow_locality_requires_identity' 2>&1 | tee build/uc001-priority5s-locality-confirmation/rule-green.txt",
+      "exit_code": 0,
+      "result": "8 passed, 36 deselected",
+      "evidence": "rule-green.txt"
+    },
+    {
+      "check": "API RED",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/api-red tests/integration/test_saved_comparison.py -k 'explicit_locality_confirmation or source_backed_countrywide_fixture or confirmed_locality_edits or unavailable_locality_reference_requires' 2>&1 | tee build/uc001-priority5s-locality-confirmation/api-red.txt",
+      "exit_code": 1,
+      "result": "4 failed, 1 existing pass, 50 deselected",
+      "evidence": "api-red.txt"
+    },
+    {
+      "check": "API GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/api-green tests/integration/test_saved_comparison.py -k 'explicit_locality_confirmation or source_backed_countrywide_fixture or confirmed_locality_edits or unavailable_locality_reference_requires' 2>&1 | tee build/uc001-priority5s-locality-confirmation/api-green.txt",
+      "exit_code": 0,
+      "result": "5 passed, 50 deselected",
+      "evidence": "api-green.txt"
+    },
+    {
+      "check": "Final affected API selection",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/api-final tests/integration/test_saved_comparison.py -k 'explicit_locality_confirmation or source_backed_countrywide_fixture or confirmed_locality_edits or unavailable_locality_reference_requires or country_only_normalizes or country_only_fallback_preserves or locality_unavailability_does_not_conceal or checked_recovery_precedes_country or approved_country_membership' tests/unit/test_language_policy.py::test_explicit_textual_locality_constraint_remains_essential_independently_of_location_fields 2>&1 | tee build/uc001-priority5s-locality-confirmation/api-final.txt",
+      "exit_code": 0,
+      "result": "13 passed, 43 deselected; global -k also deselected the explicit unit node, which was run separately below",
+      "evidence": "api-final.txt"
+    },
+    {
+      "check": "Independent textual locality constraint regression",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5s-v70khz1o/constraint-regression tests/unit/test_language_policy.py::test_explicit_textual_locality_constraint_remains_essential_independently_of_location_fields 2>&1 | tee build/uc001-priority5s-locality-confirmation/constraint-regression.txt",
+      "exit_code": 0,
+      "result": "1 passed",
+      "evidence": "constraint-regression.txt"
+    },
+    {
+      "check": "Browser RED",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5s-locality-red.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-red.json npx playwright test --grep 'browser displays exactly|explicit locality confirmation saves' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-red --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-red.txt",
+      "exit_code": 1,
+      "result": "1 existing baseline passed, 1 new journey failed at missing intent-only explanation/action; genuine feature RED",
+      "evidence": "browser-red.txt"
+    },
+    {
+      "check": "Browser GREEN",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5s-locality-green.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-green.json npx playwright test --grep 'browser displays exactly|explicit locality confirmation saves|unavailable locality requires explicit country-only|direct new intent after uncertain save: country_edit|lost HTTP response after atomic commit' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-green --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5s-locality-confirmation/browser-green.txt",
+      "exit_code": 0,
+      "result": "5 passed: existing CH baseline, one new journey, three directly affected regressions",
+      "evidence": "browser-green.txt"
+    },
+    {
+      "check": "Frontend lint",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5s-locality-confirmation/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "frontend-lint.txt"
+    },
+    {
+      "check": "Frontend build",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5s-locality-confirmation/frontend-build.txt",
+      "exit_code": 0,
+      "result": "passed",
+      "evidence": "frontend-build.txt"
+    },
+    {
+      "check": "git diff --check",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "only the byte-preserved pre-existing TASKS trailing space, now line 2076",
+      "evidence": "git-diff-check.txt"
+    },
+    {
+      "check": "git status --short",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "pre-existing dirty worktree preserved",
+      "evidence": "git-status.txt"
+    },
+    {
+      "check": "git rev-parse HEAD",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git rev-parse HEAD",
+      "exit_code": 0,
+      "result": "unchanged",
+      "evidence": "git-head.txt"
+    },
+    {
+      "check": "git branch --show-current",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git branch --show-current",
+      "exit_code": 0,
+      "result": "unchanged",
+      "evidence": "git-branch.txt"
+    }
+  ],
+  "notes": [
+    "Exact test/check commands; ordinary read-only repository inspection is not enumerated.",
+    "pytest basetemp locations hold private test databases outside the public receipt; credential values were not copied to artifacts.",
+    "A read-only results collector initially counted a pytest current-directory symlink as a third case and failed its two-case assertion; deduplication fixed collection without a test rerun or product change.",
+    "API runs report the existing Starlette/httpx deprecation warning; no dependency change."
+  ]
+}

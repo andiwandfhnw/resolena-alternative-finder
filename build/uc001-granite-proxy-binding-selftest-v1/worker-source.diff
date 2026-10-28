@@ -1,0 +1,145 @@
+--- before/worker.py
++++ worker.py
+@@ -28,6 +28,7 @@
+ CEILING = 10737418240
+ PROXY_IDENTITY_SCHEMA = 1
+ PROXY_BOUND_ACK = b'PROXY_BOUND\n'
++SELFTEST_PRIOR_SHA256 = '56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a'
+ 
+ 
+ class WorkerFailure(RuntimeError):
+@@ -293,6 +294,27 @@
+         finally:
+             for stream in (proxy.stdout_file,proxy.stderr_file):
+                 if not stream.closed:stream.close()
++    def selftest_worker_identity(self):
++        api=self.native_api()
++        handle=api.open_process(os.getpid())
++        try:
++            identity=self.retained_identity(handle,os.getpid())
++        finally:
++            api.close_handle(handle)
++        return identity
++    def finish_proxy_selftest_handles(self,proxy):
++        if not proxy.closing or not proxy.controller_bound:
++            raise WorkerFailure('selftest_proxy_cleanup_before_planned_close')
++        if self.proxy_states(proxy)!=[0,0] or proxy.process.wait()!=0:
++            raise WorkerFailure('selftest_proxy_cleanup_exit_unverified')
++        proxy.selftest_handle_cleanup_started=True
++        self.close_proxy_handles(proxy)
++        handle=proxy.process._handle
++        handle.Close()
++        if handle.closed is not True:
++            raise WorkerFailure('selftest_proxy_launcher_handle_not_closed')
++        return dict(interpreter_query=proxy.interpreter_handle is None or not proxy.interpreter_opened,
++                    launcher_handle=True,stdout=proxy.stdout_file.closed,stderr=proxy.stderr_file.closed)
+     def ready(self, proxy):
+         started = time.monotonic()
+         while time.monotonic() - started < 10:
+@@ -513,21 +535,101 @@
+     journal.emit('phase_complete', phase='build')
+ 
+ 
++def run_proxy_binding_selftest(config, journal, runner=None):
++    root=Path(config['root']);evidence=root/'evidence'
++    normalized=ntpath.normcase(ntpath.normpath(str(root)))
++    real_root=ntpath.normcase(ROOT)
++    if (config.get('selftest_only') is not True or normalized==real_root
++            or normalized.startswith(real_root+'\\') or not evidence.is_dir()):
++        raise WorkerFailure('isolated_proxy_selftest_root_required')
++    if config.get('prior_sha256')!=SELFTEST_PRIOR_SHA256:
++        raise WorkerFailure('accepted_selftest_prior_hash_differs')
++    module=load_proxy(config)
++    prior=module.load_prior(config['prior_receipt'],SELFTEST_PRIOR_SHA256)
++    if type(prior) is not int or prior!=0:
++        raise WorkerFailure('accepted_selftest_prior_charge_differs')
++    guard=Path(config['guard_entry'])
++    if digest(guard)!=config.get('guard_sha256'):
++        raise WorkerFailure('selftest_network_guard_hash_differs')
++    env=config.get('environment',os.environ)
++    runner=runner or NativeRunner(root,journal,env)
++    identity=runner.selftest_worker_identity()
++    journal.emit('phase_start',phase='acquisition',original_start_utc=config['original_start_utc'],
++                 proxy_binding_selftest=True,worker_interpreter_identity=identity,
++                 worker_identity_query_closed=True)
++    ledger=evidence/'acquisition-proxy.jsonl'
++    guard_log=evidence/'proxy-no-network.jsonl'
++    argv=[sys.executable,'-I','-B',str(guard),'--proxy-helper',str(config['proxy_helper']),
++          '--guard-log',str(guard_log),'--ledger',str(ledger),
++          '--prior-receipt',str(config['prior_receipt']),'--prior-sha256',SELFTEST_PRIOR_SHA256,
++          '--acquisition-started-utc',config['original_start_utc']]
++    proxy=runner.start(argv,'proxy',env,stdin=True)
++    try:
++        ready=runner.ready(proxy)
++        if (ready.get('ledger')!=str(ledger) or type(ready.get('prior_bytes')) is not int
++                or ready['prior_bytes']!=prior or type(ready.get('remaining_bytes')) is not int
++                or ready['remaining_bytes']!=CEILING-prior):
++            raise WorkerFailure('proxy_readiness_accounting_differs')
++        from urllib.parse import urlsplit
++        url=urlsplit(ready['proxy_url'])
++        if (url.scheme!='http' or url.hostname!='127.0.0.1' or url.path or url.username
++                or url.password or url.query or url.fragment or not url.port):
++            raise WorkerFailure('proxy_readiness_address_differs')
++        binding=runner.bind_proxy(proxy,ready)
++        pair=dict(schema=PROXY_IDENTITY_SCHEMA,launcher=binding['launcher'],
++                  interpreter=binding['interpreter'],listening_pid=binding['interpreter']['pid'])
++        journal.emit('proxy_listening',**pair)
++        runner.mark_proxy_closing(proxy)
++        journal.emit('proxy_closing',**pair)
++        proxy.process.stdin.write(b'CLOSE\n');proxy.process.stdin.flush();proxy.process.stdin.close()
++        lines=[json.loads(line) for line in runner.wait(proxy).splitlines()]
++        if len(lines)!=2 or lines[0]!=ready:
++            raise WorkerFailure('proxy_stdout_terminal_differs')
++        total=validate_proxy_terminal(ledger,lines[1],prior,
++                                      expected_pid=binding['interpreter']['pid'])
++        path=Path(__file__).with_name('proxy_binding_selftest.py')
++        checks=types.ModuleType('_granite_worker_proxy_selftest_checks')
++        checks.__file__=str(path);sys.modules[checks.__name__]=checks
++        exec(compile(path.read_bytes(),str(path),'exec'),checks.__dict__)
++        observation=checks.validate_zero_acquisition_ledger(ledger,expected_prior=prior,
++            expected_pid=binding['interpreter']['pid'],terminal=True)
++        if observation['complete'] is not True or observation['total']!=prior:
++            raise WorkerFailure('proxy_selftest_zero_acquisition_unverified')
++        handles=runner.finish_proxy_selftest_handles(proxy)
++        if (set(handles)!={'interpreter_query','launcher_handle','stdout','stderr'}
++                or any(value is not True for value in handles.values())):
++            raise WorkerFailure('proxy_selftest_worker_handle_cleanup_unverified')
++    finally:
++        if not getattr(proxy,'selftest_handle_cleanup_started',False):
++            runner.close_proxy_handles(proxy)
++    if digest(config['proxy_helper'])!=PROXY_SHA256 or digest(config['prior_receipt'])!=SELFTEST_PRIOR_SHA256:
++        raise WorkerFailure('selftest_accepted_input_changed')
++    journal.emit('acquisition_terminal',ledger_path=str(ledger),ledger_sha256=digest(ledger),
++                 cumulative_bytes=total,prior_bytes=prior,proxy_identity_schema=PROXY_IDENTITY_SCHEMA,
++                 proxy_launcher_pid=binding['launcher']['pid'],
++                 proxy_interpreter_pid=binding['interpreter']['pid'],proxy_binding_selftest=True,
++                 zero_acquisition_events=True,worker_handles_closed=handles,guard_log=str(guard_log))
++    journal.emit('phase_complete',phase='acquisition')
++
++
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--phase', choices=('acquisition', 'build'), required=True)
++    parser.add_argument('--phase', choices=('acquisition', 'build', 'proxy-binding-selftest'), required=True)
+     parser.add_argument('--config', type=Path, required=True)
+     parser.add_argument('--events', type=Path, required=True)
+     args = parser.parse_args()
+     if os.name != 'nt' or sys.version_info[:3] != (3, 12, 11):
+         raise WorkerFailure('approved_windows_python_required')
+     config = json.loads(args.config.read_text())
+-    if ntpath.normcase(config['root']) != ntpath.normcase(ROOT):
+-        raise WorkerFailure('fixed_native_root_required')
+-    config['environment'] = validate_environment(os.environ)
++    if args.phase!='proxy-binding-selftest':
++        if ntpath.normcase(config['root']) != ntpath.normcase(ROOT):
++            raise WorkerFailure('fixed_native_root_required')
++        config['environment'] = validate_environment(os.environ)
+     with Journal(args.events) as journal:
+         try:
+-            (run_acquisition if args.phase == 'acquisition' else run_build)(config, journal)
++            phases={'acquisition':run_acquisition,'build':run_build,
++                    'proxy-binding-selftest':run_proxy_binding_selftest}
++            phases[args.phase](config, journal)
+         except BaseException as error:
+             journal.emit('worker_failure', phase=args.phase, reason=str(error))
+             raise

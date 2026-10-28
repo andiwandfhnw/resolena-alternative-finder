@@ -1,0 +1,115 @@
+{
+  "version": "uc001-contract-local-1.4.0",
+  "classification": "owner_operated_windows_capture",
+  "freeze_sha256": "42f6ba2c37273660cfc288bcb4fede1d29a691b30fac67dd43c517c6250f1d5b",
+  "attempt_identity": "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+  "cases": [
+    {
+      "case": 1,
+      "shared_validation_completed": false,
+      "exchanges": [
+        {
+          "exchange": "001",
+          "complete": true,
+          "exported": true,
+          "private_response_bytes": 5010
+        },
+        {
+          "exchange": "002",
+          "complete": true,
+          "exported": true,
+          "private_response_bytes": 4387
+        },
+        {
+          "exchange": "003",
+          "complete": true,
+          "exported": true,
+          "private_response_bytes": 2284
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 3,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 4,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 5,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 6,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 7,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 8,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 9,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 10,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 11,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 12,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 13,
+      "shared_validation_completed": false,
+      "exchanges": []
+    },
+    {
+      "case": 14,
+      "shared_validation_completed": false,
+      "exchanges": []
+    }
+  ],
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "previous_attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+  "execution_purpose": "technical_feasibility_only",
+  "semantic_review": "pending",
+  "expected_meanings_approved": false,
+  "expectations": "provisional",
+  "interpreter_suitability_verified": false,
+  "multilingual_acceptance_verified": false,
+  "live_api_real_adapter_verified": false,
+  "deferred_live_cases": [
+    1,
+    5,
+    10
+  ],
+  "technical_decision_sha256": "cd94e136adc1f6a61fbb555df6dba1d36e3b4096024a4ea3081ee2844af5e040",
+  "partial_review_sha256": "e7b3b718fc8f4636f0a7d2c6a3dac523d646a3c8b9217583efb46d7fbdf737c8",
+  "review_original_freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+  "incomplete_policy": "Incomplete/secret-bearing bodies stay private on Windows; exported status never substitutes for them"
+}

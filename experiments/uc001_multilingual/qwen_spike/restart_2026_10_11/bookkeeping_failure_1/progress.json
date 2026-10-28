@@ -1,0 +1,5 @@
+{
+  "state": "stopped",
+  "error": "event() got multiple values for argument 'name'",
+  "scratch": "/workspaces/resolena-alternative-finder/build/qwen-restart-20261011"
+}

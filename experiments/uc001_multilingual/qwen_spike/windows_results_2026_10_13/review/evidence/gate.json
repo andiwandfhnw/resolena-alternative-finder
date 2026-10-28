@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "bundle_freeze_sha256": "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+  "allowed": false,
+  "known_receipt": {
+    "01-C1-known": {
+      "request_sha256": "7ee5132f54bf6689bd7700189c4b3ad099ea7c200257af0db766f206799ed5cd",
+      "response_sha256": "b034345265f72e80b80452f1c213bbb9bb02db077abe2f45e33039b282182c77"
+    },
+    "02-C2-known": {
+      "request_sha256": "3b11fb77a35a076741f8443ebe5b7d9de3b362fa9e75d168e51c2486b96095c0",
+      "response_sha256": "e767e9714e667801cb9c9ea80bba9635b2dd0bc1a4618259ee4b1d0753f37cca"
+    },
+    "03-C3-known": {
+      "request_sha256": "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c",
+      "response_sha256": "2337fd982d97b7a33920278dbdc9cdbd6d7a35915a4271ae1bf1248f8f718c17"
+    },
+    "04-C4-known": {
+      "request_sha256": "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea",
+      "response_sha256": "8d1bbe3ddeebde15d70d842a5948a33639e60d1f6f596e8b29c5db23e18ea4ab"
+    },
+    "05-C5-known": {
+      "request_sha256": "57954827d5c33090096923fb1e8be645d5e04488df23c77269e9fa7a6847e73a",
+      "response_sha256": "7e1e20e3d89674f4353224ed913c903a1a6d0777cbc4976fb508f18f53347416"
+    },
+    "06-C6-known": {
+      "request_sha256": "7944cb0b3603d0cdc75031e947cf722af26db2ad634bda422f5a09e108f214df",
+      "response_sha256": "713b93ee2b3ca4fd893dda4e6e089fdff129fe5b727bb970a0ceab45fa46e47e"
+    }
+  },
+  "assessment_sha256": "f86e93f44d78ea8919afbf30913e25ff0572c05e12dec4501e1bd969f7c61603",
+  "reason": "STOP: strict gate failure; no extra cases/retry/tuning"
+}

@@ -1,0 +1,132 @@
+{
+  "scenario": "absent",
+  "timeline": [
+    "application_initial:absent",
+    "dbapi_commit_entered",
+    "test_fault_before_underlying_dbapi_commit",
+    "generic_commit_error_before_return_to_production",
+    "commit_error_transaction_cleanup_returned",
+    "adapter_reconciliation:absent",
+    "original_api_response"
+  ],
+  "fault_counts": {
+    "real_commits": 0,
+    "confirmation_errors": 1,
+    "duplicate_submissions": 0
+  },
+  "processing_save_api_calls": {
+    "interpret": 1,
+    "retrieve": 1,
+    "prepare": 1,
+    "prepare_coverage": 0,
+    "save": 1,
+    "clock": 1,
+    "api": 1
+  },
+  "logical_lookup_calls": {
+    "application_initial": 1,
+    "adapter_reconciliation": 1,
+    "application_duplicate_lookup": 0
+  },
+  "real_lookup_selects": {
+    "application_initial": 1,
+    "adapter_reconciliation": 1,
+    "application_duplicate_lookup": 0
+  },
+  "lookup_results": [
+    {
+      "scope": "application_initial",
+      "found": false
+    },
+    {
+      "scope": "adapter_reconciliation",
+      "found": false
+    }
+  ],
+  "ownership_then_payload_checks": [],
+  "insert_attempts": {
+    "search_request": 1,
+    "request_alternative": 2,
+    "request_alternative_evidence": 2
+  },
+  "transaction_cleanup": [
+    {
+      "active_before": false
+    }
+  ],
+  "driver_rollback_observations": [
+    {
+      "after_commit_error": false,
+      "sqlite_in_transaction_before": false
+    },
+    {
+      "after_commit_error": true,
+      "sqlite_in_transaction_before": true
+    },
+    {
+      "after_commit_error": true,
+      "sqlite_in_transaction_before": false
+    }
+  ],
+  "prepared_identity_count": 1,
+  "prepared_request_id": "7b95085c-a0b3-4c7d-81c9-9a43237eaca5",
+  "prepared_assessed_at": "2026-10-15T10:00:00+00:00",
+  "before": {
+    "counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "requests": [],
+    "options": [],
+    "links": [],
+    "evidence": [
+      [
+        "30000000-0000-4000-8000-000000000001",
+        "{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+      ],
+      [
+        "30000000-0000-4000-8000-000000000002",
+        "{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+      ]
+    ]
+  },
+  "independent_after_real_commit": [],
+  "after_response": {
+    "counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "requests": [],
+    "options": [],
+    "links": [],
+    "evidence": [
+      [
+        "30000000-0000-4000-8000-000000000001",
+        "{\"version_id\": \"30000000-0000-4000-8000-000000000001\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-1-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+      ],
+      [
+        "30000000-0000-4000-8000-000000000002",
+        "{\"version_id\": \"30000000-0000-4000-8000-000000000002\", \"publisher\": \"Synthetic fixture provider\", \"source_reference\": \"synthetic:repair-2-v3\", \"source_language\": \"en\", \"supporting_quote\": \"Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.\", \"reviewed_at\": \"2026-10-15T10:00:00+00:00\", \"review_basis\": \"synthetic test metadata, not factual review\", \"publication_date\": null, \"retrieved_at\": null, \"data_period\": null, \"scope\": {\"country_code\": \"CH\"}, \"competent_claims\": [\"relevance\", \"action:repair\", \"no_replacement\", \"applicability\", \"financial\"], \"assertions\": {\"relevance\": \"bicycle\", \"action:repair\": true, \"no_replacement\": true, \"applicability\": true, \"financial\": {\"amount\": \"45.00\", \"currency\": \"CHF\", \"unit\": \"repair\", \"period\": \"once\", \"basis\": \"per repair\", \"charges_known\": false, \"exclusions\": [\"parts\"], \"assumptions\": [], \"price_basis\": \"quoted\"}}, \"attribution\": \"provider-stated\", \"synthetic\": true}"
+      ]
+    ]
+  },
+  "response": {
+    "status": 503,
+    "body": {
+      "outcome": "persistence_error",
+      "persistence": {
+        "state": "unknown"
+      },
+      "issues": [
+        {
+          "code": "comparison_save_failed"
+        }
+      ],
+      "assessed_outcome": "comparison"
+    }
+  },
+  "observer_rows_supplied_to_application": false,
+  "raw_originating_proofs_recorded": false
+}

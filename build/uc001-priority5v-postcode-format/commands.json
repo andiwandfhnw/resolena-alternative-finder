@@ -1,0 +1,81 @@
+{
+  "scope": "Priority 5V only; executed verification commands. Read-only prerequisite inspection did not acquire data or run additional tests.",
+  "runs": [
+    {
+      "label": "rule-red",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5v-unit-red tests/unit/test_locality_reference.py -k declared_postcode_format 2>&1 | tee build/uc001-priority5v-postcode-format/rule-red.txt",
+      "exit_code": 1,
+      "result": "4 genuine missing-behavior failures; 5 already-correct passes; 29 deselected."
+    },
+    {
+      "label": "api-red",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5v-api-red tests/integration/test_saved_comparison.py -k 'declared_postcode_format or exact_locality_association_saves' 2>&1 | tee build/uc001-priority5v-postcode-format/api-red.txt",
+      "exit_code": 1,
+      "result": "3 genuine missing-behavior failures; 7 passes (4 new cases, 3 exact-matching regressions); 68 deselected; 1 existing Starlette warning."
+    },
+    {
+      "label": "browser-red",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5v-format-red.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-red.json npx playwright test --grep 'browser displays exactly|malformed CH postcode requires correction' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-red --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-red.txt",
+      "exit_code": 1,
+      "result": "1 CH baseline passed; 1 new journey failed because actual malformed POST returned 200 instead of expected 422; 24.1 seconds."
+    },
+    {
+      "label": "rule-green",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5v-unit-green tests/unit/test_locality_reference.py -k declared_postcode_format 2>&1 | tee build/uc001-priority5v-postcode-format/rule-green.txt",
+      "exit_code": 0,
+      "result": "9 passed; 29 deselected; 0.08 seconds."
+    },
+    {
+      "label": "api-green",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5v-api-green tests/integration/test_saved_comparison.py -k 'declared_postcode_format or exact_locality_association_saves or country_only_normalizes_effective_location_but_binds_and_recovers_original_payload or country_only_fallback_preserves_independent_textual_locality_requirement or explicit_locality_confirmation_retains_minimal_unverified_intent_and_saves_coverage or matched_association_recovery_precedes_references_and_keeps_payload_binding' 2>&1 | tee build/uc001-priority5v-postcode-format/api-green.txt",
+      "exit_code": 0,
+      "result": "14 passed (7 new, 7 affected regressions); 64 deselected; 1 existing Starlette warning; 1.90 seconds."
+    },
+    {
+      "label": "browser-green",
+      "cwd": "/workspaces/resolena-alternative-finder/frontend",
+      "command": "set -o pipefail\nRESOLENA_E2E_DATABASE=/workspaces/resolena-alternative-finder/build/test-only/uc001-priority5v-format-green.sqlite3 PLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-green.json npx playwright test --grep 'browser displays exactly|malformed CH postcode requires correction' --trace=off --output=/workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-green --reporter=list,json 2>&1 | tee /workspaces/resolena-alternative-finder/build/uc001-priority5v-postcode-format/browser-green.txt",
+      "exit_code": 0,
+      "result": "2 passed (one existing baseline, one new correction journey); 6.1 seconds; no retries."
+    },
+    {
+      "label": "git-checks",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "git diff --check > build/uc001-priority5v-postcode-format/git-diff-check.txt\ncheck_exit=$?\nprintf 'git diff --check exit: %s\\n' \"$check_exit\"\ncat build/uc001-priority5v-postcode-format/git-diff-check.txt\ngit status --short > build/uc001-priority5v-postcode-format/git-status.txt\ngit branch --show-current > build/uc001-priority5v-postcode-format/git-branch.txt\ngit rev-parse HEAD > build/uc001-priority5v-postcode-format/git-head.txt\ncat build/uc001-priority5v-postcode-format/git-status.txt",
+      "exit_code": 0,
+      "git_diff_check_exit_code": 2,
+      "result": "Only preserved preexisting docs/TASKS.md:2207 trailing whitespace; status entries, HEAD and branch match entry."
+    },
+    {
+      "label": "preservation-audit-initial",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "python3 - <<'PY'\nimport ast,difflib,hashlib,json,socket\nfrom datetime import datetime,timezone\nfrom pathlib import Path\nroot=Path.cwd(); evidence=root/'build/uc001-priority5v-postcode-format'\nbaseline=json.loads((evidence/'preservation-baseline.json').read_text())\nchanged=[];missing=[]\nfor name,expected in baseline.items():\n p=root/name\n if not p.is_file(): missing.append(name)\n elif hashlib.sha256(p.read_bytes()).hexdigest()!=expected: changed.append(name)\nexpected={'docs/TASKS.md','docs/ARCHITECTURE.md','src/app/application/comparisons.py','tests/unit/test_locality_reference.py','tests/integration/test_saved_comparison.py','tests/e2e/saved-comparison.spec.ts'}\nassert set(changed)==expected,(changed,missing)\nassert not missing,missing\nold=lambda name:(evidence/'before'/name).read_text()\nnew=lambda name:(root/name).read_text()\nfunctions={}\nfor name in ('tests/unit/test_locality_reference.py','tests/integration/test_saved_comparison.py'):\n previous={n.name:ast.dump(n,include_attributes=False) for n in ast.parse(old(name)).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}\n current={n.name:ast.dump(n,include_attributes=False) for n in ast.parse(new(name)).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}\n assert all(current.get(k)==v for k,v in previous.items()),name\n functions[name]={'existing_top_level_functions_classes_preserved':len(previous),'new_top_level_functions_classes':len(current)-len(previous)}\nname='tests/e2e/saved-comparison.spec.ts'; current=new(name)\nstart=current.index(\"test('malformed CH postcode requires correction\")\nend=current.index('for (const fixture of [',start)\nassert current[:start]+current[end:]==old(name)\nprior=old('docs/TASKS.md');current=new('docs/TASKS.md')\ndef remove_authorization(text):\n start=text.index('Current authorization, 2026-10-23:')\n end=text.index('Previous authorization, extended 2026-10-19:',start)\n return text[:start]+text[end:]\nstart=current.index('## Priority 5V —');end=current.index('## Priority 3 — bounded contracts/policy',start)\nassert remove_authorization(current[:start]+current[end:])==remove_authorization(prior)\nassert [line for line in prior.splitlines() if line.rstrip()!=line]==[line for line in current.splitlines() if line.rstrip()!=line]\nfor name in expected:\n before=old(name).splitlines();after=new(name).splitlines()\n additions=[line[1:] for line in difflib.unified_diff(before,after,n=0) if line.startswith('+') and not line.startswith('+++')]\n assert all(line.rstrip()==line for line in additions),name\nassert (evidence/'git-head-before.txt').read_bytes()==(evidence/'git-head.txt').read_bytes()\nassert (evidence/'git-branch-before.txt').read_bytes()==(evidence/'git-branch.txt').read_bytes()\nassert (evidence/'git-status-before.txt').read_bytes()==(evidence/'git-status.txt').read_bytes()\nports={}\nfor port in (8011,5175):\n with socket.socket() as s:\n  s.settimeout(1);ports[str(port)]=s.connect_ex(('127.0.0.1',port))!=0\nassert all(ports.values()),ports\nreport={'recorded_at':datetime.now(timezone.utc).isoformat(),'baseline_files':len(baseline),'unchanged_files':len(baseline)-len(changed),'changed_files':sorted(changed),'missing_files':missing,'existing_test_functions_classes':functions,'existing_browser_file_byte_preserved_after_removing_one_new_test':True,'dated_TASKS_history_and_original_whitespace_preserved':True,'no_new_whitespace_errors_in_six_file_delta':True,'branch_HEAD_and_git_status_match_entry':True,'owned_test_ports_closed':ports,'changes_sha256':{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in sorted(changed)}}\n(evidence/'preservation-audit.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in report.items() if k!='changes_sha256'},indent=2))\nPY",
+      "exit_code": 1,
+      "result": "Audit-only comparison assertion: entry git status included branch header (short -b), final short output omitted it. All preceding fingerprint/test/history/whitespace checks passed. No implementation or test failure. Corrected comparison excludes only the status header; original captures preserved."
+    },
+    {
+      "label": "preservation-audit-final",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "python3 - <<'PY'\nimport ast,difflib,hashlib,json,socket\nfrom datetime import datetime,timezone\nfrom pathlib import Path\nroot=Path.cwd(); evidence=root/'build/uc001-priority5v-postcode-format'\nbaseline=json.loads((evidence/'preservation-baseline.json').read_text())\nchanged=[];missing=[]\nfor name,expected in baseline.items():\n p=root/name\n if not p.is_file(): missing.append(name)\n elif hashlib.sha256(p.read_bytes()).hexdigest()!=expected: changed.append(name)\nexpected={'docs/TASKS.md','docs/ARCHITECTURE.md','src/app/application/comparisons.py','tests/unit/test_locality_reference.py','tests/integration/test_saved_comparison.py','tests/e2e/saved-comparison.spec.ts'}\nassert set(changed)==expected,(changed,missing)\nassert not missing,missing\nold=lambda name:(evidence/'before'/name).read_text()\nnew=lambda name:(root/name).read_text()\nfunctions={}\nfor name in ('tests/unit/test_locality_reference.py','tests/integration/test_saved_comparison.py'):\n previous={n.name:ast.dump(n,include_attributes=False) for n in ast.parse(old(name)).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}\n current={n.name:ast.dump(n,include_attributes=False) for n in ast.parse(new(name)).body if isinstance(n,(ast.FunctionDef,ast.ClassDef))}\n assert all(current.get(k)==v for k,v in previous.items()),name\n functions[name]={'existing_top_level_functions_classes_preserved':len(previous),'new_top_level_functions_classes':len(current)-len(previous)}\nname='tests/e2e/saved-comparison.spec.ts'; current=new(name)\nstart=current.index(\"test('malformed CH postcode requires correction\")\nend=current.index('for (const fixture of [',start)\nassert current[:start]+current[end:]==old(name)\nprior=old('docs/TASKS.md');current=new('docs/TASKS.md')\ndef remove_authorization(text):\n start=text.index('Current authorization, 2026-10-23:')\n end=text.index('Previous authorization, extended 2026-10-19:',start)\n return text[:start]+text[end:]\nstart=current.index('## Priority 5V —');end=current.index('## Priority 3 — bounded contracts/policy',start)\nassert remove_authorization(current[:start]+current[end:])==remove_authorization(prior)\nassert [line for line in prior.splitlines() if line.rstrip()!=line]==[line for line in current.splitlines() if line.rstrip()!=line]\nfor name in expected:\n before=old(name).splitlines();after=new(name).splitlines()\n additions=[line[1:] for line in difflib.unified_diff(before,after,n=0) if line.startswith('+') and not line.startswith('+++')]\n assert all(line.rstrip()==line for line in additions),name\nassert (evidence/'git-head-before.txt').read_bytes()==(evidence/'git-head.txt').read_bytes()\nassert (evidence/'git-branch-before.txt').read_bytes()==(evidence/'git-branch.txt').read_bytes()\nstatus_lines=lambda path:[line for line in path.read_text().splitlines() if not line.startswith('## ')]\nassert status_lines(evidence/'git-status-before.txt')==status_lines(evidence/'git-status.txt')\nports={}\nfor port in (8011,5175):\n with socket.socket() as s:\n  s.settimeout(1);ports[str(port)]=s.connect_ex(('127.0.0.1',port))!=0\nassert all(ports.values()),ports\nreport={'recorded_at':datetime.now(timezone.utc).isoformat(),'baseline_files':len(baseline),'unchanged_files':len(baseline)-len(changed),'changed_files':sorted(changed),'missing_files':missing,'existing_test_functions_classes':functions,'existing_browser_file_byte_preserved_after_removing_one_new_test':True,'dated_TASKS_history_and_original_whitespace_preserved':True,'no_new_whitespace_errors_in_six_file_delta':True,'branch_HEAD_and_git_status_match_entry':True,'owned_test_ports_closed':ports,'changes_sha256':{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in sorted(changed)}}\n(evidence/'preservation-audit.json').write_text(json.dumps(report,indent=2)+'\\n')\nprint(json.dumps({k:v for k,v in report.items() if k!='changes_sha256'},indent=2))\nPY",
+      "exit_code": 0,
+      "result": "968 baseline files: 962 unchanged, exactly 6 intended changes, none missing; original tests/history and whitespace preserved, branch/HEAD/status entries unchanged, ports 8011/5175 closed."
+    },
+    {
+      "label": "artifact-checks",
+      "cwd": "/workspaces/resolena-alternative-finder",
+      "command": "python3 - <<'PY'\nimport hashlib,json,re,sqlite3\nfrom pathlib import Path\np=Path('build/uc001-priority5v-postcode-format')\njson_files=list(p.rglob('*.json'))\nfor file in json_files: json.loads(file.read_text())\nreceipt=json.loads((p/'verification.json').read_text())\naudit=json.loads((p/'preservation-audit.json').read_text())\nassert receipt['phase']==3 and receipt['status']=='in-progress'\nassert Path('docs/TASKS.md').read_text().startswith('PHASE: 3\\nSTATUS: in-progress\\n')\nfor name,expected in audit['changes_sha256'].items():\n assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==expected,name\nassert hashlib.sha256(Path(receipt['prerequisites']['retained_format_basis']['path']).read_bytes()).hexdigest()==receipt['prerequisites']['retained_format_basis']['sha256']\nfor name in ('commands.json','preservation-audit.json','git-status.txt','git-diff-check.txt'):\n assert (p/name).is_file(),name\nassert Path(receipt['actual_browser_journey']['artifact']).is_file()\nassert (Path('docs')/'../build/uc001-priority5v-postcode-format/verification.json').resolve().is_file()\nassert not list(p.rglob('*.har')) and not list(p.rglob('*trace*.zip'))\nsecrets=set()\nfor color in ('red','green'):\n with sqlite3.connect(f'build/test-only/uc001-priority5v-format-{color}.sqlite3') as connection:\n  for row in connection.execute('SELECT submission_key_digest,proof_binding,payload_digest FROM search_request'):\n   secrets.update(row)\ntext_files=[file for file in p.rglob('*') if file.is_file() and file.suffix in ('.json','.txt','.md','.py','.ts')]\nleaks=[str(file) for file in text_files if any(value in file.read_text() for value in secrets)]\nassert not leaks,leaks\nresult={'JSON_files_parsed':len(json_files),'receipt_links_exist':True,'six_file_hashes_match_final_audit':True,'retained_source_hash_matches':True,'phase_3_in_progress':True,'actual_persisted_browser_submission_digests_or_bindings_in_text_artifacts':0,'trace_HAR_exports':0,'new_text_artifacts_checked':len(text_files)}\n(p/'artifact-checks.json').write_text(json.dumps(result,indent=2)+'\\n')\nprint(json.dumps(result,indent=2))\nPY",
+      "exit_code": 0,
+      "result": "Receipt JSON/links, six final file hashes and retained source hash verified; no actual persisted browser submission digests/bindings in text artifacts; no trace/HAR exports; Phase 3 in-progress."
+    }
+  ],
+  "not_run": {
+    "frontend_lint_build": "Frontend and runner files unchanged in this slice.",
+    "broader_suites": "Outside authorized focused scope.",
+    "git_delivery": "Not authorized or performed."
+  }
+}

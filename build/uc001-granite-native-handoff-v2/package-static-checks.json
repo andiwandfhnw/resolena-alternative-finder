@@ -1,0 +1,14 @@
+{
+  "zip_integrity_passed": true,
+  "exact_flat_entries": 15,
+  "inventory_bytes_hashes_destinations_match": true,
+  "exact_four_native_helpers": true,
+  "diagnostic_helpers_excluded": true,
+  "inactive_configuration": true,
+  "frozen_17_build_flags_match": true,
+  "build_flags_check": "AST extraction of COMMIT and pure build_flags only; no worker module or native phase executed",
+  "proxy_prior_frozen_hashes_preserved": true,
+  "windows_execution": false,
+  "resource_fit_established": false,
+  "acquisition_or_build": false
+}

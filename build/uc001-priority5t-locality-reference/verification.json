@@ -1,0 +1,346 @@
+{
+  "recorded_at": "2026-10-23T17:30:03.553647+00:00",
+  "scope": "UC-001 increment 1, Phase 3 DEVELOP, Priority 5T only: pinned inactive swisstopo CH/LI locality/postcode draft and human-review manifest; no application integration.",
+  "phase": 3,
+  "status": "in-progress",
+  "result": "Preparation complete for bounded human review; review pending, runtime_use false. Priority 5, increment 1 and DEVELOP remain incomplete.",
+  "owner_acceptance_of_5S": {
+    "accepted_only": "Demonstrated explicit user-confirmed/reference-unverified locality continuation and safeguards.",
+    "preserved_receipt": "../uc001-priority5s-locality-confirmation/verification.json",
+    "recorded_findings": [
+      "Confirmation establishes intended search scope, not verified geography or provider coverage.",
+      "Raw/normalized locality values and leading-zero postcodes remain separate, without fabricated locality IDs or verification dates.",
+      "Confirmation creates fresh intent; location edits clear confirmation without sending.",
+      "Ordinary CH evidence cannot establish all-locality applicability. Separate fictional countrywide evidence supports the positive API case; independent textual constraints stay essential.",
+      "Browser demonstrates honest saved insufficient coverage. The disclosed correction to the older ordinary-CH unit expectation remains unchanged.",
+      "Receipt, original evidence and remaining limitations are byte-preserved."
+    ],
+    "advisory_review_limit": "Advisor reviewed the receipt and one-test regression output, not changed source, the separate command record or live worktree."
+  },
+  "prerequisites": {
+    "material_contract_conflict": false,
+    "current_source_policy": "docs/ARCHITECTURE.md, Location reference data and matching: swisstopo official locality/address-postcode directory for CH/LI; non-spatial local extracts, pinned provenance and review gate. GeoNames worldwide locality acquisition is outside this slice.",
+    "existing_release_check": "Canonical docs/reference contained only the four country artifacts before this slice; no suitable reviewed CH/LI locality release. Existing current implementation has no factual resolver.",
+    "reused_conventions": "Existing scripts/uc001_country_catalogue/prepare.py pin/hash/date/disposition/manifest conventions and PROJECT pytest command; no country policy/source reselection or earlier scope/reliability investigation repeated.",
+    "contract_findings": [
+      "Only non-spatial country/locality/postcode/source identity and justified administrative labels are retained. Preserve raw spelling, Unicode and postcode strings separately from derived matching keys.",
+      "Municipality is not locality. Shared names/postcodes do not identify one locality; meaningful multiple associations must remain.",
+      "Source presence never proves delivery/service availability and source absence alone never proves invalidity.",
+      "Review is pending and runtime use false. No new locality source, schema/dependency or architecture choice requiring approval was introduced: this is an offline draft under the existing source policy."
+    ]
+  },
+  "source_snapshot": {
+    "publisher": "Federal Office of Topography swisstopo",
+    "export_identity": "ortschaftenverzeichnis_plz",
+    "snapshot_id": "swisstopo-ortschaften-2026-10-01-sha256-0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+    "source_reference": "https://data.geo.admin.ch/ch.swisstopo-vd.ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz_2056.csv.zip",
+    "raw_source": {
+      "path": "build/uc001-priority5t-locality-reference/source/ortschaftenverzeichnis_plz_2056.csv.zip",
+      "sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+      "bytes": 132697,
+      "format": "ZIP with one UTF-8 BOM semicolon CSV; twelve exact columns",
+      "member": {
+        "path": "AMTOVZ_CSV_LV95/AMTOVZ_CSV_LV95.csv",
+        "sha256": "ae33ad60171374afcb39ddd9cc5268a1fe5b71f40bf21961373f4e6fb65abe02",
+        "bytes": 503281
+      }
+    },
+    "source_dates": {
+      "snapshot_at": "2026-10-01T00:00:00Z",
+      "metadata_updated_at": "2026-10-01T04:45:13.574657Z",
+      "publication_date": null,
+      "reviewed_at": null,
+      "publisher_HTTP_last_modified": "Thu, 01 Oct 2026 04:45:06 GMT",
+      "format_document_version": "1.2",
+      "format_document_version_date": "2026-01-01",
+      "limits": "STAC snapshot and update times describe this export; HTTP Last-Modified is a resource timestamp. CSV Validity is locality-name effective date, not export/retrieval/review time; omitted from draft. No per-entry factual currentness inferred."
+    },
+    "retrieved_at": "2026-10-23T17:16:08.019270+00:00",
+    "prepared_at": "2026-10-23T17:24:45.554962+00:00",
+    "acquisition_record": "acquisition.json",
+    "successful_acquisitions": 6,
+    "failed_attempts": [
+      {
+        "reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+        "retrieved_at": "2026-10-23T17:15:51.499749+00:00",
+        "HTTP_status": null,
+        "error": "Remote end closed connection without response"
+      },
+      {
+        "reference": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+        "retrieved_at": "2026-10-23T17:15:51.624592+00:00",
+        "HTTP_status": null,
+        "error": "Remote end closed connection without response"
+      },
+      {
+        "reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+        "retrieved_at": "2026-10-23T17:15:51.820324+00:00",
+        "HTTP_status": null,
+        "error": "Remote end closed connection without response"
+      }
+    ],
+    "outcome": "CSV archive and STAC metadata acquired with urllib. Initial urllib connections to the product/PDF/terms closed without a response; curl with browser User-Agent subsequently retrieved the same exact URLs successfully. No provider substitution or invented acquisition.",
+    "scope_controls": "Only one 132697-byte CSV archive, directly necessary export metadata/product/format/licensing documents and response headers were retained. No worldwide locality/admin dataset, geometry/address package, user text, stored request, application ID or runtime lookup was sent/acquired.",
+    "documentation": [
+      {
+        "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz",
+        "path": "build/uc001-priority5t-locality-reference/source/collection.json",
+        "sha256": "e97d1c2c067de39d118353dec62b28e368af9486128e8ebdc293b283c4404eea",
+        "bytes": 2482,
+        "retrieved_at": "2026-10-23T17:15:51.238717+00:00"
+      },
+      {
+        "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz/items",
+        "path": "build/uc001-priority5t-locality-reference/source/items.json",
+        "sha256": "04890aeffd0b49bff37a0c3bb9ba0d5bdfb3364bdadea7fb06ab506f7ded58fe",
+        "bytes": 3899,
+        "retrieved_at": "2026-10-23T17:15:51.396311+00:00"
+      },
+      {
+        "reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+        "path": "build/uc001-priority5t-locality-reference/source/product.html",
+        "sha256": "6c6ca4ec29939493839a5655be8ca85640389acd30400dd2ab6f54ce1b2bad4b",
+        "bytes": 316301,
+        "retrieved_at": "2026-10-23T17:16:33.550241+00:00"
+      },
+      {
+        "reference": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+        "path": "build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf",
+        "sha256": "45779d8fbb26006c1692fdf8b1aa1a0bb7a525bced1c5d1fdfe4950ae6c17b50",
+        "bytes": 525109,
+        "retrieved_at": "2026-10-23T17:16:34.652314+00:00"
+      },
+      {
+        "reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+        "path": "build/uc001-priority5t-locality-reference/source/terms.html",
+        "sha256": "ef27221806608ba1519cb31f9c46c381e7fe767f19bf986f8896961a93fc7f7f",
+        "bytes": 261589,
+        "retrieved_at": "2026-10-23T17:16:35.036663+00:00"
+      }
+    ],
+    "format_document_date_basis": "Retained PDF document-history table page 3 explicitly lists version 1.2 / 01.01.2026. This is distinct from the Jan 2026 cover label, STAC snapshot date, retrieval time and human review.",
+    "attribution": {
+      "credit": "Federal Office of Topography swisstopo",
+      "source_reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+      "terms_reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+      "terms_version": "1.3.2021",
+      "basis": "Publisher OGD terms allow use, redistribution and processing with mandatory source credit. STAC labels the licence proprietary; no Creative Commons or endorsement claim is inferred.",
+      "modification_notice": "Selected non-spatial association columns, derived country/matching keys and extraction provenance; excluded coordinates/address shares/language/validity. Source spelling and postal strings unchanged. Human factual/release review pending."
+    }
+  },
+  "draft_and_manifest": {
+    "draft": {
+      "path": "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json",
+      "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+      "bytes": 2265497,
+      "order": "source data record order; source_record is one-based after the header"
+    },
+    "manifest": {
+      "path": "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json",
+      "sha256": "00581759d4128a8a743e06aec6632f2a7d86a94dccf092997c2e7875502ff1e4"
+    },
+    "status": "draft",
+    "runtime_use": false,
+    "review": {
+      "status": "pending",
+      "owner_approved": false,
+      "activation_approved": false,
+      "reviewer": null,
+      "reviewed_at": null
+    },
+    "field_mapping": {
+      "Ortschaftsname": "locality_name (verbatim)",
+      "PLZ4": "postcode (string, verbatim)",
+      "ZIP_ID": "source_postcode_id (string, PLZ6/ONRP identifier only)",
+      "Zusatzziffer": "additional_number (string, verbatim; separate from PLZ4)",
+      "Gemeindename": "administrative.municipality_name (label, not locality identity)",
+      "BFS-Nr": "administrative.municipality_id (source municipal identifier, string)",
+      "Kantonskürzel": "administrative.canton (verbatim) and documented derived country",
+      "Adressenanteil,E,N,Sprache,Validity": "omitted; no spatial/address-share fields, invented aliases or verification dates"
+    },
+    "country_derivation": {
+      "raw_country_column_supplied": false,
+      "rule": "Documented empty canton denotes LI; the 26 observed Swiss canton labels denote CH. Unexpected labels remain unresolved.",
+      "CH_canton_labels": [
+        "AG",
+        "AI",
+        "AR",
+        "BE",
+        "BL",
+        "BS",
+        "FR",
+        "GE",
+        "GL",
+        "GR",
+        "JU",
+        "LU",
+        "NE",
+        "NW",
+        "OW",
+        "SG",
+        "SH",
+        "SO",
+        "SZ",
+        "TG",
+        "TI",
+        "UR",
+        "VD",
+        "VS",
+        "ZG",
+        "ZH"
+      ],
+      "basis": "Product information January 2026, attribute catalogue page 7; product coverage page 4."
+    },
+    "identity": {
+      "locality_id_supplied": false,
+      "postal_id_column": "ZIP_ID",
+      "basis": "Product information pages 5-7: LOCALITYID is a locality GUID but is absent from this CSV; ZIP_ID identifies PLZ6 and is assigned by Swiss Post (ONRP).",
+      "rule": "One row per locality/postcode/municipality association. source_record identifies an extraction record within this pinned input, never an authoritative locality. Do not merge by name, PLZ4, ZIP_ID or municipality; cross-postcode locality identity remains unreviewed."
+    },
+    "normalization": "Source names/postcodes/IDs/admin labels are verbatim. Derived matching name: boundary trim/NFC/casefold. Derived postcode key: boundary trim only; strings never coerced to integers. No translations, aliases or splitting of multilingual source names.",
+    "variants": "Only the source-provided Ortschaftsname is retained; CSV has no separate short/index-name fields. No variants are fabricated from Sprache or slash-separated text.",
+    "source_date_minimization": "CSV Validity denotes locality-name effective date and is omitted; no fictitious verification/review/freshness date. Omitted E/N/Adressenanteil are retained only in exact source bytes, never normalized draft.",
+    "accounting": {
+      "source_records": 5716,
+      "included": 5716,
+      "excluded": 0,
+      "unresolved": 0,
+      "duplicate_source_records": 0,
+      "duplicate_retained_associations": 0
+    },
+    "excluded": [],
+    "unresolved": [],
+    "duplicates": [],
+    "duplicate_semantics": "Duplicate observations apply to included records and remain included. Exact source repeats also count among retained-association repeats; counts overlap and are not additional dispositions. No duplicate occurred in this snapshot.",
+    "structural_summary": {
+      "country_association_counts": {
+        "CH": 5696,
+        "LI": 20
+      },
+      "distinct_postal_ids": 4073,
+      "postal_ids_with_multiple_associations": 1206,
+      "postal_ids_across_canton_labels": 167
+    },
+    "coverage": {
+      "countries": [
+        "CH",
+        "LI"
+      ],
+      "scope": "Official localities/building-address postcodes; not all postal purposes.",
+      "omissions": "Non-address/administrative postcode types, including PO-box/company/internal postcodes, are omitted; see publisher product FAQ and technical documentation."
+    },
+    "identity_findings": [
+      "5716 data records represent associations, not a claim of 5716 distinct localities. ZIP_ID is a PLZ6/ONRP source identifier, not a locality GUID.",
+      "1206 postal IDs have multiple municipality associations and 167 span canton labels; all associations preserved. No ZIP_ID core country/name/postcode/additional-number conflict found.",
+      "CSV has no country column; CH/LI are explicitly derived using documented canton semantics. Blank canton occurs on 20 records assigned LI; remaining 5696 retain source Swiss canton labels.",
+      "No source PLZ4 begins with zero in this snapshot; small parser fixtures verify leading-zero/boundary preservation, and source additional-number strings such as 00 remain strings.",
+      "Zero unresolved data records does not resolve cross-postcode locality identity or approve country/source/release semantics."
+    ]
+  },
+  "red_green_refactor": {
+    "preparation_red": {
+      "result": "3 failed",
+      "exit_code": 1,
+      "evidence": "preparation-red.txt",
+      "meaning": "The new standalone preparation command did not exist. Missing preparation support, not a demonstrated production defect or parser behavior failure."
+    },
+    "parser_red": {
+      "result": "1 collection error",
+      "exit_code": 2,
+      "evidence": "parser-red.txt",
+      "meaning": "The new parser module did not exist; 17 focused parser cases were written before implementation but not executed in this RED run."
+    },
+    "setup_failure": {
+      "result": "1 collection error",
+      "exit_code": 2,
+      "evidence": "preparation-green.txt",
+      "meaning": "Both newly created test modules initially used the same basename under non-package test directories. Renamed only the new integration test to test_locality_reference_manifest.py; no historical test changed. This is not feature RED."
+    },
+    "green": {
+      "result": "20 passed in 1.24s",
+      "exit_code": 0,
+      "evidence": "preparation-green-final.txt",
+      "composition": "3 command/manifest checks + 17 parser/complete-pinned-export checks."
+    },
+    "coverage": [
+      "Strict UTF-8/documented twelve-column semicolon schema and required values; malformed source structure stops or retains per-record unresolved disposition.",
+      "Raw Unicode, boundary whitespace, postcode/additional-number/ID strings preserved; normalized keys separate and no prohibited output fields.",
+      "Country derivation and source postal identity handling; unknown canton/core identity conflicts explicitly unresolved.",
+      "Multiple names/postcodes/municipalities/cantons retained without flattening; exact/retained duplicate fixtures accounted with overlap.",
+      "Every pinned source association checked structurally against raw values with complete source-record accounting; no expected locality total assumed and no familiar-place sampling substituted for factual review.",
+      "Source/document hash failures reject preparation before writing; exact same pinned input/parameters reproduce complete draft and manifest bytes."
+    ],
+    "refactor_review": "Small standard-library extract_csv/output_bytes/offline CLI follow existing preparation conventions; read-only peer review found no material gap. No framework, new dependency or application implementation.",
+    "canonical_output_validation": "draft-checks.json: generated output/source/member/document/script hashes match; every source name/postcode record agrees; review pending/runtime false.",
+    "exact_commands_and_results": "commands.json",
+    "actual_preparation_command": "preparation-command.txt",
+    "tests_not_run": "No browser, application service, broader suite, multilingual/fault/concurrency matrix or matching/model experiment."
+  },
+  "changes": {
+    "modified_existing_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md"
+    ],
+    "new_preparation_reference_files": [
+      "scripts/uc001_locality_reference/prepare.py",
+      "tests/unit/test_locality_reference_preparation.py",
+      "tests/integration/test_locality_reference_manifest.py",
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json",
+      "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json"
+    ],
+    "new_evidence_directory": "build/uc001-priority5t-locality-reference",
+    "canonical_documentation": "One concise dated TASKS result records 5S acceptance and this bounded result. ARCHITECTURE adds only an inactive-draft paragraph; existing design and dated history preserved."
+  },
+  "preservation": {
+    "baseline": "preservation-baseline.json",
+    "audit": "preservation-audit.json",
+    "baseline_files": 845,
+    "unchanged_files": 843,
+    "prior_evidence_files_unchanged": 554,
+    "all_existing_country_reference_artifacts_unchanged": true,
+    "all_application_frontend_prior_tests_unchanged": true,
+    "dated_task_history_preserved": true,
+    "alternative_evidence_and_saved_requests": "No application/database paths were changed or invoked; prior protected files are byte-preserved.",
+    "source_review_limits": "Only public reference data and necessary documents acquired. No owner factual/release approval, qualified linguistic acceptance or runtime availability claim.",
+    "DE_FR_IT_EN_and_control": "No language, processing, atomic-save or recovery contract/code change. Resolena-controlled processing preserved."
+  },
+  "git": {
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "HEAD_and_branch_unchanged": true,
+    "status": "git-status.txt",
+    "removed_entry_lines": [],
+    "added_entry_lines": [
+      "?? scripts/uc001_locality_reference/"
+    ],
+    "diff_check": {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "evidence": "git-diff-check.txt",
+      "only_issue": "Pre-existing TASKS trailing whitespace at entry line 2076, now line 2117; exact original bytes preserved. No new whitespace issue."
+    },
+    "no_delivery": "No staging, commit, push, merge, reset, branch switch, CI/CD or deployment."
+  },
+  "human_review_and_stop": {
+    "outstanding_decisions": [
+      "Approve source snapshot, field meanings and all association/country dispositions; automated checks are not factual or release approval.",
+      "Review documented empty-canton LI derivation and retained municipal/canton labels, including cross-canton associations.",
+      "No locality GUID in the CSV: determine whether/when reviewed locality identity across postal IDs is needed. No consolidation or resolver is authorized.",
+      "Review coverage omissions, attribution/licensing basis and source-provided multilingual spellings; no qualified DE/FR/IT/EN linguistic acceptance.",
+      "Any unresolved/duplicate ledgers require review; zero unresolved source records does not resolve these identity or release decisions.",
+      "Activation, replacement and application integration each require explicit authorization."
+    ],
+    "explicit_limits": [
+      "Reference presence does not prove delivery or service availability.",
+      "Reference absence alone does not prove an entered locality is invalid.",
+      "No geometry, full addresses, fuzzy matching, geocoding or runtime publisher request.",
+      "Inactive preparation only; approved country artifacts, saved requests and immutable alternative evidence unchanged."
+    ],
+    "not_completed": [
+      "Factual matching or resolver; ambiguity-choice UI; postcode-format implementation; fuzzy correction/geocoding; provider coverage research; further O-1 variants.",
+      "Worldwide locality acquisition, real alternative/rendering activation, interpreter/model/detector experiments/startup, held-out access, linguistic/TL-03 acceptance, UC-003 or Priority 6.",
+      "Priority 5, increment 1 and DEVELOP remain incomplete; Priorities 3/4 remain partial."
+    ],
+    "state": "PHASE 3, STATUS in-progress. Normal app.main unconfigured; real alternative/rendering drafts inactive; interpreter experiments closed. Stop for human review; no automatic approval, activation, resolver or further implementation."
+  }
+}

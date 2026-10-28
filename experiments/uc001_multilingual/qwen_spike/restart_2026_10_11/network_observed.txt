@@ -1,0 +1,977 @@
+24419 +++ exited with 0 +++
+24418 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+24418 connect(3, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+24418 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC|SOCK_NONBLOCK, 0) = 3
+24418 connect(3, {sa_family=AF_UNIX, sun_path="/var/run/nscd/socket"}, 110) = -1 ENOENT (No such file or directory)
+24418 socket(AF_UNIX, SOCK_STREAM|SOCK_CLOEXEC, 0) = 3
+24418 setsockopt(3, SOL_SOCKET, SO_REUSEADDR, [1], 4) = 0
+24418 bind(3, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, 84) = 0
+24418 listen(3, 512)                    = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC) = 4
+24427 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(4, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(4, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(4, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(4, SHUT_WR)              = 0
+24422 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(4, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 4
+24427 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(4, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(4, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(4, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(4, SHUT_WR)              = 0
+24424 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(4, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC) = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24422 getpeername(5,  <unfinished ...>
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 <... getpeername resumed>{sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0 <unfinished ...>
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 <... sendto resumed>)             = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(6, SHUT_WR)              = 0
+24424 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(6, SHUT_WR)              = 0
+24426 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(6, SHUT_WR)              = 0
+24423 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(6, SHUT_WR)              = 0
+24425 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24426 getpeername(5,  <unfinished ...>
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 <... getpeername resumed>{sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(5, SHUT_WR)              = 0
+24426 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 6
+24427 setsockopt(6, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(6, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(6, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(6, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(6, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(6, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(6, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(6, SHUT_WR)              = 0
+24422 recvfrom(6, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(6, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24423 shutdown(5, SHUT_WR)              = 0
+24423 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 4
+24427 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(4, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(4, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24424 sendto(4, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24424 shutdown(4, SHUT_WR)              = 0
+24424 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(4, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24425 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24425 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24425 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24425 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24425 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24425 shutdown(5, SHUT_WR)              = 0
+24425 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24425 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 4
+24427 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24426 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24426 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24426 getsockname(4, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24426 recvfrom(4, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24426 sendto(4, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24426 shutdown(4, SHUT_WR)              = 0
+24426 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+24426 shutdown(4, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24422 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24422 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24422 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24422 recvfrom(5, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24422 sendto(5, "HTTP/1.1 503 Service Unavailable"..., 247, 0, NULL, 0) = 247
+24422 shutdown(5, SHUT_WR)              = 0
+24422 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24422 shutdown(5, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 4
+24427 setsockopt(4, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(4, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24423 getpeername(4, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24423 getsockopt(4, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24423 getsockname(4, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24423 recvfrom(4, "GET /health HTTP/1.1\r\nHost: loca"..., 4096, 0, NULL, NULL) = 68
+24423 sendto(4, "HTTP/1.1 200 OK\r\nServer: llama.c"..., 183, 0, NULL, 0) = 183
+24423 recvfrom(4, "", 4096, 0, NULL, NULL) = 0
+24423 shutdown(4, SHUT_WR)              = 0
+24423 recvfrom(4, "", 16384, 0, NULL, NULL) = 0
+24423 shutdown(4, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = 5
+24427 setsockopt(5, SOL_SOCKET, SO_RCVTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_SOCKET, SO_SNDTIMEO_OLD, "\20\16\0\0\0\0\0\0\0\0\0\0\0\0\0\0", 16) = 0
+24427 setsockopt(5, SOL_TCP, TCP_NODELAY, [1], 4) = -1 EOPNOTSUPP (Operation not supported)
+24427 accept4(3, NULL, NULL, SOCK_CLOEXEC <unfinished ...>
+24424 getpeername(5, {sa_family=AF_UNIX}, [128 => 2]) = 0
+24424 getsockopt(5, SOL_SOCKET, SO_PEERCRED, {pid=23315, uid=1000, gid=1000}, [12]) = 0
+24424 getsockname(5, {sa_family=AF_UNIX, sun_path="/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock"}, [128 => 85]) = 0
+24424 recvfrom(5, "POST /v1/chat/completions HTTP/1"..., 4096, 0, NULL, NULL) = 3180
+24424 sendto(5, "HTTP/1.1 200 OK\r\nServer: llama.c"..., 1190, 0, NULL, 0) = 1190
+24424 recvfrom(5, "", 4096, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_WR)              = 0
+24424 recvfrom(5, "", 16384, 0, NULL, NULL) = 0
+24424 shutdown(5, SHUT_RDWR)            = 0
+24418 --- SIGTERM {si_signo=SIGTERM, si_code=SI_USER, si_pid=23315, si_uid=1000} ---
+24507 +++ exited with 0 +++
+24421 +++ exited with 0 +++
+24418 shutdown(3, SHUT_RDWR)            = 0
+24427 <... accept4 resumed>)            = -1 EINVAL (Invalid argument)
+24427 +++ exited with 0 +++
+24426 +++ exited with 0 +++
+24423 +++ exited with 0 +++
+24422 +++ exited with 0 +++
+24425 +++ exited with 0 +++
+24424 +++ exited with 0 +++
+24420 +++ exited with 0 +++
+24816 +++ exited with 0 +++
+24506 +++ exited with 0 +++
+24418 +++ exited with 0 +++

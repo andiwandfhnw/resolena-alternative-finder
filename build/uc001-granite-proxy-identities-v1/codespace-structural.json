@@ -1,0 +1,20 @@
+{
+  "preparation_integrity_passed": true,
+  "proxy_identity_schema": 1,
+  "native_binding_verified": false,
+  "native_api_invoked": false,
+  "live_proxy_started": false,
+  "ownership_selftest_run": false,
+  "acquisition_or_build": false,
+  "gpu_model_inference": false,
+  "resource_fit_established": false,
+  "forbidden_attempts": [],
+  "module_paths": {
+    "worker": "/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/package/worker.py",
+    "controller": "/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/package/controller.py"
+  },
+  "runtime_check_injected": true,
+  "windows_execution": false,
+  "python_version": "3.12.11",
+  "timestamp_utc": "2026-10-26T21:25:19.037961+00:00"
+}

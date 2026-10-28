@@ -1,0 +1,55 @@
+--- scripts/uc001_granite_controller/standins.py (before)
++++ scripts/uc001_granite_controller/standins.py
+@@ -92,6 +92,42 @@
+         raise StandinFailure('native identity/parent/membership mismatch:' + ref['role'] + ':' + ref['kind'])
+     _stable(api, ref)
+     ref['verified'] = True
++
++
++def _observe_scoped_edges(api, outside, timeout_seconds, journal, clock):
++    parents = {ref['pid']: ref['kind'] for ref in outside}
++    observation = dict(scoped_parents=[dict(parent_pid=ref['pid'], parent_kind=ref['kind'])
++                                      for ref in outside],
++                       observation_started_utc=_utc(), observation_started_monotonic=clock())
++    try:
++        edges = api.children_of(set(parents), timeout_seconds=timeout_seconds)
++    except BaseException as error:
++        journal.record('scoped_child_edges', **observation, observation_utc=_utc(),
++                       observation_monotonic=clock(), status='failed', observed_edges=None,
++                       error_type=type(error).__name__)
++        raise
++    observation.update(observation_utc=_utc(), observation_monotonic=clock())
++    valid = type(edges) is set and all(
++        type(edge) is tuple and len(edge) == 2
++        and all(type(pid) is int and 0 < pid <= 0xFFFFFFFF for pid in edge)
++        and edge[1] in parents for edge in edges)
++    rows = None
++    if valid:
++        known = {ref['pid']: ref for ref in outside if ref.get('verified')}
++        rows = []
++        for child, parent in sorted(edges, key=lambda edge: (edge[1], edge[0])):
++            ref = known.get(child)
++            rows.append(dict(parent_pid=parent, child_pid=child, parent_kind=parents[parent],
++                observation_utc=observation['observation_utc'],
++                observation_monotonic=observation['observation_monotonic'],
++                child_creation_time_100ns=ref['creation_time_100ns'] if ref else None,
++                child_creation_source=('previously_verified_retained_identity' if ref
++                                       else 'no_retained_verified_handle')))
++    journal.record('scoped_child_edges', **observation,
++                   status='observed' if valid else 'malformed', observed_edges=rows)
++    if not valid:
++        raise StandinFailure('unknown additional unrelated process')
++    return edges
+ 
+ 
+ def run_ownership_selftest(output, python_exe=sys.executable, *, job_factory=None,
+@@ -166,8 +202,7 @@
+         outside_shape_verified = False
+         check_deadline()
+         launcher, interpreter = outside
+-        edges = job.api.children_of({launcher['pid'], interpreter['pid']},
+-                                    timeout_seconds=min(1.0, deadline-clock()))
++        edges = _observe_scoped_edges(job.api, outside, min(1.0, deadline-clock()), journal, clock)
+         if edges != {(interpreter['pid'], launcher['pid'])}:
+             raise StandinFailure('unknown additional unrelated process')
+         for ref in outside:

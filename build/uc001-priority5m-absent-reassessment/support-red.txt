@@ -1,0 +1,32 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_absent_unknown_save_recovery_reassesses_expired_evidence_without_replacing_submission _
+
+tmp_path = PosixPath('/tmp/resolena-priority5m-eluvycaz/pytest-red/test_absent_unknown_save_recov0')
+
+    def test_absent_unknown_save_recovery_reassesses_expired_evidence_without_replacing_submission(tmp_path):
+        from datetime import timedelta
+    
+        from tests.support.source_bound_rendering import create_demo_service
+        from tests.support.synthetic import FIXTURE_TIME
+        from tests.support.uncertain_save import _observe
+    
+        database = tmp_path / "absent-recovery.sqlite3"
+        control_file = tmp_path / "absent.json"
+        fault_file = control_file.with_suffix(".evidence.json")
+        processing_file = control_file.with_suffix(".processing.json")
+        current_time = FIXTURE_TIME
+>       service = create_demo_service(database, clock=lambda: current_time, uncertain_save_file=control_file)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: create_demo_service() got an unexpected keyword argument 'uncertain_save_file'
+
+tests/integration/test_uncertain_save_support.py:317: TypeError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_uncertain_save_support.py::test_absent_unknown_save_recovery_reassesses_expired_evidence_without_replacing_submission
+1 failed, 1 warning in 1.04s

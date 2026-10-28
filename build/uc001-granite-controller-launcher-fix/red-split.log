@@ -1,0 +1,16 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__ test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities __
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-45/test_exact_owner_launcher_spli0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7b17cfe94350>
+
+    def test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities(tmp_path,monkeypatch):
+        result,calls=run_split(tmp_path,monkeypatch)
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:447: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities
+1 failed, 25 deselected in 0.23s

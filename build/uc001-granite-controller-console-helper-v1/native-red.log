@@ -1,0 +1,230 @@
+FFFFFFFFFFFF                                                             [100%]
+=================================== FAILURES ===================================
+_ test_console_system_path_comes_only_from_bounded_native_system_directory[C:\\Windows\\System32] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c3398710>
+directory = 'C:\\Windows\\System32'
+
+    @pytest.mark.parametrize('directory',[r'C:\Windows\System32',r'D:\CurrentWindows\System32','D:\\Windows\\\U0001f6b2'])
+    def test_console_system_path_comes_only_from_bounded_native_system_directory(monkeypatch,directory):
+        import ntpath
+        monkeypatch.setenv('SystemRoot',r'Z:\FakeWindows')
+        monkeypatch.setenv('windir',r'Z:\FakeWindows')
+        api,calls=console_system_api(monkeypatch,directory=directory)
+>       assert api.system_console_path()==ntpath.join(directory,'conhost.exe')
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:790: AttributeError
+_ test_console_system_path_comes_only_from_bounded_native_system_directory[D:\\CurrentWindows\\System32] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c37bd310>
+directory = 'D:\\CurrentWindows\\System32'
+
+    @pytest.mark.parametrize('directory',[r'C:\Windows\System32',r'D:\CurrentWindows\System32','D:\\Windows\\\U0001f6b2'])
+    def test_console_system_path_comes_only_from_bounded_native_system_directory(monkeypatch,directory):
+        import ntpath
+        monkeypatch.setenv('SystemRoot',r'Z:\FakeWindows')
+        monkeypatch.setenv('windir',r'Z:\FakeWindows')
+        api,calls=console_system_api(monkeypatch,directory=directory)
+>       assert api.system_console_path()==ntpath.join(directory,'conhost.exe')
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:790: AttributeError
+_ test_console_system_path_comes_only_from_bounded_native_system_directory[D:\\Windows\\\U0001f6b2] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c37bea50>
+directory = 'D:\\Windows\\🚲'
+
+    @pytest.mark.parametrize('directory',[r'C:\Windows\System32',r'D:\CurrentWindows\System32','D:\\Windows\\\U0001f6b2'])
+    def test_console_system_path_comes_only_from_bounded_native_system_directory(monkeypatch,directory):
+        import ntpath
+        monkeypatch.setenv('SystemRoot',r'Z:\FakeWindows')
+        monkeypatch.setenv('windir',r'Z:\FakeWindows')
+        api,calls=console_system_api(monkeypatch,directory=directory)
+>       assert api.system_console_path()==ntpath.join(directory,'conhost.exe')
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:790: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes0] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c3399490>
+changes = {'length': 0}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes1] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c339a750>
+changes = {'length': 32768}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes2] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c339b410>
+changes = {'length': 32769}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes3] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c3398f20>
+changes = {'length': 2}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes4] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c3398e60>
+changes = {'directory': 'System32'}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes5] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c339adb0>
+changes = {'directory': '\\Windows\\System32'}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes6] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c33a4740>
+changes = {'directory': 'C:System32'}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+_ test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes7] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c33a54f0>
+changes = {'directory': 'C:\\Windows\\System32\\..\\Other'}
+
+    @pytest.mark.parametrize('changes',[
+        {'length':0},{'length':32768},{'length':32769},{'length':2},
+        {'directory':'System32'},{'directory':r'\Windows\System32'},
+        {'directory':r'C:System32'},{'directory':r'C:\Windows\System32\..\Other'},
+    ])
+    def test_console_system_path_unavailable_relative_or_truncated_is_rejected(monkeypatch,changes):
+        api,calls=console_system_api(monkeypatch,**changes)
+        with pytest.raises(JobError):
+>           api.system_console_path()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: 'NativeApi' object has no attribute 'system_console_path'
+
+tests/unit/test_granite_windows_job.py:802: AttributeError
+___ test_console_system_directory_binding_has_pointer_safe_unicode_signature ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x71d3c33a63c0>
+
+    def test_console_system_directory_binding_has_pointer_safe_unicode_signature(monkeypatch):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        class Function:
+            argtypes=None
+            restype=None
+        class Library:
+            def __init__(self):self.functions={}
+            def __getattr__(self,name):return self.functions.setdefault(name,Function())
+        kernel,ntdll=Library(),Library()
+        monkeypatch.setattr(module,'os',SimpleNamespace(name='nt'))
+        monkeypatch.setattr(module.c,'WinDLL',lambda name,**kwargs:ntdll if name=='ntdll' else kernel,raising=False)
+        module.NativeApi()
+>       function=kernel.functions['GetSystemDirectoryW']
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'GetSystemDirectoryW'
+
+tests/unit/test_granite_windows_job.py:819: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_comes_only_from_bounded_native_system_directory[C:\\Windows\\System32]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_comes_only_from_bounded_native_system_directory[D:\\CurrentWindows\\System32]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_comes_only_from_bounded_native_system_directory[D:\\Windows\\\U0001f6b2]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes0]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes1]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes2]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes3]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes4]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes5]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes6]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_path_unavailable_relative_or_truncated_is_rejected[changes7]
+FAILED tests/unit/test_granite_windows_job.py::test_console_system_directory_binding_has_pointer_safe_unicode_signature
+12 failed, 79 deselected in 0.64s

@@ -1,0 +1,18 @@
+{
+  "phase": "venv",
+  "identity": {
+    "pid": 13261,
+    "pgrp": 13261,
+    "start_ticks": 223222,
+    "rss": 5615616,
+    "hwm": 5615616,
+    "threads": 1
+  },
+  "exit_code": 0,
+  "failure": null,
+  "process_absent": true,
+  "peak_owned_rss_bytes": 49631232,
+  "peak_hwm_sum_bytes": 49631232,
+  "peak_scratch_bytes": 171175936,
+  "end_monotonic": 2232.511148545
+}

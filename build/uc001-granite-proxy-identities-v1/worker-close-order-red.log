@@ -1,0 +1,68 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_proxy_identity_premature_exit_cannot_be_published_as_planned_close[launcher] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-31/test_proxy_identity_premature_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x74c2265aec90>
+role = 'launcher'
+
+    @pytest.mark.parametrize('role',['launcher','interpreter'])
+    def test_proxy_identity_premature_exit_cannot_be_published_as_planned_close(tmp_path,monkeypatch,role):
+        value=acquisition_config(tmp_path,monkeypatch);events=Events()
+        class Premature(AcquisitionRunner):
+            def start(self,*args,**kwargs):
+                child=super().start(*args,**kwargs)
+                self.api=ProxyApi(split=True)
+                self.ready_value['pid']=701
+                ledger=self.root/'evidence/acquisition-proxy.jsonl'
+                rows=[json.loads(line) for line in ledger.read_text().splitlines()]
+                for row in rows:
+                    if row['event']=='listening':row['pid']=701
+                ledger.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+                return child
+            def run(self,argv,label,env=None,proxy=None):
+                result=super().run(argv,label,env,proxy)
+                if label=='source-fetch':self.api.rows[role]['exit']=0
+                return result
+        runner=Premature(Path(value['root']),journal=events)
+        with pytest.raises(WorkerFailure):run_acquisition(value,events,runner=runner)
+>       assert not any(row['event']=='proxy_closing' for row in events.events)
+E       assert not True
+E        +  where True = any(<generator object test_proxy_identity_premature_exit_cannot_be_published_as_planned_close.<locals>.<genexpr> at 0x74c22659b920>)
+
+tests/unit/test_granite_controller_worker.py:584: AssertionError
+_ test_proxy_identity_premature_exit_cannot_be_published_as_planned_close[interpreter] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-31/test_proxy_identity_premature_1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x74c2265ae1e0>
+role = 'interpreter'
+
+    @pytest.mark.parametrize('role',['launcher','interpreter'])
+    def test_proxy_identity_premature_exit_cannot_be_published_as_planned_close(tmp_path,monkeypatch,role):
+        value=acquisition_config(tmp_path,monkeypatch);events=Events()
+        class Premature(AcquisitionRunner):
+            def start(self,*args,**kwargs):
+                child=super().start(*args,**kwargs)
+                self.api=ProxyApi(split=True)
+                self.ready_value['pid']=701
+                ledger=self.root/'evidence/acquisition-proxy.jsonl'
+                rows=[json.loads(line) for line in ledger.read_text().splitlines()]
+                for row in rows:
+                    if row['event']=='listening':row['pid']=701
+                ledger.write_text(''.join(json.dumps(row)+'\n' for row in rows))
+                return child
+            def run(self,argv,label,env=None,proxy=None):
+                result=super().run(argv,label,env,proxy)
+                if label=='source-fetch':self.api.rows[role]['exit']=0
+                return result
+        runner=Premature(Path(value['root']),journal=events)
+        with pytest.raises(WorkerFailure):run_acquisition(value,events,runner=runner)
+>       assert not any(row['event']=='proxy_closing' for row in events.events)
+E       assert not True
+E        +  where True = any(<generator object test_proxy_identity_premature_exit_cannot_be_published_as_planned_close.<locals>.<genexpr> at 0x74c226520040>)
+
+tests/unit/test_granite_controller_worker.py:584: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_premature_exit_cannot_be_published_as_planned_close[launcher]
+FAILED tests/unit/test_granite_controller_worker.py::test_proxy_identity_premature_exit_cannot_be_published_as_planned_close[interpreter]
+2 failed, 44 deselected in 0.18s

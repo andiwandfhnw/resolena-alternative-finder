@@ -1,0 +1,146 @@
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": "Interpret only the supplied request. Return the prescribed JSON, no explanation.\nSupported written languages: German, French, Italian, English. Spanish and Swiss-German dialect input: unsupported. Mixed supported-language text may be understood; ambiguous meaning requires clarification.\nPreserve all explicit goals, negation, exclusions, limits, names and amounts. Never infer cheaper/greener goals, a baseline, country or absent constraints.\nsubject.value: canonical English subject, e.g. bicycle, coffee_machine, streaming, smartphone, vacuum, cup, kettle.\naction.value: repair, replace, reduce_cost, compare, reuse; null if not stated.\nEvery subject/action/goal/constraint quote must be an exact contiguous substring of the original input, using original spelling. Do not output character offsets.\ngoals: cheaper or reduce_waste only if explicitly stated, otherwise [].\nconstraints kinds: no_replacement, no_repair, replacement_required, preserve_quality, no_new_purchase (values true or false as strings); budget (canonical decimal currency, append /month only when explicit); storage_min (e.g. 128 GB); cost_exclusion (delivery); locality; identifier. Preserve other explicit constraints with clear English kinds/values.\n1,200 CHF is numerically ambiguous: clarification, not a guessed amount.\nFor understood: unresolved []; subject/action null use empty quote. For clarification or unsupported preserve uncertainty in unresolved. A quoted negative clause must control the meaning, never silently reverse or drop it. Recognition of words is not understanding.\n"
+    },
+    {
+      "role": "user",
+      "content": "repair my kettle."
+    }
+  ],
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "top_k": 20,
+  "min_p": 0.0,
+  "seed": 42,
+  "max_tokens": 384,
+  "cache_prompt": false,
+  "chat_template_kwargs": {
+    "enable_thinking": false
+  },
+  "response_format": {
+    "type": "json_object",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "understood",
+            "clarification",
+            "unsupported"
+          ]
+        },
+        "language": {
+          "enum": [
+            "de",
+            "fr",
+            "it",
+            "en",
+            "mixed",
+            null
+          ]
+        },
+        "subject": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "quote": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "quote"
+          ],
+          "additionalProperties": false
+        },
+        "action": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "quote": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "quote"
+          ],
+          "additionalProperties": false
+        },
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "quote": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "value",
+              "quote"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "value",
+              "quote"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "status",
+        "language",
+        "subject",
+        "action",
+        "goals",
+        "constraints",
+        "unresolved"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

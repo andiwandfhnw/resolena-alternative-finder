@@ -1,0 +1,63 @@
+{
+  "verified_utc": "2026-10-14T19:50:02.426691+00:00",
+  "os": "Debian 12 bookworm",
+  "scope": "Authorized development-environment APT repair/tool install and isolated offline checks",
+  "yarn_before": {
+    "/etc/apt/sources.list.d/yarn.list": {
+      "sha256": "a27a1bb7ace9b09be8ca37f066d1985862cd811ea50d0d80da8e0b5092600bc0",
+      "bytes": 115,
+      "mode": "0o664",
+      "uid": 0,
+      "gid": 0
+    },
+    "/usr/share/keyrings/yarn-archive-keyring.gpg": {
+      "sha256": "6a75fb89ee4ce8899e232dd23f1acdde55b8de89aefae474aed35f0e19ac79f2",
+      "bytes": 10365,
+      "mode": "0o664",
+      "uid": 0,
+      "gid": 0
+    }
+  },
+  "yarn_source_after": "deb [arch=amd64 signed-by=/etc/apt/keyrings/yarn-archive-keyring.gpg] https://dl.yarnpkg.com/debian/ stable main\n",
+  "yarn_source_sha256": "c10d9326845c531ab79381d2a8e6ff6c014a3acdafe03a51349dadf6996cc55b",
+  "yarn_key_sha256": "dadf6038e7ae295233988aadfd9c951a9ace2ce81eec6b26a460453f3e6e2e10",
+  "yarn_signer_fingerprint": "FF7CB5667B542092084BBDC562D54FD4003F6525",
+  "yarn_metadata_signature": "gpgv GOODSIG / VALIDSIG verified",
+  "yarn_enabled": true,
+  "signature_verification_bypassed": false,
+  "signed_apt_updates_exit": 0,
+  "backup_path": "/workspaces/resolena-alternative-finder/build/operations/yarn-powershell-20261014/before",
+  "microsoft_source": "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/microsoft-prod.gpg] https://packages.microsoft.com/debian/12/prod bookworm main\n",
+  "installed_packages": [
+    "packages-microsoft-prod\t1.1-debian12\tinstalled",
+    "powershell\t7.6.7-1.deb\tinstalled"
+  ],
+  "PowerShell_version_check_exit": 0,
+  "existing_packages_upgraded_or_removed": 0,
+  "application_dependencies_changed": false,
+  "offline_regressions": {
+    "edition": "Core",
+    "version": "7.6.7",
+    "passed": 19,
+    "parsed_scripts": 9,
+    "original_Groups_reproduced": true,
+    "Windows_5_1_compatibility": false,
+    "native_Windows_verification": "pending"
+  },
+  "frozen_payload_hashes_verified": 136,
+  "preserved_zip_hashes": {
+    "build/checkpoints/windows-qwen3-8b-v2.zip": "c14eb3656f3fab621f32d130f378e556207a70517f19752562f2f389f11cbb32",
+    "build/checkpoints/windows-qwen3-8b-v2-0-1.zip": "2fb5b5ad7dbc060b9caafc5f4b8fd5461f86e9a97c03db33352a6cae6aa167ff",
+    "build/windows-v2-results-20261014/final-results.zip": "404b1620056c8cdc023d36d3d164ffcbc9bf5b3caf9d2ddecf2de9335b805d2c",
+    "experiments/uc001_multilingual/qwen_spike/windows_results_2026_10_13/final-results.zip": "7580e171fc9dde4a9b086f76fea2eae5fc182fea66b20606f1601f734723e2cf"
+  },
+  "inference_requests": 0,
+  "experiment_restart": false,
+  "phase": 2,
+  "STATUS": "in-progress",
+  "DESIGN": "pending",
+  "linguistic_validation": "pending",
+  "branch": "specify/phase-1-uc-001",
+  "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "index": "empty"
+}

@@ -1,0 +1,20 @@
+{
+  "utc": "2026-10-11T15:42:47.755106+00:00",
+  "measured_available_bytes": 13662949376,
+  "minimum_available_bytes": 4026531840,
+  "measured_free_disk_bytes": 24019931136,
+  "minimum_free_disk_bytes": 6442450944,
+  "failed_guards": [],
+  "measurement_source": "/proc/meminfo MemAvailable; host/VM estimate, not cgroup headroom",
+  "cgroup_context": {
+    "memory.max": "max",
+    "memory.high": "max",
+    "memory.current": "8854810624",
+    "memory.peak": "8871608320",
+    "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0",
+    "memory.pressure": "some avg10=0.56 avg60=0.12 avg300=0.02 total=229352\nfull avg10=0.56 avg60=0.12 avg300=0.02 total=222236",
+    "process_cgroup": "0::/",
+    "scope": "Visible cgroup namespace only; hidden ancestors are not verified"
+  },
+  "thresholds_changed": false
+}

@@ -1,0 +1,134 @@
+{
+  "version": "uc001-contract-local-1.2.1",
+  "recorded_utc": "2026-10-18T15:54:59.351855+00:00",
+  "scope": "Failed v1.2.0 model-free check investigation and separate reporting correction only",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local_v1_2_1/Check-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_1/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_2_1/PINNED-SOURCE.md",
+    "scripts/uc001_contract_local_v1_2_1/Python-Ownership.ps1",
+    "scripts/uc001_contract_local_v1_2_1/PythonOwnership.cs",
+    "scripts/uc001_contract_local_v1_2_1/README.md",
+    "scripts/uc001_contract_local_v1_2_1/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_1/Test-Offline.ps1",
+    "scripts/uc001_contract_local_v1_2_1/capture.py",
+    "scripts/uc001_contract_local_v1_2_1/config.json",
+    "scripts/uc001_contract_local_v1_2_1/freeze.json",
+    "scripts/uc001_contract_local_v1_2_1/harness_checks.py",
+    "scripts/uc001_contract_local_v1_2_1/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_2_1/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_2_1/replay.py",
+    "scripts/uc001_contract_local_v1_2_1/review_gate.py",
+    "scripts/uc001_contract_local_v1_2_1/technical-decision.json",
+    "scripts/uc001_contract_local_v1_2_1/verify.py",
+    "tests/unit/test_contract_local_failure_reporting.py",
+    "build/uc001-contract-local-v1_2_1/owner-reported-v1_2_0-failure.json",
+    "build/uc001-contract-local-v1_2_1/model-free-reporting-correction.zip",
+    "build/uc001-contract-local-v1_2_1/verification.json",
+    "build/uc001-contract-local-v1_2_1/SHA256SUMS.txt"
+  ],
+  "owner_report": {
+    "file": "build/uc001-contract-local-v1_2_1/owner-reported-v1_2_0-failure.json",
+    "provenance": "Owner-reported facts, not reconstructed raw JSON/files",
+    "summary": "Ownership/worker null; elapsed 680 ms; job closure and redirector 48020 exit confirmed; interpreter identity/exit unconfirmed.",
+    "limits": "No surviving interpreter, never-started interpreter, exact initiating failure or generation count is inferred."
+  },
+  "confirmed_code_defects": [
+    "Check-Windows finally replaced the initiating stop with cleanup failure; the overall deadline could replace it again.",
+    "Cleanup derived interpreter identity only from LastProof, although Bind could retain a verified interpreter handle before assigning LastProof. A late binding failure therefore skipped waiting on a retained interpreter. This does not establish the initiating Windows cause."
+  ],
+  "correction": {
+    "failure_channels": "Independent primary_failure, cleanup_failures and deadline_failures; stop prefers primary, never overwrites it. Diagnostic-write failures are separately recorded.",
+    "privacy": "Public reasons use an explicit fixed allowlist; unknown raw/code-shaped messages are never emitted. Numeric native status is typed Win32/NT metadata only. Exceptions (bounded 4096 characters), full observed paths and process logs stay in the private result subtree.",
+    "identity": "Only after unchanged direct-parent/path/lifetime/job-membership and uniqueness checks does the native binder retain InterpreterIdentity and its held handle, independently of the remaining full proof checks. Supervisor/final proof failures still reject ownership.",
+    "cleanup_states": [
+      "not_identified/unavailable",
+      "identified/unconfirmed",
+      "identified/confirmed"
+    ],
+    "acceptance": "Missing identity or unconfirmed exit still fails. No name/PID-only cleanup, arbitrary ancestor or first-match acceptance.",
+    "observations": "Cached binding step, exact job-member PIDs, candidate PID/creation/parent/image classification and interpreter-identified flag accompany independent cleanup; raw paths stay private. Native reads distinguish process-times/basic-info/image/PID checks."
+  },
+  "initiating_failure": {
+    "established": false,
+    "missing_observation": "First exception safe code/native status and exact binding step at the failed Windows attempt; the supplied result lost it to cleanup overwrite.",
+    "next_step": "One prepared owner-operated model-free check using existing code paths and the saved receipt. It captures the missing first failure/binding observations and cleanup together. Not executed automatically."
+  },
+  "tdd": {
+    "red": [
+      {
+        "case": "primary_cleanup",
+        "result": "Inherited implementation failed: primary_failure property absent after cleanup masked the initiating failure."
+      },
+      {
+        "case": "identified_before_proof",
+        "result": "Inherited implementation failed: retained interpreter ignored because LastProof was absent."
+      },
+      {
+        "case": "private_code_error",
+        "result": "Regex-only reason handling exposed an unknown code-shaped raw message; fixed allowlist implemented."
+      }
+    ],
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_failure_reporting.py tests/unit/test_contract_local_harness_correction.py::test_verified_venv_redirector_chain_replaces_direct_parent_assumption tests/unit/test_contract_local_harness_correction.py::test_ownership_rejects_unverified_lifetime_chain_or_job tests/unit/test_contract_local_harness_correction.py::test_consumed_startup_blocks_capture_before_ledger_or_model tests/unit/test_contract_local_harness_correction.py::test_model_free_corrected_ownership_and_cleanup_paths_with_explicit_substitutes tests/unit/test_contract_local_harness_correction.py::test_stop_record_uses_only_fixed_stage_reason_codes --tb=short",
+      "passed": 35,
+      "exit_code": 0,
+      "seconds": 13.98,
+      "warnings": 0
+    },
+    "scope": "Explicit synthetic PowerShell failure/cleanup objects, pure identity regressions and C# compilation/x64 layout only; no native Windows process/job execution.",
+    "key_cases": "Primary+cleanup+overall deadline all retained; missing identity distinct from known/unconfirmed exit; retained identity cleaned even without LastProof; raw and code-shaped secrets private; wrapped native error code retained; strict success/membership/cleanup/job-close/deadline/layout and consumed allowance checks."
+  },
+  "preservation": {
+    "prior_files_checked": 73,
+    "changed": [],
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "startup_allowance": "consumed, unchanged; no model start or replacement attempt",
+    "unchanged": "Failed v1.2.0 and earlier source/ZIP/hash/receipt evidence; original review bytes/hash bindings; model/runtime/prompt/schema/14 exposed cases; resource/output/time limits, process ownership/cleanup acceptance and qualified semantic gates",
+    "model_attempt_written": false,
+    "zero_ledger_created": false
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_2_1/model-free-reporting-correction.zip",
+    "bytes": 101509,
+    "sha256": "a791f3e343010afb027d29995a85fd56c9fc365748a7bb308b9f96eac96199c1",
+    "files": 47,
+    "freeze_sha256": "7f054eeda0a87427c4cb4ef9a56a262b814c0a271144fc6dceca52fa008480c4",
+    "extracted_shared_imports_and_review_binding": "passed",
+    "powershell_instruction_syntax": "parsed offline; not Windows runtime verification"
+  },
+  "download_accounting": {
+    "model_runtime_dependency_bytes_acquired": 0,
+    "prepared_zip_plus_checksum_bytes": 102012,
+    "rule": "Charge actual source handoff transfers to the existing cumulative allowance; no reset or claimed current balance."
+  },
+  "windows_handoff": {
+    "instructions": "scripts/uc001_contract_local_v1_2_1/README.md",
+    "script": "scripts/uc001_contract_local_v1_2_1/Check-Windows.ps1",
+    "expected_evidence": [
+      "result.json",
+      "cleanup.json",
+      "worker-result.json only if present"
+    ],
+    "private_do_not_share": "private/ (raw exceptions, observed executable paths and process stdout/stderr)",
+    "bound": "60 seconds overall, same 45-second owned-job timer and 5-second held-handle exit waits; one harmless owned Python redirector/worker pair only.",
+    "effects": "Existing Add-Type/native Win32/Nt process/pipe/job/handle operations, possible temporary compilation files and restrictive result ACLs. No model/GPU/HTTP/transport or original model-attempt write.",
+    "execution_status": "Prepared only; Windows native verification pending."
+  },
+  "remaining_limitations": [
+    "The initiating Windows cause is unknown; code-supported cleanup defects are not proof of that cause.",
+    "The prepared Windows check must establish native binding/identity/cleanup behavior; synthetic tests are not native evidence.",
+    "No interpreter suitability, multilingual or semantic acceptance; qualified review stays pending/false. Live cases 1/5/10 retain no replay credit."
+  ],
+  "not_performed": [
+    "Native Windows/model execution or automatic rerun",
+    "Model/capture/transport work, dependency acquisition or startup allowance reset",
+    "Held-out/language tuning/later priorities",
+    "Git delivery or phase advance"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "version": "uc001-granite-controller-console-helper-v1",
+  "execution_authorized": false,
+  "purpose": "offline-prepared-scoped-console-helper-correction",
+  "files": {
+    "README.md": "6e4035bffabe62eb386298ee5cb8e7b083fb35ae8980aea487be52d9c11aabed",
+    "Run-ConsoleHelperCheck.ps1": "b49d55dbf9cf6f94f5748ddaa7b0b5a3a71fc32a2d4224a0d71fd6eeff0839e9",
+    "controller-config.template.json": "658884d5a4a17a9255b632c06dd02154f8d640348e709bc6da607a15f6a330ab",
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "standins.py": "ae7c3659babb83d7b0488807a5cf44444c529a3bc3308434eac3ccbc85012c8a",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891"
+  }
+}

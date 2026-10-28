@@ -1,0 +1,35 @@
+{
+    "error":  "Ownership changed; no unrelated process stopped.",
+    "utc":  "2026-10-14T18:39:47.9734881Z",
+    "measured":  {
+                     "utc":  "2026-10-14T18:39:46.1851140Z",
+                     "available_ram_bytes":  35097165824,
+                     "total_ram_bytes":  68640653312,
+                     "disk_free_bytes":  570735316992,
+                     "scratch_bytes":  8839927461,
+                     "gpu_name":  "AMD Radeon RX 6800 XT",
+                     "dedicated_total_bytes":  17130819584,
+                     "adapter_dedicated_used_bytes":  9861320704,
+                     "adapter_free_bytes":  7269498880,
+                     "owned_gpu_bytes":  8075534336,
+                     "owned_rss_bytes":  7804915712,
+                     "owned_private_bytes":  8163835904,
+                     "gpu_measurement":  "DXGI capacity minus WDDM dedicated-usage gauge; not DXGI per-process dynamic residency budget"
+                 },
+    "threshold":  {
+                      "total_seconds":  1800,
+                      "setup_seconds":  1800,
+                      "evaluation_seconds":  1800,
+                      "readiness_seconds":  90,
+                      "request_seconds":  45,
+                      "rss_bytes":  17179869184,
+                      "ram_preflight_bytes":  21474836480,
+                      "ram_floor_bytes":  4294967296,
+                      "gpu_preflight_free_bytes":  15032385536,
+                      "gpu_owned_bytes":  12884901888,
+                      "gpu_floor_bytes":  2147483648,
+                      "scratch_bytes":  26843545600,
+                      "disk_preflight_free_bytes":  32212254720,
+                      "disk_floor_bytes":  5368709120
+                  }
+}

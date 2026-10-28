@@ -1,0 +1,2 @@
+59cf4aa9d37847949f61ba3ff1295e169672fe64c7e2ba07892e8ea3a385fe55  windows-execution-v1_3_0.zip
+b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615  freeze.json (inside ZIP)

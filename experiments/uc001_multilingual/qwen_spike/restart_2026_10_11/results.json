@@ -1,0 +1,624 @@
+{
+  "status": "stopped",
+  "configuration": {
+    "start_utc": "2026-10-11 12:12:31 UTC",
+    "total_limit_seconds": 7200,
+    "inference_limit_seconds": 3600,
+    "build_limit_seconds": 1800,
+    "per_case_timeout_seconds": 45,
+    "download_budget_bytes": 2200000000,
+    "scratch_budget_bytes": 6442450944,
+    "rss_limit_bytes": 3489660928,
+    "available_memory_min_bytes": 536870912,
+    "preflight_memory_min_bytes": 4026531840,
+    "model": {
+      "repo": "Qwen/Qwen3-1.7B-GGUF",
+      "revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+      "file": "Qwen3-1.7B-Q8_0.gguf",
+      "bytes": 1834426016,
+      "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a"
+    },
+    "runtime": {
+      "tag": "v0.6.0",
+      "commit": "d81235049384534c167caea52b85a694f6103d14",
+      "build_parallelism": 1,
+      "flags": [
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DGGML_CUDA=OFF",
+        "-DGGML_BLAS=OFF",
+        "-DGGML_NATIVE=ON",
+        "-DLLAMA_OPENSSL=OFF",
+        "-DLLAMA_SUBPROCESS=OFF",
+        "-DLLAMA_LLGUIDANCE=OFF",
+        "-DLLAMA_BUILD_APP=OFF",
+        "-DLLAMA_BUILD_EXAMPLES=OFF",
+        "-DLLAMA_BUILD_TESTS=OFF",
+        "-DLLAMA_BUILD_UI=OFF",
+        "-DLLAMA_USE_PREBUILT_UI=OFF"
+      ]
+    },
+    "cmake": {
+      "version": "3.31.6",
+      "file": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "bytes": 55010959,
+      "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf"
+    },
+    "inference": {
+      "threads": 2,
+      "context": 2048,
+      "batch": 64,
+      "ubatch": 64,
+      "parallel": 1,
+      "max_tokens": 384,
+      "temperature": 0.7,
+      "top_p": 0.8,
+      "top_k": 20,
+      "min_p": 0,
+      "seed": 42,
+      "enable_thinking": false
+    },
+    "frozen_parser_sha256": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e",
+    "provenance": "AI-authored synthetic exploration; not independent linguistic validation. Model weights unmodified."
+  },
+  "frozen": {
+    "utc": "2026-10-11T12:30:48.170917+00:00",
+    "files": {
+      "config.json": "15a4374e71f4d9967ec6fd7b3870bf9bf40228ed4e855f700c0468e3abf1bf66",
+      "run.py": "495d4fa464fee9c3bbabf82c61bf5ebbca51fb6002bfd24c6494f5cd90269658",
+      "operations.py": "121d7c9d40cfa987bcd3985a6a6f5ed5454dc7969df37e073b0c1ee1e395cc52",
+      "restart.py": "d193d4218eecafbb87dd3ed64f67d3d2d2b593a10af17c6105b901dd392a2657",
+      "continue_after_bookkeeping.py": "4bea32c4e1f3c09ae429596c6a58217f5299aa3ea5435a4f5b31b81ea8a2c7e2",
+      "../evaluate_model.py": "47503a8ccd7aeed8c1bfd8b18ad4a9c8ff52b3fbbfd74d415034ba68e84f1121",
+      "../prepare.py": "bbdacea61bd4995368348fc2a06e5850d88effeacc40d08fea3e1561b348eacc",
+      "../heldout_v2.json": "7fc9783a126bd1528a7c9f0860bba52c07d00040b3878dcf0ebefd2ee900bc08",
+      "../calibration.json": "55f2427cde70a557667c0c01e50950d739176816ff96f3d5512120cf9512a3d4",
+      "../../heldout.json": "8227c98eb96ed4fdd0c15eef9c21fec977251e4e865463c8c2b1c1547cceb827",
+      "../../prototype.py": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e"
+    },
+    "note": "Parent prompt/schema/scorer/cases and renewed evaluator unchanged; operational restart only."
+  },
+  "runtime_args": [
+    "strace",
+    "-f",
+    "-e",
+    "trace=network",
+    "-o",
+    "/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/network.trace",
+    "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/bin/llama-server",
+    "-m",
+    "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf",
+    "--host",
+    "/workspaces/resolena-alternative-finder/build/qwen-restart-20261011/inference.sock",
+    "--offline",
+    "--no-webui",
+    "--no-agent",
+    "--jinja",
+    "--parallel",
+    "1",
+    "-t",
+    "2",
+    "-tb",
+    "2",
+    "-c",
+    "2048",
+    "-b",
+    "64",
+    "-ub",
+    "64",
+    "-ngl",
+    "0",
+    "--cache-type-k",
+    "f16",
+    "--cache-type-v",
+    "f16",
+    "--no-context-shift"
+  ],
+  "planned_cases": [
+    {
+      "id": "OLD-DE-1",
+      "language": "de",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-DE-2",
+      "language": "de",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-DE-3",
+      "language": "de",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-DE-4",
+      "language": "de",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-FR-1",
+      "language": "fr",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-FR-2",
+      "language": "fr",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-FR-3",
+      "language": "fr",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-FR-4",
+      "language": "fr",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-IT-1",
+      "language": "it",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-IT-2",
+      "language": "it",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-IT-3",
+      "language": "it",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-IT-4",
+      "language": "it",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-EN-1",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-EN-2",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-EN-3",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-EN-4",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-MIX-1",
+      "language": "mixed",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-MIX-2",
+      "language": "mixed",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-SHORT",
+      "language": "ambiguous",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-ES",
+      "language": "es",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-DIALECT",
+      "language": "gsw",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-NOVEL",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "OLD-NAME",
+      "language": "en",
+      "set": "old_reused"
+    },
+    {
+      "id": "DE-N1",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "DE-N2",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "DE-N3",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "DE-N4",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "DE-N5",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "DE-N6",
+      "language": "de",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N1",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N2",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N3",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N4",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N5",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "FR-N6",
+      "language": "fr",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N1",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N2",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N3",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N4",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N5",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "IT-N6",
+      "language": "it",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N1",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N2",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N3",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N4",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N5",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "EN-N6",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-MIX-1",
+      "language": "mixed",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-MIX-2",
+      "language": "mixed",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-SHORT-1",
+      "language": "ambiguous",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-SHORT-2",
+      "language": "ambiguous",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-AMOUNT",
+      "language": "en",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-ES",
+      "language": "es",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-DIALECT",
+      "language": "gsw",
+      "set": "new_heldout"
+    },
+    {
+      "id": "CONTROL-NAME",
+      "language": "fr",
+      "set": "new_heldout"
+    }
+  ],
+  "calibration": [
+    {
+      "id": "SMOKE-KETTLE",
+      "language": "en",
+      "text": "Repair my kettle.",
+      "expected": {
+        "status": "understood",
+        "subject": "kettle",
+        "action": "repair",
+        "goals": [],
+        "constraints": {}
+      },
+      "set": "separate_smoke",
+      "seed": 42,
+      "actual": {
+        "wall_seconds": 44.70043587300006,
+        "wire_finish_reason": "stop",
+        "content": "{\"status\": \"unsupported\", \"language\": \"en\", \"subject\": {\"value\": \"kettle\", \"quote\": \"repair my kettle\"}, \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+        "timings": {
+          "cache_n": 0,
+          "prompt_n": 329,
+          "prompt_ms": 21156.797,
+          "prompt_per_token_ms": 64.30637386018236,
+          "prompt_per_second": 15.55055805469987,
+          "predicted_n": 63,
+          "predicted_ms": 23511.868,
+          "predicted_per_token_ms": 379.22367741935483,
+          "predicted_per_second": 2.6369661483298565
+        },
+        "usage": {
+          "completion_tokens": 63,
+          "prompt_tokens": 329,
+          "total_tokens": 392,
+          "prompt_tokens_details": {
+            "cached_tokens": 0
+          }
+        },
+        "object": {
+          "status": "unsupported",
+          "language": "en",
+          "subject": {
+            "value": "kettle",
+            "quote": "repair my kettle"
+          },
+          "action": {
+            "value": "repair",
+            "quote": "repair my kettle"
+          },
+          "goals": [],
+          "constraints": [],
+          "unresolved": []
+        }
+      },
+      "structural_errors": [
+        "ungrounded_quote",
+        "ungrounded_quote"
+      ],
+      "semantic": {
+        "category": "unsupported",
+        "differences": {}
+      },
+      "category": "invalid_output",
+      "wall_seconds": 44.700821041999916,
+      "peak_owned_rss_bytes": 2230099968
+    }
+  ],
+  "evaluations": [],
+  "repeats": [],
+  "gates": {
+    "1": "passed",
+    "2": "passed",
+    "3": "stopped",
+    "4": "not_run"
+  },
+  "current_case": null,
+  "tuning": [],
+  "measurement_notes": "Synthetic AI-authored oracles; strace-instrumented timings/RSS. Original scorer unchanged; semantic differences remain separate from structural rejection. No independent linguistic review or evidence-translation evaluation.",
+  "metrics": {
+    "peak_owned_rss_bytes": 2230030336,
+    "minimum_available_bytes": 4503883776,
+    "peak_temporary_bytes": 2261718952,
+    "guard_error": null,
+    "inet_activity": false,
+    "current_case_peak_rss_bytes": 2230030336
+  },
+  "executed_ids": [],
+  "unexecuted_ids": [
+    "OLD-DE-1",
+    "OLD-DE-2",
+    "OLD-DE-3",
+    "OLD-DE-4",
+    "OLD-FR-1",
+    "OLD-FR-2",
+    "OLD-FR-3",
+    "OLD-FR-4",
+    "OLD-IT-1",
+    "OLD-IT-2",
+    "OLD-IT-3",
+    "OLD-IT-4",
+    "OLD-EN-1",
+    "OLD-EN-2",
+    "OLD-EN-3",
+    "OLD-EN-4",
+    "OLD-MIX-1",
+    "OLD-MIX-2",
+    "OLD-SHORT",
+    "OLD-ES",
+    "OLD-DIALECT",
+    "OLD-NOVEL",
+    "OLD-NAME",
+    "DE-N1",
+    "DE-N2",
+    "DE-N3",
+    "DE-N4",
+    "DE-N5",
+    "DE-N6",
+    "FR-N1",
+    "FR-N2",
+    "FR-N3",
+    "FR-N4",
+    "FR-N5",
+    "FR-N6",
+    "IT-N1",
+    "IT-N2",
+    "IT-N3",
+    "IT-N4",
+    "IT-N5",
+    "IT-N6",
+    "EN-N1",
+    "EN-N2",
+    "EN-N3",
+    "EN-N4",
+    "EN-N5",
+    "EN-N6",
+    "CONTROL-MIX-1",
+    "CONTROL-MIX-2",
+    "CONTROL-SHORT-1",
+    "CONTROL-SHORT-2",
+    "CONTROL-AMOUNT",
+    "CONTROL-ES",
+    "CONTROL-DIALECT",
+    "CONTROL-NAME"
+  ],
+  "old_summary": {
+    "counts": {},
+    "per_language": {}
+  },
+  "new_summary": {
+    "counts": {},
+    "per_language": {}
+  },
+  "elapsed_seconds": 60.19364759300015,
+  "readiness": {
+    "seconds": 14.850064848999864,
+    "health_attempts": 72,
+    "health_status": 200,
+    "body": "{\"status\":\"ok\"}"
+  },
+  "loaded_owned_rss_bytes": 2137079808,
+  "smoke": {
+    "id": "SMOKE-KETTLE",
+    "language": "en",
+    "text": "Repair my kettle.",
+    "expected": {
+      "status": "understood",
+      "subject": "kettle",
+      "action": "repair",
+      "goals": [],
+      "constraints": {}
+    },
+    "set": "separate_smoke",
+    "seed": 42,
+    "actual": {
+      "wall_seconds": 44.70043587300006,
+      "wire_finish_reason": "stop",
+      "content": "{\"status\": \"unsupported\", \"language\": \"en\", \"subject\": {\"value\": \"kettle\", \"quote\": \"repair my kettle\"}, \"action\": {\"value\": \"repair\", \"quote\": \"repair my kettle\"}, \"goals\": [], \"constraints\": [],\"unresolved\": []}",
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 329,
+        "prompt_ms": 21156.797,
+        "prompt_per_token_ms": 64.30637386018236,
+        "prompt_per_second": 15.55055805469987,
+        "predicted_n": 63,
+        "predicted_ms": 23511.868,
+        "predicted_per_token_ms": 379.22367741935483,
+        "predicted_per_second": 2.6369661483298565
+      },
+      "usage": {
+        "completion_tokens": 63,
+        "prompt_tokens": 329,
+        "total_tokens": 392,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "object": {
+        "status": "unsupported",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "repair my kettle"
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair my kettle"
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      }
+    },
+    "structural_errors": [
+      "ungrounded_quote",
+      "ungrounded_quote"
+    ],
+    "semantic": {
+      "category": "unsupported",
+      "differences": {}
+    },
+    "category": "invalid_output",
+    "wall_seconds": 44.700821041999916,
+    "peak_owned_rss_bytes": 2230099968
+  },
+  "error": "Smoke response handling/interpretation gate failed",
+  "owned_process_exit_code": 0,
+  "network_observation": {
+    "trace_lines": 977,
+    "inet_activity": false,
+    "scope": "Owned straced process tree only; not a general absence-of-telemetry claim."
+  }
+}

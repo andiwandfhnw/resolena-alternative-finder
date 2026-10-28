@@ -1,0 +1,252 @@
+--- tests/unit/test_granite_controller_standins.py (before)
++++ tests/unit/test_granite_controller_standins.py
+@@ -565,9 +565,16 @@
+     assert result['ownership_self_test_passed'] is True
+     rows,observations=edge_diagnostic_rows(tmp_path)
+     assert observations
+-    assert all(parents=={LAUNCHER,INTERPRETER} for parents in queries)
++    owned_parents={pid for pair in SPLIT_OWNED.values() for pid,birth,parent in pair}
++    assert all(parents in ({LAUNCHER,INTERPRETER},owned_parents) for parents in queries)
+     for row in observations:
+         assert row['status']=='observed'
++        assert '77777' not in json.dumps(row)
++        assert 'unrelated-system-name' not in json.dumps(row)
++        if {ref['parent_pid'] for ref in row['scoped_parents']}==owned_parents:
++            assert {(edge['child_pid'],edge['parent_pid']) for edge in row['observed_edges']}=={
++                (201,101),(102,201),(202,102),(103,202),(203,103)}
++            continue
+         assert row['scoped_parents']==[
+             dict(parent_pid=LAUNCHER,parent_kind='launcher'),
+             dict(parent_pid=INTERPRETER,parent_kind='interpreter')]
+@@ -826,3 +833,231 @@
+     assert observations[0]['parent_kind']=='interpreter'
+     assert observations[0]['native_parent_pid']==INTERPRETER
+     assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++
++
++CONSOLE_PID = 50704
++CONSOLE_BIRTH = LAUNCHER_BIRTH + 1
++OWNED_CONSOLES = {'root':301,'child':302,'grandchild':303}
++
++
++class ConsoleApi(SplitApi):
++    def __init__(self,calls,options):
++        super().__init__(calls,options)
++        self.console_reads={}
++        if not options.get('no_outside_console'):
++            self.add(CONSOLE_PID,CONSOLE_BIRTH,LAUNCHER,False,'console','unrelated')
++        if options.get('two_consoles') or options.get('third_child'):
++            self.add(50705,CONSOLE_BIRTH+1,LAUNCHER,False,
++                     'unknown' if options.get('third_child') else 'console','unrelated')
++        if options.get('second_interpreter'):
++            self.add(50706,CONSOLE_BIRTH+2,LAUNCHER,False,'unknown','unrelated')
++        if options.get('console_under_interpreter'):
++            self.processes[CONSOLE_PID]['parent_pid']=INTERPRETER
++        if options.get('console_predates_launcher'):
++            self.processes[CONSOLE_PID]['creation_time_100ns']=LAUNCHER_BIRTH-1
++    def system_console_path(self):
++        if self.options.get('system_directory_failure'):
++            raise OSError('native system directory unavailable')
++        return self.options.get('system_console',r'R:\NativeWindows\System32\conhost.exe')
++    def open_query_process(self,pid):
++        self.calls.append(('query_only',pid))
++        if self.options.get('console_unqueryable'):
++            raise OSError('query denied')
++        return f'handle-{pid}'
++    def process_id(self,handle):
++        pid=super().process_id(handle)
++        if pid==CONSOLE_PID and self.options.get('console_pid_changed') and self.console_reads.get(pid,0):
++            return pid+1000
++        return pid
++    def creation_time(self,handle):
++        pid=super().process_id(handle)
++        if self.processes[pid]['kind']=='console':
++            self.console_reads[pid]=self.console_reads.get(pid,0)+1
++            value=self.processes[pid]['creation_time_100ns']
++            changed=self.options.get('console_birth_changed') and self.console_reads[pid]>=2
++            return value+1 if changed else value
++        return super().creation_time(handle)
++    def parent_pid(self,handle):
++        pid=super().process_id(handle)
++        if self.processes[pid]['kind']=='console' and self.options.get('console_parent_mismatch'):
++            return 99999
++        return self.processes[pid]['parent_pid']
++    def in_job(self,handle,job):
++        pid=super().process_id(handle)
++        if self.processes[pid]['kind']=='console':
++            if pid in OWNED_CONSOLES.values() and self.options.get('owned_membership_mismatch'):return False
++            if pid in OWNED_CONSOLES.values() and self.options.get('owned_membership_unknown'):return None
++            if self.options.get('console_membership_unknown'):return None
++            if self.options.get('console_membership_mismatch'):return not self.processes[pid]['member']
++        return self.processes[pid]['member']
++    def image_path(self,handle):
++        pid=super().process_id(handle)
++        if self.options.get('console_path_failure'):
++            raise OSError('image path unavailable')
++        if self.processes[pid]['kind']!='console':return r'D:\Untrusted\python.exe'
++        if self.options.get('path_changed_at_cleanup') and self.options['job_ref'][0].killed:
++            return r'D:\Untrusted\conhost.exe'
++        return self.options.get('console_path',self.system_console_path())
++    def query_exit_code(self,handle):
++        pid=super().process_id(handle)
++        row=self.processes[pid]
++        if self.options.get('console_exit_query_failure'):
++            raise OSError('exit query unavailable')
++        if (row['kind']=='console' and not row['member'] and not self.options.get('console_stuck')
++                and not self.processes[LAUNCHER]['alive'] and not self.processes[INTERPRETER]['alive']):
++            row['alive']=False
++        return 259 if row['alive'] else 0
++    def exit_code(self,handle):
++        pid=super().process_id(handle)
++        if self.processes[pid]['kind']=='console':
++            return None if self.processes[pid]['alive'] else 0
++        return super().exit_code(handle)
++    def children_of(self,parents,timeout_seconds=None):
++        result=super().children_of(parents,timeout_seconds)
++        if self.options.get('missing_interpreter_edge'):
++            result.discard((INTERPRETER,LAUNCHER))
++        if self.options['job_ref'] and self.options['job_ref'][0].killed:
++            if self.options.get('console_vanished'):
++                result.discard((CONSOLE_PID,LAUNCHER))
++            if self.options.get('console_replacement'):
++                result.discard((CONSOLE_PID,LAUNCHER))
++                self.add(50707,CONSOLE_BIRTH+3,LAUNCHER,False,'console','unrelated')
++                result.add((50707,LAUNCHER))
++        return result
++    def terminate_process(self,handle):
++        pid=super().process_id(handle)
++        if self.processes[pid]['kind'] in {'console','unknown'}:
++            self.calls.append(('unclassified_or_helper_termination',pid))
++            raise AssertionError('console/unknown direct termination forbidden')
++        return super().terminate_process(handle)
++    def close_handle(self,handle):
++        self.calls.append(('close_retained',super().process_id(handle)))
++        if self.processes[super().process_id(handle)]['kind']=='console' and self.options.get('helper_close_failure'):
++            raise OSError('retained helper close failed')
++
++
++class ConsoleJob(SplitJob):
++    def __init__(self,api,calls,options):
++        super().__init__(api,calls,options)
++        if options.get('owned_consoles'):
++            for role,pid in OWNED_CONSOLES.items():
++                launcher=SPLIT_OWNED[role][0]
++                self.members.append((pid,launcher[1]+1))
++                api.add(pid,launcher[1]+1,launcher[0],True,'console',role,alive=False)
++                if role=='root' and options.get('owned_helper_under_interpreter'):
++                    api.processes[pid]['parent_pid']=SPLIT_OWNED['root'][1][0]
++        if options.get('owned_unknown_third'):
++            self.members.append((399,134374354509999999))
++            api.add(399,134374354509999999,101,True,'unknown','root',alive=False)
++    def cleanup(self,timeout_seconds=5):
++        value=super().cleanup(timeout_seconds)
++        for row in value['owned_exits']:
++            if row['pid'] in OWNED_CONSOLES.values():
++                row['exit_code']=None if self.options.get('owned_helper_exit_missing') else 0
++        return value
++
++
++def run_console(tmp_path,monkeypatch,**options):
++    monkeypatch.setitem(globals(),'SplitApi',ConsoleApi)
++    monkeypatch.setitem(globals(),'SplitJob',ConsoleJob)
++    result,calls=run_split(tmp_path,monkeypatch,**options)
++    assert not any(isinstance(row,tuple) and row[0]=='unclassified_or_helper_termination' for row in calls)
++    rows=[json.loads(line) for line in (tmp_path/'selftest/controller.jsonl').read_text().splitlines()]
++    return result,calls,rows
++
++
++def test_console_role_optional_absence_preserves_six_base_identities(tmp_path,monkeypatch):
++    result,calls,rows=run_console(tmp_path,monkeypatch,no_outside_console=True)
++    assert result['ownership_self_test_passed'] is True
++    assert result['console_helpers']==[]
++    assert result['console_helper_cleanup_verified'] is True
++    assert result['cleanup']['total_processes']==6
++
++
++def test_console_role_one_system_sibling_is_retained_and_exit_verified(tmp_path,monkeypatch):
++    result,calls,rows=run_console(tmp_path,monkeypatch)
++    assert result['ownership_self_test_passed'] is True
++    assert result['console_helper_cleanup_verified'] is True
++    assert len(result['console_helpers'])==1
++    helper=result['console_helpers'][0]
++    assert (helper['pid'],helper['creation_time_100ns'],helper['parent_pid'])==(CONSOLE_PID,CONSOLE_BIRTH,LAUNCHER)
++    assert helper['kind']=='console_helper'
++    assert result['console_helper_exits'][0]['identity_verified'] is True
++    assert result['console_helper_exits'][0]['exit_code']==0
++    assert result['console_helper_exits'][0]['exit_proof']=='retained_query_non259'
++    assert result['console_helper_exits'][0]['direct_termination_requested'] is False
++    assert calls.count(('query_only',CONSOLE_PID))==1
++    assert calls.count(('close_retained',CONSOLE_PID))==1
++    assert any(row['event']=='console_helper_revalidated' for row in rows)
++
++
++def test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges(tmp_path,monkeypatch):
++    result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True)
++    assert result['ownership_self_test_passed'] is True
++    assert len(result['owned_identities'])==6
++    assert {row['pid'] for row in result['console_helpers']}=={CONSOLE_PID,*OWNED_CONSOLES.values()}
++    assert result['cleanup']['total_processes']==9
++    assert result['cleanup']['active_processes']==0
++    assert {row['pid'] for row in result['cleanup']['owned_exits']}=={101,201,102,202,103,203,*OWNED_CONSOLES.values()}
++    assert len(result['console_helper_exits'])==4
++    assert all(row['identity_verified'] and type(row['exit_code']) is int for row in result['console_helper_exits'])
++    assert all(row['exit_proof']=='private_job_wait_and_query' for row in result['console_helper_exits'] if row['role']!='unrelated')
++    assert all(row['private_job_cleanup_scope'] is (row['role']!='unrelated') for row in result['console_helper_exits'])
++    assert all('private_job_termination_applied' not in row for row in result['console_helper_exits'])
++    assert all(helper['parent_pid'] in {LAUNCHER,101,102,103} for helper in result['console_helpers'])
++
++
++@pytest.mark.parametrize('options',[
++    {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
++    {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
++    {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
++    {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
++    {'console_membership_mismatch':True},{'console_membership_unknown':True},
++    {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
++    {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
++])
++def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
++    result,calls,rows=run_console(tmp_path,monkeypatch,**options)
++    assert result['ownership_self_test_passed'] is False
++    assert result['console_helpers']==[]
++    assert 'owned_root_launched_once' not in calls
++
++
++@pytest.mark.parametrize('options',[
++    {'console_stuck':True},{'console_vanished':True},{'console_replacement':True},
++    {'path_changed_at_cleanup':True},
++])
++def test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup(tmp_path,monkeypatch,options):
++    result,calls,rows=run_console(tmp_path,monkeypatch,**options)
++    assert len(result['console_helpers'])==1
++    assert result['ownership_self_test_passed'] is False
++    assert result['console_helper_cleanup_verified'] is False or result['failure_reason'] is not None
++
++
++@pytest.mark.parametrize('options',[
++    {'owned_helper_exit_missing':True},{'owned_unknown_third':True},{'late_unknown_cleanup':True},
++])
++def test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count(tmp_path,monkeypatch,options):
++    result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True,**options)
++    assert result['ownership_self_test_passed'] is False
++    assert result['cleanup']['verified'] is False or result['console_helper_cleanup_verified'] is False
++
++
++def test_console_role_full_native_system_path_uses_windows_case_semantics(tmp_path,monkeypatch):
++    result,calls,rows=run_console(tmp_path,monkeypatch,
++        system_console=r'S:\ActualWindows\system32\conhost.exe',
++        console_path=r's:\actualwindows\System32\CONHOST.EXE')
++    assert result['ownership_self_test_passed'] is True
++
++
++@pytest.mark.parametrize('option',['owned_membership_mismatch','owned_membership_unknown','owned_helper_under_interpreter'])
++def test_console_role_owned_membership_and_launcher_parent_are_required(tmp_path,monkeypatch,option):
++    result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True,**{option:True})
++    assert result['ownership_self_test_passed'] is False
++    assert {row['role'] for row in result['console_helpers']}=={'unrelated'}
++
++
++def test_console_role_handle_close_failure_is_not_verified_cleanup(tmp_path,monkeypatch):
++    result,calls,rows=run_console(tmp_path,monkeypatch,helper_close_failure=True)
++    assert result['ownership_self_test_passed'] is False
++    assert result['console_helper_cleanup_verified'] is False

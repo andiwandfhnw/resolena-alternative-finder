@@ -1,0 +1,164 @@
+{
+  "status": "approved-development",
+  "runtime_use": "development-only",
+  "synthetic": false,
+  "review": {
+    "status": "owner-approved-source-policy",
+    "reviewer": "owner",
+    "reviewed_at": null,
+    "owner_approved": true,
+    "activation_approved": true,
+    "activation_scope": "Priority 5R development slice and isolated demo/test composition only",
+    "basis": "Owner acceptance of the source-based catalogue policy and release basis; no independent factual verification of every entry or linguistic approval."
+  },
+  "publisher": "GeoNames",
+  "source_reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+  "snapshot_id": "geonames-countryInfo-sha256-c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+  "raw_source": {
+    "path": "build/uc001-priority5q-country-catalogue/source/countryInfo.txt",
+    "sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "bytes": 31690
+  },
+  "source_release": null,
+  "source_publication_date": null,
+  "source_update_date": null,
+  "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+  "date_limit": "No named release or entry validity/publication/update dates supplied in the file. HTTP Last-Modified identifies the resource timestamp only; it is not factual review or per-entry currentness.",
+  "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+  "prepared_at": "2026-10-23T09:35:14+00:00",
+  "acquisition_record": "build/uc001-priority5q-country-catalogue/source/acquisition.json",
+  "documentation": [
+    {
+      "reference": "https://download.geonames.org/export/dump/readme.txt",
+      "resolved_reference": "https://download.geonames.org/export/dump/readme.txt",
+      "HTTP_status": 200,
+      "retrieval_started_at": "2026-10-23T08:36:05.629264+00:00",
+      "retrieved_at": "2026-10-23T08:36:05.700666+00:00",
+      "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 01:46:11 GMT",
+      "content_type": "text/plain; charset=utf-8",
+      "bytes": 8843,
+      "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+      "file": "readme.txt",
+      "path": "build/uc001-priority5q-country-catalogue/source/readme.txt"
+    },
+    {
+      "reference": "https://creativecommons.org/licenses/by/4.0/",
+      "retrieval_started_at": "2026-10-23T08:36:05.700828+00:00",
+      "retrieved_at": "2026-10-23T08:36:05.744124+00:00",
+      "error": "HTTP Error 403: Forbidden",
+      "file": "cc-by-4.0.html",
+      "path": null
+    }
+  ],
+  "normalized_output": {
+    "path": "docs/reference/COUNTRIES-GEONAMES-2026-10-23.json",
+    "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885",
+    "bytes": 12971,
+    "fields": [
+      "code",
+      "name"
+    ],
+    "order": "source code, ascending"
+  },
+  "counts": {
+    "source_rows": 252,
+    "included": 250,
+    "excluded": 2,
+    "unresolved": 0
+  },
+  "extraction_rules": [
+    "Strict UTF-8 and unchanged 19-column header/rows; ISO column becomes code, Country becomes name.",
+    "Codes must have two uppercase ASCII letters and be unique across all dispositions; names must be nonblank.",
+    "Source names and codes are verbatim, including Unicode and edge whitespace. No translations, aliases or replacement codes.",
+    "Retain all existing 249 source-listed inclusion candidates under the owner-approved source-based country/territory policy; no language, alternative/research coverage, population or sovereignty filter.",
+    "AN/CS remain excluded with the publisher's obsolete-entry notes. Include XK under the owner's 2026-10-23 approval as a documented GeoNames temporary/source-specific code, without official ISO or political-status claims; retain its prior unresolved decision in history.",
+    "Sort included codes and emit deterministic two-field UTF-8 JSON. Import no spatial, address or other source columns."
+  ],
+  "excluded": [
+    {
+      "code": "CS",
+      "name": "Serbia and Montenegro",
+      "source_line": 301,
+      "reason": "Publisher identifies Serbia and Montenegro as no longer existing.",
+      "support": {
+        "line": 17,
+        "text": "# CS (Serbia and Montenegro) with geonameId = 8505033 no longer exists."
+      }
+    },
+    {
+      "code": "AN",
+      "name": "Netherlands Antilles",
+      "source_line": 302,
+      "reason": "Publisher identifies the Netherlands Antilles as dissolved on 10 October 2010.",
+      "support": {
+        "line": 18,
+        "text": "# AN (the Netherlands Antilles) with geonameId = 8505032 was dissolved on 10 October 2010."
+      }
+    }
+  ],
+  "unresolved": [],
+  "preserved_edge_whitespace": [
+    {
+      "code": "BQ",
+      "source_line": 80
+    }
+  ],
+  "attribution": {
+    "credit": "Country code/name data derived from GeoNames countryInfo.",
+    "source_link": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "license": "CC BY 4.0",
+    "license_link": "https://creativecommons.org/licenses/by/4.0/",
+    "license_basis": {
+      "path": "build/uc001-priority5q-country-catalogue/source/readme.txt",
+      "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+      "reference": "https://download.geonames.org/export/dump/readme.txt"
+    },
+    "requirements": "Retain appropriate credit, source/license links and modification notice; do not imply endorsement or add restrictions. Keep this manifest with the extract.",
+    "changes": "Selected ISO/Country fields, sorted codes, excluded AN/CS and included XK under the owner's 2026-10-23 source-based policy. Source names unchanged.",
+    "disclaimer": "GeoNames supplies data as is, without accuracy, timeliness or completeness warranty."
+  },
+  "limitations": [
+    "Reference membership only; no product availability, delivery, service coverage or user-location inference.",
+    "Owner acceptance covers the source-based policy and release basis, not independent factual verification of every entry, geopolitical status or per-entry currentness.",
+    "Publisher-provided names only; no DE/FR/IT/EN localization or qualified linguistic acceptance.",
+    "Activation is limited to the Priority 5R development slice and isolated demo/test composition. Normal app.main remains unconfigured; production activation and future snapshot replacement require separate authorization."
+  ],
+  "preparation": {
+    "script": "scripts/uc001_country_catalogue/prepare.py",
+    "script_sha256": "035da89a26ca5d7b3b2e19e33104f862f61044b8ae43d07869d601555d9e24a2",
+    "command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output docs/reference/COUNTRIES-GEONAMES-2026-10-23.json --manifest docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json --prepared-at 2026-10-23T09:35:14+00:00 --approved-release"
+  },
+  "release_id": "geonames-countryInfo-2026-10-23-v1",
+  "approval": {
+    "owner_approved": true,
+    "approved_on": "2026-10-23",
+    "approved_at": null,
+    "scope": "Priority 5R development slice and isolated demo/test composition only",
+    "production_activation_approved": false,
+    "independent_factual_review": false,
+    "linguistic_approval": false,
+    "basis": "Owner acceptance of the source-based catalogue policy and release basis; no independent factual verification of every entry or linguistic approval."
+  },
+  "decision_history": [
+    {
+      "code": "XK",
+      "name": "Kosovo",
+      "previous_disposition": "unresolved",
+      "previous_manifest": "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json",
+      "previous_decision": {
+        "code": "XK",
+        "name": "Kosovo",
+        "source_line": 173,
+        "reason": "Publisher labels XK temporary. Human review must decide membership under the current-country/territory policy; no replacement or ISO status is inferred.",
+        "support": {
+          "line": 13,
+          "text": "# The countrycode XK temporarily stands for Kosvo:"
+        }
+      },
+      "disposition": "included",
+      "approved_on": "2026-10-23",
+      "basis": "Owner accepted the pinned source-based catalogue policy: retain the existing 249 entries, include XK and exclude AN/CS.",
+      "limitation": "XK is a GeoNames temporary/source-specific code; inclusion claims neither an official ISO assignment nor a political-status determination."
+    }
+  ]
+}

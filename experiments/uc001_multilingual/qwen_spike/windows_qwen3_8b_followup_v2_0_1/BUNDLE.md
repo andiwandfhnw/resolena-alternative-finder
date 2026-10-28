@@ -1,0 +1,93 @@
+# Harness 2.0.1 — offline-only repair, 2026-10-14
+
+[Corrected ZIP](../../../../build/checkpoints/windows-qwen3-8b-v2-0-1.zip), 154,798 bytes.
+SHA-256: `2fb5b5ad7dbc060b9caafc5f4b8fd5461f86e9a97c03db33352a6cae6aa167ff`.
+Freeze SHA-256: `8ff486a621d90a3dfecff2b05287df25026a10cae8739e0b91530cce77f7088d`.
+[Metadata](bundle-handoff.json), [offline checks](offline_checks.json),
+[Windows instructions](execution/README.md), [final verification](verification.json).
+
+The [original attempt](../windows_v2_results_2026_10_14/REVIEW.md) is closed as an
+operational failure with zero evaluation requests. Its archive/approval/freeze/
+markers/deadline and the original v2 bundle remain unchanged. Logged 37/37 GPU layer
+offload is preserved; acceleration and language capability were not measured.
+The 55 held-out cases were not read. No inference, acquisition or production change.
+
+Focused changes: `$layerMatches` replaces the collection that collided with automatic
+`$Matches`; the watchdog checks/rechecks process exit around metadata reads and still
+rejects live PID/start-time/executable/uninspectable identity. Resource failures stay
+outside that exit-race catch; thresholds and matching-process stop protection are
+unchanged. Future watchdog records include expected/observed identity and exit state.
+Only Common/Watchdog and new regression fixtures change executable behaviour;
+README/provenance identify the new version. Run, dispatcher, prompts, requests,
+cases, expectations, schema, scoring, sampling/runtime settings and resource limits
+are byte-identical parent copies. Receipt/evaluation protocol remains 2.0.0.
+
+19 Linux-available checks passed (14 synthetic orchestration, five evidence/source
+checks). They do not establish PowerShell behaviour or Windows compatibility.
+Packaged Windows checks reproduce the original Groups error on the preserved log,
+test the correction/missing/partial evidence, test mocked shutdown races and genuine
+live mismatches, then run the existing receipt/timer/export checks. PowerShell and
+a .NET compiler are unavailable in the Codespace; Windows results remain pending.
+
+After comparing the ZIP hash, unblock only this verified ZIP if needed and extract
+to a **new** `C:\ResolenaExperiments\qwen3-8b-followup-v2-0-1` folder. Preserve both
+older folders; copy no old approval or markers. **Windows PowerShell 5.1 only:**
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File C:\ResolenaExperiments\qwen3-8b-followup-v2-0-1\Test-Harness.ps1 -Scratch C:\ResolenaExperiments\qwen3-8b-v2-0-1-offline-checks
+```
+
+Scratch must not exist. Stop on any failure; preserve/return the output and scratch
+records. No Python or installation is required, and no model/real process is started
+or terminated. Do not run Run.ps1: no inference approval is supplied. Tests passing
+authorize no retry or new deadline. DESIGN/in-progress and linguistic validation pending.
+
+## Frozen payload hashes
+
+| File relative to execution/ | SHA-256 |
+|---|---|
+| Base.ps1 | `e4115f8427f064e581c222eeffd431e7de1d234a7393068ed23131bae2f39df9` |
+| Close.ps1 | `2b5788eaa3a00d7118cf256d512ab030fe8e9cead111b1ea83be45adc5400de4` |
+| Common.ps1 | `0fbf6203b03074709e62e22cabfab3c33e0ce0ff1d75f60aaa8f9bcbdc6eec7f` |
+| HardDeadline.cs | `38b52c3206772a9d213745aab26ae03e2b6a965971b6dbc727afd48e7e2a5b1b` |
+| Native.cs | `a403c3925fcd349c6a4defe50b373cc0a78eb5497c9c08f98cb561d77268cb15` |
+| Preflight.ps1 | `019df6db75eab44647734b2ecad29ccef9daa62d449cf9453e7ce22956195c85` |
+| README.md | `06970595d15488a44540e9d9f1ac5484668b923294145c8f69f939415a4a2c17` |
+| Run.ps1 | `79ef47605118ff6163cc3e485ef556e356889c5e67b5fbd06203d484f404fd4c` |
+| Test-Harness.ps1 | `6a2e4539ae8364dc6f55c09c15ea7fb41e76ad3937e0108646ac1d53e039cdf5` |
+| Test-Protocol.ps1 | `cb73d212af0a85a8daf4b9f3f772ada5da670e968ed99b9280bde07ac1a77868` |
+| Watchdog.ps1 | `f7bae689349e0676d38e9c839fb6a2be4cadfedd4c125f8e03e9b22ceba9d3a4` |
+| artifacts.json | `1fe6f43bc0e30d29efb71e436eb277cc210e6083cf5c38e90c163437a8d12e25` |
+| assess.py | `3dbf664e9483423f8721c3667838caa692cad96b05fce018d0ff5bfd0ca1d9d3` |
+| cases.json | `73d39dbc0a3f0a1d7acba4d1d03c2fc103c3dd282e80eaf76bdb4a6e75eb0923` |
+| config.json | `1764986ca017f1b4e29f9c963d29469c661530767e5a150a76841e164b38105a` |
+| contract.py | `40c17e3a250da73900cf0b0fede8533db08331141f62730c3a77eed9922d5dec` |
+| dispatch.py | `0b7afb8db12d850bdfdd779e315baacd7c3dcaca975da21192160150d93d073f` |
+| execution-approval.example.json | `1f973dd859a34837e8d8216d7851fd157c99f391ac1026ec329a00d243217c94` |
+| fixtures/Offload-original.ps1 | `ff47beff95c9cd5ada715963f4ce4c178cb1cdbbb0b2387666a3bac3ef4e35f5` |
+| fixtures/startup-v2-20261014.log | `bd8b0840ff79f74c4da2f2ef0559ab76c7019eb3bcf929d55c4b01a23d08deaf` |
+| order.json | `847410d10e1be0da88fe4c3a8d9ab9274e7adcd85ab03e468006b4c92db8ba80` |
+| prompts/v1.txt | `ba209d203248d9b325db2471893d366e0ea967721c8b8c53e580f474cf496393` |
+| prompts/v2.txt | `070f4efbd1233f450eb8b1b4f3d1d57a398db0c73b39e90c0aa84640aa6b60da` |
+| provenance.json | `3d3fbbfbaa5ea86ee0835cc925f1514262f93c164ab411ad7acbbb89c0b478b7` |
+| requests/01-C1-v2.json | `3c58b63c198055e443a0ef4c6836b32f9813fedc0d9eb0e16a0899a7fef507d2` |
+| requests/02-C2-v2.json | `8b8b623ea84c38970750236ab30bcbe4bbdcedbf3f6d80dd03ff94cd537f3299` |
+| requests/03-C3-v2.json | `d617c454dce6aa8828438edfa9147a58eff6eaac8bba53da4413c205e05c4f0d` |
+| requests/04-C4-v2.json | `8d646cc3db877b2c81bc54d8483db89008667470f12efee93ba26ff3e64fb553` |
+| requests/05-C5-v2.json | `1ce4924b5e88311fdcd23cd4ed230cda46b8b804bc4110c4885a21db694258b5` |
+| requests/06-C6-v2.json | `ec337b4a9b4476acce68deb1334c9e3f3ea061235c186903371fab4f29197299` |
+| requests/07-F1-DE-v1.json | `de361db7407ac5ed0edae6109ba44c8d8ead61a3b8f02f4908477a25572bed2c` |
+| requests/08-F1-DE-v2.json | `f1af02fde9689874777ffdcdea467d1c124591647d67df50786442c6dec92837` |
+| requests/09-F2-FR-v2.json | `8e12e74a1e29c3699400c65b7458c51a8a8e7b10bcb949ab86531f67c3386396` |
+| requests/10-F2-FR-v1.json | `8bbcc8c97034396788d326aa22dea981fd4a00d7358cc3e155257282c90fc0ac` |
+| requests/11-F3-IT-v1.json | `7e8f941923dd22c4b3aed8f6eb3dd9b0f9765c7ed194bfb668eae589b8e24de7` |
+| requests/12-F3-IT-v2.json | `ed9707545b315261ff8403254e13c76f63c8b89dd5eed57781856e834e1a126f` |
+| requests/13-F4-EN-v2.json | `c258c0bc02ef9f6aaca92a015723c1d236f99524b8de0253059e612041faaba3` |
+| requests/14-F4-EN-v1.json | `538760be281f34a84634a898d83f67cf46c77390ed7eca21d7a2a82803d3489b` |
+| requests/15-F5-ES-v1.json | `cd07487dd10b24590f4cea4bad9441132efa36214bf709a079cf7f2933e39884` |
+| requests/16-F5-ES-v2.json | `21f5297e9d009439c474574ad6294d976a1af35abc80736d424b90e4b5d8796d` |
+| requests/17-F6-AMB-v2.json | `94bcf1d486d5a188ce02b18bfa0afe1620d2112693a4b9e96d9ab2ab83102851` |
+| requests/18-F6-AMB-v1.json | `541ae0b0780486bf4f19fc40e563fffbb878bf38d33a03a6bcaaa2457e9a8c6c` |
+| runtime-files.json | `1f116d833c0b7557f9e63b0ff0d4c95b8b330a0e6f4e7a9b93427f298be313bb` |
+| schema.json | `6cd9186800aab211fccd913ef2a2dd198bc6fa6fe20937b3ef69ea8b91ff9489` |
+| selftest-fixtures.json | `56396d06694bf424cc93a356ac1fb0b78590412df262ce969746a625d97fff51` |

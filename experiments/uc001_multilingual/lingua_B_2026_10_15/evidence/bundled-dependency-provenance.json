@@ -1,0 +1,7 @@
+{
+  "member": "lingua_language_detector-2.2.0.dist-info/sboms/lingua.cyclonedx.json",
+  "bytes": 166582,
+  "sha256": "e3d5f9f79f270f140163f2516397469218ef0baff3e43c148eb9d3beb19ecefe",
+  "bundled_components": 131,
+  "note": "Bundled native dependency information is bound by the wheel hash; no additional runtime Python dependency or separate acquisition."
+}

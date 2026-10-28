@@ -1,0 +1,49 @@
+{
+    "supervisor":  {
+                       "pid":  51928,
+                       "created":  134368225923286214,
+                       "parent_pid":  38280,
+                       "image":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+                   },
+    "server":  {
+                   "pid":  5204,
+                   "created":  134368225931604067,
+                   "parent_pid":  51928,
+                   "image":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+               },
+    "redirector":  {
+                       "pid":  55396,
+                       "created":  134368225931943118,
+                       "parent_pid":  51928,
+                       "image":  "C:\\ResolenaExperiments\\uc001-validator-env\\Scripts\\python.exe"
+                   },
+    "interpreter":  {
+                        "pid":  3176,
+                        "created":  134368225932161811,
+                        "parent_pid":  55396,
+                        "image":  "C:\\ResolenaExperiments\\tools\\python-3.12.10\\python.exe"
+                    },
+    "console_helpers":  [
+                            {
+                                "pid":  10424,
+                                "created":  134368225931701511,
+                                "parent_pid":  5204,
+                                "image":  "C:\\Windows\\System32\\conhost.exe"
+                            },
+                            {
+                                "pid":  54572,
+                                "created":  134368225932037247,
+                                "parent_pid":  55396,
+                                "image":  "C:\\Windows\\System32\\conhost.exe"
+                            }
+                        ],
+    "job_verified_pids":  [
+                              5204,
+                              10424,
+                              55396,
+                              54572,
+                              3176
+                          ],
+    "job_membership_verified":  true,
+    "server_pid":  5204
+}

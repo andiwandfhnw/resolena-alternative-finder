@@ -1,0 +1,564 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5M only: unknown/absent -> explicit same-submission reassessed saving",
+  "recorded_date": "2026-10-22",
+  "result": "New browser journey passed first run against unchanged production, with focused test-support RED/GREEN and relevant committed-unknown regressions; stop for human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priorities_3_4_5": "partial",
+    "increment_1_complete": false,
+    "DEVELOP_complete": false
+  },
+  "prior_5L_acceptance": {
+    "scope": "Exactly two mocked 403/409 denial-UI and explicit fresh-start cases. Reset sent nothing; later explicit submit used new key/proof/current values and reached actual synthetic backend.",
+    "test_kind": "New cases and success baseline passed first run; production unchanged, no artificial RED or new backend security coverage.",
+    "limits": [
+      "300 ms bounded no-automatic-request observation",
+      "Fresh-page cases; no prior-uncertainty transitions."
+    ],
+    "original_receipt": "build/uc001-priority5l-denial-ui/verification.json",
+    "original_sha256": "27188e1b3807d5cf10b756b87a968797eeedd80ce63cf1d56acb613a1c9b92b6",
+    "original_receipt_and_all_historical_evidence_unchanged": true
+  },
+  "prerequisites": {
+    "result": "Confirmed; no material accepted-contract/architecture/schema/dependency conflict.",
+    "checked": [
+      "Current UC O-2 / AC-11/17 / T-09/13 and relevant field/loading/uncertainty rules",
+      "CompareRequest captured-payload/key/proof lookup, absent normal reassessment and new-save API 201",
+      "SQLite save transaction cleanup and actual reconciliation SELECT/find, existing 5D ABSENT seam",
+      "React explicit Recover captured-body reuse and normal saved-coverage uncertainty clearing",
+      "Existing synthetic clock and established +366-day expired-fixture behavior"
+    ],
+    "equivalent_coverage_existed": false,
+    "existing_differences": [
+      "5D ABSENT integration stops at actual 503 unknown.",
+      "Confirmed request-write rollback retry is a different persistence state.",
+      "5E recovers an already committed record as 200 acknowledgement.",
+      "5B expiry uses an explicitly fresh identity after acknowledgement."
+    ],
+    "reused_receipts": [
+      {
+        "path": "build/uc001-priority5d-reconciliation/verification.json",
+        "sha256": "05669ba08dbf8309df51ffd64306b08fc3f29f84571e78eb30f995f314ab7582"
+      },
+      {
+        "path": "build/uc001-priority5b-fresh-search/verification.json",
+        "sha256": "751d9b2a57d5b47cb6663bf55726d28f79f441aa1d036a2bb2bc420efff2380c"
+      },
+      {
+        "path": "build/uc001-priority5e-runner-integration/verification.json",
+        "sha256": "a62c3437e80fe0da82c07ade6b82ef0dc46c4c7aae5bb45bedcc62de940f75eb"
+      }
+    ],
+    "eight_row_checkpoint": "Reused unchanged; no checkpoint investigation or rewrite."
+  },
+  "development_evidence": {
+    "tests_authored_before_support_changes": true,
+    "support_RED": "Missing optional test-only uncertain_save_file factory argument.",
+    "support_GREEN": "One focused test passed after minimal support wiring.",
+    "browser_first_run": "3 passed; no application/API/SQLite/React production fix or artificial production RED.",
+    "refactor": "Reused existing runner, uncertain control path, fixture, independent observer and captured-attempt helpers; no general fault framework."
+  },
+  "fault": {
+    "opt_in": "Existing test-only uncertain-save control JSON, exact target submission-key digest plus mode absent; digest remains only in test memory/control file.",
+    "boundary": "Real interpretation, retrieval, qualification and comparison preparation finish at T0. Real required INSERTs complete; dialect.do_commit shim raises generic sqlite3.OperationalError before calling the underlying database commit.",
+    "production_knowledge": "Application receives only generic persistence failure; no deliberate-uncommitted flag, independent observer rows or forced find result.",
+    "cleanup": "Normal production cleanup reaches real driver rollback while transaction remains active; no cleanup fault.",
+    "reconciliation": "Normal SQLiteComparisonStore.find executes a real SELECT and returns absence. No stubbed None, deleted record, fabricated API response or confirmed-write-failure substitution.",
+    "actual_fault_observations": {
+      "fault_counts": {
+        "real_commits": 0,
+        "confirmation_losses": 1,
+        "read_failures": 0
+      },
+      "timeline": [
+        "matching_control_consumed",
+        "test_fault_before_underlying_dbapi_commit",
+        "confirmation_error_before_return_to_production",
+        "normal_driver_rollback_entered_with_transaction",
+        "real_reconciliation_select_returned",
+        "real_reconciliation_absent",
+        "dialect_methods_restored"
+      ],
+      "dialect_methods_restored": true,
+      "observer_rows_supplied_to_application": false,
+      "raw_originating_proofs_recorded": false,
+      "mode": "absent",
+      "real_reconciliation_selects": 1,
+      "reconciliation_results": [
+        false
+      ],
+      "normal_driver_rollback_observed": true
+    },
+    "counter_label_limit": "Inherited confirmation_losses counts the generic test commit error; zero underlying commits occurred in this ABSENT branch.",
+    "fault_consumed_before_recovery": true,
+    "dialect_fault_patches_restored_before_clock_advance": true
+  },
+  "browser_journey": {
+    "synthetic_input": "Existing understood bicycle repair request / CH / no optional locality; one fresh originating page.",
+    "actual_initial_response": {
+      "status": 503,
+      "body": {
+        "outcome": "persistence_error",
+        "persistence": {
+          "state": "unknown"
+        },
+        "issues": [
+          {
+            "code": "comparison_save_failed"
+          }
+        ],
+        "assessed_outcome": "comparison"
+      }
+    },
+    "initial_ui": {
+      "loading_ended": true,
+      "fields_and_captured_payload_key_proof_context_retained": true,
+      "uncertainty_message_not_unsaved_or_rollback_certainty": true,
+      "recover_submission_enabled": true,
+      "no_comparison_saved_coverage_or_acknowledgement": true
+    },
+    "bounded_no_automatic_continuation_ms": 300,
+    "clock": {
+      "T0": "2026-10-15T10:00:00+00:00",
+      "T1": "2027-10-16T10:00:00+00:00",
+      "basis": "Established fixture expiry from 5B; +366 days, beyond existing price/service-coverage/specification evidence windows. No new threshold, source or review-date modification.",
+      "cleanup": "Exact prior clock bytes restored in finally; following committed-unknown browser regression verifies T0 again."
+    },
+    "explicit_action": "Recover submission actually clicked without edits; no automatic request or deliberate fresh action.",
+    "same_submission": {
+      "identical_serialized_body": true,
+      "same_submission_key": true,
+      "same_originating_proof": true,
+      "same_captured_language_location_context": true,
+      "new_submission_key_created": false,
+      "credential_equality_values_exported": false
+    },
+    "actual_reassessed_response": {
+      "status": 201,
+      "body": {
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2027-10-16T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic-only"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "01790b12-9649-420d-96ea-97d1b4be7115"
+        },
+        "issues": [
+          {
+            "code": "no_qualifying_knowledge"
+          },
+          {
+            "code": "research_unavailable"
+          }
+        ],
+        "coverage": {
+          "limitation_codes": [
+            "essential_evidence_expired",
+            "geographic_applicability_unverified",
+            "useful_comparison_information_missing"
+          ]
+        },
+        "limitations": [
+          "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+          "Required evidence has expired; its original review dates were retained.",
+          "Existing evidence does not establish applicability in the requested location.",
+          "No qualifying candidate has useful supported financial or environmental/resource information."
+        ],
+        "rendering": {
+          "language": "en",
+          "version": "synthetic-coverage-v1"
+        }
+      }
+    },
+    "reassessed_ui": {
+      "saved_coverage_shown_with_actual_saved_identity": true,
+      "expiry_explanation_visible": true,
+      "no_submission_recovered_acknowledgement_or_comparison": true,
+      "loading_ended_and_resolved_uncertainty_cleared": true,
+      "fields_retained": true
+    },
+    "browser_POSTs": 2,
+    "actual_HTTP_responses_only": true,
+    "http_stubs_delivery_aborts_or_fabricated_successes": false,
+    "artifact": "build/uc001-priority5m-absent-reassessment/browser/saved-comparison-unknown-a-998b9-s-with-current-reassessment/unknown-absent-reassessment-evidence.json",
+    "artifact_sha256": "9482eac5cfcff21166a780b17334d8a363331c1f5e3b81734c08a75d4b95c7cd"
+  },
+  "identity": {
+    "discarded_unsaved_request_id": "3f22252a-92bd-4997-980b-f42c737ab8e1",
+    "discarded_unsaved_option_ids": [
+      "21790297-5a5c-49fc-b14f-698dfb666322",
+      "2f8425b9-817d-49fd-b337-201f4ac1d867"
+    ],
+    "discarded_request_options_and_links_absent_after_unknown_and_recovery": true,
+    "new_saved_request_id": "01790b12-9649-420d-96ea-97d1b4be7115",
+    "same_submission_not_same_prepared_result": "Submission key/proof/payload remain unchanged. A new prepared request UUID is observed at T1; no discarded T0 comparison identity is committed.",
+    "new_identity_selected_by_baseline_ID_difference": true,
+    "stored_projection_and_assessment_match_actual_response": true
+  },
+  "processing_and_persistence_counts": {
+    "initial_attempt": {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1,
+        "underlying_commits": 0
+      },
+      "prepared": {
+        "request_id": "3f22252a-92bd-4997-980b-f42c737ab8e1",
+        "option_ids": [
+          "21790297-5a5c-49fc-b14f-698dfb666322",
+          "2f8425b9-817d-49fd-b337-201f4ac1d867"
+        ],
+        "outcome": "comparison",
+        "assessed_at": "2026-10-15T10:00:00+00:00"
+      },
+      "returned_outcome": null,
+      "raised_persistence_state": "unknown",
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false,
+          "real_selects": 1
+        }
+      ],
+      "retrieved_count": 2,
+      "qualified_rendered_count": 2,
+      "coverage_limitation_codes": [],
+      "real_request_selects": 2,
+      "insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    "explicit_recovery_attempt": {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 0,
+        "prepare_coverage": 1,
+        "save": 1,
+        "underlying_commits": 1
+      },
+      "prepared": {
+        "request_id": "01790b12-9649-420d-96ea-97d1b4be7115",
+        "option_ids": [],
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2027-10-16T10:00:00+00:00"
+      },
+      "returned_outcome": "insufficient_coverage",
+      "raised_persistence_state": null,
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false,
+          "real_selects": 1
+        }
+      ],
+      "retrieved_count": 2,
+      "qualified_rendered_count": 0,
+      "coverage_limitation_codes": [
+        "essential_evidence_expired",
+        "geographic_applicability_unverified",
+        "useful_comparison_information_missing"
+      ],
+      "real_request_selects": 2,
+      "insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    },
+    "total": {
+      "interpret": 2,
+      "retrieve": 2,
+      "assess_clock": 2,
+      "prepare": 1,
+      "prepare_coverage": 1,
+      "save": 2,
+      "underlying_commits": 1
+    },
+    "save_attempts": 2,
+    "successful_initial_commits": 0,
+    "successful_recovery_commits": 1,
+    "counter_scope": "Per-target explicit execute calls only. assess_clock counts calls to the assessment clock, not qualification function invocations. Actual renderer inputs show two retrieved/qualified options at T0 and two retrieved/zero rendered options plus expiry coverage at T1. underlying_commits increments only after the real delegate returns. real_request_selects includes application lookup and adapter readback; lookup_results counts only application port lookups.",
+    "no_additional_automatic_write_observed": true
+  },
+  "database_observations": {
+    "target_journey_counts": {
+      "before": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_unknown": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_recovery": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    "target_delta": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "baseline_nonempty": true,
+    "committed_state_after_unknown_equals_baseline": true,
+    "prior_request_projections_associations_options_evidence_and_review_dates_unchanged": true,
+    "focused_support_additional_check": "Compares complete prior request rows only in memory and stored submission-key binding as a boolean; baseline 2/4/4 -> same -> 3/4/4.",
+    "scope_limit": "These counts are the new journey only. The separately selected committed-unknown regression runs afterward and commits its own unrelated synthetic record."
+  },
+  "focused_support_artifacts": [
+    "build/uc001-priority5m-absent-reassessment/support-fault-evidence.json",
+    "build/uc001-priority5m-absent-reassessment/support-processing-evidence.json"
+  ],
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5m-eluvycaz/pytest-red tests/integration/test_uncertain_save_support.py::test_absent_unknown_save_recovery_reassesses_expired_evidence_without_replacing_submission 2>&1 | tee build/uc001-priority5m-absent-reassessment/support-red.txt",
+      "exit_code": 1,
+      "result": "1 failed, 1 existing deprecation warning, 1.04s. Missing create_demo_service uncertain_save_file test-only argument; not a production recovery defect.",
+      "log": "build/uc001-priority5m-absent-reassessment/support-red.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5m-eluvycaz/pytest-green tests/integration/test_uncertain_save_support.py::test_absent_unknown_save_recovery_reassesses_expired_evidence_without_replacing_submission 2>&1 | tee build/uc001-priority5m-absent-reassessment/support-green.txt",
+      "exit_code": 0,
+      "result": "1 passed, 1 existing deprecation warning, 1.06s. Real ABSENT fault/restoration/current reassessment and full prior-row preservation.",
+      "log": "build/uc001-priority5m-absent-reassessment/support-green.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q --basetemp /tmp/resolena-priority5m-eluvycaz/pytest-default-regression tests/integration/test_uncertain_save_support.py::test_uncertain_save_control_isolated_from_seeding_other_saves_and_recovery 2>&1 | tee build/uc001-priority5m-absent-reassessment/committed-support-regression.txt",
+      "exit_code": 0,
+      "result": "1 passed, 1 existing deprecation warning, 1.10s. Directly affected original committed-unknown support isolation/recovery unchanged.",
+      "log": "build/uc001-priority5m-absent-reassessment/committed-support-regression.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5m-absent-reassessment/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|unknown absent persistence explicitly recovers with current reassessment|delivered unknown persistence error' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5m-absent-reassessment/browser --reporter=list,json 2>&1 | tee build/uc001-priority5m-absent-reassessment/browser.txt",
+      "exit_code": 0,
+      "result": "3 passed (18.6s), first browser invocation: success baseline, one new actual unknown/ABSENT reassessment journey, existing committed-unknown recovery regression.",
+      "log": "build/uc001-priority5m-absent-reassessment/browser.txt",
+      "report": "build/uc001-priority5m-absent-reassessment/browser-report.json",
+      "stats": {
+        "startTime": "2026-10-22T16:47:48.055Z",
+        "duration": 18610.217,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "command": "set -o pipefail\ngit diff --check 2>&1 | tee build/uc001-priority5m-absent-reassessment/git-diff-check.txt",
+      "exit_code": 2,
+      "result": "Only the preserved historical trailing-whitespace line in docs/TASKS.md:1854. All six task-local file deltas are whitespace-clean.",
+      "log": "build/uc001-priority5m-absent-reassessment/git-diff-check.txt"
+    },
+    {
+      "command": "set -o pipefail\ngit status --short | tee build/uc001-priority5m-absent-reassessment/git-status.txt",
+      "exit_code": 0,
+      "result": "Dirty worktree preserved; status entries identical to entry, branch and HEAD unchanged.",
+      "log": "build/uc001-priority5m-absent-reassessment/git-status.txt"
+    },
+    {
+      "command": ".venv/bin/python /tmp/resolena-priority5m-eluvycaz/check-evidence.py",
+      "exit_code": 0,
+      "result": "Actual responses/counters/identities, all 442 protected hashes, historical tests/checkpoint, task-local whitespace, safe JSON and closed server ports verified.",
+      "artifacts": [
+        "build/uc001-priority5m-absent-reassessment/preservation.json",
+        "build/uc001-priority5m-absent-reassessment/receipt-check.json"
+      ]
+    }
+  ],
+  "conditional_checks_not_run": {
+    "frontend_lint_build": "Not required: frontend source, runner configuration and dependencies unchanged.",
+    "other_matrices": "No full reconciliation, concurrency, language, browser, locality or other retry matrix. Only one new focused test, directly affected default committed-support regression, and baseline/new/relevant committed-unknown browser invocation."
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "47e60652d247d16ad1f2417be0238923e5abb1eae7f4f380c8178ad65e890059",
+      "summary": "Current 5M authorization, scoped 5L acceptance and one bounded result; phase/status and all historical text/checkpoint preserved."
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "c9042342e71aeab442cafaa1a35e0ba745187328ed085815eded766106609fb5",
+      "summary": "One actual unknown/ABSENT -> clicked same-submission recovery -> current saved coverage journey; historical cases unchanged."
+    },
+    {
+      "path": "tests/integration/test_uncertain_save_support.py",
+      "sha256": "4cb7c0667c790eca5794d04f53737abb6084690f40705183ebcb884c592b0a3d",
+      "summary": "One focused API/SQLite ABSENT fault/restoration/expired same-submission save test; existing support cases unchanged."
+    },
+    {
+      "path": "tests/support/demo.py",
+      "sha256": "2e4a8642af0b1ef65c4453be98babcb3d38cff3ef9892d43e0319ed66193d0a6",
+      "summary": "Pass already validated uncertain-save control path to optional observer and restore uncertain hook after delayed support cleanup. No new endpoint, environment switch or runner configuration."
+    },
+    {
+      "path": "tests/support/source_bound_rendering.py",
+      "sha256": "dac184706c4fdc1c708cf0d98160477d0b6f37b73c6e89688b76cafa8ee901f7",
+      "summary": "Optional existing uncertain-file path selects narrow original-CompareRequest observer with unchanged legacy/processing fallback and cleanup."
+    },
+    {
+      "path": "tests/support/uncertain_save.py",
+      "sha256": "259af2776daa6700731362aebe248a755f20db78111ab018d161c536460e5c1e",
+      "summary": "Explicit absent control mode reusing pre-underlying-commit generic error; normal real reconciliation/rollback observations; target-only processing observer and cleanup. Existing default committed-unknown behavior retained."
+    }
+  ],
+  "preservation": {
+    "protected_files_checked": 442,
+    "unchanged_protected_files": 436,
+    "only_six_authorized_existing_files_changed": true,
+    "all_prior_receipts_and_artifacts_unchanged": true,
+    "historical_TASKS_and_existing_tests_preserved": true,
+    "eight_row_checkpoint_unchanged": true,
+    "DE_FR_IT_EN_Resolena_controlled_processing_atomic_save_and_immutable_evidence_unchanged": true,
+    "real_knowledge_renderings_inactive_and_experiments_closed": true,
+    "normal_app_main": "Unchanged and unconfigured.",
+    "workstation_context": "Laptop context unchanged; execution stayed in Codespaces Bash remote Linux.",
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_HEAD_and_status_entries_unchanged": true,
+    "detailed_checks": "build/uc001-priority5m-absent-reassessment/preservation.json",
+    "scoped_diff_checks": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/docs/TASKS.md",
+          "/workspaces/resolena-alternative-finder/docs/TASKS.md"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/tests/e2e/saved-comparison.spec.ts",
+          "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/tests/integration/test_uncertain_save_support.py",
+          "/workspaces/resolena-alternative-finder/tests/integration/test_uncertain_save_support.py"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/tests/support/demo.py",
+          "/workspaces/resolena-alternative-finder/tests/support/demo.py"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/tests/support/source_bound_rendering.py",
+          "/workspaces/resolena-alternative-finder/tests/support/source_bound_rendering.py"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5m-eluvycaz/tests/support/uncertain_save.py",
+          "/workspaces/resolena-alternative-finder/tests/support/uncertain_save.py"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      }
+    ],
+    "global_diff_check": "Only preserved historical TASKS whitespace at line1854; all six task-local deltas clean."
+  },
+  "cleanup_and_privacy": {
+    "ordinary_owned_servers_stopped": true,
+    "test_ports": [
+      {
+        "port": 8011,
+        "closed": true
+      },
+      {
+        "port": 5175,
+        "closed": true
+      }
+    ],
+    "target_fault_consumed_and_test_clock_and_hooks_restored": true,
+    "shared_committed_unknown_behavior_preserved_by_both_support_and_browser_regressions": true,
+    "tracing": "off",
+    "HAR_or_trace_files_present": false,
+    "raw_proofs_headers_bindings_complete_captured_requests_or_protected_exception_contexts_exported": false,
+    "credential_assertions": "Equality booleans only; no raw keys/proofs or binding digests in evidence."
+  },
+  "checkpoint_credit": "Only unknown/absent -> explicitly clicked same-submission recovery -> current reassessed saving. Not the whole uncommitted retry/fresh-intent row or Priority5.",
+  "remaining_and_limits": [
+    "300 ms is a bounded observation, not unlimited retry/timing proof.",
+    "Direct fresh/edited intent after uncertainty, confirmed-failure browser retry, other processing-error transitions and product/habit fixtures remain outside this slice.",
+    "No new collision/cleanup/crash variants or broader recovery/security coverage.",
+    "Reference preparation/activation, real knowledge/rendering/interpreter and qualified linguistic acceptance remain pending.",
+    "Priorities3/4/5, increment1 and DEVELOP remain incomplete."
+  ],
+  "excluded_work_not_performed": [
+    "No Priority6, research, UC-003, country/locality references, real packet activation, multilingual semantic acceptance or TL-03.",
+    "No model/detector startup, experiments, held-out access or linguistic approval.",
+    "No dependency changes, normal app.main configuration, staging, commits, push, merge, branch switch/reset, unrelated cleanup, CI/CD or deployment."
+  ],
+  "review": "Separate agents authored test-only portions and reviewed target support contracts/schema without executing tests; no material issue found. Human review remains required.",
+  "stop": "Stop after this scenario for human review; no further implementation authorized."
+}

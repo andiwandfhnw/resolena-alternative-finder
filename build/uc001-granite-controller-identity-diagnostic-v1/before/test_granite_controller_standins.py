@@ -1,0 +1,653 @@
+import json
+import os
+from pathlib import Path
+from types import SimpleNamespace
+
+import pytest
+
+from scripts.uc001_granite_controller.standins import StandinFailure, run_ownership_selftest
+
+
+class Clock:
+    def __init__(self):
+        self.value = 100.0
+
+    def __call__(self):
+        return self.value
+
+    def sleep(self, seconds):
+        self.value += seconds
+
+
+class FakeApi:
+    def __init__(self, unrelated, calls):
+        self.unrelated = unrelated
+        self.calls = calls
+
+    def controller_in_job(self, handle):
+        return False
+
+    def open_process(self, pid):
+        assert pid == 900
+        self.calls.append("retain_unrelated_identity")
+        return "unrelated-query-handle"
+
+    def creation_time(self, handle):
+        assert handle == "unrelated-query-handle"
+        return 600
+
+    def in_job(self, handle, job):
+        assert handle == "unrelated-query-handle"
+        return False
+
+    def close_handle(self, handle):
+        self.calls.append("close_unrelated_query")
+
+
+class FakeUnrelated:
+    def __init__(self, argv, calls, job_ref, die_with_job=False, **kwargs):
+        self.pid = 900
+        self.calls = calls
+        self.job_ref = job_ref
+        self.die_with_job = die_with_job
+        self.ended = False
+        directory = Path(argv[argv.index("--events") + 1])
+        (directory / "unrelated.identity.json").write_text(json.dumps({
+            "role": "unrelated", "pid": 900, "creation_time_100ns": 600, "parent_pid": os.getpid(),
+            "timestamp_utc": "2026-10-25T20:00:00+00:00", "monotonic_ns": 1,
+        }))
+        calls.append("unrelated_started")
+
+    def poll(self):
+        if self.ended or (self.die_with_job and self.job_ref[0].killed):
+            return 1
+        return None
+
+    def terminate(self):
+        self.calls.append("terminate_unrelated_retained_process")
+        self.ended = True
+
+    def wait(self, timeout=None):
+        assert self.ended
+        return 1
+
+
+class FakeJob:
+    def __init__(self, api, calls, *, missing_grandchild=False, bad_order=False,
+                 cleanup_verified=True, identity_mismatch=False, interrupt=False, wrong_parent=False, wrong_root=False):
+        self.api = api
+        self.calls = calls
+        self.handle = "private-job"
+        self.killed = False
+        self.missing_grandchild = missing_grandchild
+        self.bad_order = bad_order
+        self.cleanup_verified = cleanup_verified
+        self.identity_mismatch = identity_mismatch
+        self.interrupt = interrupt
+        self.wrong_parent = wrong_parent
+        self.wrong_root = wrong_root
+        self.root = SimpleNamespace(pid=101, creation_time_100ns=10001, resumed=True, assigned=True)
+        self.members = [(101, 10001), (102, 10002), (103, 10003)]
+        self.calls.append("private_job_created")
+
+    def launch(self, argv, cwd, env, stdoutfile, stderrfile, **kwargs):
+        self.calls.append("owned_root_launched_once")
+        assert "-I" in argv and argv[argv.index("--child-role") + 1] == "root"
+        directory = Path(argv[argv.index("--events") + 1])
+        roles = ["root", "child"] if self.missing_grandchild else ["root", "child", "grandchild"]
+        for role, (pid, created) in zip(roles, self.members):
+            if self.identity_mismatch and role == "child":
+                created += 1
+            if self.wrong_root:
+                if role == "root":
+                    pid, created = self.members[1]
+                elif role == "child":
+                    pid, created = self.members[0]
+            parent = os.getpid() if role == "root" else (102 if self.wrong_root else 101) if role == "child" else (101 if self.wrong_root else 102)
+            if self.wrong_parent and role == "grandchild":
+                parent = 9999
+            (directory / f"{role}.identity.json").write_text(json.dumps({
+                "role": role, "pid": pid, "creation_time_100ns": created, "parent_pid": parent,
+                "timestamp_utc": "2026-10-25T20:00:00+00:00", "monotonic_ns": pid,
+            }))
+        return self.root
+
+    def drain_events(self):
+        names = ["worker_created_suspended", "worker_assigned", "worker_resumed"]
+        if self.bad_order:
+            names = ["worker_created_suspended", "worker_resumed", "worker_assigned"]
+        return [dict(event=name, pid=101, creation_time_100ns=10001) for name in names]
+
+    def snapshot(self):
+        if self.interrupt:
+            raise KeyboardInterrupt()
+        return dict(active_processes=0 if self.killed else len(self.members), owned=[
+            dict(pid=pid, creation_time_100ns=created, in_job=True,
+                 resumed=True, exit_code=1 if self.killed else None)
+            for pid, created in self.members
+        ])
+
+    def validate_pid(self, pid, creation_time_100ns=None):
+        if (pid, creation_time_100ns) not in self.members:
+            raise RuntimeError("identity mismatch")
+        return SimpleNamespace(pid=pid, creation_time_100ns=creation_time_100ns)
+
+    def process_exit(self, process):
+        return 1 if self.killed else None
+
+    def terminate(self):
+        self.calls.append("terminate_private_job_only")
+        self.killed = True
+
+    def cleanup(self, timeout_seconds=5):
+        self.calls.append("job_cleanup")
+        return dict(verified=self.cleanup_verified,
+                    active_processes=0 if self.cleanup_verified else 1,
+                    owned_exits=[dict(pid=pid, creation_time_100ns=created, exit_code=1)
+                                 for pid, created in self.members], errors=[])
+
+    def close(self):
+        self.calls.append("private_job_closed")
+
+
+def run_fake(tmp_path, **job_options):
+    if "cleanup_verified" in job_options:
+        job_options["cleanup_unverified"] = not job_options.pop("cleanup_verified")
+    if "wrong_parent" in job_options:
+        job_options["wrong_owned_parent"] = job_options.pop("wrong_parent")
+    with pytest.MonkeyPatch.context() as monkeypatch:
+        return run_split(tmp_path, monkeypatch, **job_options)
+
+
+def test_synthetic_selftest_verifies_three_nested_identities_and_unrelated_survival(tmp_path):
+    result, calls = run_fake(tmp_path)
+    assert result["ownership_self_test_passed"] is True
+    assert result["windows_execution"] is False
+    assert result["unrelated_survived"] is True
+    assert result["cleanup"]["verified"] is True
+    assert len(result["owned_identities"]) == 6
+    assert calls.count("owned_root_launched_once") == 1
+    assert calls.index("terminate_private_job_only") < calls.index(("terminate_identity", LAUNCHER))
+    assert (tmp_path / "selftest/result.json").is_file()
+    assert (tmp_path / "selftest/controller.jsonl").is_file()
+
+
+def test_wrong_assignment_order_never_credits_ownership(tmp_path):
+    result, calls = run_fake(tmp_path, bad_order=True)
+    assert result["ownership_self_test_passed"] is False
+    assert calls.count("owned_root_launched_once") == 1
+    assert "terminate_private_job_only" in calls
+
+
+def test_creation_identity_mismatch_is_failure(tmp_path):
+    result, calls = run_fake(tmp_path, identity_mismatch=True)
+    assert result["ownership_self_test_passed"] is False
+    assert "identity" in result["failure_reason"].lower()
+    assert "terminate_private_job_only" in calls
+
+
+def test_cleanup_with_active_descendants_is_not_success(tmp_path):
+    result, _ = run_fake(tmp_path, cleanup_verified=False)
+    assert result["ownership_self_test_passed"] is False
+    assert result["cleanup"]["active_processes"] == 1
+
+
+def test_unrelated_process_death_is_not_credited_as_safe_cleanup(tmp_path):
+    result, _ = run_fake(tmp_path, die_with_job=True)
+    assert result["ownership_self_test_passed"] is False
+    assert result["unrelated_survived"] is False
+
+
+def test_missing_descendant_times_out_without_retry_and_kills_only_private_job(tmp_path):
+    result, calls = run_fake(tmp_path, missing_grandchild=True)
+    assert result["ownership_self_test_passed"] is False
+    assert "deadline" in result["failure_reason"].lower()
+    assert calls.count("owned_root_launched_once") == 1
+    assert calls.count("terminate_private_job_only") == 1
+
+
+def test_controller_interruption_still_cleans_owned_job_and_owned_unrelated_standin(tmp_path):
+    result, calls = run_fake(tmp_path, interrupt=True)
+    assert result["ownership_self_test_passed"] is False
+    assert "interrupt" in result["failure_reason"].lower()
+    assert "terminate_private_job_only" in calls
+    assert ("terminate_identity", LAUNCHER) in calls
+
+
+def test_existing_output_is_never_replaced(tmp_path):
+    directory = tmp_path / "existing"
+    directory.mkdir()
+    marker = directory / "old.txt"
+    marker.write_text("historical")
+    with pytest.raises((FileExistsError, StandinFailure)):
+        run_ownership_selftest(directory, job_factory=lambda: pytest.fail("do not launch"))
+    assert marker.read_text() == "historical"
+
+
+def test_linux_default_route_performs_no_native_windows_or_subprocess_operation(tmp_path):
+    import os
+    if os.name == "nt":
+        pytest.skip("Linux guard test")
+    with pytest.raises(StandinFailure):
+        run_ownership_selftest(tmp_path / "must-not-launch")
+    assert not (tmp_path / "must-not-launch").exists()
+
+
+def test_owned_role_root_must_match_the_launched_retained_process(tmp_path):
+    result, _ = run_fake(tmp_path, wrong_root=True)
+    assert result["ownership_self_test_passed"] is False
+
+
+def test_nested_membership_requires_the_actual_parent_chain(tmp_path):
+    result, _ = run_fake(tmp_path, wrong_parent=True)
+    assert result["ownership_self_test_passed"] is False
+
+
+def test_standin_children_keep_separate_logs_without_launching_a_real_process(tmp_path, monkeypatch):
+    from scripts.uc001_granite_controller import standins as module
+    clock = Clock()
+    child = SimpleNamespace(ended=False, pid=102, _handle=102)
+    child.poll = lambda: 1 if child.ended else None
+    child.terminate = lambda: setattr(child, "ended", True)
+    child.wait = lambda timeout: 1
+    seen = {}
+    def popen(argv, **kwargs):
+        seen.update(kwargs)
+        assert Path(kwargs["stdout"].name).name == "child.stdout.log"
+        assert Path(kwargs["stderr"].name).name == "child.stderr.log"
+        return child
+    api = SimpleNamespace(
+        k=SimpleNamespace(GetCurrentProcess=lambda: "self"),
+        creation_time=lambda handle: 42 if handle == "self" else 43,
+        process_id=lambda handle: os.getpid() if handle == "self" else 102,
+        parent_pid=lambda handle: os.getppid() if handle == "self" else os.getpid(),
+        open_process=lambda pid, **kwargs: "child-launcher",
+        close_handle=lambda handle: None,
+    )
+    monkeypatch.setattr(module, "_native_guard", lambda: None)
+    monkeypatch.setattr(module, "_job_module", lambda: SimpleNamespace(NativeApi=lambda: api))
+    monkeypatch.setattr(module.subprocess, "Popen", popen)
+    monkeypatch.setattr(module.time, "monotonic", clock)
+    monkeypatch.setattr(module.time, "sleep", clock.sleep)
+    module._child("root", tmp_path, 0.1, "synthetic-python.exe")
+    assert child.ended
+    assert (tmp_path / "root.identity.json").is_file()
+    assert (tmp_path / "child.stdout.log").is_file()
+    launcher = json.loads((tmp_path / "child.launcher.identity.json").read_text())
+    assert (launcher["pid"], launcher["creation_time_100ns"], launcher["parent_pid"]) == (102, 43, os.getpid())
+    assert seen["close_fds"] is True
+
+
+CONTROLLER = 60320
+LAUNCHER = 61196
+LAUNCHER_BIRTH = 134374354509552652
+INTERPRETER = 61020
+INTERPRETER_BIRTH = 134374354509736275
+SPLIT_OWNED = {
+    'root': ((101, 134374354509800000, CONTROLLER), (201, 134374354509810000, 101)),
+    'child': ((102, 134374354509820000, 201), (202, 134374354509830000, 102)),
+    'grandchild': ((103, 134374354509840000, 202), (203, 134374354509850000, 103)),
+}
+
+
+class SplitApi:
+    def __init__(self, calls, options):
+        self.calls, self.options, self.reads, self.processes = calls, options, {}, {}
+        self.add(LAUNCHER, LAUNCHER_BIRTH, CONTROLLER, False, 'launcher', 'unrelated')
+        self.add(INTERPRETER, INTERPRETER_BIRTH, LAUNCHER, False, 'interpreter', 'unrelated')
+    def add(self, pid, birth, parent, member, kind, role, alive=True):
+        self.processes[pid] = dict(pid=pid,creation_time_100ns=birth,parent_pid=parent,
+                                   member=member,kind=kind,role=role,alive=alive)
+    def controller_in_job(self, handle):
+        return False
+    def open_process(self, pid, **kwargs):
+        if pid not in self.processes:
+            raise RuntimeError('unknown process')
+        self.calls.append(('open_process',pid,kwargs))
+        return f'handle-{pid}'
+    def process_id(self, handle):
+        return int(handle.removeprefix('handle-'))
+    def parent_pid(self, handle):
+        return self.processes[self.process_id(handle)]['parent_pid']
+    def creation_time(self, handle):
+        pid=self.process_id(handle);self.reads[pid]=self.reads.get(pid,0)+1
+        changed=(pid==LAUNCHER and self.options.get('changed_launcher_creation')
+                 or pid==INTERPRETER and self.options.get('changed_interpreter_creation'))
+        return self.processes[pid]['creation_time_100ns']+(1 if changed and self.reads[pid]>=2 else 0)
+    def in_job(self, handle, job):
+        return self.processes[self.process_id(handle)]['member']
+    def exit_code(self, handle):
+        return None if self.processes[self.process_id(handle)]['alive'] else 1
+    def terminate_process(self, handle):
+        pid=self.process_id(handle);self.calls.append(('terminate_identity',pid))
+        stuck=(pid==LAUNCHER and self.options.get('launcher_stuck')
+               or pid==INTERPRETER and self.options.get('interpreter_stuck'))
+        if not stuck:
+            self.processes[pid]['alive']=False
+    def children_of(self, parents, timeout_seconds=None):
+        result={(pid,row['parent_pid']) for pid,row in self.processes.items()
+                if row['alive'] and row['parent_pid'] in parents}
+        after_stop = (self.options.get('unknown_after_job') and self.options.get('job_ref')
+                      and self.options['job_ref'][0].killed)
+        if self.options.get('unknown_outside') or after_stop:
+            result.add((98765,LAUNCHER))
+        return result
+    def close_handle(self, handle):
+        self.calls.append(('close_handle',self.process_id(handle)))
+
+
+class SplitUnrelated:
+    def __init__(self, argv, api, calls, jobs, **kwargs):
+        self.pid,self._handle=LAUNCHER,f'handle-{LAUNCHER}'
+        self.api,self.calls,self.jobs=api,calls,jobs
+        directory=Path(argv[argv.index('--events')+1])
+        if not api.options.get('missing_interpreter'):
+            parent=CONTROLLER if api.options.get('wrong_parent') else LAUNCHER
+            (directory/'unrelated.identity.json').write_text(json.dumps(dict(
+                role='unrelated',pid=INTERPRETER,creation_time_100ns=INTERPRETER_BIRTH,
+                parent_pid=parent,timestamp_utc='2026-10-25T20:00:00+00:00',monotonic_ns=1)))
+        calls.append('unrelated_started')
+    def poll(self):
+        if self.api.options.get('die_with_job') and self.jobs[0].killed:
+            self.api.processes[LAUNCHER]['alive']=False
+            self.api.processes[INTERPRETER]['alive']=False
+        return self.api.exit_code(self._handle)
+    def terminate(self):
+        self.calls.append('terminate_unrelated_retained_process')
+        self.api.terminate_process(self._handle)
+    def wait(self, timeout=None):
+        if self.poll() is None:
+            raise TimeoutError('retained launcher has not exited')
+        return 1
+
+
+class SplitJob:
+    def __init__(self, api, calls, options):
+        self.api,self.calls,self.options=api,calls,options
+        self.handle,self.killed,self.launched='private-job',False,False
+        self.snapshot_calls=0
+        self.members=[]
+        for role,pair in SPLIT_OWNED.items():
+            for kind,(pid,birth,parent) in zip(('launcher','interpreter'),pair):
+                self.members.append((pid,birth));api.add(pid,birth,parent,True,kind,role,alive=False)
+        if options.get('unknown_extra'):
+            self.members.append((999,134374354509900000));api.add(999,134374354509900000,201,True,'unknown','unknown',alive=False)
+        self.root=SimpleNamespace(pid=101,creation_time_100ns=SPLIT_OWNED['root'][0][1],
+                                  handle='handle-101',resumed=True,assigned=True)
+        calls.append('private_job_created')
+    def launch(self, argv, cwd, env, stdoutfile, stderrfile, **kwargs):
+        self.calls.append('owned_root_launched_once');self.launched=True
+        for pid,_ in self.members:
+            self.api.processes[pid]['alive']=True
+        directory=Path(argv[argv.index('--events')+1])
+        for role,pair in SPLIT_OWNED.items():
+            if role=='grandchild' and self.options.get('missing_grandchild'):
+                continue
+            for kind,(pid,birth,parent) in zip(('launcher','interpreter'),pair):
+                if kind=='interpreter' and role=='child' and self.options.get('identity_mismatch'):
+                    birth+=1
+                if kind=='interpreter' and role=='root' and self.options.get('wrong_root'):
+                    pid,birth,parent=SPLIT_OWNED['child'][1]
+                if kind=='interpreter' and role=='grandchild' and self.options.get('wrong_owned_parent'):
+                    parent=9999
+                name=f'{role}.identity.json' if kind=='interpreter' else f'{role}.launcher.identity.json'
+                (directory/name).write_text(json.dumps(dict(role=role,kind=kind,pid=pid,
+                    creation_time_100ns=birth,parent_pid=parent,timestamp_utc='2026-10-25T20:00:00+00:00',monotonic_ns=pid)))
+        return self.root
+    def drain_events(self):
+        names=['worker_created_suspended','worker_assigned','worker_resumed']
+        if self.options.get('bad_order'):
+            names=['worker_created_suspended','worker_resumed','worker_assigned']
+        return [dict(event=name,pid=101,creation_time_100ns=SPLIT_OWNED['root'][0][1]) for name in names]
+    def snapshot(self):
+        if self.options.get('interrupt'):
+            raise KeyboardInterrupt()
+        self.snapshot_calls+=1
+        observed=self.members
+        if self.options.get('first_snapshot_five') and self.snapshot_calls==1 and self.launched and not self.killed:
+            observed=self.members[:-1]
+        return dict(total_processes=len(observed) if self.launched else 0,
+                    active_processes=sum(self.api.processes[p]['alive'] for p,b in observed),owned=[
+            dict(pid=p,creation_time_100ns=b,in_job=True,resumed=True,
+                 exit_code=None if self.api.processes[p]['alive'] else 1)
+            for p,b in observed if self.launched])
+    def validate_pid(self, pid, creation_time_100ns=None):
+        if (pid,creation_time_100ns) not in self.members:
+            raise RuntimeError('identity mismatch')
+        return SimpleNamespace(pid=pid,creation_time_100ns=creation_time_100ns,handle=f'handle-{pid}',assigned=True,resumed=True)
+    def process_exit(self, process):
+        return self.api.exit_code(f'handle-{process.pid}')
+    def terminate(self):
+        self.calls.append('terminate_private_job_only');self.killed=True
+        for pid,_ in self.members:
+            self.api.processes[pid]['alive']=False
+        if self.options.get('die_with_job'):
+            self.api.processes[LAUNCHER]['alive']=False
+            self.api.processes[INTERPRETER]['alive']=False
+    def cleanup(self, timeout_seconds=5):
+        self.calls.append('job_cleanup');verified=not self.options.get('cleanup_unverified')
+        subset=self.options.get('owned_cleanup_only')
+        return dict(verified=verified,active_processes=0 if verified else 1,errors=[],
+            total_processes=(len(self.members)+(1 if self.options.get('late_unknown_cleanup') else 0)) if self.launched else 0,
+            owned_exits=[dict(pid=p,creation_time_100ns=b,
+                exit_code=1 if subset is None or self.api.processes[p]['kind']==subset else None)
+                for p,b in self.members if self.launched])
+    def close(self):
+        self.calls.append('private_job_closed')
+
+
+def run_split(tmp_path, monkeypatch, **options):
+    from scripts.uc001_granite_controller import standins as module
+    monkeypatch.setattr(module.os,'getpid',lambda:CONTROLLER)
+    calls,jobs=[],[]
+    options=dict(options,job_ref=jobs)
+    api=SplitApi(calls,options)
+    def job_factory():
+        job=SplitJob(api,calls,options);jobs.append(job);return job
+    def popen_factory(argv,**kwargs):
+        return SplitUnrelated(argv,api,calls,jobs,**kwargs)
+    clock=Clock()
+    result=run_ownership_selftest(tmp_path/'selftest',python_exe='synthetic-python.exe',
+        job_factory=job_factory,popen_factory=popen_factory,clock=clock,sleep=clock.sleep)
+    return result,calls
+
+
+def test_exact_owner_launcher_split_has_two_unrelated_and_six_owned_identities(tmp_path,monkeypatch):
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['ownership_self_test_passed'] is True
+    assert result['controller_pid']==60320
+    identities={(r['kind'],r['pid'],r['creation_time_100ns'],r['parent_pid'])
+                for r in result['unrelated_identities']}
+    assert identities=={('launcher',61196,134374354509552652,60320),
+                        ('interpreter',61020,134374354509736275,61196)}
+    assert len(result['owned_identities'])==6
+    assert {r['kind'] for r in result['owned_identities']}=={'launcher','interpreter'}
+    assert {(r['pid'],r['creation_time_100ns']) for r in result['owned_identities']}=={
+        (pid,birth) for pair in SPLIT_OWNED.values() for pid,birth,parent in pair}
+    assert result['windows_execution'] is False
+    assert result['cleanup']['verified'] is True
+    assert result['unrelated_survived'] and result['unrelated_cleanup_verified']
+    assert {r['pid']:r['exit_code'] for r in result['unrelated_exits']}=={61196:1,61020:1}
+    assert calls.count('owned_root_launched_once')==1
+
+
+@pytest.mark.parametrize('option',['wrong_parent','changed_launcher_creation','changed_interpreter_creation',
+    'missing_interpreter','identity_mismatch','wrong_root','wrong_owned_parent','unknown_extra','unknown_outside'])
+def test_split_unknown_or_changed_identity_fails_closed(tmp_path,monkeypatch,option):
+    result,calls=run_split(tmp_path,monkeypatch,**{option:True})
+    assert result['ownership_self_test_passed'] is False
+    assert 'terminate_private_job_only' in calls
+    assert calls.count('owned_root_launched_once')<=1
+
+
+@pytest.mark.parametrize('stuck',['launcher_stuck','interpreter_stuck'])
+def test_split_unrelated_cleanup_requires_both_exits(tmp_path,monkeypatch,stuck):
+    result,calls=run_split(tmp_path,monkeypatch,**{stuck:True})
+    assert result['ownership_self_test_passed'] is False
+    assert result['unrelated_cleanup_verified'] is False
+
+
+@pytest.mark.parametrize('kind',['launcher','interpreter'])
+def test_split_owned_cleanup_requires_both_kinds(tmp_path,monkeypatch,kind):
+    result,calls=run_split(tmp_path,monkeypatch,owned_cleanup_only=kind)
+    assert result['ownership_self_test_passed'] is False
+
+
+def test_unknown_outside_process_after_private_job_termination_is_not_ignored(tmp_path,monkeypatch):
+    result,calls=run_split(tmp_path,monkeypatch,unknown_after_job=True)
+    assert result['ownership_self_test_passed'] is False
+    assert result['unrelated_cleanup_verified'] is False
+    assert ('terminate_identity',98765) not in calls
+
+
+def test_watchdog_stops_both_outside_handles_when_job_observation_blocks(tmp_path,monkeypatch):
+    import threading
+    import time
+    from scripts.uc001_granite_controller import standins as module
+    monkeypatch.setattr(module.os,'getpid',lambda:CONTROLLER)
+    calls,jobs=[],[]
+    released=threading.Event()
+    class SignalingApi(SplitApi):
+        def terminate_process(self,handle):
+            super().terminate_process(handle)
+            if self.process_id(handle)==INTERPRETER:
+                released.set()
+    api=SignalingApi(calls,{})
+    class BlockedJob(SplitJob):
+        def snapshot(self):
+            released.wait(0.6)  # bounded fallback for the original missing watchdog path
+            return super().snapshot()
+    def job_factory():
+        job=BlockedJob(api,calls,{});jobs.append(job);return job
+    def popen_factory(argv,**kwargs):
+        return SplitUnrelated(argv,api,calls,jobs,**kwargs)
+    started=time.monotonic()
+    result=run_ownership_selftest(tmp_path/'selftest',python_exe='synthetic-python.exe',
+        job_factory=job_factory,popen_factory=popen_factory,
+        clock=time.monotonic,sleep=time.sleep,timeout_seconds=0.1)
+    assert result['ownership_self_test_passed'] is False
+    assert result['windows_execution'] is False
+    assert released.is_set()
+    assert 'terminate_private_job_only' in calls
+    assert ('terminate_identity',LAUNCHER) in calls
+    assert ('terminate_identity',INTERPRETER) in calls
+    assert time.monotonic()-started<0.5
+
+
+def test_unknown_process_in_final_job_total_prevents_cleanup_success(tmp_path,monkeypatch):
+    result,calls=run_split(tmp_path,monkeypatch,late_unknown_cleanup=True)
+    assert result['ownership_self_test_passed'] is False
+    assert result['cleanup']['total_processes']==7
+    assert result['cleanup']['active_processes']==0
+
+
+def test_membership_is_refreshed_after_all_six_handles_are_verified(tmp_path,monkeypatch):
+    result,calls=run_split(tmp_path,monkeypatch,first_snapshot_five=True)
+    assert result['ownership_self_test_passed'] is True
+    assert len(result['owned_identities'])==6
+    assert result['cleanup']['total_processes']==6
+
+
+def edge_diagnostic_rows(tmp_path):
+    rows=[json.loads(line) for line in (tmp_path/'selftest/controller.jsonl').read_text().splitlines()]
+    return rows,[row for row in rows if row['event']=='scoped_child_edges']
+
+
+def test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence(tmp_path,monkeypatch):
+    original=SplitApi.children_of
+    queries=[]
+    def scoped(self,parents,timeout_seconds=None):
+        queries.append(set(parents))
+        self.add(77777,999,88888,False,'unrelated-system-name','unrelated-system-role')
+        return original(self,parents,timeout_seconds)
+    monkeypatch.setattr(SplitApi,'children_of',scoped)
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['ownership_self_test_passed'] is True
+    rows,observations=edge_diagnostic_rows(tmp_path)
+    assert observations
+    assert all(parents=={LAUNCHER,INTERPRETER} for parents in queries)
+    for row in observations:
+        assert row['status']=='observed'
+        assert row['scoped_parents']==[
+            dict(parent_pid=LAUNCHER,parent_kind='launcher'),
+            dict(parent_pid=INTERPRETER,parent_kind='interpreter')]
+        assert row['observation_started_monotonic']<=row['observation_monotonic']<=row['monotonic']
+        assert row['observation_started_utc'] and row['observation_utc']
+        assert row['observed_edges']==[dict(parent_pid=LAUNCHER,child_pid=INTERPRETER,
+            parent_kind='launcher',observation_utc=row['observation_utc'],
+            observation_monotonic=row['observation_monotonic'],
+            child_creation_time_100ns=INTERPRETER_BIRTH,
+            child_creation_source='previously_verified_retained_identity')]
+        assert '77777' not in json.dumps(row)
+        assert 'unrelated-system-name' not in json.dumps(row)
+
+
+@pytest.mark.parametrize('extras',[
+    {(99001,INTERPRETER)},
+    {(99002,LAUNCHER)},
+    {(99001,INTERPRETER),(99002,LAUNCHER),(99003,INTERPRETER)},
+])
+def test_edge_diagnostic_extras_are_recorded_before_unchanged_failure(tmp_path,monkeypatch,extras):
+    original=SplitApi.children_of
+    monkeypatch.setattr(SplitApi,'children_of',lambda self,parents,timeout_seconds=None:
+        original(self,parents,timeout_seconds)|extras)
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+    assert result['ownership_self_test_passed'] is False
+    assert result['suspended_assignment_order_verified'] is False
+    assert result['owned_identities']==[]
+    assert 'owned_root_launched_once' not in calls
+    assert result['unrelated_survived'] is False
+    assert result['unrelated_cleanup_verified'] is False
+    rows,observations=edge_diagnostic_rows(tmp_path)
+    assert {(r['child_pid'],r['parent_pid']) for r in observations[0]['observed_edges']}==extras|{(INTERPRETER,LAUNCHER)}
+    assert rows.index(observations[0])<next(i for i,r in enumerate(rows) if r['event']=='private_job_termination_requested')
+    for edge in observations[0]['observed_edges']:
+        assert edge['parent_kind']==('launcher' if edge['parent_pid']==LAUNCHER else 'interpreter')
+        if (edge['child_pid'],edge['parent_pid']) in extras:
+            assert edge['child_creation_time_100ns'] is None
+            assert edge['child_creation_source']=='no_retained_verified_handle'
+            assert not any(call[:2]==('open_process',edge['child_pid']) for call in calls if isinstance(call,tuple))
+
+
+@pytest.mark.parametrize('malformed',[
+    None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
+    {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
+])
+def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
+    monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
+    assert 'owned_root_launched_once' not in calls
+    _,observations=edge_diagnostic_rows(tmp_path)
+    assert observations[0]['status']=='malformed'
+    assert observations[0]['observed_edges'] is None
+    assert '88888' not in json.dumps(observations)
+    assert 'unrelated-process-name' not in json.dumps(observations)
+
+
+def test_edge_diagnostic_failed_toolhelp_observation_is_unknown_never_empty_success(tmp_path,monkeypatch):
+    def failed(*args,**kwargs):
+        raise RuntimeError('scoped Toolhelp failure')
+    monkeypatch.setattr(SplitApi,'children_of',failed)
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['failure_reason']=='RuntimeError: scoped Toolhelp failure'
+    assert 'owned_root_launched_once' not in calls
+    _,observations=edge_diagnostic_rows(tmp_path)
+    assert observations[0]['status']=='failed'
+    assert observations[0]['error_type']=='RuntimeError'
+    assert observations[0]['observed_edges'] is None
+
+
+def test_edge_diagnostic_journal_write_failure_cannot_reach_owned_launch(tmp_path,monkeypatch):
+    from scripts.uc001_granite_controller import standins as module
+    original=module.Journal.record
+    def record(self,event,**values):
+        if event=='scoped_child_edges':
+            raise OSError('diagnostic journal unavailable')
+        return original(self,event,**values)
+    monkeypatch.setattr(module.Journal,'record',record)
+    result,calls=run_split(tmp_path,monkeypatch)
+    assert result['ownership_self_test_passed'] is False
+    assert result['failure_reason']=='OSError: diagnostic journal unavailable'
+    assert 'owned_root_launched_once' not in calls

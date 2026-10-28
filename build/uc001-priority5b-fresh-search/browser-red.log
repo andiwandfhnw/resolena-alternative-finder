@@ -1,0 +1,42 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep explicit fresh search after recovered acknowledgement --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5b-fresh-search/red/browser --reporter=list
+
+[WebServer] INFO:     Started server process [40598]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:40631) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:40658) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../tests/e2e/saved-comparison.spec.ts:163:5 › explicit fresh search after recovered acknowledgement reassesses expired evidence (1.7s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [40598]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:163:5 › explicit fresh search after recovered acknowledgement reassesses expired evidence 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "insufficient_coverage"
+    Received: "comparison"
+
+      228 |     const { body: fresh, status: freshStatus, stored: freshStored } = await freshCommit
+      229 |     expect(freshStatus).toBe(201)
+    > 230 |     expect(fresh.outcome).toBe('insufficient_coverage')
+          |                           ^
+      231 |     expect(fresh.assessed_at).toBe(freshTime)
+      232 |     expect(fresh.coverage.limitation_codes).toContain('essential_evidence_expired')
+      233 |     expect('comparison' in fresh).toBe(false)
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:230:27
+
+    Error Context: ../build/uc001-priority5b-fresh-search/red/browser/saved-comparison-explicit--1291f-reassesses-expired-evidence/error-context.md
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:163:5 › explicit fresh search after recovered acknowledgement reassesses expired evidence 

@@ -1,0 +1,17 @@
+{
+  "stage": "RED: opt-in entry wiring missing",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_handoff_v3_entry.py::test_cli_wires_explicit_environment_check",
+    "--tb=short"
+  ],
+  "exit_code": 1,
+  "elapsed_seconds": 1.1255004405975342,
+  "verifier_sha256": "2983b78594946fc932e5099f1465e37c9138f22fa0064f2fbee9996727e9e102",
+  "test_sha256": "faf69efafafa9792dbdb5233813b8c246b934f5a45bee2cd9cd898b72794c9bf",
+  "windows_execution": false,
+  "native_tools_network_or_phase_execution": false
+}

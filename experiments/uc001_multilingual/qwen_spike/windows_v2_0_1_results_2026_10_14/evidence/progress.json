@@ -1,0 +1,14 @@
+{
+    "heldout_model_exposure":  0,
+    "utc":  "2026-10-14T20:06:53.3820574Z",
+    "completed":  [
+                      "01-C1-v2",
+                      "02-C2-v2",
+                      "03-C3-v2",
+                      "04-C4-v2",
+                      "05-C5-v2",
+                      "06-C6-v2"
+                  ],
+    "DESIGN":  "pending",
+    "linguistic_validation":  "pending"
+}

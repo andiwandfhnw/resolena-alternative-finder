@@ -1,0 +1,110 @@
+{
+  "version": "uc001-transport-logging-preparation-1",
+  "date": "2026-10-17",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "authorization": "Record supplied ssh -G summary and prepare a logging-only variant; NO execution of endpoint/connection/native ownership",
+  "owner_result": {
+    "record": "ssh-g-owner-report_2026_10_17.json",
+    "provenance": "Owner-supplied textual summary; original raw JSON and exit status not supplied",
+    "hostname": "localhost",
+    "user": "vscode",
+    "port": 49189,
+    "addressfamily": "any",
+    "proxycommand": "not emitted",
+    "proxyjump": "not emitted",
+    "overrides_applied": false
+  },
+  "variant": {
+    "path": "scripts/uc001_transport_preparation/Test-TransportLogging.ps1",
+    "bytes": 6616,
+    "sha256": "326c0be5a98f4dec01ed4da20ffcecc9a552b635ebdbd3222cc158f827dd7962",
+    "composition": "Sources and pins the original model-free test and endpoint; replaces the process-start hook with the same frozen native job helper plus logging-only options",
+    "argument_delta": [
+      "OpenSSH -vvv after --",
+      "OpenSSH -E fresh-result-directory/ssh-debug.log"
+    ],
+    "environment_delta": "Owned gh child GH_DEBUG=1, previous parent value restored in finally; no GH_DEBUG=api or environment dump",
+    "sharing": "Owner-only inheritable fresh-directory DACL applied/verified before child/log creation; only fixed-field sanitized-summary.json printed, raw logs remain local",
+    "budgets": "Unchanged ports49187/49189/49188; work45s/two owned exit waits5s/overall60s; same remote35s timeout+5s kill and probe30s alarm; one gh invocation, no extra probes, retries, fallback, model startup/generation or ledger change",
+    "summary_read_limit_bytes_per_log": 1048576
+  },
+  "logging_source_review": "source-review.json",
+  "logging_limits": [
+    "gh SSH --debug/--debug-file fields registered but not consumed on this path",
+    "GH_DEBUG=1 enables nonverbose HTTP metadata; may include sensitive URLs, no verbose HTTP bodies enabled",
+    "Tunnel logger is io.Discard and RPC response target is not debug-printed",
+    "Race selects first shell/tunnel completion, so a forwarding error may remain unavailable",
+    "OpenSSH reveals the local connect/banner/protocol progress; it cannot establish internal broker routing",
+    "Marker absence is not proof a stage failed; no automatic root-cause assertion"
+  ],
+  "first_attempt_cleanup": {
+    "needed_existing_windows_receipt": "C:\\ResolenaExperiments\\uc001-transport-check\\results\\8c6ce485-2b58-4244-94fb-de1e8d1bb830\\cleanup.json",
+    "needed_contents": "Owned job closed, every owned exit confirmed, errors empty; no rerun",
+    "windows_receipt_status": "not supplied",
+    "separate_codespace_receipt": "build/uc001-transport-setup/setup_2026_10_17_u_qanf5t/forward-cleanup.json",
+    "codespace_result": "Already passed2026-10-17T15:58:42.517847+00:00; does not replace Windows cleanup receipt"
+  },
+  "tdd": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging.py",
+      "result": "12 failed in0.10s, all explicitly absent separate variant before implementation"
+    },
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging.py",
+      "result": "12 passed in7.54s"
+    },
+    "focused_regression": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_transport_logging.py tests/unit/test_transport_preparation.py",
+      "result": "26 passed in12.25s",
+      "new": 12,
+      "retained": 14
+    },
+    "scope": "Original unchanged offline PowerShell fixture reused in memory with named fake native/privacy dependencies; real original control flow/cleanup dispatch, exact full argument comparison, privacy and native-start aborts, environment restoration, missing logs and synthetic secret/URL non-disclosure; mock HTTP authentication and original owned-cleanup regressions. No native Windows ACL/process/GPU/tunnel execution."
+  },
+  "checks": [
+    {
+      "check": "Preservation",
+      "result": "205 protected original source/pin/test/bundle/ZIP/receipt/failure hashes match",
+      "baseline": "preservation-baseline.json"
+    },
+    {
+      "check": "Proposed Windows command parse, new links/whitespace/JSON and phase",
+      "result": "Passed; command parsed only, never executed"
+    },
+    {
+      "check": "Original preparation files pinned",
+      "result": "Test-Transport.ps1 and Probe-Endpoint.ps1 unchanged; frozen Common/native cleanup and all model pins remain original"
+    }
+  ],
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_transport_preparation/Test-TransportLogging.ps1",
+    "tests/unit/test_transport_logging.py",
+    "build/uc001-transport-logging/README.md",
+    "build/uc001-transport-logging/ssh-g-owner-report_2026_10_17.json",
+    "build/uc001-transport-logging/source-review.json",
+    "build/uc001-transport-logging/preservation-baseline.json",
+    "build/uc001-transport-logging/verification.json",
+    "build/uc001-transport-logging/SHA256SUMS.txt"
+  ],
+  "remaining": [
+    "Existing first-attempt Windows cleanup.json receipt",
+    "Execution authorization and actual Windows ACL/logging/transport validation; this preparation executes nothing",
+    "Internal broker target/error may remain unavailable with pinned logging; no source rebuild or new diagnostics framework proposed",
+    "Separate Codespace49188 cleanup receipt remains mandatory after any future authorized attempt",
+    "Original GPU/model integrity/resources/semantic review and suitability gates remain pending"
+  ],
+  "native_disclosure": "Future authorized run reuses frozen ProcessTools.cs Add-Type compilation/native job helper and owned PowerShell/gh/SSH subtree; possible Windows temporary compiler files. Additional DACL change is only to the fresh local result directory. No native helper executed in this preparation.",
+  "not_performed": [
+    "Endpoint, gh/SSH connection or native ownership startup",
+    "Additional probe, retry or fallback",
+    "Proxy/IPv4/SSH configuration/service changes",
+    "Installation or runtime/model startup/inference",
+    "Credentials/key inspection or raw existing Windows log access",
+    "Held-out access, later priority or Git delivery"
+  ],
+  "completed_utc": "2026-10-17T16:38:10.897129+00:00"
+}

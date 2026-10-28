@@ -1,0 +1,40 @@
+Owner review:
+
+I accept the owner-executed Windows proxy-binding self-test as successful
+within its exact harmless_network_free_proxy_binding_only scope.
+
+Record the authorized attempt as consumed and successful.
+
+Result directory:
+C:\Users\AndiWand\Downloads\proxy-binding-result-3be1821d-59fe-4ccd-9194-6205cb3b4763
+
+Execution:
+2026-10-27T20:18:56.215899+00:00
+to 2026-10-27T20:18:56.785565+00:00
+
+Key results:
+- proxy_binding_selftest_passed = true
+- windows_execution = true
+- synthetic_injected = false
+- native_binding_verified = true
+- suspended_assignment_order_verified = true
+- zero_acquisition_events_verified = true
+- network_guard_verified = true
+- controller outside private Job = true
+- worker and proxy identity cleanup both verified
+- private Job: 5 lifetime processes, 0 active
+- all five expected identities have matching zero exits
+- all required query/worker/Job handle closures verified
+- failure_reason = null
+- prior_bytes = 0; cumulative_bytes = 0
+- resource_fit_established = false
+- no acquisition/build/GPU/model/inference
+- no ownership-self-test rerun
+
+Record this as owner-executed, advisor-reviewed console evidence.
+Do not claim Codex executed Windows or inspected desktop files.
+Preserve the supplied output and all earlier evidence.
+
+Close the native proxy-binding blocker for this demonstrated diagnostic.
+Keep the earlier harmless ownership/helper model CLOSED.
+Do not rerun either diagnostic.

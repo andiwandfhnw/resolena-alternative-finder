@@ -1,0 +1,32 @@
+[
+  {
+    "schedule": "delayed_worker_alive",
+    "reason": "proxy_launcher_premature_exit",
+    "timeline": [
+      "launch:100",
+      "close_became_durable_after_initial_read",
+      "final_job_cleanup"
+    ],
+    "build_launched": false
+  },
+  {
+    "schedule": "delayed_worker_exit",
+    "reason": "proxy_launcher_premature_exit",
+    "timeline": [
+      "launch:100",
+      "close_became_durable_after_initial_read",
+      "final_job_cleanup"
+    ],
+    "build_launched": false
+  },
+  {
+    "schedule": "helper_lag",
+    "reason": "active_descendants_after_worker_exit;proxy_identity_cleanup_unverified",
+    "timeline": [
+      "launch:100",
+      "base_processes_exited_helper_still_active",
+      "final_job_cleanup"
+    ],
+    "build_launched": false
+  }
+]

@@ -1,0 +1,292 @@
+{
+  "recorded_at": "2026-10-23T08:49:02.487578+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "UC-001 increment1 Phase3 DEVELOP Priority5Q only: prepare one pinned inactive GeoNames country code/name draft; stop for human review.",
+  "prior_5P_acceptance": {
+    "accepted_only": "Two exact synthetic product/habit T-11 examples; no full criterion acceptance.",
+    "reported_evidence": "Two support-only RED failures became2APIpasses; corrected browser invocation passed2examples+servicebaseline. Earlier /tmp runner startup rejection was before tests and is separate.",
+    "production_unchanged": true,
+    "fictional_prices_conditional_applicability_and_unknowns_remain_synthetic": true,
+    "general_interpretation_factual_recommendation_qualified_linguistic_review_or_complete_T11_acceptance": false,
+    "original_receipt_and_all_prior_5P_artifacts_preserved": true
+  },
+  "targeted_prerequisites": {
+    "selected_source": "GeoNames countryInfo, current ARCHITECTURE.md430–442 and existing accepted TASKS checkpoint; no substitute or older export.",
+    "required_fields": [
+      "source ISO -> code",
+      "source Country -> name"
+    ],
+    "accepted_policy": "Retain current countries/legitimate territories; traceably exclude obsolete/non-country entries; no knowledge/research/language coverage filter. Flag uncertain dispositions.",
+    "existing_reviewed_release": "No appropriate reviewed country release or existing country-preparation implementation found; no duplicate prepared.",
+    "review_gate": "Pinned local source/release/hash, preparation/review dates and attribution. Missing release/publication/review dates remain unknown. Human factual/release review and explicit activation required.",
+    "material_contract_or_consequential_unapproved_architecture_schema_dependency_conflict": false,
+    "checkpoint": "Existing eight-row dated checkpoint reused and byte-preserved; no wider re-investigation."
+  },
+  "source_acquisition": {
+    "publisher": "GeoNames",
+    "reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+    "snapshot_id": "geonames-countryInfo-sha256-c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "exact_bytes_retained": true,
+    "results": [
+      {
+        "reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+        "resolved_reference": "https://download.geonames.org/export/dump/countryInfo.txt",
+        "HTTP_status": 200,
+        "retrieval_started_at": "2026-10-23T08:36:05.451367+00:00",
+        "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+        "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 31690,
+        "sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+        "file": "countryInfo.txt"
+      },
+      {
+        "reference": "https://download.geonames.org/export/dump/readme.txt",
+        "resolved_reference": "https://download.geonames.org/export/dump/readme.txt",
+        "HTTP_status": 200,
+        "retrieval_started_at": "2026-10-23T08:36:05.629264+00:00",
+        "retrieved_at": "2026-10-23T08:36:05.700666+00:00",
+        "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 01:46:11 GMT",
+        "content_type": "text/plain; charset=utf-8",
+        "bytes": 8843,
+        "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+        "file": "readme.txt"
+      },
+      {
+        "reference": "https://creativecommons.org/licenses/by/4.0/",
+        "retrieval_started_at": "2026-10-23T08:36:05.700828+00:00",
+        "retrieved_at": "2026-10-23T08:36:05.744124+00:00",
+        "error": "HTTP Error 403: Forbidden",
+        "file": "cc-by-4.0.html"
+      }
+    ],
+    "retained_source": "build/uc001-priority5q-country-catalogue/source/countryInfo.txt",
+    "retained_format_license_document": "build/uc001-priority5q-country-catalogue/source/readme.txt",
+    "license_deed": "Separate direct raw request returned403 and has no retained-file path. Linked deed readable via web tool; publisher readme retained as the CC BY4.0 declaration. No successful raw deed acquisition claimed.",
+    "web_references_read": [
+      "https://download.geonames.org/export/dump/",
+      "https://download.geonames.org/export/dump/countryInfo.txt",
+      "https://download.geonames.org/export/dump/readme.txt",
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+    "source_release": null,
+    "source_publication_date": null,
+    "source_entry_update_date": null,
+    "date_limit": "No named release or entry validity/publication/update dates supplied in the file. HTTP Last-Modified identifies the resource timestamp only; it is not factual review or per-entry currentness.",
+    "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+    "prepared_at": "2026-10-23T08:43:02+00:00",
+    "outbound_scope": "Static public source/documentation URLs only; no application requests, original user text, saved data or identifiers sent. No towns/postcodes/cities500/admin1/swisstopo/alternative providers acquired."
+  },
+  "draft": {
+    "catalogue": "docs/reference/COUNTRIES-GEONAMES-DRAFT.json",
+    "manifest": "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json",
+    "counts": {
+      "source_rows": 252,
+      "included": 249,
+      "excluded": 2,
+      "unresolved": 1
+    },
+    "raw_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "normalized_sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343",
+    "fields": [
+      "code",
+      "name"
+    ],
+    "source_names_verbatim": true,
+    "no_unrelated_source_columns_imported": true,
+    "excluded": [
+      {
+        "code": "CS",
+        "name": "Serbia and Montenegro",
+        "source_line": 301,
+        "reason": "Publisher identifies Serbia and Montenegro as no longer existing.",
+        "support": {
+          "line": 17,
+          "text": "# CS (Serbia and Montenegro) with geonameId = 8505033 no longer exists."
+        }
+      },
+      {
+        "code": "AN",
+        "name": "Netherlands Antilles",
+        "source_line": 302,
+        "reason": "Publisher identifies the Netherlands Antilles as dissolved on 10 October 2010.",
+        "support": {
+          "line": 18,
+          "text": "# AN (the Netherlands Antilles) with geonameId = 8505032 was dissolved on 10 October 2010."
+        }
+      }
+    ],
+    "unresolved": [
+      {
+        "code": "XK",
+        "name": "Kosovo",
+        "source_line": 173,
+        "reason": "Publisher labels XK temporary. Human review must decide membership under the current-country/territory policy; no replacement or ISO status is inferred.",
+        "support": {
+          "line": 13,
+          "text": "# The countrycode XK temporarily stands for Kosvo:"
+        }
+      }
+    ],
+    "source_edge_whitespace_preserved": [
+      {
+        "code": "BQ",
+        "source_line": 80
+      }
+    ],
+    "no_global_country_count_assumed": true,
+    "runtime_use": false,
+    "review": {
+      "status": "pending",
+      "reviewer": null,
+      "reviewed_at": null,
+      "owner_approved": false,
+      "activation_approved": false,
+      "basis": "AI preparation and automated structural checks only; all inclusion/exclusion, source-name and release decisions await human review."
+    }
+  },
+  "verification": {
+    "test_first": "Parser checks written before missing script; collection RED, then20focused cases GREEN. Only preparation logic/artifacts tested.",
+    "manifest_link_correction": "Actual link check failed because an unsuccessful documentation acquisition claimed a local path. Fixed to path:null; full final link/hash check passes.",
+    "parser_cases": 20,
+    "parser_final_result": "20passed0.04s; initialGREEN20passed0.06s.",
+    "preparation_checks": {
+      "counts": {
+        "source_rows": 252,
+        "included": 249,
+        "excluded": 2,
+        "unresolved": 1
+      },
+      "all_source_rows_accounted_once": true,
+      "all_source_names_verbatim": true,
+      "all_source_listed_territories_retained_except_explicit_disposition_ledger": true,
+      "no_global_country_count_assumed": true,
+      "normalized_fields_only": [
+        "code",
+        "name"
+      ],
+      "BQ_edge_whitespace_preserved": true,
+      "successful_document_hashes_and_local_links_match": true,
+      "failed_license_download_has_no_claimed_local_path": true,
+      "attribution_license_links_match_retained_publisher_readme": true,
+      "web_link_verification": "GeoNames source/readme and linked CC BY4.0 deed read via web tool; direct source/readme200 and deed403 outcomes retained.",
+      "pending_human_review_and_runtime_disabled": true,
+      "pinned_reproduction_command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab --output docs/reference/COUNTRIES-GEONAMES-DRAFT.json --manifest docs/reference/COUNTRIES-GEONAMES-MANIFEST.json --prepared-at 2026-10-23T08:43:02+00:00",
+      "reproduction_exit_code": 0,
+      "output_manifest_and_raw_source_byte_identical_after_reproduction": true,
+      "wrong_pin_command": ".venv/bin/python scripts/uc001_country_catalogue/prepare.py --source build/uc001-priority5q-country-catalogue/source/countryInfo.txt --acquisition build/uc001-priority5q-country-catalogue/source/acquisition.json --source-sha256 0000000000000000000000000000000000000000000000000000000000000000 --output /tmp/resolena-priority5q-bounded-idozrisy/rejected-draft.json --manifest /tmp/resolena-priority5q-bounded-idozrisy/rejected-manifest.json --prepared-at 2026-10-23T08:43:02+00:00",
+      "wrong_pin_exit_code": 1,
+      "wrong_pin_rejected_before_any_output": true,
+      "raw_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+      "normalized_sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343"
+    },
+    "exact_commands_and_results": "build/uc001-priority5q-country-catalogue/commands.json",
+    "no_application_browser_services_reliability_full_suite_or_lint_build_run": true,
+    "preservation": {
+      "protected_files": 702,
+      "unchanged_protected_files": 701,
+      "expected_existing_files_changed": [
+        "docs/TASKS.md"
+      ],
+      "new_source_reference_files": [
+        "scripts/uc001_country_catalogue/prepare.py",
+        "tests/unit/test_country_catalogue_preparation.py",
+        "docs/reference/COUNTRIES-GEONAMES-DRAFT.json",
+        "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json"
+      ],
+      "all_other_protected_hashes_unchanged": true,
+      "original_priority5P_artifact_count_preserved": 18,
+      "original_priority5P_receipt_unchanged": true,
+      "all_prior_TASKS_history_after_current_authorization_and_dated_checkpoint_preserved": true,
+      "production_frontend_runner_dependencies_and_real_knowledge_drafts_unchanged": true,
+      "new_or_changed_lines_with_trailing_whitespace": [],
+      "preexisting_whitespace_warning": {
+        "before_line": 1969,
+        "current_line": 1995,
+        "text": "  evidence-backed comparisons and persistence. "
+      },
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+      "Git_branch_and_HEAD_unchanged": true,
+      "Git_status_added_only": [
+        "?? docs/reference/",
+        "?? scripts/uc001_country_catalogue/"
+      ],
+      "Git_status_removed": [],
+      "no_application_services_started_in_this_slice": true,
+      "test_service_ports_closed": {
+        "8011": true,
+        "5175": true
+      },
+      "no_staging_commit_push_merge_reset_branch_switch_CI_or_deployment": true,
+      "no_experiment_startup_inference_or_evaluation": true
+    },
+    "aborted_scan": "An initially overbroad preservation enumeration was stopped without producing a manifest; final preservation uses the bounded existing manifest plus source/preparation files. No experiments were executed or modified."
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "change": "Current bounded authorization, 5P acceptance and one concise5Qresult; prior history/checkpoint preserved."
+    },
+    {
+      "path": "scripts/uc001_country_catalogue/prepare.py",
+      "change": "New small standard-library offline pinned extraction and inactive manifest generation; no download/runtime integration code."
+    },
+    {
+      "path": "tests/unit/test_country_catalogue_preparation.py",
+      "change": "New small focused parser cases; separate file needed because no country-preparation tests existed."
+    },
+    {
+      "path": "docs/reference/COUNTRIES-GEONAMES-DRAFT.json",
+      "change": "New deterministic minimal249entry provisional code/name draft."
+    },
+    {
+      "path": "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json",
+      "change": "New compact source/output hashes, provenance/dates/attribution, explicit dispositions and pending review/activation gates."
+    }
+  ],
+  "outstanding_human_review": [
+    "Review all249provisional current-country/territory candidates and exact publisher names; structural checks are not per-entry factual approval.",
+    "Review the two publisher-supported AN/CS obsolete exclusions under the accepted policy.",
+    "Resolve XK membership using the existing current-country/territory policy. It remains outside included output, in the unresolved ledger; no ISO status/replacement is invented.",
+    "BQ source name has trailing whitespace and is retained exactly; any display normalization is a later explicit reviewed change.",
+    "Review pinned unversioned snapshot provenance, GeoNames CC BY4.0 attribution/modification requirements and coverage limitations. No owner, factual or activation approval is recorded."
+  ],
+  "boundaries": {
+    "PHASE": 3,
+    "STATUS": "in-progress",
+    "Priority5_complete": false,
+    "increment1_complete": false,
+    "DEVELOP_complete": false,
+    "runtime_integration_or_activation": false,
+    "normal_app_main": "unchanged/unconfigured",
+    "real_alternative_knowledge_and_rendering_drafts": "unchanged/inactive",
+    "interpreter_experiments": "closed; no startup/inference/evaluation",
+    "Git_delivery_dependency_changes_CI_deployment_or_further_implementation": false,
+    "stopping_point": "Draft ready for human review; no subsequent implementation authorized."
+  },
+  "review_basis": "AI preparation and automated checks with an AI read-only peer review; no independent human factual/release/linguistic review claimed.",
+  "artifacts": {
+    "plan": "preparation-plan.json",
+    "raw_source": "source/countryInfo.txt",
+    "format_license_readme": "source/readme.txt",
+    "acquisition": "source/acquisition.json",
+    "parser_RED": "parser-red.txt",
+    "parser_GREEN": "parser-green.txt",
+    "parser_final": "parser-final.txt",
+    "preparation_checks": "preparation-checks.json",
+    "commands": "commands.json",
+    "preservation": "preservation.json",
+    "preservation_baseline": "preservation-baseline.json",
+    "git_status_before": "git-status-before.txt",
+    "git_status": "git-status.txt",
+    "git_diff_check": "git-diff-check.txt"
+  },
+  "remaining_work_requiring_separate_authorization": [
+    "Country selector/application integration, membership validation and cleared-country behavior.",
+    "Locality matching, datasets/format rules and O-1 confirmation/retention; this catalogue cannot establish locality or delivery/service applicability.",
+    "Real interpretation, alternative knowledge activation, multilingual linguistic approval and TL-03 remain outside this slice."
+  ]
+}

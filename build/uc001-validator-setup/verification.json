@@ -1,0 +1,85 @@
+{
+  "scope": "Windows validator environment setup preparation only; owner execution pending",
+  "recorded_utc": "2026-10-17T22:23:25.767856+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_validator_setup/README.md",
+    "scripts/uc001_validator_setup/artifacts.json",
+    "scripts/uc001_validator_setup/requirements-win-py312.txt",
+    "build/uc001-validator-setup/shared-validation-source.zip",
+    "build/uc001-validator-setup/verification.json"
+  ],
+  "codespace": {
+    "python": "3.12.11",
+    "powershell_parser": "7.6.7; not Windows PowerShell 5.1 execution",
+    "existing_offline_tests": {
+      "passed": 7,
+      "exit_code": 0,
+      "source": "unchanged test_contract_run_controls.py in the source ZIP",
+      "selected_functions": [
+        "test_current_settings_must_be_verified_not_merely_requested",
+        "test_frozen_manifest_reconciles_meaning_uncertainty_before_language_preference",
+        "test_machine_state_gate_is_not_semantic_approval",
+        "test_protected_endpoint_authentication_proof_does_not_use_public_health",
+        "test_qualified_review_gate_rejects_unapproved_machine_expectations",
+        "test_schema_configuration_and_source_are_frozen"
+      ]
+    },
+    "shared_import_schema_decoder_domain_case_probe": "passed from unchanged source ZIP; no FastAPI/SQLAlchemy imports; synthetic only",
+    "windows_dependency_metadata_closure": "17 exact releases; all active Python 3.12.10 Windows dependency constraints satisfied; 16 versions match current Codespace metadata; colorama 0.4.6 newly pinned for pytest Windows marker",
+    "wheel_compatibility": "pydantic_core cp312-cp312-win_amd64; other 16 universal wheels; compatible tags/Requires-Python checked from official PyPI metadata, not loaded on Windows",
+    "command_checks": "two PowerShell blocks parsed, Python block compiled, dictionary updates exercised offline; Windows native argument/installer/signature execution pending",
+    "initial_check_invocation": "First Codespace check dereferenced the venv symlink to base Python, which has no pytest; corrected to the absolute venv executable path. No test assertions ran in that invocation."
+  },
+  "provenance": {
+    "python_release": "https://www.python.org/downloads/release/python-31210/",
+    "installer_bytes": 26964224,
+    "installer_sha256": "67b5635e80ea51072b87941312d00ec8927c4db9ba18938f7ad2d27b328b95fb",
+    "installer_hash_source": "https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe.sigstore",
+    "sigstore_signature_verified": false,
+    "authenticode_verification": "required in Windows setup before installer use; not performed here",
+    "wheel_hashes_and_sizes": "exact official PyPI JSON URLs recorded per wheel in artifacts.json; actual payload verification remains Windows-side",
+    "installer_and_wheel_payloads_acquired_in_codespace": false
+  },
+  "download_accounting": {
+    "cap_bytes": 104857600,
+    "prior_archive_bytes": 25825785,
+    "prior_scripts_one_copy_bytes": 21697,
+    "known_prior_minimum_bytes": 25847482,
+    "installer_and_17_wheels_bytes": 31902158,
+    "handoff_actual_files_bytes": 103516,
+    "handoff_reserved_bytes": 262144,
+    "remaining_if_no_additional_prior_and_no_cache_bytes": 46845816,
+    "unresolved": "Additional acquisitions/re-downloads cannot be inferred absent. Owner must enter reconciled additional bytes; unknown stops. Cache reuse requires verified size/hash and prior acquisition charged; reserve before downloading and retain on failure. No allowance reset."
+  },
+  "preservation": {
+    "pre_existing_protected_file_hashes_unchanged": 235,
+    "unchanged_source_export_files": 34,
+    "source_zip_sha256": "c2ddf585e211325197802c7b9cea3af22252a6111035e6d84f53d1c26cfa871d",
+    "docs_changes": "only new concise sections inserted; all previous bytes retained",
+    "application_requirements_frozen_bundles_history_and_model_ledgers": "unchanged"
+  },
+  "handoff_sha256": {
+    "scripts/uc001_validator_setup/README.md": "586a35b53baeee14bff11b2eba7bfb1d5abda322ea1d334409e3404ec774114b",
+    "scripts/uc001_validator_setup/artifacts.json": "60b0c4756c3a4b5b45a1e409a1fd648a47d0a318bfc71653e410d4c3f1846d2e",
+    "scripts/uc001_validator_setup/requirements-win-py312.txt": "94d0223812d9d64e049b513008f30ab2439b35f3483476e430c0356c9764ba9d",
+    "build/uc001-validator-setup/shared-validation-source.zip": "c2ddf585e211325197802c7b9cea3af22252a6111035e6d84f53d1c26cfa871d"
+  },
+  "remaining": [
+    "Owner-reconciled cumulative acquisition accounting; no extra allowance",
+    "Windows payload size/SHA-256 and PSF Authenticode checks, per-user installation, venv/pip check and offline compatibility result",
+    "No Windows PowerShell 5.1, installer or native Windows wheel execution has been performed here",
+    "Qualified DE/FR/IT/EN semantic review remains pending; does not block environment-only compatibility",
+    "Three live API/real-adapter integration checks remain deferred; no replay evidence substitutes for them",
+    "No model/GPU/runtime readiness, inference, capture/replay orchestration or transport success established"
+  ],
+  "not_performed": [
+    "Installer/wheel/model/runtime payload acquisition or installation in this step",
+    "Connection, SSH diagnosis/Support preparation, model startup/inference, held-out access",
+    "Application changes, schema regeneration, automatic retry/fallback, ledger reset, phase advancement or Git delivery"
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-10-23T17:18:56.503599+00:00",
+  "before_extraction_implementation": true,
+  "source_policy": "Existing ARCHITECTURE CH/LI swisstopo directory only; no equivalent reviewed release exists.",
+  "source_sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+  "member": "AMTOVZ_CSV_LV95/AMTOVZ_CSV_LV95.csv",
+  "member_sha256": "ae33ad60171374afcb39ddd9cc5268a1fe5b71f40bf21961373f4e6fb65abe02",
+  "format": "Actual UTF-8 BOM, semicolon CSV, twelve exact columns. Acquire only 132697-byte CSV ZIP, not geometry/address packages.",
+  "representation": "One retained row per CSV locality/postcode/municipality association, including meaningful repeated names, postcodes and ZIP_IDs; no locality entity merging.",
+  "source_identity": "ZIP_ID identifies PLZ6 (Swiss Post ONRP), not a locality GUID. CSV does not supply LOCALITYID; source_record is extraction record ordinal only.",
+  "country": "Derived CH for source CH canton abbreviations and LI for documented empty canton; not a raw country field. Unexpected values remain unresolved.",
+  "retained_fields": [
+    "source_record",
+    "country_code",
+    "locality_name",
+    "postcode",
+    "source_postcode_id",
+    "additional_number",
+    "administrative.municipality_name",
+    "administrative.municipality_id",
+    "administrative.canton",
+    "matching.locality_name",
+    "matching.postcode"
+  ],
+  "normalization": "Keep raw source strings; matching name uses boundary trim/NFC/casefold, matching postcode boundary trim only, no numeric conversion or fuzzy matching. No invented variants or split multilingual names.",
+  "omitted_fields": [
+    "Adressenanteil",
+    "E",
+    "N",
+    "Sprache",
+    "Validity"
+  ],
+  "omission_basis": "Coordinate/address-share columns unnecessary; no language-derived aliases or interpretation of locality-name validity as verification/freshness. Exact raw source retained.",
+  "accounting": "Every data record included, excluded blank or unresolved with reason. Exact and retained-field duplicate observations remain included and separately counted. Inconsistent ZIP_ID geographic tuples are unresolved, not silently merged.",
+  "review_gate": {
+    "status": "pending",
+    "runtime_use": false,
+    "owner_approved": false
+  },
+  "verification": "Focused parser fixtures, complete pinned-export structural checks, reproducible manifest/hash checks, git diff --check/status only; no browser/application/model/matching execution.",
+  "limits": [
+    "Reference presence does not prove delivery/service availability.",
+    "Reference absence alone does not prove an entered locality invalid.",
+    "No exact locality GUID supplied; cross-postcode locality identity requires human review before any consolidation/resolver."
+  ]
+}

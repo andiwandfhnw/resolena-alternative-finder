@@ -1,0 +1,9 @@
+{
+  "import_seconds": 0.0023688360001870024,
+  "builder_seconds": 0.00017984999976761173,
+  "accuracy_mode": "default high",
+  "all_languages": true,
+  "relative_distance": "default; unchanged",
+  "model_loading": "default lazy; cache occupancy/misses not exposed",
+  "classification_calls": 0
+}

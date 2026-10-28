@@ -1,0 +1,177 @@
+{
+  "recorded_date": "2026-10-26",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Offline scoped-child-edge diagnostic preparation only",
+  "owner_corrected_attempt_consumed": true,
+  "owner_results": "owner-confirmed-corrected-attempt.json",
+  "windows_native_execution_authorized": false,
+  "windows_native_execution_performed": false,
+  "additional_child_identity_established": false,
+  "job_object_failure_established": false,
+  "readiness": "Ready for offline owner review only; another native diagnostic execution requires separate explicit owner authorization.",
+  "implementation": {
+    "changed_helper": "scripts/uc001_granite_controller/standins.py",
+    "native_toolhelp_unchanged": true,
+    "scoped_parent_roles": [
+      "verified unrelated launcher",
+      "verified unrelated interpreter"
+    ],
+    "owner_attempt_parent_pids": [
+      61512,
+      28420
+    ],
+    "owner_attempt_expected_child_parent_edges": [
+      [
+        28420,
+        61512
+      ]
+    ],
+    "comparison_and_failure_text_unchanged": true,
+    "unknown_children_accepted": false,
+    "unknown_children_opened": false,
+    "creation_time_source": "Cached previously verified retained identity only; unknown children null.",
+    "observation_time_meaning": "Toolhelp query start/end UTC and monotonic interval; per-edge timestamp is observation end, not creation time."
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py -k edge_diagnostic",
+      "runs": [
+        {
+          "stage": "RED",
+          "pytest_exit_code": 1,
+          "failed": 13,
+          "log": "red-scoped-edges.log"
+        },
+        {
+          "stage": "GREEN",
+          "pytest_exit_code": 0,
+          "passed": 13,
+          "log": "green-scoped-edges.log"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_edge_package.py",
+      "runs": [
+        {
+          "stage": "RED",
+          "pytest_exit_code": 1,
+          "failed": 5,
+          "log": "package-red.log"
+        },
+        {
+          "stage": "intermediate harness correction",
+          "pytest_exit_code": 1,
+          "passed": 4,
+          "failed": 1,
+          "log": "package-green-first.log"
+        },
+        {
+          "stage": "GREEN",
+          "pytest_exit_code": 0,
+          "passed": 5,
+          "log": "package-green-final.log"
+        }
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller_standins.py tests/unit/test_granite_controller_cli.py tests/unit/test_granite_controller_edge_package.py",
+      "pytest_exit_code": 0,
+      "passed": 52,
+      "log": "green-final-focused.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_granite_windows_job.py -k 'child_snapshot or scoped_snapshot'",
+      "pytest_exit_code": 0,
+      "passed": 5,
+      "deselected": 50,
+      "log": "green-toolhelp-regression.log"
+    }
+  ],
+  "static_checks": {
+    "archive_entries": 8,
+    "archive_hashes_match": true,
+    "packaged_helpers_match_current": true,
+    "inactive_manifest": true,
+    "python_ast_paths": [
+      "scripts/uc001_granite_controller/standins.py",
+      "tests/unit/test_granite_controller_standins.py",
+      "tests/unit/test_granite_controller_edge_package.py",
+      "build/uc001-granite-controller-edge-diagnostic-v1/build_package.py"
+    ],
+    "future_command_powershell_parse_exit": 0,
+    "future_command_executed": false
+  },
+  "package": {
+    "archive": "/workspaces/resolena-alternative-finder/build/uc001-granite-controller-edge-diagnostic-v1/uc001-granite-controller-edge-diagnostic-v1.zip",
+    "bytes": 32303,
+    "sha256": "f944a4c051147abe28db40cfe173c2284f24b7a5ac9fc8058ac6e78b62032e72",
+    "manifest_sha256": "17fc800cffafa91a3fac3f826db7542d911a693a06cd04f5b509b1dd550a852a",
+    "template_sha256": "6e3fd2efaa86c333ddd822c9a22fafb4e84795739a28ea8067ee10a192951692"
+  },
+  "preservation": {
+    "protected_existing_files": 1248,
+    "unchanged_existing_files": 1245,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/standins.py",
+      "tests/unit/test_granite_controller_standins.py"
+    ],
+    "missing_files": [],
+    "prior_granite_artifacts_unchanged": true,
+    "historical_task_entries_unchanged": true,
+    "priority5_and_later_history_unchanged": true,
+    "existing_test_file_preserved_as_prefix": true,
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index_unchanged": true,
+    "status_unchanged": true,
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:2734: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "limits": [
+    "Linux injected tests do not establish Windows native ownership or cleanup of an owned tree.",
+    "Owner supplied complete preserved evidence; only request-supplied fields are transcribed here, not reconstructed desktop raw files.",
+    "Unexpected child edge identity remains unknown; no name/helper allowance inferred.",
+    "Both failed Windows attempts and their original false result flags remain unchanged.",
+    "No acquisition, configure/build, glslc, GPU, model, inference, frozen changes or Git delivery.",
+    "Prior overwritten intermediate-log limits remain unchanged; all current log files retained."
+  ],
+  "helper_sha256": {
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "windows_job.py": "0d36c4f73469016cb6a9e1634de840d1d3b689a8b6cf33b67bd046631fb10383",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "standins.py": "09ac0ce995489c035baa31099db2ccc223c1aabbb99c134329fee626cee8451a"
+  },
+  "evidence_sha256": {
+    "Run-OwnershipDiagnostic.ps1": "31d02d204904b532993e4019398f444c36156157fa938abdb28b55873e809c40",
+    "build_package.py": "14e67321e965dcf688ced27c1c6436bbae8a4079b7439d6eac2108af4cfc6d88",
+    "git-diff-check.txt": "e24d297afeb3cb65e04b0c9524e8a8ecc9fb36d18c973d13814a0a9aa6a4b3b9",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "green-final-focused.log": "6f95901c1095656fa08f5b9deea1aed534caff92dc434c980262f62de9638ac1",
+    "green-scoped-edges.log": "f4dfd7ab9beaeef03f5755138fe09949b6ee8e9d19bce0f122da35aa398ae0a5",
+    "green-toolhelp-regression.log": "b71c4a4a655afb829bda201b4c30f15e9533551ebe362bf24b68597b20236afd",
+    "owner-confirmed-corrected-attempt.json": "f1803ddef76d5ca2ad5ad7fbae70292b10afc3406478dc56a91fca56d7ac3e53",
+    "package-green-final.log": "320eb1a84c1b10ee7cab107f165cf1af7ff5ddf056494ed03c0759885f58af00",
+    "package-green-first.log": "07ee7c97b72569843280bdd8597c5d122a35061ced4ab18ca9f5bc859ecfdab3",
+    "package-red.log": "1baab9dd6476850adde610588ef5310ec23fa8b5d94438baa0334dda8603d4d5",
+    "package-result.json": "991404a0a0f6e74127ccce8af15038ccd4d021ef16b95ddbd06661056c77ff3e",
+    "preservation-before.json": "f8a2e10bb554a0c874e64ea54a8ff5b9bec1162e2641ced3cee042e8b85d5be3",
+    "preservation-checks.json": "dd018b2cbacb8a017ca88247846c516ef6ac7c9d12cd6163d3207476d4e754df",
+    "red-scoped-edges.log": "88f3d965d1ec0697e35e801a3705bba902d31871aec2d4a11952d2c940c56986",
+    "standins.py.diff": "2e40261ae6b5e91570644c58e4c695fabb76b5ddfc85c90bcf83794cba2a94fc",
+    "static-checks.json": "a50c5b51da99092844a4333e0818fb7faeda77ded3ac486ff9c264b473aede56",
+    "test_granite_controller_standins.py.diff": "532d0c019123f58767bce20c225c4e2ead349928a12de820e202ba95f92ee3a3",
+    "uc001-granite-controller-edge-diagnostic-v1.zip": "f944a4c051147abe28db40cfe173c2284f24b7a5ac9fc8058ac6e78b62032e72"
+  },
+  "future_owner_command": "README.md: Future owner command \u2014 NOT AUTHORIZED / NOT EXECUTED",
+  "documentation_checks": {
+    "local_links_passed": true,
+    "json_evidence_hashes_passed": true,
+    "current_scope_and_phase_consistent": true,
+    "owner_failure_cleanup_order_preserved": true,
+    "future_command_marked_not_authorized": true,
+    "final_git_preservation_recheck_passed": true
+  }
+}

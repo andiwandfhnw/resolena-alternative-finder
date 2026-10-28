@@ -1,0 +1,48 @@
+{
+  "recorded_before_test_at": "2026-10-23T20:06:05.125729+00:00",
+  "case": "One mocked selected-country mismatch UI correction, then real LI saved assessment. Mock does not prove CH+Vaduz text triggers backend mismatch.",
+  "mocked_response": {
+    "status": 422,
+    "body": {
+      "outcome": "invalid_input",
+      "persistence": {
+        "state": "not_attempted"
+      },
+      "issues": [
+        {
+          "code": "locality_country_mismatch"
+        }
+      ],
+      "clarification": {
+        "message": "The selected reference association belongs to a different search country. Correct the country or locality selection explicitly.",
+        "choices": [],
+        "associations": []
+      }
+    }
+  },
+  "expected_single_match": {
+    "reference": {
+      "source": "swisstopo",
+      "release": "swisstopo-chli-associations-2026-10-01-v1",
+      "source_record": 5590
+    },
+    "country_code": "LI",
+    "locality_name": "Vaduz",
+    "postcode": "9490",
+    "source_postcode_id": "5393",
+    "additional_number": "00",
+    "administrative": {
+      "municipality_name": "Vaduz",
+      "municipality_id": "7001",
+      "canton": ""
+    }
+  },
+  "expected_after_actual_submission": {
+    "outcome": "insufficient_coverage",
+    "row_delta": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    }
+  }
+}

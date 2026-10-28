@@ -1,0 +1,92 @@
+{
+  "attempts": [
+    {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 1,
+        "prepare_coverage": 0,
+        "save": 1,
+        "underlying_commits": 0
+      },
+      "prepared": {
+        "request_id": "ae4192cd-c1ea-4b4f-8978-f5b3938decb2",
+        "option_ids": [
+          "b641559e-4aa9-4802-aee4-d954b88edcfb",
+          "c3aba1e9-ea51-4b47-8618-40be913b73fe"
+        ],
+        "outcome": "comparison",
+        "assessed_at": "2026-10-15T10:00:00+00:00"
+      },
+      "returned_outcome": null,
+      "raised_persistence_state": "unknown",
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false,
+          "real_selects": 1
+        }
+      ],
+      "retrieved_count": 2,
+      "qualified_rendered_count": 2,
+      "coverage_limitation_codes": [],
+      "real_request_selects": 2,
+      "insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    {
+      "counts": {
+        "interpret": 1,
+        "retrieve": 1,
+        "assess_clock": 1,
+        "prepare": 0,
+        "prepare_coverage": 1,
+        "save": 1,
+        "underlying_commits": 1
+      },
+      "prepared": {
+        "request_id": "c366bd54-2ace-46d8-80bb-fc3971acd036",
+        "option_ids": [],
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2027-10-16T10:00:00+00:00"
+      },
+      "returned_outcome": "insufficient_coverage",
+      "raised_persistence_state": null,
+      "lookup_results": [
+        {
+          "scope": "application_initial",
+          "found": false,
+          "real_selects": 1
+        }
+      ],
+      "retrieved_count": 2,
+      "qualified_rendered_count": 0,
+      "coverage_limitation_codes": [
+        "essential_evidence_expired",
+        "geographic_applicability_unverified",
+        "useful_comparison_information_missing"
+      ],
+      "real_request_selects": 2,
+      "insert_attempts": {
+        "search_request": 1,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    }
+  ],
+  "total_counts": {
+    "interpret": 2,
+    "retrieve": 2,
+    "assess_clock": 2,
+    "prepare": 1,
+    "prepare_coverage": 1,
+    "save": 2,
+    "underlying_commits": 1
+  },
+  "original_adapters_unchanged": true,
+  "raw_originating_proofs_or_requests_recorded": false
+}

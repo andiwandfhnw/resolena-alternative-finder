@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+______ ERROR collecting tests/unit/test_locality_reference_preparation.py ______
+ImportError while importing test module '/workspaces/resolena-alternative-finder/tests/unit/test_locality_reference_preparation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/local/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/unit/test_locality_reference_preparation.py:11: in <module>
+    from scripts.uc001_locality_reference.prepare import extract_csv, output_bytes
+E   ModuleNotFoundError: No module named 'scripts.uc001_locality_reference'
+=========================== short test summary info ============================
+ERROR tests/unit/test_locality_reference_preparation.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.15s

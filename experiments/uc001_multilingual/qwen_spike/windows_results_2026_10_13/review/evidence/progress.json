@@ -1,0 +1,15 @@
+{
+    "heldout_model_exposure":  0,
+    "completed":  [
+                      "01-C1-known",
+                      "02-C2-known",
+                      "03-C3-known",
+                      "04-C4-known",
+                      "05-C5-known",
+                      "06-C6-known"
+                  ],
+    "linguistic_validation":  "pending",
+    "DESIGN":  "pending",
+    "phase":  "known",
+    "utc":  "2026-10-13T19:19:17.4513736Z"
+}

@@ -1,0 +1,590 @@
+FFFFFFFFFFFFFFFFFFFFFFFFFFFF                                             [100%]
+=================================== FAILURES ===================================
+_______ test_console_role_optional_absence_preserves_six_base_identities _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_optional_abs0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cb4c20>
+
+    def test_console_role_optional_absence_preserves_six_base_identities(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch,no_outside_console=True)
+        assert result['ownership_self_test_passed'] is True
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:954: KeyError
+______ test_console_role_one_system_sibling_is_retained_and_exit_verified ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_one_system_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cefbc0>
+
+    def test_console_role_one_system_sibling_is_retained_and_exit_verified(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch)
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:961: AssertionError
+_ test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_owned_helper0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b27350>
+
+    def test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True)
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:976: AssertionError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options0] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cef3e0>
+options = {'missing_interpreter_edge': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6ceedb0>
+options = {'second_interpreter': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options2] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b24da0>
+options = {'two_consoles': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options3] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b257c0>
+options = {'console_under_interpreter': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options4] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b27b90>
+options = {'console_path': 'D:\\Fake\\conhost.exe'}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options5] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o5')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c60500>
+options = {'console_path': 'R:\\NativeWindows\\System32\\notepad.exe'}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options6] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o6')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c61cd0>
+options = {'console_birth_changed': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options7] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o7')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c63500>
+options = {'console_pid_changed': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options8] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o8')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c58b90>
+options = {'console_parent_mismatch': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options9] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o9')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c58830>
+options = {'console_membership_mismatch': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options10] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o10')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c59ee0>
+options = {'console_membership_unknown': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options11] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o11')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c5b860>
+options = {'console_path_failure': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options12] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o12')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c59e20>
+options = {'console_unqueryable': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options13] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o13')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c58b30>
+options = {'third_child': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options14] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o14')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c585c0>
+options = {'console_predates_launcher': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options15] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o15')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c63c80>
+options = {'system_directory_failure': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options16] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_incomplete_o16')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c629f0>
+options = {'console_exit_query_failure': True}
+
+    @pytest.mark.parametrize('options',[
+        {'missing_interpreter_edge':True},{'second_interpreter':True},{'two_consoles':True},
+        {'console_under_interpreter':True},{'console_path':r'D:\Fake\conhost.exe'},
+        {'console_path':r'R:\NativeWindows\System32\notepad.exe'},
+        {'console_birth_changed':True},{'console_pid_changed':True},{'console_parent_mismatch':True},
+        {'console_membership_mismatch':True},{'console_membership_unknown':True},
+        {'console_path_failure':True},{'console_unqueryable':True},{'third_child':True},
+        {'console_predates_launcher':True},{'system_directory_failure':True},{'console_exit_query_failure':True},
+    ])
+    def test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helpers']==[]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:999: KeyError
+_ test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options0] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_accepted_ide0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6c62870>
+options = {'console_stuck': True}
+
+    @pytest.mark.parametrize('options',[
+        {'console_stuck':True},{'console_vanished':True},{'console_replacement':True},
+        {'path_changed_at_cleanup':True},
+    ])
+    def test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+>       assert len(result['console_helpers'])==1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:1009: KeyError
+_ test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_accepted_ide1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b26fc0>
+options = {'console_vanished': True}
+
+    @pytest.mark.parametrize('options',[
+        {'console_stuck':True},{'console_vanished':True},{'console_replacement':True},
+        {'path_changed_at_cleanup':True},
+    ])
+    def test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+>       assert len(result['console_helpers'])==1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:1009: KeyError
+_ test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options2] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_accepted_ide2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6b27cb0>
+options = {'console_replacement': True}
+
+    @pytest.mark.parametrize('options',[
+        {'console_stuck':True},{'console_vanished':True},{'console_replacement':True},
+        {'path_changed_at_cleanup':True},
+    ])
+    def test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+>       assert len(result['console_helpers'])==1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:1009: KeyError
+_ test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options3] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_accepted_ide3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cefa10>
+options = {'path_changed_at_cleanup': True}
+
+    @pytest.mark.parametrize('options',[
+        {'console_stuck':True},{'console_vanished':True},{'console_replacement':True},
+        {'path_changed_at_cleanup':True},
+    ])
+    def test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,**options)
+>       assert len(result['console_helpers'])==1
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helpers'
+
+tests/unit/test_granite_controller_standins.py:1009: KeyError
+_ test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options0] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_owned_cleanu0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cee690>
+options = {'owned_helper_exit_missing': True}
+
+    @pytest.mark.parametrize('options',[
+        {'owned_helper_exit_missing':True},{'owned_unknown_third':True},{'late_unknown_cleanup':True},
+    ])
+    def test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['cleanup']['verified'] is False or result['console_helper_cleanup_verified'] is False
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helper_cleanup_verified'
+
+tests/unit/test_granite_controller_standins.py:1020: KeyError
+_ test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_owned_cleanu1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a69bb230>
+options = {'owned_unknown_third': True}
+
+    @pytest.mark.parametrize('options',[
+        {'owned_helper_exit_missing':True},{'owned_unknown_third':True},{'late_unknown_cleanup':True},
+    ])
+    def test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['cleanup']['verified'] is False or result['console_helper_cleanup_verified'] is False
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helper_cleanup_verified'
+
+tests/unit/test_granite_controller_standins.py:1020: KeyError
+_ test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options2] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_owned_cleanu2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a69b8ef0>
+options = {'late_unknown_cleanup': True}
+
+    @pytest.mark.parametrize('options',[
+        {'owned_helper_exit_missing':True},{'owned_unknown_third':True},{'late_unknown_cleanup':True},
+    ])
+    def test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count(tmp_path,monkeypatch,options):
+        result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True,**options)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['cleanup']['verified'] is False or result['console_helper_cleanup_verified'] is False
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'console_helper_cleanup_verified'
+
+tests/unit/test_granite_controller_standins.py:1020: KeyError
+____ test_console_role_full_native_system_path_uses_windows_case_semantics _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_console_role_full_native_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7726a6cedca0>
+
+    def test_console_role_full_native_system_path_uses_windows_case_semantics(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch,
+            system_console=r'S:\ActualWindows\system32\conhost.exe',
+            console_path=r's:\actualwindows\System32\CONHOST.EXE')
+>       assert result['ownership_self_test_passed'] is True
+E       assert False is True
+
+tests/unit/test_granite_controller_standins.py:1027: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_optional_absence_preserves_six_base_identities
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_one_system_sibling_is_retained_and_exit_verified
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options0]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options1]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options2]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options3]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options4]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options5]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options6]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options7]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options8]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options9]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options10]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options11]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options12]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options13]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options14]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options15]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_incomplete_or_additional_outside_shape_fails_without_promotion[options16]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options0]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options1]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options2]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_accepted_identity_cannot_be_replaced_or_ignored_during_cleanup[options3]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options0]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options1]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_owned_cleanup_needs_all_helper_exits_and_exact_lifetime_count[options2]
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_full_native_system_path_uses_windows_case_semantics
+28 failed, 58 deselected in 1.16s

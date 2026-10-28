@@ -1,0 +1,94 @@
+{
+  "status": "completed_fixed_sample",
+  "failure": null,
+  "ended_utc": "2026-10-15T17:47:39.330869+00:00",
+  "elapsed_window_seconds": 361.8203751210003,
+  "deadline_utc": "2026-10-15T18:11:37.510502+00:00",
+  "completed_phases": [
+    "verify",
+    "venv",
+    "install",
+    "detector"
+  ],
+  "phase_exits": [
+    {
+      "phase": "install",
+      "identity": {
+        "pid": 13263,
+        "pgrp": 13263,
+        "start_ticks": 223251,
+        "rss": 7114752,
+        "hwm": 7114752,
+        "threads": 1
+      },
+      "exit_code": 0,
+      "failure": null,
+      "process_absent": true,
+      "peak_owned_rss_bytes": 120528896,
+      "peak_hwm_sum_bytes": 120528896,
+      "peak_scratch_bytes": 477405184,
+      "end_monotonic": 2236.632631362
+    },
+    {
+      "phase": "venv",
+      "identity": {
+        "pid": 13261,
+        "pgrp": 13261,
+        "start_ticks": 223222,
+        "rss": 5615616,
+        "hwm": 5615616,
+        "threads": 1
+      },
+      "exit_code": 0,
+      "failure": null,
+      "process_absent": true,
+      "peak_owned_rss_bytes": 49631232,
+      "peak_hwm_sum_bytes": 49631232,
+      "peak_scratch_bytes": 171175936,
+      "end_monotonic": 2232.511148545
+    },
+    {
+      "phase": "verify",
+      "identity": {
+        "pid": 13252,
+        "pgrp": 13252,
+        "start_ticks": 223050,
+        "rss": 3117056,
+        "hwm": 3117056,
+        "threads": 1
+      },
+      "exit_code": 0,
+      "failure": null,
+      "process_absent": true,
+      "peak_owned_rss_bytes": 41676800,
+      "peak_hwm_sum_bytes": 41676800,
+      "peak_scratch_bytes": 171102208,
+      "end_monotonic": 2232.226642931
+    },
+    {
+      "phase": "detector",
+      "identity": {
+        "pid": 13384,
+        "pgrp": 13384,
+        "start_ticks": 223663,
+        "rss": 7303168,
+        "hwm": 7303168,
+        "threads": 1
+      },
+      "exit_code": 0,
+      "failure": null,
+      "process_absent": true,
+      "peak_owned_rss_bytes": 226160640,
+      "peak_hwm_sum_bytes": 226746368,
+      "peak_scratch_bytes": 477880320,
+      "end_monotonic": 2237.493129943
+    }
+  ],
+  "remaining_owned_processes": [],
+  "cleanup": "Owned processes exited; artifacts/environment preserved; no deletion.",
+  "final_scratch": {
+    "logical_bytes": 477520528,
+    "allocated_bytes": 477884416
+  },
+  "context_sha256": "983bbc9841a245b51326ff2d9179944788862e96309c3ab560526181182fd107"
+}

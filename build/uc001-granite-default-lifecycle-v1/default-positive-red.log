@@ -1,0 +1,53 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_ test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit[delayed_worker_alive] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-0/test_default_session_reconcile0')
+schedule = 'delayed_worker_alive'
+
+    @pytest.mark.parametrize('schedule', ['delayed_worker_alive', 'delayed_worker_exit'])
+    def test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit(tmp_path, schedule):
+        result, backend = lifecycle_session(tmp_path, schedule)
+>       assert result['status']=='controlled_phases_passed', result
+E       AssertionError: {'status': 'failure', 'started_utc': '2026-10-27T21:02:11.652734+00:00', 'started_mono': 100.0, 'downloaded_upper_bound_bytes': None, ...}
+E       assert 'failure' == 'controlled_phases_passed'
+E         
+E         - controlled_phases_passed
+E         + failure
+
+tests/unit/test_granite_controller_run.py:665: AssertionError
+_ test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit[delayed_worker_exit] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-0/test_default_session_reconcile1')
+schedule = 'delayed_worker_exit'
+
+    @pytest.mark.parametrize('schedule', ['delayed_worker_alive', 'delayed_worker_exit'])
+    def test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit(tmp_path, schedule):
+        result, backend = lifecycle_session(tmp_path, schedule)
+>       assert result['status']=='controlled_phases_passed', result
+E       AssertionError: {'status': 'failure', 'started_utc': '2026-10-27T21:02:11.702456+00:00', 'started_mono': 100.0, 'downloaded_upper_bound_bytes': None, ...}
+E       assert 'failure' == 'controlled_phases_passed'
+E         
+E         - controlled_phases_passed
+E         + failure
+
+tests/unit/test_granite_controller_run.py:665: AssertionError
+___ test_default_session_waits_only_for_already_verified_helper_before_build ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-0/test_default_session_waits_onl0')
+
+    def test_default_session_waits_only_for_already_verified_helper_before_build(tmp_path):
+        result, backend = lifecycle_session(tmp_path, 'helper_lag')
+>       assert result['status']=='controlled_phases_passed', result
+E       AssertionError: {'status': 'failure', 'started_utc': '2026-10-27T21:02:11.729613+00:00', 'started_mono': 100.0, 'downloaded_upper_bound_bytes': None, ...}
+E       assert 'failure' == 'controlled_phases_passed'
+E         
+E         - controlled_phases_passed
+E         + failure
+
+tests/unit/test_granite_controller_run.py:674: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_run.py::test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit[delayed_worker_alive]
+FAILED tests/unit/test_granite_controller_run.py::test_default_session_reconciles_durable_close_after_read_before_observed_proxy_exit[delayed_worker_exit]
+FAILED tests/unit/test_granite_controller_run.py::test_default_session_waits_only_for_already_verified_helper_before_build
+3 failed, 46 deselected in 0.20s

@@ -1,0 +1,27 @@
+{
+  "json_files_scanned": 20,
+  "forbidden_raw_credential_request_fields": [],
+  "trace_or_HAR_files": [],
+  "new_whitespace_issues": [],
+  "preexisting_TASKS_whitespace": {
+    "before_line": 2035,
+    "after_line": 2076,
+    "same_bytes": true
+  },
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "branch": "specify/phase-1-uc-001",
+  "head_and_branch_unchanged": true,
+  "porcelain_status_identical_to_entry": false,
+  "protected_paths_unchanged": {
+    "src/app/main.py": true,
+    "src/app/infrastructure/sqlite_comparisons.py": true,
+    "src/app/interfaces/api.py": true,
+    "frontend/package.json": true,
+    "frontend/package-lock.json": true,
+    "frontend/playwright.config.ts": true
+  },
+  "porcelain_entry_lines_unchanged": true,
+  "porcelain_format_difference": "Entry snapshot includes --branch header; final required git status --short omits that header. All worktree entries are identical.",
+  "receipt_and_evidence_links_checked": true,
+  "preservation_rechecked_after_receipt": true
+}

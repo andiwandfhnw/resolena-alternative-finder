@@ -1,0 +1,55 @@
+..........F...............F                                              [100%]
+=================================== FAILURES ===================================
+_______ test_upstream_disconnect_closes_owned_tunnel_with_count_retained _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_upstream_disconnect_close0')
+
+    def test_upstream_disconnect_closes_owned_tunnel_with_count_retained(tmp_path):
+        with synthetic_proxy(tmp_path) as (proxy, ledger, _, peers, created, clients):
+            client, response = connect_tunnel(proxy)
+            clients.append(client)
+            assert response.startswith(b"HTTP/1.1 200 ")
+            peers[0].sendall(b"abc")
+            assert recv_exact(client, 3) == b"abc"
+            peers[0].close()
+            assert client.recv(1) == b""
+            wait_until(lambda: proxy.active_tunnels == 0)
+>           assert created[0].fileno() == -1
+E           assert 25 == -1
+E            +  where 25 = <built-in method fileno of socket object at 0x7a9f63bfaa50>()
+E            +    where <built-in method fileno of socket object at 0x7a9f63bfaa50> = <socket.socket fd=25, family=1, type=1, proto=0>.fileno
+
+tests/unit/test_granite_acquisition_proxy.py:227: AssertionError
+______ test_cli_does_not_reset_acquisition_clock_during_prior_validation _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-1/test_cli_does_not_reset_acquis0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7a9f63752030>
+
+    def test_cli_does_not_reset_acquisition_clock_during_prior_validation(tmp_path, monkeypatch):
+        from scripts.uc001_granite_acquisition_proxy import proxy as module
+        from datetime import datetime, timezone
+        import sys
+        started = datetime.now(timezone.utc).isoformat()
+        monkeypatch.setattr(sys, "argv", ["proxy.py", "--ledger", str(tmp_path / "ledger.jsonl"),
+            "--prior-receipt", str(tmp_path / "prior.json"), "--prior-sha256", "unused",
+            "--acquisition-started-utc", started])
+        def delayed_prior(*_):
+            time.sleep(0.08)
+            return 0
+        observed = {}
+        class FakeProxy:
+            def __init__(self, ledger, **kwargs):
+                observed.update(kwargs)
+                raise ProxyFailure("synthetic stop before socket creation")
+        monkeypatch.setattr(module, "load_prior", delayed_prior)
+        monkeypatch.setattr(module, "LocalProxy", FakeProxy)
+        with pytest.raises(ProxyFailure):
+            module.main()
+>       assert observed["deadline_seconds"] < 1799.95
+E       assert 1799.99927 < 1799.95
+
+tests/unit/test_granite_acquisition_proxy.py:452: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_acquisition_proxy.py::test_upstream_disconnect_closes_owned_tunnel_with_count_retained
+FAILED tests/unit/test_granite_acquisition_proxy.py::test_cli_does_not_reset_acquisition_clock_during_prior_validation
+2 failed, 25 passed in 2.00s

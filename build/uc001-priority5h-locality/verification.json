@@ -1,0 +1,351 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5H only",
+  "recorded_date": "2026-10-20",
+  "result": "Bounded unavailable-reference clarification and explicit country-only continuation implemented and verified with synthetic input; awaiting human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priority_3": "partial",
+    "priority_4": "partial",
+    "priority_5": "partial",
+    "increment_1": "incomplete",
+    "DEVELOP": "in-progress"
+  },
+  "prerequisites": {
+    "material_conflict_or_unapproved_schema_dependency_architecture_decision": false,
+    "sources": [
+      "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md Flow 1-2, O-1/O-2, Errors, AC-01/02/03/13/16/17 and T-02/08/10/11/13",
+      "docs/ARCHITECTURE.md Location reference data and matching; Persistence model and atomic boundary; Input, recovery and loading contracts",
+      "docs/adr/ADR-003-persisted-comparison-boundary.md accepted decision",
+      "docs/TASKS.md Priority 5 remaining-scope checkpoint"
+    ],
+    "confirmed": [
+      "Unavailable locality reference is clarification, not invalidity or assessed knowledge coverage.",
+      "Clarification creates no application search record, options or evidence associations.",
+      "Explicit country-only choice changes location intent; effective location excludes discarded optional fields.",
+      "Original text and independent textual locality requirements/provenance survive; country support alone cannot establish them.",
+      "Canonical captured payload binding and committed lookup precede normalization/current policy; immutable saved recovery is acknowledgement-only.",
+      "Existing synthetic CH, exact understood text, fixed clock, real React/FastAPI/SQLite and ordinary runner suffice."
+    ],
+    "reused_evidence": "Accepted eight-row checkpoint and linked receipts; no eight-row reinvestigation or 5A-5G matrix rerun.",
+    "country_catalogue_membership_claimed": false
+  },
+  "implementation": {
+    "application": "Actual application policy follows interpretation/language handling and precedes retrieval/assessment/save. Current locality-reference capability is unavailable; optional locality/reference gets targeted InputOutcome. No exception-catching fallback or new reference port.",
+    "normalization": "dataclasses.replace derives country-only effective Submission for knowledge, qualification and PreparedSave; SQLite schema/save algorithm and raw captured-payload digest remain unchanged.",
+    "frontend": "Optional town/postcode retained during clarification; explicit country-only button creates new capture/key/proof, clears only structured locality fields and shows country scope. Same captured recovery and fresh search remain separate.",
+    "fixture_reuse": "Extracted the existing represented Genève constraint packet into tests/support/synthetic.py; old unit check and new actual fallback/API/SQLite coverage share it. No real interpreter experiment or synthetic final policy/save stub."
+  },
+  "tdd": {
+    "backend_red": "Three missing-policy/normalization failures; genuine processing-error test passed first run.",
+    "backend_green": "All four focused tests passed; twelve directly affected backend regression cases passed.",
+    "browser_red": "Town field missing before UI changes; see RED report and logging note.",
+    "browser_green": "One new scenario passed alone and with nonempty baseline; five distinct existing browser regressions passed. Default comparison repeated only to supply the nonempty baseline.",
+    "refactor": "Reused existing represented-locality fixture through extraction; no additional production refactor needed after GREEN.",
+    "warnings": "Existing Starlette/httpx deprecation and NO_COLOR/FORCE_COLOR runner warning; no dependency changes."
+  },
+  "clarification": {
+    "status": 200,
+    "outcome": "clarification_required",
+    "persistence": {
+      "state": "not_attempted"
+    },
+    "issue": "locality_reference_unavailable",
+    "body": {
+      "outcome": "clarification_required",
+      "persistence": {
+        "state": "not_attempted"
+      },
+      "issues": [
+        {
+          "code": "locality_reference_unavailable"
+        }
+      ],
+      "clarification": {
+        "message": "The locality cannot currently be verified because locality reference data is unavailable. Correct the fields or explicitly continue country-only. This does not establish local applicability.",
+        "choices": []
+      }
+    },
+    "focused_sqlite_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0,
+      "evidence": 2
+    },
+    "browser_shared_counts_before_and_after_clarification": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "fields_and_browser_language_context_retained": true,
+    "explicit_selected_explanation_language_during_locality_clarification_separately_exercised": false,
+    "no_automatic_continuation_observation_ms": 300
+  },
+  "browser_journey": {
+    "scenario": "entered optional town/postcode -> actual reference-unavailable clarification -> fields retained/no saved search -> explicit country-only new identity -> normalized atomic saved comparison",
+    "ordinary_runner": true,
+    "trace": "off",
+    "HAR": "not enabled",
+    "services_stopped": true,
+    "standalone": {
+      "evidence": "build/uc001-priority5h-locality/browser-green/saved-comparison-unavailab-ff596--continuation-before-saving/country-only-continuation-evidence.json",
+      "request_id": "17c31170-d33a-42e6-98d5-c30875347a4a",
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    "nonempty_baseline": {
+      "evidence": "build/uc001-priority5h-locality/browser-shared-baseline/saved-comparison-unavailab-ff596--continuation-before-saving/country-only-continuation-evidence.json",
+      "request_id": "787fc85d-84e5-43ee-986c-d5a88a770e54",
+      "before_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_counts": {
+        "search_request": 2,
+        "request_alternative": 4,
+        "request_alternative_evidence": 4
+      },
+      "original_text": "Repair my bicycle without replacing it",
+      "search_location": {
+        "country_code": "CH"
+      },
+      "location_choice": "country_only",
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "saved_outcome": "comparison",
+      "browser_submissions": 2,
+      "distinct_key_and_proof": true,
+      "prior_records_options_links_and_source_evidence_unchanged": true
+    },
+    "save_before_presentation": "Real API 201 and SQLite commit observed while HTTP response held; no successful UI display until released. This is not a deliberately delayed required save.",
+    "T_12_delayed_save_claimed": false
+  },
+  "server_normalization_and_binding": {
+    "evidence": "backend-persisted-evidence.json",
+    "request_id": "66b2b899-4885-4831-962c-5157d45c8a01",
+    "input_choice": "country_only",
+    "discarded_values_supplied_by_API_client": [
+      "town",
+      "postcode",
+      "reference"
+    ],
+    "effective_location": {
+      "country_code": "CH"
+    },
+    "counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2,
+      "evidence": 2
+    },
+    "knowledge_received_normalized_location": true,
+    "saved_location_and_derived_request_copies_exclude_discarded_values": true,
+    "raw_original_payload_digest_retained": true,
+    "unchanged_payload_recovery_acknowledged_without_interpretation": true,
+    "changed_discarded_town_same_key_status": 409,
+    "wrong_proof_status": 403,
+    "no_comparison_in_acknowledgement": true,
+    "saved_rows_and_snapshots_unchanged_after_ack_and_denials": true
+  },
+  "independent_textual_constraint": {
+    "evidence": "backend-persisted-evidence.json",
+    "request_id": "28628d77-8aa2-4828-9183-9c59d00bfdc5",
+    "original_text": "repair bicycle in Genève",
+    "retained_requirement": {
+      "value": "locality:Genève",
+      "quote": "in Genève"
+    },
+    "typed_original_span_provenance_preserved": true,
+    "normalized_location": {
+      "country_code": "CH"
+    },
+    "result": "201 / insufficient_coverage / saved; country-supported candidates did not qualify without independent locality support.",
+    "counts": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0,
+      "evidence": 2
+    }
+  },
+  "changed_files": [
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "c28f3953545012d05150171261e16cdac7cc38802b76954a0e0000889c705642"
+    },
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "cb1449ee024c80ef01b96b896dc21579470b06ba826591b1afbffa06bfb699d5"
+    },
+    {
+      "path": "frontend/src/App.tsx",
+      "sha256": "8d62d8428521a76da2265f33eaa4c4bc351577a8363fe888931ecb9683fc189c"
+    },
+    {
+      "path": "src/app/application/comparisons.py",
+      "sha256": "d7cf0ca72aa00cda2b2e477655ed893e5a882d05cbad3691e1987aa16f6d6a6d"
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "f7d8c1e71bfcee2afc0d002aab4b428328ad886eb89184e436a7d5dba72960c3"
+    },
+    {
+      "path": "tests/integration/test_saved_comparison.py",
+      "sha256": "52b33125f9adb034287f36430b2946af87874267ec6b5e932728d072aefd4ed9"
+    },
+    {
+      "path": "tests/support/synthetic.py",
+      "sha256": "6fda3f079286e6fb82a0aa3018a06e5a987987b8682bf603203d297f29b76dea"
+    },
+    {
+      "path": "tests/unit/test_language_policy.py",
+      "sha256": "1f07c21482e9b3c9f001818c732e8d4b8ef3aaee9333932cbee020cd31cc5f43"
+    }
+  ],
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_saved_comparison.py -k 'unavailable_locality_reference or country_only_normalizes or country_only_fallback or locality_unavailability' | tee build/uc001-priority5h-locality/backend-red.txt",
+      "exit_code": 1,
+      "result": "3 failed, 1 passed, 26 deselected. Actual processing-error behavior already passed; no artificial RED.",
+      "evidence": "backend-red.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red-report.json npm --prefix frontend run test:e2e -- --grep 'unavailable locality requires explicit country-only continuation before saving' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-red --reporter=list,json 2>&1 | tee build/uc001-priority5h-locality/browser-red.log",
+      "exit_code": 1,
+      "result": "1 failed before UI code changes: Town (optional) element missing, 3000ms expected-visibility timeout",
+      "evidence": [
+        "build/uc001-priority5h-locality/browser-red-report.json",
+        "build/uc001-priority5h-locality/browser-red-captured-tool-output.log"
+      ],
+      "logging_note": "tee output parent directory initially absent; test still executed and JSON report persisted. Tool output saved verbatim separately; no rerun to manufacture RED."
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_saved_comparison.py -k 'unavailable_locality_reference or country_only_normalizes or country_only_fallback or locality_unavailability' | tee build/uc001-priority5h-locality/backend-green.txt",
+      "exit_code": 0,
+      "result": "4 passed, 26 deselected.",
+      "evidence": "backend-green.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_saved_comparison.py::test_returns_only_the_committed_projection_with_saved_ids_and_evidence tests/integration/test_saved_comparison.py::test_valid_empty_knowledge_is_atomically_saved_coverage_and_recoverable tests/integration/test_saved_comparison.py::test_same_submission_is_acknowledged_without_replaying_a_comparison tests/integration/test_saved_comparison.py::test_input_outcomes_never_reach_qualification_or_save tests/integration/test_saved_comparison.py::test_required_evidence_write_failure_rolls_back_the_entire_comparison tests/integration/test_language_contract_api.py::test_language_correction_cannot_reuse_a_committed_identity_with_changed_payload tests/integration/test_language_contract_api.py::test_shared_subject_without_supported_preference_requests_one_time_choice tests/unit/test_language_policy.py::test_explicit_textual_locality_constraint_remains_essential_independently_of_location_fields tests/unit/test_qualification.py::test_country_and_intended_locality_require_independent_coverage tests/unit/test_qualification.py::test_narrow_locality_requires_identity_and_retains_geographic_limits | tee build/uc001-priority5h-locality/backend-regressions.txt",
+      "exit_code": 0,
+      "result": "12 passed.",
+      "evidence": "backend-regressions.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-green-report.json npm --prefix frontend run test:e2e -- --grep 'unavailable locality requires explicit country-only continuation before saving' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-green --reporter=list,json 2>&1 | tee build/uc001-priority5h-locality/browser-green.log",
+      "exit_code": 0,
+      "result": "1 passed (5.6s), journey 1.6s",
+      "evidence": "browser-green-report.json"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-regressions-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|changed-country request saves coverage|shared input with unsupported browser|language correction is a new explicit|capability limitation and meaning clarification' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-regressions --reporter=list,json 2>&1 | tee build/uc001-priority5h-locality/browser-regressions.txt",
+      "exit_code": 0,
+      "result": "5 passed; only directly affected existing scenarios.",
+      "evidence": "browser-regressions-report.json"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5h-locality/frontend-lint.txt",
+      "exit_code": 0,
+      "result": "Passed.",
+      "evidence": "frontend-lint.txt"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5h-locality/frontend-build.txt",
+      "exit_code": 0,
+      "result": "Passed (TypeScript and Vite).",
+      "evidence": "frontend-build.txt"
+    },
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-shared-baseline-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|unavailable locality requires explicit country-only continuation before saving' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5h-locality/browser-shared-baseline --reporter=list,json 2>&1 | tee build/uc001-priority5h-locality/browser-shared-baseline.txt",
+      "exit_code": 0,
+      "result": "2 passed. Same new scenario repeated with one prior default-comparison fixture, to exercise nonempty-baseline preservation. No new scenario/matrix.",
+      "evidence": "browser-shared-baseline-report.json"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 2,
+      "result": "docs/TASKS.md:1677: trailing whitespace.\n+  evidence-backed comparisons and persistence.",
+      "evidence": "git-diff-check.txt"
+    },
+    {
+      "command": "git status --short",
+      "exit_code": 0,
+      "result": "M AGENTS.md\n M docs/ARCHITECTURE.md\n M docs/DEVELOPMENT_WORKFLOW.md\n M docs/PRODUCT_CONTEXT.md\n M docs/PROJECT.md\n M docs/TASKS.md\n M docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md\n M frontend/package-lock.json\n M frontend/package.json\n M frontend/src/App.css\n M frontend/src/App.tsx\n M frontend/src/index.css\n M frontend/vite.config.ts\n?? docs/adr/ADR-002-use-case-decomposition.md\n?? docs/adr/ADR-003-persisted-comparison-boundary.md\n?? docs/adr/ADR-004-multilingual-interpretation-scope.md\n?? docs/knowledge/\n?? docs/specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md\n?? experiments/\n?? frontend/playwright.config.ts\n?? pyproject.toml\n?? scripts/uc001_combined_ownership/\n?? scripts/uc001_combined_ownership_v1_1_0/\n?? scripts/uc001_contract_check/\n?? scripts/uc001_contract_local/\n?? scripts/uc001_contract_local_v1_1_0/\n?? scripts/uc001_contract_local_v1_2_0/\n?? scripts/uc001_contract_local_v1_2_1/\n?? scripts/uc001_contract_local_v1_2_2/\n?? scripts/uc001_contract_local_v1_3_0/\n?? scripts/uc001_contract_local_v1_4_0/\n?? scripts/uc001_desktop_readiness/\n?? scripts/uc001_execution_v1_3_0/\n?? scripts/uc001_native_ownership_check/\n?? scripts/uc001_preflight_association_v1_1_0/\n?? scripts/uc001_preflight_capacity_v1_2_0/\n?? scripts/uc001_transport_preparation/\n?? scripts/uc001_validator_setup/\n?? src/\n?? tests/",
+      "evidence": "git-status.txt"
+    }
+  ],
+  "preservation": {
+    "expected_changed_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "frontend/src/App.tsx",
+      "src/app/application/comparisons.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/support/synthetic.py",
+      "tests/unit/test_language_policy.py"
+    ],
+    "current_baseline_files": 121,
+    "unchanged_current_baseline_files": 113,
+    "reused_checkpoint_protected_files": 247,
+    "reused_checkpoint_hash_mismatches": [],
+    "checkpoint_eight_row_section_unchanged": true,
+    "all_other_historical_TASKS_text_unchanged": true,
+    "phase": 3,
+    "status": "in-progress",
+    "branch_head_unchanged": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "git_status_entries_unchanged": true,
+    "task_local_whitespace_clean_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "frontend/src/App.tsx",
+      "src/app/application/comparisons.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/support/synthetic.py",
+      "tests/unit/test_language_policy.py"
+    ],
+    "new_document_links_checked": [],
+    "owned_test_ports_closed": {
+      "8011": true,
+      "5175": true
+    }
+  },
+  "git_diff_check": {
+    "task_local": "All eight file deltas whitespace-clean against the starting snapshots.",
+    "repository_wide_exit": 2,
+    "reason": "Only preexisting historical TASKS trailing whitespace, shifted from line 1642 to 1677; deliberately preserved."
+  },
+  "locality_row_now_covered": [
+    "Unavailable-reference clarification before assessment with no search writes.",
+    "Explicit country-only continuation/new identity, unchanged country and server-normalized minimal structured location.",
+    "Original text/independent requirements and provenance retained through fallback; unsupported essential locality cannot be bypassed.",
+    "Committed recovery lookup and captured-payload binding preserved."
+  ],
+  "locality_row_pending": [
+    "Country catalogue and reviewed real locality-reference releases/preparation/activation.",
+    "Factual matching/geocoding (not introduced).",
+    "Confirmed-unverified O-1 success.",
+    "Broader malformed/mismatch/ambiguity branches and full locality acceptance."
+  ],
+  "excluded_work_not_performed": [
+    "Other checkpoint rows or additional recovery/concurrency/fault matrices",
+    "Priority 6, UC-003 or research",
+    "Real knowledge/rendering activation or reference acquisition/preparation",
+    "Interpreter/model/detector experiments or startup",
+    "Held-out access, linguistic approval or TL-03",
+    "Dependency changes or normal app.main configuration changes",
+    "Git staging, commit, push, merge, branch switch/reset, CI/CD or deployment"
+  ],
+  "stop": "Stop after this bounded slice for human review; no further implementation authorized."
+}

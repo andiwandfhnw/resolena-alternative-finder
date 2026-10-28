@@ -1,0 +1,18 @@
+{
+  "scope": "One bounded B investigation using Lingua 2.2.0 in the existing Codespace",
+  "owner_approved": true,
+  "approved_limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "started_utc": "2026-10-15T16:56:34.341681+00:00",
+  "deadline_utc": "2026-10-15T17:26:34.341681+00:00",
+  "no_retries_or_tuning": true,
+  "no_production_selection": true,
+  "design_and_linguistic_validation": "pending"
+}

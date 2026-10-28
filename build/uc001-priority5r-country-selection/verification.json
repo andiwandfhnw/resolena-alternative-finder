@@ -1,0 +1,451 @@
+{
+  "recorded_at": "2026-10-23T09:52:20.422040+00:00",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "UC-001 Increment 1 Phase 3 DEVELOP Priority 5R only: approved versioned country release, selection, new-submission membership and cleared-country behavior. Stop for human review.",
+  "owner_approval": {
+    "approved_on": "2026-10-23",
+    "approved_at": null,
+    "accepts_5Q": "Only the demonstrated inactive catalogue-preparation slice.",
+    "policy": "Retain all 249 original entries, include XK/Kosovo and exclude AN/CS. Preserve source names, attribution and limitations.",
+    "XK_limit": "A documented temporary/source-specific GeoNames code; no official ISO assignment or political-status determination.",
+    "approval_basis": "Owner acceptance of source-based policy and release basis; no independent factual verification of every entry or linguistic approval.",
+    "authorized_use": "Priority 5R development slice and isolated demo/test composition only",
+    "production_activation_approved": false,
+    "decision_record": "docs/adr/ADR-005-country-reference-development-release.md"
+  },
+  "prerequisites": {
+    "sources_read": [
+      "Current UC country/default/clearing and valid-input versus coverage requirements; O-1/O-2 recovery/locality boundaries.",
+      "Current architecture/ADR-003, 5Q pending manifest and retained raw bytes, affected API/application/store/React/test-composition paths."
+    ],
+    "reused": "Accepted dated eight-row checkpoint, 5Q acquisition/attribution/preparation evidence and existing atomic-save/recovery/locality evidence; no repeat source selection, acquisition or geopolitical research.",
+    "material_contract_schema_architecture_dependency_conflict": false,
+    "metadata_boundary": "The existing SearchRequest interpretation JSON records reference_versions.country; no SQL schema change or client payload/digest modification."
+  },
+  "approved_release": {
+    "catalogue": "docs/reference/COUNTRIES-GEONAMES-2026-10-23.json",
+    "manifest": "docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json",
+    "release_id": "geonames-countryInfo-2026-10-23-v1",
+    "raw_source": "build/uc001-priority5q-country-catalogue/source/countryInfo.txt",
+    "raw_source_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+    "output_sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885",
+    "counts": {
+      "source_rows": 252,
+      "included": 250,
+      "excluded": 2,
+      "unresolved": 0
+    },
+    "retrieved_at": "2026-10-23T08:36:05.629028+00:00",
+    "prepared_at": "2026-10-23T09:35:14+00:00",
+    "publisher_release": null,
+    "publisher_publication_date": null,
+    "publisher_entry_update_date": null,
+    "publisher_HTTP_last_modified": "Fri, 23 Oct 2026 02:01:19 GMT",
+    "date_limit": "No named release or entry validity/publication/update dates supplied in the file. HTTP Last-Modified identifies the resource timestamp only; it is not factual review or per-entry currentness.",
+    "runtime_use": "development-only",
+    "approval": {
+      "owner_approved": true,
+      "approved_on": "2026-10-23",
+      "approved_at": null,
+      "scope": "Priority 5R development slice and isolated demo/test composition only",
+      "production_activation_approved": false,
+      "independent_factual_review": false,
+      "linguistic_approval": false,
+      "basis": "Owner acceptance of the source-based catalogue policy and release basis; no independent factual verification of every entry or linguistic approval."
+    },
+    "XK_decision_history": [
+      {
+        "code": "XK",
+        "name": "Kosovo",
+        "previous_disposition": "unresolved",
+        "previous_manifest": "docs/reference/COUNTRIES-GEONAMES-MANIFEST.json",
+        "previous_decision": {
+          "code": "XK",
+          "name": "Kosovo",
+          "source_line": 173,
+          "reason": "Publisher labels XK temporary. Human review must decide membership under the current-country/territory policy; no replacement or ISO status is inferred.",
+          "support": {
+            "line": 13,
+            "text": "# The countrycode XK temporarily stands for Kosvo:"
+          }
+        },
+        "disposition": "included",
+        "approved_on": "2026-10-23",
+        "basis": "Owner accepted the pinned source-based catalogue policy: retain the existing 249 entries, include XK and exclude AN/CS.",
+        "limitation": "XK is a GeoNames temporary/source-specific code; inclusion claims neither an official ISO assignment nor a political-status determination."
+      }
+    ],
+    "source_names_verbatim": true,
+    "BQ_boundary_whitespace_preserved_in_bytes_and_DOM_text": true,
+    "display_only_trimming": "None introduced.",
+    "attribution": {
+      "credit": "Country code/name data derived from GeoNames countryInfo.",
+      "source_link": "https://download.geonames.org/export/dump/countryInfo.txt",
+      "license": "CC BY 4.0",
+      "license_link": "https://creativecommons.org/licenses/by/4.0/",
+      "license_basis": {
+        "path": "build/uc001-priority5q-country-catalogue/source/readme.txt",
+        "sha256": "b1957379b6c1242c700c98ac9a8aa0a09f56c3c0a50ee72175527005f48ef2c5",
+        "reference": "https://download.geonames.org/export/dump/readme.txt"
+      },
+      "requirements": "Retain appropriate credit, source/license links and modification notice; do not imply endorsement or add restrictions. Keep this manifest with the extract.",
+      "changes": "Selected ISO/Country fields, sorted codes, excluded AN/CS and included XK under the owner's 2026-10-23 source-based policy. Source names unchanged.",
+      "disclaimer": "GeoNames supplies data as is, without accuracy, timeliness or completeness warranty."
+    },
+    "reproducible_preparation": {
+      "approved_output_sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885",
+      "approved_manifest_sha256": "87ed5dfd58104dd4822db0abcf10fc498b9c7f0702124d2261276eb17e59f938",
+      "source_sha256": "c55f638cfaafb4fe45a9aa15120a0f1f78e8a34a8e1847d7b9320cf740fbc9ab",
+      "draft_output_sha256": "28e22f26581779311af24f5963550f83c8594590c1edce03b25f6a37d6c03343",
+      "byte_identical_reproduction": true,
+      "entries": 250,
+      "counts": {
+        "source_rows": 252,
+        "included": 250,
+        "excluded": 2,
+        "unresolved": 0
+      },
+      "BQ_name_boundary_whitespace_preserved": true
+    },
+    "original_5Q_draft_manifest_raw_source_and_receipts_preserved": true,
+    "new_external_acquisition": "None. Reused the exact retained source/readme bytes, original retrieval and unknown source dates."
+  },
+  "implementation": {
+    "reference": "A small application port and local loader enforce the exact approved release ID, source/output pins and development-only owner approval. No runtime publisher calls.",
+    "canonical_membership": "GET /api/countries and new server membership use the same loaded 250-entry local catalogue. All 250 code/name pairs match the native select exactly, plus one explicit empty option.",
+    "selector": "Accessible required native select. CH starts visibly selected and stays editable. Empty stays empty through validation/rerender; loading never resets country. Edits retain existing text/locality/language and are not comparison requests. Source/license/modification attribution is displayed without endorsement.",
+    "invalid_input": "Missing/blank retains existing 422 behavior. AN/CS/ZZ now produce 422 invalid_input, not_attempted, country_not_in_catalogue with no saved request/options/links. Invalid membership stops before interpretation.",
+    "coverage": "XK, AX and BQ are valid members; with the understood synthetic request and CH-only alternative evidence, actual assessed insufficient coverage is saved. CH still saves comparison.",
+    "configuration": "Missing, malformed, corrupt, unapproved, wrong-release or changed-data reference returns existing 503 configuration_unavailable; no default substitution or invalid-country assertion.",
+    "server_provenance": "interpretation.provenance.reference_versions.country:{source,release,sha256}; server-derived only. Existing payload canonicalization, proof binding and captured request identity are unchanged.",
+    "recovery": "Committed store lookup and ownership/payload-bound acknowledgement precede all reference loading and new membership. Test reference is never consulted for unchanged acknowledgement, changed-payload 409 or ownership-first 403. No stale comparison replay.",
+    "locality": "Existing 5H unavailable-reference/explicit country-only behavior and independent textual constraints remain unchanged.",
+    "composition": "Approved real source-based country reference with explicitly synthetic interpretation and alternative evidence; not a fully synthetic or completed real runtime. Normal app.main remains unconfigured."
+  },
+  "test_first": {
+    "preparation_RED": "4 new failures for missing approved extraction/CLI; 21 checks already passed (20 existing parser cases plus old draft reproduction).",
+    "preparation_GREEN": "25 passed in 0.22 s; separate approved CLI reproduction is byte-identical.",
+    "backend_RED": "15 failed and 2 passed in 2.15 s. Missing/blank handling already passed. Failures exposed membership, metadata, loader and endpoint work.",
+    "backend_initial_GREEN": "17 passed in 1.36 s.",
+    "corrupt_metadata_RED": "A concrete attribution.credit:null case raised AttributeError rather than reference configuration failure. Added the focused case before fixing the string type guard.",
+    "backend_final": "27 passed in 1.81 s: 18 new country cases and 9 directly affected existing regressions.",
+    "browser_harness_failure": "Initial new case alone failed its required nonempty baseline before any feature steps; retained separately and not claimed as product RED.",
+    "browser_feature_RED": "With the successful real React/CH baseline present, GET /api/countries returned actual 404 instead of 200; 1 passed and 1 failed in 5.7 s before endpoint/selector implementation.",
+    "browser_GREEN": "6 passed in 12.5 s; one new journey plus baseline and four directly affected existing regressions.",
+    "frontend": "ESLint and TypeScript/Vite build passed; no dependency changes.",
+    "scope": "No complete fault/concurrency/language matrix or full-suite run; no artificial failure claimed for already-correct behavior."
+  },
+  "actual_API_results_asserted_by_executed_tests": [
+    {
+      "countries": [
+        "missing",
+        "blank"
+      ],
+      "status": 422,
+      "body": {
+        "outcome": "invalid_input",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "request_fields_invalid"
+          }
+        ]
+      },
+      "persisted_rows": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    },
+    {
+      "countries": [
+        "AN",
+        "CS",
+        "ZZ"
+      ],
+      "status": 422,
+      "body": {
+        "outcome": "invalid_input",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "country_not_in_catalogue"
+          }
+        ]
+      },
+      "persisted_rows": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    },
+    {
+      "reference_cases": [
+        "draft",
+        "unapproved",
+        "wrong_release",
+        "corrupt JSON",
+        "missing",
+        "changed bytes with matching forged manifest hash",
+        "nonstring attribution"
+      ],
+      "status": 503,
+      "body": {
+        "outcome": "configuration_unavailable",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "country_reference_unavailable"
+          }
+        ]
+      },
+      "persisted_rows": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    },
+    {
+      "countries": [
+        "XK",
+        "AX",
+        "BQ"
+      ],
+      "status": 201,
+      "outcome": "insufficient_coverage",
+      "persistence": "saved",
+      "rows_per_isolated_case": {
+        "search_request": 1,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      }
+    },
+    {
+      "country": "CH",
+      "status": 201,
+      "outcome": "comparison",
+      "persistence": "saved",
+      "rows": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    {
+      "committed_recovery": "200 / submission_recovered; current reference load count 0. Changed captured country AN yields 409; wrong proof yields 403 before reference loading. Original projection/counts unchanged."
+    }
+  ],
+  "browser_journey": {
+    "evidence": "build/uc001-priority5r-country-selection/browser-green/saved-comparison-approved--55241-input-and-saves-XK-coverage/approved-country-selector-evidence.json",
+    "result": {
+      "artifact": "build/uc001-priority5r-country-selection/browser-green/saved-comparison-approved--55241-input-and-saves-XK-coverage/approved-country-selector-evidence.json",
+      "request_id": "010becd0-338f-4065-b951-3a620f846917",
+      "HTTP_status": 201,
+      "outcome": "insufficient_coverage",
+      "before": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_empty": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_XK": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "country_reference": {
+        "source": "GeoNames countryInfo",
+        "release": "geonames-countryInfo-2026-10-23-v1",
+        "sha256": "8044346fd37ccc6fa1fa99da3068bb69c9bb987bc6ac7a96f04b3618940fe885"
+      },
+      "final_after_six_browser_cases": {
+        "search_request": 7,
+        "request_alternative": 8,
+        "request_alternative_evidence": 8
+      }
+    },
+    "actual_coverage_response": {
+      "status": 201,
+      "body": {
+        "outcome": "insufficient_coverage",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic-only"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "010becd0-338f-4065-b951-3a620f846917"
+        },
+        "issues": [
+          {
+            "code": "no_qualifying_knowledge"
+          },
+          {
+            "code": "research_unavailable"
+          }
+        ],
+        "coverage": {
+          "limitation_codes": [
+            "geographic_applicability_unverified",
+            "useful_comparison_information_missing"
+          ]
+        },
+        "limitations": [
+          "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+          "Existing evidence does not establish applicability in the requested location.",
+          "No qualifying candidate has useful supported financial or environmental/resource information."
+        ],
+        "rendering": {
+          "language": "en",
+          "version": "synthetic-coverage-v1"
+        }
+      }
+    },
+    "native_empty_validation": {
+      "value": "",
+      "valid": false,
+      "value_missing": true,
+      "message_present": true
+    },
+    "comparison_POSTs": {
+      "clear_and_validation": 0,
+      "XK_selection_before_submit": 0,
+      "explicit_submit": 1
+    },
+    "UI_API_exact_membership_agreement": 250,
+    "prior_state_preserved": true,
+    "server_reference_metadata_matches_approved_release": true,
+    "final_counts_after_all_six_selected_browser_cases": {
+      "search_request": 7,
+      "request_alternative": 8,
+      "request_alternative_evidence": 8
+    },
+    "existing_regressions": [
+      "Direct country editing after uncertainty, preserving new-intent identity.",
+      "Lost HTTP response followed by checked committed acknowledgement.",
+      "Unavailable locality followed by explicit country-only continuation.",
+      "Changed-country saved coverage without invented alternatives/global absence."
+    ],
+    "legacy_scope_label_clarification": "The unchanged older country-edit regression sidecar retains country_inputs_are_existing_synthetic_fixtures_not_reference_validation:true as its historical scenario label. It is not authoritative for 5R and is not used as membership-validation evidence. This composition uses approved real country reference and synthetic meaning/evidence; the new journey establishes exact membership agreement."
+  },
+  "changed_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "frontend/src/App.tsx",
+    "scripts/uc001_country_catalogue/prepare.py",
+    "src/app/application/comparisons.py",
+    "src/app/interfaces/api.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/product_habit.py",
+    "tests/support/source_bound_rendering.py",
+    "tests/support/synthetic.py",
+    "tests/unit/test_country_catalogue_preparation.py",
+    "docs/adr/ADR-005-country-reference-development-release.md",
+    "docs/reference/COUNTRIES-GEONAMES-2026-10-23.json",
+    "docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json",
+    "src/app/application/countries.py",
+    "src/app/infrastructure/country_reference.py"
+  ],
+  "executed_commands": "build/uc001-priority5r-country-selection/commands.json",
+  "preservation": {
+    "protected_files": 728,
+    "unchanged_protected_files": 716,
+    "expected_existing_files_changed": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "frontend/src/App.tsx",
+      "scripts/uc001_country_catalogue/prepare.py",
+      "src/app/application/comparisons.py",
+      "src/app/interfaces/api.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/support/product_habit.py",
+      "tests/support/source_bound_rendering.py",
+      "tests/support/synthetic.py",
+      "tests/unit/test_country_catalogue_preparation.py"
+    ],
+    "new_source_reference_files": [
+      "docs/adr/ADR-005-country-reference-development-release.md",
+      "docs/reference/COUNTRIES-GEONAMES-2026-10-23.json",
+      "docs/reference/COUNTRIES-GEONAMES-2026-10-23-MANIFEST.json",
+      "src/app/application/countries.py",
+      "src/app/infrastructure/country_reference.py"
+    ],
+    "all_other_protected_hashes_unchanged": true,
+    "prior_priority5_artifacts_byte_preserved": 406,
+    "original_5Q_draft_manifest_raw_source_and_receipts_unchanged": true,
+    "all_prior_TASKS_history_after_current_authorization_and_checkpoint_preserved": true,
+    "all_prior_API_and_parser_test_functions_preserved": true,
+    "all_prior_browser_assertions_preserved_except_truthful_demo_label": true,
+    "browser_interaction_adaptations_only": {
+      "DE_fill_to_selectOption": 3,
+      "demo_label_expectation": 1
+    },
+    "normal_app_main_SQLite_store_domain_language_contracts_dependencies_real_knowledge_drafts_unchanged": true,
+    "new_or_changed_lines_with_trailing_whitespace": [],
+    "preexisting_whitespace_warning": {
+      "before_line": 1995,
+      "current_line": 2035,
+      "text": "  evidence-backed comparisons and persistence. "
+    },
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_and_HEAD_unchanged": true,
+    "owned_server_ports_closed": {
+      "8011": true,
+      "5175": true
+    },
+    "trace_or_HAR_files": 0,
+    "protected_raw_request_fields_in_new_JSON_artifacts": [],
+    "Git_delivery_CI_dependency_changes_or_deployment": false
+  },
+  "remaining_and_limits": [
+    "Priority 5, increment 1 and DEVELOP remain incomplete; PHASE 3 / STATUS in-progress.",
+    "No town/postcode datasets or matching, O-1 confirmation expansion, real alternative/rendering/interpreter activation, linguistic approval, TL-03, runtime research, UC-003 or Priority 6.",
+    "No independent factual verification of every country entry, official XK ISO assignment, political-status determination or catalogue completeness/currentness guarantee.",
+    "Production activation, deployment, future reference replacement and further implementation require separate authorization; current reference use is limited to the approved development/demo/test scope.",
+    "DE/FR/IT/EN contracts, Resolena-controlled processing, atomic save-before-presentation, immutable evidence and prior uncommitted work remain preserved. Experiments remain closed."
+  ],
+  "review": "AI read-only peer checks found no remaining material conflict; no independent human implementation acceptance is claimed.",
+  "stopping_point": "Country-selection slice implemented and verified; stop for human review without Git delivery or phase completion.",
+  "artifacts": {
+    "commands": "commands.json",
+    "preparation_RED": "preparation-red.txt",
+    "preparation_GREEN": "preparation-green.txt",
+    "preparation_result": "preparation-result.json",
+    "backend_RED": "backend-red.txt",
+    "backend_initial_GREEN": "backend-green.txt",
+    "corrupt_metadata_RED": "config-shape-red.txt",
+    "backend_final": "backend-final.txt",
+    "browser_harness_failure": "browser-red.json",
+    "browser_feature_RED": "browser-red-baseline.json",
+    "browser_GREEN": "browser-green.json",
+    "browser_result": "browser-result.json",
+    "frontend_lint": "frontend-lint.txt",
+    "frontend_build": "frontend-build.txt",
+    "preservation": "preservation.json",
+    "baseline": "preservation-baseline.json",
+    "Git_status": "git-status.txt",
+    "Git_diff_check": "git-diff-check.txt"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-11",
+  "command": ".venv/bin/python -B -m unittest discover -s experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11 -p test_operations.py -v",
+  "exit_code": 0,
+  "tests_passed": 7,
+  "seconds": 1.122,
+  "restart_syntax_check": "ast.parse passed without importing or executing the driver",
+  "classification": "Operational harness checks; no model-capability result",
+  "tracked_whitespace_check": "Pre-existing trailing whitespace in TASKS.md historical backlog; unrelated text preserved"
+}

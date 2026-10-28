@@ -1,0 +1,69 @@
+[WebServer] INFO:     Started server process [35777]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:35817) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:35841) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (1.3s)
+  ✘  2 ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association single_match saves honest insufficient coverage (783ms)
+(node:35956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association explicit saves honest insufficient coverage (745ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [35777]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association single_match saves honest insufficient coverage 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 200
+
+      154 |       body = await response.json()
+      155 |     }
+    > 156 |     expect(response.status()).toBe(201)
+          |                               ^
+      157 |     expect(body.outcome).toBe('insufficient_coverage')
+      158 |     expect(body.persistence.state).toBe('saved')
+      159 |     expect(body.coverage.limitation_codes).toContain('geographic_applicability_unverified')
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:156:31
+
+    Error Context: ../build/uc001-priority5u-association-matching/browser-red/saved-comparison-pinned-re-2fb64-onest-insufficient-coverage/error-context.md
+
+  2) ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association explicit saves honest insufficient coverage 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 1
+
+      Array [
+        Object {
+    -     "code": "locality_reference_ambiguous",
+    +     "code": "locality_reference_unavailable",
+        },
+      ]
+
+      104 |       expect(body.outcome).toBe('clarification_required')
+      105 |       expect(body.persistence).toEqual({ state: 'not_attempted' })
+    > 106 |       expect(body.issues).toEqual([{ code: 'locality_reference_ambiguous' }])
+          |                           ^
+      107 |       expect(body.clarification.choices).toEqual([])
+      108 |       const expectedChoices = [
+      109 |         { record: 15, municipality: 'Ecublens (VD)', municipalityId: '5635' },
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:106:27
+
+    Error Context: ../build/uc001-priority5u-association-matching/browser-red/saved-comparison-pinned-re-33493-onest-insufficient-coverage/error-context.md
+
+  2 failed
+    ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association single_match saves honest insufficient coverage 
+    ../tests/e2e/saved-comparison.spec.ts:78:7 › pinned reference association explicit saves honest insufficient coverage 
+  1 passed (8.9s)

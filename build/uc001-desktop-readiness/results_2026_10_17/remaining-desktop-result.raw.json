@@ -1,0 +1,56 @@
+{
+    "Outcome":  "remaining_desktop_checks_passed",
+    "Integrity":  {
+                      "State":  "historical_completion_inferred",
+                      "HistoricalEntryCount":  54,
+                      "FreshlyHashed":  false,
+                      "CurrentIntegrityVerified":  false,
+                      "RemainingFromReportedAttempt":  [
+
+                                                       ],
+                      "Basis":  "Original reported adapter stop follows successful Get-ContractAssets: runtime ZIP, model and all 52 extracted runtime files. Conditional on unchanged original script/inputs; not a fresh hash receipt.",
+                      "BeforeStartup":  "Fresh integrity validation is still required in any future authorized launcher; never use this report as current asset proof."
+                  },
+    "Ssh":  {
+                "NativePath":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+                "PathResolved":  "C:\\WINDOWS\\System32\\OpenSSH\\ssh.exe",
+                "Version":  {
+                                "State":  "ok",
+                                "Output":  "OpenSSH_for_Windows_9.5p2, LibreSSL 3.8.2",
+                                "ExitCode":  0,
+                                "Error":  null
+                            },
+                "State":  "ok"
+            },
+    "Gh":  {
+               "Path":  "C:\\ResolenaExperiments\\tools\\gh-2.81.0\\bin\\gh.exe",
+               "RequiredVersion":  "2.81.0",
+               "Version":  {
+                               "State":  "ok",
+                               "Output":  "gh version 2.81.0 (2025-10-01)\nhttps://github.com/cli/cli/releases/tag/v2.81.0",
+                               "ExitCode":  0,
+                               "Error":  null
+                           },
+               "State":  "ok"
+           },
+    "Ports":  {
+                  "Scope":  "Observed TCP allocations only; no bind/connect test or proof of future loopback binding.",
+                  "Occupants":  [
+
+                                ],
+                  "Required":  [
+                                   49187,
+                                   49189
+                               ],
+                  "State":  "no_observed_occupants"
+              },
+    "CodespacePort":  {
+                          "Port":  49188,
+                          "Reason":  "Separate Codespace localhost",
+                          "State":  "not_checked"
+                      },
+    "FullPreflightVerified":  false,
+    "StartupAuthorized":  false,
+    "Error":  null,
+    "ExecutionBlocker":  "Original launcher identity and monitor usage rules require alignment with v1.2.0 before execution."
+}

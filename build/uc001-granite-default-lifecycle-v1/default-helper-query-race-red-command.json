@@ -1,0 +1,10 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py::test_default_session_reconciles_verified_helper_exit_between_native_queries"
+  ],
+  "exit_code": 1
+}

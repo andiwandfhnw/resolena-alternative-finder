@@ -1,0 +1,385 @@
+{
+  "config": {
+    "argv": [
+      "/usr/local/share/nvm/versions/node/v24.21.0/bin/node",
+      "/workspaces/resolena-alternative-finder/frontend/node_modules/.bin/playwright",
+      "test",
+      "--grep",
+      "browser displays exactly|pinned reference association|explicit locality confirmation saves|unavailable locality requires explicit country-only|direct new intent after uncertain save: country_edit|lost HTTP response after atomic commit",
+      "--trace=off",
+      "--output=/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green",
+      "--reporter=list,json"
+    ],
+    "configFile": "/workspaces/resolena-alternative-finder/frontend/playwright.config.ts",
+    "rootDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "snapshotDir": "/workspaces/resolena-alternative-finder/tests/e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 30000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "trace": "off"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "saved-comparison.spec.ts",
+      "file": "saved-comparison.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "browser displays exactly the committed API comparison and stable database identities",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1024,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:18.860Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-691418fd2f1c4708ef96",
+          "file": "saved-comparison.spec.ts",
+          "line": 54,
+          "column": 5
+        },
+        {
+          "title": "pinned reference association single_match saves honest insufficient coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1269,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:20.046Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "association-single_match-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-2fb64-onest-insufficient-coverage/attachments/association-single-match-evidence-e7b698620e8b4cf227c606220602951e78b16fe8.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-f4b78c4f81a34ec87e91",
+          "file": "saved-comparison.spec.ts",
+          "line": 93,
+          "column": 7
+        },
+        {
+          "title": "pinned reference association explicit saves honest insufficient coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1317,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:21.352Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "association-explicit-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-pinned-re-33493-onest-insufficient-coverage/attachments/association-explicit-evidence-bbff7734996feb48a6d81fcfe289b19256bfda3f.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-0a828079864692fa0004",
+          "file": "saved-comparison.spec.ts",
+          "line": 93,
+          "column": 7
+        },
+        {
+          "title": "explicit locality confirmation saves reference-unverified intent without unsupported coverage",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 972,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:22.704Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "confirmed-locality-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-explicit--2ad39-ithout-unsupported-coverage/attachments/confirmed-locality-evidence-87be9997ab9ecf6b2afdfc41beeed8c822b111bd.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-d015cb72cb9a4ec71074",
+          "file": "saved-comparison.spec.ts",
+          "line": 263,
+          "column": 5
+        },
+        {
+          "title": "direct new intent after uncertain save: country_edit",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1467,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:23.693Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country_edit-after-uncertainty-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-direct-ne-c8202-uncertain-save-country-edit/attachments/country-edit-after-uncertainty-evidence-47c351c8c94c5ec7dbe39677359a8cf3730e65de.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-b5b45d8e5bd8c7223ae3",
+          "file": "saved-comparison.spec.ts",
+          "line": 699,
+          "column": 7
+        },
+        {
+          "title": "lost HTTP response after atomic commit requires explicit same-submission recovery",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1594,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:25.180Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "committed-recovery-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-lost-HTTP-de517-it-same-submission-recovery/attachments/committed-recovery-evidence-0643615abf6466d3c9fdca712ee6a47cbf74e2e8.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-e280ed9f0b0f1e40ca7f",
+          "file": "saved-comparison.spec.ts",
+          "line": 1516,
+          "column": 5
+        },
+        {
+          "title": "unavailable locality requires explicit country-only continuation before saving",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1264,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-23T18:17:26.792Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "country-only-continuation-evidence",
+                      "contentType": "application/json",
+                      "path": "/workspaces/resolena-alternative-finder/build/uc001-priority5u-association-matching/browser-composition-green/saved-comparison-unavailab-ff596--continuation-before-saving/attachments/country-only-continuation-evidence-51ecf4415e4e231d68dc5a16bceff1cbb2997e1b.json"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fd4f13dd731b640181c1-c65502fcdb09c7ab3e96",
+          "file": "saved-comparison.spec.ts",
+          "line": 1736,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T18:17:14.587Z",
+    "duration": 13704.907000000001,
+    "expected": 7,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

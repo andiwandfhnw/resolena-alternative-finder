@@ -1,0 +1,149 @@
+{
+  "version": "uc001-granite-env-key-fix-v1",
+  "recorded_on": "2026-10-28",
+  "phase": 3,
+  "status": "in-progress",
+  "execution_authorized": false,
+  "owner_step4_attempt": {
+    "authorized_attempt_consumed": true,
+    "status": "failed_at_environment_validation_before_acquisition_build",
+    "reported_chain": "controller.native_run -> worker.validate_environment(os.environ)",
+    "reported_exception": "WorkerFailure: frozen_x64_environment_not_active",
+    "owner_failure_excerpt": "owner-failure-excerpt.txt",
+    "raw_full_traceback_supplied": false,
+    "desktop_approved_config_approval_record_or_other_files_inspected": false,
+    "preservation": "Preserve owner-retained traceback and any existing approval files unchanged; no delete/overwrite/reconstruction or retry",
+    "retry_authorized": false
+  },
+  "advisor_evidence": "Owner-attributed static uploaded-package/Python-documentation inspection only; no package code, tests or Windows execution",
+  "source_derived_failure_boundary": {
+    "source": "Unchanged issued v2 package/controller.py",
+    "python_and_config_validation_before_failure": true,
+    "failed_call_line": 918,
+    "native_output_creation_line_not_reached": 925,
+    "journal_creation_line_not_reached": 926,
+    "private_job_creation_line_not_reached": 929,
+    "run_session_line_not_reached": 949,
+    "result_write_line_not_reached": 951,
+    "T0_initialization": "Inside run_session, not reached",
+    "unhandled_traceback": "WorkerFailure not caught by CLI exception tuple at line 980",
+    "desktop_artifact_absence_observed": false,
+    "result_ledger_T0_or_measured_zero_bytes_fabricated": false
+  },
+  "correction": {
+    "file": "scripts/uc001_granite_controller/worker.py",
+    "source_lines_replaced": 4,
+    "behavior": "Uppercase keys in a copied environment; canonical pinned-version lookups; unchanged metadata labels read values canonically from prepared env",
+    "valid_version_defaults_added": false,
+    "caller_mutated": false,
+    "value_architecture_tool_sdk_override_checks_preserved": true,
+    "child_path_parallelism_smudge_and_unrelated_values_preserved": true,
+    "additional_refactor_needed": false
+  },
+  "preflight_consistency": "Static shared-value/path/architecture/SDK/override comparison against unchanged PowerShell preflight lines 107-115; preflight has additional checks, not identical total coverage; no preflight rerun",
+  "red": {
+    "stage": "RED before implementation",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_worker.py::test_environment_guard_accepts_windows_uppercase_keys",
+      "--tb=short"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 1.3473334312438965,
+    "worker_sha256": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+    "test_sha256": "9bd69406ddbb80e13407caea0cded0ddedccfe0d65f83f6d1904156986070f15",
+    "windows_execution": false,
+    "tools_filesystem_lookup": "injected",
+    "live_network_or_acquisition": false
+  },
+  "green": {
+    "stage": "GREEN focused environment validation and version evidence",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_worker.py",
+      "-k",
+      "environment_guard",
+      "--tb=short"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.8363664150238037,
+    "worker_sha256": "7e2660e10139862c7d5542e40c5e4ad0739eea917ee97de59be3671327b8daf5",
+    "test_sha256": "9bd69406ddbb80e13407caea0cded0ddedccfe0d65f83f6d1904156986070f15",
+    "windows_execution": false,
+    "native_tools_or_network_or_acquisition": false,
+    "metadata_test": "Existing injected runner stops at synthetic source-init failure before any proxy/fetch"
+  },
+  "green_summary": "38 passed, 45 deselected; no totals accumulated with historical 79/92 receipts",
+  "test_scope": "Existing worker module environment_guard selection only; injected filesystem/tool lookups; metadata uses existing fake runner with synthetic source-init failure before any proxy/fetch",
+  "closed_diagnostics_windows_native_tools_network_acquisition_build_gpu_model_inference_executed": false,
+  "diffs": [
+    "worker.py.diff",
+    "test_granite_controller_worker.py.diff"
+  ],
+  "helper_hashes": "helper-hashes.json",
+  "handoff_updates_required_but_not_performed": [
+    "worker.py binding in a new versioned four-helper config",
+    "New inactive configuration digest",
+    "New manifest/file hashes and digest",
+    "New transfer inventory and archive digests",
+    "Separate owner authorization before any native execution"
+  ],
+  "new_handoff_package_or_config_generated": false,
+  "issued_v2_package_desktop_or_frozen_artifacts_patched": false,
+  "prior_accounting_or_continuous_window_reset_renewal": false,
+  "acquisition_clock_or_meter_started_by_this_correction": false,
+  "evidence_limits": "Offline injected correction only; no native suitability, resource fit, default-controller Windows success or renewed execution authorization",
+  "preservation": {
+    "protected_existing_files": 218,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/worker.py",
+      "tests/unit/test_granite_controller_worker.py"
+    ],
+    "unchanged_existing_files": 215,
+    "missing_existing_files": [],
+    "entire_issued_v2_tree_and_all_selected_historical_receipts_unchanged": true,
+    "existing_test_and_fixture_definitions_unchanged": true,
+    "tasks_only_current_summary_and_dated_entry_changed": true,
+    "local_links_checked": 13,
+    "json_and_ast_checks_passed": true,
+    "new_documentation_whitespace_clean": true,
+    "git": {
+      "branch --show-current": "unchanged",
+      "rev-parse HEAD": "unchanged",
+      "status --short": "unchanged",
+      "diff --cached --raw": "unchanged",
+      "ls-files --stage": "unchanged"
+    },
+    "git_diff_check_exit_code": 2,
+    "git_diff_check_output": "docs/TASKS.md:3488: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "historical_whitespace_warning_preserved": true
+  },
+  "current_helper_hashes": {
+    "controller.py": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+    "worker.py": "7e2660e10139862c7d5542e40c5e4ad0739eea917ee97de59be3671327b8daf5",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f"
+  },
+  "artifact_sha256": {
+    "README.md": "8513c3d8f318317ca23801d1d31e040a92359d5f37038be583918870d25a816c",
+    "owner-failure-excerpt.txt": "013929ec952b7f6ba243ec6014ebcbda3222ce9b44b193f4ac8f6cc333ebaceb",
+    "red.log": "35a3b00bfc998e3c1e2bac13adcec49fa2f36dc17bd1ae0a4188ad03d9a0750e",
+    "green-command.json": "640281b34e30eb3d5057ccc35d99cd9c1caf98a3dedb4214cd35e4c51ecaa07a",
+    "worker.py.diff": "59617c12139fa9339362656610006face855de1c01899655b24a3681fd18c6a5",
+    "preservation-before.json": "fd991da00bb0f117dedb3e24ca510258e3a2fc4bb86fadcd141337d4d1d13c81",
+    "test_granite_controller_worker.py.diff": "2e32b7fa5b1605a2283c769f9e5c50e72033617d025ab4ed581a259378ddd907",
+    "green.log": "88fe54393ce3227aaaa01b9518c2cc3e573c66c121a0fd0a2d80fcd35f0e05f1",
+    "helper-hashes.json": "f781caa0056ec70021c5821fba990e3f12896209e27a66295d37ec453aa12843",
+    "red-command.json": "d2aa5a03107329b672173fea6b8126d58b594b875c41c123eccabb00d6bb90c9",
+    "git-diff-check.txt": "78f4f44ba5d276226a7c9f86a5023ff7582fdb6edd50772b1a1488b9170b03c6",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac"
+  },
+  "stopping_point": "Offline correction complete for owner review; no retry, native execution or handoff regeneration authorized; Phase 3 in-progress"
+}

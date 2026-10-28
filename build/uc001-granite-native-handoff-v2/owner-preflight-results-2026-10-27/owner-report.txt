@@ -1,0 +1,53 @@
+Owner preflight results:
+
+I accidentally ran step 3 first in the original, non-activated PowerShell,
+then repeated it in the correctly activated child PowerShell.
+
+Record TWO actual owner-executed preflight attempts:
+
+1. 2026-10-27 22:32 UTC — failed
+Directory:
+C:\Users\AndiWand\Downloads\granite-native-preflight-a49df498-c257-4085-8d78-0a47602a4346
+
+Package/configuration validation passed, but the run stopped at:
+"Exact x64 MSVC/Windows SDK shell activation is not established."
+
+2. 2026-10-27 22:34 UTC — passed
+Directory:
+C:\Users\AndiWand\Downloads\granite-native-preflight-f072c17d-aff9-4b56-a1e0-53da65f4610d
+
+preflight_passed=true
+configuration_inactive=true
+execution_authorized=false
+failure_reason=null
+
+The successful run used the activated child PowerShell and established the
+reported package/toolchain/SDK and point-in-time resource checks.
+
+Preserve both attempts. Record the second as an owner-performed rerun beyond
+the original one-attempt instruction; do not claim prior retry authorization,
+erase the first failure or report only one execution.
+
+I accept the second result at its preflight-only scope.
+This does not establish workload resource fit or Windows validation of the
+default acquisition/build controller.
+
+Neither attempt started real acquisition/build or the real acquisition clock.
+The prior receipt and cumulative allowance remain unchanged.
+
+The successful run's prospective native-output path is:
+C:\Users\AndiWand\Downloads\granite-native-run-f4a7fec0-bb09-46b9-9b18-5eb49619243f
+
+That path remains prospective; do not create it.
+
+Record the supplied evidence only. No tests, preflight or closed diagnostics
+need rerunning for this documentation update. Do not claim direct inspection
+of desktop files.
+
+Keep the configuration inactive. Step 4/source/build remains NOT AUTHORIZED.
+Preserve the shared acquisition-window sequencing consequence for the next
+owner decision.
+
+No implementation changes or Git delivery.
+PHASE: 3 / STATUS: in-progress.
+Stop after recording both results.

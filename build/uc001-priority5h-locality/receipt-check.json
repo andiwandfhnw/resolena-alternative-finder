@@ -1,0 +1,9 @@
+{
+  "receipt_json_and_referenced_artifacts_valid": true,
+  "document_receipt_link_valid": true,
+  "all_eight_changed_file_hashes_match_receipt": true,
+  "trace_or_HAR_artifacts_present": false,
+  "saved_identity_and_counts_consistent": true,
+  "git_status_artifact_present": true,
+  "diff_check_artifact_present": true
+}

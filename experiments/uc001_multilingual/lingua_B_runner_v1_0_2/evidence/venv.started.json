@@ -1,0 +1,22 @@
+{
+  "role": "venv",
+  "pid": 13261,
+  "ppid": 13251,
+  "deadline_monotonic": 3675.674808245,
+  "deadline_utc": "2026-10-15T18:11:37.510502+00:00",
+  "limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "freeze_sha256": "627ce075a72bdd7e719d977a909155b2317b493ad2778e79f208997663276f19",
+  "context_sha256": "983bbc9841a245b51326ff2d9179944788862e96309c3ab560526181182fd107",
+  "affinity": [
+    0,
+    1
+  ]
+}

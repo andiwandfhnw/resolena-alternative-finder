@@ -1,0 +1,33 @@
+{
+  "command": [
+    "/usr/local/bin/python3",
+    "-B",
+    "-m",
+    "pip",
+    "--isolated",
+    "--python",
+    "/workspaces/resolena-alternative-finder/build/lingua-b-v1-0-2-20261015/venv",
+    "install",
+    "--no-index",
+    "--find-links",
+    "/workspaces/resolena-alternative-finder/build/lingua-b-20261015",
+    "--no-deps",
+    "--no-cache-dir",
+    "--no-compile",
+    "--require-hashes",
+    "-r",
+    "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/lingua_B_2026_10_15/requirements.lock"
+  ],
+  "deadline_monotonic": 3675.674808245,
+  "limits": {
+    "seconds": 1800,
+    "owned_rss_bytes": 1073741824,
+    "additional_scratch_bytes": 1073741824,
+    "acquisition_bytes": 200000000,
+    "cpu_threads": 2,
+    "records": 50,
+    "library_calls": 100
+  },
+  "context": "/workspaces/resolena-alternative-finder/build/lingua-b-v1-0-2-20261015/context.json",
+  "network_sources": []
+}

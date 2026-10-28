@@ -1,0 +1,143 @@
+Owner review outcome:
+
+Accept Outcome A as closing the acquisition-byte-meter blocker at the
+offline preparation level only.
+
+The conservative acquisition proxy design is accepted subject to its
+recorded evidence limits:
+- 10 GiB cumulative ceiling unchanged;
+- prior accounting receipt mandatory;
+- every upstream->Git tunnel byte charged conservatively;
+- debit durably recorded before forwarding;
+- exact exhaustion is failure;
+- command-local isolated Git proxy binding;
+- no acquisition/build execution established yet.
+
+Do not modify the accepted proxy or native build procedure unless a concrete
+controller-integration defect requires it.
+
+Authorize one bounded task only:
+
+IMPLEMENT AND OFFLINE-VERIFY THE COMPLETE WINDOWS JOB OBJECT / RESOURCE
+CONTROLLER needed to execute the already-approved acquisition/configure/build
+procedure.
+
+Goal:
+produce one reviewable controller that can later launch the prepared Windows
+worker suspended, bind it to a private Job Object before resume, supervise
+the acquisition proxy/Git and configure/build phases, enforce every frozen
+resource/time limit, terminate only its owned job tree on breach/error, and
+verify cleanup.
+
+Required ownership semantics:
+- controller remains outside the Job Object;
+- create worker suspended;
+- assign successfully before resume;
+- prohibit breakaway;
+- kill-on-job-close;
+- retain private non-inherited job handle;
+- verify every expected phase worker belongs to the job;
+- descendants including proxy, Git, CMake, Ninja, cl/glslc and shader
+  generator remain owned;
+- no process-name-based termination;
+- cleanup success requires active-process count zero / identity-bound exits.
+
+Integrate the already accepted acquisition proxy without changing its meter
+semantics.
+
+Frozen limits to enforce exactly:
+
+ACQUISITION
+- total elapsed acquisition budget: 1800 seconds
+- cumulative downloaded bytes: 10737418240
+- use accepted proxy ledger as the conservative network-byte authority
+- no reset between initialization/proxy/Git steps
+- no retry
+
+CONFIGURE + BUILD
+- combined elapsed budget: 2700 seconds
+- process-tree memory maximum: 25769803776 bytes
+- generated build output maximum: 12884901888 bytes
+- outer parallelism remains 2
+
+HOST
+- initial free disk >= 51539607552 bytes
+- terminate/stop below 8589934592 bytes free disk
+- terminate/stop below 4294967296 bytes OS free memory
+
+Memory semantics:
+If Windows Job Object accounting natively enforces committed job memory
+rather than RSS, preserve that distinction explicitly. Do not silently call
+a committed-memory quantity RSS.
+If the frozen 24 GiB requirement cannot be faithfully enforced with the
+chosen metric, return that concrete mismatch as a blocker rather than
+changing the requirement.
+
+Controller requirements:
+- fail closed on stale/missing resource observations;
+- monitor independently of the owned worker;
+- detect unexpected proxy/worker exit;
+- treat partial/malformed/missing ledger terminal evidence as failure;
+- preserve logs/ledger/partial artifacts on all stops;
+- record start/end UTC + monotonic clocks;
+- record owned PIDs/creation identities and Job Object membership;
+- record sampled job memory, host free memory, disk free and build-output
+  size;
+- record breach/termination reason;
+- confirm owned-job cleanup;
+- never kill unrelated processes;
+- no automatic retry;
+- no hidden allowance reset.
+
+Offline verification must cover at minimum:
+1. worker is suspended until assigned;
+2. assignment failure prevents resume;
+3. nested owned descendants are terminated on job termination;
+4. unrelated process survives;
+5. acquisition deadline boundary;
+6. configure+build combined deadline boundary;
+7. memory boundary and breach;
+8. build-output boundary and breach;
+9. initial-disk rejection;
+10. disk-floor breach;
+11. host-free-memory breach;
+12. stale/failed measurement;
+13. proxy premature exit;
+14. malformed/missing terminal ledger;
+15. worker failure;
+16. controller interruption;
+17. cleanup with active descendants;
+18. cleanup failure reporting;
+19. no retry;
+20. clocks/allowances cannot reset between subphases.
+
+Use harmless stand-ins/synthetic children for offline/Windows-native ownership
+tests; do not perform the real GitHub acquisition or llama.cpp build.
+
+Prefer Windows/.NET/PowerShell or the already-approved isolated Python where
+appropriate. Do not install third-party packages unless a concrete missing
+capability is first identified and separately approved.
+
+Return:
+- controller source/helper;
+- exact ownership/resource model;
+- focused RED/GREEN evidence;
+- Windows-execution limitations;
+- future owner invocation integrating the existing proxy/native procedure,
+  marked NOT AUTHORIZED / NOT EXECUTED;
+- updated readiness determination.
+
+Do NOT:
+- acquire llama.cpp from GitHub;
+- configure/build llama.cpp;
+- invoke GPU utilities;
+- download/start Granite;
+- run inference;
+- alter model/runtime/toolchain pins;
+- stage/commit/push/switch/reset branches.
+
+Preserve all historical evidence, Priority 5 acceptance, frozen artifacts,
+the accepted proxy and native build preparation.
+
+PHASE: 3 / STATUS: in-progress.
+Stop for owner review after controller preparation.

@@ -1,0 +1,83 @@
+{
+  "preparation_id": "uc001-granite-prior-accounting-v1",
+  "recorded_on": "2026-10-27",
+  "phase": 3,
+  "status": "in-progress",
+  "outcome": "blocked_missing_complete_prior_accounting_evidence",
+  "owner_windows_structural_result": {
+    "provenance": "owner-executed; not Codex Windows execution",
+    "attempt": "consumed_successful",
+    "accepted_scope": "structural integrity/import/schema only",
+    "record": "owner-structural-result.json"
+  },
+  "final_prior_receipt_issued": false,
+  "final_prior_receipt_schema": null,
+  "final_prior_receipt_sha256": null,
+  "prior_bytes": null,
+  "prior_bytes_status": "unknown; not zero",
+  "acquisition_ceiling_bytes": 10737418240,
+  "allowance_reset": false,
+  "accepted_proxy_sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+  "frozen_bundle_id": "9a4acb903c834737809b2648c358da9f2d91b116471966fb7b691847a069f4b4",
+  "frozen_config_sha256": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+  "smallest_missing_evidence": "One complete owner-supplied Granite model/source allowance accounting statement including partial/failed transfers and preserved measured/accepted-charge provenance and hashes; no inference of zero from bounded no-acquisition observations.",
+  "offline_checks": {
+    "pytest": {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/unit/test_granite_acquisition_proxy.py::test_prior_unknown_cannot_be_loaded_as_zero",
+        "tests/unit/test_granite_controller_cli.py"
+      ],
+      "exit_code": 0,
+      "scope": "Offline receipt/hash/controller preflight only; synthetic accounting values are not historical charges.",
+      "result": "5 passed in 0.16s"
+    },
+    "actual_incomplete_template_proxy_result": "prior_accounting_unknown",
+    "actual_incomplete_template_controller_result": "native_preflight_failed:prior_accounting_unknown",
+    "syntax": "new JSON parsed",
+    "local_links_checked": 9,
+    "independent_read_only_contract_and_evidence_review": "passed"
+  },
+  "preparation_incidents": [
+    "Initial inline verification-record writer had a Python syntax typo before any write; corrected without rerunning tests or changing existing files."
+  ],
+  "no_native_network_or_execution_preparation": true,
+  "native_binding_verified": false,
+  "resource_fit_established": false,
+  "closed_harmless_ownership_model_preserved": true,
+  "preservation": {
+    "protected_existing_files": 1551,
+    "changed_existing_files": [
+      "docs/TASKS.md"
+    ],
+    "missing_existing_files": [],
+    "unchanged_existing_files": 1550,
+    "historical_tasks_restored_exactly": true,
+    "new_local_links_checked": 9,
+    "new_json_parsed": true,
+    "new_artifact_whitespace_clean": true,
+    "phase": 3,
+    "status": "in-progress",
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "git_status_unchanged": true,
+    "index_unchanged": true,
+    "cached_diff_empty": true,
+    "git_diff_check_exit_code": 2,
+    "git_diff_check_output": "docs/TASKS.md:3019: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "evidence_hashes": "contract-checks.json",
+  "artifact_sha256": {
+    "README.md": "0fb4ddecb365e70e665028a77e51d2b2a7f22fec91f2469a2ebf3722d10c12fe",
+    "contract-checks.json": "0308cc67c93183d99251d216ef0ae6c5240946f10b6faf1d890fe09ee8501c5e",
+    "focused-contract-tests.json": "5072facc72a47ce33820998fdfcc10a9f0bc7ccb5984f521ef128b94028fbf22",
+    "focused-contract-tests.log": "fc04c4ed459b92d32a3835538d313386aceee93bf4d005bf5bb81449e34239eb",
+    "git-diff-check.txt": "b851e884f3ff6406b75adfaf2e91705086b4129c5319bc933722fd7ee69c0887",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "owner-structural-result.json": "f492cf5dcff9b72dd1eca0531a4512445884bd557294a05d6542597f89c17034",
+    "preservation-checks.json": "b71ae23561d2009498d66150f31c885eb5706c863e817c2df31ba25ecc1e8727"
+  }
+}

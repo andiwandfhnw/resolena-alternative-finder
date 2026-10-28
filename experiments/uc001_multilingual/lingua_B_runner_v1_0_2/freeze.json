@@ -1,0 +1,28 @@
+{
+  "version": "1.0.2",
+  "frozen_utc": "2026-10-15T17:47:07.141299+00:00",
+  "files": {
+    "README.md": "f442cf06be26b834e9f227949f462a01fc1fd52e21aad3039f95641db3a90638",
+    "test_integration.py": "2d1d30adba4e2faaeb36180669c225b4aa8d63191e42551b799195d6c521dbf5",
+    "integration-checks.json": "9294f5c104897ca14a9e54dcd5273c9f31eea91c52faf2d72635b3c395cf4d3f",
+    "worker.py": "cb2dc1590fd4c5274967acf85d44d2891a30c4658dbaf4a12c0c3eb90861042e",
+    "phase.py": "222c4447225a3ddbde7c4c60ae35069ed0996939952975fccfae7c72dcf6548b",
+    "runner.py": "5559452ee4e5bbebc76bf3d1573789d3478371cfda3c03b6f202f4538afcf055",
+    "common.py": "a4e4d196ce0878a8f3e606a407f97bf4765d82d885267c4ea087720114f2c3fc"
+  },
+  "references": {
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/freeze.json": "20c23e875547f114d57298c60b6c1e6fa8ee304bfd3347298228e9e815661194",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/cases.json": "6e34913c78fe9f8ef6bd25186f202cbc344d7f0ba6e68a1d76df0ea0617fbc30",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/order.json": "42d7d4f93cc44ef69967cda8c30b38df5f24eceb321232657e8430abb7126651",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/config.json": "672984febcf2ea8b195435379a361f294c3bd819aa8f928432ecfd39ca4c6c8a",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/requirements.lock": "3ee3f701d8351852f3d6af3170e3831409f93565a8b1c6b5d5dbc038fcbd5ef8",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/worker.py": "8a5ae3c5af873ac05bfa9cf95c84237f778ee4c02807055e5aded0efef3d1f91",
+    "experiments/uc001_multilingual/lingua_B_2026_10_15/supervise.py": "2eaefe782b8dba64407130a6259fcddc2f12b4c921e7e726b46477552cf29694",
+    "experiments/uc001_multilingual/lingua_B_verifier_v1_0_1/verify_retained.py": "c235143be586b78b902c84b8f4215ea52d3c1f3309b7a74e977445b37fc40748",
+    "experiments/uc001_multilingual/lingua_B_verifier_v1_0_1/regressions.json": "31acf6e89fae7b0c281389f46d460d532969579498c2dd7fb1d3f155b54569ae",
+    "experiments/uc001_multilingual/lingua_B_verifier_v1_0_1/verification.json": "d5aa543dadca6245bb36970248e486f277d6158ca4205d5c1d94eb3ff3854ff3"
+  },
+  "original_freeze_sha256": "20c23e875547f114d57298c60b6c1e6fa8ee304bfd3347298228e9e815661194",
+  "verifier_version": "1.0.1",
+  "provenance": "Operational context/wiring only; original controls/expectations/order/scoring/accuracy and limits unchanged."
+}

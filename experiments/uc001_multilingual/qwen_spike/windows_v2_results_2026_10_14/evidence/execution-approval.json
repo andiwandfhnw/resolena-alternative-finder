@@ -1,0 +1,6 @@
+{
+    "scope":  "One Windows run; at most 18 generation requests; 1800 seconds total; frozen guards; no retries, downloads or fallback.",
+    "approved_utc":  "2026-10-14T18:39:27.7437453Z",
+    "approved_freeze_sha256":  "00fc5dd00449456bfe5d054110b463f642815f092cfc4cea8a3c1e05d24bbceb",
+    "allowed":  true
+}

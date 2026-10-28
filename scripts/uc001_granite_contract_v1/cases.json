@@ -1,0 +1,504 @@
+{
+  "version": "uc001-granite-contract-cases-v1",
+  "classification": "Already-exposed synthetic development inputs; not held-out evaluation.",
+  "prepared_date": "2026-10-25",
+  "case_count": 11,
+  "input_bytes_definition": "UTF-8 encoding of text exactly as stored, without a BOM or terminal newline. Hashes/base64 refer to those input bytes, not to the enclosing JSON request.",
+  "generation_budget": {
+    "maximum_future_startups": 1,
+    "maximum_total_inferences": 11,
+    "maximum_per_case_inferences": 1,
+    "case_order_is_fixed": true,
+    "warmups": "No warm-up inference is allocated. Any inference, including an application call, would consume the same eleven-total budget; there is no hidden twelfth generation.",
+    "automatic_retry": false,
+    "tuning_or_case_changes_after_freeze": false
+  },
+  "qualified_review": {
+    "status": "pending",
+    "reviewers": [],
+    "expectations_basis": "AI-assisted extraction of existing accepted UC obligations; no qualified linguistic or dialect approval is claimed.",
+    "gate": "Competent source-language/meaning review must be available before accepting any semantic conclusion. Unavailable review remains unverified, never automatically passed."
+  },
+  "assessment_dimensions": [
+    "Structural/contract validity",
+    "Semantic correctness against this exposed case",
+    "Qualified review status",
+    "Application-policy/persistence observations"
+  ],
+  "schema_and_prompt_separation": "Expected obligations and acceptable outcomes belong only in this case manifest and reviewer procedure, never in the extraction prompt or a model input answer map.",
+  "case_outcome_policy": "A justified clarification or application capability limitation may be the correct declared case outcome. It does not automatically establish complete interpretation suitability. A syntactically valid wrong interpretation is a semantic failure. Do not infer a cumulative pass threshold.",
+  "application_observation": {
+    "case_id": "g04-en",
+    "mode": "replay_captured_result",
+    "additional_generations": 0,
+    "criteria": [
+      "AC-15",
+      "LAC-04",
+      "LAC-11",
+      "LAC-12",
+      "LAC-13",
+      "TL-04"
+    ],
+    "scope": "Replay a captured validated result through the opt-in application/API/SQLite boundary. Clearly label replay; no second live interpreter call is implied. Existing synthetic evidence/English-only rendering and honest limitation paths remain; no real knowledge or four-language rendering is activated."
+  },
+  "preference_policy_replays": {
+    "case_ids": [
+      "g05-shared",
+      "g07-mixed-balanced"
+    ],
+    "additional_generations": 0,
+    "condition": "Replay only captured results whose meaning is understood and competently justified; preference never resolves semantic ambiguity. Keep country unchanged and label observations as replay."
+  },
+  "technical_failure_checks": {
+    "criteria": [
+      "LAC-11",
+      "TL-02",
+      "TL-04"
+    ],
+    "model_generations": 0,
+    "scope": "Offline mocked transport/contract failures remain distinct from semantic uncertainty; those checks are not live interpreter demonstrations."
+  },
+  "cases": [
+    {
+      "order": 1,
+      "id": "g01-de",
+      "text": "Ich möchte mein Fahrrad reparieren, ohne es zu ersetzen.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "SWNoIG3DtmNodGUgbWVpbiBGYWhycmFkIHJlcGFyaWVyZW4sIG9obmUgZXMgenUgZXJzZXR6ZW4u",
+      "input_utf8_sha256": "f1222a3b4c47223f1d016d94b52afb9b18c748d596f725cad1619fe9cdc4e890",
+      "input_utf8_bytes": 57,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-01"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-01",
+        "TL-01"
+      ],
+      "expected_input_language": "de",
+      "semantic_obligations": [
+        "Recognize the clear standard input language without deriving language from normalized English or browser preference.",
+        "Represent bicycle as the subject, repair as the action, and the complete no-replacement requirement with its original negation and scope.",
+        "Retain every original clause, quotation and required meaning item; do not invent a purchase, replacement, cheaper goal or budget.",
+        "Preserve equivalent complete meaning across the four parallel requests; language must not change country, market or currency."
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "Application interpretation proceeds with the correct request language; later qualification/rendering determines the actual response."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "An honest limitation or clarification on this clear request is recorded as a suitability gap, not a passing complete interpretation.",
+        "The existing isolated evidence/renderer composition is synthetic and English-only; this case does not establish real knowledge or faithful four-language rendering."
+      ]
+    },
+    {
+      "order": 2,
+      "id": "g02-fr",
+      "text": "Je veux réparer mon vélo sans le remplacer.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "SmUgdmV1eCByw6lwYXJlciBtb24gdsOpbG8gc2FucyBsZSByZW1wbGFjZXIu",
+      "input_utf8_sha256": "09a1c0a048f4eb8c042934cfe1a9dd2c32fa1256a882766c7e07a3c519c5d84b",
+      "input_utf8_bytes": 45,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-02"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-02",
+        "TL-01"
+      ],
+      "expected_input_language": "fr",
+      "semantic_obligations": [
+        "Recognize the clear standard input language without deriving language from normalized English or browser preference.",
+        "Represent bicycle as the subject, repair as the action, and the complete no-replacement requirement with its original negation and scope.",
+        "Retain every original clause, quotation and required meaning item; do not invent a purchase, replacement, cheaper goal or budget.",
+        "Preserve equivalent complete meaning across the four parallel requests; language must not change country, market or currency."
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "Application interpretation proceeds with the correct request language; later qualification/rendering determines the actual response."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "An honest limitation or clarification on this clear request is recorded as a suitability gap, not a passing complete interpretation.",
+        "The existing isolated evidence/renderer composition is synthetic and English-only; this case does not establish real knowledge or faithful four-language rendering."
+      ]
+    },
+    {
+      "order": 3,
+      "id": "g03-it",
+      "text": "Vorrei riparare la mia bicicletta senza sostituirla.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "Vm9ycmVpIHJpcGFyYXJlIGxhIG1pYSBiaWNpY2xldHRhIHNlbnphIHNvc3RpdHVpcmxhLg==",
+      "input_utf8_sha256": "7c34313ce0ec96099c47089ecd8a4f021b988298163ab977265da131fbc2f31a",
+      "input_utf8_bytes": 52,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-03"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-03",
+        "TL-01"
+      ],
+      "expected_input_language": "it",
+      "semantic_obligations": [
+        "Recognize the clear standard input language without deriving language from normalized English or browser preference.",
+        "Represent bicycle as the subject, repair as the action, and the complete no-replacement requirement with its original negation and scope.",
+        "Retain every original clause, quotation and required meaning item; do not invent a purchase, replacement, cheaper goal or budget.",
+        "Preserve equivalent complete meaning across the four parallel requests; language must not change country, market or currency."
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "Application interpretation proceeds with the correct request language; later qualification/rendering determines the actual response."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "An honest limitation or clarification on this clear request is recorded as a suitability gap, not a passing complete interpretation.",
+        "The existing isolated evidence/renderer composition is synthetic and English-only; this case does not establish real knowledge or faithful four-language rendering."
+      ]
+    },
+    {
+      "order": 4,
+      "id": "g04-en",
+      "text": "I want to repair my bicycle without replacing it.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "SSB3YW50IHRvIHJlcGFpciBteSBiaWN5Y2xlIHdpdGhvdXQgcmVwbGFjaW5nIGl0Lg==",
+      "input_utf8_sha256": "b525b1be60e28eaa98c78da63d09be26a10bb2fac3f0dd491ba4002a45521157",
+      "input_utf8_bytes": 49,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-04"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-04",
+        "TL-01",
+        "TL-04"
+      ],
+      "expected_input_language": "en",
+      "semantic_obligations": [
+        "Recognize the clear standard input language without deriving language from normalized English or browser preference.",
+        "Represent bicycle as the subject, repair as the action, and the complete no-replacement requirement with its original negation and scope.",
+        "Retain every original clause, quotation and required meaning item; do not invent a purchase, replacement, cheaper goal or budget.",
+        "Preserve equivalent complete meaning across the four parallel requests; language must not change country, market or currency."
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "Application interpretation proceeds with the correct request language; later qualification/rendering determines the actual response."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "An honest limitation or clarification on this clear request is recorded as a suitability gap, not a passing complete interpretation.",
+        "The existing isolated evidence/renderer composition is synthetic and English-only; this case does not establish real knowledge or faithful four-language rendering."
+      ]
+    },
+    {
+      "order": 5,
+      "id": "g05-shared",
+      "text": "Velo",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "VmVsbw==",
+      "input_utf8_sha256": "5d1e437e74a365f9b15ce20130505fd6470219dc43c7b884247dae5627b9a7c0",
+      "input_utf8_bytes": 4,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-05"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-05",
+        "TL-02",
+        "TL-04"
+      ],
+      "expected_input_language": null,
+      "semantic_obligations": [
+        "Preserve the original shared subject token without inventing a repair action or any goal/constraint.",
+        "Do not force a detected-language label from a shared word, country, browser language or explanation preference.",
+        "If the subject meaning is genuinely understood, retain it while recognition may be unknown/null; the application then applies existing supported preference/browser/one-time-choice policy.",
+        "If bicycle-versus-veil or another material subject interpretation is genuinely unresolved, ask a targeted meaning question before language preference; do not guess away that ambiguity."
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification"
+      ],
+      "acceptable_application_outcomes": [
+        "For competently justified understood meaning: application interpretation with existing preference/correction handling, or explanation_language_required when no supported explanation preference exists.",
+        "For genuine material meaning ambiguity: clarification_required / meaning_uncertain, with no saved search."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "Neither unconditional bicycle understanding nor unconditional meaning clarification is a pass rule; competent review must justify the branch against LAC-05/13 before acceptance.",
+        "Language uncertainty alone does not justify meaning clarification. A structurally valid guessed subject is a semantic failure.",
+        "Replay preference/correction observations consume no further generation and do not resolve an unresolved subject."
+      ]
+    },
+    {
+      "order": 6,
+      "id": "g06-mixed-primary",
+      "text": "Please repair my bicycle, sans remplacement",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "UGxlYXNlIHJlcGFpciBteSBiaWN5Y2xlLCBzYW5zIHJlbXBsYWNlbWVudA==",
+      "input_utf8_sha256": "9898afb3945202f7beec3d86735ce541ebdf97956c1dc290320064ee72377070",
+      "input_utf8_bytes": 43,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-06"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-06",
+        "TL-02"
+      ],
+      "expected_input_language": "mixed",
+      "semantic_obligations": [
+        "Preserve bicycle repair and the entire French no-replacement condition, including its negation.",
+        "Represent every English and French clause without silently losing a condition during English normalization.",
+        "Use primary English only if reliably justified by the actual original text; explanation policy remains outside interpretation.",
+        "If meaning cannot genuinely be preserved, retain the affected clause and request targeted clarification or explain the application capability limitation."
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ],
+      "acceptable_application_outcomes": [
+        "Complete understood meaning: application interpretation with reliably established primary-language policy.",
+        "Genuine unresolved meaning: clarification_required / meaning_uncertain; unsupported application capability: interpretation_unavailable; neither is assessed insufficient knowledge."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "A justified uncertainty/limitation is an honest case outcome, but is not evidence that complete mixed-language interpretation has been established.",
+        "An unsupported clause cannot be dropped to promote the remaining text to understood."
+      ]
+    },
+    {
+      "order": 7,
+      "id": "g07-mixed-balanced",
+      "text": "Fahrrad repair, sans remplacement",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "RmFocnJhZCByZXBhaXIsIHNhbnMgcmVtcGxhY2VtZW50",
+      "input_utf8_sha256": "073c5362e6d2ccb3deac1d4f3a5320fad6386c6d74dda44d7c6a81e973938378",
+      "input_utf8_bytes": 33,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-06"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-06",
+        "TL-02",
+        "TL-04"
+      ],
+      "expected_input_language": "mixed",
+      "semantic_obligations": [
+        "Preserve bicycle repair and the French no-replacement constraint with all original clauses and negation.",
+        "Do not choose a primary supported language merely by majority-token counting, a shared word or country.",
+        "For fully understood balanced meaning without a reliable primary language, use mixed/unknown with language null; application preference/browser/correction or one-time choice remains separate.",
+        "Retain genuine unresolved meaning for targeted clarification; a language preference cannot repair missing semantic content."
+      ],
+      "acceptable_meaning_states": [
+        "understood",
+        "needs_clarification",
+        "unsupported"
+      ],
+      "acceptable_application_outcomes": [
+        "Complete understood balanced meaning: existing explanation preference policy or explanation_language_required when no supported preference exists.",
+        "Genuine unresolved meaning: clarification_required / meaning_uncertain; unavailable application capability: interpretation_unavailable, without saving."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "A primary-language claim requires competent justification from the text; no forced supported label is accepted.",
+        "Safe uncertainty is recorded separately from complete mixed-language suitability."
+      ]
+    },
+    {
+      "order": 8,
+      "id": "g08-protected-values",
+      "text": "Réparer le vélo Acme X-2 à Genève, sans le remplacer; budget 49,90 CHF pour une réparation.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "UsOpcGFyZXIgbGUgdsOpbG8gQWNtZSBYLTIgw6AgR2Vuw6h2ZSwgc2FucyBsZSByZW1wbGFjZXI7IGJ1ZGdldCA0OSw5MCBDSEYgcG91ciB1bmUgcsOpcGFyYXRpb24u",
+      "input_utf8_sha256": "047bc4a1c979bfe925512cbbc89373433045f35084b7e25bb58416868c665f9d",
+      "input_utf8_bytes": 96,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-07"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-07",
+        "TL-01"
+      ],
+      "expected_input_language": "fr",
+      "semantic_obligations": [
+        "Preserve bicycle repair, the literal product name Acme X-2 and literal place spelling Genève without renaming or translation.",
+        "Preserve the independent textual locality requirement and the no-replacement constraint with its exact negation/scope.",
+        "Preserve the unambiguous source magnitude and precision 49,90 CHF as decimal-string amount 49.90, without currency conversion.",
+        "Represent the budget per repair and grounded context without inventing a baseline, inclusive price, unknown charges or geographic identity.",
+        "All original French clauses, protected values, quotations and item memberships remain complete."
+      ],
+      "acceptable_meaning_states": [
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "Application interpretation proceeds only with complete protected-value/requirement preservation; later evidence qualification remains independent."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "All source quotations retain their literal spelling and decimal comma; English-normalized amount is derived with its declared numeric reading.",
+        "A schema-valid changed amount, weakened constraint or renamed product/place is a semantic failure."
+      ]
+    },
+    {
+      "order": 9,
+      "id": "g09-ambiguous-amount",
+      "text": "1,200 CHF",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "MSwyMDAgQ0hG",
+      "input_utf8_sha256": "b46d0e472ea4f13284514612b609b2296197ff862329d6d5e5308e7df3e4142f",
+      "input_utf8_bytes": 9,
+      "source": {
+        "path": "docs/specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#language-acceptance-examples",
+        "existing_example": "LAC-08"
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-08",
+        "TL-01",
+        "TL-02",
+        "TL-04"
+      ],
+      "expected_input_language": null,
+      "semantic_obligations": [
+        "Preserve the exact original number 1,200 and literal currency CHF without selecting 1.200 versus 1200.",
+        "Do not infer a language or numeric reading from currency, country or a browser preference.",
+        "Do not invent a subject, a budget role, a goal, a baseline, a unit, a period or a cost basis absent from this exact input.",
+        "Either ask targeted numeric clarification directly, or retain an unresolved typed quantity with amount null so the actual application policy requests amount clarification."
+      ],
+      "acceptable_meaning_states": [
+        "needs_clarification",
+        "understood"
+      ],
+      "acceptable_application_outcomes": [
+        "clarification_required / meaning_uncertain with a targeted numeric question, or clarification_required / amount_uncertain reached by the actual unchanged application policy.",
+        "No saved search or budget-compliance claim; a guessed magnitude or invented subject is not acceptable."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "The amount-null branch is acceptable only if replay through the real policy actually reaches amount clarification; structural packet validity alone is insufficient.",
+        "The exact UC example contains only the number and currency; surrounding request text is deliberately not added."
+      ]
+    },
+    {
+      "order": 10,
+      "id": "g10-out-of-scope",
+      "text": "Repara mi hervidor.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "UmVwYXJhIG1pIGhlcnZpZG9yLg==",
+      "input_utf8_sha256": "680313abecc5159c2b57c28409ff4b884d73b1fab32bd9b838adb71e1e686cdb",
+      "input_utf8_bytes": 19,
+      "source": {
+        "path": "scripts/uc001_contract_check/cases.json",
+        "existing_example": "LAC-10",
+        "exposed_manifest_case_id": 1
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-10",
+        "TL-02",
+        "TL-04"
+      ],
+      "expected_input_language": "outside_application_scope",
+      "semantic_obligations": [
+        "Retain the original request and report that the application supports standard DE/FR/IT/EN input, inviting supported-language rephrasing.",
+        "Use unsupported meaning with no forced supported-language recognition; unsupported/null or an honestly unknown/null hypothesis must not become English/understood.",
+        "Do not imply that IBM Granite itself cannot understand Spanish; the limitation is the accepted application scope.",
+        "No subject-only interpretation may bypass the out-of-scope condition or create a saved search."
+      ],
+      "acceptable_meaning_states": [
+        "unsupported"
+      ],
+      "acceptable_application_outcomes": [
+        "interpretation_unavailable / interpretation_capability_unavailable with an honest application-scope limitation and no saved search."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "The literal is an already-exposed development control. Reuse of input creates no new Qwen attempt and changes no closed result.",
+        "Exact identification of the unsupported language is not a product acceptance requirement."
+      ]
+    },
+    {
+      "order": 11,
+      "id": "g11-unvalidated-dialect",
+      "text": "Velo flicke, nöd neu.",
+      "input_encoding": "UTF-8",
+      "input_has_terminal_newline": false,
+      "input_utf8_base64": "VmVsbyBmbGlja2UsIG7DtmQgbmV1Lg==",
+      "input_utf8_sha256": "6449c4a5ce67c77b37680e41d4b4ffce436d5b33bbf14b707004d9cedbc573f1",
+      "input_utf8_bytes": 22,
+      "source": {
+        "path": "scripts/uc001_contract_check/cases.json",
+        "existing_example": "LAC-10",
+        "exposed_manifest_case_id": 12
+      },
+      "criteria": [
+        "AC-15",
+        "LAC-10",
+        "TL-02",
+        "TL-04"
+      ],
+      "expected_input_language": "unvalidated_dialect",
+      "semantic_obligations": [
+        "Retain the dialect original, including the exact negation nöd neu; do not drop or invert it.",
+        "Request supported-standard-language rephrasing or targeted clarification of unresolved dialect meaning, with no claim of validated dialect support.",
+        "A standard-German or other supported-language label alone is not proof of meaning or permission to declare understood success.",
+        "Do not silently weaken the condition to a positive purchase/replacement or save a comparison from an unvalidated interpretation."
+      ],
+      "acceptable_meaning_states": [
+        "unsupported",
+        "needs_clarification"
+      ],
+      "acceptable_application_outcomes": [
+        "interpretation_unavailable / interpretation_capability_unavailable inviting supported-standard-language rephrasing, or clarification_required / meaning_uncertain targeting unresolved dialect meaning.",
+        "No understood/supported success is accepted merely because the packet is valid or a generic reviewer approves it; no dialect-scope expansion is authorized."
+      ],
+      "review_status": "pending_competent_review",
+      "structural_validity_is_semantic_success": false,
+      "review_notes": [
+        "The older exposed manifest is used only as the literal-input source; its broader historical permitted-understood branch is not adopted for this unvalidated-dialect control.",
+        "Review must distinguish faithful retention of the negation from an unsupported assertion that dialect interpretation is validated."
+      ]
+    }
+  ]
+}

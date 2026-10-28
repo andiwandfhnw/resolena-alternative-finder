@@ -1,0 +1,61 @@
+{
+  "start_utc": "2026-10-11 10:55:36 UTC",
+  "total_limit_seconds": 7200,
+  "inference_limit_seconds": 3600,
+  "build_limit_seconds": 1800,
+  "per_case_timeout_seconds": 45,
+  "download_budget_bytes": 2200000000,
+  "scratch_budget_bytes": 6442450944,
+  "rss_limit_bytes": 3489660928,
+  "available_memory_min_bytes": 536870912,
+  "preflight_memory_min_bytes": 4026531840,
+  "model": {
+    "repo": "Qwen/Qwen3-1.7B-GGUF",
+    "revision": "90862c4b9d2787eaed51d12237eafdfe7c5f6077",
+    "file": "Qwen3-1.7B-Q8_0.gguf",
+    "bytes": 1834426016,
+    "sha256": "061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a"
+  },
+  "runtime": {
+    "tag": "v0.6.0",
+    "commit": "d81235049384534c167caea52b85a694f6103d14",
+    "build_parallelism": 1,
+    "flags": [
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DBUILD_SHARED_LIBS=OFF",
+      "-DGGML_CUDA=OFF",
+      "-DGGML_BLAS=OFF",
+      "-DGGML_NATIVE=ON",
+      "-DLLAMA_OPENSSL=OFF",
+      "-DLLAMA_SUBPROCESS=OFF",
+      "-DLLAMA_LLGUIDANCE=OFF",
+      "-DLLAMA_BUILD_APP=OFF",
+      "-DLLAMA_BUILD_EXAMPLES=OFF",
+      "-DLLAMA_BUILD_TESTS=OFF",
+      "-DLLAMA_BUILD_UI=OFF",
+      "-DLLAMA_USE_PREBUILT_UI=OFF"
+    ]
+  },
+  "cmake": {
+    "version": "3.31.6",
+    "file": "cmake-3.31.6-linux-x86_64.tar.gz",
+    "bytes": 55010959,
+    "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf"
+  },
+  "inference": {
+    "threads": 2,
+    "context": 2048,
+    "batch": 64,
+    "ubatch": 64,
+    "parallel": 1,
+    "max_tokens": 384,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0,
+    "seed": 42,
+    "enable_thinking": false
+  },
+  "frozen_parser_sha256": "1c905509724e9bcd09ba1574ce361582323bff3f65d7bac76de5a638b92eb04e",
+  "provenance": "AI-authored synthetic exploration; not independent linguistic validation. Model weights unmodified."
+}

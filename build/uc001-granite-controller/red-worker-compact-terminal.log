@@ -1,0 +1,31 @@
+.....................F                                                   [100%]
+=================================== FAILURES ===================================
+_____ test_build_terminal_references_full_manifest_with_bounded_event_size _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0')
+
+    def test_build_terminal_references_full_manifest_with_bounded_event_size(tmp_path):
+        from scripts.uc001_granite_controller.worker import digest
+        value = build_config(tmp_path); root = Path(value['root']); events = Events()
+        class ManyArtifacts(BuildRunner):
+            def run(self, argv, label, env=None, proxy=None):
+                result = super().run(argv, label, env, proxy)
+                if label == 'build':
+                    for index in range(100):
+                        (self.root/'build/bin'/f'synthetic-library-{index:03d}.dll').write_bytes(b'not executable')
+                return result
+        run_build(value, events, runner=ManyArtifacts(root))
+        terminal = next(row for row in events.events if row['event'] == 'build_terminal')
+        manifest = root/'evidence/built-artifacts.json'
+>       assert len(json.dumps(terminal).encode()) < 4096
+E       assert 21344 < 4096
+E        +  where 21344 = len(b'{"event": "build_terminal", "artifacts": [{"path": "/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0/...nthetic-library-099.dll", "bytes": 14, "sha256": "aabc4dc64ad6ffef101f0fec08a3d1ba6428d419e886c2cbc56a74ff0a5f7a3e"}]}')
+E        +    where b'{"event": "build_terminal", "artifacts": [{"path": "/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0/...nthetic-library-099.dll", "bytes": 14, "sha256": "aabc4dc64ad6ffef101f0fec08a3d1ba6428d419e886c2cbc56a74ff0a5f7a3e"}]}' = <built-in method encode of str object at 0x5fbd440c50a0>()
+E        +      where <built-in method encode of str object at 0x5fbd440c50a0> = '{"event": "build_terminal", "artifacts": [{"path": "/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0/n...nthetic-library-099.dll", "bytes": 14, "sha256": "aabc4dc64ad6ffef101f0fec08a3d1ba6428d419e886c2cbc56a74ff0a5f7a3e"}]}'.encode
+E        +        where '{"event": "build_terminal", "artifacts": [{"path": "/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0/n...nthetic-library-099.dll", "bytes": 14, "sha256": "aabc4dc64ad6ffef101f0fec08a3d1ba6428d419e886c2cbc56a74ff0a5f7a3e"}]}' = <function dumps at 0x7c454b3befc0>({'event': 'build_terminal', 'artifacts': [{'path': '/tmp/pytest-of-vscode/pytest-39/test_build_terminal_references0/na...tic-library-004.dll', 'bytes': 14, 'sha256': 'aabc4dc64ad6ffef101f0fec08a3d1ba6428d419e886c2cbc56a74ff0a5f7a3e'}, ...]})
+E        +          where <function dumps at 0x7c454b3befc0> = json.dumps
+
+tests/unit/test_granite_controller_worker.py:332: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_build_terminal_references_full_manifest_with_bounded_event_size
+1 failed, 21 passed in 0.18s

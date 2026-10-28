@@ -1,0 +1,19 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-7/test_default_session_reconcile0')
+
+    def test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows(tmp_path):
+        result, backend = lifecycle_session(tmp_path,'helper_lag','snapshot_helper_exit')
+>       assert result['status']=='controlled_phases_passed', result
+E       AssertionError: {'status': 'failure', 'started_utc': '2026-10-27T21:26:15.703653+00:00', 'started_mono': 100.0, 'downloaded_upper_bound_bytes': None, ...}
+E       assert 'failure' == 'controlled_phases_passed'
+E         
+E         - controlled_phases_passed
+E         + failure
+
+tests/unit/test_granite_controller_run.py:853: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_run.py::test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows
+1 failed in 0.25s

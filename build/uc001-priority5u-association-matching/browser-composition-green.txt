@@ -1,0 +1,24 @@
+[WebServer] INFO:     Started server process [4926]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:4969) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:5005) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:54:5 › browser displays exactly the committed API comparison and stable database identities (1.0s)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:93:7 › pinned reference association single_match saves honest insufficient coverage (1.3s)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:93:7 › pinned reference association explicit saves honest insufficient coverage (1.3s)
+  ✓  4 ../tests/e2e/saved-comparison.spec.ts:263:5 › explicit locality confirmation saves reference-unverified intent without unsupported coverage (972ms)
+  ✓  5 ../tests/e2e/saved-comparison.spec.ts:699:7 › direct new intent after uncertain save: country_edit (1.5s)
+  ✓  6 ../tests/e2e/saved-comparison.spec.ts:1516:5 › lost HTTP response after atomic commit requires explicit same-submission recovery (1.6s)
+  ✓  7 ../tests/e2e/saved-comparison.spec.ts:1736:5 › unavailable locality requires explicit country-only continuation before saving (1.3s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [4926]
+
+  7 passed (13.7s)

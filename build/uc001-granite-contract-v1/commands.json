@@ -1,0 +1,180 @@
+{
+  "version": "uc001-granite-offline-commands-v1",
+  "working_directory": "/workspaces/resolena-alternative-finder",
+  "note": "Verification commands and retained logs; repeated test counts are not added together. Read-only source/document lookups and file-writing scripts are described in verification.json. No proposed README acquisition/build/live command was executed.",
+  "commands": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py 2>&1 | tee build/uc001-granite-contract-v1/adapter-red.txt",
+      "exit_code": 2,
+      "result": "1 missing-module collection error before implementation",
+      "log": "adapter-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py 2>&1 | tee build/uc001-granite-contract-v1/adapter-green.txt",
+      "exit_code": 0,
+      "result": "23 passed; existing Starlette warning",
+      "log": "adapter-green.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py -k 'duplicate_none or unaccounted' 2>&1 | tee build/uc001-granite-contract-v1/adapter-audit-red.txt",
+      "exit_code": 1,
+      "result": "2 failed, 2 passed, 24 deselected: duplicate-NONE native encoding and unrestricted schema",
+      "log": "adapter-audit-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py 2>&1 | tee build/uc001-granite-contract-v1/adapter-audit-green.txt",
+      "exit_code": 0,
+      "result": "28 passed; existing Starlette warning",
+      "log": "adapter-audit-green.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/package-red.txt",
+      "exit_code": 2,
+      "result": "1 missing-module collection error before implementation",
+      "log": "package-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/package-green.txt",
+      "exit_code": 0,
+      "result": "8 passed",
+      "log": "package-green.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py -k 'assessment_without or unavailable_or_unqualified' 2>&1 | tee build/uc001-granite-contract-v1/assessment-gate-red.txt",
+      "exit_code": 1,
+      "result": "2 failed, 8 deselected: missing future assessment gate module",
+      "log": "assessment-gate-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/assessment-gate-green.txt",
+      "exit_code": 0,
+      "result": "10 passed after correcting the test clock; earlier 9-pass/1-failure output was overwritten, see receipt",
+      "log": "assessment-gate-green.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py -k 'runtime_metadata' 2>&1 | tee build/uc001-granite-contract-v1/package-metadata-red.txt",
+      "exit_code": 1,
+      "result": "1 failed, 13 deselected: missing runtime metadata validator",
+      "log": "package-metadata-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/package-final.txt",
+      "exit_code": 0,
+      "result": "14 passed",
+      "log": "package-final.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/offline-final.txt",
+      "exit_code": 0,
+      "result": "42 passed before the final greedy-setting refinement; not a cumulative count",
+      "log": "offline-final.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_llama_contract_adapter_api.py tests/unit/test_language_policy.py -k 'http_adapter_real_api_save_boundary_and_renderer_distinction or all_mixed_clauses_and_negation_survive_normalization or unresolved_amount_requests_clarification_without_locale_guessing or no_supported_preference_prompts_once_without_forced_english_or_country_fallback' 2>&1 | tee build/uc001-granite-contract-v1/decoder-policy-regressions.txt",
+      "exit_code": 0,
+      "result": "7 passed, 45 deselected; existing Starlette warning",
+      "log": "decoder-policy-regressions.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py -k 'native_request_keeps or dynamic_temperature' 2>&1 | tee build/uc001-granite-contract-v1/greedy-setting-red.txt",
+      "exit_code": 1,
+      "result": "2 failed, 27 deselected: missing requested zero dynamic range and acceptance of positive echoed range",
+      "log": "greedy-setting-red.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest -q tests/integration/test_granite_contract_adapter.py tests/unit/test_granite_package.py 2>&1 | tee build/uc001-granite-contract-v1/offline-refined-final.txt",
+      "exit_code": 0,
+      "result": "43 passed; existing Starlette warning; final focused run",
+      "log": "offline-refined-final.txt",
+      "execution": "offline; native model transport mocked"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m scripts.uc001_granite_contract_v1.package freeze 2>&1 | tee build/uc001-granite-contract-v1/freeze.txt",
+      "exit_code": 0,
+      "result": "39 frozen current-worktree files; no inference; transfer command prepares a local ZIP only",
+      "log": "freeze.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m scripts.uc001_granite_contract_v1.package verify 2>&1 | tee build/uc001-granite-contract-v1/freeze-verify.txt",
+      "exit_code": 0,
+      "result": "39 frozen current-worktree files; no inference; transfer command prepares a local ZIP only",
+      "log": "freeze-verify.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m scripts.uc001_granite_contract_v1.package transfer --output build/uc001-granite-contract-v1/desktop-transfer.zip 2>&1 | tee build/uc001-granite-contract-v1/transfer-prepare.txt",
+      "exit_code": 0,
+      "result": "39 frozen current-worktree files; no inference; transfer command prepares a local ZIP only",
+      "log": "transfer-prepare.txt"
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m scripts.uc001_granite_contract_v1.package verify-archive --archive build/uc001-granite-contract-v1/desktop-transfer.zip 2>&1 | tee build/uc001-granite-contract-v1/archive-verify.txt",
+      "exit_code": 0,
+      "result": "39 frozen current-worktree files; no inference; transfer command prepares a local ZIP only",
+      "log": "archive-verify.txt"
+    },
+    {
+      "command": "set -o pipefail\npwsh -NoLogo -NoProfile -NonInteractive -Command '$failed = $false; $files = @(Get-ChildItem -LiteralPath build/uc001-granite-contract-v1/powershell-final -Filter *.ps1); foreach ($file in $files) { $parseErrors = $null; $parseTokens = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile($file.FullName, [ref]$parseTokens, [ref]$parseErrors); if ($parseErrors.Count -gt 0) { $failed = $true; $parseErrors | ForEach-Object { Write-Output $_.Message } } }; if ($failed) { exit 1 }; Write-Output ($files.Count.ToString() + \" PowerShell blocks parsed; no block executed.\")' 2>&1 | tee build/uc001-granite-contract-v1/powershell-syntax.txt",
+      "exit_code": 0,
+      "result": "6 final PowerShell blocks parsed only; Windows execution not verified",
+      "log": "powershell-syntax.txt"
+    },
+    {
+      "command_argv": [
+        "/workspaces/resolena-alternative-finder/.venv/bin/python",
+        "-B",
+        "-c",
+        "from pathlib import Path; import scripts.uc001_granite_contract_v1.assess as a; import scripts.uc001_contract_check.development as d; import app.infrastructure.granite_interpreter as g; root=Path.cwd().resolve(); assert all(Path(m.__file__).resolve().is_relative_to(root) for m in (a,d,g)); print('Transferred assessment, composition and adapter imports resolve from copied current-worktree bytes; no instances or inference.')"
+      ],
+      "execution_context": "Verified ZIP extracted into an isolated local temporary directory; PYTHONPATH limited to copied src and root for project modules; no app/model instances",
+      "exit_code": 0,
+      "result": "Current-worktree assessment/composition/adapter import closure passed",
+      "log": "handoff-closure.json"
+    },
+    {
+      "command": "python3 build/uc001-granite-contract-v1/checks.py",
+      "exit_code": 0,
+      "result": "833 protected files checked: 832 unchanged; only authorized TASKS update; Priority 5/history intact; links/JSON/new whitespace/server args consistent"
+    },
+    {
+      "commands": [
+        "git rev-parse HEAD",
+        "git branch --show-current",
+        "git ls-files --stage",
+        "git status --short",
+        "git diff --check"
+      ],
+      "execution": "Read-only subprocesses in checks.py",
+      "result": "HEAD/branch/index unchanged; existing file-status entries retained; git diff --check reports only preserved historical TASKS trailing whitespace at line 2420",
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "command": ".venv/bin/python -m scripts.uc001_granite_contract_v1.package verify",
+      "exit_code": 0,
+      "result": "Final repeat after receipt writing: unchanged 39-file freeze"
+    },
+    {
+      "command": ".venv/bin/python -m scripts.uc001_granite_contract_v1.package verify-archive --archive build/uc001-granite-contract-v1/desktop-transfer.zip",
+      "exit_code": 0,
+      "result": "Final repeat after receipt writing: ZIP unchanged"
+    }
+  ]
+}

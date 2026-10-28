@@ -1,0 +1,22 @@
+{
+  "version": "uc001-additional-technical-feasibility-1",
+  "status": "proposed_pending_explicit_owner_approval",
+  "attempt_identity": "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8",
+  "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "original_startup_allowance_consumed": true,
+  "allowance_reset": false,
+  "purpose": "technical_feasibility_only",
+  "additional_startups": 1,
+  "generations": 14,
+  "cases_sha256": "a46105b1235bc9b443d746fbf6abd93a67387a18d37f592024fd0f0b92c87c9c",
+  "order": "unchanged frozen cases 1 through 14",
+  "retry": false,
+  "downloads": false,
+  "semantic_review": "pending",
+  "expected_meanings_approved": false,
+  "deferred_live_api_cases": [
+    1,
+    5,
+    10
+  ]
+}

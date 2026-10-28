@@ -1,0 +1,47 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+_ test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-19/test_console_role_owned_helper0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x750fdb760110>
+
+    def test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch,owned_consoles=True)
+        assert result['ownership_self_test_passed'] is True
+        assert len(result['owned_identities'])==6
+        assert {row['pid'] for row in result['console_helpers']}=={CONSOLE_PID,*OWNED_CONSOLES.values()}
+        assert result['cleanup']['total_processes']==9
+        assert result['cleanup']['active_processes']==0
+        assert {row['pid'] for row in result['cleanup']['owned_exits']}=={101,201,102,202,103,203,*OWNED_CONSOLES.values()}
+        assert len(result['console_helper_exits'])==4
+        assert all(row['identity_verified'] and type(row['exit_code']) is int for row in result['console_helper_exits'])
+        assert all(row['exit_proof']=='private_job_wait_and_query' for row in result['console_helper_exits'] if row['role']!='unrelated')
+>       assert all(row['private_job_cleanup_scope'] is (row['role']!='unrelated') for row in result['console_helper_exits'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_standins.py:1005: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+.0 = <list_iterator object at 0x750fdb765d50>
+
+>   assert all(row['private_job_cleanup_scope'] is (row['role']!='unrelated') for row in result['console_helper_exits'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   KeyError: 'private_job_cleanup_scope'
+
+tests/unit/test_granite_controller_standins.py:1005: KeyError
+________ test_console_role_handle_close_failure_is_not_verified_cleanup ________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-19/test_console_role_handle_close0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x750fdb5b19d0>
+
+    def test_console_role_handle_close_failure_is_not_verified_cleanup(tmp_path,monkeypatch):
+        result,calls,rows=run_console(tmp_path,monkeypatch,helper_close_failure=True)
+        assert result['ownership_self_test_passed'] is False
+>       assert result['console_helper_cleanup_verified'] is False
+E       assert True is False
+
+tests/unit/test_granite_controller_standins.py:1063: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_owned_helpers_use_exact_job_accounting_and_nested_base_edges
+FAILED tests/unit/test_granite_controller_standins.py::test_console_role_handle_close_failure_is_not_verified_cleanup
+2 failed, 88 deselected in 0.31s

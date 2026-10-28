@@ -1,0 +1,10 @@
+:root {
+  font-family: system-ui, 'Segoe UI', sans-serif;
+  color: #24352a;
+  background: #f6f8f3;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 300px; }

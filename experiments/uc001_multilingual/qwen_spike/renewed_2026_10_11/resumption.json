@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-11T11:41:50Z",
+  "reason": "Prior execution session unavailable and exact /tmp tree absent; removal cause unknown. No build success/model download/startup recorded.",
+  "prior_root": "/tmp/resolena-qwen-spike-o8cs2zg9",
+  "recorded_download_bytes": 92898689,
+  "predicted_cumulative_bytes": 2020223394,
+  "scratch_parent": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build",
+  "original_deadline_epoch": 1791723336.0,
+  "deadline_renewed": false,
+  "resource_limits_changed": false,
+  "model_or_prompt_or_cases_changed": false,
+  "single_recovery": true
+}

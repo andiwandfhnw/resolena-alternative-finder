@@ -1,0 +1,33 @@
+--- before/test_granite_controller_cli.py
++++ test_granite_controller_cli.py
+@@ -4,7 +4,7 @@
+ 
+ import pytest
+ 
+-from scripts.uc001_granite_controller.controller import ControllerFailure, validate_native_config
++from scripts.uc001_granite_controller.controller import ControllerFailure, HELPER_NAMES, validate_native_config
+ 
+ 
+ HELPERS = Path('scripts/uc001_granite_controller').resolve()
+@@ -21,8 +21,8 @@
+                 proxy_helper=str(proxy),prior_receipt=str(prior),
+                 prior_sha256=hashlib.sha256(prior.read_bytes()).hexdigest(),
+                 frozen_config=str(frozen),
+-                helper_hashes={p.name:hashlib.sha256(p.read_bytes()).hexdigest()
+-                    for p in HELPERS.glob('*.py')})
++                helper_hashes={name:hashlib.sha256((HELPERS/name).read_bytes()).hexdigest()
++                    for name in HELPER_NAMES})
+ 
+ 
+ def test_unapproved_template_cannot_launch_any_worker(tmp_path):
+@@ -52,3 +52,10 @@
+     path.write_text(json.dumps(row));cfg['prior_sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+     with pytest.raises(ControllerFailure):
+         validate_native_config(cfg,HELPERS)
++
++
++def test_diagnostic_helper_cannot_expand_the_native_controller_manifest(tmp_path):
++    cfg=configuration(tmp_path)
++    cfg['helper_hashes']['proxy_no_network.py']=hashlib.sha256((HELPERS/'proxy_no_network.py').read_bytes()).hexdigest()
++    with pytest.raises(ControllerFailure,match='controller_manifest_incomplete'):
++        validate_native_config(cfg,HELPERS)

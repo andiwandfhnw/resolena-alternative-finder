@@ -1,0 +1,194 @@
+....F..FF                                                                [100%]
+=================================== FAILURES ===================================
+_ test_structural_readiness_imports_only_explicit_worker_controller_and_never_native _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_readiness_impo0')
+
+    def test_structural_readiness_imports_only_explicit_worker_controller_and_never_native(tmp_path):
+        package,manifest_hash=synthetic_package(tmp_path)
+>       result=module('check').verify_preparation(package,manifest_hash,runtime_check=lambda:None)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_proxy_identity_package.py:98: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_root = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_readiness_impo0/synthetic-package')
+expected_manifest_sha256 = '6083477c95d0345787175b0be97e03bb60e249cd21b2bc2be516659a7ea6c3df'
+runtime_check = <function test_structural_readiness_imports_only_explicit_worker_controller_and_never_native.<locals>.<lambda> at 0x7276f74ca2a0>
+
+    def verify_preparation(package_root, expected_manifest_sha256, *, runtime_check=None):
+        package=Path(package_root).resolve(strict=True)
+        (runtime_check or _runtime)()
+        if not re.fullmatch('[0-9a-f]{64}',expected_manifest_sha256):
+            raise RuntimeError('explicit manifest SHA-256 required')
+        if {p.name for p in package.iterdir()}!=FILES or any(not (package/name).is_file() or (package/name).is_symlink() for name in FILES):
+            raise RuntimeError('unexpected or missing preparation package entry')
+        if digest(package/'manifest.json')!=expected_manifest_sha256:
+            raise RuntimeError('manifest hash differs')
+        manifest=strict_json((package/'manifest.json').read_text())
+        if (manifest.get('version')!=VERSION or manifest.get('purpose')!='offline-prepared-proxy-identity-binding'
+                or manifest.get('readiness_scope')!='structural_only' or manifest.get('execution_authorized') is not False
+                or set(manifest.get('files',{}))!=FILES-{'manifest.json'}):
+            raise RuntimeError('preparation scope differs')
+        for name,expected in manifest['files'].items():
+            if digest(package/name)!=expected:raise RuntimeError('package hash differs:'+name)
+        if digest(package/'proxy.py')!=PROXY_SHA256:
+            raise RuntimeError('accepted proxy bytes differ')
+        config=strict_json((package/'controller-config.template.json').read_text())
+        if config.get('execution_authorized') is not False or set(config.get('helper_hashes',{}))!=HELPERS:
+            raise RuntimeError('native execution must remain inactive')
+        if any(config['helper_hashes'][name]!=manifest['files'][name] for name in HELPERS):
+            raise RuntimeError('inactive helper manifest differs')
+        for name in sorted(FILES):
+            if name.endswith('.py'):ast.parse((package/name).read_text(),filename=str(package/name))
+    
+        active=True
+        forbidden=[]
+        def audit(event,args):
+            if active and (event in {'subprocess.Popen','os.system','os.posix_spawn','socket.connect',
+                                    'socket.bind','ctypes.dlopen','ctypes.dlsym'}
+                           or event.startswith(('os.exec','os.spawn'))):
+                forbidden.append(event)
+                raise RuntimeError('forbidden preparation action:'+event)
+        sys.addaudithook(audit)
+        modules={}
+        loaded=[]
+        try:
+            for name in ('worker','controller'):
+                module_path=package/(name+'.py')
+>               qualified='_granite_structural_readiness_'+name+'_'+manifest['files'][name][:12]
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E               KeyError: 'worker'
+
+build/uc001-granite-proxy-identities-v1/check.py:80: KeyError
+____ test_structural_readiness_rejects_hash_or_schema_gaps[schema_mismatch] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_readiness_reje2')
+damage = 'schema_mismatch'
+
+    @pytest.mark.parametrize('damage',['helper_changed','proxy_changed','schema_mismatch'])
+    def test_structural_readiness_rejects_hash_or_schema_gaps(tmp_path,damage):
+        package,manifest_hash=synthetic_package(tmp_path,controller='PROXY_IDENTITY_SCHEMA = 2\n' if damage=='schema_mismatch' else 'PROXY_IDENTITY_SCHEMA = 1\n')
+        if damage=='helper_changed':(package/'worker.py').write_text('changed')
+        if damage=='proxy_changed':(package/'proxy.py').write_text('changed')
+        with pytest.raises(RuntimeError):
+>           module('check').verify_preparation(package,manifest_hash,runtime_check=lambda:None)
+
+tests/unit/test_granite_proxy_identity_package.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_root = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_readiness_reje2/synthetic-package')
+expected_manifest_sha256 = '481524776ea9c87c7a00d2eb28704e995598f5ca42eb623803d0bff5c0e2b97f'
+runtime_check = <function test_structural_readiness_rejects_hash_or_schema_gaps.<locals>.<lambda> at 0x7276f7501940>
+
+    def verify_preparation(package_root, expected_manifest_sha256, *, runtime_check=None):
+        package=Path(package_root).resolve(strict=True)
+        (runtime_check or _runtime)()
+        if not re.fullmatch('[0-9a-f]{64}',expected_manifest_sha256):
+            raise RuntimeError('explicit manifest SHA-256 required')
+        if {p.name for p in package.iterdir()}!=FILES or any(not (package/name).is_file() or (package/name).is_symlink() for name in FILES):
+            raise RuntimeError('unexpected or missing preparation package entry')
+        if digest(package/'manifest.json')!=expected_manifest_sha256:
+            raise RuntimeError('manifest hash differs')
+        manifest=strict_json((package/'manifest.json').read_text())
+        if (manifest.get('version')!=VERSION or manifest.get('purpose')!='offline-prepared-proxy-identity-binding'
+                or manifest.get('readiness_scope')!='structural_only' or manifest.get('execution_authorized') is not False
+                or set(manifest.get('files',{}))!=FILES-{'manifest.json'}):
+            raise RuntimeError('preparation scope differs')
+        for name,expected in manifest['files'].items():
+            if digest(package/name)!=expected:raise RuntimeError('package hash differs:'+name)
+        if digest(package/'proxy.py')!=PROXY_SHA256:
+            raise RuntimeError('accepted proxy bytes differ')
+        config=strict_json((package/'controller-config.template.json').read_text())
+        if config.get('execution_authorized') is not False or set(config.get('helper_hashes',{}))!=HELPERS:
+            raise RuntimeError('native execution must remain inactive')
+        if any(config['helper_hashes'][name]!=manifest['files'][name] for name in HELPERS):
+            raise RuntimeError('inactive helper manifest differs')
+        for name in sorted(FILES):
+            if name.endswith('.py'):ast.parse((package/name).read_text(),filename=str(package/name))
+    
+        active=True
+        forbidden=[]
+        def audit(event,args):
+            if active and (event in {'subprocess.Popen','os.system','os.posix_spawn','socket.connect',
+                                    'socket.bind','ctypes.dlopen','ctypes.dlsym'}
+                           or event.startswith(('os.exec','os.spawn'))):
+                forbidden.append(event)
+                raise RuntimeError('forbidden preparation action:'+event)
+        sys.addaudithook(audit)
+        modules={}
+        loaded=[]
+        try:
+            for name in ('worker','controller'):
+                module_path=package/(name+'.py')
+>               qualified='_granite_structural_readiness_'+name+'_'+manifest['files'][name][:12]
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E               KeyError: 'worker'
+
+build/uc001-granite-proxy-identities-v1/check.py:80: KeyError
+______ test_structural_import_process_launch_is_blocked_before_execution _______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_import_process0')
+
+    def test_structural_import_process_launch_is_blocked_before_execution(tmp_path):
+        package,manifest_hash=synthetic_package(tmp_path,worker="import subprocess\nsubprocess.Popen(['never-start-this'])\nPROXY_IDENTITY_SCHEMA = 1\n")
+        with pytest.raises(RuntimeError,match='forbidden preparation action'):
+>           module('check').verify_preparation(package,manifest_hash,runtime_check=lambda:None)
+
+tests/unit/test_granite_proxy_identity_package.py:123: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package_root = PosixPath('/tmp/pytest-of-vscode/pytest-23/test_structural_import_process0/synthetic-package')
+expected_manifest_sha256 = '1d8b4743e4fc8d8b674b5fe95c8d8379f9b48f97c037baa9cb26b9be4c3f6610'
+runtime_check = <function test_structural_import_process_launch_is_blocked_before_execution.<locals>.<lambda> at 0x7276f75019e0>
+
+    def verify_preparation(package_root, expected_manifest_sha256, *, runtime_check=None):
+        package=Path(package_root).resolve(strict=True)
+        (runtime_check or _runtime)()
+        if not re.fullmatch('[0-9a-f]{64}',expected_manifest_sha256):
+            raise RuntimeError('explicit manifest SHA-256 required')
+        if {p.name for p in package.iterdir()}!=FILES or any(not (package/name).is_file() or (package/name).is_symlink() for name in FILES):
+            raise RuntimeError('unexpected or missing preparation package entry')
+        if digest(package/'manifest.json')!=expected_manifest_sha256:
+            raise RuntimeError('manifest hash differs')
+        manifest=strict_json((package/'manifest.json').read_text())
+        if (manifest.get('version')!=VERSION or manifest.get('purpose')!='offline-prepared-proxy-identity-binding'
+                or manifest.get('readiness_scope')!='structural_only' or manifest.get('execution_authorized') is not False
+                or set(manifest.get('files',{}))!=FILES-{'manifest.json'}):
+            raise RuntimeError('preparation scope differs')
+        for name,expected in manifest['files'].items():
+            if digest(package/name)!=expected:raise RuntimeError('package hash differs:'+name)
+        if digest(package/'proxy.py')!=PROXY_SHA256:
+            raise RuntimeError('accepted proxy bytes differ')
+        config=strict_json((package/'controller-config.template.json').read_text())
+        if config.get('execution_authorized') is not False or set(config.get('helper_hashes',{}))!=HELPERS:
+            raise RuntimeError('native execution must remain inactive')
+        if any(config['helper_hashes'][name]!=manifest['files'][name] for name in HELPERS):
+            raise RuntimeError('inactive helper manifest differs')
+        for name in sorted(FILES):
+            if name.endswith('.py'):ast.parse((package/name).read_text(),filename=str(package/name))
+    
+        active=True
+        forbidden=[]
+        def audit(event,args):
+            if active and (event in {'subprocess.Popen','os.system','os.posix_spawn','socket.connect',
+                                    'socket.bind','ctypes.dlopen','ctypes.dlsym'}
+                           or event.startswith(('os.exec','os.spawn'))):
+                forbidden.append(event)
+                raise RuntimeError('forbidden preparation action:'+event)
+        sys.addaudithook(audit)
+        modules={}
+        loaded=[]
+        try:
+            for name in ('worker','controller'):
+                module_path=package/(name+'.py')
+>               qualified='_granite_structural_readiness_'+name+'_'+manifest['files'][name][:12]
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^
+E               KeyError: 'worker'
+
+build/uc001-granite-proxy-identities-v1/check.py:80: KeyError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_imports_only_explicit_worker_controller_and_never_native
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_readiness_rejects_hash_or_schema_gaps[schema_mismatch]
+FAILED tests/unit/test_granite_proxy_identity_package.py::test_structural_import_process_launch_is_blocked_before_execution
+3 failed, 6 passed in 0.97s

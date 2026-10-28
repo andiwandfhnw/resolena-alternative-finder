@@ -1,0 +1,16 @@
+Owner-supplied failure excerpt, recorded 2026-10-28:
+
+controller.native_run -> worker.validate_environment(os.environ)
+
+WorkerFailure: frozen_x64_environment_not_active
+
+The owner reports Step 4 was executed and failed before acquisition/build.
+The one authorized invocation is consumed. No retry is authorized.
+Preserve the traceback and any existing approved configuration/approval record.
+
+This excerpt preserves the supplied error chain; the complete raw traceback,
+approved configuration and approval record were not supplied or inspected in
+Codespaces. Their contents or presence are not reconstructed here.
+
+Owner-attributed advisor review: static inspection of the uploaded package and
+Python documentation; no package code, behavioral tests or Windows execution.

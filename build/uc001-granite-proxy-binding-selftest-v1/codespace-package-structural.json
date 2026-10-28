@@ -1,0 +1,11 @@
+{
+  "scope": "Codespace flat-package imports/config/hash validation only; native_selftest not invoked",
+  "package_imports_resolve": true,
+  "accepted_prior_bytes": 0,
+  "forbidden_attempts": [],
+  "windows_execution": false,
+  "native_api_invoked": false,
+  "native_binding_verified": false,
+  "resource_fit_established": false,
+  "acquisition_or_build": false
+}

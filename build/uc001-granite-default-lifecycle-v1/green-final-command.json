@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py",
+    "tests/unit/test_granite_controller_cli.py"
+  ],
+  "exit_code": 1,
+  "scope": "Actual default run_session lifecycle and directly affected inactive-config/hash preflight; closed diagnostic/native-backend/application/model suites excluded"
+}

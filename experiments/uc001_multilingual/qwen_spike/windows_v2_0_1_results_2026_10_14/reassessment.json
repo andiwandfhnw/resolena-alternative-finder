@@ -1,0 +1,429 @@
+{
+  "classification": "Offline reassessment with unchanged copied scorer; no receipt generated",
+  "run_id": "b8591094-a685-48f4-88ef-3420d8b68d90",
+  "strict_passes": 5,
+  "matches_recorded_evaluations": true,
+  "evaluations": [
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle",
+          "resolved_span": {
+            "start": 10,
+            "end": 16
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repair",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 659,
+        "total_tokens": 737,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 659,
+        "prompt_ms": 1284.701,
+        "prompt_per_token_ms": 1.9494704097116844,
+        "prompt_per_second": 512.9598248931075,
+        "predicted_n": 78,
+        "predicted_ms": 1441.715,
+        "predicted_per_token_ms": 18.72357142857143,
+        "predicted_per_second": 53.408614046465495
+      },
+      "id": "01-C1-v2",
+      "arm": "v2",
+      "case": "01-C1-known",
+      "stage": "known",
+      "wall_seconds": 2.7355514999999997,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "kettle",
+          "resolved_span": {
+            "start": 10,
+            "end": 16
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "repair",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 78,
+        "prompt_tokens": 659,
+        "total_tokens": 737,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 659,
+        "prompt_ms": 939.61,
+        "prompt_per_token_ms": 1.4258118361153262,
+        "prompt_per_second": 701.3548174242504,
+        "predicted_n": 78,
+        "predicted_ms": 1441.202,
+        "predicted_per_token_ms": 18.71690909090909,
+        "predicted_per_second": 53.42762499635721
+      },
+      "id": "02-C2-v2",
+      "arm": "v2",
+      "case": "02-C2-known",
+      "stage": "known",
+      "wall_seconds": 2.3903851,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {
+            "no_replacement": "true"
+          }
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "de",
+        "subject": {
+          "value": "kettle",
+          "quote": "Wasserkocher",
+          "resolved_span": {
+            "start": 17,
+            "end": 29
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repariere",
+          "resolved_span": {
+            "start": 0,
+            "end": 9
+          }
+        },
+        "goals": [],
+        "constraints": [
+          {
+            "kind": "no_replacement",
+            "value": "true",
+            "quote": "ohne ihn zu ersetzen",
+            "resolved_span": {
+              "start": 31,
+              "end": 51
+            }
+          }
+        ],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 118,
+        "prompt_tokens": 671,
+        "total_tokens": 789,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 671,
+        "prompt_ms": 943.574,
+        "prompt_per_token_ms": 1.406220566318927,
+        "prompt_per_second": 711.1259954174236,
+        "predicted_n": 118,
+        "predicted_ms": 2246.96,
+        "predicted_per_token_ms": 19.204786324786326,
+        "predicted_per_second": 52.070352832271155
+      },
+      "id": "03-C3-v2",
+      "arm": "v2",
+      "case": "03-C3-known",
+      "stage": "known",
+      "wall_seconds": 3.1997595999999997,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "fr",
+        "subject": {
+          "value": "kettle",
+          "quote": "bouilloire",
+          "resolved_span": {
+            "start": 10,
+            "end": 20
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Répare",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 662,
+        "total_tokens": 743,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 662,
+        "prompt_ms": 941.335,
+        "prompt_per_token_ms": 1.4219561933534743,
+        "prompt_per_second": 703.2565452256634,
+        "predicted_n": 81,
+        "predicted_ms": 1497.97,
+        "predicted_per_token_ms": 18.724625,
+        "predicted_per_second": 53.40560892407724
+      },
+      "id": "04-C4-v2",
+      "arm": "v2",
+      "case": "04-C4-known",
+      "stage": "known",
+      "wall_seconds": 2.4486111,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": true,
+      "semantic_errors": [],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "correct",
+        "differences": {},
+        "projected": {
+          "subject": "kettle",
+          "action": "repair",
+          "goals": [],
+          "constraints": {}
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "it",
+        "subject": {
+          "value": "kettle",
+          "quote": "bollitore",
+          "resolved_span": {
+            "start": 14,
+            "end": 23
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Ripara",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 81,
+        "prompt_tokens": 664,
+        "total_tokens": 745,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 664,
+        "prompt_ms": 942.28,
+        "prompt_per_token_ms": 1.4190963855421685,
+        "prompt_per_second": 704.6737700046696,
+        "predicted_n": 81,
+        "predicted_ms": 1497.359,
+        "predicted_per_token_ms": 18.7169875,
+        "predicted_per_second": 53.427401177673495
+      },
+      "id": "05-C5-v2",
+      "arm": "v2",
+      "case": "05-C5-known",
+      "stage": "known",
+      "wall_seconds": 2.4486957,
+      "operational_errors": []
+    },
+    {
+      "strict_pass": false,
+      "semantic_errors": [
+        "status",
+        "language",
+        "missing_uncertainty"
+      ],
+      "grounding_errors": [],
+      "validation_errors": [],
+      "label_mismatches": {},
+      "meaning_inconclusive": [],
+      "unchanged_scorer": {
+        "category": "incorrect",
+        "differences": {
+          "expected_status": "unsupported",
+          "actual_status": "understood"
+        }
+      },
+      "actual": {
+        "status": "understood",
+        "language": "en",
+        "subject": {
+          "value": "kettle",
+          "quote": "hervidor",
+          "resolved_span": {
+            "start": 10,
+            "end": 18
+          }
+        },
+        "action": {
+          "value": "repair",
+          "quote": "Repara",
+          "resolved_span": {
+            "start": 0,
+            "end": 6
+          }
+        },
+        "goals": [],
+        "constraints": [],
+        "unresolved": []
+      },
+      "classification": "AI-assisted exploratory, no independent linguistic validation",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 80,
+        "prompt_tokens": 662,
+        "total_tokens": 742,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "timings": {
+        "cache_n": 0,
+        "prompt_n": 662,
+        "prompt_ms": 942.405,
+        "prompt_per_token_ms": 1.42357250755287,
+        "prompt_per_second": 702.4580726969828,
+        "predicted_n": 80,
+        "predicted_ms": 1497.893,
+        "predicted_per_token_ms": 18.96067088607595,
+        "predicted_per_second": 52.74074983994184
+      },
+      "id": "06-C6-v2",
+      "arm": "v2",
+      "case": "06-C6-known",
+      "stage": "known",
+      "wall_seconds": 2.449186,
+      "operational_errors": []
+    }
+  ]
+}

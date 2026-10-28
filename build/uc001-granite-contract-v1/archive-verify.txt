@@ -1,0 +1,1 @@
+{"command": "verify-archive", "bundle_id": "9a4acb903c834737809b2648c358da9f2d91b116471966fb7b691847a069f4b4", "files": 39, "inference": false}

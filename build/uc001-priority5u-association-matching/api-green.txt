@@ -1,0 +1,166 @@
+FFF.............                                                         [100%]
+=================================== FAILURES ===================================
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10] _
+
+system = (<starlette.testclient.TestClient object at 0x710f85985250>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-green/te...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x710f86f2ce90>, localities=None))
+country = 'CH', town = '  jouxtens-mézery  ', postcode = ' 1008 ', record = 10
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == "insufficient_coverage"
+        scope = body["search_scope"]
+        assert {key: value for key, value in scope.items() if key != "locality"} == payload["search_location"]
+        assert scope["locality"]["verification"] == "matched_in_reference"
+        assert scope["locality"]["selection"] == "single_match"
+        assert scope["locality"]["association"]["reference"] == association_pointer(record)
+        assert counts(path) == {"search_request": 1, "request_alternative": 0, "request_alternative_evidence": 0}
+        with sqlite3.connect(path) as connection:
+            location, meaning, binding, projection = connection.execute(
+                "SELECT search_location,interpretation,payload_digest,projection FROM search_request").fetchone()
+        assert json.loads(location) == scope and json.loads(projection) == body
+        assert binding == digest({key: value for key, value in payload.items() if key != "submission_key"})
+        interpreted = json.loads(meaning)
+        assert interpreted["constraints"] == [{"value": "no_replacement", "quote": "without replacing it"}]
+        constraint = next(item for item in interpreted["provenance"]["items"] if item["kind"] == "constraint")
+        assert constraint["span"] == {"start": 18, "end": 38, "quote": "without replacing it"}
+        reference = interpreted["provenance"]["reference_versions"]
+        assert reference["country"]["release"] == "geonames-countryInfo-2026-10-23-v1"
+        assert reference["locality"] == {"source": "swisstopo", "release": association_pointer(record)["release"],
+            "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+            "snapshot_at": "2026-10-01T00:00:00Z"}
+>       assert "associations" not in location + meaning + projection
+E       assert 'associations' not in '{"country_c...verage-v1"}}'
+E         
+E         'associations' is contained here:
+E           topo-chli-associations-2026-10-01-v1", "source_record": 10}, "country_code": "CH", "locality_name": "Jouxtens-M\u00e9zery", "postcode": "1008", "source_postcode_id": "5852", "additional_number": "02", "administrative": {"municipality_name": "Jouxtens-M\u00e9zery", "municipality_id": "5585", "canton": "VD"}}}}{"subject": "bicycle", "constraints": [{"value": "no_replacement", "quote": "without replacing it"}], "request_language": "en", "explanation_language": "en", "language_origin": "detected", "version": "test-only-exact-fixture-v2", "goals": [], "b...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/integration/test_saved_comparison.py:2021: AssertionError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x710f7e8d2450>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-green/te...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x710f860c72c0>, localities=None))
+country = 'LI', town = 'Vaduz', postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == "insufficient_coverage"
+        scope = body["search_scope"]
+        assert {key: value for key, value in scope.items() if key != "locality"} == payload["search_location"]
+        assert scope["locality"]["verification"] == "matched_in_reference"
+        assert scope["locality"]["selection"] == "single_match"
+        assert scope["locality"]["association"]["reference"] == association_pointer(record)
+        assert counts(path) == {"search_request": 1, "request_alternative": 0, "request_alternative_evidence": 0}
+        with sqlite3.connect(path) as connection:
+            location, meaning, binding, projection = connection.execute(
+                "SELECT search_location,interpretation,payload_digest,projection FROM search_request").fetchone()
+        assert json.loads(location) == scope and json.loads(projection) == body
+        assert binding == digest({key: value for key, value in payload.items() if key != "submission_key"})
+        interpreted = json.loads(meaning)
+        assert interpreted["constraints"] == [{"value": "no_replacement", "quote": "without replacing it"}]
+        constraint = next(item for item in interpreted["provenance"]["items"] if item["kind"] == "constraint")
+        assert constraint["span"] == {"start": 18, "end": 38, "quote": "without replacing it"}
+        reference = interpreted["provenance"]["reference_versions"]
+        assert reference["country"]["release"] == "geonames-countryInfo-2026-10-23-v1"
+        assert reference["locality"] == {"source": "swisstopo", "release": association_pointer(record)["release"],
+            "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+            "snapshot_at": "2026-10-01T00:00:00Z"}
+>       assert "associations" not in location + meaning + projection
+E       assert 'associations' not in '{"country_c...verage-v1"}}'
+E         
+E         'associations' is contained here:
+E           topo-chli-associations-2026-10-01-v1", "source_record": 5590}, "country_code": "LI", "locality_name": "Vaduz", "postcode": "9490", "source_postcode_id": "5393", "additional_number": "00", "administrative": {"municipality_name": "Vaduz", "municipality_id": "7001", "canton": ""}}}}{"subject": "bicycle", "constraints": [{"value": "no_replacement", "quote": "without replacing it"}], "request_language": "en", "explanation_language": "en", "language_origin": "detected", "version": "test-only-exact-fixture-v2", "goals": [], "baseline": null, "budget": null...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/integration/test_saved_comparison.py:2021: AssertionError
+_ test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590] _
+
+system = (<starlette.testclient.TestClient object at 0x710f85b1bf50>, PosixPath('/tmp/resolena-priority5u-nvwrc29y/api-green/te...one, countries=<app.infrastructure.country_reference.LocalCountryCatalogue object at 0x710f861744a0>, localities=None))
+country = 'LI', town = None, postcode = '9490', record = 5590
+
+    @pytest.mark.parametrize("country,town,postcode,record", [
+        ("CH", "  jouxtens-me\u0301zery  ", " 1008 ", 10),
+        ("LI", "Vaduz", "9490", 5590),
+        ("LI", None, "9490", 5590),
+    ])
+    def test_exact_locality_association_saves_honest_scope_and_bound_payload(system, country, town, postcode, record):
+        from app.application.comparisons import digest
+        path, service = locality_matching_service(system)
+        payload = submission()
+        payload["search_location"] = {"country_code": country, "postcode": postcode}
+        if town is not None:
+            payload["search_location"]["town"] = town
+        with TestClient(create_app(service)) as client:
+            response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": "a" * 64})
+        assert response.status_code == 201
+        body = response.json()
+        assert body["outcome"] == "insufficient_coverage"
+        scope = body["search_scope"]
+        assert {key: value for key, value in scope.items() if key != "locality"} == payload["search_location"]
+        assert scope["locality"]["verification"] == "matched_in_reference"
+        assert scope["locality"]["selection"] == "single_match"
+        assert scope["locality"]["association"]["reference"] == association_pointer(record)
+        assert counts(path) == {"search_request": 1, "request_alternative": 0, "request_alternative_evidence": 0}
+        with sqlite3.connect(path) as connection:
+            location, meaning, binding, projection = connection.execute(
+                "SELECT search_location,interpretation,payload_digest,projection FROM search_request").fetchone()
+        assert json.loads(location) == scope and json.loads(projection) == body
+        assert binding == digest({key: value for key, value in payload.items() if key != "submission_key"})
+        interpreted = json.loads(meaning)
+        assert interpreted["constraints"] == [{"value": "no_replacement", "quote": "without replacing it"}]
+        constraint = next(item for item in interpreted["provenance"]["items"] if item["kind"] == "constraint")
+        assert constraint["span"] == {"start": 18, "end": 38, "quote": "without replacing it"}
+        reference = interpreted["provenance"]["reference_versions"]
+        assert reference["country"]["release"] == "geonames-countryInfo-2026-10-23-v1"
+        assert reference["locality"] == {"source": "swisstopo", "release": association_pointer(record)["release"],
+            "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+            "snapshot_at": "2026-10-01T00:00:00Z"}
+>       assert "associations" not in location + meaning + projection
+E       assert 'associations' not in '{"country_c...verage-v1"}}'
+E         
+E         'associations' is contained here:
+E           topo-chli-associations-2026-10-01-v1", "source_record": 5590}, "country_code": "LI", "locality_name": "Vaduz", "postcode": "9490", "source_postcode_id": "5393", "additional_number": "00", "administrative": {"municipality_name": "Vaduz", "municipality_id": "7001", "canton": ""}}}}{"subject": "bicycle", "constraints": [{"value": "no_replacement", "quote": "without replacing it"}], "request_language": "en", "explanation_language": "en", "language_origin": "detected", "version": "test-only-exact-fixture-v2", "goals": [], "baseline": null, "budget": null...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/integration/test_saved_comparison.py:2021: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[CH-  jouxtens-me\u0301zery  - 1008 -10]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-Vaduz-9490-5590]
+FAILED tests/integration/test_saved_comparison.py::test_exact_locality_association_saves_honest_scope_and_bound_payload[LI-None-9490-5590]
+3 failed, 13 passed, 55 deselected, 1 warning in 3.03s

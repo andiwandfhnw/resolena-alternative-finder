@@ -1,0 +1,294 @@
+{
+  "recorded_date": "2026-10-26",
+  "phase": 3,
+  "status": "in-progress",
+  "scope": "Bounded offline worker/proxy/controller launcher-interpreter binding correction preparation.",
+  "owner_readiness_review_accepted": true,
+  "closed_harmless_ownership_helper_result": "CLOSED, unchanged and not rerun",
+  "accepted_proxy_sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+  "native_windows_execution": false,
+  "ownership_selftest_run": false,
+  "real_source_acquisition": false,
+  "real_configure_build_compiler_glslc": false,
+  "gpu_model_inference": false,
+  "actual_acquisition_build_execution_prepared": false,
+  "event_schema": "event-schema.json",
+  "implementation": {
+    "changed_source": [
+      "scripts/uc001_granite_controller/worker.py",
+      "scripts/uc001_granite_controller/controller.py"
+    ],
+    "identity_schema": 1,
+    "launcher": "Popen-created retained native PID/birth/handle/lifecycle",
+    "interpreter": "separately bound readiness/listening PID/birth/native-parent/lifecycle; same actual handle in no-split",
+    "exact_private_job_authority": "Controller native verification before private ACK; worker any-Job flags preliminary only",
+    "private_ack_utf8": "PROXY_BOUND\n",
+    "ack_channel": "fresh acquisition worker stdin pipe, once after binding, before fetch",
+    "listening_ledger_expected_pid": "interpreter PID, strict positive integer",
+    "generic_child_events": "non-proxy meanings unchanged; old proxy events rejected",
+    "closing": "worker verifies both live before publishing planned close",
+    "cleanup": "both explicit native-backed role exits plus final Job identity-key exits, retained query-handle closure; phase-labelled; abort cleanup never clears phase failure",
+    "branch": "unchanged split console-helper validator; no-split no extras; closing allows only previously approved edge subset"
+  },
+  "commands": {
+    "final_focused_argv": [
+      ".venv/bin/python",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/unit/test_granite_controller_worker.py",
+      "tests/unit/test_granite_controller_run.py",
+      "tests/unit/test_granite_controller.py",
+      "tests/unit/test_granite_proxy_identity_flow.py",
+      "tests/unit/test_granite_proxy_identity_package.py"
+    ],
+    "final_exit_code": 0,
+    "final_passed": 165,
+    "breakdown": {
+      "worker": 47,
+      "controller": 46,
+      "unchanged_safety_policy": 53,
+      "cross_component_flow": 10,
+      "package": 9
+    },
+    "raw_logs": {
+      "worker-red.log": {
+        "stage": "RED",
+        "failed": 20,
+        "exit_code": 1
+      },
+      "worker-green-first.log": {
+        "stage": "GREEN",
+        "passed": 20,
+        "exit_code": 0
+      },
+      "worker-green-full-first.log": {
+        "stage": "intermediate GREEN",
+        "passed": 44,
+        "exit_code": 0
+      },
+      "worker-close-order-red.log": {
+        "stage": "review RED closing ordering",
+        "failed": 2,
+        "exit_code": 1
+      },
+      "worker-green-reviewed.log": {
+        "stage": "review GREEN",
+        "passed": 46,
+        "exit_code": 0
+      },
+      "worker-ledger-type-red.log": {
+        "stage": "review RED typed listening identity",
+        "failed": 1,
+        "exit_code": 1
+      },
+      "worker-green-final.log": {
+        "stage": "worker GREEN",
+        "passed": 47,
+        "exit_code": 0
+      },
+      "controller-red.log": {
+        "stage": "RED",
+        "failed": 16,
+        "exit_code": 1
+      },
+      "controller-green-first.log": {
+        "stage": "GREEN",
+        "passed": 16,
+        "exit_code": 0
+      },
+      "controller-green-run-first.log": {
+        "stage": "intermediate GREEN",
+        "passed": 37,
+        "exit_code": 0
+      },
+      "controller-review-red.log": {
+        "stage": "review RED schema/retained helper handle",
+        "failed": 9,
+        "exit_code": 1
+      },
+      "controller-green-final.log": {
+        "stage": "controller GREEN",
+        "passed": 46,
+        "exit_code": 0
+      },
+      "package-red.log": {
+        "stage": "RED",
+        "failed": 9,
+        "exit_code": 1
+      },
+      "package-green-first.log": {
+        "stage": "intermediate manifest fixture failure",
+        "failed": 3,
+        "passed": 6,
+        "exit_code": 1
+      },
+      "package-green.log": {
+        "stage": "package GREEN",
+        "passed": 9,
+        "exit_code": 0
+      },
+      "flow-first.log": {
+        "stage": "cross-component GREEN",
+        "passed": 4,
+        "exit_code": 0
+      },
+      "flow-schema-red.log": {
+        "stage": "review RED phase contract",
+        "failed": 3,
+        "passed": 2,
+        "exit_code": 1
+      },
+      "controller-ledger-types-red.log": {
+        "stage": "review RED controller PID typing",
+        "failed": 5,
+        "exit_code": 1
+      },
+      "green-final-focused.log": {
+        "stage": "FINAL",
+        "passed": 165,
+        "seconds": 2.1,
+        "exit_code": 0
+      }
+    },
+    "closed_selftest_and_windows_backend_tests_excluded": true
+  },
+  "package": {
+    "archive": "/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/uc001-granite-proxy-identities-v1.zip",
+    "bytes": 49081,
+    "sha256": "5e17772727fae81fb73f48f734e7301a148d56927841fe0c7f5ade0c70f18ade",
+    "manifest_sha256": "8b9a01de56eb28f1b4b0040d3626158c2b64010bf69e3df357ef19644bbb9f33",
+    "template_sha256": "d778202f34ad163dd1a2cc89b3ec71f35ef623eaf8c1894935a4bde1139c8e9b"
+  },
+  "helper_hashes": {
+    "controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "worker.py": "6c786d97f23a92b5ee6f6699d2b92a3de0bdb9913a332e3a8d046a67fe4aca85",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d"
+  },
+  "codespace_structural": {
+    "preparation_integrity_passed": true,
+    "proxy_identity_schema": 1,
+    "native_binding_verified": false,
+    "native_api_invoked": false,
+    "live_proxy_started": false,
+    "ownership_selftest_run": false,
+    "acquisition_or_build": false,
+    "gpu_model_inference": false,
+    "resource_fit_established": false,
+    "forbidden_attempts": [],
+    "module_paths": {
+      "worker": "/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/package/worker.py",
+      "controller": "/workspaces/resolena-alternative-finder/build/uc001-granite-proxy-identities-v1/package/controller.py"
+    },
+    "runtime_check_injected": true,
+    "windows_execution": false,
+    "python_version": "3.12.11",
+    "timestamp_utc": "2026-10-26T21:25:19.037961+00:00"
+  },
+  "preservation": {
+    "protected_existing_files": 1380,
+    "unchanged_existing_files": 1375,
+    "changed_existing_files": [
+      "docs/TASKS.md",
+      "scripts/uc001_granite_controller/controller.py",
+      "scripts/uc001_granite_controller/worker.py",
+      "tests/unit/test_granite_controller_run.py",
+      "tests/unit/test_granite_controller_worker.py"
+    ],
+    "missing_files": [],
+    "closed_selftest_and_windows_backend_unchanged": true,
+    "accepted_proxy_unchanged": true,
+    "all_previous_artifacts_unchanged": true,
+    "historical_task_entries_and_priority5_unchanged": true,
+    "frozen_safety_classes_native_config_build_flags_environment_and_build_route_unchanged": true,
+    "new_source_diff_whitespace_passed": true,
+    "package_hashes_match": true,
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index_unchanged": true,
+    "status_unchanged": true,
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:2957: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "readiness": "Ready for offline owner review only; actual Windows proxy binding/ACK behavior remains unverified; no real acquisition/build invocation prepared.",
+  "future_windows_check": {
+    "authorized": false,
+    "executed": false,
+    "scope": "Structural integrity/import/schema only, no NativeApi/live proxy/network/ownership/acquisition/build",
+    "procedure": "README.md: Future Windows readiness command \u2014 NOT AUTHORIZED / NOT EXECUTED"
+  },
+  "evidence_limits": [
+    "All native APIs/process identities were injected; no Windows execution claimed.",
+    "The existing successful harmless ownership/helper model remains closed; no modification or rerun.",
+    "Actual Windows private-ACK and proxy composition still require separate review/authorization.",
+    "Structural check is not native binding, resource fit, runtime/model or semantic suitability.",
+    "Scoped snapshots cannot exclude every unobserved transient process; initial snapshot-to-open PID reuse remains a limit.",
+    "Reviewed SHA-bound prior accounting, explicit approved execution config and live tool/path/resource gates remain mandatory.",
+    "Current native proxy/build algorithm/settings/limits and accepted proxy bytes unchanged.",
+    "Synthetic tool/archive fixtures did not acquire third-party source or invoke real commands.",
+    "All intermediate RED/GREEN logs and previous evidence preserved; no cumulative test total inferred."
+  ],
+  "evidence_sha256": {
+    "README.md": "5178b3acac7de172c402aa1252acde2b449a3d605675ff4a700cd87ac6af1367",
+    "Run-ReadinessCheck.ps1": "67cfe7eff26015e9bf2c2b39e481b99c2574c7485867567efe7924b748de877c",
+    "before/controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "before/test_granite_controller_run.py": "ca2082d273e69b6301d326e30898d13741cd9d5ac6365909ef45d6903e3c9121",
+    "before/test_granite_controller_worker.py": "bafa46e7a1fc4de8b978678232fad8a3f213826badd61b7d4fb5672b39bec0ba",
+    "before/worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891",
+    "build_package.py": "53aa5e8871bd1e523b38f98cbaea0aef792d49985a41a5657b0283e39713b2b3",
+    "check.py": "d09492a057680d1926d6a690cd526cfe50ca44b54bf2ee8a8392348bbd6ce05c",
+    "codespace-structural.json": "91c5a9950af0555f79e9e6100c4db790d89f3ab6cdfc8431733cc1a91d0dca47",
+    "controller-green-final.log": "4fa194fe35746341c444e663a85ff26f57236de9564db00b10aa3ab62aa48ff6",
+    "controller-green-first.log": "e0cf4ce63642135b42d05c52f2ee9330883ca3a53e04ab3512204e9fb06f0020",
+    "controller-green-run-first.log": "e770128b197f525b36a574413b49fa39636729653724b34791e23b1c59e33ba5",
+    "controller-ledger-types-red.log": "db40743e46974182e129866e2c14a849b143e10cc690682d18c88dfc65ebc7db",
+    "controller-red.log": "821a11c7ca14da1ec24c7656a266fd56e207cfc952c695c135e52c994fc51ca6",
+    "controller-review-red.log": "1e9399a097215b76111efb0a162b93b73f2ae213f53321d7602092472a982451",
+    "controller.py.diff": "1473eeb7afbe674a00a5c5a699cbff044435bf35e95a3846c96aadc5246d394a",
+    "event-schema.json": "38b455fc983f4f75cdb9551a9d488b0b6c5951532808f385f758e6738f5dcf12",
+    "flow-first.log": "006ba2e6e18954ad086677bc060e3290380048985a443818578f6ef51ed1b21b",
+    "flow-schema-red.log": "0696739cb32f0ca4602b718df392310cdfa5cacb021223f884fb40a906b26b75",
+    "git-diff-check.txt": "561c276b276ec3e69e42ac3d4e3231fef84529e8e499f50072215f0107efe283",
+    "git-status.txt": "2258ca6ab70315c71f22a6a41902f634694766cc9cc31216ef5d6aa82d181cac",
+    "green-final-focused.log": "e67903d2095313a9bf549a54290510c0b85880795eeefdef978e208931c26c1b",
+    "helper-hashes.json": "3c2fcf6796ad0f9b0b0a1d9f8b8a9f5f0f50ba135eb6dbb4aa26650c22204c55",
+    "package/README.md": "5019d7c51e5ad854f38e10970f2d47491661722f6969ccc4345950c67fc62e06",
+    "package/Run-ReadinessCheck.ps1": "67cfe7eff26015e9bf2c2b39e481b99c2574c7485867567efe7924b748de877c",
+    "package/check.py": "d09492a057680d1926d6a690cd526cfe50ca44b54bf2ee8a8392348bbd6ce05c",
+    "package/controller-config.template.json": "d778202f34ad163dd1a2cc89b3ec71f35ef623eaf8c1894935a4bde1139c8e9b",
+    "package/controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "package/manifest.json": "8b9a01de56eb28f1b4b0040d3626158c2b64010bf69e3df357ef19644bbb9f33",
+    "package/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "package/standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "package/windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "package/worker.py": "6c786d97f23a92b5ee6f6699d2b92a3de0bdb9913a332e3a8d046a67fe4aca85",
+    "package-green-first.log": "3968749bf14d0ebc9b3beca63e35a19af8f1c64b962abee293f63c64a2bc4447",
+    "package-green.log": "fbf3ce380adbd56d9b6606ae9d3638dcc5d2e8ba927e872f602b406b7fcde062",
+    "package-readme.md": "5019d7c51e5ad854f38e10970f2d47491661722f6969ccc4345950c67fc62e06",
+    "package-red.log": "599a060afdc9347738a94b90a8d97852b12b84f779fe946898c892caadbddab7",
+    "package-result.json": "aefaf0338375a239d48cd4ecc1aa945e792a34a611ca99d8b453c703192a14d5",
+    "preservation-before.json": "75b568f45cd65ec2ec4f4811c5fef8d4e75e6cf343508a8f78c1dbd8b7f03bad",
+    "preservation-checks.json": "4b37c4e84802df2391d053b95c58ae0595fe74080f05d51648bf8217ceff23e4",
+    "test_granite_controller_run.py.diff": "0a752c89b9db2c7d12e366e2d357213159ad9f1f5a468cec5f3c1cd016b05a87",
+    "test_granite_controller_worker.py.diff": "782b3fd6206a8590649973bb3b8107a577c3e966729e32a6ad9c82d1aefe3e42",
+    "uc001-granite-proxy-identities-v1.zip": "5e17772727fae81fb73f48f734e7301a148d56927841fe0c7f5ade0c70f18ade",
+    "worker-close-order-red.log": "e461af3873d309f314dfc17a7e67754a42091e38cd6f0d4caa08478dd20e4876",
+    "worker-green-final.log": "5e7b6d2039294f1f1397f242017bd5ceafa08ad490ffdce47b602f581341e8c2",
+    "worker-green-first.log": "bb20bde6e23127929580ae43514a2a46a182580cf20629a4dfb7aa7673e3a8db",
+    "worker-green-full-first.log": "59c3f0ad64a199f8c8be1cf3c4cea23fa591c9a5cb6d9d03fd18e1822170d8e2",
+    "worker-green-reviewed.log": "2d1fb91f368ac8f267abe4f3d97fa2d15885bcca46c28098dc770ba7934f71f5",
+    "worker-ledger-type-red.log": "bdf43a720b492de6220fe13ad997dbc09d218bb421c66de626b6c0ac3df2397b",
+    "worker-red.log": "f03a2730274176d0306b33213d41655ef58693f04a7fb1e9b8108a5e4502bcb3",
+    "worker.py.diff": "a7efb2ffc715f08333beab30f9926b196e9eebd01879c88868381a73ceae3430"
+  },
+  "documentation_checks": {
+    "local_links_passed": true,
+    "evidence_hashes_passed": true,
+    "event_ack_schema_consistent": true,
+    "closed_model_and_current_phase_preserved": true,
+    "future_check_structural_not_authorized": true,
+    "final_read_only_git_checks_passed": true
+  }
+}

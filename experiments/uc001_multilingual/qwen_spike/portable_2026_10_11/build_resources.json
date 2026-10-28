@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-11T15:42:43.648022+00:00",
+  "peak_owned_rss_bytes": 678666240,
+  "minimum_available_bytes": 13030801408,
+  "peak_scratch_bytes": 2371659813,
+  "failure": null,
+  "owned_rss_bytes": 4231168,
+  "available_bytes": 13654446080,
+  "scratch_bytes": 2371659813
+}

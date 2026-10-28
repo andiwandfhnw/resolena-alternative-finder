@@ -1,0 +1,28 @@
+{
+  "baseline_files": 771,
+  "unchanged_files": 762,
+  "changed_existing_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "docs/adr/ADR-005-country-reference-development-release.md",
+    "frontend/src/App.tsx",
+    "src/app/application/comparisons.py",
+    "src/app/domain/qualification.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_saved_comparison.py",
+    "tests/unit/test_qualification.py"
+  ],
+  "missing_files": [],
+  "new_source_fixture": "tests/support/locality_confirmation.py",
+  "prior_build_artifacts_checked": 478,
+  "prior_build_artifacts_unchanged": true,
+  "reference_files_checked": 4,
+  "all_reference_files_unchanged": true,
+  "tasks_dated_history_preserved_except_current_authorization_and_new_5S_result": true,
+  "all_prior_browser_cases_byte_preserved": true,
+  "existing_API_file_prefix_preserved": true,
+  "existing_rule_functions_changed": [
+    "test_country_and_intended_locality_require_independent_coverage"
+  ],
+  "old_rule_functions_unchanged_except_corrected_country_locality_assertion": true
+}

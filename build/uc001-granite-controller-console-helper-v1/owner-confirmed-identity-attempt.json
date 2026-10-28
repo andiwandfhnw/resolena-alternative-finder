@@ -1,0 +1,42 @@
+{
+  "provenance": "Owner-supplied preserved identity-diagnostic fields from the request, not a Codex Windows run or reconstructed desktop raw directory.",
+  "recorded_date": "2026-10-26",
+  "attempt_consumed": true,
+  "controller": {
+    "pid": 55232,
+    "verified": true
+  },
+  "launcher": {
+    "pid": 54420,
+    "creation_time_100ns": 134375187725802401,
+    "parent_pid": 55232,
+    "verified": true
+  },
+  "interpreter": {
+    "pid": 52808,
+    "creation_time_100ns": 134375187725983520,
+    "parent_pid": 54420,
+    "verified": true
+  },
+  "unexpected_child": {
+    "pid": 50704,
+    "creation_time_100ns": 134375187725860683,
+    "native_parent_pid": 54420,
+    "image_path": "C:\\Windows\\System32\\conhost.exe",
+    "in_private_job": false,
+    "native_pid_stable_on_revalidation": true,
+    "creation_filetime_stable_on_revalidation": true,
+    "query_errors": [],
+    "raw_exit_code": 259,
+    "exit_state": "active_or_exit_code_259",
+    "role_accepted": false,
+    "snapshot_to_handle_identity": "not_established",
+    "retained_query_handle_closed": true,
+    "termination_requested": false
+  },
+  "scoped_snapshot_count": 2,
+  "same_extra_launcher_child_edge_observed_twice": true,
+  "owner_evidence_acceptance": "Identity-bound Windows system console-host observation associated with the verified launcher in this tested pattern.",
+  "earlier_pid_38564_image_identity_reconstructed": false,
+  "new_windows_execution_authorized": false
+}

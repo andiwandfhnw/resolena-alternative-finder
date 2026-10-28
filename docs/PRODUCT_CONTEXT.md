@@ -8,6 +8,11 @@ students, young professionals and people with constrained budgets who want
 practical improvements. This background does not automatically add currency,
 language, localization or mobile-platform requirements to the capstone.
 
+Explicit amendments independently approve UC-001's editable Switzerland search
+default (2026-10-09) and written DE/FR/IT/EN request/explanation language targets
+(2026-10-10), not full UI localization or verified support; see
+[UC-001](specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md#flow).
+
 Alternative Finder supports discovering and comparing possibilities that could
 inform future actions in the wider product.
 
@@ -43,7 +48,7 @@ rather than silently implemented in UX, ranking or comparison logic.
 
 ## Pending SPECIFY clarification
 
-Proposed for owner resolution in UC-001: comparison estimates and an explicit
+Proposed for owner resolution across UC-001/UC-003: comparison estimates and an explicit
 selection must not be presented as proof of realized savings, completed behaviour
 or achieved environmental impact. This clarification is recorded in
 [TASKS.md](TASKS.md#backlog), not added to the approved specification by this task.
@@ -58,10 +63,13 @@ banking/transfers, investment routing, rewards, community and the wider startup
 roadmap are background and outside this module unless separately approved through
 AI-SDLC. Roadmap ideas are not implementation requirements.
 
-This file supplies product context; approved sections of the active
-[UC-001 specification](specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md) control feature
-behaviour and acceptance. Its unfinished sections remain pending. Surface
-conflicts for owner resolution rather than silently reconciling them. New
+Product context links approved behaviour to
+[UC-001 comparison](specs/UC-001-FIND-AND-SELECT-ALTERNATIVE.md) and
+[UC-003 selection](specs/UC-003-SELECT-DISPLAYED-ALTERNATIVE.md) under approved
+[decomposition](adr/ADR-002-use-case-decomposition.md). UC-001 increment-1 SPECIFY
+is accepted; research and UC-003 remain pending. Surface conflicts for owner
+resolution rather than
+silently reconciling them. New
 features and behaviour changes follow [AI-SDLC instructions](../AGENTS.md).
 Technical boundaries belong in [ARCHITECTURE.md](ARCHITECTURE.md), project setup
 in [PROJECT.md](PROJECT.md), and phase procedures in the
@@ -73,4 +81,4 @@ Added on 2026-10-09 from owner-supplied context described as distilled from
 `Master_Context_Prompt_Resolena_Updated_2026-09-23.docx`. The DOCX itself was not
 available for this task and has not been read. Documentation was accepted by
 the owner on 2026-10-09. The proposed clarification remains pending owner
-resolution; documentation acceptance does not advance Phase 1/in-progress.
+resolution; that documentation acceptance did not advance Phase 1.

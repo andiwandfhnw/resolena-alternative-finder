@@ -1,0 +1,9 @@
+{
+    "http_status":  200,
+    "raw_body":  "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"de\\\",\\n  \\\"subject\\\": {\\n    \\\"value\\\": \\\"Wasserkocher\\\",\\n    \\\"quote\\\": \\\"Wasserkocher\\\"\\n  },\\n  \\\"action\\\": {\\n    \\\"value\\\": \\\"repair\\\",\\n    \\\"quote\\\": \\\"Repariere\\\"\\n  },\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\n      \\\"kind\\\": \\\"no_replacement\\\",\\n      \\\"value\\\": \\\"true\\\",\\n      \\\"quote\\\": \\\"ohne ihn zu ersetzen\\\"\\n    }\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791919151,\"model\":\"C:\\\\ResolenaExperiments\\\\qwen3-8b-v1\\\\Qwen3-8B-Q8_0.gguf\",\"system_fingerprint\":\"b11429-d81235049\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":121,\"prompt_tokens\":341,\"total_tokens\":462,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-nas8Qcu0M0yy9hXEYzVhi4VaIzL8mehU\",\"timings\":{\"cache_n\":0,\"prompt_n\":341,\"prompt_ms\":498.135,\"prompt_per_token_ms\":1.4608064516129031,\"prompt_per_second\":684.553384122778,\"predicted_n\":121,\"predicted_ms\":2350.298,\"predicted_per_token_ms\":19.585816666666666,\"predicted_per_second\":51.057355280053855}}",
+    "wall_seconds":  2.8588837,
+    "bundle_freeze_sha256":  "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+    "request_sha256":  "fffd785e00391679a2dcc830fe1d336197c7cb0efd2c47d96a5e1604aefb308c",
+    "started_case":  "03-C3-known",
+    "utc":  "2026-10-13T19:19:11.0587079Z"
+}

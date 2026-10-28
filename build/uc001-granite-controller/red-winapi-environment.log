@@ -1,0 +1,73 @@
+...........................F......                                       [100%]
+=================================== FAILURES ===================================
+_ test_native_create_inserts_exact_handle_and_job_lists_before_suspended_creation[environment_values1] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-37/test_native_create_inserts_exa1')
+environment_values = {'=C:': 'C:\\Resolena\\gn1-20261025', 'SystemRoot': 'C:\\Windows'}
+
+    @pytest.mark.parametrize('environment_values',[{}, {'=C:':'C:\\Resolena\\gn1-20261025','SystemRoot':'C:\\Windows'}])
+    def test_native_create_inserts_exact_handle_and_job_lists_before_suspended_creation(tmp_path,environment_values):
+        from types import SimpleNamespace
+        from scripts.uc001_granite_controller import windows_job as module
+        calls = []
+        next_handle = iter((1001,1002,1003))
+        def create_file(*args):
+            return next(next_handle)
+        def initialize(attributes,count,flags,size):
+            assert count == 2
+            ctypes.cast(size,ctypes.POINTER(module.SIZE_T))[0] = 256
+            return int(attributes is not None)
+        def update(attributes,flags,key,value,size,previous,returned):
+            pointer = ctypes.cast(value,ctypes.POINTER(module.HANDLE))
+            values = [pointer[i] for i in range(size//ctypes.sizeof(module.HANDLE))]
+            calls.append(('attribute',key,values))
+            return 1
+        def create_process(application,command,process_security,thread_security,inherit,flags,environment,cwd,startup,result):
+            assert application == 'C:\\Python\\python.exe'
+            actual_environment = ctypes.wstring_at(environment,len(environment)).rstrip('\0').split('\0')
+            expected_environment = [key+'='+value for key,value in sorted(environment_values.items(),key=lambda item:item[0].upper())]
+            assert actual_environment == (expected_environment or [''])
+            assert process_security is None and thread_security is None
+            assert inherit is True
+            assert flags & 0x4 and flags & 0x80000 and not flags & 0x01000000
+            info = ctypes.cast(startup,ctypes.POINTER(module.StartupInfoEx)).contents
+            assert info.StartupInfo.cb == 112 and info.StartupInfo.dwFlags == 0x100
+            output = ctypes.cast(result,ctypes.POINTER(module.ProcessInformation)).contents
+            output.hProcess,output.hThread,output.dwProcessId,output.dwThreadId = 2001,2002,1234,1235
+            calls.append(('create_suspended',))
+            return 1
+        api = object.__new__(module.NativeApi)
+        api.k = SimpleNamespace(CreateFileW=create_file,InitializeProcThreadAttributeList=initialize,
+            UpdateProcThreadAttribute=update,DeleteProcThreadAttributeList=lambda *_:None,
+            CreateProcessW=create_process,GetProcessId=lambda _:1234,CloseHandle=lambda _:1)
+>       result = api.create_suspended(['C:\\Python\\python.exe','-I','worker.py'],str(tmp_path),environment_values,
+                                      str(tmp_path/'out'),str(tmp_path/'err'),private_job=333)
+
+tests/unit/test_granite_windows_job.py:465: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scripts.uc001_granite_controller.windows_job.NativeApi object at 0x7479db952bd0>
+argv = ['C:\\Python\\python.exe', '-I', 'worker.py']
+cwd = '/tmp/pytest-of-vscode/pytest-37/test_native_create_inserts_exa1'
+env = {'=C:': 'C:\\Resolena\\gn1-20261025', 'SystemRoot': 'C:\\Windows'}
+stdoutfile = '/tmp/pytest-of-vscode/pytest-37/test_native_create_inserts_exa1/out'
+stderrfile = '/tmp/pytest-of-vscode/pytest-37/test_native_create_inserts_exa1/err'
+stdin_pipe = False, private_job = 333
+
+    def create_suspended(self, argv, cwd, env, stdoutfile, stderrfile, stdin_pipe=False, private_job=None):
+        if not private_job:
+            raise JobError('atomic create-time private Job Object assignment required')
+        if not argv or not ntpath.isabs(str(argv[0])):
+            raise JobError('explicit absolute executable path required')
+        if any('\0' in str(arg) for arg in argv):
+            raise JobError('NUL in command')
+        env_strings = []
+        for key,value in sorted(env.items(),key=lambda item:item[0].upper()):
+            if not key or '=' in key or '\0' in key or '\0' in value:
+>               raise JobError('invalid environment block')
+E               scripts.uc001_granite_controller.windows_job.JobError: invalid environment block
+
+scripts/uc001_granite_controller/windows_job.py:214: JobError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_windows_job.py::test_native_create_inserts_exact_handle_and_job_lists_before_suspended_creation[environment_values1]
+1 failed, 33 passed in 0.20s

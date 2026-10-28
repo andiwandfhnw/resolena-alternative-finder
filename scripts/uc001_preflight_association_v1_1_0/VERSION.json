@@ -1,0 +1,30 @@
+{
+  "version": "uc001-preflight-association-v1.1.0",
+  "date": "2026-10-16",
+  "scope": "Separate adapter association and resource preflight only; no live-execution bundle",
+  "parent_freeze_sha256": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+  "parent_zip_sha256": "d7fd83f68d9888973e55c4cc5a94658a180467058f8bbdc7ad1f2d21af5d7333",
+  "changes": [
+    "Match hardware DXGI descriptor/PCI identifiers to the intended CIM/registry device and obtain its LUID afresh",
+    "Require a unique corresponding WDDM phys_0 counter without a global single-counter assumption",
+    "Stop on missing, duplicate, inconsistent, failed or untyped identity/measurement data; retain measured zero",
+    "Expose association and resource-guard failures separately through a bounded no-asset-hash entry point",
+    "Reuse separately validated native identity logic; disclose native calls and possible temporary compiler files"
+  ],
+  "unchanged": [
+    "Original frozen source, ZIP and earlier failure/diagnostic evidence",
+    "Model/runtime pins, original prompt/schema/cases and inference budgets",
+    "Capacity/headroom/runtime resource thresholds; original application guarantees"
+  ],
+  "reported_headroom": {
+    "source": "Owner-reported supplied Windows sample; raw DXGI output not imported here",
+    "estimated_available_gib": "13.651",
+    "required_start_gib": "14",
+    "outcome": "below start threshold; independent of association defect; fresh Windows verification pending"
+  },
+  "windows_verification": "pending",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "model_or_transport_execution_authorized": false
+}

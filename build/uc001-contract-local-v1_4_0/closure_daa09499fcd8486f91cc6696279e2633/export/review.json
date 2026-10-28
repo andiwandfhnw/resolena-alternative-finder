@@ -1,0 +1,56 @@
+{
+  "provenance": "Owner-confirmed via chat; partial expectations review, not model-output validation. The separate Windows preparation receipt is owner-pasted JSON, not a byte-identical original file.",
+  "status": "pending",
+  "expected_meanings_approved": false,
+  "freeze_sha256": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+  "windows_preparation_receipt": "windows-preparation.owner-pasted.json",
+  "reviewers": [
+    {
+      "name": "project owner",
+      "role": "project owner",
+      "github_account": "andiwandfhnw",
+      "date": "2026-10-18",
+      "timezone": "Europe/Berlin",
+      "competence": "DE and EN, self-reported",
+      "languages": [
+        "de",
+        "en"
+      ],
+      "artifact_hash": "4a38c66c09c4611530f3290f3d3f3de16fbd7ab2b403b764435d0a598c150079",
+      "confirmed_expected_meanings_cases": [
+        2,
+        5,
+        10,
+        11,
+        13,
+        14
+      ],
+      "additional_confirmation": {
+        "case": 12,
+        "scope": "Swiss German expectation explicitly confirmed"
+      },
+      "corrections": []
+    }
+  ],
+  "confirmed_cases": [
+    2,
+    5,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "unapproved_cases": [
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9
+  ],
+  "model_output_validation": false,
+  "model_gpu_readiness_verified": false,
+  "startup_authorized": false
+}

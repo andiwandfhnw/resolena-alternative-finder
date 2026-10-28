@@ -1,0 +1,89 @@
+FFFFF                                                                    [100%]
+=================================== FAILURES ===================================
+____ test_controller_ledger_pid_requires_positive_integer_identity[1-True] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_controller_ledger_pid_req0')
+expected = 1, observed = True
+
+    @pytest.mark.parametrize('expected,observed',[(1,True),(1,1.0),(True,1),(1.0,1),(0,0)])
+    def test_controller_ledger_pid_requires_positive_integer_identity(tmp_path,expected,observed):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        ledger=tmp_path/'typed-ledger.jsonl';writer=BudgetLedger(ledger,CEILING,7)
+        writer.record('listening',address=['127.0.0.1',12345],pid=observed)
+        writer.record('end',status='closed_unqualified',sockets_closed=True);writer.close()
+>       with pytest.raises(ControllerFailure):validate_proxy_terminal(ledger,7,expected_pid=expected)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:175: Failed
+_____ test_controller_ledger_pid_requires_positive_integer_identity[1-1.0] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_controller_ledger_pid_req1')
+expected = 1, observed = 1.0
+
+    @pytest.mark.parametrize('expected,observed',[(1,True),(1,1.0),(True,1),(1.0,1),(0,0)])
+    def test_controller_ledger_pid_requires_positive_integer_identity(tmp_path,expected,observed):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        ledger=tmp_path/'typed-ledger.jsonl';writer=BudgetLedger(ledger,CEILING,7)
+        writer.record('listening',address=['127.0.0.1',12345],pid=observed)
+        writer.record('end',status='closed_unqualified',sockets_closed=True);writer.close()
+>       with pytest.raises(ControllerFailure):validate_proxy_terminal(ledger,7,expected_pid=expected)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:175: Failed
+____ test_controller_ledger_pid_requires_positive_integer_identity[True-1] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_controller_ledger_pid_req2')
+expected = True, observed = 1
+
+    @pytest.mark.parametrize('expected,observed',[(1,True),(1,1.0),(True,1),(1.0,1),(0,0)])
+    def test_controller_ledger_pid_requires_positive_integer_identity(tmp_path,expected,observed):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        ledger=tmp_path/'typed-ledger.jsonl';writer=BudgetLedger(ledger,CEILING,7)
+        writer.record('listening',address=['127.0.0.1',12345],pid=observed)
+        writer.record('end',status='closed_unqualified',sockets_closed=True);writer.close()
+>       with pytest.raises(ControllerFailure):validate_proxy_terminal(ledger,7,expected_pid=expected)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:175: Failed
+_____ test_controller_ledger_pid_requires_positive_integer_identity[1.0-1] _____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_controller_ledger_pid_req3')
+expected = 1.0, observed = 1
+
+    @pytest.mark.parametrize('expected,observed',[(1,True),(1,1.0),(True,1),(1.0,1),(0,0)])
+    def test_controller_ledger_pid_requires_positive_integer_identity(tmp_path,expected,observed):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        ledger=tmp_path/'typed-ledger.jsonl';writer=BudgetLedger(ledger,CEILING,7)
+        writer.record('listening',address=['127.0.0.1',12345],pid=observed)
+        writer.record('end',status='closed_unqualified',sockets_closed=True);writer.close()
+>       with pytest.raises(ControllerFailure):validate_proxy_terminal(ledger,7,expected_pid=expected)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:175: Failed
+______ test_controller_ledger_pid_requires_positive_integer_identity[0-0] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-39/test_controller_ledger_pid_req4')
+expected = 0, observed = 0
+
+    @pytest.mark.parametrize('expected,observed',[(1,True),(1,1.0),(True,1),(1.0,1),(0,0)])
+    def test_controller_ledger_pid_requires_positive_integer_identity(tmp_path,expected,observed):
+        from scripts.uc001_granite_controller.controller import validate_proxy_terminal
+        ledger=tmp_path/'typed-ledger.jsonl';writer=BudgetLedger(ledger,CEILING,7)
+        writer.record('listening',address=['127.0.0.1',12345],pid=observed)
+        writer.record('end',status='closed_unqualified',sockets_closed=True);writer.close()
+>       with pytest.raises(ControllerFailure):validate_proxy_terminal(ledger,7,expected_pid=expected)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:175: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_controller_ledger_pid_requires_positive_integer_identity[1-True]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_controller_ledger_pid_requires_positive_integer_identity[1-1.0]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_controller_ledger_pid_requires_positive_integer_identity[True-1]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_controller_ledger_pid_requires_positive_integer_identity[1.0-1]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_controller_ledger_pid_requires_positive_integer_identity[0-0]
+5 failed, 5 deselected in 0.18s

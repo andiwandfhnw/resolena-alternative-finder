@@ -1,0 +1,18 @@
+{
+  "stage": "RED before implementation",
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_worker.py::test_environment_guard_accepts_windows_uppercase_keys",
+    "--tb=short"
+  ],
+  "exit_code": 1,
+  "elapsed_seconds": 1.3473334312438965,
+  "worker_sha256": "4f0dc7571edeb097ad172f5e423659e94c8026e5f2dbcb6e0f4d0874e8a32028",
+  "test_sha256": "9bd69406ddbb80e13407caea0cded0ddedccfe0d65f83f6d1904156986070f15",
+  "windows_execution": false,
+  "tools_filesystem_lookup": "injected",
+  "live_network_or_acquisition": false
+}

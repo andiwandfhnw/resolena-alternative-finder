@@ -1,0 +1,11 @@
+{
+  "new_guard_checks": {
+    "passed": 4,
+    "detector_or_network_calls": 0,
+    "red_before_implementation": "ModuleNotFoundError: supervise, as expected",
+    "green_after_implementation": "4 passed"
+  },
+  "metadata_preparation_note": "Initial metadata assertion required Requires-Dist to be absent; corrected offline to distinguish the inactive test extra. Metadata files reused unchanged; no network retry, installation or detector execution occurred.",
+  "no_prior_experiment_tests_repeated": true,
+  "syntax_parsed": 4
+}

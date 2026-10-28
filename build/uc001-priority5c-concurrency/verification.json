@@ -1,0 +1,675 @@
+{
+  "date": "2026-10-19",
+  "scope": "UC-001 increment 1, Priority 5C only: one controlled overlapping same-key/proof/payload save collision",
+  "phase": 3,
+  "status": "in-progress",
+  "priority_3": "partial",
+  "priority_4": "partial",
+  "priority_5": "partial",
+  "owner_acceptance": {
+    "priority_5b": "Accepted only reported verification of existing fresh submission after recovered acknowledgement, new key/proof/current fields and current synthetic reassessment with original record preserved; test-support improvements, not a new production fresh-search feature.",
+    "retained_evidence_limits": [
+      "build/uc001-priority5a-recovery/verification.json",
+      "build/uc001-priority5b-fresh-search/verification.json"
+    ]
+  },
+  "session_model_metadata": {
+    "owner_reported": "GPT-6.1 Sol Ultra",
+    "independently_verified": false,
+    "scope": "new session metadata only; no historical run or runtime interpreter relabel"
+  },
+  "prerequisites": {
+    "result": "confirmed; no material contract/schema/architecture/dependency conflict",
+    "references": [
+      "UC-001 O-2 / AC-10/17 / T-13",
+      "ADR-003 atomic persistence and unique-key loser acknowledgement",
+      "ARCHITECTURE.md persistence and same-submission recovery"
+    ],
+    "production_seams": [
+      "ComparisonStore port permits test-only delegation without replacing SQLite find/save",
+      "real SQLite unique constraint on search_request.submission_key_digest",
+      "SQLAlchemyError rollback -> committed lookup -> DuplicateSubmission",
+      "application DuplicateSubmission -> winner lookup -> proof binding then payload digest check -> acknowledgement only"
+    ],
+    "reuse": "5A/5B evidence retained unchanged; no browser, interpreter, knowledge or prior investigative suite rerun"
+  },
+  "changed_files": [
+    "tests/integration/test_saved_comparison.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "docs/ARCHITECTURE.md"
+  ],
+  "production_changes": false,
+  "schema_dependency_or_frontend_changes": false,
+  "test_first_result": {
+    "classification": "existing-behavior pass",
+    "first_execution_passed": true,
+    "red_failure_claimed": false,
+    "production_fix_required": false,
+    "note": "Focused regression added before any implementation decision. It passed against unchanged production code; no artificial RED or production edit was introduced."
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_concurrent_same_submission_commits_one_winner_and_acknowledges_loser -q --basetemp=build/uc001-priority5c-concurrency/initial-check",
+      "exit_code": 0,
+      "passed": 1,
+      "scope": "one new controlled scenario, one run",
+      "log": "build/uc001-priority5c-concurrency/new-scenario.log"
+    },
+    {
+      "command": ".venv/bin/python -m pytest tests/integration/test_saved_comparison.py::test_returns_only_the_committed_projection_with_saved_ids_and_evidence tests/integration/test_saved_comparison.py::test_required_evidence_write_failure_rolls_back_the_entire_comparison tests/integration/test_saved_comparison.py::test_same_submission_is_acknowledged_without_replaying_a_comparison tests/integration/test_saved_comparison.py::test_evidence_versions_are_immutable -q",
+      "exit_code": 0,
+      "passed": 4,
+      "scope": "smallest directly relevant atomic rollback, acknowledgement/proof/payload, immutable projection/evidence regressions",
+      "log": "build/uc001-priority5c-concurrency/regressions.log"
+    }
+  ],
+  "command_recording": "Commands executed with set -o pipefail and 2>&1 | tee <listed-log>. The --basetemp path was a new dedicated artifact subdirectory, not a reused historical path.",
+  "execution_model": "Two ThreadPoolExecutor workers make real in-process FastAPI TestClient requests; separate real SQLite store engines/connections access one isolated database file.",
+  "controlled_interleaving": {
+    "both_initial_lookups_missed": {
+      "winner": true,
+      "loser": true
+    },
+    "timeline": [
+      "winner:initial_lookup_missed",
+      "loser:initial_lookup_missed",
+      "loser:prepared",
+      "winner:prepared",
+      "winner:committed",
+      "loser:unique_insert_rejected",
+      "loser:rollback",
+      "loser:duplicate_submission",
+      "loser:committed_lookup",
+      "loser:ownership_check",
+      "loser:payload_check"
+    ],
+    "seams": "Two bounded barriers after actual initial find returned and after both PreparedSave projections exist; loser then waits for winner save/commit/readback to return, before calling the real adapter save.",
+    "timeouts_seconds": {
+      "barriers": 5,
+      "winner_event": 5,
+      "future_result": 15
+    },
+    "no_synchronization_inside_sqlite_write_transaction": true,
+    "timing_only_sleeps": false,
+    "physical_connection_counts": {
+      "winner": 1,
+      "loser": 2
+    },
+    "execution_connections_disjoint": true,
+    "collision": [
+      {
+        "sqlite_errorname": "SQLITE_CONSTRAINT_UNIQUE",
+        "unique_submission_key": true
+      }
+    ],
+    "rollback_count": 1,
+    "branch": "SQLITE_CONSTRAINT_UNIQUE at loser request INSERT -> production rollback -> real committed lookup -> DuplicateSubmission -> application winner lookup -> ownership/payload checks -> acknowledgement",
+    "scope_limit": "Initial misses and prepared computations overlap; actual loser INSERT is deliberately released after winner commit/readback. This verifies no other SQLite busy/lock timings, process configurations or concurrency cases."
+  },
+  "responses": {
+    "winner": {
+      "status": 201,
+      "body": {
+        "outcome": "comparison",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "language": {
+          "recognition": {
+            "status": "supported",
+            "language": "en",
+            "version": "synthetic-only"
+          },
+          "meaning_status": "understood",
+          "explanation_language": "en",
+          "origin": "detected",
+          "correction_available": true
+        },
+        "persistence": {
+          "state": "saved",
+          "request_id": "615f5dc7-9252-4b5a-831e-e5cfd55718f3"
+        },
+        "comparison": {
+          "request_id": "615f5dc7-9252-4b5a-831e-e5cfd55718f3",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "explanation_language": "en",
+          "language_origin": "detected",
+          "interpretation_version": "test-only-exact-fixture-v2",
+          "options": [
+            {
+              "description": "Synthetic bicycle repair service; not a real provider.",
+              "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+              "claims": [
+                {
+                  "claim": "relevance",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000001"
+                  ],
+                  "value": "bicycle"
+                },
+                {
+                  "claim": "action:repair",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000001"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "no_replacement",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000001"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "applicability",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000001"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "financial",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "not_applicable",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000001"
+                  ],
+                  "value": {
+                    "amount": "45.00",
+                    "currency": "CHF",
+                    "unit": "repair",
+                    "period": "once",
+                    "basis": "per repair",
+                    "charges_known": false,
+                    "exclusions": [
+                      "parts"
+                    ],
+                    "assumptions": [],
+                    "price_basis": "quoted"
+                  }
+                }
+              ],
+              "financial": {
+                "amount": "45.00",
+                "currency": "CHF",
+                "unit": "repair",
+                "period": "once",
+                "basis": "per repair",
+                "charges_known": false,
+                "exclusions": [
+                  "parts"
+                ],
+                "assumptions": [],
+                "price_basis": "quoted",
+                "status": "supported",
+                "total_cost": null,
+                "difference": null,
+                "baseline": null,
+                "baseline_provenance": null
+              },
+              "environmental": {
+                "status": "unknown",
+                "explanation": "No supported environmental/resource information."
+              },
+              "availability": {
+                "status": "unknown",
+                "value": null
+              },
+              "evidence": [
+                {
+                  "version_id": "30000000-0000-4000-8000-000000000001",
+                  "publisher": "Synthetic fixture provider",
+                  "source_reference": "synthetic:repair-1-v3",
+                  "source_language": "en",
+                  "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                  "reviewed_at": "2026-10-15T10:00:00+00:00",
+                  "review_basis": "synthetic test metadata, not factual review",
+                  "publication_date": null,
+                  "retrieved_at": null,
+                  "data_period": null,
+                  "scope": {
+                    "country_code": "CH"
+                  },
+                  "competent_claims": [
+                    "relevance",
+                    "action:repair",
+                    "no_replacement",
+                    "applicability",
+                    "financial"
+                  ],
+                  "assertions": {
+                    "relevance": "bicycle",
+                    "action:repair": true,
+                    "no_replacement": true,
+                    "applicability": true,
+                    "financial": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  },
+                  "attribution": "provider-stated",
+                  "synthetic": true
+                }
+              ],
+              "geographic_scope": {
+                "country_code": "CH"
+              },
+              "rendering": {
+                "language": "en",
+                "version": "synthetic-reviewed-rendering-v1",
+                "review_basis": "synthetic test fixture, not qualified linguistic review"
+              },
+              "limitations": [
+                "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+              ],
+              "synthetic": true,
+              "option_id": "3adb5ba5-8b97-4d46-b5c9-e9bffd209302",
+              "alternative_id": "00000000-0000-4000-8000-000000000001",
+              "position": 1,
+              "display_name": "Alpha repair (synthetic)"
+            },
+            {
+              "description": "Synthetic bicycle repair service; not a real provider.",
+              "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+              "claims": [
+                {
+                  "claim": "relevance",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000002"
+                  ],
+                  "value": "bicycle"
+                },
+                {
+                  "claim": "action:repair",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000002"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "no_replacement",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000002"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "applicability",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "satisfied",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000002"
+                  ],
+                  "value": true
+                },
+                {
+                  "claim": "financial",
+                  "support": "supported",
+                  "freshness": "fresh",
+                  "requirement": "not_applicable",
+                  "attribution": [
+                    "provider-stated"
+                  ],
+                  "checked_at": [
+                    "2026-10-15T10:00:00+00:00"
+                  ],
+                  "independent_verification": false,
+                  "evidence_version_ids": [
+                    "30000000-0000-4000-8000-000000000002"
+                  ],
+                  "value": {
+                    "amount": "45.00",
+                    "currency": "CHF",
+                    "unit": "repair",
+                    "period": "once",
+                    "basis": "per repair",
+                    "charges_known": false,
+                    "exclusions": [
+                      "parts"
+                    ],
+                    "assumptions": [],
+                    "price_basis": "quoted"
+                  }
+                }
+              ],
+              "financial": {
+                "amount": "45.00",
+                "currency": "CHF",
+                "unit": "repair",
+                "period": "once",
+                "basis": "per repair",
+                "charges_known": false,
+                "exclusions": [
+                  "parts"
+                ],
+                "assumptions": [],
+                "price_basis": "quoted",
+                "status": "supported",
+                "total_cost": null,
+                "difference": null,
+                "baseline": null,
+                "baseline_provenance": null
+              },
+              "environmental": {
+                "status": "unknown",
+                "explanation": "No supported environmental/resource information."
+              },
+              "availability": {
+                "status": "unknown",
+                "value": null
+              },
+              "evidence": [
+                {
+                  "version_id": "30000000-0000-4000-8000-000000000002",
+                  "publisher": "Synthetic fixture provider",
+                  "source_reference": "synthetic:repair-2-v3",
+                  "source_language": "en",
+                  "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                  "reviewed_at": "2026-10-15T10:00:00+00:00",
+                  "review_basis": "synthetic test metadata, not factual review",
+                  "publication_date": null,
+                  "retrieved_at": null,
+                  "data_period": null,
+                  "scope": {
+                    "country_code": "CH"
+                  },
+                  "competent_claims": [
+                    "relevance",
+                    "action:repair",
+                    "no_replacement",
+                    "applicability",
+                    "financial"
+                  ],
+                  "assertions": {
+                    "relevance": "bicycle",
+                    "action:repair": true,
+                    "no_replacement": true,
+                    "applicability": true,
+                    "financial": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  },
+                  "attribution": "provider-stated",
+                  "synthetic": true
+                }
+              ],
+              "geographic_scope": {
+                "country_code": "CH"
+              },
+              "rendering": {
+                "language": "en",
+                "version": "synthetic-reviewed-rendering-v1",
+                "review_basis": "synthetic test fixture, not qualified linguistic review"
+              },
+              "limitations": [
+                "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+              ],
+              "synthetic": true,
+              "option_id": "01261795-40a3-441d-a7f9-fa8f39210b66",
+              "alternative_id": "00000000-0000-4000-8000-000000000002",
+              "position": 2,
+              "display_name": "Zeta repair (synthetic)"
+            }
+          ],
+          "omitted_count": 0
+        }
+      }
+    },
+    "loser": {
+      "status": 200,
+      "body": {
+        "outcome": "submission_recovered",
+        "persistence": {
+          "state": "saved",
+          "request_id": "615f5dc7-9252-4b5a-831e-e5cfd55718f3"
+        },
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "saved_outcome": "comparison"
+      }
+    }
+  },
+  "persistence": {
+    "before_counts": {
+      "search_request": 0,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "after_counts": {
+      "search_request": 1,
+      "request_alternative": 2,
+      "request_alternative_evidence": 2
+    },
+    "committed_request_id": "615f5dc7-9252-4b5a-831e-e5cfd55718f3",
+    "committed_option_ids": [
+      "3adb5ba5-8b97-4d46-b5c9-e9bffd209302",
+      "01261795-40a3-441d-a7f9-fa8f39210b66"
+    ],
+    "committed_evidence_associations": [
+      [
+        "01261795-40a3-441d-a7f9-fa8f39210b66",
+        "30000000-0000-4000-8000-000000000002"
+      ],
+      [
+        "3adb5ba5-8b97-4d46-b5c9-e9bffd209302",
+        "30000000-0000-4000-8000-000000000001"
+      ]
+    ],
+    "discarded_loser_request_id": "a9ddd2bc-31d9-47d9-826c-884da73506b2",
+    "discarded_loser_option_ids": [
+      "99da7080-4aca-41b4-adba-3f1d363663be",
+      "06424ab5-b9ea-482e-8ba7-07e1479cff86"
+    ],
+    "loser_specific_request_options_or_links_committed": false,
+    "authoritative_winner_projection_and_option_snapshots_match_sqlite": true,
+    "source_evidence_unchanged": true,
+    "source_evidence_sha256": "8003ebbe8d313082d58f643e543db0e78dc3440bd6434001f4f3c305ac666a74",
+    "fixed_synthetic_assessed_at": "2026-10-15T10:00:00+00:00",
+    "no_source_review_dates_renewed": true
+  },
+  "observed_protections": {
+    "api_requests": 2,
+    "same_input_bindings": true,
+    "store_port_calls": {
+      "winner": {
+        "find": 1,
+        "save": 1
+      },
+      "loser": {
+        "find": 2,
+        "save": 1
+      }
+    },
+    "port_call_limit": "Counters cover application-facing wrapper calls; real adapter internal readbacks/lookups remain intact and are not included.",
+    "save_attempts_per_execution": 1,
+    "no_automatic_retry_or_replacement_submission_identity": true,
+    "ownership_then_payload_comparisons": [
+      true,
+      true
+    ],
+    "loser_has_no_comparison_payload": true,
+    "raw_originating_proofs_recorded": false,
+    "proof_artifact_note": "Only prepared projections/IDs and comparison booleans are recorded; never PreparedSave/Submission, request headers, SQL parameters or exception contexts."
+  },
+  "scenario_evidence": "build/uc001-priority5c-concurrency/initial-check/test_concurrent_same_submissio0/concurrent-save-evidence.json",
+  "preservation": {
+    "manifest": "build/uc001-priority5c-concurrency/preservation-before.json",
+    "protected_files": 91,
+    "all_hashes_match": true,
+    "all_preexisting_tests_byte_preserved": true,
+    "all_production_python_sources_unchanged": true,
+    "frontend_and_browser_test_support_unchanged": true,
+    "normal_app_main": "unchanged/unconfigured",
+    "real_drafts": "inactive/unchanged",
+    "experiments": "closed; no startup/allowance reset/held-out or linguistic work",
+    "branch": "specify/phase-1-uc-001",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+  },
+  "remaining_priority_5": [
+    "full concurrency matrix including other lock/process interleavings and different-proof/payload races",
+    "ambiguous-commit/full persistence/transport fault matrix",
+    "complete disclosure/security matrix",
+    "real locality/reference integration",
+    "remaining browser recovery/fresh-search error/loading/field cases"
+  ],
+  "git": {
+    "status_command": "git status --short",
+    "status_log": "build/uc001-priority5c-concurrency/git-status.txt",
+    "same_status_entries_as_before": true,
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1476: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "whitespace_note": "Historical TASKS.md backlog trailing space is preserved, as in before snapshot and prior evidence.",
+    "scoped_delta_check_command": "git diff --no-index --check -- <before> <current> for each changed file",
+    "scoped_delta_checks": [
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      },
+      {
+        "path": "docs/TASKS.md",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      },
+      {
+        "path": "docs/PROJECT.md",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      },
+      {
+        "path": "docs/ARCHITECTURE.md",
+        "exit_code": 1,
+        "new_whitespace_errors": false
+      }
+    ],
+    "no_index_note": "Exit 1 with empty output denotes differing files without new whitespace errors."
+  },
+  "documentation_checks": {
+    "phase_status_preserved": true,
+    "new_local_links": [
+      {
+        "source": "docs/TASKS.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5c-concurrency/verification.json"
+      },
+      {
+        "source": "docs/PROJECT.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5c-concurrency/verification.json"
+      },
+      {
+        "source": "docs/ARCHITECTURE.md",
+        "target": "/workspaces/resolena-alternative-finder/build/uc001-priority5c-concurrency/verification.json"
+      }
+    ],
+    "links_valid": true
+  },
+  "warning": "Existing Starlette/httpx TestClient deprecation; no dependency changes.",
+  "excluded_work_performed": false,
+  "stop": "Await human review. Priority 5, increment 1 and DEVELOP remain incomplete."
+}

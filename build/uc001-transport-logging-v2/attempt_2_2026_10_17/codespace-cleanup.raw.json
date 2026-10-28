@@ -1,0 +1,9 @@
+{
+  "scope": "After approved logging-enabled model-free attempt",
+  "port": 49188,
+  "outcome": "codespace_forward_cleanup_passed",
+  "model_readiness_verified": false,
+  "observed_rows": [],
+  "observed_utc": "2026-10-17T16:52:10.674073+00:00",
+  "receipt": "build/uc001-transport-logging/forward-cleanup-e56da6c06fc84301801daccb9c9d951a.json"
+}

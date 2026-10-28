@@ -1,0 +1,12 @@
+{
+  "peak_owned_rss_bytes": 2230022144,
+  "minimum_available_bytes": 4503883776,
+  "peak_temporary_bytes": 2261720406,
+  "latest": {
+    "utc": "2026-10-11T12:34:30.286970+00:00",
+    "owned_process_group": null,
+    "owned_rss_bytes": 0,
+    "available_memory_bytes": 4915793920,
+    "temporary_bytes": 2261720406
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "version": "uc001-execution-v1.3.0",
+  "date": "2026-10-17",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Only confirmed launcher/monitor incompatibility correction, isolated execution bundle and offline verification",
+  "implementation": {
+    "startup": "Invoke-ContractExecution -> Get-ContractAdapter -> unchanged v1.2.0 Get-ReadOnlyContractAdapter; fresh pre-startup Get-ContractResources revalidates complete hardware/CIM/PCI/LUID identity and unchanged capacity",
+    "runtime": "Actual Check-Running and post-readiness sampling call the same corrected Get-ContractResources; each sample re-enumerates and compares selected device identity/capacity; any change aborts without remapping",
+    "capacity": "Identified DXGI DedicatedVideoMemory only; registry path/raw values/status/exact difference remain non-authoritative diagnostics; no nominal values/tolerance/fallback",
+    "adapter_usage": "Unchanged v1.2.0 Get-AssociatedUsage requires one exact selected-LUID phys_0 row, nonnegative integral type/range and usage <= measured dedicated capacity",
+    "owned_usage": "Reuse exact-counter helper with pid_<owned PID>_<selected LUID>_phys_0 identity; foreign rows ignored, missing/duplicate/other physical rows stop; stable alive PID/start-time checks before/after the query",
+    "rss_and_resources": "Strict integral/nonnegative memory/disk/RSS/file measurements, free <= total, RSS <= measured RAM, checked KiB conversion and checked artifact addition; all existing thresholds unchanged",
+    "measurement_states": "Measured owned zero is measured, not missing. No owned process is explicitly not_applicable with zero numeric fields. Missing owned data throws immediately; existing positive owned-GPU requirement before receipt remains.",
+    "ownership_cleanup": "Original native ProcessTools.cs unchanged; injectable wrappers call the same owned job/process APIs. Cleanup attempts job close and every owned process even after client/disposal failure, records errors/unconfirmed exits and raises; attempt/log/assets are preserved.",
+    "routing_evidence": "Safe synthetic tests invoke the actual launcher startup, Check-Running, abort and cleanup paths with fake native enumeration/process/job/HTTP functions; these are not Windows runtime verification."
+  },
+  "preservation": {
+    "baseline": "build/uc001-execution-v1_3_0/baseline.json",
+    "prior_hashes_verified": 76,
+    "application_pin_count": 9,
+    "byte_identical_to_original": [
+      "config.json",
+      "runtime-files.json",
+      "prompt.txt",
+      "schema.json",
+      "cases.json",
+      "review-template.json",
+      "ProcessTools.cs",
+      "controls.py",
+      "development.py"
+    ],
+    "byte_identical_to_v1_2_0": [
+      "AdapterIdentity.cs"
+    ],
+    "body_identical_v1_2_functions": [
+      "Get-ContractAdapter",
+      "Read-AssociationDxgi",
+      "Get-AssociationInteger",
+      "Get-AssociatedUsage",
+      "Get-RegistryCapacityDiagnostic",
+      "Get-ReadOnlyContractAdapter",
+      "Assert-ContractResources",
+      "Get-ContractAssets",
+      "Get-ContractTools"
+    ],
+    "body_identical_original_controls": [
+      "Quoted",
+      "Get-Http",
+      "Check-Running"
+    ],
+    "runner_bindings": "run.py and Preflight-Codespace.sh differ only by versioned module imports; all generation/deadline/semantic-review behavior unchanged",
+    "model_transport_arguments": "Argument arrays and every Start-Sleep interval unchanged",
+    "limits": "Unchanged config: one startup, 14 generations; total/model/readiness/request deadlines 2400/1500/90/90 sec; same 1 sec steady-state and original 500/250 ms polling intervals; all resource thresholds/caps retained",
+    "prior_windows_snapshot": "Existing raw v1.2.0 adapter/resource snapshot remains unchanged; its 13099008-byte margin is not evidence for future headroom or owned-process runtime monitoring"
+  },
+  "attempt_and_receipt_identity": {
+    "new_freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+    "stable_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "windows_attempt_directory": "Existing original uc001-contract-runs/<original freeze> identity retained across versions; exclusive directory creation and existing-attempt stop preserved; no budget/startup reset",
+    "receipt_review": "Receipts and qualified review bind exact new freeze; attempt identity is additionally recorded in receipt; no automatic transfer/approval of old reviews",
+    "codespace_ledger": "Original exclusive/fsynced attempt ledger, case order, counts, deadlines and run identity remain unchanged"
+  },
+  "tdd": {
+    "initial_command": ".venv/bin/python -m pytest -q tests/unit/test_execution_monitor.py -k 'owned_missing or owned_zero or owned_other_pid'",
+    "red": "3 failures: absent runtime native identity revalidation; missing owned row and other-PID-only row incorrectly accepted as numeric zero",
+    "integration_red": "flow_missing failed before the new testable launcher entry existed; no top-level original launcher/native action was invoked",
+    "fixture_correction": "Initial AST text evaluation lost PSScriptRoot; switched tests to safely dot-source only new function definitions before invoking with fake dependencies. This fixture failure is not a production defect claim."
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_execution_monitor.py tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "174 passed in 90.51s",
+      "new": 50,
+      "retained": 124,
+      "coverage": [
+        "Complete policy routing at startup/runtime",
+        "Exact owned PID/LUID attribution, measured zero, missing/duplicate/foreign/invalid counters",
+        "Process exit/PID/start changes and adapter identity/capacity changes",
+        "Strict RSS/RAM/disk/artifact bounds and existing threshold regressions",
+        "Actual fake launcher aborts on monitoring/runtime-floor failure; stopped/cleanup records",
+        "Client disposal/job close/exit confirmation failures; two owned processes cleaned despite one disposal error",
+        "Existing original attempt key blocks startup across versions",
+        "Both no-execute gates and unchanged qualified review rejection",
+        "Package/hash and original/application preservation"
+      ],
+      "boundary": "Synthetic CIM/registry/WDDM/process/job/HTTP objects, local PowerShell tests and compile/layout checks only. No native Windows enumeration/ownership API, model/runtime binary or transport ran."
+    },
+    {
+      "check": "PowerShell AST source comparison",
+      "result": "Nine v1.2.0 policy/guard bodies and three original HTTP/deadline/monitor-dispatch bodies identical"
+    },
+    {
+      "check": "Model/transport arrays, Start-Sleep intervals, Python runner and Codespace preflight bindings",
+      "result": "Preserved; only versioned module imports differ in copied runners"
+    },
+    {
+      "command": "bash -n scripts/uc001_execution_v1_3_0/Preflight-Codespace.sh",
+      "result": "Passed; preflight/package commands not executed"
+    },
+    {
+      "check": "All prior small artifacts/app pins and new ZIP CRC/members/source hashes",
+      "result": "Passed; 76 baseline hashes, 9 application pins, 20 flat ZIP members"
+    },
+    {
+      "check": "New source whitespace/documentation links/current phase",
+      "result": "Passed; pre-existing TASKS.md backlog trailing-space warning preserved"
+    }
+  ],
+  "package": {
+    "path": "build/uc001-execution-v1_3_0/windows-execution-v1_3_0.zip",
+    "bytes": 40186,
+    "files": 20,
+    "sha256": "59cf4aa9d37847949f61ba3ff1295e169672fe64c7e2ba07892e8ea3a385fe55",
+    "freeze": "scripts/uc001_execution_v1_3_0/freeze.json",
+    "freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+    "hashes": "build/uc001-execution-v1_3_0/SHA256SUMS.txt",
+    "version_record": "scripts/uc001_execution_v1_3_0/VERSION.json",
+    "documentation": "scripts/uc001_execution_v1_3_0/README.md"
+  },
+  "qualified_review_artifact": {
+    "path": "build/test-only/contract-review.json",
+    "exists": false,
+    "matches_new_freeze": false
+  },
+  "remaining_execution_blockers": [
+    "No live execution or transport authorization in this task",
+    "Qualified DE/FR/IT/EN expectations approval for exact new freeze required before inference; no approval supplied or fabricated",
+    "Actual Windows PID/LUID/phys_0 counter availability, process lifetime and native job cleanup are unverified; strict first sample must abort if missing, with no grace/fallback",
+    "Desktop OpenSSH/gh/port results and Codespace transport prerequisites/authenticated loopback forwarding remain pending",
+    "Fresh integrity/resources required immediately before startup; prior thin-margin snapshot is not current proof",
+    "Actual model settings/offload/context/schema/prompt fit and later qualified output semantic review remain pending; candidate known capability limitations unchanged"
+  ],
+  "confirmed_original_incompatibility": "Corrected in separately versioned source and offline fake control-flow tests; no additional confirmed static policy blocker found in this bounded review",
+  "native_effects": "Future authorized Windows use compiles/loads unchanged AdapterIdentity.cs/ProcessTools.cs via Add-Type, possibly leaving TEMP source/assembly/compiler files. DXGI factory/enumeration/descriptor/COM calls and original kernel32 job creation/configuration/assignment/close APIs; no compiler installation. None invoked here.",
+  "changed_files": [
+    "scripts/uc001_execution_v1_3_0/AdapterIdentity.cs",
+    "scripts/uc001_execution_v1_3_0/Common.ps1",
+    "scripts/uc001_execution_v1_3_0/Preflight-Codespace.sh",
+    "scripts/uc001_execution_v1_3_0/Preflight-Windows.ps1",
+    "scripts/uc001_execution_v1_3_0/ProcessTools.cs",
+    "scripts/uc001_execution_v1_3_0/README.md",
+    "scripts/uc001_execution_v1_3_0/Run-Windows.ps1",
+    "scripts/uc001_execution_v1_3_0/Test-Monitor.ps1",
+    "scripts/uc001_execution_v1_3_0/VERSION.json",
+    "scripts/uc001_execution_v1_3_0/cases.json",
+    "scripts/uc001_execution_v1_3_0/config.json",
+    "scripts/uc001_execution_v1_3_0/controls.py",
+    "scripts/uc001_execution_v1_3_0/development.py",
+    "scripts/uc001_execution_v1_3_0/freeze.json",
+    "scripts/uc001_execution_v1_3_0/prompt.txt",
+    "scripts/uc001_execution_v1_3_0/review-template.json",
+    "scripts/uc001_execution_v1_3_0/run.py",
+    "scripts/uc001_execution_v1_3_0/runtime-files.json",
+    "scripts/uc001_execution_v1_3_0/schema.json",
+    "scripts/uc001_execution_v1_3_0/transport-plan.json",
+    "tests/unit/test_execution_monitor.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-execution-v1_3_0/baseline.json",
+    "build/uc001-execution-v1_3_0/SHA256SUMS.txt",
+    "build/uc001-execution-v1_3_0/verification.json",
+    "build/uc001-execution-v1_3_0/windows-execution-v1_3_0.zip"
+  ],
+  "not_performed": [
+    "Application changes",
+    "Model/runtime asset hashing",
+    "Download/install",
+    "Credential inspection",
+    "Model/runtime startup or inference",
+    "Tunnel/transport connection",
+    "Held-out access",
+    "Original/earlier frozen artifacts or historical-result mutation",
+    "Git staging/commit/push/branch switch/deployment"
+  ]
+}

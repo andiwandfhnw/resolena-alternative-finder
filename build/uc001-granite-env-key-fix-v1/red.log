@@ -1,0 +1,12 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_environment_guard_accepts_windows_uppercase_keys _____________
+tests/unit/test_granite_controller_worker.py:81: in test_environment_guard_accepts_windows_uppercase_keys
+    result = validate_environment(windows_environment, exists=lambda _: True, which=environment_tool)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts/uc001_granite_controller/worker.py:92: in validate_environment
+    raise WorkerFailure('frozen_x64_environment_not_active')
+E   scripts.uc001_granite_controller.worker.WorkerFailure: frozen_x64_environment_not_active
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_environment_guard_accepts_windows_uppercase_keys
+1 failed in 0.23s

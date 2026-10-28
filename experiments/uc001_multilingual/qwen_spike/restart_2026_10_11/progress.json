@@ -1,0 +1,9 @@
+{
+  "gate": null,
+  "state": "stopped",
+  "current_case": null,
+  "executed_ids": [],
+  "scratch": "/workspaces/resolena-alternative-finder/build/qwen-restart-20261011",
+  "owned_process_group": 24413,
+  "cleanup": "Preserve small outputs, stop owned process group, remove only this exact tree."
+}

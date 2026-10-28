@@ -1,0 +1,9 @@
+{
+    "http_status":  200,
+    "raw_body":  "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"understood\\\",\\n  \\\"language\\\": \\\"fr\\\",\\n  \\\"subject\\\": {\\n    \\\"value\\\": \\\"bouilloire\\\",\\n    \\\"quote\\\": \\\"bouilloire\\\"\\n  },\\n  \\\"action\\\": {\\n    \\\"value\\\": \\\"repair\\\",\\n    \\\"quote\\\": \\\"Répare\\\"\\n  },\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791919153,\"model\":\"C:\\\\ResolenaExperiments\\\\qwen3-8b-v1\\\\Qwen3-8B-Q8_0.gguf\",\"system_fingerprint\":\"b11429-d81235049\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":84,\"prompt_tokens\":332,\"total_tokens\":416,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-VToNdtk9nxy3c9gQM0QENqe93Th9IIHZ\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":493.603,\"prompt_per_token_ms\":1.4867560240963855,\"prompt_per_second\":672.6053123664159,\"predicted_n\":84,\"predicted_ms\":1634.795,\"predicted_per_token_ms\":19.69632530120482,\"predicted_per_second\":50.77089176318743}}",
+    "wall_seconds":  2.1363992,
+    "bundle_freeze_sha256":  "fc9eb769afba2cac79bb69ff1f3ed8cc02c955b2c8293fe7a2d09245ca49a5ce",
+    "request_sha256":  "c7a8c14620da6da7d66099e30d47412042cbbbe361c79ee97c1017d6f88cb4ea",
+    "started_case":  "04-C4-known",
+    "utc":  "2026-10-13T19:19:13.2199290Z"
+}

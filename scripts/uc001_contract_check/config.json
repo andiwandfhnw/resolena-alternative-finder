@@ -1,0 +1,73 @@
+{
+  "version": "uc001-contract-feasibility-v1",
+  "candidate_only": true,
+  "execution_authorized": false,
+  "reuse_root": "C:\\ResolenaExperiments\\qwen3-8b-v1",
+  "endpoint": "http://127.0.0.1:49188",
+  "windows_port": 49187,
+  "ssh_bridge_port": 49189,
+  "model_alias": "uc001-qwen3-8b",
+  "context": 8192,
+  "output_tokens": 3072,
+  "threads": 2,
+  "prompt_threads": 2,
+  "batch": 64,
+  "ubatch": 64,
+  "kv_type": "f16",
+  "slots": 1,
+  "gpu_layers": 37,
+  "device": "Vulkan0",
+  "enable_thinking": false,
+  "cache_prompt": false,
+  "sampling": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "seed": 42
+  },
+  "limits": {
+    "generations": 14,
+    "startup_count": 1,
+    "total_seconds": 2400,
+    "model_seconds": 1500,
+    "readiness_seconds": 90,
+    "request_seconds": 90,
+    "rss_bytes": 17179869184,
+    "ram_preflight_bytes": 21474836480,
+    "ram_floor_bytes": 4294967296,
+    "gpu_preflight_free_bytes": 15032385536,
+    "gpu_owned_bytes": 12884901888,
+    "gpu_floor_bytes": 2147483648,
+    "artifact_bytes": 1073741824,
+    "disk_preflight_free_bytes": 6442450944,
+    "disk_floor_bytes": 5368709120,
+    "sample_seconds": 1,
+    "windows_artifact_bytes": 536870912,
+    "codespace_artifact_bytes": 536870912
+  },
+  "assets": [
+    {
+      "id": "runtime",
+      "file": "llama-b11429-bin-win-vulkan-x64.zip",
+      "version": "b11429",
+      "source_commit": "d81235049384534c167caea52b85a694f6103d14",
+      "bytes": 33337769,
+      "sha256": "1bfe78ad9168b79fa02bf67f6af9f5e17a966d824d77238517f7bef12ac73b36",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b11429/llama-b11429-bin-win-vulkan-x64.zip",
+      "metadata_url": "https://api.github.com/repos/ggml-org/llama.cpp/releases/tags/b11429"
+    },
+    {
+      "id": "model",
+      "file": "Qwen3-8B-Q8_0.gguf",
+      "repo": "Qwen/Qwen3-8B-GGUF",
+      "revision": "7c41481f57cb95916b40956ab2f0b139b296d974",
+      "bytes": 8709518112,
+      "sha256": "408b955510e196121c1c375201744783b5c9a43c7956d73fc78df54c66e883d6",
+      "url": "https://huggingface.co/Qwen/Qwen3-8B-GGUF/resolve/7c41481f57cb95916b40956ab2f0b139b296d974/Qwen3-8B-Q8_0.gguf",
+      "metadata_url": "https://huggingface.co/api/models/Qwen/Qwen3-8B-GGUF/revision/7c41481f57cb95916b40956ab2f0b139b296d974?blobs=true"
+    }
+  ],
+  "known_evidence": "Closed 5/6 known cases; Spanish capability route failed. No current-contract or qualified semantic approval.",
+  "qualification": "Explicit synthetic knowledge and English-only test renderer; no real-world coverage or faithful four-language rendering."
+}

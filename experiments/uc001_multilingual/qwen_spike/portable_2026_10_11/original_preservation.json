@@ -1,0 +1,46 @@
+{
+  "files": [
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/bin/llama-server",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/llama-server",
+      "sha256": "67419b0d537e76a9ea7c5c13c7212b3f441d51e4c17a890c90ec09a9c3bf0fe2"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/CMakeCache.txt",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/CMakeCache.txt",
+      "sha256": "693dda8a857accad9696b3162d8d23b2e91d0b12fe5eff183bd4581541d3a6ff"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/build/ggml/src/CMakeFiles/ggml-cpu.dir/flags.make",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/cpu-flags.make",
+      "sha256": "3417626033964ea819c41903d8e5e91b166830927c82676647b7d610300bd622"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/restart_2026_10_11/build.log",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/restart-build.log",
+      "sha256": "41583115367ffec98a70f0a71ae11fef881871ad7670d91d34161557fb7448d9"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/cmake_version.log",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/cmake_version.log",
+      "sha256": "f6e81c2559f3ce00c5fdad01d7b226c301f5d6b07ee04f65db6dbfdc1cc5970b"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/configure.log",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/configure.log",
+      "sha256": "2f05c7f2325d06b039b45132bcdbb447bfc0291099a888a89e19e7c25c31b176"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/network.trace",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/network.trace",
+      "sha256": "4d0535b1a5b8ff216b8e9525719c6dc6521026741ea5df9bc92ed10ab058487a"
+    },
+    {
+      "original": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/inference.log",
+      "copy": "/workspaces/resolena-alternative-finder/build/qwen-portable-20261011/original_native/inference.log",
+      "sha256": "7756034b5a5562315c257f1699e5eecf7a15c4f6e61f2cbbb4f9539aa00b130e"
+    }
+  ],
+  "model_reused": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf",
+  "original_tree_retained": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx"
+}

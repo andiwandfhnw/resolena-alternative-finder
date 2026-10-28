@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_controller_run.py::test_default_session_reconciles_admitted_helper_exit_between_snapshot_count_and_owned_rows"
+  ],
+  "exit_code": 1,
+  "controller_sha256_before_implementation": "790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179",
+  "scope": "Actual run_session with injected source-consistent snapshot ordering; not Windows evidence"
+}

@@ -1,0 +1,21 @@
+{
+  "provenance": "Previously discussed calibration phrases; explicitly reused, never reported as unseen.",
+  "cases": [
+    {
+      "language": "de",
+      "text": "Ich möchte mein Fahrrad reparieren, ohne es zu ersetzen."
+    },
+    {
+      "language": "fr",
+      "text": "Je veux réparer mon vélo sans le remplacer."
+    },
+    {
+      "language": "it",
+      "text": "Vorrei riparare la mia bicicletta senza sostituirla."
+    },
+    {
+      "language": "en",
+      "text": "I want to repair my bicycle without replacing it."
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "version": "uc001-contract-local-1.2.2",
+  "recorded_utc": "2026-10-18T16:29:13.156866+00:00",
+  "scope": "Demonstrated v1.2.1 console-host ownership-binding correction; offline implementation and one model-free owner handoff only",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "changed_files": [
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "scripts/uc001_contract_local_v1_2_2/Check-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_2/DeadlineGuard.cs",
+    "scripts/uc001_contract_local_v1_2_2/PINNED-SOURCE.md",
+    "scripts/uc001_contract_local_v1_2_2/Python-Ownership.ps1",
+    "scripts/uc001_contract_local_v1_2_2/PythonOwnership.cs",
+    "scripts/uc001_contract_local_v1_2_2/README.md",
+    "scripts/uc001_contract_local_v1_2_2/Run-Windows.ps1",
+    "scripts/uc001_contract_local_v1_2_2/Test-Offline.ps1",
+    "scripts/uc001_contract_local_v1_2_2/capture.py",
+    "scripts/uc001_contract_local_v1_2_2/config.json",
+    "scripts/uc001_contract_local_v1_2_2/freeze.json",
+    "scripts/uc001_contract_local_v1_2_2/harness_checks.py",
+    "scripts/uc001_contract_local_v1_2_2/partial-expectations-review.json",
+    "scripts/uc001_contract_local_v1_2_2/previous-freeze.json",
+    "scripts/uc001_contract_local_v1_2_2/replay.py",
+    "scripts/uc001_contract_local_v1_2_2/review_gate.py",
+    "scripts/uc001_contract_local_v1_2_2/technical-decision.json",
+    "scripts/uc001_contract_local_v1_2_2/verify.py",
+    "tests/unit/test_contract_local_failure_reporting.py",
+    "build/uc001-contract-local-v1_2_2/owner-reported-v1_2_1-failure.json",
+    "build/uc001-contract-local-v1_2_2/model-free-console-helper-correction.zip",
+    "build/uc001-contract-local-v1_2_2/verification.json",
+    "build/uc001-contract-local-v1_2_2/SHA256SUMS.txt"
+  ],
+  "owner_evidence": {
+    "file": "build/uc001-contract-local-v1_2_2/owner-reported-v1_2_1-failure.json",
+    "provenance": "Owner-reported facts from chat, not reconstructed raw Windows JSON",
+    "supported_failure": "ownership/unexpected_owned_process at candidate_constraints; conhost.exe PID 53380, verified reported parent 29444, observed job [29444,53380]. No completed proof/worker. Job closure and redirector exit confirmed; interpreter identity/exit unavailable.",
+    "limit": "Does not establish the earlier model attempt initiating cause, a surviving interpreter or any generation count."
+  },
+  "correction": {
+    "native_binding": "Actual Bind dispatches AccountMembers after held-handle identity and exact-job membership checks. Every observed member is accounted by role. Exact pinned interpreter path/direct redirector parent/time; at most one console helper at native system-directory conhost.exe, direct verified redirector/interpreter parent and creation >= parent. No basename/order/ancestor trust. Fresh full member-set check before proof; no fixed member total.",
+    "pending": "Validated helper without Python is retained and returns null proof/interpreter_pending; existing supervisor polling/deadline continues. Exactly one verified interpreter remains mandatory. Unknown members, duplicate helpers/interpreters, identity changes, missing/failed measurements remain failures.",
+    "python_validation": "Worker uses the versioned shared harness ownership function with fresh native identity reads for all roles, native GetSystemDirectoryW for helper path and exact complete role/member set, alongside original self PID/parent and lifetime constraints. No interpretation validator/application changes.",
+    "cleanup": "Verified helper identities/held handles retained before full proof; job closure then redirector/interpreter/helper exit confirmation. Missing identity, unidentified observed member and unconfirmed exit remain failures. No name termination or guessed PID reopen.",
+    "reporting": "Existing independent primary/cleanup/deadline channels retained. Fixed additional helper/native reason codes only; bounded raw errors/process logs/observed paths remain private."
+  },
+  "tdd": {
+    "red": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_failure_reporting.py -k 'role_helper_pending or (python_validates and None)' --tb=short",
+      "failed": 2,
+      "evidence": "Initial new helper-only native policy and helper-aware Python tests failed against the inherited implementation (missing AccountMembers and unsupported system_directory validation hook). Owner-reported v1.2.1 candidate rejection is recorded separately, not simulated as native execution."
+    },
+    "green": {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_contract_local_failure_reporting.py tests/unit/test_contract_local_harness_correction.py::test_ownership_rejects_unverified_lifetime_chain_or_job tests/unit/test_contract_local_harness_correction.py::test_model_free_corrected_ownership_and_cleanup_paths_with_explicit_substitutes --tb=short",
+      "passed": 77,
+      "seconds": 39.72,
+      "exit_code": 0,
+      "warnings": 0
+    },
+    "coverage": [
+      "Actual native role policy with explicit synthetic identities: helper-before-interpreter pending, helper+interpreter including helper parented to Python, no helper, wrong helper/Python path, unknown extra, ambiguous interpreter/helper, invalid parent/time",
+      "Python fresh-identity validation with helper roles: exact path, basename rejection, parent/time/reuse/membership/duplicate/missing Python/type failures",
+      "Actual supervisor/cleanup functions with explicit substitutes: helper success, absent interpreter+deadline, partial binding, helper exit unconfirmed, missing helper identity and unknown member",
+      "Existing independent primary/cleanup/deadline/private-reason tests on both frozen v1.2.1 and corrected v1.2.2; existing ownership/cleanup/abort regressions",
+      "Native dispatch source invariants; C# compilation/x64 layout; model/capture hard-block remains consumed with no attempt write"
+    ],
+    "scope": "Codespace synthetic/pure policy/compilation only, not Windows native verification"
+  },
+  "preservation": {
+    "prior_small_files_checked": 95,
+    "changed": [],
+    "original_attempt_identity": "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "startup_allowance": "consumed, unchanged; no restart/replacement model attempt or zero-valued ledger",
+    "byte_unchanged_copies": [
+      "DeadlineGuard.cs",
+      "Run-Windows.ps1",
+      "PINNED-SOURCE.md",
+      "previous-freeze.json",
+      "partial-expectations-review.json",
+      "technical-decision.json",
+      "review_gate.py"
+    ],
+    "unchanged": "All prior source/bundles/receipts; model/runtime pins, prompt/schema/14 exposed inputs, resource/time/output/generation thresholds, original review hashes; application/shared semantic validator. Capture/replay/verify imports only rebind to the separately versioned harness.",
+    "model_attempt_written": false
+  },
+  "package": {
+    "path": "build/uc001-contract-local-v1_2_2/model-free-console-helper-correction.zip",
+    "bytes": 104160,
+    "sha256": "8d549dc294b596a06895bf9f181af0675805a4752ea9a1fb23011c7a1c93bb0e",
+    "files": 47,
+    "freeze_sha256": "af1dec39b87a4ee0c604ff71a1f970156e4174a974bcebbbaa14dc213bf1b064",
+    "extracted_check": "Passed isolated imports, unchanged generated-vs-frozen schema comparison, 14-case manifest, parent/local freeze validation and consumed allowance; README PowerShell blocks and .ps1 files parsed offline.",
+    "powershell_compatibility": "Native source uses existing .NET/Windows PowerShell 5.1 APIs; actual PS5.1 execution pending."
+  },
+  "windows_handoff": {
+    "instructions": "scripts/uc001_contract_local_v1_2_2/README.md",
+    "command_script": "scripts/uc001_contract_local_v1_2_2/Check-Windows.ps1",
+    "execution": "Prepared only, one owner-operated model-free check. No automatic execution/retry.",
+    "limits": "Unchanged 60-second overall acceptance bound, 45-second owned-job timer/ownership deadline, 20ms poll and 5-second held-handle exit waits. No model/capture/HTTP/GPU/SSH.",
+    "evidence": [
+      "result.json",
+      "cleanup.json",
+      "worker-result.json if present"
+    ],
+    "private_do_not_share": "private/ raw exceptions, observed executable paths and stdout/stderr",
+    "native_effects": "Add-Type compilation with possible temporary compiler files; existing Win32 process/pipe/job/handle and NtQueryInformationProcess APIs, native system-directory lookup and result ACLs; owned job/handles only.",
+    "pending": "Real Windows helper/interpreter identity/job binding and all owned exit confirmations."
+  },
+  "download_accounting": {
+    "dependencies_acquired_bytes": 0,
+    "rule": "Charge actual source handoff transfers to the existing cumulative allowance; no reset or assumption of a fresh remaining balance."
+  },
+  "remaining_limitations": [
+    "Corrected Windows native path unexecuted; synthetic role tests are not native job/process evidence.",
+    "Original model startup allowance consumed; model/GPU readiness, real semantic correctness and qualified linguistic acceptance remain unverified.",
+    "Qualified semantic review remains pending/false; replay receives no live integration credit for cases 1/5/10."
+  ],
+  "not_performed": [
+    "Model/runtime startup, capture or inference",
+    "SSH/transport/support investigation, credentials, installation or downloads",
+    "Automatic retry, model-ledger reconstruction/reset, held-out access, language tuning",
+    "Git delivery, later priorities or phase advance"
+  ]
+}

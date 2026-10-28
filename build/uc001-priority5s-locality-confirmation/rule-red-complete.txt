@@ -1,0 +1,43 @@
+FFF....                                                                  [100%]
+=================================== FAILURES ===================================
+_______ test_country_and_intended_locality_require_independent_coverage ________
+
+    def test_country_and_intended_locality_require_independent_coverage():
+        assert not assess(location={"country_code": "DE"}).qualified
+>       assert not assess(location={"country_code": "CH", "town": "Intended synthetic town"}).qualified
+E       AssertionError: assert not True
+E        +  where True = Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000002', display_name='Zeta repair (sy...c_scope': {'country_code': 'CH'}}, evidence_version_ids=('30000000-0000-4000-8000-000000000002',), limitation_codes=()).qualified
+E        +    where Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000002', display_name='Zeta repair (sy...c_scope': {'country_code': 'CH'}}, evidence_version_ids=('30000000-0000-4000-8000-000000000002',), limitation_codes=()) = assess(location={'country_code': 'CH', 'town': 'Intended synthetic town'})
+
+tests/unit/test_qualification.py:96: AssertionError
+_ test_confirmation_cannot_turn_an_ordinary_country_statement_into_local_coverage _
+
+    def test_confirmation_cannot_turn_an_ordinary_country_statement_into_local_coverage():
+        result = assess(location=confirmed_locality())
+    
+>       assert not result.qualified
+E       AssertionError: assert not True
+E        +  where True = Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000002', display_name='Zeta repair (sy...c_scope': {'country_code': 'CH'}}, evidence_version_ids=('30000000-0000-4000-8000-000000000002',), limitation_codes=()).qualified
+
+tests/unit/test_qualification.py:130: AssertionError
+_ test_unambiguous_source_scoped_local_coverage_uses_normalized_names_and_exact_postcodes _
+
+    def test_unambiguous_source_scoped_local_coverage_uses_normalized_names_and_exact_postcodes():
+        scope = {"country_code": "CH", "town": "Genève", "postcode": "0123",
+            "locality_identity_unambiguous": True}
+        location = confirmed_locality()
+        before = {**location, "locality": {**location["locality"],
+            "normalized": {**location["locality"]["normalized"]}}}
+    
+        result = assess(explicitly_scoped_candidate(scope), location=location)
+    
+>       assert result.qualified
+E       AssertionError: assert False
+E        +  where False = Qualification(candidate=Candidate(alternative_id='00000000-0000-4000-8000-000000000540', display_name='Explicit covera...ence_version_ids=(), limitation_codes=('geographic_applicability_unverified', 'useful_comparison_information_missing')).qualified
+
+tests/unit/test_qualification.py:146: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_qualification.py::test_country_and_intended_locality_require_independent_coverage
+FAILED tests/unit/test_qualification.py::test_confirmation_cannot_turn_an_ordinary_country_statement_into_local_coverage
+FAILED tests/unit/test_qualification.py::test_unambiguous_source_scoped_local_coverage_uses_normalized_names_and_exact_postcodes
+3 failed, 4 passed, 37 deselected in 0.61s

@@ -1,0 +1,29 @@
+..............................F......................................... [ 38%]
+........................................................................ [ 77%]
+..........................................                               [100%]
+=================================== FAILURES ===================================
+___ test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence ___
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-17/test_edge_diagnostic_expected_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x732136bc77a0>
+
+    def test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence(tmp_path,monkeypatch):
+        original=SplitApi.children_of
+        queries=[]
+        def scoped(self,parents,timeout_seconds=None):
+            queries.append(set(parents))
+            self.add(77777,999,88888,False,'unrelated-system-name','unrelated-system-role')
+            return original(self,parents,timeout_seconds)
+        monkeypatch.setattr(SplitApi,'children_of',scoped)
+        result,calls=run_split(tmp_path,monkeypatch)
+        assert result['ownership_self_test_passed'] is True
+        rows,observations=edge_diagnostic_rows(tmp_path)
+        assert observations
+>       assert all(parents=={LAUNCHER,INTERPRETER} for parents in queries)
+E       assert False
+E        +  where False = all(<generator object test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence.<locals>.<genexpr> at 0x732136b28e10>)
+
+tests/unit/test_granite_controller_standins.py:568: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_standins.py::test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence
+1 failed, 185 passed in 3.10s

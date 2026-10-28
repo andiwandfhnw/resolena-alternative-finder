@@ -1,0 +1,1668 @@
+{
+  "date": "2026-10-20",
+  "scope": "UC-001 increment1 Priority5G only: exactly two new negative ownership/payload cases at controlled same-submission unique collision",
+  "phase": 3,
+  "status": "in-progress",
+  "priorities_3_4_5": "partial",
+  "increment_1_and_develop_complete": false,
+  "owner_acceptance": {
+    "priority_5f": "Accepted only real commit, lost confirmation, captured inactive transaction explicit commit-error cleanup failure, persistence uncertainty and later checked acknowledgement. Demonstrated RED500processing_error/not_attempted and minimalguard503persistence_error/unknown retained.",
+    "limits": "Inactive transaction fault is not proof of failed DBAPI undo,disposal handling,crash durability or complete cleanup coverage. Original5Freceipt and all earlier evidence unchanged."
+  },
+  "prerequisites": {
+    "result": "No material contract/architecture/schema/dependency conflict; no equivalent negative collision coverage existed.",
+    "references": [
+      "UC-001 O-2/AC-17 originating client/unchanged payload/unique identity",
+      "ADR-003 checked committed-winner acknowledgement and no identifier-only disclosure",
+      "ARCHITECTURE.md accepted403recovery_not_authorized and409submission_key_conflict",
+      "CompareRequest._acknowledge ownership first then payload,DuplicateSubmission actual winner lookup",
+      "SQLiteComparisonStore actual unique insert failure/rollback/find path",
+      "Existing5C positive overlap and serial committed recovery negatives"
+    ],
+    "coverage_gap": "Existing5C exercised matching key/proof/payload only. Existing serial negative tests begin after commit and return from initial committed lookup, without prepared overlap or actual unique collision.",
+    "accepted_case_a": "Different valid-format proof plus changed valid canonical payload -> uniform403recovery_not_authorized/not_attempted/originating_proof_required; ownership failure prevents payload check/disclosure.",
+    "accepted_case_b": "Same key/proof with changed valid canonical payload -> ownership true,payload false,409submission_key_conflict/not_attempted/payload_changed; no saved projection or metadata.",
+    "valid_variation": "Exact synthetic EXAMPLE/CH retained; loser adds language_context preferred_language en. Normal API validation,synthetic interpreter,language policy,qualification,rendering all run; detected English still prepares a valid comparison. Captured canonical context differs even when explanation language remains English."
+  },
+  "changed_files": [
+    "tests/integration/test_saved_comparison.py",
+    "docs/TASKS.md"
+  ],
+  "test_changes": "Parameterize existing controlled5C structure into original matching case plus exactlytwo new cases. Preserve original positive interleaving/collision/winner-projection/identity/options/link/evidence/200ack assertions. Observe binding equality as booleans only; no new framework or production edit.",
+  "first_run_result": "Both new negative cases passed first execution against unchanged production behavior. No manufactured RED or production fix. Positive matching regression also passed.",
+  "executed_tests": [
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest 'tests/integration/test_saved_comparison.py::test_concurrent_same_submission_commits_one_winner_and_acknowledges_loser[wrong_proof_changed_payload]' 'tests/integration/test_saved_comparison.py::test_concurrent_same_submission_commits_one_winner_and_acknowledges_loser[same_proof_changed_payload]' -q --basetemp=build/uc001-priority5g-collision-guards/negative-first-check 2>&1 | tee build/uc001-priority5g-collision-guards/negative-first.log",
+      "exit_code": 0,
+      "result": "2passed,1existingwarning in1.14s",
+      "log": "build/uc001-priority5g-collision-guards/negative-first.log",
+      "scope": "Exactlytwo authorized new negative cases."
+    },
+    {
+      "command": "set -o pipefail\n.venv/bin/python -m pytest 'tests/integration/test_saved_comparison.py::test_concurrent_same_submission_commits_one_winner_and_acknowledges_loser[matching]' -q --basetemp=build/uc001-priority5g-collision-guards/positive-regression 2>&1 | tee build/uc001-priority5g-collision-guards/positive-regression.log",
+      "exit_code": 0,
+      "result": "1passed,1existingwarning in1.41s",
+      "log": "build/uc001-priority5g-collision-guards/positive-regression.log",
+      "scope": "Preserved original matching5C regression; current parameter node is[matching]."
+    }
+  ],
+  "other_checks_not_run": "Serial wrong-proof/changed-payload regression not rerun: production verification/collision handling unchanged. No browser/frontend/lint/build/full suite or unrelated matrices.",
+  "coordination": {
+    "initial_reads": "Two independent real SQLiteComparisonStore engines to one isolated file; each real find returnsNone and closes its connection before5s barrier.",
+    "preparations": "Both actual prepared comparisons enter port.save before5s preparation barrier. Distinct prepared request/optionUUIDs,unchanged fixed synthetic assessment time.",
+    "write_order": "Outside write transactions, loser waits at bounded5s Event until winner actual save/commit/readback completes; then attempts actual SQLite INSERT.",
+    "observed_failure": "Loser engine observes actual SQLITE_CONSTRAINT_UNIQUE on search_request.submission_key_digest, same-connection rollback,DuplicateSubmission and actual application committed-winner lookup. No canned read/outcome or serial second request after commit.",
+    "verification": "Spy delegates original compare_digest, records booleans/order only. Winner initially saves rather than acknowledges; only loser checks are observed.",
+    "bounds": "ThreadPool2,barriers5s,event5s,futures15s; no sleeps,lock-wait stress or timing-side-channel claim."
+  },
+  "cases": {
+    "same_proof_changed_payload": {
+      "evidence": "build/uc001-priority5g-collision-guards/negative-first-check/test_concurrent_same_submissio1/concurrent-save-evidence.json",
+      "both_initial_lookups_missed": {
+        "loser": true,
+        "winner": true
+      },
+      "prepared_outcomes": {
+        "winner": "comparison",
+        "loser": "comparison"
+      },
+      "timeline": [
+        "loser:initial_lookup_missed",
+        "winner:initial_lookup_missed",
+        "winner:prepared",
+        "loser:prepared",
+        "winner:committed",
+        "loser:unique_insert_rejected",
+        "loser:rollback",
+        "loser:duplicate_submission",
+        "loser:committed_lookup",
+        "loser:ownership_check",
+        "loser:payload_check"
+      ],
+      "input_binding_equality_booleans": {
+        "same_submission_key": true,
+        "same_originating_proof": true,
+        "same_canonical_payload": false
+      },
+      "ownership_payload_check_results": [
+        true,
+        false
+      ],
+      "payload_check_performed": true,
+      "winner_response": {
+        "status": 201,
+        "body": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "21829cba-d03a-4d1d-a213-4b20cb3ef540"
+          },
+          "comparison": {
+            "request_id": "21829cba-d03a-4d1d-a213-4b20cb3ef540",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "292a33fb-f58b-4ebe-9918-818fd2b5f65a",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "fe2a8b5c-56cf-440c-98a9-eac0eea8729f",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      },
+      "loser_response": {
+        "status": 409,
+        "body": {
+          "outcome": "submission_key_conflict",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "payload_changed"
+            }
+          ]
+        }
+      },
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "store_port_calls": {
+        "winner": {
+          "find": 1,
+          "save": 1
+        },
+        "loser": {
+          "find": 2,
+          "save": 1
+        }
+      },
+      "separate_connection_counts": {
+        "winner": 1,
+        "loser": 2
+      },
+      "execution_connections_disjoint": true,
+      "actual_sqlite_collision": [
+        {
+          "sqlite_errorname": "SQLITE_CONSTRAINT_UNIQUE",
+          "unique_submission_key": true
+        }
+      ],
+      "collision_rollback_count": 1,
+      "winner_request_id": "21829cba-d03a-4d1d-a213-4b20cb3ef540",
+      "winner_option_ids": [
+        "292a33fb-f58b-4ebe-9918-818fd2b5f65a",
+        "fe2a8b5c-56cf-440c-98a9-eac0eea8729f"
+      ],
+      "winner_original_assessed_at": "2026-10-15T10:00:00+00:00",
+      "discarded_loser_request_id": "c6890c5c-3b18-4fce-a273-57b6f9575f0b",
+      "discarded_loser_option_ids": [
+        "9f1cf1b4-d350-407f-bd5e-d4ff522aec18",
+        "9b412291-7188-4799-b580-ab197b698d1e"
+      ],
+      "committed_evidence_associations": [
+        [
+          "292a33fb-f58b-4ebe-9918-818fd2b5f65a",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "fe2a8b5c-56cf-440c-98a9-eac0eea8729f",
+          "30000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "source_evidence_unchanged": true,
+      "source_evidence_sha256": "8003ebbe8d313082d58f643e543db0e78dc3440bd6434001f4f3c305ac666a74",
+      "asserted_final_db_matches_authoritative_winner_projection_and_options": true,
+      "asserted_no_loser_rows_committed": true
+    },
+    "wrong_proof_changed_payload": {
+      "evidence": "build/uc001-priority5g-collision-guards/negative-first-check/test_concurrent_same_submissio0/concurrent-save-evidence.json",
+      "both_initial_lookups_missed": {
+        "winner": true,
+        "loser": true
+      },
+      "prepared_outcomes": {
+        "loser": "comparison",
+        "winner": "comparison"
+      },
+      "timeline": [
+        "winner:initial_lookup_missed",
+        "loser:initial_lookup_missed",
+        "loser:prepared",
+        "winner:prepared",
+        "winner:committed",
+        "loser:unique_insert_rejected",
+        "loser:rollback",
+        "loser:duplicate_submission",
+        "loser:committed_lookup",
+        "loser:ownership_check"
+      ],
+      "input_binding_equality_booleans": {
+        "same_submission_key": true,
+        "same_originating_proof": false,
+        "same_canonical_payload": false
+      },
+      "ownership_payload_check_results": [
+        false
+      ],
+      "payload_check_performed": false,
+      "winner_response": {
+        "status": 201,
+        "body": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "d9466855-1e15-4d3b-aa21-fb1bdb771151"
+          },
+          "comparison": {
+            "request_id": "d9466855-1e15-4d3b-aa21-fb1bdb771151",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "71108e64-8717-4402-8239-b22f79f6f7ae",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "c6228318-2cdb-454d-847e-9334f5a304c2",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      },
+      "loser_response": {
+        "status": 403,
+        "body": {
+          "outcome": "recovery_not_authorized",
+          "persistence": {
+            "state": "not_attempted"
+          },
+          "issues": [
+            {
+              "code": "originating_proof_required"
+            }
+          ]
+        }
+      },
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "store_port_calls": {
+        "winner": {
+          "find": 1,
+          "save": 1
+        },
+        "loser": {
+          "find": 2,
+          "save": 1
+        }
+      },
+      "separate_connection_counts": {
+        "winner": 1,
+        "loser": 2
+      },
+      "execution_connections_disjoint": true,
+      "actual_sqlite_collision": [
+        {
+          "sqlite_errorname": "SQLITE_CONSTRAINT_UNIQUE",
+          "unique_submission_key": true
+        }
+      ],
+      "collision_rollback_count": 1,
+      "winner_request_id": "d9466855-1e15-4d3b-aa21-fb1bdb771151",
+      "winner_option_ids": [
+        "71108e64-8717-4402-8239-b22f79f6f7ae",
+        "c6228318-2cdb-454d-847e-9334f5a304c2"
+      ],
+      "winner_original_assessed_at": "2026-10-15T10:00:00+00:00",
+      "discarded_loser_request_id": "e9de5096-2b5c-4c6c-9451-6fd505400ddc",
+      "discarded_loser_option_ids": [
+        "825d91aa-d507-4e66-84f4-72304f8b9077",
+        "cb6bbcc5-0cae-4f86-8882-0f0ca685883b"
+      ],
+      "committed_evidence_associations": [
+        [
+          "71108e64-8717-4402-8239-b22f79f6f7ae",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "c6228318-2cdb-454d-847e-9334f5a304c2",
+          "30000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "source_evidence_unchanged": true,
+      "source_evidence_sha256": "8003ebbe8d313082d58f643e543db0e78dc3440bd6434001f4f3c305ac666a74",
+      "asserted_final_db_matches_authoritative_winner_projection_and_options": true,
+      "asserted_no_loser_rows_committed": true
+    },
+    "matching": {
+      "evidence": "build/uc001-priority5g-collision-guards/positive-regression/test_concurrent_same_submissio0/concurrent-save-evidence.json",
+      "both_initial_lookups_missed": {
+        "loser": true,
+        "winner": true
+      },
+      "prepared_outcomes": {
+        "winner": "comparison",
+        "loser": "comparison"
+      },
+      "timeline": [
+        "loser:initial_lookup_missed",
+        "winner:initial_lookup_missed",
+        "winner:prepared",
+        "loser:prepared",
+        "winner:committed",
+        "loser:unique_insert_rejected",
+        "loser:rollback",
+        "loser:duplicate_submission",
+        "loser:committed_lookup",
+        "loser:ownership_check",
+        "loser:payload_check"
+      ],
+      "input_binding_equality_booleans": {
+        "same_submission_key": true,
+        "same_originating_proof": true,
+        "same_canonical_payload": true
+      },
+      "ownership_payload_check_results": [
+        true,
+        true
+      ],
+      "payload_check_performed": true,
+      "winner_response": {
+        "status": 201,
+        "body": {
+          "outcome": "comparison",
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "b06fe0a0-7c19-4653-a02a-ee26194409ed"
+          },
+          "comparison": {
+            "request_id": "b06fe0a0-7c19-4653-a02a-ee26194409ed",
+            "assessed_at": "2026-10-15T10:00:00+00:00",
+            "explanation_language": "en",
+            "language_origin": "detected",
+            "interpretation_version": "test-only-exact-fixture-v2",
+            "options": [
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000001"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000001",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-1-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "87c3f2be-01d8-4446-9664-245acb3d5519",
+                "alternative_id": "00000000-0000-4000-8000-000000000001",
+                "position": 1,
+                "display_name": "Alpha repair (synthetic)"
+              },
+              {
+                "description": "Synthetic bicycle repair service; not a real provider.",
+                "explanation": "Repair the existing bicycle without replacement. Financial and environmental/resource details follow their individual evidence assessments below.",
+                "claims": [
+                  {
+                    "claim": "relevance",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": "bicycle"
+                  },
+                  {
+                    "claim": "action:repair",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "no_replacement",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "applicability",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "satisfied",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": true
+                  },
+                  {
+                    "claim": "financial",
+                    "support": "supported",
+                    "freshness": "fresh",
+                    "requirement": "not_applicable",
+                    "attribution": [
+                      "provider-stated"
+                    ],
+                    "checked_at": [
+                      "2026-10-15T10:00:00+00:00"
+                    ],
+                    "independent_verification": false,
+                    "evidence_version_ids": [
+                      "30000000-0000-4000-8000-000000000002"
+                    ],
+                    "value": {
+                      "amount": "45.00",
+                      "currency": "CHF",
+                      "unit": "repair",
+                      "period": "once",
+                      "basis": "per repair",
+                      "charges_known": false,
+                      "exclusions": [
+                        "parts"
+                      ],
+                      "assumptions": [],
+                      "price_basis": "quoted"
+                    }
+                  }
+                ],
+                "financial": {
+                  "amount": "45.00",
+                  "currency": "CHF",
+                  "unit": "repair",
+                  "period": "once",
+                  "basis": "per repair",
+                  "charges_known": false,
+                  "exclusions": [
+                    "parts"
+                  ],
+                  "assumptions": [],
+                  "price_basis": "quoted",
+                  "status": "supported",
+                  "total_cost": null,
+                  "difference": null,
+                  "baseline": null,
+                  "baseline_provenance": null
+                },
+                "environmental": {
+                  "status": "unknown",
+                  "explanation": "No supported environmental/resource information."
+                },
+                "availability": {
+                  "status": "unknown",
+                  "value": null
+                },
+                "evidence": [
+                  {
+                    "version_id": "30000000-0000-4000-8000-000000000002",
+                    "publisher": "Synthetic fixture provider",
+                    "source_reference": "synthetic:repair-2-v3",
+                    "source_language": "en",
+                    "supporting_quote": "Repairs existing bicycles without replacement in CH. Labour CHF 45.00 per repair; parts excluded.",
+                    "reviewed_at": "2026-10-15T10:00:00+00:00",
+                    "review_basis": "synthetic test metadata, not factual review",
+                    "publication_date": null,
+                    "retrieved_at": null,
+                    "data_period": null,
+                    "scope": {
+                      "country_code": "CH"
+                    },
+                    "competent_claims": [
+                      "relevance",
+                      "action:repair",
+                      "no_replacement",
+                      "applicability",
+                      "financial"
+                    ],
+                    "assertions": {
+                      "relevance": "bicycle",
+                      "action:repair": true,
+                      "no_replacement": true,
+                      "applicability": true,
+                      "financial": {
+                        "amount": "45.00",
+                        "currency": "CHF",
+                        "unit": "repair",
+                        "period": "once",
+                        "basis": "per repair",
+                        "charges_known": false,
+                        "exclusions": [
+                          "parts"
+                        ],
+                        "assumptions": [],
+                        "price_basis": "quoted"
+                      }
+                    },
+                    "attribution": "provider-stated",
+                    "synthetic": true
+                  }
+                ],
+                "geographic_scope": {
+                  "country_code": "CH"
+                },
+                "rendering": {
+                  "language": "en",
+                  "version": "synthetic-reviewed-rendering-v1",
+                  "review_basis": "synthetic test fixture, not qualified linguistic review"
+                },
+                "limitations": [
+                  "Synthetic fixtures only; no verified provider, saving or environmental advantage.",
+                  "Fixture clock: 2026-10-15T10:00:00+00:00; not current factual validation."
+                ],
+                "synthetic": true,
+                "option_id": "6f1fb892-34bb-4542-b45e-f8c99bc5614b",
+                "alternative_id": "00000000-0000-4000-8000-000000000002",
+                "position": 2,
+                "display_name": "Zeta repair (synthetic)"
+              }
+            ],
+            "omitted_count": 0
+          }
+        }
+      },
+      "loser_response": {
+        "status": 200,
+        "body": {
+          "outcome": "submission_recovered",
+          "persistence": {
+            "state": "saved",
+            "request_id": "b06fe0a0-7c19-4653-a02a-ee26194409ed"
+          },
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "saved_outcome": "comparison"
+        }
+      },
+      "before_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "after_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "store_port_calls": {
+        "winner": {
+          "find": 1,
+          "save": 1
+        },
+        "loser": {
+          "find": 2,
+          "save": 1
+        }
+      },
+      "separate_connection_counts": {
+        "winner": 1,
+        "loser": 2
+      },
+      "execution_connections_disjoint": true,
+      "actual_sqlite_collision": [
+        {
+          "sqlite_errorname": "SQLITE_CONSTRAINT_UNIQUE",
+          "unique_submission_key": true
+        }
+      ],
+      "collision_rollback_count": 1,
+      "winner_request_id": "b06fe0a0-7c19-4653-a02a-ee26194409ed",
+      "winner_option_ids": [
+        "87c3f2be-01d8-4446-9664-245acb3d5519",
+        "6f1fb892-34bb-4542-b45e-f8c99bc5614b"
+      ],
+      "winner_original_assessed_at": "2026-10-15T10:00:00+00:00",
+      "discarded_loser_request_id": "5c835df0-7588-4fdc-b234-3eebd01b4d33",
+      "discarded_loser_option_ids": [
+        "3ca5ae8e-347c-4b30-a26c-03d9ca481e2d",
+        "22e6cba1-2f02-4817-85a3-ce8abb3cd19a"
+      ],
+      "committed_evidence_associations": [
+        [
+          "6f1fb892-34bb-4542-b45e-f8c99bc5614b",
+          "30000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "87c3f2be-01d8-4446-9664-245acb3d5519",
+          "30000000-0000-4000-8000-000000000001"
+        ]
+      ],
+      "source_evidence_unchanged": true,
+      "source_evidence_sha256": "8003ebbe8d313082d58f643e543db0e78dc3440bd6434001f4f3c305ac666a74",
+      "asserted_final_db_matches_authoritative_winner_projection_and_options": true,
+      "asserted_no_loser_rows_committed": true
+    }
+  },
+  "counter_scope": "CoordinatedStore port counts: winnerfind1/save1,loserfind2/save1. Adapter-internal find calls during save are excluded,as in5C. Physical connection IDs only compare in memory; exported connection counts/disjointness booleans show independent actual access. One save invocation per execution proves no automatic write retry. No replacement prepared identity is committed.",
+  "response_disclosure_checks": "Exact loser JSON bodies exclude saved requestID,outcome,assessment time,comparison payload and all unnecessary saved metadata. CaseA also excludes payload-conflict detail and records no payload comparison. These are bounded observed-case assertions,not a full disclosure/timing-security proof.",
+  "state_checks": "For each case exactlyone committed winner request/two winner options/two winner evidence links; full DBprojection/options match winner response/preparation,associations match winner evidence references,all source evidence equals baseline. Distinct loser request/options absent.",
+  "protected_data": "No raw proofs,headers,binding values,complete request objects,SQLparameters or protected exception contexts exported. Input-binding comparisons remain in memory and only booleans are recorded. Artifact includes synthetic responses/IDs/sourcehash and classified constraint/rollback events only.",
+  "preservation": {
+    "protected_files": 232,
+    "mismatches": [],
+    "all_tests_outside_extended_5c_function_byte_unchanged": true,
+    "positive_5c_assertions_preserved": "Matching case retains equivalent binding equality and full original interleaving/response/identity/projection/options/associations/evidence checks; independent review and targeted regression passed.",
+    "original_5f_tasks_note_preserved": true,
+    "identity": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "same_git_identity": true,
+    "scoped_delta_checks": [
+      {
+        "path": "tests/integration/test_saved_comparison.py",
+        "command": "git diff --no-index --check -- build/uc001-priority5g-collision-guards/before/tests/integration/test_saved_comparison.py tests/integration/test_saved_comparison.py",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "docs/TASKS.md",
+        "command": "git diff --no-index --check -- build/uc001-priority5g-collision-guards/before/docs/TASKS.md docs/TASKS.md",
+        "exit_code": 1,
+        "output": ""
+      }
+    ]
+  },
+  "preservation_manifest": "build/uc001-priority5g-collision-guards/preservation-before.json",
+  "git": {
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1564: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "status_command": "git status --short",
+    "same_status_entries_as_before": true
+  },
+  "whitespace": "Globaldiffcheck exit2 reports only preserved historical TASKS backlog trailing space, nowline1564. Two task-local no-index checks outputempty; exit1 reflects differing files without new whitespace errors.",
+  "remaining_limits": [
+    "Only these bounded designated-winner controlled overlaps verified; no stress,timing-side-channel or full security/concurrency/disclosure matrix",
+    "Other cleanup/disposal,persistence and physical-crash variants remain unverified",
+    "Other Priority5 gaps,real locality/reference integration and Priority6 remain outside scope"
+  ],
+  "boundaries": "DE/FR/IT/EN,Resolena-controlled processing,atomic save-before-presentation/immutable evidence retained. Normalapp.main unconfigured,real drafts inactive,experiments closed. No startup/model/detector,heldout,linguistic/TL-03,research,UC-003,dependencies,staging/Gitdelivery/branch/reset,CI/CD/deployment.",
+  "review": "Independent read-only prerequisite,test-delta and final receipt/TASKS review found no material issue or weakened positive5C assertion. All3artifacts/logs match responses,boolean check order,actual collisions/rollback,winner identities/state and scope limits. Human5G review remains pending.",
+  "warning": "Existing Starlette/httpx TestClient deprecation; no dependency change.",
+  "stop": "Await human review. Priority5,increment1,DEVELOP remain incomplete.",
+  "final_checks": {
+    "proof_safe_json_artifacts_audited": 4,
+    "protected_hashes_rechecked": 232,
+    "single_tasks_evidence_link_valid": true,
+    "phase3_in_progress": true,
+    "exactly_two_new_cases_plus_positive_regression": true
+  }
+}

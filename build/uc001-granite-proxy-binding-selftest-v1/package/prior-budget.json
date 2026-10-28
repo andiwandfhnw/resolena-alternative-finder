@@ -1,0 +1,44 @@
+{
+  "receipt_schema": "uc001-granite-prior-accounting",
+  "receipt_schema_version": 1,
+  "recorded_on": "2026-10-27",
+  "owner": "Project owner — explicit accounting statement supplied in this conversation",
+  "bundle_id": "9a4acb903c834737809b2648c358da9f2d91b116471966fb7b691847a069f4b4",
+  "accounting_complete": true,
+  "previously_charged_bytes": 0,
+  "acquisition_ceiling_bytes": 10737418240,
+  "allowance_scope": "Combined Granite model-weight and llama.cpp/runtime-source acquisition for this frozen Granite preparation, including completed, partial, interrupted and failed transfers",
+  "allowance_reset_or_renewed": false,
+  "accepted_proxy_sha256": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+  "frozen_config_sha256": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+  "runtime_revision": "620d2225cc436ab0b001e3200e590e3b286ef9ab",
+  "preparation_bindings": {
+    "scripts/uc001_granite_contract_v1/config.json": "c4610156c24e95cdf1abab658cfde1c18be568940c7cb952c5a673833c620cf4",
+    "build/uc001-granite-proxy-identities-v1/uc001-granite-proxy-identities-v1.zip": "5e17772727fae81fb73f48f734e7301a148d56927841fe0c7f5ade0c70f18ade",
+    "build/uc001-granite-proxy-identities-v1/package/manifest.json": "8b9a01de56eb28f1b4b0040d3626158c2b64010bf69e3df357ef19644bbb9f33",
+    "build/uc001-granite-native-build-preparation/README.md": "f3a0968ab48314573ca9be0c416e4733db1276e56f965d7d1429790e73f1af65",
+    "scripts/uc001_granite_acquisition_proxy/proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d"
+  },
+  "helper_hashes": {
+    "controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "worker.py": "6c786d97f23a92b5ee6f6699d2b92a3de0bdb9913a332e3a8d046a67fe4aca85",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22"
+  },
+  "evidence": {
+    "basis": "explicit_complete_owner_accounting_statement",
+    "source": "Owner message in this conversation; preserved accounting statement and authorization text",
+    "recorded_on": "2026-10-27",
+    "file": "owner-statement.txt",
+    "sha256": "3fd9e56c68a9dba8fefc198eec6d5599af05c24fed7ddacf376dcc9db152b38c",
+    "independently_measured_by_codex": false,
+    "coverage": "Owner confirms no completed, partial, interrupted or failed Granite model-weight or llama.cpp/runtime-source acquisition charge before the currently prepared metered path",
+    "excluded_by_owner": [
+      "Python and Python wheels",
+      "Vulkan SDK",
+      "Controller/package/handoff and other prerequisite downloads",
+      "Historical Qwen downloads in separate closed experiments"
+    ]
+  },
+  "execution_authorized": false
+}

@@ -1,0 +1,57 @@
+{
+  "recorded_on": "2026-10-28",
+  "scope": "Approval recording/documentation/link/hash/schema/syntax and read-only Git preservation only; no test suites or Windows command bodies",
+  "owner_execution_authorized": true,
+  "maximum_attempts": 1,
+  "windows_execution_status": "Pending owner execution/output",
+  "package_zip_bytes": 67856,
+  "package_zip_sha256": "0396e052f7753578c9e4c94764bc08a21e6e4f2cd67ffdfba9e8f97d7bfcdfe3",
+  "manifest_sha256": "a63238267cc8e881d0609c3cffcdcac303d399454cef64ca0874fcbafd577556",
+  "packaged_config_inactive": true,
+  "approved_config_or_approval_record_created_in_codespace": false,
+  "existing_preflight_and_native_output_paths_bound": true,
+  "saved_resource_readings_not_used_for_current_entry": true,
+  "actual_controller_environment_sampler_watchdog_job_checks_preserved": true,
+  "source_build_controller_invocations_in_owner_block": 1,
+  "owner_block_sha256": "efd76dfb4316fadd9d40d950fa9caf7ce0f8a9708c3142c7e5fea454f5ecdd69",
+  "syntax_check": {
+    "exit_code": 0,
+    "output": "Owner Step 4 block parsed only; no command body executed.",
+    "linux_parser_only": true,
+    "block_body_executed": false
+  },
+  "protected_existing_files": 216,
+  "changed_existing_files": [
+    "build/uc001-granite-native-handoff-v2/README.md",
+    "build/uc001-granite-native-handoff-v2/verification.json",
+    "docs/TASKS.md"
+  ],
+  "unchanged_existing_files": 213,
+  "missing_existing_files": [],
+  "baseline_provenance": "Prior temporary baseline absent after session change; current unaffected files captured now. TASKS pre-edit bytes verified against retained console-consistency SHA after removing only this turn's documented approval edits; no owner evidence reconstructed.",
+  "history_preserved": "All earlier verification fields restored exactly after removing the new dated owner approval and its explicitly dated authorization-status update; erratum and both preflight result sections unchanged.",
+  "tasks_changes_only_current_summary_and_dated_approval": true,
+  "historical_preflight_command_blocks_unchanged": true,
+  "local_links_checked": 16,
+  "json_checks_passed": true,
+  "new_documentation_whitespace_clean": true,
+  "package_runtime_proxy_prior_receipts_and_historical_artifacts_unchanged": true,
+  "tests_preflight_diagnostics_windows_network_or_native_code_executed": false,
+  "git_preservation": {
+    "branch --show-current": "unchanged",
+    "rev-parse HEAD": "unchanged",
+    "status --short": "unchanged",
+    "diff --cached --raw": "unchanged",
+    "ls-files --stage": "unchanged"
+  },
+  "git_diff_check": {
+    "exit_code": 2,
+    "output": "docs/TASKS.md:3445: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "only_historical_warning": true
+  },
+  "artifact_sha256": {
+    "README.md": "b41f6df17857809ae8d87d6b08134c72e6a60b8afca2535392d808d0c43ec8c7",
+    "verification.json": "4a6f0e7a29f5c94c3d9d4c8d2914ae413061b555053361ab41534ddcc5db3a68",
+    "docs/TASKS.md": "d50b89f4e09b50d08a55516b7c47736df0073069ec91567e5a135d9a3a862b00"
+  }
+}

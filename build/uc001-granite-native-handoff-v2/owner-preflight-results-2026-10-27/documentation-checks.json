@@ -1,0 +1,47 @@
+{
+  "recorded_on": "2026-10-27",
+  "scope": "Documentation/JSON/link/content/hash and read-only Git preservation checks only",
+  "passed": true,
+  "protected_existing_files": 211,
+  "changed_existing_files": [
+    "build/uc001-granite-native-handoff-v2/README.md",
+    "build/uc001-granite-native-handoff-v2/verification.json",
+    "docs/TASKS.md"
+  ],
+  "unchanged_existing_files": 208,
+  "missing_existing_files": [],
+  "prior_authorization_status_preserved_separately": true,
+  "original_authorized_maximum_attempts": 1,
+  "recorded_actual_owner_attempts": 2,
+  "second_attempt_beyond_original_instruction_and_accepted_preflight_only": true,
+  "desktop_reports_inspected": false,
+  "all_other_existing_verification_fields_preserved": true,
+  "tasks_changes_only_current_summary_and_dated_result_entry": true,
+  "owner_procedure_command_blocks_unchanged": true,
+  "local_links_checked": 13,
+  "json_and_content_checks_passed": true,
+  "new_documentation_whitespace_clean": true,
+  "issued_zip_payload_runtime_proxy_frozen_prior_and_relevant_historical_receipts_unchanged": true,
+  "execution_configuration_inactive": true,
+  "source_build_execution_authorized": false,
+  "prospective_native_output_created": false,
+  "windows_or_preflight_or_diagnostic_or_tests_executed_by_codex": false,
+  "git_preservation": {
+    "branch --show-current": "unchanged",
+    "rev-parse HEAD": "unchanged",
+    "status --short": "unchanged",
+    "diff --cached --raw": "unchanged",
+    "ls-files --stage": "unchanged"
+  },
+  "git_diff_check": {
+    "exit_code": 2,
+    "output": "docs/TASKS.md:3382: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "preserved_historical_warning_only": true
+  },
+  "artifact_sha256": {
+    "README.md": "623a5f4baa6c9394857d22ebfb2513e06c338176bb39eb3a226049b448f8d21b",
+    "verification.json": "df16c0f0a68647818c6fedd21cab0e40ab0c322ef52e179d663995631f85852c",
+    "docs/TASKS.md": "bad3cca7ad3299384006173b729451c2652acbaf0071a3dd291dbe3c5478ce9f",
+    "owner-preflight-results-2026-10-27/owner-report.txt": "a492a4ac1a966078296bdaa667447fe97240751a5adbc91025a34d555637c2a6"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "http_status": 200,
+  "http_headers": [
+    [
+      "Server",
+      "llama.cpp"
+    ],
+    [
+      "Access-Control-Allow-Origin",
+      ""
+    ],
+    [
+      "Content-Type",
+      "application/json; charset=utf-8"
+    ],
+    [
+      "Content-Length",
+      "1320"
+    ],
+    [
+      "Keep-Alive",
+      "timeout=5, max=100"
+    ]
+  ],
+  "raw_body": "{\"choices\":[{\"finish_reason\":\"stop\",\"index\":0,\"message\":{\"role\":\"assistant\",\"content\":\"{\\n  \\\"status\\\": \\\"unsupported\\\",\\n  \\\"language\\\": \\\"en\\\",\\n  \\\"subject\\\": {\\\"value\\\": \\\"kettle\\\", \\\"quote\\\": \\\"hervidor\\\"},\\n  \\\"action\\\": {\\\"value\\\": \\\"repair\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n  \\\"goals\\\": [],\\n  \\\"constraints\\\": [\\n    {\\\"kind\\\": \\\"no_repair\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n    {\\\"kind\\\": \\\"preserve_quality\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"},\\n    {\\\"kind\\\": \\\"no_new_purchase\\\", \\\"value\\\": \\\"true\\\", \\\"quote\\\": \\\"Repara mi hervidor\\\"}\\n  ],\\n  \\\"unresolved\\\": []\\n}\"}}],\"created\":1791733637,\"model\":\"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/Qwen3-1.7B-Q8_0.gguf\",\"system_fingerprint\":\"b4-a6b2479\",\"object\":\"chat.completion\",\"usage\":{\"completion_tokens\":154,\"prompt_tokens\":332,\"total_tokens\":486,\"prompt_tokens_details\":{\"cached_tokens\":0}},\"id\":\"chatcmpl-EXJjPW23azMi8vKubPE4fQ9ezUhlKJAu\",\"timings\":{\"cache_n\":0,\"prompt_n\":332,\"prompt_ms\":7854.388,\"prompt_per_token_ms\":23.657795180722893,\"prompt_per_second\":42.26936586275086,\"predicted_n\":154,\"predicted_ms\":18106.399,\"predicted_per_token_ms\":118.34247712418302,\"predicted_per_second\":8.450051277451688}}",
+  "wall_seconds": 25.97213960800036
+}

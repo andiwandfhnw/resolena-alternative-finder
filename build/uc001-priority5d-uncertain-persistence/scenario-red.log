@@ -1,0 +1,144 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery _
+
+tmp_path = PosixPath('/workspaces/resolena-alternative-finder/build/uc001-priority5d-uncertain-persistence/red-check/test_unconfirmed_commit_and_un0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7cf044a08aa0>
+
+    def test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery(tmp_path, monkeypatch):
+        from secrets import token_hex
+    
+        from sqlalchemy.engine.base import RootTransaction
+    
+        from tests.support.synthetic import FIXTURE_TIME, create_service
+    
+        path = tmp_path / "uncertain.sqlite3"
+        service = create_service(path)
+        store = service.store
+        calls = dict.fromkeys(("interpret", "retrieve", "prepare", "prepare_coverage", "find", "save", "clock", "api"), 0)
+        faults = {"real_commits": 0, "confirmation_losses": 0, "read_failures": 0}
+        writes = dict.fromkeys(("search_request", "request_alternative", "request_alternative_evidence"), 0)
+        timeline, cleanup, driver_rollbacks = [], [], []
+        observer_after_commit = []
+        commit_unconfirmed = False
+    
+        def watch(adapter, method, name):
+            original = getattr(adapter, method)
+    
+            def counted(*args, **kwargs):
+                calls[name] += 1
+                return original(*args, **kwargs)
+    
+            monkeypatch.setattr(adapter, method, counted)
+    
+        for adapter, method, name in ((service.interpreter, "interpret", "interpret"),
+                (service.knowledge, "retrieve", "retrieve"), (service.renderer, "prepare", "prepare"),
+                (service.renderer, "prepare_coverage", "prepare_coverage"), (store, "find", "find"), (store, "save", "save")):
+            watch(adapter, method, name)
+    
+        def clock():
+            calls["clock"] += 1
+            return FIXTURE_TIME
+    
+        service = replace(service, clock=clock)
+    
+        def observe():
+            with sqlite3.connect(path) as connection:
+                rows = connection.execute("SELECT id, projection FROM search_request ORDER BY id").fetchall()
+                return {
+                    "counts": {table: connection.execute(f"SELECT count(*) FROM {table}").fetchone()[0] for table in writes},
+                    "requests": [{"id": identity, "projection": json.loads(projection)} for identity, projection in rows],
+                    "options": connection.execute("SELECT id, request_id, snapshot FROM request_alternative ORDER BY position").fetchall(),
+                    "links": connection.execute("SELECT * FROM request_alternative_evidence ORDER BY 1, 2").fetchall(),
+                    "evidence": connection.execute("SELECT version_id, snapshot FROM evidence ORDER BY version_id").fetchall(),
+                }
+    
+        dialect = store.engine.dialect
+        real_commit, real_execute, real_rollback = dialect.do_commit, dialect.do_execute, dialect.do_rollback
+        real_cleanup = RootTransaction.rollback
+    
+        def lose_commit_confirmation(connection):
+            nonlocal commit_unconfirmed
+            timeline.append("dbapi_commit_entered")
+            real_commit(connection)
+            faults["real_commits"] += 1
+            timeline.append("real_sqlite_commit_returned_to_test_shim")
+            observer_after_commit.append(observe())
+            timeline.append("independent_observer_sees_committed_rows_test_only")
+            commit_unconfirmed = True
+            faults["confirmation_losses"] += 1
+            timeline.append("commit_confirmation_error_before_return_to_production")
+            raise sqlite3.OperationalError("Synthetic commit confirmation unavailable")
+    
+        def fail_reconciliation(cursor, statement, parameters, context=None):
+            normalized = statement.lstrip().lower()
+            for table in writes:
+                if normalized.startswith(f"insert into {table} "):
+                    writes[table] += 1
+            if commit_unconfirmed and normalized.startswith("select search_request."):
+                faults["read_failures"] += 1
+                timeline.append("production_reconciliation_select_unavailable")
+                raise sqlite3.OperationalError("Synthetic committed readback unavailable")
+            return real_execute(cursor, statement, parameters, context)
+    
+        def observe_cleanup(transaction):
+            if transaction.connection.engine is store.engine and commit_unconfirmed:
+                cleanup.append({"active_before": transaction.is_active})
+                timeline.append("commit_error_transaction_rollback_cleanup_entered")
+                result = real_cleanup(transaction)
+                timeline.append("commit_error_transaction_rollback_cleanup_returned")
+                return result
+            return real_cleanup(transaction)
+    
+        def observe_driver_rollback(connection):
+            driver_rollbacks.append({"after_confirmation_loss": commit_unconfirmed,
+                "sqlite_in_transaction_before": connection.in_transaction})
+            return real_rollback(connection)
+    
+        monkeypatch.setattr(RootTransaction, "rollback", observe_cleanup)
+        monkeypatch.setattr(dialect, "do_rollback", observe_driver_rollback)
+        app = create_app(service)
+    
+        @app.middleware("http")
+        async def count_api(request, call_next):
+            calls["api"] += 1
+            return await call_next(request)
+    
+        payload = submission()
+        captured_payload = json.loads(json.dumps(payload))
+        proof = token_hex(32)
+        before = observe()
+        try:
+            with TestClient(app) as client:
+                with monkeypatch.context() as injected:
+                    injected.setattr(dialect, "do_commit", lose_commit_confirmation)
+                    injected.setattr(dialect, "do_execute", fail_reconciliation)
+                    response = client.post("/api/comparisons", json=payload, headers={"X-Submission-Proof": proof})
+                timeline.append("first_api_response")
+                after_error = observe()
+                first_calls = dict(calls)
+                (tmp_path / "uncertain-error-evidence.json").write_text(json.dumps({
+                    "status": response.status_code, "body": response.json(), "faults": faults,
+                    "calls": first_calls, "timeline": timeline, "independent_after_error": after_error,
+                    "raw_originating_proofs_recorded": False}, indent=2) + "\n")
+                assert response.status_code == 503
+                assert response.json() == {"outcome": "persistence_error", "persistence": {"state": "unknown"},
+                    "issues": [{"code": "comparison_save_failed"}], "assessed_outcome": "comparison"}
+>               assert faults == {"real_commits": 1, "confirmation_losses": 1, "read_failures": 1}
+E               AssertionError: assert {'real_commit..._failures': 0} == {'real_commit..._failures': 1}
+E                 
+E                 Omitting 2 identical items, use -vv to show
+E                 Differing items:
+E                 {'read_failures': 0} != {'read_failures': 1}
+E                 Use -v to get more diff
+
+tests/integration/test_saved_comparison.py:722: AssertionError
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspaces/resolena-alternative-finder/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/integration/test_saved_comparison.py::test_unconfirmed_commit_and_unavailable_readback_stay_unknown_until_explicit_recovery
+1 failed, 1 warning in 0.85s

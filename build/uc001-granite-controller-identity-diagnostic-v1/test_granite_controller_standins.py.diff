@@ -1,0 +1,181 @@
+--- tests/unit/test_granite_controller_standins.py (before)
++++ tests/unit/test_granite_controller_standins.py
+@@ -651,3 +651,178 @@
+     assert result['ownership_self_test_passed'] is False
+     assert result['failure_reason']=='OSError: diagnostic journal unavailable'
+     assert 'owned_root_launched_once' not in calls
++
++
++SYNTHETIC_UNKNOWN_PID = 38564
++SYNTHETIC_UNKNOWN_BIRTH = 134375170217600000
++
++
++class UnknownIdentityApi(SplitApi):
++    def __init__(self,calls,options):
++        super().__init__(calls,options)
++        if not options.get('expected_only'):
++            self.add(SYNTHETIC_UNKNOWN_PID,SYNTHETIC_UNKNOWN_BIRTH,options.get('unknown_parent_pid',LAUNCHER),
++                     False,'unknown','unclassified')
++        self.unknown_birth_reads=0
++    def open_query_process(self,pid):
++        assert pid==SYNTHETIC_UNKNOWN_PID
++        self.calls.append(('open_query_only',pid))
++        if self.options.get('open_error'):
++            error=OSError('synthetic native open failure')
++            error.winerror=self.options['open_error']
++            raise error
++        return f'handle-{pid}'
++    def creation_time(self,handle):
++        if super().process_id(handle)==SYNTHETIC_UNKNOWN_PID:
++            self.unknown_birth_reads+=1
++            limit=3 if self.options.get('change_at_cleanup') else 2
++            if self.options.get('changed_unknown_birth') and self.unknown_birth_reads>=limit:
++                return SYNTHETIC_UNKNOWN_BIRTH+1
++            return SYNTHETIC_UNKNOWN_BIRTH
++        return super().creation_time(handle)
++    def process_id(self,handle):
++        pid=super().process_id(handle)
++        if (pid==SYNTHETIC_UNKNOWN_PID and self.options.get('changed_unknown_pid')
++                and self.unknown_birth_reads>=1):
++            return SYNTHETIC_UNKNOWN_PID+1
++        return pid
++    def parent_pid(self,handle):
++        if super().process_id(handle)==SYNTHETIC_UNKNOWN_PID and self.options.get('unknown_parent_mismatch'):
++            return 99999
++        return super().parent_pid(handle)
++    def in_job(self,handle,job):
++        if super().process_id(handle)==SYNTHETIC_UNKNOWN_PID:
++            return self.options.get('unknown_membership',False)
++        return super().in_job(handle,job)
++    def image_path(self,handle):
++        assert super().process_id(handle)==SYNTHETIC_UNKNOWN_PID
++        if self.options.get('path_failure'):
++            raise OSError('synthetic image query failure')
++        return self.options.get('unknown_path',r'C:\Synthetic\unknown.exe')
++    def query_exit_code(self,handle):
++        assert super().process_id(handle)==SYNTHETIC_UNKNOWN_PID
++        self.calls.append(('unknown_exit_query',SYNTHETIC_UNKNOWN_PID))
++        return 259
++    def terminate_process(self,handle):
++        if super().process_id(handle)==SYNTHETIC_UNKNOWN_PID:
++            self.calls.append(('unknown_termination_attempt',SYNTHETIC_UNKNOWN_PID))
++        assert super().process_id(handle)!=SYNTHETIC_UNKNOWN_PID,'unknown child termination forbidden'
++        return super().terminate_process(handle)
++    def close_handle(self,handle):
++        self.calls.append(('close_query_or_known_handle',super().process_id(handle)))
++
++
++def run_unknown_identity(tmp_path,monkeypatch,**options):
++    monkeypatch.setitem(globals(),'SplitApi',UnknownIdentityApi)
++    result,calls=run_split(tmp_path,monkeypatch,**options)
++    assert ('unknown_termination_attempt',SYNTHETIC_UNKNOWN_PID) not in calls
++    rows=[json.loads(line) for line in (tmp_path/'selftest/controller.jsonl').read_text().splitlines()]
++    observations=[row for row in rows if row['event']=='unknown_child_identity']
++    return result,calls,rows,observations
++
++
++def test_identity_diagnostic_expected_interpreter_only_opens_no_unknown_handle(tmp_path,monkeypatch):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,expected_only=True)
++    assert result['ownership_self_test_passed'] is True
++    assert observations==[]
++    assert not any(isinstance(call,tuple) and call[0]=='open_query_only' for call in calls)
++
++
++@pytest.mark.parametrize('path',[r'C:\Synthetic\unknown.exe',r'C:\Windows\System32\conhost.exe',r'D:\Other\conhost.exe'])
++def test_identity_diagnostic_queryable_paths_remain_untrusted_and_rejected(tmp_path,monkeypatch,path):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,unknown_path=path)
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert result['ownership_self_test_passed'] is False
++    assert 'owned_root_launched_once' not in calls
++    assert observations
++    first=observations[0]
++    assert first['status']=='identity_bound_unknown'
++    assert first['observed_child_pid']==SYNTHETIC_UNKNOWN_PID
++    assert first['observed_parent_pid']==LAUNCHER
++    assert first['native_pid']==SYNTHETIC_UNKNOWN_PID
++    assert first['creation_time_100ns']==SYNTHETIC_UNKNOWN_BIRTH
++    assert first['native_parent_pid']==LAUNCHER
++    assert first['in_private_job'] is False
++    assert first['image_path']==path
++    assert first['image_path_status']=='observed'
++    assert first['raw_exit_code']==259
++    assert first['exit_state']=='active_or_exit_code_259'
++    assert first['identity_bound'] is True
++    assert first['role_accepted'] is False
++    assert first['snapshot_to_handle_identity']=='not_established'
++    assert calls.count(('open_query_only',SYNTHETIC_UNKNOWN_PID))==1
++    assert calls.count(('close_query_or_known_handle',SYNTHETIC_UNKNOWN_PID))==1
++    edge_index=next(i for i,row in enumerate(rows) if row['event']=='scoped_child_edges')
++    assert edge_index<rows.index(first)<next(i for i,row in enumerate(rows) if row['event']=='private_job_termination_requested')
++    rechecks=[row for row in observations if row['phase']=='before_private_job_cleanup']
++    assert rechecks and rechecks[0]['identity_bound'] is True
++    assert not any(isinstance(call,tuple) and call[:2]==('terminate_identity',SYNTHETIC_UNKNOWN_PID) for call in calls)
++
++
++@pytest.mark.parametrize('error,status',[(87,'not_found_or_invalid_pid_before_binding'),(5,'process_open_failed')])
++def test_identity_diagnostic_disappeared_or_unqueryable_process_remains_unknown(tmp_path,monkeypatch,error,status):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,open_error=error)
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert observations[0]['status']==status
++    assert observations[0]['open_error_winerror']==error
++    assert observations[0]['identity_bound'] is False
++    assert observations[0]['image_path'] is None
++    assert observations[0]['role_accepted'] is False
++    assert calls.count(('open_query_only',SYNTHETIC_UNKNOWN_PID))==1
++    assert not any(isinstance(call,tuple) and call[0]=='close_query_or_known_handle'
++                   and call[1]==SYNTHETIC_UNKNOWN_PID for call in calls)
++
++
++@pytest.mark.parametrize('option',['changed_unknown_pid','changed_unknown_birth'])
++def test_identity_diagnostic_changed_identity_is_never_bound(tmp_path,monkeypatch,option):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**{option:True})
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert observations[0]['status']=='identity_changed'
++    assert observations[0]['identity_bound'] is False
++    assert calls.count(('close_query_or_known_handle',SYNTHETIC_UNKNOWN_PID))==1
++
++
++@pytest.mark.parametrize('options,status',[
++    ({'unknown_parent_mismatch':True},'parent_mismatch'),
++    ({'unknown_membership':True},'job_membership_mismatch'),
++    ({'unknown_membership':None},'job_membership_unknown'),
++    ({'path_failure':True},'path_query_failed'),
++])
++def test_identity_diagnostic_native_query_gaps_cannot_accept_unknown(tmp_path,monkeypatch,options,status):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,**options)
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert observations[0]['status']==status
++    assert observations[0]['role_accepted'] is False
++    assert 'owned_root_launched_once' not in calls
++
++
++def test_identity_diagnostic_revalidates_retained_handle_before_cleanup(tmp_path,monkeypatch):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,
++        changed_unknown_birth=True,change_at_cleanup=True)
++    assert observations[0]['identity_bound'] is True
++    recheck=next(row for row in observations if row['phase']=='before_private_job_cleanup')
++    assert recheck['status']=='identity_changed'
++    assert recheck['identity_bound'] is False
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++
++
++def test_identity_diagnostic_journal_failure_still_closes_unknown_without_termination(tmp_path,monkeypatch):
++    from scripts.uc001_granite_controller import standins as module
++    original=module.Journal.record
++    def record(self,event,**values):
++        if event=='unknown_child_identity':
++            raise OSError('unknown identity journal unavailable')
++        return original(self,event,**values)
++    monkeypatch.setattr(module.Journal,'record',record)
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch)
++    assert result['ownership_self_test_passed'] is False
++    assert 'owned_root_launched_once' not in calls
++    assert calls.count(('close_query_or_known_handle',SYNTHETIC_UNKNOWN_PID))==1
++
++
++def test_identity_diagnostic_child_of_verified_interpreter_stays_untrusted(tmp_path,monkeypatch):
++    result,calls,rows,observations=run_unknown_identity(tmp_path,monkeypatch,unknown_parent_pid=INTERPRETER)
++    assert observations[0]['status']=='identity_bound_unknown'
++    assert observations[0]['parent_kind']=='interpreter'
++    assert observations[0]['native_parent_pid']==INTERPRETER
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'

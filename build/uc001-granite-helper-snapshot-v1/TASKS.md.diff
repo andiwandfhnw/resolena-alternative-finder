@@ -1,0 +1,69 @@
+--- before/docs/TASKS.md
++++ docs/TASKS.md
+@@ -46,15 +46,16 @@
+ is consumed. Offline exact-byte replay reproduces a domain-contract rejection; cases 2–14
+ were not attempted. No further startup/retry is authorized; Priority 3 remains partial.
+ 
+-Current bounded status, 2026-10-27: owner accepts the source-grounded default-loop
+-diagnosis and authorizes one offline correction. New actual run_session RED/GREEN
+-now covers durable planned-close reconciliation and bounded waiting for already
+-admitted helpers; final focused result 79 passes. The corrected source is ready
+-for review and permits completing inactive handoff preparation afterward; no handoff
+-assembly, execution configuration activation or desktop instruction is issued here.
+-Both accepted Windows diagnostics remain CLOSED; neither was rerun and their results
+-do not validate this changed default loop. Native verification/resource fit and real
+-acquisition/build remain unestablished and unauthorized. PHASE: 3 / STATUS: in-progress.
++Current bounded status, 2026-10-27: owner supports the previous default-loop
++schedules but keeps final handoff-readiness acceptance pending one snapshot-order
++finding. The authorized narrow offline follow-up now reconciles a proved admitted-
++helper exit between an earlier native count and later owned rows, requiring a fresh
++consistent zero-active observation before build. Direct new RED and final 92 focused
++passes are recorded separately; the 79-pass receipt remains historical and unchanged.
++The follow-up awaits owner review. Both Windows diagnostics remain CLOSED without
++rerun; this changed loop has no Windows verification or resource-fit acceptance.
++Execution drafts stay inactive; no handoff, acquisition/build or desktop execution
++instruction is issued. PHASE: 3 / STATUS: in-progress.
+ 
+ ### Priority 3 — provisional Granite offline preparation, 2026-10-25
+ 
+@@ -880,6 +881,40 @@
+ installation or Git delivery. Priority 5 acceptance and closed Qwen result remain;
+ Priorities 3/4 partial; Priority 6/Phase 4 pending. PHASE: 3 / STATUS: in-progress.
+ Stop after the bounded offline correction for owner review.
++
++### Priority 3 — admitted-helper snapshot exit reconciliation, 2026-10-27
++
++Owner/advisor review supports the former correction's demonstrated schedules and
++confirms its source hash/diff/definitions, without claiming an independent full
++79-test rerun. Final handoff-readiness acceptance remains pending the narrower
++native snapshot ordering: job count is read before later owned-process exit rows.
++The [separate follow-up receipt](../build/uc001-granite-helper-snapshot-v1/README.md)
++preserves a genuine actual-run_session RED before implementation: earlier count 1,
++admitted helper exits, owned rows all exited; failure active_descendants_after_worker_exit
++and one worker launched. This is injected evidence, not a Windows failure or the
++distinct earlier helper-query-race case.
++
++The monitor now records retained active-helper observations and reconciles a count
++deficit only against newly confirmed matching owned/query/native helper exits, once
++per transition. Contradictory observations remain pending; a fresh consistent zero
++snapshot and full proof are required before build. Unknown/changed identities,
++unexplained/repeated discrepancies, reversal or unavailable evidence remain fatal.
++No backend/helper-admission policy change, count replacement, grace allowance,
++deadline reset, direct termination or Job teardown between phases.
++
++Final focused actual-default/config run: **92 passed in 2.07s**, exit 0, including
++13 new cases and the unchanged helper-query-race/unknown-descendant tests. Prior
++79-pass evidence and historical packages/bindings remain unchanged. New controller
++SHA-256: `9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1`.
++Only controller.py, focused existing tests and documentation change; backend,
++worker, admission code, accepted proxy/prior, frozen pins/flags/limits are preserved.
++Both accepted Windows diagnostics remain CLOSED and were not rerun. No Windows,
++proxy/network/acquisition/configure/build/compiler/glslc/GPU/server/inference,
++installation or Git delivery occurred. Drafts remain inactive; no desktop instruction
++or handoff is issued. Resource fit/native verification and final handoff-readiness
++acceptance remain pending. Priority 5 acceptance, closed Qwen result and all earlier
++evidence remain; Priorities 3/4 partial; Priority 6/Phase 4 pending.
++PHASE: 3 / STATUS: in-progress. Stop after this follow-up for owner review.
+ 
+ Current Priority 5 work-package status: **Owner-accepted for the amended increment-1 scope; evidence limits retained.**
+ 

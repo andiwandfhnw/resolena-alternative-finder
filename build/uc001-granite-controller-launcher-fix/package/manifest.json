@@ -1,0 +1,13 @@
+{
+  "version": "uc001-granite-controller-launcher-fix-v1",
+  "execution_authorized": false,
+  "files": {
+    "README.md": "09d5fb50c29f3aaf2b12a60a5ae036202c56a4432b7b1d7dc86fbcca40dcb74d",
+    "Run-OwnershipCheck.ps1": "23b6c247c4d778de0da3fb00598dfe8e838631b0e3b9899083de6406cc660f32",
+    "controller-config.template.json": "c7833fe714979ceb31a1254426827ea7471f00cbe1581f099d87addc3a60c9fc",
+    "controller.py": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1",
+    "standins.py": "766615ea7d258442f93b31de24f920bd5738db45bad1ee91cd09505fef07be18",
+    "windows_job.py": "0d36c4f73469016cb6a9e1634de840d1d3b689a8b6cf33b67bd046631fb10383",
+    "worker.py": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891"
+  }
+}

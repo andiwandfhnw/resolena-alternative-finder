@@ -1,0 +1,38 @@
+[WebServer] INFO:     Started server process [50847]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:50880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:50903) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage (606ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [50847]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      70 | test('approved country selector preserves cleared input and saves XK coverage', async ({ page }, testInfo) => {
+      71 |   const before = inspectDatabase()
+    > 72 |   expect(before.counts.search_request > 0).toBe(true)
+         |                                            ^
+      73 |   const priorRequestIds = new Set<string>(before.rows.map((row: { id: string }) => row.id))
+      74 |   const priorOptionIds = new Set<string>(before.snapshots.request_alternative.map(([id]: [string, ...unknown[]]) => id))
+      75 |   const catalogueResponse = await page.request.get('/api/countries')
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:72:44
+
+    Error Context: ../build/uc001-priority5r-country-selection/browser-red/saved-comparison-approved--55241-input-and-saves-XK-coverage/error-context.md
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage 

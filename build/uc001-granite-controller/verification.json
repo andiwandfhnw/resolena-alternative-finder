@@ -1,0 +1,193 @@
+{
+  "recorded_on": "2026-10-25",
+  "scope": "complete Windows Job Object/resource controller preparation",
+  "readiness": "Ready for owner review; native Windows verification and separate real acquisition/build authorization remain pending.",
+  "phase": 3,
+  "status": "in-progress",
+  "owner_meter_acceptance": "offline preparation only; original ceiling/prior/durable conservative semantics unchanged",
+  "final_focused_test_command": ".venv/bin/python -m pytest -q tests/unit/test_granite_controller.py tests/unit/test_granite_controller_run.py tests/unit/test_granite_controller_cli.py tests/unit/test_granite_windows_job.py tests/unit/test_granite_controller_worker.py tests/unit/test_granite_controller_standins.py",
+  "final_result": "146 passed in 1.79s",
+  "final_log": "green-combined-final.log",
+  "counting": "one final pass; intermediate passes not added",
+  "windows_native_execution": false,
+  "real_acquisition": false,
+  "real_configure_or_build": false,
+  "gpu_model_or_inference": false,
+  "dependencies_added": [],
+  "accepted_proxy_changed": false,
+  "accepted_native_procedure_changed": false,
+  "frozen_artifacts_changed": false,
+  "memory_semantics": {
+    "native_hard_limit_bytes": 25769803776,
+    "metric": "aggregate committed virtual memory for the private job",
+    "rss_claim": false,
+    "source": "JOBOBJECT_EXTENDED_LIMIT_INFORMATION.JobMemoryLimit; current/peak class28 binding requires actual Windows support or STOP"
+  },
+  "limits": {
+    "acquisition_seconds": 1800,
+    "downloaded_cumulative_bytes": 10737418240,
+    "combined_configure_build_seconds": 2700,
+    "job_committed_memory_bytes": 25769803776,
+    "build_output_bytes": 12884901888,
+    "initial_free_disk_bytes": 51539607552,
+    "stop_disk_below_bytes": 8589934592,
+    "stop_host_available_physical_below_bytes": 4294967296,
+    "outer_parallelism": 2,
+    "observation_max_age_seconds": 1.0,
+    "poll_seconds": 0.05
+  },
+  "artifacts": {
+    "scripts/uc001_granite_controller/controller.py": {
+      "bytes": 30676,
+      "sha256": "b0b835e8b0969aa7c316924f229f316f65527dacafc75f42028fbaf7b34f26e1"
+    },
+    "scripts/uc001_granite_controller/standins.py": {
+      "bytes": 16705,
+      "sha256": "511c8719200c34b8fceb85baa2bfc08fad2b91bf82a9da5d637767d20c5b3418"
+    },
+    "scripts/uc001_granite_controller/windows_job.py": {
+      "bytes": 30972,
+      "sha256": "73b3fce4ca43a01a56a327f9fdb8dd06b34c5d2140c8f8b060d050f806f042cc"
+    },
+    "scripts/uc001_granite_controller/worker.py": {
+      "bytes": 20219,
+      "sha256": "cd2c2c217f1d9e80796f8f9658c5a075008a4e418be7182e47085881c8dbe891"
+    },
+    "tests/unit/test_granite_controller.py": {
+      "bytes": 11796,
+      "sha256": "7c9f0f613d6945b7adcab2a1d7671dfd6ddcd9411a23ed47a175322c24080100"
+    },
+    "tests/unit/test_granite_controller_cli.py": {
+      "bytes": 2272,
+      "sha256": "20112b3637bc235c9dc71cc1582995c7880f6fea40e7a2b64c2fbfc94020f92a"
+    },
+    "tests/unit/test_granite_controller_run.py": {
+      "bytes": 11351,
+      "sha256": "ca2082d273e69b6301d326e30898d13741cd9d5ac6365909ef45d6903e3c9121"
+    },
+    "tests/unit/test_granite_controller_standins.py": {
+      "bytes": 11256,
+      "sha256": "58f03bbc6848f5e59a7591d90aba5f1c548cf7ab429539c09de39283edbd5a6c"
+    },
+    "tests/unit/test_granite_controller_worker.py": {
+      "bytes": 16723,
+      "sha256": "bafa46e7a1fc4de8b978678232fad8a3f213826badd61b7d4fb5672b39bec0ba"
+    },
+    "tests/unit/test_granite_windows_job.py": {
+      "bytes": 19072,
+      "sha256": "41b77c8dab650f691b02907bf1a9385b4791286c07130fb87d59f2b09abada9d"
+    },
+    "build/uc001-granite-controller/controller-config.template.json": {
+      "bytes": 813,
+      "sha256": "5b6a5a099a058ab7911af0177942668ed457ec24b0b4beb3886fedb13a29b70e"
+    },
+    "build/uc001-granite-controller/owner-authorization.txt": {
+      "bytes": 5159,
+      "sha256": "2e99dc207b4ac10607652158f2ecb9106a032c41132a8cfc025a4092f03fb8c5"
+    }
+  },
+  "red_logs": [
+    "red-cli.log",
+    "red-policy-ambiguity.log",
+    "red-policy-ledger.log",
+    "red-policy.log",
+    "red-run-hardening.log",
+    "red-run-manifest.log",
+    "red-run.log",
+    "red-standins-identities.log",
+    "red-standins-logs.log",
+    "red-standins.log",
+    "red-winapi-abort-launch.log",
+    "red-winapi-atomic.log",
+    "red-winapi-binding.log",
+    "red-winapi-close-race.log",
+    "red-winapi-environment.log",
+    "red-winapi-unknown-identity.log",
+    "red-winapi-watchdog.log",
+    "red-winapi.log",
+    "red-worker-compact-terminal.log",
+    "red-worker-ledger-hardening.log",
+    "red-worker.log"
+  ],
+  "other_logs": [
+    "green-combined-first.log",
+    "green-controller-cli-first.log",
+    "green-policy.log",
+    "green-run-first.log",
+    "green-standins-final.log",
+    "green-standins-first.log",
+    "green-winapi-abort.log",
+    "green-winapi-atomic.log",
+    "green-winapi-binding.log",
+    "green-winapi-environment.log",
+    "green-winapi-final-v2.log",
+    "green-winapi-final.log",
+    "green-winapi-first.log",
+    "green-winapi-native-create.log",
+    "green-winapi-races.log",
+    "green-worker-acquisition.log",
+    "green-worker-compact-terminal.log",
+    "green-worker-final.log",
+    "green-worker-first.log"
+  ],
+  "intermediate_evidence_limit": "green-controller-cli-first.log contains an intermediate failed assembly run because standins.py was not yet present in the required manifest. File preserved; not a GREEN claim. Shell cells ending with cat/tail did not separately capture all pytest exit codes.",
+  "coverage": {
+    "1_worker_suspended_before_assignment": "native backend ordering/attribute mocks; prepared Windows ownership harness",
+    "2_assignment_failure_no_resume": "native backend failure/abort mocks",
+    "3_nested_descendants_terminated": "job API mocks and prepared native three-generation ownership harness",
+    "4_unrelated_survives": "owned-tree mocks and separate synthetic unrelated process harness",
+    "5_acquisition_boundary": "SafetyState tests at1800seconds",
+    "6_combined_build_boundary": "SafetyState configure/build shared2700seconds",
+    "7_memory_boundary_breach": "policy exactcap/+1 and native hard-limit readback mocks",
+    "8_output_boundary_breach": "policy exactcap/+1 and output-tree tests",
+    "9_initial_disk_rejection": "policy and no-worker orchestration",
+    "10_disk_floor": "policy and active-work stop",
+    "11_host_free_floor": "policy and active-work stop",
+    "12_stale_failed_measurement": "policy, blocked sampler/watchdog, observation failure",
+    "13_proxy_exit": "orchestration/worker independent expectedproxy exit checks",
+    "14_terminal_ledger": "actual accepted BudgetLedger synthetic records; malformed/missing/partial/duplicate/binding/count failure",
+    "15_worker_failure": "orchestration and worker no-retry tests",
+    "16_interruption": "orchestration and backend abort tests",
+    "17_active_cleanup": "native backend mocks/active descendants/standin harness",
+    "18_cleanup_failure": "orchestration, backend unknown identity/inflight observation, standins",
+    "19_no_retry": "launch count and permanent backend abort tests",
+    "20_no_clock_reset": "phase policy/shared original start tests"
+  },
+  "evidence_limits": [
+    "No native Windows APIs or actual stand-in process tree were executed here; calls/children were injected.",
+    "Current job-memory query/atomic job-list support require Windows verification; unsupported means STOP.",
+    "No complete historical PID trace is claimed; ordinary job notifications can be missed, active/identity observations fail closed.",
+    "No build resource fit or interpreter/native runtime/model suitability is established.",
+    "Output/floor checks are sampled fail-stop controls, not hard real-time/directory quota promises."
+  ],
+  "preservation": {
+    "previous_protected_files_unchanged": 832,
+    "accepted_granite_files_unchanged": 95,
+    "counts_overlap": true,
+    "prior_task_history_priority5_suffix": "unchanged",
+    "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch": "specify/phase-1-uc-001",
+    "index": "unchanged",
+    "prior_status_entries": "unchanged",
+    "new_status_entries": [
+      "?? scripts/uc001_granite_controller/"
+    ],
+    "git_diff_check_exit": 2,
+    "git_diff_check_output": "docs/TASKS.md:2622: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n"
+  },
+  "static_checks": {
+    "python_source_test_AST": "passed",
+    "documentation_local_links_new_whitespace": "passed",
+    "helper_manifest_hashes": "passed",
+    "powershell_syntax_blocks": 2,
+    "powershell_execution": false,
+    "cmd_activation": "exact accepted command; static review only",
+    "commands": [
+      "pwsh -NoLogo -NoProfile -NonInteractive -File /tmp/granite-controller-doc-parse.ps1",
+      "Python standard-library source AST/hash/link/preservation checks",
+      "git status --short --branch",
+      "git rev-parse HEAD",
+      "git diff --check"
+    ]
+  }
+}

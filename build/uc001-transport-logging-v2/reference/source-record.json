@@ -1,0 +1,18 @@
+{
+  "provenance": "Public pinned source references only; no tool/package download or execution",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/internal/codespaces/ssh.go",
+      "file": "build/uc001-transport-logging-v2/reference/gh-v2.81.0-ssh.go.txt",
+      "bytes": 5392,
+      "sha256": "eeb8cfee913b497a7e37aa186657eb837f27a08c44c74fe7ccaf632d081ec8a8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/cli/cli/v2.81.0/LICENSE",
+      "file": "build/uc001-transport-logging-v2/reference/gh-LICENSE.txt",
+      "bytes": 1068,
+      "sha256": "6da4adc42392c8485e40b4251c7e332fc3352df1947c9ffade71dd60b14a7a4f"
+    }
+  ],
+  "go_compiler": "Not available in PATH or inspected standard locations; tests use an explicit source-derived Python transcription, not a gh/Go binary execution"
+}

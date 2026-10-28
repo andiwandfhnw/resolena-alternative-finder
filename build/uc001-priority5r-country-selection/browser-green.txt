@@ -1,0 +1,23 @@
+[WebServer] INFO:     Started server process [54535]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:54562) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:54578) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (1.0s)
+  ✓  2 ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage (2.5s)
+  ✓  3 ../tests/e2e/saved-comparison.spec.ts:369:7 › direct new intent after uncertain save: country_edit (1.6s)
+  ✓  4 ../tests/e2e/saved-comparison.spec.ts:1186:5 › lost HTTP response after atomic commit requires explicit same-submission recovery (1.7s)
+  ✓  5 ../tests/e2e/saved-comparison.spec.ts:1406:5 › unavailable locality requires explicit country-only continuation before saving (1.4s)
+  ✓  6 ../tests/e2e/saved-comparison.spec.ts:1768:5 › changed-country request saves coverage without invented matches or global absence claims (594ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [54535]
+
+  6 passed (12.5s)

@@ -1,0 +1,111 @@
+--- tests/unit/test_granite_controller_standins.py (before)
++++ tests/unit/test_granite_controller_standins.py
+@@ -546,3 +546,108 @@
+     assert result['ownership_self_test_passed'] is True
+     assert len(result['owned_identities'])==6
+     assert result['cleanup']['total_processes']==6
++
++
++def edge_diagnostic_rows(tmp_path):
++    rows=[json.loads(line) for line in (tmp_path/'selftest/controller.jsonl').read_text().splitlines()]
++    return rows,[row for row in rows if row['event']=='scoped_child_edges']
++
++
++def test_edge_diagnostic_expected_pair_only_has_bounded_timestamped_evidence(tmp_path,monkeypatch):
++    original=SplitApi.children_of
++    queries=[]
++    def scoped(self,parents,timeout_seconds=None):
++        queries.append(set(parents))
++        self.add(77777,999,88888,False,'unrelated-system-name','unrelated-system-role')
++        return original(self,parents,timeout_seconds)
++    monkeypatch.setattr(SplitApi,'children_of',scoped)
++    result,calls=run_split(tmp_path,monkeypatch)
++    assert result['ownership_self_test_passed'] is True
++    rows,observations=edge_diagnostic_rows(tmp_path)
++    assert observations
++    assert all(parents=={LAUNCHER,INTERPRETER} for parents in queries)
++    for row in observations:
++        assert row['status']=='observed'
++        assert row['scoped_parents']==[
++            dict(parent_pid=LAUNCHER,parent_kind='launcher'),
++            dict(parent_pid=INTERPRETER,parent_kind='interpreter')]
++        assert row['observation_started_monotonic']<=row['observation_monotonic']<=row['monotonic']
++        assert row['observation_started_utc'] and row['observation_utc']
++        assert row['observed_edges']==[dict(parent_pid=LAUNCHER,child_pid=INTERPRETER,
++            parent_kind='launcher',observation_utc=row['observation_utc'],
++            observation_monotonic=row['observation_monotonic'],
++            child_creation_time_100ns=INTERPRETER_BIRTH,
++            child_creation_source='previously_verified_retained_identity')]
++        assert '77777' not in json.dumps(row)
++        assert 'unrelated-system-name' not in json.dumps(row)
++
++
++@pytest.mark.parametrize('extras',[
++    {(99001,INTERPRETER)},
++    {(99002,LAUNCHER)},
++    {(99001,INTERPRETER),(99002,LAUNCHER),(99003,INTERPRETER)},
++])
++def test_edge_diagnostic_extras_are_recorded_before_unchanged_failure(tmp_path,monkeypatch,extras):
++    original=SplitApi.children_of
++    monkeypatch.setattr(SplitApi,'children_of',lambda self,parents,timeout_seconds=None:
++        original(self,parents,timeout_seconds)|extras)
++    result,calls=run_split(tmp_path,monkeypatch)
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert result['ownership_self_test_passed'] is False
++    assert result['suspended_assignment_order_verified'] is False
++    assert result['owned_identities']==[]
++    assert 'owned_root_launched_once' not in calls
++    assert result['unrelated_survived'] is False
++    assert result['unrelated_cleanup_verified'] is False
++    rows,observations=edge_diagnostic_rows(tmp_path)
++    assert {(r['child_pid'],r['parent_pid']) for r in observations[0]['observed_edges']}==extras|{(INTERPRETER,LAUNCHER)}
++    assert rows.index(observations[0])<next(i for i,r in enumerate(rows) if r['event']=='private_job_termination_requested')
++    for edge in observations[0]['observed_edges']:
++        assert edge['parent_kind']==('launcher' if edge['parent_pid']==LAUNCHER else 'interpreter')
++        if (edge['child_pid'],edge['parent_pid']) in extras:
++            assert edge['child_creation_time_100ns'] is None
++            assert edge['child_creation_source']=='no_retained_verified_handle'
++            assert not any(call[:2]==('open_process',edge['child_pid']) for call in calls if isinstance(call,tuple))
++
++
++@pytest.mark.parametrize('malformed',[
++    None, [], {(0,LAUNCHER)}, {(True,LAUNCHER)}, {(99001,88888)},
++    {(99001,LAUNCHER,123)}, {('unrelated-process-name',LAUNCHER)},
++])
++def test_edge_diagnostic_malformed_observation_is_sanitized_and_fails_closed(tmp_path,monkeypatch,malformed):
++    monkeypatch.setattr(SplitApi,'children_of',lambda *args,**kwargs:malformed)
++    result,calls=run_split(tmp_path,monkeypatch)
++    assert result['failure_reason']=='StandinFailure: unknown additional unrelated process'
++    assert 'owned_root_launched_once' not in calls
++    _,observations=edge_diagnostic_rows(tmp_path)
++    assert observations[0]['status']=='malformed'
++    assert observations[0]['observed_edges'] is None
++    assert '88888' not in json.dumps(observations)
++    assert 'unrelated-process-name' not in json.dumps(observations)
++
++
++def test_edge_diagnostic_failed_toolhelp_observation_is_unknown_never_empty_success(tmp_path,monkeypatch):
++    def failed(*args,**kwargs):
++        raise RuntimeError('scoped Toolhelp failure')
++    monkeypatch.setattr(SplitApi,'children_of',failed)
++    result,calls=run_split(tmp_path,monkeypatch)
++    assert result['failure_reason']=='RuntimeError: scoped Toolhelp failure'
++    assert 'owned_root_launched_once' not in calls
++    _,observations=edge_diagnostic_rows(tmp_path)
++    assert observations[0]['status']=='failed'
++    assert observations[0]['error_type']=='RuntimeError'
++    assert observations[0]['observed_edges'] is None
++
++
++def test_edge_diagnostic_journal_write_failure_cannot_reach_owned_launch(tmp_path,monkeypatch):
++    from scripts.uc001_granite_controller import standins as module
++    original=module.Journal.record
++    def record(self,event,**values):
++        if event=='scoped_child_edges':
++            raise OSError('diagnostic journal unavailable')
++        return original(self,event,**values)
++    monkeypatch.setattr(module.Journal,'record',record)
++    result,calls=run_split(tmp_path,monkeypatch)
++    assert result['ownership_self_test_passed'] is False
++    assert result['failure_reason']=='OSError: diagnostic journal unavailable'
++    assert 'owned_root_launched_once' not in calls

@@ -1,0 +1,29 @@
+{
+  "version": "uc001-transport-logging-1",
+  "outcome": "failed",
+  "elapsed_ms": 4062,
+  "overall_limit_ms": 60000,
+  "overall_limit_exceeded": false,
+  "logs": {
+    "gh": {
+      "state": "present"
+    },
+    "ssh": {
+      "state": "missing"
+    }
+  },
+  "ssh_loopback_connect_marker": false,
+  "ssh_connection_established_marker": false,
+  "ssh_local_refusal_marker": false,
+  "ssh_remote_protocol_marker": false,
+  "banner_refusal_marker": false,
+  "forward_error_marker": false,
+  "ssh_details_error_marker": false,
+  "windows_owned_cleanup_confirmed": true,
+  "codespace_forward_cleanup": "pending separate read-only receipt",
+  "root_cause": "not_established",
+  "broker_target_visibility": "not_guaranteed_by_pinned_logging",
+  "model_readiness_verified": false,
+  "owned_gpu_counter_verified": false,
+  "model_attempt_ledger_touched": false
+}

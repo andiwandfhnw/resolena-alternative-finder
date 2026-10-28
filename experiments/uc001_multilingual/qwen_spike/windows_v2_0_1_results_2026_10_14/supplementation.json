@@ -1,0 +1,50 @@
+{
+  "original_sha256": "189b7b7cb38a52f7ae8bddb6f1ec58b98887644303e79e5a67e08ef8c53f4a5f",
+  "supplemented_sha256": "2fd071288861838d2e5962720a74ebd792f31b459db426073647414cf0685ce4",
+  "original_members": 107,
+  "supplemented_members": 108,
+  "original_member_bytes_names_and_manifest_unchanged": true,
+  "fixture": {
+    "name": "fixtures/startup-v2-20261014.log",
+    "bytes": 14212,
+    "sha256": "bd8b0840ff79f74c4da2f2ef0559ab76c7019eb3bcf929d55c4b01a23d08deaf",
+    "source": "Frozen harness 2.0.1 fixture, also byte-identical to the earlier failed operational run's startup log",
+    "is_current_run_runtime_evidence": false
+  },
+  "procedure": "Preserve ZIP member names, metadata and uncompressed bytes; recompress into a new labelled archive; add only the verified fixture; never rewrite the manifest",
+  "verifier": {
+    "original": {
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/working/bundle/dispatch.py",
+        "closeout",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/uploaded/final-results-original.zip",
+        "--output",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/checks/original-closeout-output"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/working/bundle/dispatch.py\", line 280, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/working/bundle/dispatch.py\", line 262, in main\n    verify_closeout(files, bundle)\n  File \"/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/working/bundle/dispatch.py\", line 247, in verify_closeout\n    raise ValueError(\"Cleanup/export checksum mismatch: \" + name)\nValueError: Cleanup/export checksum mismatch: fixtures/startup-v2-20261014.log\n",
+      "archive_sha256": "189b7b7cb38a52f7ae8bddb6f1ec58b98887644303e79e5a67e08ef8c53f4a5f",
+      "output": "checks/original-closeout-output"
+    },
+    "supplemented": {
+      "command": [
+        "/usr/local/bin/python3",
+        "-B",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/working/bundle/dispatch.py",
+        "closeout",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/final-results-supplemented.zip",
+        "--output",
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/windows_v2_0_1_results_2026_10_14/checks/supplemented-closeout-output"
+      ],
+      "exit_code": 0,
+      "stdout": "Confirmed recorded exits/cleanup; live Windows state remains unverified.\n",
+      "stderr": "",
+      "archive_sha256": "2fd071288861838d2e5962720a74ebd792f31b459db426073647414cf0685ce4",
+      "output": "checks/supplemented-closeout-output"
+    }
+  },
+  "original_failure_record": "Reproduced unchanged CLI failure preserved; prior CLI stderr was not included among uploads"
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "Offline AST and Linux PowerShell parser only; no script body invoked",
+  "powershell_sources_parsed": 4,
+  "exit_code": 0,
+  "activation_command_identical_to_accepted": true,
+  "python_preparation_files_parsed": 2,
+  "windows_execution": false,
+  "native_api_invoked": false,
+  "acquisition_or_build": false,
+  "resource_fit_established": false
+}

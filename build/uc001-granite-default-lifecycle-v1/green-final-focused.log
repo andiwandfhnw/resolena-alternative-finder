@@ -1,0 +1,70 @@
+........................................................................ [ 92%]
+...F..                                                                   [100%]
+=================================== FAILURES ===================================
+____ test_native_config_preserves_fixed_root_and_requires_prior_accounting _____
+
+config = {'execution_authorized': True, 'owner': 'synthetic', 'root': 'C:\\Resolena\\gn1-20261025', 'proxy_helper': '/workspaces/resolena-alternative-finder/scripts/uc001_granite_acquisition_proxy/proxy.py', ...}
+helper_dir = PosixPath('/workspaces/resolena-alternative-finder/scripts/uc001_granite_controller')
+
+    def validate_native_config(config, helper_dir):
+        import ntpath
+        try:
+            if config.get("execution_authorized") is not True or not config.get("owner"):
+                raise ValueError("native_execution_not_authorized")
+            if ntpath.normcase(config["root"]) != ntpath.normcase(FIXED_ROOT):
+                raise ValueError("fixed_native_root_required")
+            if set(config["helper_hashes"]) != HELPER_NAMES:
+>               raise ValueError("controller_manifest_incomplete")
+E               ValueError: controller_manifest_incomplete
+
+scripts/uc001_granite_controller/controller.py:867: ValueError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-5/test_native_config_preserves_f0')
+
+    def test_native_config_preserves_fixed_root_and_requires_prior_accounting(tmp_path):
+        cfg=configuration(tmp_path)
+>       validated=validate_native_config(cfg,HELPERS)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/unit/test_granite_controller_cli.py:36: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+config = {'execution_authorized': True, 'owner': 'synthetic', 'root': 'C:\\Resolena\\gn1-20261025', 'proxy_helper': '/workspaces/resolena-alternative-finder/scripts/uc001_granite_acquisition_proxy/proxy.py', ...}
+helper_dir = PosixPath('/workspaces/resolena-alternative-finder/scripts/uc001_granite_controller')
+
+    def validate_native_config(config, helper_dir):
+        import ntpath
+        try:
+            if config.get("execution_authorized") is not True or not config.get("owner"):
+                raise ValueError("native_execution_not_authorized")
+            if ntpath.normcase(config["root"]) != ntpath.normcase(FIXED_ROOT):
+                raise ValueError("fixed_native_root_required")
+            if set(config["helper_hashes"]) != HELPER_NAMES:
+                raise ValueError("controller_manifest_incomplete")
+            for name, expected in config["helper_hashes"].items():
+                if file_hash(Path(helper_dir) / name) != expected:
+                    raise ValueError("controller_helper_hash_differs:" + name)
+            if file_hash(config["frozen_config"]) != FROZEN_CONFIG_SHA256:
+                raise ValueError("frozen_config_differs")
+            frozen = json.loads(Path(config["frozen_config"]).read_text())
+            expected = {"acquisition_seconds": ACQUISITION_SECONDS, "acquisition_total_bytes": DOWNLOAD_CEILING,
+                        "build_seconds": BUILD_SECONDS, "build_output_bytes": OUTPUT_CAP,
+                        "maximum_build_process_memory_bytes": MEMORY_CAP, "build_parallelism": 2,
+                        "initial_disk_free_bytes": INITIAL_DISK, "stop_disk_free_below_bytes": DISK_FLOOR,
+                        "stop_host_free_below_bytes": HOST_FLOOR}
+            if any(frozen["operational_limits"][key] != value for key, value in expected.items()):
+                raise ValueError("frozen_limit_mismatch")
+            worker = local_module("worker")
+            module = worker.load_proxy(dict(config, proxy_sha256=PROXY_SHA256))
+            prior = module.load_prior(config["prior_receipt"], config["prior_sha256"])
+            return dict(config, prior_bytes=prior, proxy_sha256=PROXY_SHA256)
+        except (OSError, ValueError, KeyError, TypeError, RuntimeError) as error:
+>           raise ControllerFailure("native_preflight_failed:" + str(error)) from error
+E           scripts.uc001_granite_controller.controller.ControllerFailure: native_preflight_failed:controller_manifest_incomplete
+
+scripts/uc001_granite_controller/controller.py:886: ControllerFailure
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_cli.py::test_native_config_preserves_fixed_root_and_requires_prior_accounting
+1 failed, 77 passed in 1.33s

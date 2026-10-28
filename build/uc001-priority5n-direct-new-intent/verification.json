@@ -1,0 +1,546 @@
+{
+  "scope": "UC-001 increment 1 / Phase 3 DEVELOP / Priority 5N only: exactly two direct new-intent transitions after uncertain committed saving, without recovery acknowledgement",
+  "recorded_date": "2026-10-22",
+  "result": "Both new cases and the existing successful-comparison baseline passed first run against unchanged production. Stop for human review.",
+  "phase": 3,
+  "status": "in-progress",
+  "completion_claims": {
+    "priorities_3_4_5": "partial",
+    "increment_1_complete": false,
+    "DEVELOP_complete": false,
+    "whole_retry_row_complete": false
+  },
+  "prior_5M_acceptance": {
+    "scope": "Unknown/absent -> explicit same-submission recovery -> current reassessment and newly saved insufficient coverage only.",
+    "accepted_observations": [
+      "Same captured payload/key/proof; no replacement submission identity.",
+      "Discarded unsaved T0 comparison; T1 reassessment uses existing expiry rules and unchanged source evidence.",
+      "Two save attempts, one successful commit.",
+      "Browser first-run passed against unchanged production; RED was test-only factory wiring."
+    ],
+    "limits_retained": [
+      "300 ms bounded observation",
+      "All other original receipt limits, including no completion of whole retry row/Priority5/DEVELOP."
+    ],
+    "original_receipt": "build/uc001-priority5m-absent-reassessment/verification.json",
+    "original_sha256": "16ab13eee657be3de003a1fe7322452a7c81660a549a92a9af30385a1ccfda37",
+    "original_receipt_and_all_historical_evidence_unchanged": true
+  },
+  "prerequisites": {
+    "result": "Confirmed; no material accepted-contract/architecture/schema/dependency conflict.",
+    "checked": [
+      "Current O-2 / AC-11/17 / T-09/13 and field/loading rules",
+      "React captured attempt, explicit freshSearch and country-edit fingerprint/new-proof paths",
+      "Earlier-save warning before new intent and existing saved-result warning lifecycle",
+      "Existing browser inventory, default5E committed-unknown support as preserved by5M and synthetic clock"
+    ],
+    "equivalent_coverage_existed": false,
+    "coverage_distinction": "Earlier fresh cases recover acknowledgement first;5L starts from mocked denials;5M uses same-identity ABSENT recovery. Neither direct transition was covered.",
+    "accepted_eight_row_checkpoint": "Reused unchanged; only the two new observables are credited.",
+    "reused_receipts": [
+      {
+        "path": "build/uc001-priority5e-runner-integration/verification.json",
+        "sha256": "a62c3437e80fe0da82c07ade6b82ef0dc46c4c7aae5bb45bedcc62de940f75eb"
+      },
+      {
+        "path": "build/uc001-priority5m-absent-reassessment/verification.json",
+        "sha256": "16ab13eee657be3de003a1fe7322452a7c81660a549a92a9af30385a1ccfda37"
+      },
+      {
+        "path": "build/uc001-priority5b-fresh-search/verification.json",
+        "sha256": "751d9b2a57d5b47cb6663bf55726d28f79f441aa1d036a2bb2bc420efff2380c"
+      }
+    ]
+  },
+  "development_evidence": {
+    "exactly_two_parameterized_cases_added_before_deciding_production_changes": true,
+    "first_run": "3 passed,0 failed,0 flaky,0 retries.",
+    "production_changed": false,
+    "artificial_RED": false,
+    "verification_kind": "Existing-production behavior verification; no RED/GREEN correction or refactor needed."
+  },
+  "composition": {
+    "input": "Existing understood Repair my bicycle without replacing it; initial CH; no optional locality; fresh page per case.",
+    "fault": "Unchanged existing5E commit actually succeeds; generic confirmation error and unavailable immediate reconciliation produce actual503unknown. Independent SQLite observer knowledge is never passed to application/UI.",
+    "clock": "Existing T0=2026-10-15T10:00:00+00:00 -> established T1=2027-10-16T10:00:00+00:00; no new expiry threshold, evidence change or review-date renewal.",
+    "country_scope": "CH/DE are existing synthetic fixtures, not verified country-reference data.",
+    "HTTP_responses": "All actual backend responses; no fabricated unknown or success response.",
+    "support_runner_frontend_and_dependencies_changed": false,
+    "new_fault_controller_or_public_endpoint": false,
+    "normal_app_main": "Unchanged/unconfigured."
+  },
+  "warning_text": "An earlier submission may already be saved. Editing starts a new submission; it does not undo an earlier save.",
+  "cases": [
+    {
+      "case": "fresh_reset",
+      "action": "Click Start a fresh search with unchanged values.",
+      "actual_initial_response": {
+        "status": 503,
+        "body": {
+          "outcome": "persistence_error",
+          "persistence": {
+            "state": "unknown"
+          },
+          "issues": [
+            {
+              "code": "comparison_save_failed"
+            }
+          ],
+          "assessed_outcome": "comparison"
+        }
+      },
+      "original_saved_comparison": {
+        "request_id": "3b2e5532-aca4-4431-a96e-6b01f0cdb59c",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "option_ids": [
+          "d8b99403-b13a-4e97-b189-a6b9c1801ff9",
+          "7d892f4c-540e-4598-b0de-2d491093070b"
+        ],
+        "evidence_associations": [
+          [
+            "7d892f4c-540e-4598-b0de-2d491093070b",
+            "30000000-0000-4000-8000-000000000002"
+          ],
+          [
+            "d8b99403-b13a-4e97-b189-a6b9c1801ff9",
+            "30000000-0000-4000-8000-000000000001"
+          ]
+        ],
+        "initial_commit_observations": {
+          "real_commits": 1,
+          "confirmation_losses": 1,
+          "read_failures": 1
+        },
+        "projection_options_associations_timestamp_and_nonsecret_request_metadata_preserved": true
+      },
+      "uncertain_UI": {
+        "loading_ended": true,
+        "fields_retained": true,
+        "saving_uncertain_not_confirmed_failure": true,
+        "no_saved_comparison_coverage_acknowledgement_original_identity_or_T0_time_presented": true,
+        "bounded_no_automatic_continuation_ms": 300
+      },
+      "direct_new_intent": {
+        "no_recovery_request_or_acknowledgement": true,
+        "reset_or_edit_sends_request": false,
+        "fields_retained_and_only_authorized_country_change": true,
+        "earlier_save_warning_visible_before_and_after_change_and_before_explicit_submission": true,
+        "old_record_not_cancelled_deleted_or_rolled_back": true,
+        "request_counts": {
+          "before_reset_or_edit": 1,
+          "after_reset_or_edit": 1,
+          "after_explicit_submission": 2
+        }
+      },
+      "explicit_submission": {
+        "action": "Find alternatives clicked explicitly at established T1.",
+        "new_submission_key": true,
+        "new_originating_proof": true,
+        "current_country": "CH",
+        "nonidentity_payload": "A unchanged; B changes only country CH to DE.",
+        "text_language_location_context_and_independent_no_replacement_constraint_retained": true,
+        "stored_request_metadata_assertions": "Targeted SQL excludes proof/binding columns; nonsecret original/new metadata compared only in memory. Only booleans exported.",
+        "credential_checks": "Only equality/difference booleans exported; no raw key, proof, proof digest, header or complete captured request."
+      },
+      "actual_new_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2027-10-16T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "5e493d8b-6c12-4689-ab7f-21664d05a935"
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "essential_evidence_expired",
+              "geographic_applicability_unverified",
+              "useful_comparison_information_missing"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Required evidence has expired; its original review dates were retained.",
+            "Existing evidence does not establish applicability in the requested location.",
+            "No qualifying candidate has useful supported financial or environmental/resource information."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "new_saved_request_id": "5e493d8b-6c12-4689-ab7f-21664d05a935",
+      "new_saved_UI": {
+        "only_new_coverage_and_identity_displayed": true,
+        "loading_ended": true,
+        "no_comparison_or_recovery_acknowledgement": true,
+        "existing_warning_lifecycle": "Current uncertainty presentation clears on actual saved new-result response; this neither reverses the old save nor adds a permanent/history warning."
+      },
+      "database_counts": {
+        "before": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_unknown": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_change": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after": {
+          "search_request": 3,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        }
+      },
+      "intentional_two_distinct_new_records": true,
+      "initial_delta": {
+        "requests": 1,
+        "options": 2,
+        "links": 2
+      },
+      "additional_new_intent_delta": {
+        "requests": 1,
+        "options": 0,
+        "links": 0
+      },
+      "original_and_prior_rows_snapshots_evidence_review_dates_preserved": true,
+      "records_selected_by_baseline_ID_differences_and_actual_response_identity": true,
+      "fault_support": "Unchanged default 5E real commit/confirmation-loss/read-unavailable mechanism; control consumed and dialect restored before new submission. No HTTP stub/abort/new fault origin.",
+      "observer_knowledge_supplied_to_application_or_UI": false,
+      "T0": "2026-10-15T10:00:00+00:00",
+      "T1": "2027-10-16T10:00:00+00:00",
+      "limitation_code_scope": "Expiry-code assertion plus actual current response.",
+      "artifact": "build/uc001-priority5n-direct-new-intent/browser/saved-comparison-direct-ne-50107--uncertain-save-fresh-reset/fresh_reset-after-uncertainty-evidence.json",
+      "artifact_sha256": "b26e1a8647e36612d12747a6ac3e57a8274c74164ff34230a6da8f43e45236f4"
+    },
+    {
+      "case": "country_edit",
+      "action": "Edit only Search country CH -> DE, without clicking fresh reset or Recover submission.",
+      "actual_initial_response": {
+        "status": 503,
+        "body": {
+          "outcome": "persistence_error",
+          "persistence": {
+            "state": "unknown"
+          },
+          "issues": [
+            {
+              "code": "comparison_save_failed"
+            }
+          ],
+          "assessed_outcome": "comparison"
+        }
+      },
+      "original_saved_comparison": {
+        "request_id": "90cc45a3-aa8c-4f90-a0fb-9183f32cbdb4",
+        "assessed_at": "2026-10-15T10:00:00+00:00",
+        "option_ids": [
+          "2495dbfe-9d40-49a6-b063-4c628d69d38d",
+          "c86d78d7-b541-4fca-a2ca-0b980a060339"
+        ],
+        "evidence_associations": [
+          [
+            "2495dbfe-9d40-49a6-b063-4c628d69d38d",
+            "30000000-0000-4000-8000-000000000001"
+          ],
+          [
+            "c86d78d7-b541-4fca-a2ca-0b980a060339",
+            "30000000-0000-4000-8000-000000000002"
+          ]
+        ],
+        "initial_commit_observations": {
+          "real_commits": 1,
+          "confirmation_losses": 1,
+          "read_failures": 1
+        },
+        "projection_options_associations_timestamp_and_nonsecret_request_metadata_preserved": true
+      },
+      "uncertain_UI": {
+        "loading_ended": true,
+        "fields_retained": true,
+        "saving_uncertain_not_confirmed_failure": true,
+        "no_saved_comparison_coverage_acknowledgement_original_identity_or_T0_time_presented": true,
+        "bounded_no_automatic_continuation_ms": 300
+      },
+      "direct_new_intent": {
+        "no_recovery_request_or_acknowledgement": true,
+        "reset_or_edit_sends_request": false,
+        "fields_retained_and_only_authorized_country_change": true,
+        "earlier_save_warning_visible_before_and_after_change_and_before_explicit_submission": true,
+        "old_record_not_cancelled_deleted_or_rolled_back": true,
+        "request_counts": {
+          "before_reset_or_edit": 1,
+          "after_reset_or_edit": 1,
+          "after_explicit_submission": 2
+        }
+      },
+      "explicit_submission": {
+        "action": "Find alternatives clicked explicitly at established T1.",
+        "new_submission_key": true,
+        "new_originating_proof": true,
+        "current_country": "DE",
+        "nonidentity_payload": "A unchanged; B changes only country CH to DE.",
+        "text_language_location_context_and_independent_no_replacement_constraint_retained": true,
+        "stored_request_metadata_assertions": "Targeted SQL excludes proof/binding columns; nonsecret original/new metadata compared only in memory. Only booleans exported.",
+        "credential_checks": "Only equality/difference booleans exported; no raw key, proof, proof digest, header or complete captured request."
+      },
+      "actual_new_response": {
+        "status": 201,
+        "body": {
+          "outcome": "insufficient_coverage",
+          "assessed_at": "2027-10-16T10:00:00+00:00",
+          "language": {
+            "recognition": {
+              "status": "supported",
+              "language": "en",
+              "version": "synthetic-only"
+            },
+            "meaning_status": "understood",
+            "explanation_language": "en",
+            "origin": "detected",
+            "correction_available": true
+          },
+          "persistence": {
+            "state": "saved",
+            "request_id": "5897b081-7491-4de8-8c1a-7e5f96a99e7f"
+          },
+          "issues": [
+            {
+              "code": "no_qualifying_knowledge"
+            },
+            {
+              "code": "research_unavailable"
+            }
+          ],
+          "coverage": {
+            "limitation_codes": [
+              "essential_evidence_expired",
+              "geographic_applicability_unverified",
+              "useful_comparison_information_missing"
+            ]
+          },
+          "limitations": [
+            "Existing knowledge cannot support this request under its constraints. Research is unavailable in this increment; alternatives may exist. Edit and resubmit explicitly.",
+            "Required evidence has expired; its original review dates were retained.",
+            "Existing evidence does not establish applicability in the requested location.",
+            "No qualifying candidate has useful supported financial or environmental/resource information."
+          ],
+          "rendering": {
+            "language": "en",
+            "version": "synthetic-coverage-v1"
+          }
+        }
+      },
+      "new_saved_request_id": "5897b081-7491-4de8-8c1a-7e5f96a99e7f",
+      "new_saved_UI": {
+        "only_new_coverage_and_identity_displayed": true,
+        "loading_ended": true,
+        "no_comparison_or_recovery_acknowledgement": true,
+        "existing_warning_lifecycle": "Current uncertainty presentation clears on actual saved new-result response; this neither reverses the old save nor adds a permanent/history warning."
+      },
+      "database_counts": {
+        "before": {
+          "search_request": 3,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_unknown": {
+          "search_request": 4,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        },
+        "after_change": {
+          "search_request": 4,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        },
+        "after": {
+          "search_request": 5,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        }
+      },
+      "intentional_two_distinct_new_records": true,
+      "initial_delta": {
+        "requests": 1,
+        "options": 2,
+        "links": 2
+      },
+      "additional_new_intent_delta": {
+        "requests": 1,
+        "options": 0,
+        "links": 0
+      },
+      "original_and_prior_rows_snapshots_evidence_review_dates_preserved": true,
+      "records_selected_by_baseline_ID_differences_and_actual_response_identity": true,
+      "fault_support": "Unchanged default 5E real commit/confirmation-loss/read-unavailable mechanism; control consumed and dialect restored before new submission. No HTTP stub/abort/new fault origin.",
+      "observer_knowledge_supplied_to_application_or_UI": false,
+      "T0": "2026-10-15T10:00:00+00:00",
+      "T1": "2027-10-16T10:00:00+00:00",
+      "limitation_code_scope": "Actual T1 limitation codes observed; DE uses the existing synthetic fixture, not country-reference validation.",
+      "artifact": "build/uc001-priority5n-direct-new-intent/browser/saved-comparison-direct-ne-c8202-uncertain-save-country-edit/country_edit-after-uncertainty-evidence.json",
+      "artifact_sha256": "a9dad0de621fd2fdd96db2a20d61d71acb8ec0432a33c269c12495a994d93b81"
+    }
+  ],
+  "verification_commands": [
+    {
+      "command": "set -o pipefail\nPLAYWRIGHT_JSON_OUTPUT_NAME=/workspaces/resolena-alternative-finder/build/uc001-priority5n-direct-new-intent/browser-report.json npm --prefix frontend run test:e2e -- --grep 'browser displays exactly|direct new intent after uncertain save' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5n-direct-new-intent/browser --reporter=list,json 2>&1 | tee build/uc001-priority5n-direct-new-intent/browser.txt",
+      "exit_code": 0,
+      "result": "3 passed (8.5s), first and only browser invocation: existing success baseline plus exactly two new cases.",
+      "stats": {
+        "startTime": "2026-10-22T17:12:28.972Z",
+        "duration": 8499.41,
+        "expected": 3,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "log": "build/uc001-priority5n-direct-new-intent/browser.txt",
+      "report": "build/uc001-priority5n-direct-new-intent/browser-report.json"
+    },
+    {
+      "command": "set -o pipefail\ngit diff --check 2>&1 | tee build/uc001-priority5n-direct-new-intent/git-diff-check.txt",
+      "exit_code": 2,
+      "result": "Only preserved historical trailing whitespace at docs/TASKS.md:1895; both task-local deltas clean.",
+      "log": "build/uc001-priority5n-direct-new-intent/git-diff-check.txt"
+    },
+    {
+      "command": "set -o pipefail\ngit status --short | tee build/uc001-priority5n-direct-new-intent/git-status.txt",
+      "exit_code": 0,
+      "result": "Dirty worktree preserved; status entries identical to slice entry.",
+      "log": "build/uc001-priority5n-direct-new-intent/git-status.txt"
+    },
+    {
+      "command": ".venv/bin/python /tmp/resolena-priority5n-mtb25xer/check-evidence.py",
+      "exit_code": 0,
+      "result": "Both case artifacts/identities/counts, all459 protected hashes, historical tests/TASKS/checkpoint, scoped whitespace, safe exports and stopped servers verified.",
+      "artifacts": [
+        "build/uc001-priority5n-direct-new-intent/preservation.json",
+        "build/uc001-priority5n-direct-new-intent/receipt-check.json"
+      ]
+    }
+  ],
+  "conditional_checks_not_run": {
+    "5M_same_identity_recovery_regression": "Not required: shared production submission/recovery handling unchanged.",
+    "fresh_start_regression": "Not required: shared fresh handler unchanged.",
+    "frontend_lint_build": "Not required: frontend source and runner configuration unchanged.",
+    "other_backend_browser_matrices": "Not run; no changed-path risk requiring additional checks. Existing backend fault evidence reused."
+  },
+  "changed_files": [
+    {
+      "path": "docs/TASKS.md",
+      "sha256": "bec8e5cb0be2a5e2ceccef0edb3611389aaab09ef5f4e1d2ac91314f24722059",
+      "summary": "Current authorization, scoped5M acceptance and one concise5N result; all prior history/eight-row checkpoint retained."
+    },
+    {
+      "path": "tests/e2e/saved-comparison.spec.ts",
+      "sha256": "9f0af5d1171cf30655a19a7acd5d8ef88de43aed5a3a0059acab9fc3dccce1a4",
+      "summary": "Exactly two parameterized direct-after-uncertainty cases; historical tests unchanged."
+    }
+  ],
+  "preservation": {
+    "protected_files_checked": 459,
+    "unchanged_protected_files": 457,
+    "only_two_authorized_existing_files_changed": true,
+    "prior_receipts_and_5_series_artifacts_unchanged": true,
+    "historical_tasks_and_existing_tests_preserved": true,
+    "eight_row_checkpoint_unchanged": true,
+    "production_fault_support_clock_runner_dependencies_and_laptop_context_unchanged": true,
+    "DE_FR_IT_EN_Resolena_controlled_processing_atomic_save_and_immutable_evidence_unchanged": true,
+    "real_drafts_inactive_experiments_closed": true,
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "branch_HEAD_and_git_status_entries_unchanged": true,
+    "scoped_diff_checks": [
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5n-mtb25xer/docs/TASKS.md",
+          "/workspaces/resolena-alternative-finder/docs/TASKS.md"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--no-index",
+          "--check",
+          "--",
+          "/tmp/resolena-priority5n-mtb25xer/tests/e2e/saved-comparison.spec.ts",
+          "/workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts"
+        ],
+        "exit_code": 1,
+        "output": "",
+        "added_whitespace_errors": false
+      }
+    ],
+    "detailed_checks": "build/uc001-priority5n-direct-new-intent/preservation.json"
+  },
+  "cleanup_privacy": {
+    "exact_prior_clock_bytes_restored_in_each_test_finally": true,
+    "owned_controls_consumed_or_removed": true,
+    "existing_test_hooks_restored": true,
+    "owned_test_servers_stopped": true,
+    "ports": [
+      {
+        "port": 8011,
+        "closed": true
+      },
+      {
+        "port": 5175,
+        "closed": true
+      }
+    ],
+    "traces": "off",
+    "HAR_or_trace_files_present": false,
+    "raw_keys_proofs_headers_bindings_complete_captured_requests_exported": false,
+    "credential_assertions": "Equality/difference booleans only; stored nonsecret metadata comparisons also export booleans only."
+  },
+  "checkpoint_credit": "Only direct fresh reset and edited intent after uncertainty. Two intentionally distinct saved requests are not duplicate recovery. No whole-row/Priority5/DEVELOP completion.",
+  "remaining_and_limits": [
+    "300ms is a bounded no-continuation observation, not an unlimited timing guarantee.",
+    "Confirmed-failure browser retry, product/habit examples and remaining country/locality work remain pending.",
+    "No new backend fault/collision/security or broader retry coverage is claimed.",
+    "Priorities3/4/5, increment1 and DEVELOP remain incomplete."
+  ],
+  "excluded_work_not_performed": [
+    "No additional processing-error/collision/cleanup/crash variants; no reference preparation/activation or real knowledge/rendering activation.",
+    "No model/detector startup, held-out access, linguistic approval,TL-03,research,UC-003 or Priority6.",
+    "No dependency changes, staging, commits, push, merge, branch switch/reset, unrelated cleanup,CI/CD or deployment."
+  ],
+  "review": "A separate agent reviewed the task-local two-case delta read-only and found no material issue; human review remains required.",
+  "stop": "Stop after these two cases for human review; no further implementation authorized."
+}

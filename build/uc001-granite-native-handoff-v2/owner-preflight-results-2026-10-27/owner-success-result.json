@@ -1,0 +1,154 @@
+{
+  "version": "uc001-granite-native-handoff-v2",
+  "scope": "preflight_only",
+  "started_utc": "2026-10-27T22:34:19.5377963+00:00",
+  "ended_utc": "2026-10-27T22:34:23.3850462+00:00",
+  "preflight_passed": true,
+  "windows_execution": true,
+  "execution_authorized": false,
+  "configuration_inactive": true,
+  "resource_fit_established": false,
+  "native_api_invoked": false,
+  "acquisition_or_build": false,
+  "gpu_model_inference": false,
+  "ownership_or_binding_diagnostic_rerun": false,
+  "package": "C:\\Users\\AndiWand\\Downloads\\granite-native-handoff-v2",
+  "expected_manifest_sha256": "a63238267cc8e881d0609c3cffcdcac303d399454cef64ca0874fcbafd577556",
+  "native_root": "C:\\Resolena\\gn1-20261025",
+  "native_output": "C:\\Users\\AndiWand\\Downloads\\granite-native-run-f4a7fec0-bb09-46b9-9b18-5eb49619243f",
+  "preflight_output": "C:\\Users\\AndiWand\\Downloads\\granite-native-preflight-f072c17d-aff9-4b56-a1e0-53da65f4610d",
+  "python": {
+    "python_version": "3.12.11",
+    "pointer_bits": 64,
+    "platform": "win32",
+    "executable": "C:\\Users\\AndiWand\\Downloads\\granite-python-3.12.11-20250702\\env\\Scripts\\python.exe"
+  },
+  "package_validation": {
+    "package_configuration_validation_passed": true,
+    "configuration_inactive": true,
+    "bound_prior_bytes": 0,
+    "exact_native_helper_count": 4,
+    "runtime": {
+      "python_version": "3.12.11",
+      "pointer_bits": 64,
+      "platform": "win32",
+      "executable": "C:\\Users\\AndiWand\\Downloads\\granite-python-3.12.11-20250702\\env\\Scripts\\python.exe"
+    },
+    "manifest_sha256": "a63238267cc8e881d0609c3cffcdcac303d399454cef64ca0874fcbafd577556",
+    "controller_sha256": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+    "prior_receipt_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+    "historical_prior_preparation_bindings_preserved": true,
+    "native_api_invoked": false,
+    "native_binding_verified": false,
+    "resource_fit_established": false,
+    "windows_entry_conditions_verified": false,
+    "execution_config_written": false,
+    "acquisition_or_build": false,
+    "forbidden_attempts": []
+  },
+  "tools": [
+    {
+      "path": "C:\\Program Files\\Git\\cmd\\git.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "git version 2.53.0.windows.2\n",
+      "stderr": null,
+      "sha256": "37c5725818d602e951ba2563b870d62763322956b73373da4c33a0b566a80bc9"
+    },
+    {
+      "path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin\\cmake.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "cmake version 3.30.5-msvc23\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).\n",
+      "stderr": null,
+      "sha256": "76129878fe6dc5a2246415d442de8bc01688ff9a48eb5d9498ea374de8b5a086"
+    },
+    {
+      "path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja\\ninja.exe",
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "1.12.1\r\n",
+      "stderr": null,
+      "sha256": "5020138b3757035df9dca9a2243624d5810ffa6ae24444bd95f752cbd1b89123"
+    }
+  ],
+  "activation": {
+    "VCToolsVersion": "14.43.34808",
+    "WindowsSDKVersion": "10.0.22621.0\\",
+    "VSCMD_ARG_HOST_ARCH": "x64",
+    "VSCMD_ARG_TGT_ARCH": "x64",
+    "VULKAN_SDK": "C:\\VulkanSDK\\1.4.357.0",
+    "VK_SDK_PATH": "C:\\VulkanSDK\\1.4.357.0",
+    "compiler_path": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\Hostx64\\x64\\cl.exe",
+    "compiler_sha256": "f2f3609d389341cde8071e22351507c6408215a9fb0874bd00bf882df870cf0f",
+    "compiler_file_version": "19.43.34808.0",
+    "ninja_path_policy": "Absolute pinned executable; worker prepends its directory in the child environment. Parent-shell Ninja resolution is not required."
+  },
+  "sdk_files": [
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Bin\\glslc.exe",
+      "sha256": "f8c97ee2c8bfcd31da87b602622c6e742389f98a83693b504cf538de4c75d3fa"
+    },
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Include\\vulkan\\vulkan.h",
+      "sha256": "2d1a6f00bfdcddbe1c68bf5f574a0fc4cf95c4be9eae683123b6db8af9d1a1de"
+    },
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Lib\\vulkan-1.lib",
+      "sha256": "02caa31b8665a79f327cbfe97286fd7d0017c0b1f9b39eb78687b7a509de52b3"
+    },
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Include\\spirv\\unified1\\spirv.hpp",
+      "sha256": "8f7145e3f4da4191daef9a78de7d85d59328ae5256863ffbd7636791b7e34159"
+    },
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Lib\\cmake\\SPIRV-Headers\\SPIRV-HeadersConfig.cmake",
+      "sha256": "c755db6807cfdfc6a18ee988cd437f6c2ce8338a79b7e42539b0d658cd3ea97b"
+    },
+    {
+      "path": "C:\\VulkanSDK\\1.4.357.0\\Lib\\cmake\\SPIRV-Headers\\SPIRV-HeadersConfigVersion.cmake",
+      "sha256": "dbc15a33f63b54a6383f526485aaee7a9f3c1aef84692b9a54f0b0837a2cb197"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um\\windows.h",
+      "sha256": "b337d661d03a4abefb7b86a2742ce1ad5d19b57cd8b858bd13e7bbcc1dbeeaaa"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt\\stdlib.h",
+      "sha256": "1576fdb40eb225dff53489db2fd52e41c7bb24f1e621e4a95c2c7f4a7216949c"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22621.0\\um\\x64\\kernel32.lib",
+      "sha256": "25346e02cffca92abff07000d54e1830fe0d8861c31a114eda472547fe9f2f00"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\Lib\\10.0.22621.0\\ucrt\\x64\\ucrt.lib",
+      "sha256": "7ef4eac926bf597d2f243f16cdfed7e0db22cb3ca34a1d7e088a84c994a03d66"
+    },
+    {
+      "path": "C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\rc.exe",
+      "sha256": "9274b05389a0a99c9d7c7aba9ecb6341023b2addc3435dd814fbf04af641c5e5"
+    }
+  ],
+  "resources": {
+    "observed_utc": "2026-10-27T22:34:23.3820426+00:00",
+    "drive": "C:\\",
+    "caller_available_disk_bytes": 596426203136,
+    "volume_free_disk_bytes": 596426203136,
+    "os_available_physical_memory_bytes": 39659057152,
+    "initial_disk_required_bytes": 51539607552,
+    "host_memory_observation_source": "Local CIM Win32_OperatingSystem.FreePhysicalMemory (KiB converted to bytes); actual controller obtains its own fresh native observation.",
+    "stop_disk_below_bytes": 8589934592,
+    "stop_host_below_bytes": 4294967296,
+    "resource_fit_established": false,
+    "authority": "Point-in-time preflight only; actual controller must obtain fresh native observations and enforce ongoing limits."
+  },
+  "supervision_entry": "Pending actual controller private-Job/readback/sampler/watchdog checks before first resume; no diagnostic rerun.",
+  "failure_reason": null
+}

@@ -1,0 +1,197 @@
+{
+  "recorded_at": "2026-10-23T19:36:38.135883+00:00",
+  "scope": "Priority 5V only: retained declared CH/LI postcode format and one explicit correction journey.",
+  "phase": 3,
+  "status": "in-progress",
+  "result": "Bounded implementation verified; stopped for human review. Priority 5, increment 1 and DEVELOP remain incomplete.",
+  "recorded_5U_acceptance": {
+    "accepted": "Demonstrated approved association matching, unsaved clarification and explicit checked selection only. Source associations/identity limits preserved; reference match is not provider coverage; both new 5U browser journeys saved honest insufficient coverage; committed recovery precedes references.",
+    "verification_distinctions": "Prior 5U receipt preserves new/regression results, assertion correction and unavailable-reference composition correction.",
+    "retention_limitation": "Prior temporary API databases are unavailable as reported in 5U. No missing identities or historical evidence reconstructed.",
+    "advisor_review_limit": "ADR-006, receipt/commands, and comparison of reported browser associations with uploaded pinned draft; not an audit of changed implementation/test source or test execution."
+  },
+  "prerequisites": {
+    "blockers": [],
+    "requirements": "UC-001 R-02/AC-02, E-CL-01, T-02/T-11; original-input/constraint and privacy boundaries retained.",
+    "retained_format_basis": {
+      "path": "build/uc001-priority5t-locality-reference/source/product.html",
+      "anchor": "doc-1i7ddkmat0; FAQ: What information does the official directory of towns and cities contain?",
+      "sha256": "6c6ca4ec29939493839a5655be8ca85640389acd30400dd2ab6f54ce1b2bad4b",
+      "wording": "4-digit postcode; separately, Additional internal SwissPost 2-digit code.",
+      "interpretation": "Exactly four ASCII digits [0-9]{4} after existing boundary trim. This is the implementation of the documented field, not a verbatim publisher regex. No numeric-range assumption (including no imported export-model SHORT bounds), membership inference, prefix stripping, truncation or repair.",
+      "acquisition": "None; retained documentation and approved releases reused unchanged."
+    },
+    "architecture": "Existing trim/raw/string/leading-zero policy and declared-CH/LI-only format scope. No equivalent guard or verification existed.",
+    "composition": "Existing React invalid-input handling, actual FastAPI/application/SQLite, synthetic English meaning/evidence and approved development references; no frontend, runner or dependency changes.",
+    "unchanged_recovery": "Original payload digest and ownership-bound saved lookup occur before country/locality loaders and effective-location validation. Atomic persistence and immutable saved projections unchanged."
+  },
+  "implemented_contract": {
+    "rule": "Only truthy declared postcode retained in effective CH/LI scope: re.fullmatch(r\"[0-9]{4}\", postcode.strip()). A postcode remains optional; raw value is not changed.",
+    "order": "country_only discards optional structured fields first; retained confirmed_unverified and provided scopes validate before confirmation/matching.",
+    "malformed_response": {
+      "status": 422,
+      "body": {
+        "outcome": "invalid_input",
+        "persistence": {
+          "state": "not_attempted"
+        },
+        "issues": [
+          {
+            "code": "postcode_format_invalid"
+          }
+        ],
+        "clarification": {
+          "message": "Enter a four-digit postcode (0–9) for CH/LI, or leave the postcode empty. This checks format, not whether the locality exists.",
+          "choices": [],
+          "associations": []
+        }
+      }
+    },
+    "well_formed_unmatched": "Actual API: CH synthetic town with raw postcode \" 0123 \" gives 200 / clarification_required / locality_reference_unknown / not_attempted, no saved request. Explicit confirmed_unverified new submission gives 201 / insufficient_coverage, raw postcode unchanged, normalized \"0123\", reference_unverified, rows 1/0/0.",
+    "valid_matching": "Existing three CH/LI exact-association API cases pass with boundary trim, source spellings and retained string postcodes.",
+    "other_countries": "DE with unreviewed-format stays reference_unknown when provided, or saves reference_unverified intended scope when explicitly confirmed. No DE format-validity claim.",
+    "country_only": "Malformed optional CH postcode discarded; actual 201 comparison with country-only effective scope and original no_replacement requirement retained.",
+    "confirmed_unverified": "Malformed retained LI 949 and CH 10080 produce 422 without save; confirmation does not bypass format.",
+    "loading_and_edits": "Existing React ends loading, keeps all fields and displays format feedback; editing clears feedback and sends no request; next explicit submit captures new intent/key/proof.",
+    "unchanged": "Captured payload/canonicalization, SQL/schema, APIs/outcome categories, saved records, source releases, processing control, DE/FR/IT/EN support."
+  },
+  "test_first_evidence": {
+    "RED": {
+      "rule": "4 genuine missing-format failures / 5 already-correct passes; 29 deselected.",
+      "API": "3 genuine missing-format failures / 7 passes (4 new already-correct cases, 3 matching regressions); 68 deselected.",
+      "browser": "Existing CH baseline passes; new actual malformed POST returns 200 rather than expected 422. No native validation disabled."
+    },
+    "GREEN": {
+      "rule": "9 passed / 29 deselected.",
+      "API": "14 passed / 64 deselected: 7 new cases and 7 directly affected regressions (3 matching, country-only bound recovery, independent textual locality, unverified intent, matched-association bound recovery).",
+      "browser": "2 passed: one unchanged CH baseline, one new malformed/corrected journey. No retries, tracing/HAR disabled."
+    },
+    "REFACTOR": "Guard remains in the existing effective-location function; no additional abstraction or refactor required.",
+    "test_or_runner_corrections": "None in behavioral tests or runner this slice. Preservation audit initially compared status output with/without branch header; comparison corrected to identical status entries, original captures retained; see commands.json.",
+    "warnings": "Existing Starlette/httpx deprecation and browser NO_COLOR/FORCE_COLOR warnings only; no dependency changes.",
+    "frontend_lint_build": "Not run: frontend implementation and runner configuration unchanged.",
+    "commands": "commands.json"
+  },
+  "actual_browser_journey": {
+    "artifact": "build/uc001-priority5v-postcode-format/browser-green/saved-comparison-malformed-4d9fd-e-explicit-saved-assessment/postcode-correction-evidence.json",
+    "database": "build/test-only/uc001-priority5v-format-green.sqlite3",
+    "prior_request_ids": [
+      "c3ded183-4984-431d-9edf-8c5ddf39bdd2"
+    ],
+    "new_request_id": "d51976e7-7788-4b68-9b37-c0e8b1904781",
+    "row_counts": {
+      "before": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_invalid": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after_correction": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "after": {
+        "search_request": 2,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      }
+    },
+    "row_delta_on_saved_correction": {
+      "search_request": 1,
+      "request_alternative": 0,
+      "request_alternative_evidence": 0
+    },
+    "POST_counts": [
+      1,
+      1,
+      2
+    ],
+    "input": "Synthetic request meaning/evidence; CH / Jouxtens-Mézery / 10A8 corrected to 1008.",
+    "corrected_response": {
+      "status": 201,
+      "outcome": "insufficient_coverage",
+      "persistence": {
+        "state": "saved",
+        "request_id": "d51976e7-7788-4b68-9b37-c0e8b1904781"
+      },
+      "assessed_at": "2026-10-15T10:00:00+00:00",
+      "limitation_codes": [
+        "geographic_applicability_unverified"
+      ]
+    },
+    "matched_association": {
+      "reference": {
+        "source": "swisstopo",
+        "release": "swisstopo-chli-associations-2026-10-01-v1",
+        "source_record": 10
+      },
+      "country_code": "CH",
+      "locality_name": "Jouxtens-Mézery",
+      "postcode": "1008",
+      "source_postcode_id": "5852",
+      "additional_number": "02",
+      "administrative": {
+        "municipality_name": "Jouxtens-Mézery",
+        "municipality_id": "5585",
+        "canton": "VD"
+      }
+    },
+    "locality_reference": {
+      "source": "swisstopo",
+      "release": "swisstopo-chli-associations-2026-10-01-v1",
+      "sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+      "snapshot_at": "2026-10-01T00:00:00Z"
+    },
+    "observations": "Actual malformed POST returned 422; fields enabled/retained, aria-busy false, no saved headings/options. Correction cleared validation and sent nothing. Explicit submit saved exact approved record-10 scope with honest geographic_applicability_unverified, not a comparison. Saved projection equals actual API response and SQLite identity; original input, no-replacement constraint span 18..38, language context and server-derived provenance retained. Prior requests/options/links/evidence source versions/review dates unchanged.",
+    "privacy": "Only public projections/identities/statuses/counts and assertions exported. Captured request/key/proof and proof digest used only in page/test memory; no raw credentials, full captured requests, trace or HAR export.",
+    "evidence_time": "Assessed_at is the existing controlled fixture clock, not the execution or reference-preparation date."
+  },
+  "changes": {
+    "existing_files": [
+      "docs/ARCHITECTURE.md",
+      "docs/TASKS.md",
+      "src/app/application/comparisons.py",
+      "tests/e2e/saved-comparison.spec.ts",
+      "tests/integration/test_saved_comparison.py",
+      "tests/unit/test_locality_reference.py"
+    ],
+    "implementation": "One re import and six-line retained-postcode guard in application effective_search_location; existing React/API/persistence paths reused. Tests extend existing files; architecture and current TASKS aligned.",
+    "new_evidence_directory": "build/uc001-priority5v-postcode-format"
+  },
+  "preservation": {
+    "audit": "preservation-audit.json",
+    "artifact_checks": "artifact-checks.json",
+    "baseline_files": 968,
+    "unchanged": 962,
+    "intended_existing_file_changes": 6,
+    "missing": 0,
+    "details": "All earlier receipts/source/reference/draft/experiment artifacts and other entry fingerprints preserved. Existing Python test functions/classes preserved; removing one new browser test reproduces the entire prior file byte-for-byte. Dated TASKS history and original trailing whitespace preserved.",
+    "review": "Assistant read-only source/test review found no concrete issue; not independent human acceptance or qualified factual/linguistic review.",
+    "services": "Owned test ports 8011 and 5175 closed after runner shutdown."
+  },
+  "git": {
+    "branch": "specify/phase-1-uc-001",
+    "HEAD": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+    "status": "git-status.txt; entries unchanged from entry; large preexisting dirty/untracked worktree preserved.",
+    "diff_check_exit": 2,
+    "diff_check": "Only original docs/TASKS.md:2207 trailing space. No new whitespace defects in the six-file slice delta.",
+    "delivery": "No staging, commit, push, merge, reset, branch change, CI/CD or deployment."
+  },
+  "remaining_locality_obligations": [
+    "Other-country reviewed matching remains absent: architecture names GeoNames cities500/admin1 with IDs/names/reviewed aliases/admin labels and explicitly incomplete coverage. Any other-country postcode format requires its own reviewed rule; no acquisition or implementation authorized here.",
+    "Authoritative cross-postcode locality identity remains unresolved before consolidation; ZIP_ID and source_record cannot substitute for GUID identity. Enrichment is not authorized.",
+    "Demonstrated selected-country mismatch has existing 5U API evidence; its distinct field-preserving browser correction observable (E-CL-02) is not established by this format journey.",
+    "Provider delivery/service/habit applicability still needs independent scoped evidence; format/reference match supplies none. Existing 5U ambiguity/selection and 5S/5H country-only/unverified fallbacks remain credited."
+  ],
+  "limits_and_stop": [
+    "Provided-locality configured reference loading still precedes effective format validation, unchanged. No malformed-input-versus-loader-failure precedence or additional fault variant is claimed.",
+    "This is bounded synthetic development verification, not real multilingual semantic/linguistic acceptance or provider coverage.",
+    "Normal app.main unconfigured; real alternative/rendering drafts inactive; all experiments closed. No held-out access, models/detectors, TL-03, research, UC-003, Priority 6 or next implementation.",
+    "PHASE 3 / STATUS in-progress. Priority 5, increment 1 and DEVELOP remain incomplete. Stop for human review."
+  ]
+}

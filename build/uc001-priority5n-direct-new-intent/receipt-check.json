@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "first_run_browser_passes": 3,
+  "case_evidence": [
+    {
+      "case": "fresh_reset",
+      "artifact": "build/uc001-priority5n-direct-new-intent/browser/saved-comparison-direct-ne-50107--uncertain-save-fresh-reset/fresh_reset-after-uncertainty-evidence.json",
+      "original_id": "3b2e5532-aca4-4431-a96e-6b01f0cdb59c",
+      "new_id": "5e493d8b-6c12-4689-ab7f-21664d05a935",
+      "counts": {
+        "before": {
+          "search_request": 1,
+          "request_alternative": 2,
+          "request_alternative_evidence": 2
+        },
+        "after_unknown": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_change": {
+          "search_request": 2,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after": {
+          "search_request": 3,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        }
+      }
+    },
+    {
+      "case": "country_edit",
+      "artifact": "build/uc001-priority5n-direct-new-intent/browser/saved-comparison-direct-ne-c8202-uncertain-save-country-edit/country_edit-after-uncertainty-evidence.json",
+      "original_id": "90cc45a3-aa8c-4f90-a0fb-9183f32cbdb4",
+      "new_id": "5897b081-7491-4de8-8c1a-7e5f96a99e7f",
+      "counts": {
+        "before": {
+          "search_request": 3,
+          "request_alternative": 4,
+          "request_alternative_evidence": 4
+        },
+        "after_unknown": {
+          "search_request": 4,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        },
+        "after_change": {
+          "search_request": 4,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        },
+        "after": {
+          "search_request": 5,
+          "request_alternative": 6,
+          "request_alternative_evidence": 6
+        }
+      }
+    }
+  ],
+  "safe_json_artifacts_checked": 2,
+  "protected_files_checked": 459,
+  "unchanged_protected_files": 457,
+  "task_local_whitespace_clean": true,
+  "historical_state_preserved": true,
+  "owned_test_servers_stopped": true,
+  "traces_and_HAR_absent": true
+}

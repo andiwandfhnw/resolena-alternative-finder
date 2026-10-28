@@ -1,0 +1,22 @@
+
+> frontend@0.0.0 test:e2e
+> playwright test --grep delivered unknown persistence error requires explicit same-submission recovery --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-runner-integration/standalone --reporter=list
+
+[WebServer] INFO:     Started server process [9082]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:9109) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:9126) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:163:5 › delivered unknown persistence error requires explicit same-submission recovery (1.3s)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [9082]
+
+  1 passed (4.8s)

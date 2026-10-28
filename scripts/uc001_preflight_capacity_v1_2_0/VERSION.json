@@ -1,0 +1,34 @@
+{
+  "version": "uc001-preflight-capacity-v1.2.0",
+  "date": "2026-10-16",
+  "scope": "Separate adapter/resource preflight capacity-source correction only",
+  "parent_version": "uc001-preflight-association-v1.1.0",
+  "parent_freeze_sha256": "9b910db4b71e6ee1c7768223ab4a3d9331c411d3f218eb7a710c81e88c57ed5a",
+  "parent_zip_sha256": "a5e89b340156d7db9de9cffa6d72dab0ef35b91f257e9f05525ea4765eaf1f03",
+  "changes": [
+    "Use identified hardware DXGI_ADAPTER_DESC1.DedicatedVideoMemory as the sole explicit capacity source",
+    "Remove unsupported exact equality with registry qwMemorySize",
+    "Retain registry path, availability/error status, raw type/value and exact signed difference as non-authoritative diagnostics",
+    "Document fresh full extraction of all nine files to avoid incomplete or mixed-version extraction"
+  ],
+  "unchanged": [
+    "Unique hardware descriptor/all PCI identifiers, fresh unique LUID and exact associated WDDM counter requirement",
+    "Stops for invalid/missing DXGI capacity, invalid usage, identity ambiguity or insufficient resources",
+    "Every resource threshold, runtime/model pin, inference budget, prompt, schema and case",
+    "Native reader, config.json, runtime-files.json and resource-guard function",
+    "Original and v1.1.0 sources, ZIPs, diagnostics, failures and historical evidence; application code"
+  ],
+  "owner_diagnostic": {
+    "source": "Supplied diagnostic excerpt; complete raw JSON not provided in this turn",
+    "dxgi_bytes": 17130819584,
+    "registry_bytes": 17163091968,
+    "dxgi_minus_registry_bytes": -32272384,
+    "cause": "unknown",
+    "evidence_path": "build/uc001-preflight-capacity-v1_2_0/owner-supplied-diagnostic.txt"
+  },
+  "windows_verification": "pending",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "model_or_transport_execution_authorized": false
+}

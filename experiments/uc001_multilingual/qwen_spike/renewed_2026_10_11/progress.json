@@ -1,0 +1,6 @@
+{
+  "gate": 1,
+  "state": "running",
+  "scratch": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx",
+  "cleanup": "Preserve small outputs, stop owned processes, then remove only this exact scratch tree."
+}

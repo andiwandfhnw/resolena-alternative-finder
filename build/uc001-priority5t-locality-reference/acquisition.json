@@ -1,0 +1,113 @@
+[
+  {
+    "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz",
+    "retrieved_at": "2026-10-23T17:15:51.238717+00:00",
+    "file": "source/collection.json",
+    "HTTP_status": 200,
+    "final_URL": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz",
+    "content_type": "application/json",
+    "publisher_HTTP_last_modified": null,
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 17:15:51 GMT",
+    "sha256": "e97d1c2c067de39d118353dec62b28e368af9486128e8ebdc293b283c4404eea",
+    "bytes": 2482
+  },
+  {
+    "reference": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz/items",
+    "retrieved_at": "2026-10-23T17:15:51.396311+00:00",
+    "file": "source/items.json",
+    "HTTP_status": 200,
+    "final_URL": "https://data.geo.admin.ch/api/stac/v1/collections/ch.swisstopo-vd.ortschaftenverzeichnis_plz/items",
+    "content_type": "application/json",
+    "publisher_HTTP_last_modified": null,
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 17:15:51 GMT",
+    "sha256": "04890aeffd0b49bff37a0c3bb9ba0d5bdfb3364bdadea7fb06ab506f7ded58fe",
+    "bytes": 3899
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+    "retrieved_at": "2026-10-23T17:15:51.499749+00:00",
+    "file": "source/product.html",
+    "HTTP_status": null,
+    "error": "Remote end closed connection without response"
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+    "retrieved_at": "2026-10-23T17:15:51.624592+00:00",
+    "file": "source/product-information-jan2026.pdf",
+    "HTTP_status": null,
+    "error": "Remote end closed connection without response"
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+    "retrieved_at": "2026-10-23T17:15:51.820324+00:00",
+    "file": "source/terms.html",
+    "HTTP_status": null,
+    "error": "Remote end closed connection without response"
+  },
+  {
+    "reference": "https://data.geo.admin.ch/ch.swisstopo-vd.ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz_2056.csv.zip",
+    "retrieved_at": "2026-10-23T17:16:08.019270+00:00",
+    "file": "source/ortschaftenverzeichnis_plz_2056.csv.zip",
+    "HTTP_status": 200,
+    "final_URL": "https://data.geo.admin.ch/ch.swisstopo-vd.ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz/ortschaftenverzeichnis_plz_2056.csv.zip",
+    "content_type": "application/x.csv+zip",
+    "publisher_HTTP_last_modified": "Thu, 01 Oct 2026 04:45:06 GMT",
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 16:59:48 GMT",
+    "sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+    "bytes": 132697
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+    "retrieved_at": "2026-10-23T17:16:33.550241+00:00",
+    "file": "source/product.html",
+    "client": "curl with browser User-Agent, after recorded urllib failure",
+    "client_exit_code": 0,
+    "HTTP_status": 200,
+    "final_URL": "https://www.swisstopo.admin.ch/en/official-directory-of-towns-and-cities",
+    "sha256": "6c6ca4ec29939493839a5655be8ca85640389acd30400dd2ab6f54ce1b2bad4b",
+    "bytes": 316301,
+    "content_type": "text/html;charset=utf-8",
+    "publisher_HTTP_last_modified": null,
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 17:16:34 GMT",
+    "retained_response_headers": {
+      "path": "build/uc001-priority5t-locality-reference/source/product.html.headers",
+      "sha256": "70b2ff9d82ce0c4647390144be04b836c2ad2487a40050b066730eb09c235654"
+    }
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+    "retrieved_at": "2026-10-23T17:16:34.652314+00:00",
+    "file": "source/product-information-jan2026.pdf",
+    "client": "curl with browser User-Agent, after recorded urllib failure",
+    "client_exit_code": 0,
+    "HTTP_status": 200,
+    "final_URL": "https://www.swisstopo.admin.ch/dam/de/sd-web/63GBDVbxjKqw/Jan26_Amtliches%20Ortschaftenverzeichnis%20-%20Technical%20Documentation.pdf",
+    "sha256": "45779d8fbb26006c1692fdf8b1aa1a0bb7a525bced1c5d1fdfe4950ae6c17b50",
+    "bytes": 525109,
+    "content_type": "application/pdf",
+    "publisher_HTTP_last_modified": "Wed, 17 Dec 2025 16:18:58 GMT",
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 17:16:34 GMT",
+    "retained_response_headers": {
+      "path": "build/uc001-priority5t-locality-reference/source/product-information-jan2026.pdf.headers",
+      "sha256": "e408365a3b6d3747018ede770f2e07bcb8dfce2295daf9c9664c0f0ffb91eb1b"
+    }
+  },
+  {
+    "reference": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+    "retrieved_at": "2026-10-23T17:16:35.036663+00:00",
+    "file": "source/terms.html",
+    "client": "curl with browser User-Agent, after recorded urllib failure",
+    "client_exit_code": 0,
+    "HTTP_status": 200,
+    "final_URL": "https://www.swisstopo.admin.ch/en/terms-of-use-free-geodata-and-geoservices",
+    "sha256": "ef27221806608ba1519cb31f9c46c381e7fe767f19bf986f8896961a93fc7f7f",
+    "bytes": 261589,
+    "content_type": "text/html;charset=utf-8",
+    "publisher_HTTP_last_modified": null,
+    "publisher_HTTP_date": "Fri, 23 Oct 2026 17:16:35 GMT",
+    "retained_response_headers": {
+      "path": "build/uc001-priority5t-locality-reference/source/terms.html.headers",
+      "sha256": "d28584bf79ba40855fb53cf34d3863ed7da8ef3d6a84b8fe83651d4a1b4530ab"
+    }
+  }
+]

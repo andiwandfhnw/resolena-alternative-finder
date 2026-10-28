@@ -1,0 +1,77 @@
+..................FFF                                                    [100%]
+=================================== FAILURES ===================================
+________________ test_missing_proxy_ledger_is_failure_not_zero _________________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_missing_proxy_ledger_is_f0')
+
+    def test_missing_proxy_ledger_is_failure_not_zero(tmp_path):
+        with pytest.raises(WorkerFailure):
+>           validate_proxy_terminal(tmp_path / 'missing.jsonl', {}, 0)
+
+tests/unit/test_granite_controller_worker.py:304: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/uc001_granite_controller/worker.py:199: in validate_proxy_terminal
+    data = Path(path).read_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/local/lib/python3.12/pathlib.py:1019: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_missing_proxy_ledger_is_f0/missing.jsonl')
+mode = 'rb', buffering = -1, encoding = None, errors = None, newline = None
+
+    def open(self, mode='r', buffering=-1, encoding=None,
+             errors=None, newline=None):
+        """
+        Open the file pointed to by this path and return a file object, as
+        the built-in open() function does.
+        """
+        if "b" not in mode:
+            encoding = io.text_encoding(encoding)
+>       return io.open(self, mode, buffering, encoding, errors, newline)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       FileNotFoundError: [Errno 2] No such file or directory: '/tmp/pytest-of-vscode/pytest-15/test_missing_proxy_ledger_is_f0/missing.jsonl'
+
+/usr/local/lib/python3.12/pathlib.py:1013: FileNotFoundError
+_______ test_extra_proxy_ledger_state_cannot_be_silently_ignored[start] ________
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_extra_proxy_ledger_state_0')
+event = 'start'
+
+    @pytest.mark.parametrize('event', ['start', 'unrecognized'])
+    def test_extra_proxy_ledger_state_cannot_be_silently_ignored(tmp_path, event):
+        path = ledger_fixture(tmp_path)
+        rows = path.read_text().splitlines()
+        rows.insert(-1, json.dumps(dict(event=event, cumulative_bytes=12)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed = dict(status='meter_closed_unqualified', cleanup_verified=True,
+                      cumulative_bytes=12, ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       with pytest.raises(WorkerFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE WorkerFailure
+
+tests/unit/test_granite_controller_worker.py:315: Failed
+____ test_extra_proxy_ledger_state_cannot_be_silently_ignored[unrecognized] ____
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-15/test_extra_proxy_ledger_state_1')
+event = 'unrecognized'
+
+    @pytest.mark.parametrize('event', ['start', 'unrecognized'])
+    def test_extra_proxy_ledger_state_cannot_be_silently_ignored(tmp_path, event):
+        path = ledger_fixture(tmp_path)
+        rows = path.read_text().splitlines()
+        rows.insert(-1, json.dumps(dict(event=event, cumulative_bytes=12)))
+        path.write_text('\n'.join(rows)+'\n')
+        closed = dict(status='meter_closed_unqualified', cleanup_verified=True,
+                      cumulative_bytes=12, ledger_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+>       with pytest.raises(WorkerFailure):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE WorkerFailure
+
+tests/unit/test_granite_controller_worker.py:315: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_controller_worker.py::test_missing_proxy_ledger_is_failure_not_zero
+FAILED tests/unit/test_granite_controller_worker.py::test_extra_proxy_ledger_state_cannot_be_silently_ignored[start]
+FAILED tests/unit/test_granite_controller_worker.py::test_extra_proxy_ledger_state_cannot_be_silently_ignored[unrecognized]
+3 failed, 18 passed in 0.23s

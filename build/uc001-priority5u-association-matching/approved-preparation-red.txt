@@ -1,0 +1,27 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_approved_release_retains_original_draft_bytes_and_records_dated_development_approval _
+
+tmp_path = PosixPath('/tmp/resolena-priority5u-nvwrc29y/approved-preparation-red/test_approved_release_retains_0')
+
+    def test_approved_release_retains_original_draft_bytes_and_records_dated_development_approval(tmp_path):
+        draft_path = ROOT / "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json"
+        prior_manifest = ROOT / "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json"
+        before_draft, before_manifest = draft_path.read_bytes(), prior_manifest.read_bytes()
+        command = preparation_command(tmp_path, approved=True)
+    
+        first = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+    
+>       assert first.returncode == 0, first.stderr
+E       AssertionError: usage: prepare.py [-h] --source SOURCE --acquisition ACQUISITION --output
+E                           OUTPUT --manifest MANIFEST --source-sha256 SOURCE_SHA256
+E                           --prepared-at PREPARED_AT
+E         prepare.py: error: unrecognized arguments: --approved-release
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspaces/resolena-alternative-finder/.venv/bin/python', 'scripts/uc001_locality_reference/p..._SHA256\n                  --prepared-at PREPARED_AT\nprepare.py: error: unrecognized arguments: --approved-release\n').returncode
+
+tests/integration/test_locality_reference_manifest.py:107: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_locality_reference_manifest.py::test_approved_release_retains_original_draft_bytes_and_records_dated_development_approval
+1 failed in 0.23s

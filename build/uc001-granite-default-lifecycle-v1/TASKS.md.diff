@@ -1,0 +1,75 @@
+--- before/docs/TASKS.md
++++ docs/TASKS.md
+@@ -46,16 +46,15 @@
+ is consumed. Offline exact-byte replay reproduces a domain-contract rejection; cases 2–14
+ were not attempted. No further startup/retry is authorized; Priority 3 remains partial.
+ 
+-Current bounded status, 2026-10-27: owner accepts the one Windows proxy-binding
+-attempt as consumed and successful in harmless_network_free_proxy_binding_only.
+-Its native binding blocker is CLOSED; the earlier harmless ownership/helper model
+-remains CLOSED. Resource fit remains false. The authorized offline final native
+-handoff review stopped on a separate default-controller lifecycle gap: pending
+-close events are polled too late and verified helpers must exit immediately before
+-bounded cleanup. No implementation correction, final execution configuration or
+-acquisition/build command is issued. Exact-source findings and the smallest
+-separately authorized correction are recorded below. No diagnostic rerun or real
+-execution is authorized. PHASE: 3 / STATUS: in-progress.
++Current bounded status, 2026-10-27: owner accepts the source-grounded default-loop
++diagnosis and authorizes one offline correction. New actual run_session RED/GREEN
++now covers durable planned-close reconciliation and bounded waiting for already
++admitted helpers; final focused result 79 passes. The corrected source is ready
++for review and permits completing inactive handoff preparation afterward; no handoff
++assembly, execution configuration activation or desktop instruction is issued here.
++Both accepted Windows diagnostics remain CLOSED; neither was rerun and their results
++do not validate this changed default loop. Native verification/resource fit and real
++acquisition/build remain unestablished and unauthorized. PHASE: 3 / STATUS: in-progress.
+ 
+ ### Priority 3 — provisional Granite offline preparation, 2026-10-25
+ 
+@@ -841,6 +840,46 @@
+ fit, and the separately reported default-controller lifecycle gap remain unchanged.
+ No correction or acquisition/build is authorized. Earlier summaries/receipts and
+ all existing work are preserved. PHASE: 3 / STATUS: in-progress. Stop for owner review.
++
++### Priority 3 — actual default-controller lifecycle correction, 2026-10-27
++
++Owner accepts the source-grounded diagnosis and authorizes one bounded offline TDD
++correction, without claiming an earlier default-path reproduction or Windows
++acquisition failure. Historical diagnostic REDs/results retain their original scope.
++The [new default-loop correction receipt](../build/uc001-granite-default-lifecycle-v1/README.md)
++records genuine pre-fix **3 actual run_session REDs** for delayed valid close with
++worker alive/exited and admitted-helper lag, plus a separate native-query transition
++RED found during review. No parallel diagnostic replaces these reproductions.
++
++The existing controller now makes one ordered pending-record reconciliation after
++observed exits, without waiting for absent close evidence or suppressing identity/
++ordering errors. Phase terminal/base/role/ledger proof precedes a supervised wait
++only for helper identities already admitted and retained by the default monitor.
++Unknown/replaced/unclassified descendants remain fatal; no worker helper role is
++newly admitted. Resource/watchdog/same-phase deadline checks continue, zero active
++precedes build, the private Job stays open between phases, and final native exit/
++query-handle proofs remain mandatory. No direct helper termination authority.
++
++Final focused command covers existing default-run/config tests: **79 passed in
++1.22s**, exit 0 (28 new default-path cases, 46 preserved existing cases, five
++config/preflight checks). Existing unknown-descendant rejection is unchanged. A
++stale test-fixture directory glob was corrected to the existing four-helper contract;
++its failed intermediate run remains preserved, without production manifest changes.
++Post-fix intermediate negative checks are distinguished from genuine pre-fix RED.
++
++Only controller.py, focused tests and documentation change. Worker/backend/stand-in
++and accepted proxy/prior/frozen assessment bytes, helper policy, pins, build flags
++and numeric limits remain unchanged. New controller SHA-256:
++`790836e62a9489f9ee1ff83591aa72acc1dc185287d5027167b81279fabe7179`.
++Current hashes are recorded separately; historical bindings/packages remain intact
++and every execution draft stays inactive. Both successful Windows diagnostics stay
++CLOSED and were not rerun; no Windows validation of this changed loop is claimed.
++The source now permits completion of the previously authorized inactive handoff
++after review, but this task issues no handoff or desktop execution instruction.
++No native/network/acquisition/build/compiler/glslc/GPU/model/server/inference,
++installation or Git delivery. Priority 5 acceptance and closed Qwen result remain;
++Priorities 3/4 partial; Priority 6/Phase 4 pending. PHASE: 3 / STATUS: in-progress.
++Stop after the bounded offline correction for owner review.
+ 
+ Current Priority 5 work-package status: **Owner-accepted for the amended increment-1 scope; evidence limits retained.**
+ 

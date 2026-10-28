@@ -1,0 +1,67 @@
+FF..F                                                                    [100%]
+=================================== FAILURES ===================================
+_ test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger[True] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-38/test_worker_controller_flow_pr0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c6cca900fe0>
+split = True
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger(tmp_path,monkeypatch,split):
+        value,runner,journal,monitor,observations=flow(tmp_path,monkeypatch,split=split)
+        try:
+            run_acquisition(value,journal,runner=runner)
+            assert runner.fetched
+            assert monitor.finish()==7
+            assert monitor.proxy.pid==(701 if split else 700)
+            assert set(monitor.proxy_role_exits)=={'launcher','interpreter'}
+            cleanup=dict(verified=True,active_processes=0,owned_exits=[
+                dict(pid=row['pid'],creation_time_100ns=row['birth'],exit_code=0)
+                for row in runner.api.rows.values()])
+            identity_cleanup=monitor.cleanup(cleanup)
+            assert identity_cleanup['verified'] is True
+>           assert identity_cleanup['phase']=='acquisition'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'phase'
+
+tests/unit/test_granite_proxy_identity_flow.py:132: KeyError
+_ test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger[False] _
+
+tmp_path = PosixPath('/tmp/pytest-of-vscode/pytest-38/test_worker_controller_flow_pr1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7c6ccad53e30>
+split = False
+
+    @pytest.mark.parametrize('split',[True,False])
+    def test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger(tmp_path,monkeypatch,split):
+        value,runner,journal,monitor,observations=flow(tmp_path,monkeypatch,split=split)
+        try:
+            run_acquisition(value,journal,runner=runner)
+            assert runner.fetched
+            assert monitor.finish()==7
+            assert monitor.proxy.pid==(701 if split else 700)
+            assert set(monitor.proxy_role_exits)=={'launcher','interpreter'}
+            cleanup=dict(verified=True,active_processes=0,owned_exits=[
+                dict(pid=row['pid'],creation_time_100ns=row['birth'],exit_code=0)
+                for row in runner.api.rows.values()])
+            identity_cleanup=monitor.cleanup(cleanup)
+            assert identity_cleanup['verified'] is True
+>           assert identity_cleanup['phase']=='acquisition'
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           KeyError: 'phase'
+
+tests/unit/test_granite_proxy_identity_flow.py:132: KeyError
+________ test_proxy_role_events_are_rejected_outside_acquisition_phase _________
+
+    def test_proxy_role_events_are_rejected_outside_acquisition_phase():
+        backend=FlowBackend();backend.api=FlowApi()
+        monitor=PhaseMonitor(dict(name='build'),backend,lambda *args,**kwargs:None)
+>       with pytest.raises(ControllerFailure,match='non_acquisition'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ControllerFailure
+
+tests/unit/test_granite_proxy_identity_flow.py:163: Failed
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger[True]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_worker_controller_flow_proves_roles_before_fetch_and_checks_interpreter_ledger[False]
+FAILED tests/unit/test_granite_proxy_identity_flow.py::test_proxy_role_events_are_rejected_outside_acquisition_phase
+3 failed, 2 passed in 0.24s

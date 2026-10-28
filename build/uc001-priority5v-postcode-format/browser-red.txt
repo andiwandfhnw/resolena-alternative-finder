@@ -1,0 +1,40 @@
+[WebServer] INFO:     Started server process [5866]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:5908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:5953) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:54:5 › browser displays exactly the committed API comparison and stable database identities (3.5s)
+  ✘  2 ../tests/e2e/saved-comparison.spec.ts:85:5 › malformed CH postcode requires correction before explicit saved assessment (601ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [5866]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:85:5 › malformed CH postcode requires correction before explicit saved assessment 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 422
+    Received: 200
+
+      101 |   await page.getByRole('button', { name: 'Find alternatives', exact: true }).click()
+      102 |   const invalid = await invalidResponse
+    > 103 |   expect(invalid.status()).toBe(422)
+          |                            ^
+      104 |   const invalidBody = await invalid.json()
+      105 |   expect(invalidBody.outcome).toBe('invalid_input')
+      106 |   expect(invalidBody.persistence).toEqual({ state: 'not_attempted' })
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:103:28
+
+    Error Context: ../build/uc001-priority5v-postcode-format/browser-red/saved-comparison-malformed-4d9fd-e-explicit-saved-assessment/error-context.md
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:85:5 › malformed CH postcode requires correction before explicit saved assessment 
+  1 passed (24.1s)

@@ -1,0 +1,60 @@
+{
+  "baseline_files": 881,
+  "unchanged_files": 869,
+  "changed_existing_files": [
+    "docs/ARCHITECTURE.md",
+    "docs/TASKS.md",
+    "frontend/playwright.config.ts",
+    "frontend/src/App.tsx",
+    "scripts/uc001_locality_reference/prepare.py",
+    "src/app/application/comparisons.py",
+    "src/app/interfaces/api.py",
+    "tests/e2e/saved-comparison.spec.ts",
+    "tests/integration/test_locality_reference_manifest.py",
+    "tests/integration/test_saved_comparison.py",
+    "tests/support/demo.py",
+    "tests/support/source_bound_rendering.py"
+  ],
+  "missing_files": [],
+  "new_source_reference_files": [
+    "docs/adr/ADR-006-locality-association-development-release.md",
+    "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01.json",
+    "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-APPROVAL.json",
+    "src/app/application/localities.py",
+    "src/app/infrastructure/locality_reference.py",
+    "tests/unit/test_locality_reference.py"
+  ],
+  "all_prior_evidence_files_unchanged": true,
+  "prior_evidence_files_checked": 585,
+  "all_prior_reference_files_unchanged": true,
+  "TASKS_dated_history_preserved": true,
+  "ARCHITECTURE_preserved_except_5U_description": true,
+  "all_prior_browser_cases_byte_preserved": true,
+  "existing_API_prefix_byte_preserved": true,
+  "protected_paths_unchanged": {
+    "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-DRAFT.json": true,
+    "docs/reference/LOCALITIES-CH-LI-SWISSTOPO-2026-10-01-MANIFEST.json": true,
+    "src/app/main.py": true,
+    "src/app/domain/qualification.py": true,
+    "src/app/infrastructure/sqlite_comparisons.py": true,
+    "frontend/package.json": true,
+    "frontend/package-lock.json": true,
+    "docs/adr/ADR-005-country-reference-development-release.md": true
+  },
+  "prior_5T_script_retained": {
+    "path": "build/uc001-priority5u-association-matching/prior-5t-preparation-script.py",
+    "sha256": "7cfc42ba3081ac40d54cad8ef5c9ee0fdb097cc9982762fe9fde0796ef17d97a"
+  },
+  "new_whitespace_issues": [],
+  "existing_TASKS_warning_bytes_preserved": true,
+  "HEAD_and_branch_unchanged": true,
+  "git_status_removed_entries": [],
+  "git_status_added_entries": [
+    "?? docs/adr/ADR-006-locality-association-development-release.md"
+  ],
+  "owned_service_ports": {
+    "8011": "closed",
+    "5175": "closed"
+  },
+  "test_locality_control_files_remaining": []
+}

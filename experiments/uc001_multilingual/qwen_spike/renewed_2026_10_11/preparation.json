@@ -1,0 +1,99 @@
+{
+  "started": "2026-10-11T11:41:50.920950+00:00",
+  "downloads": [
+    {
+      "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz",
+      "file": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "bytes": 55010959,
+      "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf",
+      "elapsed_seconds": 0.8608618519997435
+    },
+    {
+      "url": "https://codeload.github.com/ggml-org/llama.cpp/tar.gz/d81235049384534c167caea52b85a694f6103d14",
+      "file": "source.tar.gz",
+      "bytes": 37887730,
+      "sha256": "6b58785f0a82898f4c3442417ff962e2d4b231b1bee5d033902ad90b27901e14",
+      "elapsed_seconds": 5.073527135000404
+    },
+    {
+      "url": "https://github.com/Kitware/CMake/releases/download/v3.31.6/cmake-3.31.6-linux-x86_64.tar.gz",
+      "file": "cmake-3.31.6-linux-x86_64.tar.gz",
+      "bytes": 55010959,
+      "sha256": "5a1133ff103c71eb5120e2cc3de922733e7d8a26a98ae716397e8676adb367bf",
+      "elapsed_seconds": 0.41025713399994856
+    },
+    {
+      "url": "https://codeload.github.com/ggml-org/llama.cpp/tar.gz/d81235049384534c167caea52b85a694f6103d14",
+      "file": "source.tar.gz",
+      "bytes": 37887730,
+      "sha256": "6b58785f0a82898f4c3442417ff962e2d4b231b1bee5d033902ad90b27901e14",
+      "elapsed_seconds": 5.106762988000014
+    }
+  ],
+  "steps": [
+    {
+      "name": "cmake_version",
+      "args": [
+        "/tmp/resolena-qwen-spike-o8cs2zg9/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.2893179970001256,
+      "peak_owned_rss_bytes": 0,
+      "minimum_available_bytes": 5436669952
+    },
+    {
+      "name": "configure",
+      "args": [
+        "/tmp/resolena-qwen-spike-o8cs2zg9/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "-S",
+        "/tmp/resolena-qwen-spike-o8cs2zg9/llama.cpp-d81235049384534c167caea52b85a694f6103d14",
+        "-B",
+        "/tmp/resolena-qwen-spike-o8cs2zg9/build",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_SHARED_LIBS=OFF",
+        "-DGGML_CUDA=OFF",
+        "-DGGML_BLAS=OFF",
+        "-DGGML_NATIVE=ON",
+        "-DLLAMA_OPENSSL=OFF",
+        "-DLLAMA_SUBPROCESS=OFF",
+        "-DLLAMA_LLGUIDANCE=OFF",
+        "-DLLAMA_BUILD_APP=OFF",
+        "-DLLAMA_BUILD_EXAMPLES=OFF",
+        "-DLLAMA_BUILD_TESTS=OFF",
+        "-DLLAMA_BUILD_UI=OFF",
+        "-DLLAMA_USE_PREBUILT_UI=OFF"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 4.843487506999736,
+      "peak_owned_rss_bytes": 46252032,
+      "minimum_available_bytes": 5446111232
+    },
+    {
+      "name": "cmake_version",
+      "args": [
+        "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx/cmake-3.31.6-linux-x86_64/bin/cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.40597654800001237,
+      "peak_owned_rss_bytes": 0,
+      "minimum_available_bytes": 5364465664
+    }
+  ],
+  "temporary_root": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build/resolena-qwen-spike-yzcp8uxx",
+  "peak_temporary_bytes": 195792751,
+  "resumption": {
+    "utc": "2026-10-11T11:41:50Z",
+    "reason": "Prior execution session unavailable and exact /tmp tree absent; removal cause unknown. No build success/model download/startup recorded.",
+    "prior_root": "/tmp/resolena-qwen-spike-o8cs2zg9",
+    "recorded_download_bytes": 92898689,
+    "predicted_cumulative_bytes": 2020223394,
+    "scratch_parent": "/workspaces/resolena-alternative-finder/experiments/uc001_multilingual/qwen_spike/renewed_2026_10_11/build",
+    "original_deadline_epoch": 1791723336.0,
+    "deadline_renewed": false,
+    "resource_limits_changed": false,
+    "model_or_prompt_or_cases_changed": false,
+    "single_recovery": true
+  }
+}

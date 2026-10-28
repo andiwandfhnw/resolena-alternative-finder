@@ -1,0 +1,88 @@
+{
+    "elapsed_ms": 1667,
+    "primary_failure": null,
+    "version": "uc001-contract-local-1.2.2",
+    "binding_observation": {
+        "step": "bound",
+        "interpreter_identified": true,
+        "candidate": {
+            "created": 134368149541028115,
+            "pid": 53216,
+            "image_class": "expected_interpreter",
+            "parent_pid": 46024
+        },
+        "console_helpers": [
+            {
+                "created": 134368149540891159,
+                "pid": 50576,
+                "parent_pid": 46024
+            }
+        ],
+        "job_member_pids": [
+            46024,
+            50576,
+            53216
+        ]
+    },
+    "cleanup_failures": [],
+    "model_attempt_ledger_touched": false,
+    "ownership": {
+        "supervisor": {
+            "pid": 26472,
+            "created": 134368149532135647,
+            "parent_pid": 38280,
+            "image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        },
+        "redirector": {
+            "pid": 46024,
+            "created": 134368149540799921,
+            "parent_pid": 26472,
+            "image": "C:\\ResolenaExperiments\\uc001-validator-env\\Scripts\\python.exe"
+        },
+        "interpreter": {
+            "pid": 53216,
+            "created": 134368149541028115,
+            "parent_pid": 46024,
+            "image": "C:\\ResolenaExperiments\\tools\\python-3.12.10\\python.exe"
+        },
+        "console_helpers": [
+            {
+                "pid": 50576,
+                "created": 134368149540891159,
+                "parent_pid": 46024,
+                "image": "C:\\Windows\\System32\\conhost.exe"
+            }
+        ],
+        "job_verified_pids": [
+            46024,
+            50576,
+            53216
+        ],
+        "job_membership_verified": true,
+        "server_pid": 0
+    },
+    "expected_meanings_approved": false,
+    "startup_allowance_consumed": true,
+    "observation_failures": [],
+    "deadline_failures": [],
+    "model_readiness_verified": false,
+    "cleanup_confirmed": true,
+    "outcome": "model_free_harness_checks_passed",
+    "stop": null,
+    "worker": {
+        "saved_report_compatible": true,
+        "reported_task_default": -1,
+        "request_limit_code": 3072,
+        "cli_execution_verified": false,
+        "cli_evidence": "unavailable_in_saved_receipt",
+        "generation_evidence": "unavailable",
+        "model_readiness_verified": false,
+        "outcome": "model_free_worker_checks_passed",
+        "ownership": "verified_redirector_and_interpreter",
+        "startup_authorized": false,
+        "model_attempt_ledger_touched": false
+    },
+    "deadline_ms": 60000,
+    "semantic_review": "pending",
+    "startup_authorized": false
+}

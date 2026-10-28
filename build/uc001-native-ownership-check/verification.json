@@ -1,0 +1,134 @@
+{
+  "version": "uc001-native-ownership-check-1",
+  "date": "2026-10-17",
+  "phase": 3,
+  "status": "in-progress",
+  "priority3": "partial",
+  "scope": "Separate bounded model-free Windows native ownership/cleanup diagnostic preparation only; no native Windows check executed",
+  "frozen_dependency": {
+    "directory": "scripts/uc001_execution_v1_3_0",
+    "freeze_sha256": "b7ed2e54c507c434ec157d0b3daed3440136bde70fd0c76ab79df6707301e615",
+    "helpers": [
+      "Common.ps1",
+      "ProcessTools.cs"
+    ],
+    "hash_scope": "Freeze and two small helper sources only; no model/runtime asset hashing",
+    "changed": false
+  },
+  "implementation": {
+    "entry": "Check-NativeOwnership.ps1: validates frozen helper hashes and existing Desktop/64-bit/FullLanguage guard; launches only a diagnostic PowerShell worker",
+    "worker": "Calls actual Initialize-ContractProcessSupport, New-ContractJob, Start-ContractProcess, Get-ContractProcessIdentity and Complete-ContractCleanup from unchanged Common.ps1; no Invoke-ContractExecution or resource collection",
+    "owned_child": "Hidden existing 64-bit PowerShell with a ten-second Thread.Sleep; no descendants/workload; retained PID/UTC creation time compared to fresh lookup and second read",
+    "abort": "Deliberate diagnostic throw within two seconds of child startup exercises actual finally/owned-job closure and original five-second exit-confirmation path",
+    "supervisor": "Retains its own Process/OS handle; on timeout or lifetime-read failure terminates only this object, still reports failure; actual cleanup function confirms worker exit",
+    "failure_cleanup": "Known child recovery requires matching PID and exact creation ticks after binding a fresh OS handle; mismatched/failed queries never justify termination. Cleanup after failure never restores success.",
+    "unconfirmed": "Failed native start/assignment can lack a returned child identity. Startup marker without identity is unconfirmed cleanup and failure; no first-match or PID-only substitute.",
+    "records": "Exclusive new GUID under diagnostic results; original model-attempt ledger never read/written. Preserve child logs/identity, worker/supervisor cleanup and final/recovery records.",
+    "budgets_ms": {
+      "overall": 60000,
+      "supervisor_wait_deadline_including_preparation": 45000,
+      "worker_preparation_guard": 35000,
+      "child_identity_and_abort": 2000,
+      "owned_worker_exit": 5000,
+      "owned_child_exit": 5000,
+      "recording_reserve": 5000
+    },
+    "existing_limits": "All frozen resource thresholds, deadlines, sampling, one-startup/14-generation count, attempt identity and cleanup helper unchanged; no model budget consumed"
+  },
+  "tdd": {
+    "initial_red": "15 new behavioral cases failed because diagnostic/fixture did not exist; preservation check passed",
+    "focused_red": "supervisor_identity_failed failed because an unavailable creation-time read skipped termination of the retained owned worker",
+    "green_correction": "Supervisor now retains failure while terminating only its own Process/OS handle; original Complete-ContractCleanup still confirms exit",
+    "package_red": "Package content check failed with FileNotFoundError before separate diagnostic ZIP creation"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_execution_monitor.py tests/unit/test_preflight_adapter_association.py tests/unit/test_contract_run_controls.py",
+      "result": "197 passed in 98.83s",
+      "retained": 174,
+      "new": 23,
+      "boundary": "Substitute Windows process/job objects, actual imported identity/cleanup and new supervisor/worker control flow; parser/native compile-layout tests and safe non-Windows platform rejection only. No native Windows API or diagnostic child process executed; test harness launches local Linux pwsh only."
+    },
+    {
+      "command": ".venv/bin/python -m pytest -q tests/unit/test_execution_monitor.py -k native_ownership_diagnostic_package",
+      "result": "1 passed in 0.03s",
+      "new": 1,
+      "note": "New package test was added after the main regression collection; 198 distinct checks passed across these two commands"
+    },
+    {
+      "check": "Preservation",
+      "result": "All 102 protected frozen/source/application/evidence/ZIP hashes match baseline.json"
+    },
+    {
+      "check": "Packaging",
+      "result": "Two flat entries, CRC and source bytes match; existing v1.3.0 ZIP/freeze untouched"
+    },
+    {
+      "check": "Documentation/whitespace/phase",
+      "result": "TASKS/PROJECT local links, new source whitespace and Phase 3 in-progress checked; pre-existing TASKS backlog trailing whitespace preserved"
+    }
+  ],
+  "offline_coverage": [
+    "Normal owned identity and deliberate abort/cleanup",
+    "Retained and fresh PID/creation-time mismatch and query failure",
+    "Start failure, job-close failure, unconfirmed exit and disposal failure",
+    "Supervisor timeout and ownership-read failure still clean retained owned worker",
+    "Supervisor success and invalid/mismatched child cleanup receipts",
+    "Child recovery: exact identity, different creation time, missing identity, failed query and absent PID",
+    "Exact deadline boundaries",
+    "PowerShell AST parsing and real non-Windows gate",
+    "Frozen-source/evidence preservation and isolated diagnostic ZIP"
+  ],
+  "expected_windows_outcomes": {
+    "success": "Exit 0; native_ownership_cleanup_passed; expected abort; actual job created/closed; one matching child exit and supervisor exit confirmed within total deadline",
+    "failure": "Exit 1; preserved errors/cleanup; no acceptance of missing identity, failed/unconfirmed cleanup or timeout",
+    "result_path": "<diagnostic directory>/results/<new GUID>/result.json"
+  },
+  "native_effects": "Future Windows command compiles/loads unchanged ProcessTools.cs through Add-Type, loads System.Net.Http without HTTP, and may leave compiler/source/assembly files under TEMP. Existing kernel32 CreateJobObject/SetInformationJobObject/AssignProcessToJobObject/CloseHandle; .NET Windows process create/handle/PID/creation-time/wait/owned termination. No compiler installation, AdapterIdentity.cs, DXGI/CIM/WDDM, model/runtime or GPU workload.",
+  "package": {
+    "path": "build/uc001-native-ownership-check/windows-native-ownership-check.zip",
+    "bytes": 5470,
+    "sha256": "330684b8b316449c28ea74841af21d5abba3add396cef71a657a4ebf390d0dfe",
+    "files": [
+      "Check-NativeOwnership.ps1",
+      "README.md"
+    ],
+    "hashes": "build/uc001-native-ownership-check/SHA256SUMS.txt",
+    "instructions": "scripts/uc001_native_ownership_check/README.md"
+  },
+  "windows_native_verified": false,
+  "owned_gpu_counter_verified": false,
+  "model_allocation_verified": false,
+  "full_preflight_verified": false,
+  "model_startup_authorized": false,
+  "pending": [
+    "Actual Windows diagnostic output including native compilation/job close/lifetime/confirmed exit",
+    "Real owned-GPU PID/LUID/phys_0 counter availability and model allocation at separately authorized startup; no synthetic measurement substitute",
+    "Fresh original integrity/identity/resources before any authorized startup; last resource margin is not a reservation",
+    "Previously recorded Codespace/transport and qualified semantic-review prerequisites remain; not investigated here"
+  ],
+  "not_performed": [
+    "Windows native diagnostic execution",
+    "SSH/gh/port investigation",
+    "Model/runtime startup, inference or workload",
+    "Model/runtime asset hashing",
+    "Downloads/installations",
+    "Authentication/credential inspection or transport/tunnel",
+    "Held-out access",
+    "Frozen bundle/ZIP or historical-evidence edits",
+    "Application/limit/prompt/schema/case changes",
+    "Git staging/commit/push/branch switch/deployment"
+  ],
+  "changed_files": [
+    "scripts/uc001_native_ownership_check/Check-NativeOwnership.ps1",
+    "scripts/uc001_native_ownership_check/README.md",
+    "scripts/uc001_native_ownership_check/Test-Offline.ps1",
+    "tests/unit/test_execution_monitor.py",
+    "docs/TASKS.md",
+    "docs/PROJECT.md",
+    "build/uc001-native-ownership-check/baseline.json",
+    "build/uc001-native-ownership-check/verification.json",
+    "build/uc001-native-ownership-check/SHA256SUMS.txt",
+    "build/uc001-native-ownership-check/windows-native-ownership-check.zip"
+  ]
+}

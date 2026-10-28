@@ -1,0 +1,66 @@
+....................FFFF.                                                [100%]
+=================================== FAILURES ===================================
+____ test_approved_extraction_resolves_xk_and_preserves_the_original_draft _____
+
+    def test_approved_extraction_resolves_xk_and_preserves_the_original_draft():
+        raw = SOURCE_PATH.read_bytes()
+        original_draft = DRAFT_PATH.read_bytes()
+    
+>       result = extract(raw, approved_release=True)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: extract() got an unexpected keyword argument 'approved_release'
+
+tests/unit/test_country_catalogue_preparation.py:126: TypeError
+_ test_approved_extraction_requires_the_owner_approved_source_pin[different-source] _
+
+raw = b'#ISO\tISO3\tISO-Numeric\tfips\tCountry\tCapital\tArea(in sq km)\tPopulation\tContinent\ttld\tCurrencyCode\tCurrencyN...rce value\tunused source value\tunused source value\tunused source value\tunused source value\tunused source value\t\n'
+
+    @pytest.mark.parametrize("raw", [
+        pytest.param(source(row("CH", "Switzerland")), id="different-source"),
+        pytest.param(SOURCE_PATH.read_bytes().replace(b"Kosovo", b"Kosova", 1), id="modified-name"),
+    ])
+    def test_approved_extraction_requires_the_owner_approved_source_pin(raw):
+        with pytest.raises(ValueError, match="approved source pin"):
+>           extract(raw, approved_release=True)
+E           TypeError: extract() got an unexpected keyword argument 'approved_release'
+
+tests/unit/test_country_catalogue_preparation.py:157: TypeError
+_ test_approved_extraction_requires_the_owner_approved_source_pin[modified-name] _
+
+raw = b"# ================================\r\n#\r\n#\r\n# CountryCodes:\r\n# ============\r\n#\r\n# The official ISO country...530\tNT\tNetherlands Antilles\tWillemstad\t960\t300000\tNA\t.an\tANG\tGuilder\t599\t\t\tnl-AN,en,es\t8505032\tGP\t\r\n"
+
+    @pytest.mark.parametrize("raw", [
+        pytest.param(source(row("CH", "Switzerland")), id="different-source"),
+        pytest.param(SOURCE_PATH.read_bytes().replace(b"Kosovo", b"Kosova", 1), id="modified-name"),
+    ])
+    def test_approved_extraction_requires_the_owner_approved_source_pin(raw):
+        with pytest.raises(ValueError, match="approved source pin"):
+>           extract(raw, approved_release=True)
+E           TypeError: extract() got an unexpected keyword argument 'approved_release'
+
+tests/unit/test_country_catalogue_preparation.py:157: TypeError
+_ test_explicit_approved_release_command_records_dated_scope_and_exact_provenance _
+
+tmp_path = PosixPath('/tmp/resolena-priority5r-i7kqbmbe/preparation-red/test_explicit_approved_release0')
+
+    def test_explicit_approved_release_command_records_dated_scope_and_exact_provenance(tmp_path):
+        original_manifest = DRAFT_MANIFEST_PATH.read_bytes()
+        completed = subprocess.run(preparation_command(tmp_path, approved=True), cwd=ROOT,
+            capture_output=True, text=True, check=False)
+    
+>       assert completed.returncode == 0, completed.stderr
+E       AssertionError: usage: prepare.py [-h] --source SOURCE --acquisition ACQUISITION
+E                           --source-sha256 SOURCE_SHA256 --output OUTPUT --manifest
+E                           MANIFEST --prepared-at PREPARED_AT
+E         prepare.py: error: unrecognized arguments: --approved-release
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/workspaces/resolena-alternative-finder/.venv/bin/python', 'scripts/uc001_country_catalogue/pr...                  MANIFEST --prepared-at PREPARED_AT\nprepare.py: error: unrecognized arguments: --approved-release\n').returncode
+
+tests/unit/test_country_catalogue_preparation.py:178: AssertionError
+=========================== short test summary info ============================
+FAILED tests/unit/test_country_catalogue_preparation.py::test_approved_extraction_resolves_xk_and_preserves_the_original_draft
+FAILED tests/unit/test_country_catalogue_preparation.py::test_approved_extraction_requires_the_owner_approved_source_pin[different-source]
+FAILED tests/unit/test_country_catalogue_preparation.py::test_approved_extraction_requires_the_owner_approved_source_pin[modified-name]
+FAILED tests/unit/test_country_catalogue_preparation.py::test_explicit_approved_release_command_records_dated_scope_and_exact_provenance
+4 failed, 21 passed in 0.35s

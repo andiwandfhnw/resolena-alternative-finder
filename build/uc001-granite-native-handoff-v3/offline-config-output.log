@@ -1,0 +1,27 @@
+{
+  "package_configuration_validation_passed": true,
+  "configuration_inactive": true,
+  "bound_prior_bytes": 0,
+  "exact_native_helper_count": 4,
+  "runtime": {
+    "python_version": "3.12.11",
+    "pointer_bits": 64,
+    "platform": "linux",
+    "executable": "/workspaces/resolena-alternative-finder/.venv/bin/python"
+  },
+  "manifest_sha256": "45b224d7a4dbb036f1db8f091214633125e256953b2e3564db9640a8feb7a30e",
+  "controller_sha256": "9c5f3bab58fd3f2d20d345f5093ca2ac80b1e9149da74c1555fcf9b450e92fc1",
+  "prior_receipt_sha256": "56a85b9ded9d6c4bf504462e11d551b59e016fcd1c77d8c5102b93ff7df7475a",
+  "historical_prior_preparation_bindings_preserved": true,
+  "native_api_invoked": false,
+  "native_binding_verified": false,
+  "resource_fit_established": false,
+  "windows_entry_conditions_verified": false,
+  "worker_environment_validation_required": false,
+  "worker_environment_validation_passed": false,
+  "worker_module_path": "/workspaces/resolena-alternative-finder/build/uc001-granite-native-handoff-v3/package/worker.py",
+  "phase_launch_performed": false,
+  "execution_config_written": false,
+  "acquisition_or_build": false,
+  "forbidden_attempts": []
+}

@@ -1,0 +1,26 @@
+{
+    "expected_meanings_approved":  false,
+    "deadline_failures":  [
+
+                          ],
+    "cleanup_failures":  [
+
+                         ],
+    "primary_failure":  {
+                            "reason":  "check_failed",
+                            "stage":  "worker"
+                        },
+    "original_attempt_identity":  "bda2015c0ffbe89ab1a612fb4003b2b12f254871cf32f2e47dbbbe9d45cf0f52",
+    "execution_purpose":  "technical_feasibility_only",
+    "attempt_identity":  "d586feb0be95c5d955be7b6a60381ab41594a0136d8c45917f81460829675078",
+    "deferred_live_cases":  [
+                                1,
+                                5,
+                                10
+                            ],
+    "completed":  false,
+    "cleanup_confirmed":  true,
+    "live_api_real_adapter_verified":  false,
+    "semantic_review":  "pending",
+    "previous_attempt_identity":  "3efca8db7f356fe00672ecf2a0607c2b57c017fafedca61e85778611abd1afe8"
+}

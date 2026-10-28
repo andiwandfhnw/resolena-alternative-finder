@@ -1,0 +1,17 @@
+{
+  "version": "uc001-granite-proxy-identities-v1",
+  "purpose": "offline-prepared-proxy-identity-binding",
+  "readiness_scope": "structural_only",
+  "execution_authorized": false,
+  "files": {
+    "README.md": "5019d7c51e5ad854f38e10970f2d47491661722f6969ccc4345950c67fc62e06",
+    "Run-ReadinessCheck.ps1": "67cfe7eff26015e9bf2c2b39e481b99c2574c7485867567efe7924b748de877c",
+    "check.py": "d09492a057680d1926d6a690cd526cfe50ca44b54bf2ee8a8392348bbd6ce05c",
+    "controller-config.template.json": "d778202f34ad163dd1a2cc89b3ec71f35ef623eaf8c1894935a4bde1139c8e9b",
+    "controller.py": "5889ea53fe3a0ada4acaee072196b953a04b0b797fb77ea46df1154c0f78d787",
+    "proxy.py": "a7c62f83356636bea839633382bb62a3e53bcce466caea7b32226cece1e7bb1d",
+    "standins.py": "eddac526505213644f553b0b8617396ff7898f53dd174ecd6dd030b21f69501f",
+    "windows_job.py": "792ee180000065fc39edcccbf2e7130ec68fff5358128b258f2a0e95952f0a22",
+    "worker.py": "6c786d97f23a92b5ee6f6699d2b92a3de0bdb9913a332e3a8d046a67fe4aca85"
+  }
+}

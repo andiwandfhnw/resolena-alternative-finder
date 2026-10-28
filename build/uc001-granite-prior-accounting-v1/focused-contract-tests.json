@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/unit/test_granite_acquisition_proxy.py::test_prior_unknown_cannot_be_loaded_as_zero",
+    "tests/unit/test_granite_controller_cli.py"
+  ],
+  "exit_code": 0,
+  "scope": "Offline receipt/hash/controller preflight only; synthetic accounting values are not historical charges."
+}

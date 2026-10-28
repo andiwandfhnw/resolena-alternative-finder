@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "draft_sha256": "eb99e833904327d0c0c78b6a2f261fceaec76dad35e23926269c0096529824e9",
+  "manifest_sha256": "00581759d4128a8a743e06aec6632f2a7d86a94dccf092997c2e7875502ff1e4",
+  "script_sha256": "7cfc42ba3081ac40d54cad8ef5c9ee0fdb097cc9982762fe9fde0796ef17d97a",
+  "source_zip_sha256": "0903076e7c3b8670d836ec20d486f9d2045b120e61f07d27a2bd7be09443098b",
+  "source_csv_sha256": "ae33ad60171374afcb39ddd9cc5268a1fe5b71f40bf21961373f4e6fb65abe02",
+  "counts": {
+    "source_records": 5716,
+    "included": 5716,
+    "excluded": 0,
+    "unresolved": 0,
+    "duplicate_source_records": 0,
+    "duplicate_retained_associations": 0
+  },
+  "structural_summary": {
+    "country_association_counts": {
+      "CH": 5696,
+      "LI": 20
+    },
+    "distinct_postal_ids": 4073,
+    "postal_ids_with_multiple_associations": 1206,
+    "postal_ids_across_canton_labels": 167
+  },
+  "every_source_record_retained_in_order": true,
+  "raw_name_and_postcode_fields_preserved": true,
+  "all_acquired_bytes_and_document_pins_match": true,
+  "canonical_manifest_draft_hash_matches": true,
+  "runtime_use": false,
+  "review_status": "pending",
+  "automated_checks_do_not_approve_facts_or_release": true,
+  "no_familiar_place_spot_check_used_as_factual_acceptance": true
+}

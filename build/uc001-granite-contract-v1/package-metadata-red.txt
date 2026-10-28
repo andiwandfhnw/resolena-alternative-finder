@@ -1,0 +1,14 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_runtime_metadata_requires_pinned_build_and_case_states_cannot_be_waived _
+
+    def test_runtime_metadata_requires_pinned_build_and_case_states_cannot_be_waived():
+        from hashlib import sha256
+        from types import SimpleNamespace
+>       from scripts.uc001_granite_contract_v1.assess import validate_runtime_metadata, validate_case_state
+E       ImportError: cannot import name 'validate_runtime_metadata' from 'scripts.uc001_granite_contract_v1.assess' (/workspaces/resolena-alternative-finder/scripts/uc001_granite_contract_v1/assess.py)
+
+tests/unit/test_granite_package.py:163: ImportError
+=========================== short test summary info ============================
+FAILED tests/unit/test_granite_package.py::test_runtime_metadata_requires_pinned_build_and_case_states_cannot_be_waived
+1 failed, 13 deselected in 0.20s

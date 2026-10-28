@@ -1,0 +1,4 @@
+$GraniteKeyFile = 'C:\Resolena\private\granite-v1-api-key.txt'
+if (Get-ChildItem Env:LLAMA_* -ErrorAction SilentlyContinue) { throw 'Unreviewed LLAMA_* environment overrides; stop.' }
+$GraniteServerArgs = @('--model', $GraniteModel, '--alias', 'uc001-granite-3.3-8b-v1', '--host', '127.0.0.1', '--port', '9931', '--api-key-file', $GraniteKeyFile, '--ctx-size', '8192', '--parallel', '1', '--gpu-layers', 'all', '--cache-type-k', 'f16', '--cache-type-v', 'f16', '--threads', '8', '--threads-batch', '8', '--batch-size', '256', '--ubatch-size', '128', '--flash-attn', 'off', '--no-context-shift', '--no-cont-batching', '--no-warmup', '--fit', 'off', '--offline', '--no-mmproj', '--no-webui', '--jinja', '--reasoning', 'off', '--reasoning-format', 'none', '--spec-type', 'none', '--n-predict', '4096', '--temp', '0', '--seed', '42', '--samplers', 'temperature')
+& $GraniteServer @GraniteServerArgs

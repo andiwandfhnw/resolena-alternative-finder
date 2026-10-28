@@ -1,0 +1,134 @@
+Owner review:
+
+I accept the source-grounded diagnosis of the default run_session
+planned-close and phase-cleanup gaps.
+
+This acceptance does not claim a Windows acquisition failure or a direct
+default-path reproduction already exists. The historical RED logs exercised
+run_binding_session and must retain that scope.
+
+Authorize ONE bounded OFFLINE implementation and focused TDD task to correct
+these two lifecycle cases in the actual default run_session path.
+
+Goal:
+remove the identified false rejections without weakening premature-exit,
+identity, event-ordering, resource, accounting or cleanup requirements.
+
+1. Reproduce the actual default-path defects first.
+
+Extend the existing test_granite_controller_run.py fixtures and call the
+actual run_session with injected process/native/resource/clock boundaries.
+
+Retain genuine pre-fix RED evidence for:
+- a valid planned-close record becoming durable after the initial event
+  read but before the controller observes the proxy exit;
+- valid terminal evidence and completed base-process exits, with only an
+  already verified helper remaining briefly active.
+
+Do not substitute run_binding_session or mock the lifecycle checks into
+success. Keep already-passing negative cases distinct from genuine RED.
+
+2. Correct exit/event reconciliation in the existing default loop.
+
+A single event read moved earlier is insufficient: it already precedes
+poll_proxy.
+
+Reconcile durable pending records after an exit observation and before
+classifying the exit as premature. Cover the proxy exiting while the
+acquisition worker is still performing its remaining source checks.
+
+Preserve:
+- valid binding/listening/closing/exit order;
+- exact launcher and interpreter identities;
+- both required native-backed role exits;
+- rejection of missing, malformed, mismatched or invalid close records;
+- rejection of genuinely unplanned or unsuccessful exits.
+
+Do not use an arbitrary sleep, unconditional exception suppression or a
+generic grace period as a substitute for valid lifecycle evidence.
+Do not repeatedly wait for an absent close record until it becomes acceptable.
+
+3. Correct phase-end handling of already verified helpers only.
+
+After successful required normal exits and terminal validation, permit only
+already admitted, retained helper identities to finish under the existing
+supervision and applicable phase deadline.
+
+The actual default path must possess the necessary helper-role and retained
+identity proof; do not assume it inherits the separate diagnostic's registry.
+
+Reuse existing identity/helper validation where needed, without changing
+the accepted helper-admission policy or introducing a parallel identity model.
+
+Reject unknown, unclassified, replacement or identity-changed descendants.
+A matching process count or executable name alone is not sufficient.
+
+Keep watchdog/resource checks active throughout the wait. Do not reset
+phase clocks or grant an additional resource/time allowance.
+
+Require zero active processes before advancing to the next phase.
+Preserve final identity-bound exits and query-handle closure requirements.
+No helper or unknown child gains direct termination authority.
+
+Do not terminate, close or recreate the whole private Job between acquisition
+and build merely to make the active count reach zero. Preserve the existing
+abort/Job cleanup path for genuine failures or deadline/resource breaches.
+
+4. Focused regression coverage must exercise the actual default path.
+
+Cover:
+- delayed valid close with the worker still alive;
+- delayed valid close with worker exit;
+- absent/invalid close and genuine premature launcher/interpreter exit;
+- verified helper lag versus unknown or changed remaining identities;
+- helper timeout, missing exit proof and query-handle closure failure;
+- deadline/resource failure during reconciliation or helper waiting;
+- no build launch before acquisition terminal validation and zero active
+  processes;
+- unchanged prior charge, interpreter-bound ledger validation and cumulative
+  accounting.
+
+Preserve the existing unknown-descendant rejection test. Add a separate
+positive verified-helper case rather than weakening that negative assertion.
+
+Use directly affected regressions only. Do not create a new diagnostic
+framework, broad matrix or standalone Windows runner.
+
+5. Preservation and scope.
+
+Both accepted Windows diagnostics remain CLOSED at their demonstrated scopes.
+Do not rerun them, modify their historical packages or claim their Windows
+results validate this new default-loop correction.
+
+Preserve the accepted proxy, prior receipt, frozen assessment/configuration,
+model/runtime/toolchain pins, build flags and all existing numeric limits.
+
+Limit changes to the default controller lifecycle, the minimal existing
+helper wiring necessary for that correction, focused tests and documentation.
+If a larger redesign or changed contract is necessary, stop and report it.
+
+Keep acquisition/build execution unauthorized and all execution drafts inactive.
+
+6. Return for review.
+
+Provide:
+- the minimal source diff and changed-file list;
+- exact default-run_session RED and GREEN commands/results;
+- the event/process schedules covered by each new test;
+- phase-boundary and final-cleanup semantics;
+- updated source/helper hashes, preserving historical bindings;
+- evidence limitations;
+- whether the corrected source now permits completion of the previously
+  authorized inactive handoff.
+
+Do not claim native Windows verification of the changed loop.
+Do not issue a new desktop execution instruction in this task.
+
+No Windows execution, live proxy/network, source/model acquisition,
+configure/build/compiler/glslc, GPU probe, server startup, inference,
+installation or Git delivery.
+
+No stage/commit/push/branch switch/reset.
+
+PHASE: 3 / STATUS: in-progress.
+Stop after the bounded correction and its offline verification for review.

@@ -1,0 +1,322 @@
+{
+  "date": "2026-10-20",
+  "scope": "UC-001 increment1 Priority5E bounded test-runner integration follow-up only; no new product scenario",
+  "phase": 3,
+  "status": "in-progress",
+  "priorities_3_4_5": "partial",
+  "increment_1_and_develop_complete": false,
+  "review_outcome": "Original delivered503unknown -> explicit checked recovery scenario supported by source/evidence; preserve first-pass result and no production/frontend defect or fix claim. Final owner acceptance/integration closure remains pending review.",
+  "original_receipt": "build/uc001-priority5e-browser-unknown/verification.json",
+  "runner_findings": {
+    "ordinary_package_command": "npm --prefix frontend run test:e2e runs playwright test",
+    "missing_control_setup": "Prior config defaulted DB/clock but never RESOLENA_TEST_UNCERTAIN_SAVE_FILE;5E required it. Prior demo already supported/validated the optional env/CLI and was correct; unchanged.",
+    "shared_database": "One process.env.RESOLENA_E2E_DATABASE per invocation, workers1,retries0, shared demo server. Existing committed comparison then5A leave two requests/four options/four links before5E.",
+    "prior_test_assumptions": "Unconditional0/0/0 baseline, absolute1/2/2 and stored.rows[0] masked by separately executed supplied-env runs.",
+    "scope": "Only current runner/package/demo/5E integration paths inspected; no old matrices/investigations rerun for context."
+  },
+  "changed_files": [
+    "frontend/playwright.config.ts",
+    "tests/e2e/saved-comparison.spec.ts",
+    "docs/TASKS.md"
+  ],
+  "minimal_correction": {
+    "runner": "Assign one UUID JSON path under build/test-only into process.env when unset/empty; explicitly pass same value into demo webServer.env. Do not create/arm the control file. Existing worker env inheritance shares it with the test.",
+    "database": "Capture baseline; assert exact+1request/+2options/+2links, select one added request by baselineIDdifference, compare all old request/projection/option/link rows and all source evidence. Recovery still compares complete post-commit state.",
+    "unchanged": "Production application/frontend behavior, persistence adapter/API contract, demo/helper/backend tests, package/dependencies, original test order and every other browser test."
+  },
+  "red": [
+    {
+      "command": "set -o pipefail\nenv -u RESOLENA_TEST_UNCERTAIN_SAVE_FILE -u RESOLENA_E2E_DATABASE -u RESOLENA_E2E_CLOCK_FILE npm --prefix frontend run test:e2e -- --grep 'delivered unknown persistence error requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-runner-integration/red-default --reporter=list 2>&1 | tee build/uc001-priority5e-runner-integration/red-default.log",
+      "exit_code": 1,
+      "result": "1failed: Boolean(controlFile) false; ordinary runner missing path. No5E submission occurred.",
+      "log": "build/uc001-priority5e-runner-integration/red-default.log"
+    },
+    {
+      "command": "set -o pipefail\nenv -u RESOLENA_TEST_UNCERTAIN_SAVE_FILE -u RESOLENA_E2E_DATABASE -u RESOLENA_E2E_CLOCK_FILE npm --prefix frontend run test:e2e -- --grep 'browser displays exactly the committed API comparison and stable database identities|delivered unknown persistence error requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-runner-integration/red-shared --reporter=list 2>&1 | tee build/uc001-priority5e-runner-integration/red-shared.log",
+      "exit_code": 1,
+      "result": "1passed,1failed: with only config corrected,5E expected empty0/0/0 but actual prior baseline was1/2/2. Smallest shared-state reproduction with one preceding test.",
+      "log": "build/uc001-priority5e-runner-integration/red-shared.log"
+    }
+  ],
+  "green": [
+    {
+      "command": "set -o pipefail\nenv -u RESOLENA_TEST_UNCERTAIN_SAVE_FILE -u RESOLENA_E2E_DATABASE -u RESOLENA_E2E_CLOCK_FILE npm --prefix frontend run test:e2e -- --grep 'delivered unknown persistence error requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-runner-integration/standalone --reporter=list 2>&1 | tee build/uc001-priority5e-runner-integration/standalone.log",
+      "exit_code": 0,
+      "result": "1passed(4.8s)",
+      "log": "build/uc001-priority5e-runner-integration/standalone.log"
+    },
+    {
+      "command": "set -o pipefail\nenv -u RESOLENA_TEST_UNCERTAIN_SAVE_FILE -u RESOLENA_E2E_DATABASE -u RESOLENA_E2E_CLOCK_FILE npm --prefix frontend run test:e2e -- --grep 'browser displays exactly the committed API comparison and stable database identities|lost HTTP response after atomic commit requires explicit same-submission recovery|delivered unknown persistence error requires explicit same-submission recovery' --trace=off --output /workspaces/resolena-alternative-finder/build/uc001-priority5e-runner-integration/combined --reporter=list 2>&1 | tee build/uc001-priority5e-runner-integration/combined.log",
+      "exit_code": 0,
+      "result": "3passed(6.1s),original order retained",
+      "log": "build/uc001-priority5e-runner-integration/combined.log"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run lint 2>&1 | tee build/uc001-priority5e-runner-integration/frontend-lint.log",
+      "exit_code": 0,
+      "result": "passed",
+      "log": "build/uc001-priority5e-runner-integration/frontend-lint.log"
+    },
+    {
+      "command": "set -o pipefail\nnpm --prefix frontend run build 2>&1 | tee build/uc001-priority5e-runner-integration/frontend-build.log",
+      "exit_code": 0,
+      "result": "passed:TypeScript/Vite build",
+      "log": "build/uc001-priority5e-runner-integration/frontend-build.log"
+    }
+  ],
+  "command_setup": "Environment variables for control,DB,clock explicitly unset, so ordinary defaults generate all paths. No manual control file or prepared external control supplied. Fresh output directories and reporter=list avoid resetting/overwriting prior artifacts; traceoff retained.",
+  "journeys": {
+    "standalone": {
+      "evidence": "build/uc001-priority5e-runner-integration/standalone/saved-comparison-delivered-71376-it-same-submission-recovery/delivered-unknown-recovery-evidence.json",
+      "baseline_counts": {
+        "search_request": 0,
+        "request_alternative": 0,
+        "request_alternative_evidence": 0
+      },
+      "committed_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "recovered_counts": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "scenario_delta": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "prior_request_ids": [],
+      "new_request_id": "da21778e-2114-42f2-b8d1-1b3466c64056",
+      "new_request_selection": "Exactly one committed row whose ID was absent from the baseline request-ID set; not rows[0].",
+      "new_option_ids": [
+        "42e99626-4ff0-4a2b-b71d-048eb8c052a5",
+        "e94e1465-435c-414a-98fa-8a2cf5de53b5"
+      ],
+      "new_evidence_associations": [
+        [
+          "42e99626-4ff0-4a2b-b71d-048eb8c052a5",
+          "30000000-0000-4000-8000-000000000001"
+        ],
+        [
+          "e94e1465-435c-414a-98fa-8a2cf5de53b5",
+          "30000000-0000-4000-8000-000000000002"
+        ]
+      ],
+      "preservation_assertions": {
+        "prior_request_rows_and_projections": true,
+        "prior_option_rows_and_snapshots": true,
+        "prior_evidence_links": true,
+        "all_source_evidence": true,
+        "entire_post_commit_state_after_recovery": true
+      },
+      "original_assessed_at": "2026-10-15T10:00:00+00:00",
+      "original_outcome": "comparison",
+      "actual_error_response": {
+        "status": 503,
+        "body": {
+          "outcome": "persistence_error",
+          "persistence": {
+            "state": "unknown"
+          },
+          "issues": [
+            {
+              "code": "comparison_save_failed"
+            }
+          ],
+          "assessed_outcome": "comparison"
+        }
+      },
+      "actual_recovery_response": {
+        "status": 200,
+        "body": {
+          "outcome": "submission_recovered",
+          "persistence": {
+            "state": "saved",
+            "request_id": "da21778e-2114-42f2-b8d1-1b3466c64056"
+          },
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "saved_outcome": "comparison"
+        }
+      },
+      "runner_control": {
+        "path": "/workspaces/resolena-alternative-finder/build/test-only/browser-uncertain-save-c3dc91a2-39a7-41fa-865c-89a9f26844c2.json",
+        "initially_absent": true,
+        "consumed_after_error": true
+      },
+      "control_absent_after_run": true,
+      "fault_counts": {
+        "real_commits": 1,
+        "confirmation_losses": 1,
+        "read_failures": 1
+      },
+      "dialect_methods_restored": true,
+      "observer_rows_supplied_to_application": false,
+      "browser_submissions_for_5e": 2,
+      "same_serialized_body_key_and_proof": true,
+      "loading_held_until_actual_error_delivered": true,
+      "fields_preserved_after_error_and_recovery": true,
+      "no_comparison_or_coverage_presented": true,
+      "bounded_no_automatic_retry_observation_ms": 300
+    },
+    "combined": {
+      "evidence": "build/uc001-priority5e-runner-integration/combined/saved-comparison-delivered-71376-it-same-submission-recovery/delivered-unknown-recovery-evidence.json",
+      "baseline_counts": {
+        "search_request": 2,
+        "request_alternative": 4,
+        "request_alternative_evidence": 4
+      },
+      "committed_counts": {
+        "search_request": 3,
+        "request_alternative": 6,
+        "request_alternative_evidence": 6
+      },
+      "recovered_counts": {
+        "search_request": 3,
+        "request_alternative": 6,
+        "request_alternative_evidence": 6
+      },
+      "scenario_delta": {
+        "search_request": 1,
+        "request_alternative": 2,
+        "request_alternative_evidence": 2
+      },
+      "prior_request_ids": [
+        "46f5658c-b999-4b73-b494-350724d3c903",
+        "feb3580d-412b-4392-814b-e19b0125c210"
+      ],
+      "new_request_id": "9edee584-6aec-47cb-b392-5643ae422f93",
+      "new_request_selection": "Exactly one committed row whose ID was absent from the baseline request-ID set; not rows[0].",
+      "new_option_ids": [
+        "a17610c1-0def-4ae5-bc2f-25968d1375eb",
+        "316ced3b-f43a-4a4d-8690-9413613ece79"
+      ],
+      "new_evidence_associations": [
+        [
+          "316ced3b-f43a-4a4d-8690-9413613ece79",
+          "30000000-0000-4000-8000-000000000002"
+        ],
+        [
+          "a17610c1-0def-4ae5-bc2f-25968d1375eb",
+          "30000000-0000-4000-8000-000000000001"
+        ]
+      ],
+      "preservation_assertions": {
+        "prior_request_rows_and_projections": true,
+        "prior_option_rows_and_snapshots": true,
+        "prior_evidence_links": true,
+        "all_source_evidence": true,
+        "entire_post_commit_state_after_recovery": true
+      },
+      "original_assessed_at": "2026-10-15T10:00:00+00:00",
+      "original_outcome": "comparison",
+      "actual_error_response": {
+        "status": 503,
+        "body": {
+          "outcome": "persistence_error",
+          "persistence": {
+            "state": "unknown"
+          },
+          "issues": [
+            {
+              "code": "comparison_save_failed"
+            }
+          ],
+          "assessed_outcome": "comparison"
+        }
+      },
+      "actual_recovery_response": {
+        "status": 200,
+        "body": {
+          "outcome": "submission_recovered",
+          "persistence": {
+            "state": "saved",
+            "request_id": "9edee584-6aec-47cb-b392-5643ae422f93"
+          },
+          "assessed_at": "2026-10-15T10:00:00+00:00",
+          "saved_outcome": "comparison"
+        }
+      },
+      "runner_control": {
+        "path": "/workspaces/resolena-alternative-finder/build/test-only/browser-uncertain-save-b84f0c4a-9691-4e5a-b1d3-82e642320456.json",
+        "initially_absent": true,
+        "consumed_after_error": true
+      },
+      "control_absent_after_run": true,
+      "fault_counts": {
+        "real_commits": 1,
+        "confirmation_losses": 1,
+        "read_failures": 1
+      },
+      "dialect_methods_restored": true,
+      "observer_rows_supplied_to_application": false,
+      "browser_submissions_for_5e": 2,
+      "same_serialized_body_key_and_proof": true,
+      "loading_held_until_actual_error_delivered": true,
+      "fields_preserved_after_error_and_recovery": true,
+      "no_comparison_or_coverage_presented": true,
+      "bounded_no_automatic_retry_observation_ms": 300
+    }
+  },
+  "preserved_scenario_assertions": "Real DBAPI commit before lost confirmation, immediate unavailable readback, independent observer never supplies app facts, actual503 forwarded after loading gate, truthfully uncertain wording, fields/captured body/key/proof retained, explicit actual200ack with original outcome/time only. Exactlytwo5E submissions and bounded300ms no-retry observation retained; no fresh-search journey added.",
+  "no_database_reset": "No shared DB clearing, prior row deletion, test reorder/skip, scenario reset or weakened persistence assertion.",
+  "backend_checks": "Focused support isolation not rerun: Python helper/demo and backend wiring source unchanged; only runner environment propagation/default and browser assertions changed, exercised by required real browser/API/SQLite runs. No concrete additional backend regression need.",
+  "protected_data": "No raw originating proofs,headers,SQLparameters,protected contexts or complete request objects recorded. Proof/body comparisons stay in memory; evidence retains booleans and synthetic saved projections/identities only. Tracing/HAR disabled; no browser persistent storage or credentials added.",
+  "preservation": {
+    "protected_files": 170,
+    "mismatches": [],
+    "other_browser_tests_byte_unchanged": true,
+    "original_5e_tasks_note_preserved": true,
+    "identity": {
+      "branch": "specify/phase-1-uc-001",
+      "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455"
+    },
+    "same_git_identity": true,
+    "scoped_delta_checks": [
+      {
+        "path": "frontend/playwright.config.ts",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-runner-integration/before/frontend/playwright.config.ts frontend/playwright.config.ts",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "tests/e2e/saved-comparison.spec.ts",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-runner-integration/before/tests/e2e/saved-comparison.spec.ts tests/e2e/saved-comparison.spec.ts",
+        "exit_code": 1,
+        "output": ""
+      },
+      {
+        "path": "docs/TASKS.md",
+        "command": "git diff --no-index --check -- build/uc001-priority5e-runner-integration/before/docs/TASKS.md docs/TASKS.md",
+        "exit_code": 1,
+        "output": ""
+      }
+    ]
+  },
+  "preservation_manifest": "build/uc001-priority5e-runner-integration/preservation-before.json",
+  "git": {
+    "diff_check_command": "git diff --check",
+    "diff_check_exit_code": 2,
+    "diff_check_output": "docs/TASKS.md:1538: trailing whitespace.\n+  evidence-backed comparisons and persistence. \n",
+    "status_command": "git status --short",
+    "same_status_entries_as_before": true
+  },
+  "whitespace": "Only historical TASKS backlog trailing space remains, nowline1538; globaldiffcheck exit2. Three task-local no-index checks outputempty; exit1 reflects differing files without new whitespace errors.",
+  "remaining_limits": [
+    "Final5E owner review/closure remains pending",
+    "Existing serial fault-composition and300ms retry observation limits remain; no complete cleanup/persistence/concurrency/disclosure/browser matrix",
+    "Other Priority5 obligations and real locality/reference integration remain open"
+  ],
+  "boundaries": "DE/FR/IT/EN,Resolena-controlled processing,atomic saving/immutable evidence retained. Normalapp.main unconfigured; real drafts inactive; experiments closed. No startup/model/detector,heldout,linguistic/TL-03,research,UC-003,Priority6,dependencies,staging/Gitdelivery,branch/reset,CI/CD/deployment.",
+  "review": "Independent read-only config/test and final receipt/TASKS review found no material issue. Logs and artifact identities/counts/controls/preservation agree; owner acceptance remains pending.",
+  "stop": "Await human review. No final owner acceptance recorded; Priority5,increment1,DEVELOP remain incomplete.",
+  "final_checks": {
+    "proof_safe_json_artifacts_audited": 6,
+    "trace_har_artifacts_absent": true,
+    "valid_single_tasks_evidence_link": true,
+    "phase3_in_progress": true,
+    "protected_hashes_rechecked": 170
+  }
+}

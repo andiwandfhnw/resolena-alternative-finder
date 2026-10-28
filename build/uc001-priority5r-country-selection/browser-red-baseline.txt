@@ -1,0 +1,40 @@
+[WebServer] INFO:     Started server process [51566]
+[WebServer] INFO:     Waiting for application startup.
+[WebServer] INFO:     Application startup complete.
+[WebServer] INFO:     Uvicorn running on http://127.0.0.1:8011 (Press CTRL+C to quit)
+[WebServer] (node:51605) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:51622) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 ../tests/e2e/saved-comparison.spec.ts:39:5 › browser displays exactly the committed API comparison and stable database identities (1.1s)
+  ✘  2 ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage (271ms)
+[WebServer] INFO:     Shutting down
+[WebServer] INFO:     Waiting for application shutdown.
+[WebServer] INFO:     Application shutdown complete.
+[WebServer] INFO:     Finished server process [51566]
+
+
+  1) ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 404
+
+      74 |   const priorOptionIds = new Set<string>(before.snapshots.request_alternative.map(([id]: [string, ...unknown[]]) => id))
+      75 |   const catalogueResponse = await page.request.get('/api/countries')
+    > 76 |   expect(catalogueResponse.status()).toBe(200)
+         |                                      ^
+      77 |   const catalogue = await catalogueResponse.json()
+      78 |   expect(typeof catalogue.version === 'string' && catalogue.version.length > 0).toBe(true)
+      79 |   expect(catalogue.countries.length).toBe(250)
+        at /workspaces/resolena-alternative-finder/tests/e2e/saved-comparison.spec.ts:76:38
+
+    Error Context: ../build/uc001-priority5r-country-selection/browser-red-baseline/saved-comparison-approved--55241-input-and-saves-XK-coverage/error-context.md
+
+  1 failed
+    ../tests/e2e/saved-comparison.spec.ts:70:5 › approved country selector preserves cleared input and saves XK coverage 
+  1 passed (5.7s)

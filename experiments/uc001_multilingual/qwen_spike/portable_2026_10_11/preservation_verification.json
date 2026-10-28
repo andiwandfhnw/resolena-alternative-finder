@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-11T15:53:01.579773+00:00",
+  "active_experiment_processes": [],
+  "original_binary_and_logs_match": true,
+  "model_pin_matches": true,
+  "operational_frozen_inputs_match": true,
+  "previous_records_preserved_at_driver_closeout": true,
+  "branch": "specify/phase-1-uc-001",
+  "head": "a6b2479c3d82ff5d9987a73d310a3a4eff064455",
+  "staged_paths": [],
+  "downloads_this_extension": 0,
+  "compiled_builds_this_extension": 1,
+  "retries": 0,
+  "heldout_model_exposure": false,
+  "return_to_original_completed": false,
+  "design_acceptance": "pending"
+}

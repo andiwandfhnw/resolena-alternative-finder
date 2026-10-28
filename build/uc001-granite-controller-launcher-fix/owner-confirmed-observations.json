@@ -1,0 +1,33 @@
+{
+  "source": "Owner-supplied failed-attempt summary and subsequently confirmed identity values; not a reconstructed raw result or remote desktop file audit.",
+  "failed_attempt_directory": "C:\\Users\\AndiWand\\Downloads\\granite-controller-v1\\ownership-ecc37015-dc69-4455-acdf-36bfdb4956d9",
+  "native_attempts_reported": 1,
+  "controller_pid": 60320,
+  "retained_unrelated_launcher": {
+    "pid": 61196,
+    "creation_time_100ns": 134374354509552652
+  },
+  "actual_unrelated_interpreter": {
+    "pid": 61020,
+    "creation_time_100ns": 134374354509736275,
+    "parent_pid": 61196
+  },
+  "confirmed_defect": "The stand-in compared the retained launcher identity to its distinct interpreter identity.",
+  "failure_before_owned_job_launch": true,
+  "suspended_assignment_order_verified": false,
+  "owned_identities": [],
+  "historical_cleanup_credit": "Controller outside private job; empty private Job cleaned; retained launcher survived Job termination and was subsequently cleaned. No interpreter or owned-tree cleanup success inferred.",
+  "original_handoff_gate": {
+    "template_missing": true,
+    "complete_helper_hash_gate_passed": false,
+    "interactive_commands_continued": true
+  },
+  "subsequent_owner_report": {
+    "template_now_copied": true,
+    "template_current_sha256": "5b6a5a099a058ab7911af0177942668ed457ec24b0b4beb3886fedb13a29b70e",
+    "current_four_helpers_match_previous_prepared_receipt": true,
+    "retroactive_failed_run_integrity": false
+  },
+  "another_windows_attempt_authorized": false,
+  "acquisition_build_gpu_model_actions": false
+}

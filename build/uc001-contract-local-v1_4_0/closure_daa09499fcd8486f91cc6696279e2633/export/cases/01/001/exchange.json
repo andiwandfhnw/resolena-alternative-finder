@@ -1,0 +1,13 @@
+{
+  "method": "POST",
+  "path": "/apply-template",
+  "status": 200,
+  "response_headers": {
+    "content-type": "application/json; charset=utf-8"
+  },
+  "complete": true,
+  "exported": true,
+  "failure": null,
+  "request_sha256": "42b2498889f04e8766304aa8f25b28df8db854904a1fb2a007c8af17a608655c",
+  "response_sha256": "786483bc435c4e2dab1a1f3fc80cb15aa9c0fc76374579cf8b7b939e3088108e"
+}

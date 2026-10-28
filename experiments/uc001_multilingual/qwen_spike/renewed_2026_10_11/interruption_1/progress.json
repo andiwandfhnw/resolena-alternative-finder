@@ -1,0 +1,6 @@
+{
+  "gate": 1,
+  "state": "running",
+  "scratch": "/tmp/resolena-qwen-spike-o8cs2zg9",
+  "cleanup": "Preserve small outputs, stop owned processes, then remove only this exact scratch tree."
+}

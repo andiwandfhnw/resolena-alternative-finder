@@ -1,0 +1,16 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-I",
+    "-B",
+    "build/uc001-granite-native-handoff-v3/package/verify_config.py",
+    "--package-root",
+    "build/uc001-granite-native-handoff-v3/package",
+    "--expected-manifest-sha256",
+    "45b224d7a4dbb036f1db8f091214633125e256953b2e3564db9640a8feb7a30e"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 0.1904697469999519,
+  "scope": "Actual packaged structural/config/hash validation only; default env-entry opt-in not invoked on Linux",
+  "windows_execution": false
+}
